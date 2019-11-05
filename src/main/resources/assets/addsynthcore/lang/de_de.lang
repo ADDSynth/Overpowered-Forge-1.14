@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=Vorsicht blockieren
+tile.addsynthcore.music_box.name=Musikbox
+
+item.addsynthcore.music_sheet.name=Notenblätter
+
+item.addsynthcore.wooden_scythe.name=Hölzerne Sense
+item.addsynthcore.stone_scythe.name=Stein Sense
+item.addsynthcore.iron_scythe.name=Eisen Sense
+item.addsynthcore.gold_scythe.name=Goldene Sense
+item.addsynthcore.diamond_scythe.name=Diamant-Sense

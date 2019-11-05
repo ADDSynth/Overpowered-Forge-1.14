@@ -1,0 +1,265 @@
+﻿itemGroup.overpowered=Overpowered
+itemGroup.overpowered_machines=Overpowered - Maskiner
+itemGroup.overpowered_gems=Overpowered - ædelstene
+itemGroup.overpowered_tools=Overpowered - Værktøj
+itemGroup.overpowered_metals=Overpowered - Metaller
+
+# Shards
+item.addsynthcore.ruby_shard.name=stykke rubin
+item.addsynthcore.topaz_shard.name=shaz af topas
+item.addsynthcore.citrine_shard.name=stykke citrin
+item.addsynthcore.emerald_shard.name=stykke smaragd
+item.addsynthcore.diamond_shard.name=stykke diamant
+item.addsynthcore.sapphire_shard.name=stykke safir
+item.addsynthcore.amethyst_shard.name=stykke ametyst
+item.addsynthcore.quartz_shard.name=stykke kvarts
+
+# Gems
+item.addsynthcore.ruby.name=Rubin
+item.addsynthcore.topaz.name=Topas
+item.addsynthcore.citrine.name=Citrin
+item.addsynthcore.sapphire.name=Safir
+item.addsynthcore.amethyst.name=Ametyst
+
+# Gem Blocks
+tile.addsynthcore.ruby_block.name=Rubin blok
+tile.addsynthcore.topaz_block.name=Topas Blok
+tile.addsynthcore.citrine_block.name=Citrin Blok
+tile.addsynthcore.sapphire_block.name=Safir blok
+tile.addsynthcore.amethyst_block.name=Ametyst blok
+
+# Gem Ores
+tile.addsynthcore.ruby_ore.name=Rubinmalm
+tile.addsynthcore.topaz_ore.name=Topazmalm
+tile.addsynthcore.citrine_ore.name=Citrinmalm
+tile.addsynthcore.sapphire_ore.name=Safirmalm
+tile.addsynthcore.amethyst_ore.name=Ametystmalm
+
+# Energy Crystal, Void Crystal
+item.overpoweredmod.energy_crystal_shards.name=Energikrystalskæringer
+item.overpoweredmod.energy_crystal.name=Energikrystal
+tile.overpoweredmod.light_block.name=Lysblok
+item.overpoweredmod.void_crystal.name=mørk krystal
+tile.overpoweredmod.null_block.name=Blok af Intet
+
+# Energy Tools
+item.overpoweredmod.energy_sword.name=Energisværd
+item.overpoweredmod.energy_pickaxe.name=Energi Hakke
+item.overpoweredmod.energy_axe.name=Energi økse
+item.overpoweredmod.energy_shovel.name=Energi Skovl
+item.overpoweredmod.energy_hoe.name=Energi hakke
+item.addsynthcore.energy_scythe.name=Energi segl [har brug for oversættelse]
+
+# Void Tools
+item.overpoweredmod.void_sword.name=negativt sværd
+item.overpoweredmod.void_pickaxe.name=Null Pickaxe
+item.overpoweredmod.void_axe.name=negativ økse
+item.overpoweredmod.void_shovel.name=negativ skovl
+item.overpoweredmod.void_hoe.name=negativ hakke
+
+# power cores
+item.overpoweredmod.power_core.name=strømkernen
+item.overpoweredmod.advanced_power_core.name=avanceret magt kerne
+item.overpoweredmod.energized_power_core.name=energikraftkernen
+item.overpoweredmod.nullified_power_core.name=negativ kraftkerne
+item.overpoweredmod.energy_grid.name=Energi nettet
+item.overpoweredmod.vacuum_container.name=Vakuumbeholder
+
+# Wires
+tile.overpoweredmod.energy_wire.name=Strømkabel
+tile.overpoweredmod.data_cable.name=Datakabel
+
+# Machines
+tile.overpoweredmod.generator.name=Energidistributør
+tile.overpoweredmod.energy_storage.name=Energiladningsbeholder
+tile.overpoweredmod.universal_energy_interface.name=Energikonverter
+
+tile.overpoweredmod.compressor.name=Kompressor
+tile.overpoweredmod.electric_furnace.name=Elektrisk ovn
+tile.overpoweredmod.gem_converter.name=ædelsten konverter
+tile.overpoweredmod.inverter.name=Inverter
+tile.overpoweredmod.magic_infuser.name=magiske ekstraktor
+tile.overpoweredmod.identifier.name=Vare scanning maskine
+tile.overpoweredmod.portal_frame.name=portal struktur blok
+tile.overpoweredmod.portal_control_panel.name=Portal Kontrolpanel
+tile.overpoweredmod.crystal_matter_generator.name=lav ædelsten stykke
+tile.overpoweredmod.advanced_ore_refinery.name=avanceret malmraffinaderi
+
+tile.overpoweredmod.fusion_chamber.name=Fusionskammer
+tile.overpoweredmod.fusion_control_unit.name=Fusionskontrol enhed
+tile.overpoweredmod.fusion_control_laser.name=Fusionskontrol laser
+tile.overpoweredmod.fusion_energy_converter.name=Fusion energi omformer
+
+# Lenses
+item.overpoweredmod.focus_lens.name=Fokus linse
+item.overpoweredmod.red_lens.name=Rød linse
+item.overpoweredmod.orange_lens.name=Orange linse
+item.overpoweredmod.yellow_lens.name=Gul linse
+item.overpoweredmod.green_lens.name=Grønne linse
+item.overpoweredmod.cyan_lens.name=Cyan linse
+item.overpoweredmod.blue_lens.name=Blå objektiv
+item.overpoweredmod.magenta_lens.name=Magenta linse
+
+# Lasers
+tile.overpoweredmod.laser_housing.name=Laser Housing
+tile.overpoweredmod.white_laser.name=Hvid Laser
+tile.overpoweredmod.red_laser.name=Rød laser
+tile.overpoweredmod.orange_laser.name=Orange Laser
+tile.overpoweredmod.yellow_laser.name=Gul Laser
+tile.overpoweredmod.green_laser.name=Grøn Laser
+tile.overpoweredmod.cyan_laser.name=Cyan Laser
+tile.overpoweredmod.blue_laser.name=Blå laser
+tile.overpoweredmod.magenta_laser.name=Magenta Laser
+
+# Misc. Blocks
+tile.overpoweredmod.iron_frame_block.name=jern ramme blok
+tile.overpoweredmod.black_hole.name=Sort hul
+
+# Items
+item.overpoweredmod.beam_emitter.name=Stråle emitter
+item.overpoweredmod.unknown_technology.name=Ukendt teknologi
+item.overpoweredmod.fusion_core.name=fusionskerne
+item.overpoweredmod.dimensional_anchor.name=Dimensionelt anker
+
+# Trophies
+item.overpoweredmod.trophy_base.name=Trofæ Base
+tile.overpoweredmod.bronze_trophy.name=Bronze tropi
+tile.overpoweredmod.silver_trophy.name=Sølv trofæ
+tile.overpoweredmod.gold_trophy.name=Guld trofæ
+tile.overpoweredmod.platinum_trophy.name=Platin trofæ
+
+# unidentified armor
+item.overpoweredmod.unidentified_leather_helmet.name=Uidentificeret læderhætte
+item.overpoweredmod.unidentified_leather_chestplate.name=Uidentificeret læderarmor
+item.overpoweredmod.unidentified_leather_leggings.name=Uidentificerede Læderbukser
+item.overpoweredmod.unidentified_leather_boots.name=Uidentificerede Læderstøvler
+item.overpoweredmod.unidentified_chainmail_helmet.name=Uidentificeret Chainmail Hjelm
+item.overpoweredmod.unidentified_chainmail_chestplate.name=uidentificeret chainmail rustning
+item.overpoweredmod.unidentified_chainmail_leggings.name=Uidentificerede Chainmail Bukser
+item.overpoweredmod.unidentified_chainmail_boots.name=uidentificerede chainmail støvler
+item.overpoweredmod.unidentified_iron_helmet.name=Uidentificeret jernhjelm
+item.overpoweredmod.unidentified_iron_chestplate.name=Uidentificeret jern rustning
+item.overpoweredmod.unidentified_iron_leggings.name=Uidentificerede jernbukser
+item.overpoweredmod.unidentified_iron_boots.name=Uidentificerede Jernstøvler
+item.overpoweredmod.unidentified_gold_helmet.name=Uidentificeret Guldhjelm
+item.overpoweredmod.unidentified_gold_chestplate.name=Uidentificeret Guldbrystplade
+item.overpoweredmod.unidentified_gold_leggings.name=Uidentificerede Guldbukser
+item.overpoweredmod.unidentified_gold_boots.name=Uidentificerede Guldstøvler
+item.overpoweredmod.unidentified_diamond_helmet.name=Uidentificeret Diamanthjelm
+item.overpoweredmod.unidentified_diamond_chestplate.name=Uidentificeret Diamant rustning
+item.overpoweredmod.unidentified_diamond_leggings.name=Uidentificerede Diamantbukser
+item.overpoweredmod.unidentified_diamond_boots.name=Uidentificerede Diamantstøvler
+
+# Rings
+item.overpoweredmod.ring_common.name=Uidentificeret Ring
+item.overpoweredmod.ring_good.name=Uidentificeret Ring
+item.overpoweredmod.ring_rare.name=Uidentificeret Ring
+item.overpoweredmod.ring_unique.name=Uidentificeret Ring
+item.overpoweredmod.magic_ring_common.name=Smykker
+item.overpoweredmod.magic_ring_good.name=Smykker
+item.overpoweredmod.magic_ring_rare.name=Smykker
+item.overpoweredmod.magic_ring_unique.name=Smykker
+
+# Metal Ingots
+item.addsynthcore.tin_ingot.name=Tin Ingot
+item.addsynthcore.copper_ingot.name=Kobberstænger
+item.addsynthcore.aluminum_ingot.name=Aluminiumbørste
+item.addsynthcore.steel_ingot.name=Stålstang
+item.addsynthcore.bronze_ingot.name=Bronze Ingot
+item.addsynthcore.silver_ingot.name=Sølvbørste
+item.addsynthcore.platinum_ingot.name=Platinum Ingot
+item.addsynthcore.titanium_ingot.name=Titanium Ingot
+
+# Metal Blocks
+tile.addsynthcore.tin_block.name=Tin Blok
+tile.addsynthcore.copper_block.name=Kobberblok
+tile.addsynthcore.aluminum_block.name=Aluminum Blok
+tile.addsynthcore.steel_block.name=Stålblok
+tile.addsynthcore.bronze_block.name=Bronze Blok
+tile.addsynthcore.silver_block.name=Sølv blok
+tile.addsynthcore.platinum_block.name=Platineblok
+tile.addsynthcore.titanium_block.name=Titanium Blok
+
+# Ore
+tile.addsynthcore.tin_ore.name=Tin malm
+tile.addsynthcore.copper_ore.name=Kobbermalm
+tile.addsynthcore.aluminum_ore.name=Aluminiummalm
+tile.addsynthcore.silver_ore.name=Sølvmalm
+tile.addsynthcore.platinum_ore.name=Platinmalm
+tile.addsynthcore.titanium_ore.name=Titaniummalm
+
+# Metal Plates
+item.addsynthcore.iron_plate.name=Jernplating
+item.addsynthcore.gold_plate.name=guldbelægning
+item.addsynthcore.tin_plate.name=Tin Plating
+item.addsynthcore.copper_plate.name=Kobberplade
+item.addsynthcore.aluminum_plate.name=Aluminum Plating
+item.addsynthcore.steel_plate.name=Stålplating
+item.addsynthcore.bronze_plate.name=Bronze Plating
+item.addsynthcore.silver_plate.name=Sølv tallerken
+item.addsynthcore.platinum_plate.name=Platinplatte
+item.addsynthcore.titanium_plate.name=titanbelægning
+
+
+
+
+
+# Gem Achievements
+achievement.find_ruby=Rubin
+achievement.find_ruby.desc=Få en Rubin
+achievement.find_topaz=Topas
+achievement.find_topaz.desc=Få en Topas
+achievement.find_citrine=Citrin
+achievement.find_citrine.desc=Få en citrin
+achievement.find_emerald=smaragd
+achievement.find_emerald.desc=Få en smaragd
+achievement.find_sapphire=Safir
+achievement.find_sapphire.desc=Få en safir
+achievement.find_amethyst=Find Ametyst
+achievement.find_amethyst.desc=Få en ametyst
+achievement.find_nether_quartz=Kvarts
+achievement.find_nether_quartz.desc=Få kvarts
+
+achievement.make_energy_crystal=Energikrystal
+achievement.make_energy_crystal.desc=Lav en energikrystal
+achievement.make_light_block=Lysblok
+achievement.make_light_block.desc=Lav en lysblok
+achievement.energy_tools=Energitværktøjer
+achievement.energy_tools.desc=Lav et energibesparende værktøj
+
+achievement.make_void_crystal=Ugyldig krystal
+achievement.make_void_crystal.desc=Brug omformeren til at lave en ugyldig krystal
+achievement.make_null_block=Blok af Mørke
+achievement.make_null_block.desc=Lav en nulblok
+achievement.annihilation_blade=udslettende sværd
+achievement.annihilation_blade.desc=Lav et ugyldigt sværd
+
+# Cool Achievements
+achievement.fire_laser=Laser
+achievement.fire_laser.desc=Skyd en laser
+achievement.identify_a_ring=En ny identitet
+achievement.identify_a_ring.desc=Brug identifikatoren til at identificere en ring
+achievement.create_portal=Dimensionelle rejsende
+achievement.create_portal.desc=Opret succes med en portal
+achievement.find_unknown_technology=Ukendt teknologi
+achievement.find_unknown_technology.desc=få et ukendt teknologi element
+
+# Black Hole achievements
+achievement.fusion_container=Fusionsenergi
+achievement.fusion_container.desc=Opret en fusionsenergistruktur
+achievement.make_black_hole=Sort hul
+achievement.make_black_hole.desc=Lav et sort hul
+achievement.make_dimensional_anchor=Dimensionelt anker
+achievement.make_dimensional_anchor.desc=Lav et dimensionelt ankerelement
+achievement.survive_black_hole=Overlevende
+achievement.survive_black_hole.desc=Undgå grebet af et sort hul
+
+# trophy achievements
+achievement.get_bronze_trophy=Bronze trofæ
+achievement.get_bronze_trophy.desc=Få et bronze trofæ
+achievement.get_silver_trophy=Sølv trofæ
+achievement.get_silver_trophy.desc=få et sølvtrofæ
+achievement.get_gold_trophy=Guld trofæ
+achievement.get_gold_trophy.desc=Få et guld trofæ
+achievement.get_platinum_trophy=Platin trofæ
+achievement.get_platinum_trophy.desc=få et platin trofæ

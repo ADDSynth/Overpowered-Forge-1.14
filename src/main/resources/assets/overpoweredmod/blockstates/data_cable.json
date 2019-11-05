@@ -1,0 +1,36 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "overpoweredmod:blocks/data_cable"
+    },
+    "model": "overpoweredmod:data_cable_base"
+  },
+  "variants": {
+    "normal": [{}],
+    "west": {
+      "true": {"submodel": "overpoweredmod:data_cable_left"},
+      "false": {}
+    },
+    "north": {
+      "true": {"submodel": "overpoweredmod:data_cable_left", "y": 90},
+      "false": {}
+    },
+    "east": {
+      "true": {"submodel": "overpoweredmod:data_cable_left", "y": 180},
+      "false": {}
+    },
+    "down": {
+      "true": {"submodel": "overpoweredmod:data_cable_up"},
+      "false": {}
+    },
+    "south": {
+      "true": {"submodel": "overpoweredmod:data_cable_up", "x": 90},
+      "false": {}
+    },
+    "up": {
+      "true": {"submodel": "overpoweredmod:data_cable_up", "x": 180},
+      "false": {}
+    }
+  }
+}

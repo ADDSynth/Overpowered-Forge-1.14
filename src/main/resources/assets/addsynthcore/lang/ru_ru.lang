@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=предостерегающий блок
+tile.addsynthcore.music_box.name=Музыкальная шкатулка
+
+item.addsynthcore.music_sheet.name=Музыкальный лист
+
+item.addsynthcore.wooden_scythe.name=Деревянная коса
+item.addsynthcore.stone_scythe.name=Каменная коса
+item.addsynthcore.iron_scythe.name=Железная коса
+item.addsynthcore.gold_scythe.name=Золотая коса
+item.addsynthcore.diamond_scythe.name=Алмазная коса

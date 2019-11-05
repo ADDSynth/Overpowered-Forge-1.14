@@ -1,0 +1,265 @@
+﻿itemGroup.overpowered=Overpowered
+itemGroup.overpowered_machines=Overpowered - Μηχανήματα
+itemGroup.overpowered_gems=Overpowered - Πολύτιμοι λίθοι
+itemGroup.overpowered_tools=Overpowered - Εργαλεία
+itemGroup.overpowered_metals=Overpowered - Μέταλλα
+
+# Shards
+item.addsynthcore.ruby_shard.name=κομμάτι ρουμπίνι
+item.addsynthcore.topaz_shard.name=κομμάτι τοπάζ
+item.addsynthcore.citrine_shard.name=θραύσματα κιτρίνης
+item.addsynthcore.emerald_shard.name=σμαραγδένιο θραύσμα
+item.addsynthcore.diamond_shard.name=διαμάντι θραύσμα
+item.addsynthcore.sapphire_shard.name=σάπφειρο σκάρδα
+item.addsynthcore.amethyst_shard.name=κομμάτι του αμέθυστου
+item.addsynthcore.quartz_shard.name=χαλαζία θραύσμα
+
+# Gems
+item.addsynthcore.ruby.name=Ρουμπίνι
+item.addsynthcore.topaz.name=Τοπάζι
+item.addsynthcore.citrine.name=κίτρινο χαλαζία
+item.addsynthcore.sapphire.name=Ζαφείρι
+item.addsynthcore.amethyst.name=Αμέθυστος
+
+# Gem Blocks
+tile.addsynthcore.ruby_block.name=ρουμπίνι μπλοκ
+tile.addsynthcore.topaz_block.name=μπλοκ τοπάζ
+tile.addsynthcore.citrine_block.name=μπλοκ κιτρίνης
+tile.addsynthcore.sapphire_block.name=ζαφείρι μπλοκ
+tile.addsynthcore.amethyst_block.name=Αμέθυστο μπλοκ
+
+# Gem Ores
+tile.addsynthcore.ruby_ore.name=ακατέργαστο ρουμπίνι
+tile.addsynthcore.topaz_ore.name=ακατέργαστο τοπάζ
+tile.addsynthcore.citrine_ore.name=Μεταλλεύματα κιτρίνης
+tile.addsynthcore.sapphire_ore.name=Μεταλλεύματος σαπφείρου
+tile.addsynthcore.amethyst_ore.name=Αμέθυστος μεταλλεύματος
+
+# Energy Crystal, Void Crystal
+item.overpoweredmod.energy_crystal_shards.name=Ενεργειακά κρυστάλλινα κομμάτια
+item.overpoweredmod.energy_crystal.name=Ενεργειακό κρύσταλλο
+tile.overpoweredmod.light_block.name=Φως μπλοκ
+item.overpoweredmod.void_crystal.name=Άκυρο κρύσταλλο
+tile.overpoweredmod.null_block.name=μηδενικό μπλοκ
+
+# Energy Tools
+item.overpoweredmod.energy_sword.name=Ενεργό σπαθί
+item.overpoweredmod.energy_pickaxe.name=Ενέργεια Pickaxe
+item.overpoweredmod.energy_axe.name=ενεργειακό τσεκούρι
+item.overpoweredmod.energy_shovel.name=Φτυάρι ενέργειας
+item.overpoweredmod.energy_hoe.name=ενέργειας σκαπάνη
+item.addsynthcore.energy_scythe.name=Ενέργεια δρεπάνι
+
+# Void Tools
+item.overpoweredmod.void_sword.name=μηδενικό σπαθί
+item.overpoweredmod.void_pickaxe.name=αρνητική πικκαξ
+item.overpoweredmod.void_axe.name=μηδέν τσεκούρι
+item.overpoweredmod.void_shovel.name=μηδενικό φτυάρι
+item.overpoweredmod.void_hoe.name=σκοτεινή σκαπάνη
+
+# power cores
+item.overpoweredmod.power_core.name=πυρήνα ισχύος
+item.overpoweredmod.advanced_power_core.name=Προηγμένος πυρήνας ισχύος
+item.overpoweredmod.energized_power_core.name=πυρήνα ενέργειας
+item.overpoweredmod.nullified_power_core.name=πυρήνα αρνητικής ισχύος
+item.overpoweredmod.energy_grid.name=Ενεργειακό δίκτυο
+item.overpoweredmod.vacuum_container.name=Δοχείο κενού
+
+# Wires
+tile.overpoweredmod.energy_wire.name=Ενεργειακό καλώδιο
+tile.overpoweredmod.data_cable.name=Καλώδιο δεδομένων
+
+# Machines
+tile.overpoweredmod.generator.name=Διανομέας Ενέργειας
+tile.overpoweredmod.energy_storage.name=Συσκευασία αποθήκευσης ενέργειας
+tile.overpoweredmod.universal_energy_interface.name=Παγκόσμια ενεργειακή διασύνδεση
+
+tile.overpoweredmod.compressor.name=Συμπιεστής
+tile.overpoweredmod.electric_furnace.name=Ηλεκτρικός φούρνος
+tile.overpoweredmod.gem_converter.name=μετατροπέας πολύτιμων λίθων
+tile.overpoweredmod.inverter.name=Αντιστροφέας
+tile.overpoweredmod.magic_infuser.name=μαγικός εγχυτήρας
+tile.overpoweredmod.identifier.name=Αναγνωριστικό
+tile.overpoweredmod.portal_frame.name=Πλαίσιο πύλης
+tile.overpoweredmod.portal_control_panel.name=Πίνακας ελέγχου πύλης
+tile.overpoweredmod.crystal_matter_generator.name=Κατασκευαστής πολύτιμων λίθων
+tile.overpoweredmod.advanced_ore_refinery.name=προηγμένο διυλιστήριο μεταλλευμάτων
+
+tile.overpoweredmod.fusion_chamber.name=θάλαμο σύντηξης
+tile.overpoweredmod.fusion_control_unit.name=Μονάδα ελέγχου σύντηξης
+tile.overpoweredmod.fusion_control_laser.name=Λέιζερ ελέγχου σύντηξης
+tile.overpoweredmod.fusion_energy_converter.name=Μετατροπέας ενέργειας σύντηξης
+
+# Lenses
+item.overpoweredmod.focus_lens.name=Φακός εστίασης
+item.overpoweredmod.red_lens.name=Κόκκινο φακό
+item.overpoweredmod.orange_lens.name=πορτοκαλί φακό
+item.overpoweredmod.yellow_lens.name=Κίτρινο φακό
+item.overpoweredmod.green_lens.name=Πράσινο φακό
+item.overpoweredmod.cyan_lens.name=Κυανικός φακός
+item.overpoweredmod.blue_lens.name=Μπλε φακό
+item.overpoweredmod.magenta_lens.name=ματζέντα φακού
+
+# Lasers
+tile.overpoweredmod.laser_housing.name=Μηχανή λέιζερ
+tile.overpoweredmod.white_laser.name=Λευκό λέιζερ
+tile.overpoweredmod.red_laser.name=Κόκκινο λέιζερ
+tile.overpoweredmod.orange_laser.name=πορτοκαλί λέιζερ
+tile.overpoweredmod.yellow_laser.name=Κίτρινο λέιζερ
+tile.overpoweredmod.green_laser.name=Πράσινο λέιζερ
+tile.overpoweredmod.cyan_laser.name=Κυανό λέιζερ
+tile.overpoweredmod.blue_laser.name=μπλε λέιζερ
+tile.overpoweredmod.magenta_laser.name=ματζέντα λέιζερ
+
+# Misc. Blocks
+tile.overpoweredmod.iron_frame_block.name=Σιδερένιο πλαίσιο
+tile.overpoweredmod.black_hole.name=Μαύρη τρύπα
+
+# Items
+item.overpoweredmod.beam_emitter.name=εκπομπό δέσμης
+item.overpoweredmod.unknown_technology.name=Άγνωστη τεχνολογία
+item.overpoweredmod.fusion_core.name=Πυρήνα σύντηξης
+item.overpoweredmod.dimensional_anchor.name=Διαστατική άγκυρα
+
+# Trophies
+item.overpoweredmod.trophy_base.name=Βάση τροπαίων
+tile.overpoweredmod.bronze_trophy.name=Χάλκινο τρόπαιο
+tile.overpoweredmod.silver_trophy.name=Αργυρό Trophy
+tile.overpoweredmod.gold_trophy.name=Χρυσό τρόπαιο
+tile.overpoweredmod.platinum_trophy.name=Πλατινένιο τρόπαιο
+
+# unidentified armor
+item.overpoweredmod.unidentified_leather_helmet.name=Μη αναγνωρισμένο δερμάτινο καπάκι
+item.overpoweredmod.unidentified_leather_chestplate.name=Άγνωστη δερμάτινη θωράκιση
+item.overpoweredmod.unidentified_leather_leggings.name=Άγνωστα δερμάτινα παντελόνια
+item.overpoweredmod.unidentified_leather_boots.name=Άγνωστες δερμάτινες μπότες
+item.overpoweredmod.unidentified_chainmail_helmet.name=μη αναγνωρισμένο κράνος αλφάβητου
+item.overpoweredmod.unidentified_chainmail_chestplate.name=μη αναγνωρισμένη θωράκιση αλυσιδωτών γραμμών
+item.overpoweredmod.unidentified_chainmail_leggings.name=μη αναγνωρισμένα παντελόνια γραμματοκιβωτίου
+item.overpoweredmod.unidentified_chainmail_boots.name=μη αναγνωρισμένα μπότες αλυσίδας
+item.overpoweredmod.unidentified_iron_helmet.name=Μη αναγνωρισμένο σιδερένιο κράνος
+item.overpoweredmod.unidentified_iron_chestplate.name=Μη αναγνωρισμένη σιδερένια πανοπλία
+item.overpoweredmod.unidentified_iron_leggings.name=Μη αναγνωρισμένες σιδερένιες γκέτες
+item.overpoweredmod.unidentified_iron_boots.name=Μη αναγνωρισμένες σιδερένιες μπότες
+item.overpoweredmod.unidentified_gold_helmet.name=Ακαθαρισμένο χρυσό κράνος
+item.overpoweredmod.unidentified_gold_chestplate.name=Μη αναγνωρισμένη χρυσή κεφαλίδα
+item.overpoweredmod.unidentified_gold_leggings.name=Μη αναγνωρισμένες χρυσές γκέτες
+item.overpoweredmod.unidentified_gold_boots.name=Μη αναγνωρισμένες χρυσές μπότες
+item.overpoweredmod.unidentified_diamond_helmet.name=Μη αναγνωρισμένο κράνος με διαμάντια
+item.overpoweredmod.unidentified_diamond_chestplate.name=Μη αναγνωρισμένη θωράκιση με διαμάντια
+item.overpoweredmod.unidentified_diamond_leggings.name=Μη αναγνωρισμένα παντελόνια με διαμάντια
+item.overpoweredmod.unidentified_diamond_boots.name=Μη αναγνωρισμένες μπότες με διαμάντια
+
+# Rings
+item.overpoweredmod.ring_common.name=Μη αναγνωρισμένο Δαχτυλίδι
+item.overpoweredmod.ring_good.name=Μη αναγνωρισμένο Δαχτυλίδι
+item.overpoweredmod.ring_rare.name=Μη αναγνωρισμένο Δαχτυλίδι
+item.overpoweredmod.ring_unique.name=Μη αναγνωρισμένο Δαχτυλίδι
+item.overpoweredmod.magic_ring_common.name=Δαχτυλίδι
+item.overpoweredmod.magic_ring_good.name=Δαχτυλίδι
+item.overpoweredmod.magic_ring_rare.name=Δαχτυλίδι
+item.overpoweredmod.magic_ring_unique.name=Δαχτυλίδι
+
+# Metal Ingots
+item.addsynthcore.tin_ingot.name=Κανέλα
+item.addsynthcore.copper_ingot.name=Χαλκός
+item.addsynthcore.aluminum_ingot.name=Αλουμινίου
+item.addsynthcore.steel_ingot.name=Ατσάλινη μπάρα
+item.addsynthcore.bronze_ingot.name=Χάλκινο μπάρ
+item.addsynthcore.silver_ingot.name=Ασημένια μπάρα
+item.addsynthcore.platinum_ingot.name=Πλατίνα
+item.addsynthcore.titanium_ingot.name=Τιτάνιο μπαρ
+
+# Metal Blocks
+tile.addsynthcore.tin_block.name=κασσίτερο μπλοκ
+tile.addsynthcore.copper_block.name=Μπλοκ χαλκού
+tile.addsynthcore.aluminum_block.name=Μπλοκ αλουμινίου
+tile.addsynthcore.steel_block.name=Μπλοκ χάλυβα
+tile.addsynthcore.bronze_block.name=Χάλκινο μπλοκ
+tile.addsynthcore.silver_block.name=Ασημένιο μπλοκ
+tile.addsynthcore.platinum_block.name=μπλοκ πλατίνα
+tile.addsynthcore.titanium_block.name=Μπλοκ τιτανίου
+
+# Ore
+tile.addsynthcore.tin_ore.name=ωμό κασσίτερο
+tile.addsynthcore.copper_ore.name=μεταλλεύματος χαλκού
+tile.addsynthcore.aluminum_ore.name=ακατέργαστο αργίλιο
+tile.addsynthcore.silver_ore.name=ακατέργαστο ασήμι
+tile.addsynthcore.platinum_ore.name=μεταλλεύματος λευκοχρύσου
+tile.addsynthcore.titanium_ore.name=ακατέργαστο τιτάνιο
+
+# Metal Plates
+item.addsynthcore.iron_plate.name=Σίδερο επιμετάλλωση
+item.addsynthcore.gold_plate.name=Επιχρύσωση
+item.addsynthcore.tin_plate.name=επιμετάλλωση κασσίτερου
+item.addsynthcore.copper_plate.name=Επιχάλκωση
+item.addsynthcore.aluminum_plate.name=Επιμετάλλωση αλουμινίου
+item.addsynthcore.steel_plate.name=Επιχαλύβδωση
+item.addsynthcore.bronze_plate.name=Μπρούτζινη πλάκα
+item.addsynthcore.silver_plate.name=Ασημένια επίστρωση
+item.addsynthcore.platinum_plate.name=Επίστρωση πλατίνας
+item.addsynthcore.titanium_plate.name=Επιμετάλλωση με τιτάνιο
+
+
+
+
+
+# Gem Achievements
+achievement.find_ruby=Ρουμπίνι
+achievement.find_ruby.desc=πάρτε ένα ρουμπίνι
+achievement.find_topaz=Τοπάζι
+achievement.find_topaz.desc=Πάρτε ένα Topaz
+achievement.find_citrine=κίτρινο χαλαζία
+achievement.find_citrine.desc=Πάρτε μια Citrine
+achievement.find_emerald=σμαράγδι
+achievement.find_emerald.desc=πάρτε ένα σμαράγδι
+achievement.find_sapphire=Ζαφείρι
+achievement.find_sapphire.desc=Πάρτε ένα ζαφείρι
+achievement.find_amethyst=Αμέθυστος
+achievement.find_amethyst.desc=Πάρτε ένα Αμέθυστο
+achievement.find_nether_quartz=Χαλαζίας
+achievement.find_nether_quartz.desc=Πάρτε χαλαζία
+
+achievement.make_energy_crystal=Ενεργειακό κρύσταλλο
+achievement.make_energy_crystal.desc=Κάνετε ένα ενεργειακό κρύσταλλο
+achievement.make_light_block=Φως μπλοκ
+achievement.make_light_block.desc=Κάνετε ένα μπλοκ φωτός
+achievement.energy_tools=Ενεργειακά εργαλεία
+achievement.energy_tools.desc=Κάνετε οποιοδήποτε εργαλείο ενέργειας
+
+achievement.make_void_crystal=Άκυρο κρύσταλλο
+achievement.make_void_crystal.desc=Χρησιμοποιήστε το μετατροπέα για να δημιουργήσετε ένα κενό κρύσταλλο
+achievement.make_null_block=μηδενικό μπλοκ
+achievement.make_null_block.desc=κάντε ένα μηδενικό μπλοκ
+achievement.annihilation_blade=καταστροφική λεπίδα
+achievement.annihilation_blade.desc=Κάντε ένα κενό σπαθί
+
+# Cool Achievements
+achievement.fire_laser=φωτιά λέιζερ
+achievement.fire_laser.desc=Φωτιά ένα λέιζερ
+achievement.identify_a_ring=Μια νέα ταυτότητα
+achievement.identify_a_ring.desc=Χρησιμοποιήστε το αναγνωριστικό για να προσδιορίσετε ένα δακτύλιο
+achievement.create_portal=Ταξιδιώτης διαστάσεων
+achievement.create_portal.desc=Δημιουργήστε με επιτυχία μια πύλη
+achievement.find_unknown_technology=Άγνωστη τεχνολογία
+achievement.find_unknown_technology.desc=Βρείτε ένα άγνωστο στοιχείο τεχνολογίας
+
+# Black Hole achievements
+achievement.fusion_container=Ενέργεια σύντηξης
+achievement.fusion_container.desc=Κατασκευάστε μια δομή συγκράτησης ενέργειας σύντηξης
+achievement.make_black_hole=Μαύρη τρύπα
+achievement.make_black_hole.desc=Κάντε μια μαύρη τρύπα
+achievement.make_dimensional_anchor=Διαστατική άγκυρα
+achievement.make_dimensional_anchor.desc=Αγκυροβολήστε τον εαυτό σας σε αυτή τη διάσταση
+achievement.survive_black_hole=Επιζών
+achievement.survive_black_hole.desc=Χρησιμοποιήστε τη διαστατική άγκυρα για να επιβιώσετε μια μαύρη τρύπα
+
+# trophy achievements
+achievement.get_bronze_trophy=Χάλκινο τρόπαιο
+achievement.get_bronze_trophy.desc=Πάρτε ένα χάλκινο τρόπαιο
+achievement.get_silver_trophy=ασημένιο τρόπαιο
+achievement.get_silver_trophy.desc=Πάρτε ένα ασημένιο τρόπαιο
+achievement.get_gold_trophy=Χρυσό τρόπαιο
+achievement.get_gold_trophy.desc=Αποκτήστε ένα χρυσό τρόπαιο
+achievement.get_platinum_trophy=Πλατινένιο τρόπαιο
+achievement.get_platinum_trophy.desc=Πάρτε ένα Πλατινένιο Τρόπαιο

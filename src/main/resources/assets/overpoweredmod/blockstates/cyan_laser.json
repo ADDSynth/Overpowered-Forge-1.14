@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "facing=north": {"model": "overpoweredmod:cyan_laser" },
+    "facing=east":  {"model": "overpoweredmod:cyan_laser", "y": 90},
+    "facing=south": {"model": "overpoweredmod:cyan_laser", "y": 180},
+    "facing=west":  {"model": "overpoweredmod:cyan_laser", "y": 270},
+    "facing=down":  {"model": "overpoweredmod:cyan_laser", "x": 90},
+    "facing=up":    {"model": "overpoweredmod:cyan_laser", "x": 270}
+  }
+}
+

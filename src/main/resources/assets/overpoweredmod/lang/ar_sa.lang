@@ -1,0 +1,265 @@
+﻿itemGroup.overpowered=Overpowered
+itemGroup.overpowered_machines=Overpowered - آلات
+itemGroup.overpowered_gems=Overpowered - الأحجار الكريمة
+itemGroup.overpowered_tools=Overpowered - أدوات
+itemGroup.overpowered_metals=Overpowered - المعادن
+
+# Shards
+item.addsynthcore.ruby_shard.name=شظية من روبي
+item.addsynthcore.topaz_shard.name=قطعة من توباز
+item.addsynthcore.citrine_shard.name=شطر من السترين
+item.addsynthcore.emerald_shard.name=إميرالد شارد
+item.addsynthcore.diamond_shard.name=قطعة من الماس
+item.addsynthcore.sapphire_shard.name=قطعة من الياقوت
+item.addsynthcore.amethyst_shard.name=قطعة من الجمشت
+item.addsynthcore.quartz_shard.name=قطعة من الكوارتز
+
+# Gems
+item.addsynthcore.ruby.name=ياقوت
+item.addsynthcore.topaz.name=توباز
+item.addsynthcore.citrine.name=السترين
+item.addsynthcore.sapphire.name=ياقوت أزرق
+item.addsynthcore.amethyst.name=جمشت
+
+# Gem Blocks
+tile.addsynthcore.ruby_block.name=روبي بلوك
+tile.addsynthcore.topaz_block.name=توباز بلوك
+tile.addsynthcore.citrine_block.name=كتلة السترين
+tile.addsynthcore.sapphire_block.name=كتلة الياقوت
+tile.addsynthcore.amethyst_block.name=جمشت بلوك
+
+# Gem Ores
+tile.addsynthcore.ruby_ore.name=روبي خام
+tile.addsynthcore.topaz_ore.name=توباز أور
+tile.addsynthcore.citrine_ore.name=السترين الخام
+tile.addsynthcore.sapphire_ore.name=خام الياقوت
+tile.addsynthcore.amethyst_ore.name=جمشت خام
+
+# Energy Crystal, Void Crystal
+item.overpoweredmod.energy_crystal_shards.name=شظايا الطاقة الكريستال
+item.overpoweredmod.energy_crystal.name=الطاقة كريستال
+tile.overpoweredmod.light_block.name=كتلة الضوء
+item.overpoweredmod.void_crystal.name=الكريستال الداكن
+tile.overpoweredmod.null_block.name=كتلة من لا شيء
+
+# Energy Tools
+item.overpoweredmod.energy_sword.name=سيف الطاقة
+item.overpoweredmod.energy_pickaxe.name=معول الطاقة
+item.overpoweredmod.energy_axe.name=فأس الطاقة
+item.overpoweredmod.energy_shovel.name=مجرفة الطاقة
+item.overpoweredmod.energy_hoe.name=مجرفة الطاقة
+item.addsynthcore.energy_scythe.name=منجل الطاقة
+
+# Void Tools
+item.overpoweredmod.void_sword.name=السيف باطل
+item.overpoweredmod.void_pickaxe.name=معول لاغية
+item.overpoweredmod.void_axe.name=فأس فارغ
+item.overpoweredmod.void_shovel.name=مجرفة فارغة
+item.overpoweredmod.void_hoe.name=فارغة مجرفة
+
+# power cores
+item.overpoweredmod.power_core.name=مصدر القوة
+item.overpoweredmod.advanced_power_core.name=المتقدمة السلطة الأساسية
+item.overpoweredmod.energized_power_core.name=جوهر الطاقة
+item.overpoweredmod.nullified_power_core.name=نواة الطاقة السلبية
+item.overpoweredmod.energy_grid.name=شبكة الطاقة
+item.overpoweredmod.vacuum_container.name=حاوية فراغ
+
+# Wires
+tile.overpoweredmod.energy_wire.name=سلك الطاقة
+tile.overpoweredmod.data_cable.name=كابل البيانات
+
+# Machines
+tile.overpoweredmod.generator.name=موزع الطاقة
+tile.overpoweredmod.energy_storage.name=آلة تخزين الطاقة
+tile.overpoweredmod.universal_energy_interface.name=آلة واجهة الطاقة
+
+tile.overpoweredmod.compressor.name=ضاغط
+tile.overpoweredmod.electric_furnace.name=الفرن الكهربائي
+tile.overpoweredmod.gem_converter.name=جوهرة المحول
+tile.overpoweredmod.inverter.name=العاكس
+tile.overpoweredmod.magic_infuser.name=ماجيك إينفوسير
+tile.overpoweredmod.identifier.name=الماسح الضوئي
+tile.overpoweredmod.portal_frame.name=إطار البوابة
+tile.overpoweredmod.portal_control_panel.name=لوحة تحكم البوابة
+tile.overpoweredmod.crystal_matter_generator.name=مولد المواد البلورية
+tile.overpoweredmod.advanced_ore_refinery.name=مصفاة خام متقدمة
+
+tile.overpoweredmod.fusion_chamber.name=غرفة الانصهار
+tile.overpoweredmod.fusion_control_unit.name=منظم الانصهار
+tile.overpoweredmod.fusion_control_laser.name=ليزر الانصهار السيطرة
+tile.overpoweredmod.fusion_energy_converter.name=تحويل الطاقة الانصهار
+
+# Lenses
+item.overpoweredmod.focus_lens.name=عدسة التركيز
+item.overpoweredmod.red_lens.name=عدسة حمراء
+item.overpoweredmod.orange_lens.name=عدسة البرتقال
+item.overpoweredmod.yellow_lens.name=عدسة صفراء
+item.overpoweredmod.green_lens.name=عدسة خضراء
+item.overpoweredmod.cyan_lens.name=عدسة سماوي
+item.overpoweredmod.blue_lens.name=عدسة زرقاء
+item.overpoweredmod.magenta_lens.name=عدسة أرجواني
+
+# Lasers
+tile.overpoweredmod.laser_housing.name=آلة الليزر
+tile.overpoweredmod.white_laser.name=الليزر الأبيض
+tile.overpoweredmod.red_laser.name=ليزر أحمر
+tile.overpoweredmod.orange_laser.name=الليزر البرتقالي
+tile.overpoweredmod.yellow_laser.name=الليزر الأصفر
+tile.overpoweredmod.green_laser.name=ليزر أخضر
+tile.overpoweredmod.cyan_laser.name=ليزر سماوي
+tile.overpoweredmod.blue_laser.name=بلو ليزر
+tile.overpoweredmod.magenta_laser.name=أرجواني ليزر
+
+# Misc. Blocks
+tile.overpoweredmod.iron_frame_block.name=كتلة الإطار الحديدي
+tile.overpoweredmod.black_hole.name=الثقب الأسود
+
+# Items
+item.overpoweredmod.beam_emitter.name=شعاع باعث
+item.overpoweredmod.unknown_technology.name=تكنولوجيا غير معروفة
+item.overpoweredmod.fusion_core.name=الانصهار الأساسية
+item.overpoweredmod.dimensional_anchor.name=مرساة الأبعاد
+
+# Trophies
+item.overpoweredmod.trophy_base.name=قاعدة الكأس
+tile.overpoweredmod.bronze_trophy.name=الكأس البرونزي
+tile.overpoweredmod.silver_trophy.name=الكأس الفضي
+tile.overpoweredmod.gold_trophy.name=الكأس الذهبية
+tile.overpoweredmod.platinum_trophy.name=البلاتين الكأس
+
+# unidentified armor
+item.overpoweredmod.unidentified_leather_helmet.name=قبعة جلدية مجهولة الهوية
+item.overpoweredmod.unidentified_leather_chestplate.name=درع جلدية مجهولة الهوية
+item.overpoweredmod.unidentified_leather_leggings.name=سروال جلدية مجهول
+item.overpoweredmod.unidentified_leather_boots.name=أحذية جلدية مجهولة الهوية
+item.overpoweredmod.unidentified_chainmail_helmet.name=خوذة تسلسل غير معروف
+item.overpoweredmod.unidentified_chainmail_chestplate.name=درع التسلح مجهول
+item.overpoweredmod.unidentified_chainmail_leggings.name=سروال تسلسل مجهولة الهوية
+item.overpoweredmod.unidentified_chainmail_boots.name=أحذية الجندي غير محدد الهوية
+item.overpoweredmod.unidentified_iron_helmet.name=غير معروف خوذة حديدية
+item.overpoweredmod.unidentified_iron_chestplate.name=درع حديد غير معروف
+item.overpoweredmod.unidentified_iron_leggings.name=مجسمات حديدية مجهولة
+item.overpoweredmod.unidentified_iron_boots.name=أحذية حديد مجهولة
+item.overpoweredmod.unidentified_gold_helmet.name=خوذة ذهبية مجهولة الهوية
+item.overpoweredmod.unidentified_gold_chestplate.name=درع الذهب مجهول
+item.overpoweredmod.unidentified_gold_leggings.name=طماق الذهب مجهول
+item.overpoweredmod.unidentified_gold_boots.name=أحذية مجهولة الذهب
+item.overpoweredmod.unidentified_diamond_helmet.name=خوذة الماس غير محددة
+item.overpoweredmod.unidentified_diamond_chestplate.name=درع الماس غير محدد
+item.overpoweredmod.unidentified_diamond_leggings.name=مجهولة الماس طماق
+item.overpoweredmod.unidentified_diamond_boots.name=أحذية الماس مجهولة الهوية
+
+# Rings
+item.ring_common.name=حلقة غير معروفة
+item.ring_good.name=حلقة غير معروفة
+item.ring_rare.name=حلقة غير معروفة
+item.ring_unique.name=حلقة غير معروفة
+item.magic_ring_common.name=حلقة
+item.magic_ring_good.name=حلقة
+item.magic_ring_rare.name=حلقة
+item.magic_ring_unique.name=حلقة
+
+# Metal Ingots
+item.addsynthcore.tin_ingot.name=القصدير سبيكة
+item.addsynthcore.copper_ingot.name=سبيكة نحاس
+item.addsynthcore.aluminum_ingot.name=سبائك الألومنيوم
+item.addsynthcore.steel_ingot.name=الصلب سبيكة
+item.addsynthcore.bronze_ingot.name=سبيكة البرونز
+item.addsynthcore.silver_ingot.name=سبيكة فضية
+item.addsynthcore.platinum_ingot.name=البلاتين سبيكة
+item.addsynthcore.titanium_ingot.name=سبائك التيتانيوم
+
+# Metal Blocks
+tile.addsynthcore.tin_block.name=القصدير بلوك
+tile.addsynthcore.copper_block.name=كتلة النحاس
+tile.addsynthcore.aluminum_block.name=كتلة الألومنيوم
+tile.addsynthcore.steel_block.name=كتلة الصلب
+tile.addsynthcore.bronze_block.name=كتلة برونزية
+tile.addsynthcore.silver_block.name=كتلة فضية
+tile.addsynthcore.platinum_block.name=بلاتيني بلوك
+tile.addsynthcore.titanium_block.name=كتلة التيتانيوم
+
+# Ore
+tile.addsynthcore.tin_ore.name=خام القصدير
+tile.addsynthcore.copper_ore.name=خام النحاس
+tile.addsynthcore.aluminum_ore.name=خام الألومنيوم
+tile.addsynthcore.silver_ore.name=خام الفضة
+tile.addsynthcore.platinum_ore.name=خام البلاتين
+tile.addsynthcore.titanium_ore.name=خام التيتانيوم
+
+# Metal Plates
+item.addsynthcore.iron_plate.name=تصفيح الحديد
+item.addsynthcore.gold_plate.name=صفيحة ذهبية
+item.addsynthcore.tin_plate.name=الطلاء بالقصدير
+item.addsynthcore.copper_plate.name=النحاس تصفيح
+item.addsynthcore.aluminum_plate.name=لوحة الألومنيوم
+item.addsynthcore.steel_plate.name=لوحة الصلب
+item.addsynthcore.bronze_plate.name=لوحة من البرونز
+item.addsynthcore.silver_plate.name=طبق من فضة
+item.addsynthcore.platinum_plate.name=طلاء البلاتين
+item.addsynthcore.titanium_plate.name=لوحة التيتانيوم
+
+
+
+
+
+# Gem Achievements
+achievement.find_ruby=ياقوت
+achievement.find_ruby.desc=احصل على روبي
+achievement.find_topaz=توباز
+achievement.find_topaz.desc=الحصول على توباز
+achievement.find_citrine=السترين
+achievement.find_citrine.desc=الحصول على السترين
+achievement.find_emerald=زمرد
+achievement.find_emerald.desc=احصل على الزمرد
+achievement.find_sapphire=ياقوت أزرق
+achievement.find_sapphire.desc=الحصول على الياقوت
+achievement.find_amethyst=جمشت
+achievement.find_amethyst.desc=الحصول على جمشت
+achievement.find_nether_quartz=كوارتز
+achievement.find_nether_quartz.desc=احصل على كوارتز
+
+achievement.make_energy_crystal=الطاقة كريستال
+achievement.make_energy_crystal.desc=جعل الطاقة كريستال
+achievement.make_light_block=كتلة الضوء
+achievement.make_light_block.desc=جعل كتلة الضوء
+achievement.energy_tools=أدوات الطاقة
+achievement.energy_tools.desc=جعل أي أداة للطاقة
+
+achievement.make_void_crystal=الكريستال سلبي
+achievement.make_void_crystal.desc=استخدام العاكس لجعل الكريستال باطل
+achievement.make_null_block=بلوك الظلام
+achievement.make_null_block.desc=جعل كتلة فارغة
+achievement.annihilation_blade=شفرة مدمرة
+achievement.annihilation_blade.desc=جعل سيف باطل
+
+# Cool Achievements
+achievement.fire_laser=النار بالليزر
+achievement.fire_laser.desc=اطلاق النار على الليزر
+achievement.identify_a_ring=هوية جديدة
+achievement.identify_a_ring.desc=استخدام آلة معرف لتحديد حلقة
+achievement.create_portal=المسافر البعد
+achievement.create_portal.desc=بنجاح إنشاء بوابة
+achievement.find_unknown_technology=تكنولوجيا غير معروفة
+achievement.find_unknown_technology.desc=ابحث عن عنصر تكنولوجيا غير معروف
+
+# Black Hole achievements
+achievement.fusion_container=فيوجن للطاقة
+achievement.fusion_container.desc=إنشاء بنية طاقة فيوجن
+achievement.make_black_hole=الثقب الأسود
+achievement.make_black_hole.desc=جعل الثقب الأسود
+achievement.make_dimensional_anchor=مرساة الأبعاد
+achievement.make_dimensional_anchor.desc=جعل قطعة أثرية الأبعاد
+achievement.survive_black_hole=ناجي
+achievement.survive_black_hole.desc=الهروب من قبضة الثقب الأسود
+
+# trophy achievements
+achievement.get_bronze_trophy=الكأس البرونزي
+achievement.get_bronze_trophy.desc=الحصول على الكأس البرونزي
+achievement.get_silver_trophy=الكأس الفضي
+achievement.get_silver_trophy.desc=الحصول على الكأس الفضية
+achievement.get_gold_trophy=الكأس الذهبية
+achievement.get_gold_trophy.desc=الحصول على الكأس الذهبية
+achievement.get_platinum_trophy=البلاتين الكأس
+achievement.get_platinum_trophy.desc=الحصول على الكأس البلاتين

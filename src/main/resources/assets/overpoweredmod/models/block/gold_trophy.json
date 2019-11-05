@@ -1,0 +1,8 @@
+{
+  "parent": "overpoweredmod:block/trophy_model",
+  "textures": {
+    "particle":              "overpoweredmod:blocks/trophies/gold_trophy",
+    "trophy_texture":        "overpoweredmod:blocks/trophies/gold_trophy",
+    "trophy_texture_inside": "overpoweredmod:blocks/trophies/gold_trophy_inside"
+  }
+}

@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=بلوک احتیاط
+tile.addsynthcore.music_box.name=جعبه موسیقی
+
+item.addsynthcore.music_sheet.name=ورق موسیقی
+
+item.addsynthcore.wooden_scythe.name=داس چوبی
+item.addsynthcore.stone_scythe.name=داس سنگ
+item.addsynthcore.iron_scythe.name=داس آهنی
+item.addsynthcore.gold_scythe.name=داس طلایی
+item.addsynthcore.diamond_scythe.name=داس الماس

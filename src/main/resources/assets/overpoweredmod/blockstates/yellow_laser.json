@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "facing=north": {"model": "overpoweredmod:yellow_laser" },
+    "facing=east":  {"model": "overpoweredmod:yellow_laser", "y": 90},
+    "facing=south": {"model": "overpoweredmod:yellow_laser", "y": 180},
+    "facing=west":  {"model": "overpoweredmod:yellow_laser", "y": 270},
+    "facing=down":  {"model": "overpoweredmod:yellow_laser", "x": 90},
+    "facing=up":    {"model": "overpoweredmod:yellow_laser", "x": 270}
+  }
+}
+

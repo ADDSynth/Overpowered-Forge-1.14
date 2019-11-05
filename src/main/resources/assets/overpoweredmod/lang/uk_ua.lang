@@ -1,0 +1,265 @@
+﻿itemGroup.overpowered=Overpowered
+itemGroup.overpowered_machines=Overpowered - Машини
+itemGroup.overpowered_gems=Overpowered - Дорогоцінні камені
+itemGroup.overpowered_tools=Overpowered - Інструменти
+itemGroup.overpowered_metals=Overpowered - Метали
+
+# Shards
+item.addsynthcore.ruby_shard.name=Рубінова Шард
+item.addsynthcore.topaz_shard.name=Топаз Шард
+item.addsynthcore.citrine_shard.name=цитрин шард
+item.addsynthcore.emerald_shard.name=Смарагдовий шард
+item.addsynthcore.diamond_shard.name=шматок алмазу
+item.addsynthcore.sapphire_shard.name=осколок сапфіру
+item.addsynthcore.amethyst_shard.name=осколок аметисту
+item.addsynthcore.quartz_shard.name=шматок кварцу
+
+# Gems
+item.addsynthcore.ruby.name=Рубіни
+item.addsynthcore.topaz.name=Топаз
+item.addsynthcore.citrine.name=Цитрин
+item.addsynthcore.sapphire.name=Сапфір
+item.addsynthcore.amethyst.name=Аметист
+
+# Gem Blocks
+tile.addsynthcore.ruby_block.name=Блок рубіну
+tile.addsynthcore.topaz_block.name=Блок Топаз
+tile.addsynthcore.citrine_block.name=Блок цитрину
+tile.addsynthcore.sapphire_block.name=Блок сапфіру
+tile.addsynthcore.amethyst_block.name=Блок аметистів
+
+# Gem Ores
+tile.addsynthcore.ruby_ore.name=Рубін Руда
+tile.addsynthcore.topaz_ore.name=Топаз Руда
+tile.addsynthcore.citrine_ore.name=Цитрин Руда
+tile.addsynthcore.sapphire_ore.name=Сапфірова руда
+tile.addsynthcore.amethyst_ore.name=Аметист руда
+
+# Energy Crystal, Void Crystal
+item.overpoweredmod.energy_crystal_shards.name=енергія кристалічних осколків
+item.overpoweredmod.energy_crystal.name=енергії кристала
+tile.overpoweredmod.light_block.name=Світлий блок
+item.overpoweredmod.void_crystal.name=негативний кристал
+tile.overpoweredmod.null_block.name=нульовий блок
+
+# Energy Tools
+item.overpoweredmod.energy_sword.name=Енергетичний меч
+item.overpoweredmod.energy_pickaxe.name=енергетична кирка
+item.overpoweredmod.energy_axe.name=енергетична сокира
+item.overpoweredmod.energy_shovel.name=Енергетична лопата
+item.overpoweredmod.energy_hoe.name=інструмент садівництва енергії
+item.addsynthcore.energy_scythe.name=силовий серп
+
+# Void Tools
+item.overpoweredmod.void_sword.name=нульовий меч
+item.overpoweredmod.void_pickaxe.name=темний інструмент видобутку
+item.overpoweredmod.void_axe.name=темна сокира
+item.overpoweredmod.void_shovel.name=Нульова лопата
+item.overpoweredmod.void_hoe.name=темний інструмент садівництва
+
+# power cores
+item.overpoweredmod.power_core.name=живлення ядра
+item.overpoweredmod.advanced_power_core.name=Розширений блок живлення
+item.overpoweredmod.energized_power_core.name=Енергетичне ядро
+item.overpoweredmod.nullified_power_core.name=негативне енергетичне ядро
+item.overpoweredmod.energy_grid.name=Енергетична сітка
+item.overpoweredmod.vacuum_container.name=Вакуумний контейнер
+
+# Wires
+tile.overpoweredmod.energy_wire.name=Енергетичний дріт
+tile.overpoweredmod.data_cable.name=Кабель передачі даних
+
+# Machines
+tile.overpoweredmod.generator.name=Розподільник енергії
+tile.overpoweredmod.energy_storage.name=Контейнер для зберігання енергії
+tile.overpoweredmod.universal_energy_interface.name=Універсальний енергетичний інтерфейс
+
+tile.overpoweredmod.compressor.name=Компресор
+tile.overpoweredmod.electric_furnace.name=Електрична піч
+tile.overpoweredmod.gem_converter.name=конвертер дорогоцінного каміння
+tile.overpoweredmod.inverter.name=Інвертора
+tile.overpoweredmod.magic_infuser.name=магія машини
+tile.overpoweredmod.identifier.name=Ідентифікатор
+tile.overpoweredmod.portal_frame.name=портальна рамка
+tile.overpoweredmod.portal_control_panel.name=Панель керування порталом
+tile.overpoweredmod.crystal_matter_generator.name=генератор кристалічного матеріалу
+tile.overpoweredmod.advanced_ore_refinery.name=нафтопереробний завод
+
+tile.overpoweredmod.fusion_chamber.name=плавильної камери
+tile.overpoweredmod.fusion_control_unit.name=керуюча машина злиття
+tile.overpoweredmod.fusion_control_laser.name=лазер керування плавленням
+tile.overpoweredmod.fusion_energy_converter.name=конвертер енергії плавлення
+
+# Lasers & Lenses
+item.overpoweredmod.focus_lens.name=Об'єктив
+item.overpoweredmod.red_lens.name=Червона лінза
+item.overpoweredmod.orange_lens.name=Помаранчевий об'єктив
+item.overpoweredmod.yellow_lens.name=Жовта лінза
+item.overpoweredmod.green_lens.name=Зелений об'єктив
+item.overpoweredmod.cyan_lens.name=блакитний об'єктив
+item.overpoweredmod.blue_lens.name=Синій об'єктив
+item.overpoweredmod.magenta_lens.name=Пурпуровий об'єктив
+
+# Lasers
+tile.overpoweredmod.laser_housing.name=Лазерна машина
+tile.overpoweredmod.white_laser.name=Білий лазер
+tile.overpoweredmod.red_laser.name=Червоний лазер
+tile.overpoweredmod.orange_laser.name=Помаранчевий лазер
+tile.overpoweredmod.yellow_laser.name=Жовтий лазер
+tile.overpoweredmod.green_laser.name=Зелений лазер
+tile.overpoweredmod.cyan_laser.name=блакитний лазер
+tile.overpoweredmod.blue_laser.name=Синій лазер
+tile.overpoweredmod.magenta_laser.name=Пурпурний лазер
+
+# Misc. Blocks
+tile.overpoweredmod.iron_frame_block.name=Залізний каркасний блок
+tile.overpoweredmod.black_hole.name=Чорна діра
+
+# Items
+item.overpoweredmod.beam_emitter.name=Промінь випромінювача
+item.overpoweredmod.unknown_technology.name=Невідома технологія
+item.overpoweredmod.fusion_core.name=ядро синтезу
+item.overpoweredmod.dimensional_anchor.name=Розмірний якір
+
+# Trophies
+item.overpoweredmod.trophy_base.name=База трофеїв
+tile.overpoweredmod.bronze_trophy.name=Бронзовий трофей
+tile.overpoweredmod.silver_trophy.name=Срібний трофей
+tile.overpoweredmod.gold_trophy.name=Золотий трофей
+tile.overpoweredmod.platinum_trophy.name=Платиновий трофей
+
+# unidentified armor
+item.overpoweredmod.unidentified_leather_helmet.name=Невідомі шкіряні капелюхи
+item.overpoweredmod.unidentified_leather_chestplate.name=Невідомий шкіряний доспех
+item.overpoweredmod.unidentified_leather_leggings.name=Невідомі шкіряні штани
+item.overpoweredmod.unidentified_leather_boots.name=Невідомі шкіряні чоботи
+item.overpoweredmod.unidentified_chainmail_helmet.name=Невідомий ланцюговий шолом
+item.overpoweredmod.unidentified_chainmail_chestplate.name=невідомі ланцюгові броні
+item.overpoweredmod.unidentified_chainmail_leggings.name=невідомі ланцюгові штани
+item.overpoweredmod.unidentified_chainmail_boots.name=невідомі ланцюгові чоботи
+item.overpoweredmod.unidentified_iron_helmet.name=Невідомий залізний шолом
+item.overpoweredmod.unidentified_iron_chestplate.name=Невідомі броні з заліза
+item.overpoweredmod.unidentified_iron_leggings.name=Невідомі залізні гетри
+item.overpoweredmod.unidentified_iron_boots.name=Невідомі залізні чоботи
+item.overpoweredmod.unidentified_gold_helmet.name=Невідомий золотий шолом
+item.overpoweredmod.unidentified_gold_chestplate.name=Невідомий золотий нагрудний знак
+item.overpoweredmod.unidentified_gold_leggings.name=Невідомі золоті легінси
+item.overpoweredmod.unidentified_gold_boots.name=Невідомі золоті черевики
+item.overpoweredmod.unidentified_diamond_helmet.name=Невідомий алмазний шолом
+item.overpoweredmod.unidentified_diamond_chestplate.name=Невідома алмазна броня
+item.overpoweredmod.unidentified_diamond_leggings.name=Невідомі алмазні легінси
+item.overpoweredmod.unidentified_diamond_boots.name=Невідомі алмазні черевики
+
+# Rings
+item.overpoweredmod.ring_common.name=Непізнане кільце
+item.overpoweredmod.ring_good.name=Непізнане кільце
+item.overpoweredmod.ring_rare.name=Непізнане кільце
+item.overpoweredmod.ring_unique.name=Непізнане кільце
+item.overpoweredmod.magic_ring_common.name=Кільце
+item.overpoweredmod.magic_ring_good.name=Кільце
+item.overpoweredmod.magic_ring_rare.name=Кільце
+item.overpoweredmod.magic_ring_unique.name=Кільце
+
+# Metal Ingots
+item.addsynthcore.tin_ingot.name=Олов'яний злиток
+item.addsynthcore.copper_ingot.name=Мідний злиток
+item.addsynthcore.aluminum_ingot.name=Алюмінієвий злиток
+item.addsynthcore.steel_ingot.name=Сталевий злиток
+item.addsynthcore.bronze_ingot.name=Бронзовий злиток
+item.addsynthcore.silver_ingot.name=Срібний злиток
+item.addsynthcore.platinum_ingot.name=Платиновий злиток
+item.addsynthcore.titanium_ingot.name=Титановий злиток
+
+# Metal Blocks
+tile.addsynthcore.tin_block.name=олов'яний блок
+tile.addsynthcore.copper_block.name=Мідний блок
+tile.addsynthcore.aluminum_block.name=Алюмінієвий блок
+tile.addsynthcore.steel_block.name=Сталевий блок
+tile.addsynthcore.bronze_block.name=Бронзовий блок
+tile.addsynthcore.silver_block.name=Срібний блок
+tile.addsynthcore.platinum_block.name=Платиновий блок
+tile.addsynthcore.titanium_block.name=Титановий блок
+
+# Ore
+tile.addsynthcore.tin_ore.name=Олов'яні руди
+tile.addsynthcore.copper_ore.name=Мідна руда
+tile.addsynthcore.aluminum_ore.name=Алюмінієві руди
+tile.addsynthcore.silver_ore.name=Срібна руда
+tile.addsynthcore.platinum_ore.name=Платинова руда
+tile.addsynthcore.titanium_ore.name=Титанові руди
+
+# Metal Plates
+item.addsynthcore.iron_plate.name=Залізна плита
+item.addsynthcore.gold_plate.name=Золота пластина
+item.addsynthcore.tin_plate.name=Олов'яна пластина
+item.addsynthcore.copper_plate.name=Мідна пластина
+item.addsynthcore.aluminum_plate.name=Алюмінієва пластина
+item.addsynthcore.steel_plate.name=Сталева пластина
+item.addsynthcore.bronze_plate.name=Бронзова плита
+item.addsynthcore.silver_plate.name=Срібна тарілка
+item.addsynthcore.platinum_plate.name=Платинова пластина
+item.addsynthcore.titanium_plate.name=Титанова пластина
+
+
+
+
+
+# Gem Achievements
+achievement.find_ruby=рубін
+achievement.find_ruby.desc=Отримати рубін
+achievement.find_topaz=Топаз
+achievement.find_topaz.desc=Отримайте топаз
+achievement.find_citrine=Цитрин
+achievement.find_citrine.desc=Отримати цитрин
+achievement.find_emerald=Смарагд
+achievement.find_emerald.desc=Отримайте Смарагд
+achievement.find_sapphire=Сапфір
+achievement.find_sapphire.desc=Отримати сапфір
+achievement.find_amethyst=Аметист
+achievement.find_amethyst.desc=Отримати аметист
+achievement.find_nether_quartz=Кварц
+achievement.find_nether_quartz.desc=Отримайте кварц
+
+achievement.make_energy_crystal=енергії кристала
+achievement.make_energy_crystal.desc=Зробити енергетичний кристал
+achievement.make_light_block=Світловий блок
+achievement.make_light_block.desc=Зробіть легкий блок
+achievement.energy_tools=Енергетичні інструменти
+achievement.energy_tools.desc=Зробіть будь-який енергетичний інструмент
+
+achievement.make_void_crystal=темний кристал
+achievement.make_void_crystal.desc=Використовуйте інвертор для створення темного кристала
+achievement.make_null_block=нульовий блок
+achievement.make_null_block.desc=Зробіть нульовий блок
+achievement.annihilation_blade=знищення леза
+achievement.annihilation_blade.desc=Зробіть темний меч
+
+# Cool Achievements
+achievement.fire_laser=Лазер
+achievement.fire_laser.desc=Активуйте лазер
+achievement.identify_a_ring=Нова ідентичність
+achievement.identify_a_ring.desc=Використовуйте ідентифікатор для ідентифікації кільця
+achievement.create_portal=мірний мандрівник
+achievement.create_portal.desc=Успішно генеруйте портал
+achievement.find_unknown_technology=Невідома технологія
+achievement.find_unknown_technology.desc=Знайти невідомий елемент технології
+
+# Black Hole achievements
+achievement.fusion_container=енергія плавлення
+achievement.fusion_container.desc=Створіть структуру енергії злиття
+achievement.make_black_hole=Чорна діра
+achievement.make_black_hole.desc=Зробіть чорну дірку
+achievement.make_dimensional_anchor=Розмірний якір
+achievement.make_dimensional_anchor.desc=Закріпіть себе в цьому вимірі
+achievement.survive_black_hole=Вижив
+achievement.survive_black_hole.desc=Врятуйся від чорної діри
+
+# trophy achievements
+achievement.get_bronze_trophy=Бронзовий трофей
+achievement.get_bronze_trophy.desc=Отримайте бронзовий трофей
+achievement.get_silver_trophy=Срібний трофей
+achievement.get_silver_trophy.desc=Отримати срібний трофей
+achievement.get_gold_trophy=Золотий трофей
+achievement.get_gold_trophy.desc=Отримати золотий трофей
+achievement.get_platinum_trophy=Платиновий трофей
+achievement.get_platinum_trophy.desc=Отримати платиновий трофей

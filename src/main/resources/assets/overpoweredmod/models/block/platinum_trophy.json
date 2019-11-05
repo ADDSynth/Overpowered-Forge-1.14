@@ -1,0 +1,8 @@
+{
+  "parent": "overpoweredmod:block/trophy_model",
+  "textures": {
+    "particle":              "overpoweredmod:blocks/trophies/platinum_trophy",
+    "trophy_texture":        "overpoweredmod:blocks/trophies/platinum_trophy",
+    "trophy_texture_inside": "overpoweredmod:blocks/trophies/platinum_trophy_inside"
+  }
+}

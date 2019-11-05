@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=Cwaarschuwingsblok
+tile.addsynthcore.music_box.name=Muziekdoos
+
+item.addsynthcore.music_sheet.name=Bladmuziek
+
+item.addsynthcore.wooden_scythe.name=Houten zeis
+item.addsynthcore.stone_scythe.name=Stenen zeis
+item.addsynthcore.iron_scythe.name=IJzeren zeis
+item.addsynthcore.gold_scythe.name=Gouden zeis
+item.addsynthcore.diamond_scythe.name=Diamanten zeis

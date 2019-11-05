@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=blokuj ostrożność
+tile.addsynthcore.music_box.name=Pozytywka
+
+item.addsynthcore.music_sheet.name=papier muzyczny
+
+item.addsynthcore.wooden_scythe.name=Drewniana kosa
+item.addsynthcore.stone_scythe.name=Kamienna kosa
+item.addsynthcore.iron_scythe.name=Żelazna kosa
+item.addsynthcore.gold_scythe.name=Złota kosa
+item.addsynthcore.diamond_scythe.name=Diamentowa kosa

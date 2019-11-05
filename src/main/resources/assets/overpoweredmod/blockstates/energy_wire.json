@@ -1,0 +1,37 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "overpoweredmod:blocks/energy_wire"
+    },
+    "model": "overpoweredmod:energy_wire_base"
+  },
+  "variants": {
+    "normal": [{}],
+    "west": {
+      "true": {"submodel": "overpoweredmod:energy_wire_left"},
+      "false": {}
+    },
+    "north": {
+      "true": {"submodel": "overpoweredmod:energy_wire_left", "y": 90},
+      "false": {}
+    },
+    "east": {
+      "true": {"submodel": "overpoweredmod:energy_wire_left", "y": 180},
+      "false": {}
+    },
+    "down": {
+      "true": {"submodel": "overpoweredmod:energy_wire_up"},
+      "false": {}
+    },
+    "south": {
+      "true": {"submodel": "overpoweredmod:energy_wire_up", "x": 90},
+      "false": {}
+    },
+    "up": {
+      "true": {"submodel": "overpoweredmod:energy_wire_up", "x": 180},
+      "false": {}
+    }
+  }
+}
+

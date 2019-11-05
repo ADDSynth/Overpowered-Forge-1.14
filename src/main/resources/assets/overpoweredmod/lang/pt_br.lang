@@ -1,0 +1,265 @@
+﻿itemGroup.overpowered=Overpowered
+itemGroup.overpowered_machines=Overpowered - Máquinas
+itemGroup.overpowered_gems=Overpowered - Pedras preciosas
+itemGroup.overpowered_tools=Overpowered - Ferramentas
+itemGroup.overpowered_metals=Overpowered - Metais
+
+# Shards
+item.addsynthcore.ruby_shard.name=Estilhaço de Rubi
+item.addsynthcore.topaz_shard.name=Estilhaço de Topázio
+item.addsynthcore.citrine_shard.name=Estilhaço Citrino
+item.addsynthcore.emerald_shard.name=Estilhaço Esmeralda
+item.addsynthcore.diamond_shard.name=Estilhaço de Diamante
+item.addsynthcore.sapphire_shard.name=Estilhaço de Safira
+item.addsynthcore.amethyst_shard.name=Estilhaço de Ametista
+item.addsynthcore.quartz_shard.name=Estilhaço de quartzo
+
+# Gems
+item.addsynthcore.ruby.name=Rubi
+item.addsynthcore.topaz.name=Topázio
+item.addsynthcore.citrine.name=Citrino
+item.addsynthcore.sapphire.name=Safira
+item.addsynthcore.amethyst.name=Ametista
+
+# Gem Blocks
+tile.addsynthcore.ruby_block.name=Bloco de rubi
+tile.addsynthcore.topaz_block.name=Bloco de Topázio
+tile.addsynthcore.citrine_block.name=Bloco de citrino
+tile.addsynthcore.sapphire_block.name=Bloco de Safira
+tile.addsynthcore.amethyst_block.name=Bloco de Ametista
+
+# Gem Ores
+tile.addsynthcore.ruby_ore.name=Minério de rubi
+tile.addsynthcore.topaz_ore.name=Minério de Topázio
+tile.addsynthcore.citrine_ore.name=Minério citrino
+tile.addsynthcore.sapphire_ore.name=Minério de safira
+tile.addsynthcore.amethyst_ore.name=Ametista Minério
+
+# Energy Crystal, Void Crystal
+item.overpoweredmod.energy_crystal_shards.name=Fragmentos de cristal de energia
+item.overpoweredmod.energy_crystal.name=Cristal de Energia
+tile.overpoweredmod.light_block.name=Bloco de luz
+item.overpoweredmod.void_crystal.name=cristal escuro
+tile.overpoweredmod.null_block.name=Bloco Nulo
+
+# Energy Tools
+item.overpoweredmod.energy_sword.name=Espada de Energia
+item.overpoweredmod.energy_pickaxe.name=picareta de energia
+item.overpoweredmod.energy_axe.name=Machado de energia
+item.overpoweredmod.energy_shovel.name=Pá de Energia
+item.overpoweredmod.energy_hoe.name=Enxada de Energia
+item.addsynthcore.energy_scythe.name=Foice de Energia
+
+# Void Tools
+item.overpoweredmod.void_sword.name=Espada Nula
+item.overpoweredmod.void_pickaxe.name=Picareta Nula
+item.overpoweredmod.void_axe.name=Machado Nulo
+item.overpoweredmod.void_shovel.name=Pá nula
+item.overpoweredmod.void_hoe.name=nulo enxada
+
+# power cores
+item.overpoweredmod.power_core.name=Núcleo de poder
+item.overpoweredmod.advanced_power_core.name=Núcleo de Potência Avançada
+item.overpoweredmod.energized_power_core.name=núcleo de energia
+item.overpoweredmod.nullified_power_core.name=Nnúcleo de poder nulo
+item.overpoweredmod.energy_grid.name=Grade de energia
+item.overpoweredmod.vacuum_container.name=Recipiente de Vácuo
+
+# Wires
+tile.overpoweredmod.energy_wire.name=Fio de energia
+tile.overpoweredmod.data_cable.name=Cabo de dados
+
+# Machines
+tile.overpoweredmod.generator.name=Distribuidora de Energia
+tile.overpoweredmod.energy_storage.name=Recipiente de armazenamento de energia
+tile.overpoweredmod.universal_energy_interface.name=Máquina de interface de energia
+
+tile.overpoweredmod.compressor.name=Compressor
+tile.overpoweredmod.electric_furnace.name=Forno elétrico
+tile.overpoweredmod.gem_converter.name=conversor de gema
+tile.overpoweredmod.inverter.name=Inversor
+tile.overpoweredmod.magic_infuser.name=Infusor Mágico
+tile.overpoweredmod.identifier.name=Identificador
+tile.overpoweredmod.portal_frame.name=moldura do portal
+tile.overpoweredmod.portal_control_panel.name=Painel de Controle do Portal
+tile.overpoweredmod.crystal_matter_generator.name=Gerador de Matéria Cristalina
+tile.overpoweredmod.advanced_ore_refinery.name=Refinaria de minério avançada
+
+tile.overpoweredmod.fusion_chamber.name=Câmara de Fusão
+tile.overpoweredmod.fusion_control_unit.name=Unidade de controle de fusão
+tile.overpoweredmod.fusion_control_laser.name=Laser de controle de fusão
+tile.overpoweredmod.fusion_energy_converter.name=Conversor de Energia de Fusão
+
+# Lenses
+item.overpoweredmod.focus_lens.name=Lente de Foco
+item.overpoweredmod.red_lens.name=Lente Vermelha
+item.overpoweredmod.orange_lens.name=Lente Laranja
+item.overpoweredmod.yellow_lens.name=Lente Amarela
+item.overpoweredmod.green_lens.name=Lente Verde
+item.overpoweredmod.cyan_lens.name=Lente ciano
+item.overpoweredmod.blue_lens.name=Lente Azul
+item.overpoweredmod.magenta_lens.name=Lente Magenta
+
+# Lasers
+tile.overpoweredmod.laser_housing.name=Máquina a laser
+tile.overpoweredmod.white_laser.name=Laser Branco
+tile.overpoweredmod.red_laser.name=Laser vermelho
+tile.overpoweredmod.orange_laser.name=Laser Laranja
+tile.overpoweredmod.yellow_laser.name=Laser Amarelo
+tile.overpoweredmod.green_laser.name=Laser Verde
+tile.overpoweredmod.cyan_laser.name=Laser Ciano
+tile.overpoweredmod.blue_laser.name=Laser Azul
+tile.overpoweredmod.magenta_laser.name=Laser Magenta
+
+# Misc. Blocks
+tile.overpoweredmod.iron_frame_block.name=Bloco de armação de ferro
+tile.overpoweredmod.black_hole.name=Buraco negro
+
+# Items
+item.overpoweredmod.beam_emitter.name=Emissor de feixe
+item.overpoweredmod.unknown_technology.name=Tecnologia Desconhecida
+item.overpoweredmod.fusion_core.name=Núcleo de Fusão
+item.overpoweredmod.dimensional_anchor.name=Âncora dimensional
+
+# Trophies
+item.overpoweredmod.trophy_base.name=Base do Troféu
+tile.overpoweredmod.bronze_trophy.name=troféu de bronze
+tile.overpoweredmod.silver_trophy.name=Troféu De Prata
+tile.overpoweredmod.gold_trophy.name=Troféu De Ouro
+tile.overpoweredmod.platinum_trophy.name=Troféu De Platina
+
+# unidentified armor
+item.overpoweredmod.unidentified_leather_helmet.name=Boné de couro não identificado
+item.overpoweredmod.unidentified_leather_chestplate.name=Armadura de couro não identificada
+item.overpoweredmod.unidentified_leather_leggings.name=Calças de couro não identificadas
+item.overpoweredmod.unidentified_leather_boots.name=Botas de couro não identificadas
+item.overpoweredmod.unidentified_chainmail_helmet.name=Capacete de Cota de Malha Não Identificado
+item.overpoweredmod.unidentified_chainmail_chestplate.name=Armadura de Cota de Malha Não Identificada
+item.overpoweredmod.unidentified_chainmail_leggings.name=Perneiras de Cota de Malha Não Identificadas
+item.overpoweredmod.unidentified_chainmail_boots.name=Botas de Cota de Malha Não Identificadas
+item.overpoweredmod.unidentified_iron_helmet.name=Capacete de Ferro Não Identificado
+item.overpoweredmod.unidentified_iron_chestplate.name=Armadura de ferro não identificado
+item.overpoweredmod.unidentified_iron_leggings.name=Perneiras de Ferro Não-identificadas
+item.overpoweredmod.unidentified_iron_boots.name=Botas de ferro não identificadas
+item.overpoweredmod.unidentified_gold_helmet.name=Capacete de ouro não identificado
+item.overpoweredmod.unidentified_gold_chestplate.name=Armadura de Ouro Não Identificada
+item.overpoweredmod.unidentified_gold_leggings.name=Calças de Ouro não identificadas
+item.overpoweredmod.unidentified_gold_boots.name=Botas de ouro não identificadas
+item.overpoweredmod.unidentified_diamond_helmet.name=Capacete de diamante não identificado
+item.overpoweredmod.unidentified_diamond_chestplate.name=Armadura de diamante não identificado
+item.overpoweredmod.unidentified_diamond_leggings.name=Calças de diamante não identificado
+item.overpoweredmod.unidentified_diamond_boots.name=Botas de diamantes não identificadas
+
+# Rings
+item.overpoweredmod.ring_common.name=Anel não identificado
+item.overpoweredmod.ring_good.name=Anel não identificado
+item.overpoweredmod.ring_rare.name=Anel não identificado
+item.overpoweredmod.ring_unique.name=Anel não identificado
+item.overpoweredmod.magic_ring_common.name=Anel
+item.overpoweredmod.magic_ring_good.name=Anel
+item.overpoweredmod.magic_ring_rare.name=Anel
+item.overpoweredmod.magic_ring_unique.name=Anel
+
+# Metal Ingots
+item.addsynthcore.tin_ingot.name=Lata
+item.addsynthcore.copper_ingot.name=Cobre
+item.addsynthcore.aluminum_ingot.name=Lingote de alumínio
+item.addsynthcore.steel_ingot.name=Lingote de aço
+item.addsynthcore.bronze_ingot.name=Lingote de Bronze
+item.addsynthcore.silver_ingot.name=Lingote de prata
+item.addsynthcore.platinum_ingot.name=Lingote De Platina
+item.addsynthcore.titanium_ingot.name=Lingote De Titânio
+
+# Metal Blocks
+tile.addsynthcore.tin_block.name=Bloco de lata
+tile.addsynthcore.copper_block.name=Bloco de cobre
+tile.addsynthcore.aluminum_block.name=Bloco de alumínio
+tile.addsynthcore.steel_block.name=Bloco de aço
+tile.addsynthcore.bronze_block.name=Bloco de bronze
+tile.addsynthcore.silver_block.name=Bloco de prata
+tile.addsynthcore.platinum_block.name=Bloco de platina
+tile.addsynthcore.titanium_block.name=Bloco de titânio
+
+# Ore
+tile.addsynthcore.tin_ore.name=Minério de estanho
+tile.addsynthcore.copper_ore.name=Minério de cobre
+tile.addsynthcore.aluminum_ore.name=Minério de alumínio
+tile.addsynthcore.silver_ore.name=Minério de prata
+tile.addsynthcore.platinum_ore.name=Minério de platina
+tile.addsynthcore.titanium_ore.name=Minério de titânio
+
+# Metal Plates
+item.addsynthcore.iron_plate.name=Placa de ferro
+item.addsynthcore.gold_plate.name=Folheado a ouro
+item.addsynthcore.tin_plate.name=Placa de lata
+item.addsynthcore.copper_plate.name=Placa de cobre
+item.addsynthcore.aluminum_plate.name=Placa de alumínio
+item.addsynthcore.steel_plate.name=Chapeamento de aço
+item.addsynthcore.bronze_plate.name=Placa de bronze
+item.addsynthcore.silver_plate.name=Chapeamento de prata
+item.addsynthcore.platinum_plate.name=Chapeamento de platina
+item.addsynthcore.titanium_plate.name=Placa de titânio
+
+
+
+
+
+# Gem Achievements
+achievement.find_ruby=Rubi
+achievement.find_ruby.desc=Pegue um Rubi
+achievement.find_topaz=Topázio
+achievement.find_topaz.desc=Obter um topázio
+achievement.find_citrine=Citrino
+achievement.find_citrine.desc=obter citrino
+achievement.find_emerald=Esmeralda
+achievement.find_emerald.desc=Obter uma esmeralda
+achievement.find_sapphire=Safira
+achievement.find_sapphire.desc=Obter uma safira
+achievement.find_amethyst=Ametista
+achievement.find_amethyst.desc=Obter uma ametista
+achievement.find_nether_quartz=Quartzo
+achievement.find_nether_quartz.desc=Obter quartzo
+
+achievement.make_energy_crystal=Cristal de Energia
+achievement.make_energy_crystal.desc=Faça um cristal de energia
+achievement.make_light_block=Bloco de luz
+achievement.make_light_block.desc=Faça um bloco de luz
+achievement.energy_tools=Ferramentas de energia
+achievement.energy_tools.desc=Faça qualquer ferramenta de energia
+
+achievement.make_void_crystal=cristal escuro
+achievement.make_void_crystal.desc=Use o inversor para fazer um cristal escuro
+achievement.make_null_block=Bloco Nulo
+achievement.make_null_block.desc=Faça um bloco nulo
+achievement.annihilation_blade=espada de aniquilação
+achievement.annihilation_blade.desc=Faça uma espada escura
+
+# Cool Achievements
+achievement.fire_laser=Laser
+achievement.fire_laser.desc=Atirar um laser
+achievement.identify_a_ring=Uma nova identidade
+achievement.identify_a_ring.desc=Use o identificador para identificar um anel
+achievement.create_portal=Viajante Dimensional
+achievement.create_portal.desc=Gerar com sucesso um portal
+achievement.find_unknown_technology=Tecnologia Desconhecida
+achievement.find_unknown_technology.desc=Encontre um item tecnológico desconhecido
+
+# Black Hole achievements
+achievement.fusion_container=Energia de fusão
+achievement.fusion_container.desc=Crie uma estrutura de energia de fusão
+achievement.make_black_hole=Buraco negro
+achievement.make_black_hole.desc=Faça um buraco negro
+achievement.make_dimensional_anchor=Âncora dimensional
+achievement.make_dimensional_anchor.desc=Ancorar-se a esta dimensão
+achievement.survive_black_hole=Sobrevivente
+achievement.survive_black_hole.desc=Fuja do alcance de um buraco negro
+
+# trophy achievements
+achievement.get_bronze_trophy=troféu de bronze
+achievement.get_bronze_trophy.desc=Receba um troféu de bronze
+achievement.get_silver_trophy=Troféu De Prata
+achievement.get_silver_trophy.desc=Receba um troféu de prata
+achievement.get_gold_trophy=Troféu De Ouro
+achievement.get_gold_trophy.desc=Receba um troféu de ouro
+achievement.get_platinum_trophy=Troféu De Platina
+achievement.get_platinum_trophy.desc=Receba um troféu de platina

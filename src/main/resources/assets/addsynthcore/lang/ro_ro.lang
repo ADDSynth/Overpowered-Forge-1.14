@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=Atenție Blocați
+tile.addsynthcore.music_box.name=Cutie muzicală
+
+item.addsynthcore.music_sheet.name=hârtie muzicală
+
+item.addsynthcore.wooden_scythe.name=Coasă de lemn
+item.addsynthcore.stone_scythe.name=Secera de piatra
+item.addsynthcore.iron_scythe.name=Secera de fier
+item.addsynthcore.gold_scythe.name=Secera de aur
+item.addsynthcore.diamond_scythe.name=Secera de diamant

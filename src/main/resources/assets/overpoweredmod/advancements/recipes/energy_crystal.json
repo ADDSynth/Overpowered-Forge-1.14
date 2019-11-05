@@ -1,0 +1,117 @@
+{
+  "parent": "overpoweredmod:recipes/root",
+  "rewards": {
+    "recipes": [
+      "overpoweredmod:energy_crystal"
+    ]
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpoweredmod:energy_crystal"
+      }
+    },
+    "ruby": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+			"ore": "gemRuby"
+          }
+        ]
+      }
+    },
+    "topaz": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+			"ore": "gemTopaz"
+          }
+        ]
+      }
+    },
+    "citrine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+			"ore": "gemCitrine"
+          }
+        ]
+      }
+    },
+    "emerald": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+			"ore": "gemEmerald"
+          }
+        ]
+      }
+    },
+    "diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+			"ore": "gemDiamond"
+          }
+        ]
+      }
+    },
+    "sapphire": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+			"ore": "gemSapphire"
+          }
+        ]
+      }
+    },
+    "amethyst": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+			"ore": "gemAmethyst"
+          }
+        ]
+      }
+    },
+    "quartz": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "type": "forge:ore_dict",
+			"ore": "gemQuartz"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "ruby",
+	  "topaz",
+	  "citrine",
+	  "emerald",
+	  "diamond",
+	  "sapphire",
+	  "amethyst",
+	  "quartz"
+    ]
+  ]
+}

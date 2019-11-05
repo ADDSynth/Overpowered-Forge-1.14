@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=blocco di avviso
+tile.addsynthcore.music_box.name=Carillon
+
+item.addsynthcore.music_sheet.name=Spartito
+
+item.addsynthcore.wooden_scythe.name=Falce di legno
+item.addsynthcore.stone_scythe.name=Falce di pietra
+item.addsynthcore.iron_scythe.name=Falce di ferro
+item.addsynthcore.gold_scythe.name=Falce d'oro
+item.addsynthcore.diamond_scythe.name=Falce di diamante

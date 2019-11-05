@@ -1,0 +1,265 @@
+﻿itemGroup.overpowered=Overpowered
+itemGroup.overpowered_machines=Overpowered - stroje
+itemGroup.overpowered_gems=Overpowered - drahokamy
+itemGroup.overpowered_tools=Overpowered - náradie
+itemGroup.overpowered_metals=Overpowered - kovy
+
+# Shards
+item.addsynthcore.ruby_shard.name=kus rubína
+item.addsynthcore.topaz_shard.name=kúsok topazu
+item.addsynthcore.citrine_shard.name=kus citrínu
+item.addsynthcore.emerald_shard.name=kúsok smaragdu
+item.addsynthcore.diamond_shard.name=kus diamantu
+item.addsynthcore.sapphire_shard.name=kus zafíru
+item.addsynthcore.amethyst_shard.name=kus ametystu
+item.addsynthcore.quartz_shard.name=kus kremeňa
+
+# Gems
+item.addsynthcore.ruby.name=rubín
+item.addsynthcore.topaz.name=topás
+item.addsynthcore.citrine.name=Citrín
+item.addsynthcore.sapphire.name=zafír
+item.addsynthcore.amethyst.name=Ametyst
+
+# Gem Blocks
+tile.addsynthcore.ruby_block.name=rubínový blok
+tile.addsynthcore.topaz_block.name=Topaz Blok
+tile.addsynthcore.citrine_block.name=Citrínový blok
+tile.addsynthcore.sapphire_block.name=zafírový blok
+tile.addsynthcore.amethyst_block.name=ametystový blok
+
+# Gem Ores
+tile.addsynthcore.ruby_ore.name=Rubínová ruda
+tile.addsynthcore.topaz_ore.name=ruda topazu
+tile.addsynthcore.citrine_ore.name=Citrínová ruda
+tile.addsynthcore.sapphire_ore.name=ruda zafíru
+tile.addsynthcore.amethyst_ore.name=Ametystová ruda
+
+# Energy Crystal, Void Crystal
+item.overpoweredmod.energy_crystal_shards.name=Energy Crystal Shards [potrebuje preklad]
+item.overpoweredmod.energy_crystal.name=energetický kryštál
+tile.overpoweredmod.light_block.name=Blok svetla
+item.overpoweredmod.void_crystal.name=tmavý kryštál
+tile.overpoweredmod.null_block.name=Nulový blok
+
+# Energy Tools
+item.overpoweredmod.energy_sword.name=Energetický meč
+item.overpoweredmod.energy_pickaxe.name=energetická krompáč
+item.overpoweredmod.energy_axe.name=Energetická sekera
+item.overpoweredmod.energy_shovel.name=Energetická lopata
+item.overpoweredmod.energy_hoe.name=energetická motyka
+item.addsynthcore.energy_scythe.name=Energická kosa
+
+# Void Tools
+item.overpoweredmod.void_sword.name=Nulový meč
+item.overpoweredmod.void_pickaxe.name=tmavá krompáč
+item.overpoweredmod.void_axe.name=tmavá sekera
+item.overpoweredmod.void_shovel.name=tmavá lopata
+item.overpoweredmod.void_hoe.name=tmavej motyky
+
+# power cores
+item.overpoweredmod.power_core.name=výkonové jadro
+item.overpoweredmod.advanced_power_core.name=pokročilé jadro výkonu
+item.overpoweredmod.energized_power_core.name=Energizované jadro výkonu
+item.overpoweredmod.nullified_power_core.name=záporné napájacie jadro
+item.overpoweredmod.energy_grid.name=Energetická sieť
+item.overpoweredmod.vacuum_container.name=Vákuový kontajner
+
+# Wires
+tile.overpoweredmod.energy_wire.name=Energický drôt
+tile.overpoweredmod.data_cable.name=Dátový kábel
+
+# Machines
+tile.overpoweredmod.generator.name=Distribútor energie
+tile.overpoweredmod.energy_storage.name=Modul na ukladanie energie
+tile.overpoweredmod.universal_energy_interface.name=Univerzálne energetické rozhranie
+
+tile.overpoweredmod.compressor.name=kompresor
+tile.overpoweredmod.electric_furnace.name=Elektrická pec
+tile.overpoweredmod.gem_converter.name=drahokam konvertor
+tile.overpoweredmod.inverter.name=stroj inverzie
+tile.overpoweredmod.magic_infuser.name=magický extraktor
+tile.overpoweredmod.identifier.name=identifikátor
+tile.overpoweredmod.portal_frame.name=Rám portálu
+tile.overpoweredmod.portal_control_panel.name=Ovládací panel portálu
+tile.overpoweredmod.crystal_matter_generator.name=Generátor krištáľovej hmoty
+tile.overpoweredmod.advanced_ore_refinery.name=Pokročilá rudá rafinéria
+
+tile.overpoweredmod.fusion_chamber.name=Fúzna komora
+tile.overpoweredmod.fusion_control_unit.name=Jednotka riadenia fúzie
+tile.overpoweredmod.fusion_control_laser.name=riadiaci laser
+tile.overpoweredmod.fusion_energy_converter.name=Prevodník energie z fúzie
+
+# Lenses
+item.overpoweredmod.focus_lens.name=šošovka
+item.overpoweredmod.red_lens.name=Červený objektív
+item.overpoweredmod.orange_lens.name=oranžová šošovka
+item.overpoweredmod.yellow_lens.name=Žltý objektív
+item.overpoweredmod.green_lens.name=Zelená šošovka
+item.overpoweredmod.cyan_lens.name=Azúrová šošovka
+item.overpoweredmod.blue_lens.name=Modrý objektív
+item.overpoweredmod.magenta_lens.name=Purpurová šošovka
+
+# Lasers
+tile.overpoweredmod.laser_housing.name=Laserový stroj
+tile.overpoweredmod.white_laser.name=Biely laser
+tile.overpoweredmod.red_laser.name=Červený laser
+tile.overpoweredmod.orange_laser.name=oranžový laser
+tile.overpoweredmod.yellow_laser.name=Žltý laser
+tile.overpoweredmod.green_laser.name=Zelený laser
+tile.overpoweredmod.cyan_laser.name=azúrový laser
+tile.overpoweredmod.blue_laser.name=modrý laser
+tile.overpoweredmod.magenta_laser.name=Purpurový laser
+
+# Misc. Blocks
+tile.overpoweredmod.iron_frame_block.name=Blok železných rámov
+tile.overpoweredmod.black_hole.name=Čierna diera
+
+# Items
+item.overpoweredmod.beam_emitter.name=vyžarovanie lúčov
+item.overpoweredmod.unknown_technology.name=Neznáma technológia
+item.overpoweredmod.fusion_core.name=jadro fúzie
+item.overpoweredmod.dimensional_anchor.name=Rozmerová kotva
+
+# Trophies
+item.overpoweredmod.trophy_base.name=Trofejná základňa
+tile.overpoweredmod.bronze_trophy.name=Bronzová trofej
+tile.overpoweredmod.silver_trophy.name=strieborná trofej
+tile.overpoweredmod.gold_trophy.name=Zlatá trofej
+tile.overpoweredmod.platinum_trophy.name=Platinová trofej
+
+# unidentified armor
+item.overpoweredmod.unidentified_leather_helmet.name=Neidentifikovaný kožený klobúk
+item.overpoweredmod.unidentified_leather_chestplate.name=Neznáma kožená zbroj
+item.overpoweredmod.unidentified_leather_leggings.name=Neidentifikované kožené nohavice
+item.overpoweredmod.unidentified_leather_boots.name=Neidentifikované kožené topánky
+item.overpoweredmod.unidentified_chainmail_helmet.name=neidentifikovaná reťazová prilba
+item.overpoweredmod.unidentified_chainmail_chestplate.name=neidentifikované reťazové brnenie
+item.overpoweredmod.unidentified_chainmail_leggings.name=neidentifikované reťazové nohavice
+item.overpoweredmod.unidentified_chainmail_boots.name=neidentifikované reťazové topánky
+item.overpoweredmod.unidentified_iron_helmet.name=Neznáma železná prilba
+item.overpoweredmod.unidentified_iron_chestplate.name=Neidentifikované železné pancierovanie
+item.overpoweredmod.unidentified_iron_leggings.name=Neidentifikované železné legíny
+item.overpoweredmod.unidentified_iron_boots.name=Neznáme železné topánky
+item.overpoweredmod.unidentified_gold_helmet.name=Neznáma zlatá prilba
+item.overpoweredmod.unidentified_gold_chestplate.name=Neznáma zlatá zbroj
+item.overpoweredmod.unidentified_gold_leggings.name=Neidentifikované zlaté legíny
+item.overpoweredmod.unidentified_gold_boots.name=Neidentifikované zlaté topánky
+item.overpoweredmod.unidentified_diamond_helmet.name=Neidentifikovaná diamantová prilba
+item.overpoweredmod.unidentified_diamond_chestplate.name=Neidentifikované brnenie z diamantu
+item.overpoweredmod.unidentified_diamond_leggings.name=Neidentifikované diamantové legíny
+item.overpoweredmod.unidentified_diamond_boots.name=Neidentifikované diamantové topánky
+
+# Rings
+item.overpoweredmod.ring_common.name=Neidentifikovaný krúžok
+item.overpoweredmod.ring_good.name=Neidentifikovaný krúžok
+item.overpoweredmod.ring_rare.name=Neidentifikovaný krúžok
+item.overpoweredmod.ring_unique.name=Neidentifikovaný krúžok
+item.overpoweredmod.magic_ring_common.name=krúžok
+item.overpoweredmod.magic_ring_good.name=krúžok
+item.overpoweredmod.magic_ring_rare.name=krúžok
+item.overpoweredmod.magic_ring_unique.name=krúžok
+
+# Metal Ingots
+item.addsynthcore.tin_ingot.name=Cínové ingoty
+item.addsynthcore.copper_ingot.name=Medené ingoty
+item.addsynthcore.aluminum_ingot.name=Hliníkové ingoty
+item.addsynthcore.steel_ingot.name=oceľ
+item.addsynthcore.bronze_ingot.name=Bronz
+item.addsynthcore.silver_ingot.name=striebro
+item.addsynthcore.platinum_ingot.name=platina
+item.addsynthcore.titanium_ingot.name=Titánové ingoty
+
+# Metal Blocks
+tile.addsynthcore.tin_block.name=Cínový blok
+tile.addsynthcore.copper_block.name=Medený blok
+tile.addsynthcore.aluminum_block.name=Hliníkový blok
+tile.addsynthcore.steel_block.name=Oceľový blok
+tile.addsynthcore.bronze_block.name=Bronzový blok
+tile.addsynthcore.silver_block.name=Strieborný blok
+tile.addsynthcore.platinum_block.name=Platinový blok
+tile.addsynthcore.titanium_block.name=Titánový blok
+
+# Ore
+tile.addsynthcore.tin_ore.name=Cínová ruda
+tile.addsynthcore.copper_ore.name=Medená ruda
+tile.addsynthcore.aluminum_ore.name=Hliníková ruda
+tile.addsynthcore.silver_ore.name=Strieborná ruda
+tile.addsynthcore.platinum_ore.name=Platinová ruda
+tile.addsynthcore.titanium_ore.name=Titánové ruda
+
+# Metal Plates
+item.addsynthcore.iron_plate.name=Železná doska
+item.addsynthcore.gold_plate.name=Zlatá doska
+item.addsynthcore.tin_plate.name=Cínová doska
+item.addsynthcore.copper_plate.name=Medené doska
+item.addsynthcore.aluminum_plate.name=Hliníková doska
+item.addsynthcore.steel_plate.name=Oceľová doska
+item.addsynthcore.bronze_plate.name=Bronzová doska
+item.addsynthcore.silver_plate.name=Strieborné pokovovanie
+item.addsynthcore.platinum_plate.name=Platinová doska
+item.addsynthcore.titanium_plate.name=Titánová doska
+
+
+
+
+
+# Gem Achievements
+achievement.find_ruby=Rubín
+achievement.find_ruby.desc=Získajte Ruby
+achievement.find_topaz=Topás
+achievement.find_topaz.desc=Získajte Topaz
+achievement.find_citrine=Citrín
+achievement.find_citrine.desc=Získajte citrín
+achievement.find_emerald=Smaragd
+achievement.find_emerald.desc=získať smaragd
+achievement.find_sapphire=Zafír
+achievement.find_sapphire.desc=dostať zafír
+achievement.find_amethyst=Ametyst
+achievement.find_amethyst.desc=Získajte Ametyst
+achievement.find_nether_quartz=kremeň
+achievement.find_nether_quartz.desc=získajte kremeň
+
+achievement.make_energy_crystal=energetický kryštál
+achievement.make_energy_crystal.desc=Vytvorte energetický krištáľ
+achievement.make_light_block=Svetlý blok
+achievement.make_light_block.desc=Vytvorte svetelný blok
+achievement.energy_tools=Energetické nástroje
+achievement.energy_tools.desc=Vyrobte si akýkoľvek energetický nástroj
+
+achievement.make_void_crystal=tmavý kryštál
+achievement.make_void_crystal.desc=Použite menič na vytvorenie tmavého kryštálu
+achievement.make_null_block=Nulový blok
+achievement.make_null_block.desc=urobte nulový blok
+achievement.annihilation_blade=ničiaca čepeľ
+achievement.annihilation_blade.desc=Vytvorte tmavý meč
+
+# Cool Achievements
+achievement.fire_laser=laserový požiar
+achievement.fire_laser.desc=Strieľajte laser
+achievement.identify_a_ring=Nová identita
+achievement.identify_a_ring.desc=Pomocou identifikátora identifikujte krúžok
+achievement.create_portal=Rozmerový cestovateľ
+achievement.create_portal.desc=Úspešne vytvoriť portál
+achievement.find_unknown_technology=Neznáma technológia
+achievement.find_unknown_technology.desc=Nájdite neznámu technologickú položku
+
+# Black Hole achievements
+achievement.fusion_container=Energie z jadrovej syntézy
+achievement.fusion_container.desc=Vytvorte štruktúru energie jadrovej syntézy
+achievement.make_black_hole=Čierna diera
+achievement.make_black_hole.desc=Vytvorte čiernu dieru
+achievement.make_dimensional_anchor=Rozmerová kotva
+achievement.make_dimensional_anchor.desc=Vytvorte rozmerovú kotvu
+achievement.survive_black_hole=pozostalý
+achievement.survive_black_hole.desc=Použite rozmerovú kotvu, aby ste prežili čiernu dieru
+
+# trophy achievements
+achievement.get_bronze_trophy=Bronzová trofej
+achievement.get_bronze_trophy.desc=Získajte bronzovú trofej
+achievement.get_silver_trophy=strieborná trofej
+achievement.get_silver_trophy.desc=získať striebornú trofej
+achievement.get_gold_trophy=Zlatá trofej
+achievement.get_gold_trophy.desc=Získajte zlatú trofej
+achievement.get_platinum_trophy=Platinová trofej
+achievement.get_platinum_trophy.desc=Získajte platinovú trofej

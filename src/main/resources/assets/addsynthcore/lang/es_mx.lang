@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=Bloque de precaución
+tile.addsynthcore.music_box.name=Caja de música
+
+item.addsynthcore.music_sheet.name=Partitura
+
+item.addsynthcore.wooden_scythe.name=Guadaña de madera
+item.addsynthcore.stone_scythe.name=Guadaña de piedra
+item.addsynthcore.iron_scythe.name=Guadaña de hierro
+item.addsynthcore.gold_scythe.name=Guadaña dorada
+item.addsynthcore.diamond_scythe.name=Guadaña de diamante

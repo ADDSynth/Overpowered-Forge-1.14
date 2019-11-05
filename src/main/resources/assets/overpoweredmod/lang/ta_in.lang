@@ -1,0 +1,265 @@
+﻿itemGroup.overpowered=Overpowered
+itemGroup.overpowered_machines=Overpowered - இயந்திரங்கள்
+itemGroup.overpowered_gems=Overpowered - இரத்தினங்கள்
+itemGroup.overpowered_tools=Overpowered - கருவிகள்
+itemGroup.overpowered_metals=Overpowered - உலோகங்கள்
+
+# Shards
+item.addsynthcore.ruby_shard.name=ரூபி துண்டு
+item.addsynthcore.topaz_shard.name=டோபஸ் ஷார்ட்
+item.addsynthcore.citrine_shard.name=சிட்ரினின் துண்டு
+item.addsynthcore.emerald_shard.name=எமரால்டு ஷர்ட்
+item.addsynthcore.diamond_shard.name=வைரத்தின் துண்டு
+item.addsynthcore.sapphire_shard.name=சப்பீரர் ஷார்ட்
+item.addsynthcore.amethyst_shard.name=அமேசிஸ்ட் ஷர்ட்
+item.addsynthcore.quartz_shard.name=குவார்ட்ஸ் துண்டு
+
+# Gems
+item.addsynthcore.ruby.name=ரூபி
+item.addsynthcore.topaz.name=புஷ்பராகம்
+item.addsynthcore.citrine.name=சிட்ரின்
+item.addsynthcore.sapphire.name=சபையர்
+item.addsynthcore.amethyst.name=செவ்வந்தி
+
+# Gem Blocks
+tile.addsynthcore.ruby_block.name=ரூபி பிளாக்
+tile.addsynthcore.topaz_block.name=டோபஸ் பிளாக்
+tile.addsynthcore.citrine_block.name=சிட்ரின் பிளாக்
+tile.addsynthcore.sapphire_block.name=சபையர் பிளாக்
+tile.addsynthcore.amethyst_block.name=செவ்வந்தி கல்
+
+# Gem Ores
+tile.addsynthcore.ruby_ore.name=ரூபி தாது
+tile.addsynthcore.topaz_ore.name=டாப்ஜஸ் தாது
+tile.addsynthcore.citrine_ore.name=சிட்ரின் தாது
+tile.addsynthcore.sapphire_ore.name=சபையர் தாது
+tile.addsynthcore.amethyst_ore.name=சுகந்தியும் தாது
+
+# Energy Crystal, Void Crystal
+item.overpoweredmod.energy_crystal_shards.name=ஆற்றல் படிகத்தின் துண்டு
+item.overpoweredmod.energy_crystal.name=ஆற்றல் படிக
+tile.overpoweredmod.light_block.name=லைட் பிளாக்
+item.overpoweredmod.void_crystal.name=தவறான படிக
+tile.overpoweredmod.null_block.name=பூஜ்ய பிளாக்
+
+# Energy Tools
+item.overpoweredmod.energy_sword.name=ஆற்றல் வாள்
+item.overpoweredmod.energy_pickaxe.name=எரிசக்தி பிக்மேக்ஸ்
+item.overpoweredmod.energy_axe.name=ஆற்றல் கோடாரி
+item.overpoweredmod.energy_shovel.name=எரிசக்தி திணி
+item.overpoweredmod.energy_hoe.name=ஆற்றல் தோட்டக்கலை கருவி
+item.addsynthcore.energy_scythe.name=ஆற்றல் அரிவாள்
+
+# Void Tools
+item.overpoweredmod.void_sword.name=இருள் வாள்
+item.overpoweredmod.void_pickaxe.name=இருண்ட பிக்ஸாக்
+item.overpoweredmod.void_axe.name=இருண்ட கோடாரி
+item.overpoweredmod.void_shovel.name=இருண்ட திணி
+item.overpoweredmod.void_hoe.name=இருண்ட தோட்டக்கலை கருவி
+
+# power cores
+item.overpoweredmod.power_core.name=பவர் கோர்
+item.overpoweredmod.advanced_power_core.name=மேம்பட்ட பவர் கோர்
+item.overpoweredmod.energized_power_core.name=ஆற்றல் மையம்
+item.overpoweredmod.nullified_power_core.name=எதிர்மறை சக்தி மையம்
+item.overpoweredmod.energy_grid.name=எரிசக்தி கட்டம்
+item.overpoweredmod.vacuum_container.name=வெற்றிடக் கொள்கலன்
+
+# Wires
+tile.overpoweredmod.energy_wire.name=சக்தி வயர்
+tile.overpoweredmod.data_cable.name=தரவு கேபிள்
+
+# Machines
+tile.overpoweredmod.generator.name=எரிசக்தி விநியோகிப்பாளர்
+tile.overpoweredmod.energy_storage.name=ஆற்றல் சேமிப்பு கொள்கலன்
+tile.overpoweredmod.universal_energy_interface.name=யுனிவர்சல் எரிசக்தி இடைமுகம்
+
+tile.overpoweredmod.compressor.name=அமுக்கி
+tile.overpoweredmod.electric_furnace.name=மின்சார உலை
+tile.overpoweredmod.gem_converter.name=ஜெம் மாற்றி
+tile.overpoweredmod.inverter.name=இன்வெர்ட்டர்
+tile.overpoweredmod.magic_infuser.name=மேஜிக் இன்ஃபுஸர்
+tile.overpoweredmod.identifier.name=அடையாளங்காட்டியால்
+tile.overpoweredmod.portal_frame.name=போர்டல் ஃபிரேம்
+tile.overpoweredmod.portal_control_panel.name=போர்ட்டல் கண்ட்ரோல் பேனல்
+tile.overpoweredmod.crystal_matter_generator.name=கிரிஸ்டல் மேட்டர் ஜெனரேட்டர்
+tile.overpoweredmod.advanced_ore_refinery.name=மேம்பட்ட தாது சுத்திகரிப்பு
+
+tile.overpoweredmod.fusion_chamber.name=ஃப்யூஷன் சேம்பர்
+tile.overpoweredmod.fusion_control_unit.name=இணைவு கட்டுப்பாட்டு பிரிவு
+tile.overpoweredmod.fusion_control_laser.name=இணைவு கட்டுப்பாட்டு லேசர்
+tile.overpoweredmod.fusion_energy_converter.name=இணைவு எரிசக்தி மாற்றி
+
+# Lenses
+item.overpoweredmod.focus_lens.name=ஃபோகஸ் லென்ஸ்
+item.overpoweredmod.red_lens.name=ரெட் லென்ஸ்
+item.overpoweredmod.orange_lens.name=ஆரஞ்சு லென்ஸ்
+item.overpoweredmod.yellow_lens.name=மஞ்சள் லென்ஸ்
+item.overpoweredmod.green_lens.name=பச்சை லென்ஸ்
+item.overpoweredmod.cyan_lens.name=சியான் லென்ஸ்
+item.overpoweredmod.blue_lens.name=ப்ளூ லென்ஸ்
+item.overpoweredmod.magenta_lens.name=மெஜந்தா லென்ஸ்
+
+# Lasers
+tile.overpoweredmod.laser_housing.name=லேசர் மெஷின்
+tile.overpoweredmod.white_laser.name=வெள்ளை லேசர்
+tile.overpoweredmod.red_laser.name=ரெட் லேசர்
+tile.overpoweredmod.orange_laser.name=ஆரஞ்சு லேசர்
+tile.overpoweredmod.yellow_laser.name=மஞ்சள் லேசர்
+tile.overpoweredmod.green_laser.name=பச்சை லேசர்
+tile.overpoweredmod.cyan_laser.name=சியான் லேசர்
+tile.overpoweredmod.blue_laser.name=ப்ளூ லேசர்
+tile.overpoweredmod.magenta_laser.name=மெஜந்தா லேசர்
+
+# Misc. Blocks
+tile.overpoweredmod.iron_frame_block.name=இரும்பு சட்ட தொகுதி
+tile.overpoweredmod.black_hole.name=கருப்பு துளை
+
+# Items
+item.overpoweredmod.beam_emitter.name=பீம் எமிட்டர்
+item.overpoweredmod.unknown_technology.name=தெரியாத தொழில்நுட்பம்
+item.overpoweredmod.fusion_core.name=ஃப்யூஷன் கோர்
+item.overpoweredmod.dimensional_anchor.name=பரிமாண ஆங்கர்
+
+# Trophies
+item.overpoweredmod.trophy_base.name=டிராபி பேஸ்
+tile.overpoweredmod.bronze_trophy.name=வெண்கலம் டிராபி
+tile.overpoweredmod.silver_trophy.name=வெள்ளி டிராபி
+tile.overpoweredmod.gold_trophy.name=கோல்ட் டிராபி
+tile.overpoweredmod.platinum_trophy.name=பிளாட்டினம் டிராபி
+
+# unidentified armor
+item.overpoweredmod.unidentified_leather_helmet.name=அடையாளம் தெரியாத லெதர் ஹாட்
+item.overpoweredmod.unidentified_leather_chestplate.name=அடையாளம் தெரியாத தோல் ஆர்மர்
+item.overpoweredmod.unidentified_leather_leggings.name=அடையாளம் தெரியாத லெதர் பேன்ட்ஸ்
+item.overpoweredmod.unidentified_leather_boots.name=அடையாளம் தெரியாத தோல் பூட்ஸ்
+item.overpoweredmod.unidentified_chainmail_helmet.name=அடையாளம் தெரியாத சங்கிலி ஹெல்மெட்
+item.overpoweredmod.unidentified_chainmail_chestplate.name=அடையாளம் தெரியாத சங்கிலி கவசம்
+item.overpoweredmod.unidentified_chainmail_leggings.name=அடையாளம் தெரியாத சங்கிலி காற்சட்டை
+item.overpoweredmod.unidentified_chainmail_boots.name=அடையாளம் தெரியாத சங்கிலி பூட்ஸ்
+item.overpoweredmod.unidentified_iron_helmet.name=அடையாளம் தெரியாத இரும்பு ஹெல்மெட்
+item.overpoweredmod.unidentified_iron_chestplate.name=அடையாளம் தெரியாத இரும்பு ஆர்மர்
+item.overpoweredmod.unidentified_iron_leggings.name=அடையாளம் தெரியாத இரும்பு பேன்ட்ஸ்
+item.overpoweredmod.unidentified_iron_boots.name=அடையாளம் தெரியாத இரும்பு பூட்ஸ்
+item.overpoweredmod.unidentified_gold_helmet.name=அடையாளம் தெரியாத தங்க ஹெல்மெட்
+item.overpoweredmod.unidentified_gold_chestplate.name=அடையாளம் தெரியாத தங்க ஆர்மர்
+item.overpoweredmod.unidentified_gold_leggings.name=அடையாளம் தெரியாத கோல்ட் பேன்ட்ஸ்
+item.overpoweredmod.unidentified_gold_boots.name=அடையாளம் தெரியாத தங்க பூட்ஸ்
+item.overpoweredmod.unidentified_diamond_helmet.name=அடையாளம் தெரியாத வைர ஹெல்மெட்
+item.overpoweredmod.unidentified_diamond_chestplate.name=அடையாளம் தெரியாத வைர கவசம்
+item.overpoweredmod.unidentified_diamond_leggings.name=அடையாளம் தெரியாத டயமண்ட் லெக்கிங்ஸ்
+item.overpoweredmod.unidentified_diamond_boots.name=அடையாளம் தெரியாத வைர பூட்ஸ்
+
+# Rings
+item.overpoweredmod.ring_common.name=அடையாளம் தெரியாத ரிங்
+item.overpoweredmod.ring_good.name=அடையாளம் தெரியாத ரிங்
+item.overpoweredmod.ring_rare.name=அடையாளம் தெரியாத ரிங்
+item.overpoweredmod.ring_unique.name=அடையாளம் தெரியாத ரிங்
+item.overpoweredmod.magic_ring_common.name=ரிங்
+item.overpoweredmod.magic_ring_good.name=ரிங்
+item.overpoweredmod.magic_ring_rare.name=ரிங்
+item.overpoweredmod.magic_ring_unique.name=ரிங்
+
+# Metal Ingots
+item.addsynthcore.tin_ingot.name=டின் இங்காட்
+item.addsynthcore.copper_ingot.name=காப்பர் இங்காட்
+item.addsynthcore.aluminum_ingot.name=அலுமினிய இங்காட்
+item.addsynthcore.steel_ingot.name=ஸ்டீல் இங்காட்
+item.addsynthcore.bronze_ingot.name=வெண்கலம் இங்காட்
+item.addsynthcore.silver_ingot.name=வெள்ளி இங்காட்
+item.addsynthcore.platinum_ingot.name=பிளாட்டினம் இங்காட்
+item.addsynthcore.titanium_ingot.name=டைட்டானியம் இங்காட்
+
+# Metal Blocks
+tile.addsynthcore.tin_block.name=டின் பிளாக்
+tile.addsynthcore.copper_block.name=காப்பர் பிளாக்
+tile.addsynthcore.aluminum_block.name=அலுமினிய பிளாக்
+tile.addsynthcore.steel_block.name=ஸ்டீல் பிளாக்
+tile.addsynthcore.bronze_block.name=வெண்கல பிளாக்
+tile.addsynthcore.silver_block.name=சில்வர் பிளாக்
+tile.addsynthcore.platinum_block.name=பிளாட்டினம் பிளாக்
+tile.addsynthcore.titanium_block.name=டைட்டானியம் பிளாக்
+
+# Ore
+tile.addsynthcore.tin_ore.name=தகரம் தாது
+tile.addsynthcore.copper_ore.name=செப்பு தாது
+tile.addsynthcore.aluminum_ore.name=அலுமினியம் தாது
+tile.addsynthcore.silver_ore.name=வெள்ளி தாது
+tile.addsynthcore.platinum_ore.name=பிளாட்டினம் தாது
+tile.addsynthcore.titanium_ore.name=டைட்டானியம் தாது
+
+# Metal Plates
+item.addsynthcore.iron_plate.name=இரும்பு தட்டு
+item.addsynthcore.gold_plate.name=தங்க தட்டு
+item.addsynthcore.tin_plate.name=தகரம் தட்டு
+item.addsynthcore.copper_plate.name=காப்பர் தட்டு
+item.addsynthcore.aluminum_plate.name=அலுமினிய தட்டு
+item.addsynthcore.steel_plate.name=எஃகு முலாம்
+item.addsynthcore.bronze_plate.name=வெண்கலம் தட்டு
+item.addsynthcore.silver_plate.name=வெள்ளி தட்டு
+item.addsynthcore.platinum_plate.name=பிளாட்டினம் தட்டு
+item.addsynthcore.titanium_plate.name=டைட்டானியம் தட்டு
+
+
+
+
+
+# Gem Achievements
+achievement.find_ruby=ரூபி
+achievement.find_ruby.desc=ரூபி கிடைக்கும்
+achievement.find_topaz=புஷ்பராகம்
+achievement.find_topaz.desc=ஒரு புஷ்பராகம் கிடைக்கும்
+achievement.find_citrine=சிட்ரின்
+achievement.find_citrine.desc=ஒரு சிட்ரைன் கிடைக்கும்
+achievement.find_emerald=எமரால்டு
+achievement.find_emerald.desc=ஒரு எமரால்டு கிடைக்கும்
+achievement.find_sapphire=சபையர்
+achievement.find_sapphire.desc=ஒரு சபையர் கிடைக்கும்
+achievement.find_amethyst=செவ்வந்தி
+achievement.find_amethyst.desc=ஒரு சுகந்தியும் கிடைக்கும்
+achievement.find_nether_quartz=குவார்ட்ஸ்
+achievement.find_nether_quartz.desc=குவார்ட்ஸ் கிடைக்கும்
+
+achievement.make_energy_crystal=ஆற்றல் படிக
+achievement.make_energy_crystal.desc=எரிசக்தி படிகத்தை உருவாக்குங்கள்
+achievement.make_light_block=லைட் பிளாக்
+achievement.make_light_block.desc=ஒளி ஒரு பிளாக் செய்ய
+achievement.energy_tools=ஆற்றல் கருவிகள்
+achievement.energy_tools.desc=எரிசக்தி கருவியை உருவாக்கவும்
+
+achievement.make_void_crystal=இருண்ட படிக
+achievement.make_void_crystal.desc=ஒரு இருண்ட படிக செய்ய இன்வெர்ட்டர் பயன்படுத்தவும்
+achievement.make_null_block=பூஜ்ய பிளாக்
+achievement.make_null_block.desc=ஒரு பூஜ்ய பிளாக் செய்யுங்கள்
+achievement.annihilation_blade=நிர்மூலமாக்கும் பிளேடு
+achievement.annihilation_blade.desc=ஒரு இருண்ட வாள் செய்யுங்கள்
+
+# Cool Achievements
+achievement.fire_laser=லேசர்
+achievement.fire_laser.desc=ஒரு லேசர் செயல்படுத்தவும்
+achievement.identify_a_ring=ஒரு புதிய அடையாளம்
+achievement.identify_a_ring.desc=மோதிரத்தை அடையாளம் காண ஸ்கேனரைப் பயன்படுத்தவும்
+achievement.create_portal=பரிமாண டிராவலர்
+achievement.create_portal.desc=ஒரு போர்ட்டை வெற்றிகரமாக உருவாக்கவும்
+achievement.find_unknown_technology=தெரியாத தொழில்நுட்பம்
+achievement.find_unknown_technology.desc=தெரியாத தொழில்நுட்ப உருப்படியைக் கண்டறியவும்
+
+# Black Hole achievements
+achievement.fusion_container=ஃப்யூஷன் எரிசக்தி
+achievement.fusion_container.desc=ஒரு ஃப்யூஷன் எரிசக்தி மாற்றி உருவாக்குக
+achievement.make_black_hole=கருப்பு துளை
+achievement.make_black_hole.desc=பிளாக் ஹோல் செய்யுங்கள்
+achievement.make_dimensional_anchor=பரிமாண ஆங்கர்
+achievement.make_dimensional_anchor.desc=ஒரு பரிமாண நங்கூரம் பொருளை உருவாக்கவும்
+achievement.survive_black_hole=சர்வைவர்
+achievement.survive_black_hole.desc=பிளாக் ஹோல் பிடியில் இருந்து தப்பிக்கவும்
+
+# trophy achievements
+achievement.get_bronze_trophy=வெண்கலம் டிராபி
+achievement.get_bronze_trophy.desc=ஒரு வெண்கலம் டிராபி கிடைக்கும்
+achievement.get_silver_trophy=வெள்ளி டிராபி
+achievement.get_silver_trophy.desc=ஒரு வெள்ளி டிராபி கிடைக்கும்
+achievement.get_gold_trophy=கோல்ட் டிராபி
+achievement.get_gold_trophy.desc=ஒரு கோல்ட் டிராபி கிடைக்கும்
+achievement.get_platinum_trophy=பிளாட்டினம் டிராபி
+achievement.get_platinum_trophy.desc=ஒரு பிளாட்டினம் டிராபி கிடைக்கும்

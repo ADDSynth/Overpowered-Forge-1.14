@@ -1,0 +1,265 @@
+﻿itemGroup.overpowered=Overpowered
+itemGroup.overpowered_machines=Overpowered - gép
+itemGroup.overpowered_gems=Overpowered - drágakövek
+itemGroup.overpowered_tools=Overpowered - Szerszámok
+itemGroup.overpowered_metals=Overpowered - fémek
+
+# Shards
+item.addsynthcore.ruby_shard.name=Rubinszemcse
+item.addsynthcore.topaz_shard.name=topázdarab
+item.addsynthcore.citrine_shard.name=Citrine Shard [szükség van a fordításra]
+item.addsynthcore.emerald_shard.name=smaragdszilánk
+item.addsynthcore.diamond_shard.name=gyémántdarab
+item.addsynthcore.sapphire_shard.name=zafírszilánk
+item.addsynthcore.amethyst_shard.name=ametiszt szelet
+item.addsynthcore.quartz_shard.name=kvarcszilánk
+
+# Gems
+item.addsynthcore.ruby.name=Rubin
+item.addsynthcore.topaz.name=Topáz
+item.addsynthcore.citrine.name=Citromsárga
+item.addsynthcore.sapphire.name=Zafír
+item.addsynthcore.amethyst.name=Ametiszt
+
+# Gem Blocks
+tile.addsynthcore.ruby_block.name=Rubinblokk
+tile.addsynthcore.topaz_block.name=Topáz blokk
+tile.addsynthcore.citrine_block.name=Citrin blokk
+tile.addsynthcore.sapphire_block.name=Zafírblokk
+tile.addsynthcore.amethyst_block.name=Ametiszt blokk
+
+# Gem Ores
+tile.addsynthcore.ruby_ore.name=Rubinérc
+tile.addsynthcore.topaz_ore.name=Topázérc
+tile.addsynthcore.citrine_ore.name=Citrinérc
+tile.addsynthcore.sapphire_ore.name=zafírérc
+tile.addsynthcore.amethyst_ore.name=Ametiszt érc
+
+# Energy Crystal, Void Crystal
+item.overpoweredmod.energy_crystal_shards.name=Energia Kristályszilánkok
+item.overpoweredmod.energy_crystal.name=Energia kristály
+tile.overpoweredmod.light_block.name=Világos blokk
+item.overpoweredmod.void_crystal.name=Érvénytelen kristály
+tile.overpoweredmod.null_block.name=nulla blokk
+
+# Energy Tools
+item.overpoweredmod.energy_sword.name=Energiakard
+item.overpoweredmod.energy_pickaxe.name=Energiacsúcs
+item.overpoweredmod.energy_axe.name=Energia fejsze
+item.overpoweredmod.energy_shovel.name=Energia lapát
+item.overpoweredmod.energy_hoe.name=Energia kapa
+item.addsynthcore.energy_scythe.name=Energia kasza
+
+# Void Tools
+item.overpoweredmod.void_sword.name=sötét kard
+item.overpoweredmod.void_pickaxe.name=sötét pici
+item.overpoweredmod.void_axe.name=sötét fejsze
+item.overpoweredmod.void_shovel.name=sötét lapát
+item.overpoweredmod.void_hoe.name=sötét kapa
+
+# power cores
+item.overpoweredmod.power_core.name=teljesítmény mag
+item.overpoweredmod.advanced_power_core.name=Fejlett teljesítménymag
+item.overpoweredmod.energized_power_core.name=energizált teljesítmény mag
+item.overpoweredmod.nullified_power_core.name=Megszüntetett teljesítmény mag
+item.overpoweredmod.energy_grid.name=Energiahálózat
+item.overpoweredmod.vacuum_container.name=Vákuumos tartály
+
+# Wires
+tile.overpoweredmod.energy_wire.name=Energiahuzal
+tile.overpoweredmod.data_cable.name=Adatkábel
+
+# Machines
+tile.overpoweredmod.generator.name=energiaelosztó
+tile.overpoweredmod.energy_storage.name=Energia tároló konténer
+tile.overpoweredmod.universal_energy_interface.name=Univerzális energiainterfész
+
+tile.overpoweredmod.compressor.name=kompresszor
+tile.overpoweredmod.electric_furnace.name=Elektromos kemence
+tile.overpoweredmod.gem_converter.name=gemstone átalakító
+tile.overpoweredmod.inverter.name=Inverter
+tile.overpoweredmod.magic_infuser.name=mágikus infúzió
+tile.overpoweredmod.identifier.name=Identifier
+tile.overpoweredmod.portal_frame.name=Portálkeret
+tile.overpoweredmod.portal_control_panel.name=Portál Vezérlőpult
+tile.overpoweredmod.crystal_matter_generator.name=kristály Anyaggenerátor
+tile.overpoweredmod.advanced_ore_refinery.name=Haladó Ore Finomító
+
+tile.overpoweredmod.fusion_chamber.name=Fúziós kamara
+tile.overpoweredmod.fusion_control_unit.name=Fúziós vezérlő egység
+tile.overpoweredmod.fusion_control_laser.name=fúziós vezérlő lézer
+tile.overpoweredmod.fusion_energy_converter.name=Fúziós energia átalakító
+
+# Lenses
+item.overpoweredmod.focus_lens.name=Lencse
+item.overpoweredmod.red_lens.name=Piros lencse
+item.overpoweredmod.orange_lens.name=Narancssárga lencse
+item.overpoweredmod.yellow_lens.name=Sárga lencse
+item.overpoweredmod.green_lens.name=Zöld lencse
+item.overpoweredmod.cyan_lens.name=Cián lencse
+item.overpoweredmod.blue_lens.name=Kék lencse
+item.overpoweredmod.magenta_lens.name=bíbor lencse
+
+# Lasers
+tile.overpoweredmod.laser_housing.name=Lézergép
+tile.overpoweredmod.white_laser.name=Fehér lézer
+tile.overpoweredmod.red_laser.name=Piros lézer
+tile.overpoweredmod.orange_laser.name=Narancs lézer
+tile.overpoweredmod.yellow_laser.name=Sárga lézer
+tile.overpoweredmod.green_laser.name=Zöld lézer
+tile.overpoweredmod.cyan_laser.name=Cián lézer
+tile.overpoweredmod.blue_laser.name=Kék lézer
+tile.overpoweredmod.magenta_laser.name=bíbor lézer
+
+# Misc. Blocks
+tile.overpoweredmod.iron_frame_block.name=Vas keretes blokk
+tile.overpoweredmod.black_hole.name=Fekete lyuk
+
+# Items
+item.overpoweredmod.beam_emitter.name=sugárterelőt
+item.overpoweredmod.unknown_technology.name=Ismeretlen technológia
+item.overpoweredmod.fusion_core.name=Fúziós mag
+item.overpoweredmod.dimensional_anchor.name=Dimenziós horgony
+
+# Trophies
+item.overpoweredmod.trophy_base.name=Trófea bázis
+tile.overpoweredmod.bronze_trophy.name=Bronz trófeát
+tile.overpoweredmod.silver_trophy.name=Ezüst trófeát
+tile.overpoweredmod.gold_trophy.name=Arany trófea
+tile.overpoweredmod.platinum_trophy.name=Platina trófeát
+
+# unidentified armor
+item.overpoweredmod.unidentified_leather_helmet.name=Ismeretlen bőrkabát
+item.overpoweredmod.unidentified_leather_chestplate.name=Ismeretlen bőrpáncél
+item.overpoweredmod.unidentified_leather_leggings.name=Ismeretlen bőr nadrágok
+item.overpoweredmod.unidentified_leather_boots.name=Ismeretlen Bőrcsizma
+item.overpoweredmod.unidentified_chainmail_helmet.name=Ismeretlen lánckerekes sisak
+item.overpoweredmod.unidentified_chainmail_chestplate.name=ismeretlen láncmetél páncél
+item.overpoweredmod.unidentified_chainmail_leggings.name=nem azonosított láncos nadrág
+item.overpoweredmod.unidentified_chainmail_boots.name=ismeretlen láncos csizma
+item.overpoweredmod.unidentified_iron_helmet.name=Ismeretlen vas kalap
+item.overpoweredmod.unidentified_iron_chestplate.name=Nem azonosított vaspáncél
+item.overpoweredmod.unidentified_iron_leggings.name=Ismeretlen vasalatok
+item.overpoweredmod.unidentified_iron_boots.name=Nem azonosított vas csizma
+item.overpoweredmod.unidentified_gold_helmet.name=Nem azonosított arany sisak
+item.overpoweredmod.unidentified_gold_chestplate.name=Nem azonosított arany páncél
+item.overpoweredmod.unidentified_gold_leggings.name=Ismeretlen arany nadrágok
+item.overpoweredmod.unidentified_gold_boots.name=Ismeretlen arany csizma
+item.overpoweredmod.unidentified_diamond_helmet.name=Ismeretlen gyémánt sisak
+item.overpoweredmod.unidentified_diamond_chestplate.name=Ismeretlen gyémánt páncél
+item.overpoweredmod.unidentified_diamond_leggings.name=Ismeretlen gyémánt nadrágok
+item.overpoweredmod.unidentified_diamond_boots.name=Ismeretlen gyémánt csizmák
+
+# Rings
+item.overpoweredmod.ring_common.name=Ismeretlen gyűrű
+item.overpoweredmod.ring_good.name=Ismeretlen gyűrű
+item.overpoweredmod.ring_rare.name=Ismeretlen gyűrű
+item.overpoweredmod.ring_unique.name=Ismeretlen gyűrű
+item.overpoweredmod.magic_ring_common.name=Gyűrű
+item.overpoweredmod.magic_ring_good.name=Gyűrű
+item.overpoweredmod.magic_ring_rare.name=Gyűrű
+item.overpoweredmod.magic_ring_unique.name=Gyűrű
+
+# Metal Ingots
+item.addsynthcore.tin_ingot.name=Ónöntvény
+item.addsynthcore.copper_ingot.name=Réz
+item.addsynthcore.aluminum_ingot.name=Alumínium
+item.addsynthcore.steel_ingot.name=Acél
+item.addsynthcore.bronze_ingot.name=Bronz bár
+item.addsynthcore.silver_ingot.name=Ezüst bár
+item.addsynthcore.platinum_ingot.name=Platinum bár
+item.addsynthcore.titanium_ingot.name=Titán
+
+# Metal Blocks
+tile.addsynthcore.tin_block.name=Ónblokk
+tile.addsynthcore.copper_block.name=Réz blokk
+tile.addsynthcore.aluminum_block.name=Alumínium blokk
+tile.addsynthcore.steel_block.name=Acél blokk
+tile.addsynthcore.bronze_block.name=Bronz blokk
+tile.addsynthcore.silver_block.name=Ezüst blokk
+tile.addsynthcore.platinum_block.name=Platina blokk
+tile.addsynthcore.titanium_block.name=Titán blokk
+
+# Ore
+tile.addsynthcore.tin_ore.name=ónérc
+tile.addsynthcore.copper_ore.name=Rézérc
+tile.addsynthcore.aluminum_ore.name=Alumíniumérc
+tile.addsynthcore.silver_ore.name=Ezüstérc
+tile.addsynthcore.platinum_ore.name=Platinumérc
+tile.addsynthcore.titanium_ore.name=Titánérc
+
+# Metal Plates
+item.addsynthcore.iron_plate.name=Vaslemez
+item.addsynthcore.gold_plate.name=Aranyozás
+item.addsynthcore.tin_plate.name=Ónozott lemez
+item.addsynthcore.copper_plate.name=Réz lap
+item.addsynthcore.aluminum_plate.name=Alumínium lemezelés
+item.addsynthcore.steel_plate.name=Acéllemez
+item.addsynthcore.bronze_plate.name=Bronzlemez
+item.addsynthcore.silver_plate.name=Ezüsttányér
+item.addsynthcore.platinum_plate.name=Platina lemez
+item.addsynthcore.titanium_plate.name=Titánlemez
+
+
+
+
+
+# Gem Achievements
+achievement.find_ruby=Rubin
+achievement.find_ruby.desc=kap egy rubint
+achievement.find_topaz=Topáz
+achievement.find_topaz.desc=Szerezz egy Topazot
+achievement.find_citrine=Citromsárga
+achievement.find_citrine.desc=kapjon citrint
+achievement.find_emerald=Smaragd
+achievement.find_emerald.desc=kap egy smaragdot
+achievement.find_sapphire=Zafír
+achievement.find_sapphire.desc=kap egy zafírt
+achievement.find_amethyst=Ametiszt
+achievement.find_amethyst.desc=kap egy ametisztet
+achievement.find_nether_quartz=Kvarc
+achievement.find_nether_quartz.desc=vegye fel a kvarcot
+
+achievement.make_energy_crystal=Energia kristály
+achievement.make_energy_crystal.desc=Készíts egy energiakristályt
+achievement.make_light_block=Világos blokk
+achievement.make_light_block.desc=Készíts egy világos blokkot
+achievement.energy_tools=Energiaeszközök
+achievement.energy_tools.desc=energiaszerszám létrehozása
+
+achievement.make_void_crystal=Érvénytelen kristály
+achievement.make_void_crystal.desc=Használja a frekvenciaváltót, hogy üres kristályt készítsen
+achievement.make_null_block=nulla blokk
+achievement.make_null_block.desc=csinálj egy nulla blokkot
+achievement.annihilation_blade=Megsemmisítő penge
+achievement.annihilation_blade.desc=sötét kardot készítsen
+
+# Cool Achievements
+achievement.fire_laser=Lézer
+achievement.fire_laser.desc=Lőni egy lézert
+achievement.identify_a_ring=Új identitás
+achievement.identify_a_ring.desc=Használja az azonosítót a gyűrű azonosítására
+achievement.create_portal=Dimenziós utazók
+achievement.create_portal.desc=sikeresen hozzon létre egy portált
+achievement.find_unknown_technology=Ismeretlen technológia
+achievement.find_unknown_technology.desc=Keressen egy ismeretlen technológiai elemet
+
+# Black Hole achievements
+achievement.fusion_container=Fúziós energia
+achievement.fusion_container.desc=Hozzon létre egy fúziós energiaszerkezetet
+achievement.make_black_hole=Fekete lyuk
+achievement.make_black_hole.desc=Fekete lyuk létrehozása
+achievement.make_dimensional_anchor=Dimenziós horgony
+achievement.make_dimensional_anchor.desc=Készítsen egy dimenziós mesterséget
+achievement.survive_black_hole=Túlélő
+achievement.survive_black_hole.desc=Menekülj egy fekete lyuk megragadásából
+
+# trophy achievements
+achievement.get_bronze_trophy=Bronz trófeát
+achievement.get_bronze_trophy.desc=Kapj egy bronz trófeát
+achievement.get_silver_trophy=Ezüst trófeát
+achievement.get_silver_trophy.desc=Kap egy ezüst trófeát
+achievement.get_gold_trophy=Arany trófeát
+achievement.get_gold_trophy.desc=kap egy arany trófeát
+achievement.get_platinum_trophy=Platina trófeát
+achievement.get_platinum_trophy.desc=kap egy platina trófeát

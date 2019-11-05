@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=Blok Perhatian
+tile.addsynthcore.music_box.name=Kotak muzik
+
+item.addsynthcore.music_sheet.name=Lembaran Muzik
+
+item.addsynthcore.wooden_scythe.name=Sabit kayu
+item.addsynthcore.stone_scythe.name=Batu sabit
+item.addsynthcore.iron_scythe.name=Besi sabit
+item.addsynthcore.gold_scythe.name=sabit emas
+item.addsynthcore.diamond_scythe.name=Berlian sabit

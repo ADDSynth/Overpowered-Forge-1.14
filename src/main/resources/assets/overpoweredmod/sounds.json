@@ -1,0 +1,7 @@
+{
+  "block.laser.fire": {
+    "category": "block",
+    "subtitle": "subtitle.laser_fire",
+    "sounds": [ "overpoweredmod:sound65" ]
+  }
+}

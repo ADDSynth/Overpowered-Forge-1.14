@@ -1,0 +1,265 @@
+﻿itemGroup.overpowered=Overpowered
+itemGroup.overpowered_machines=Overpowered - Mașini
+itemGroup.overpowered_gems=Overpowered - pietre
+itemGroup.overpowered_tools=Overpowered - Unelte
+itemGroup.overpowered_metals=Overpowered - metale
+
+# Shards
+item.addsynthcore.ruby_shard.name=bucată de rubin
+item.addsynthcore.topaz_shard.name=bucată de topaz
+item.addsynthcore.citrine_shard.name=bucată de citrină
+item.addsynthcore.emerald_shard.name=bucată de smarald
+item.addsynthcore.diamond_shard.name=bucată de diamant
+item.addsynthcore.sapphire_shard.name=bucată de safir
+item.addsynthcore.amethyst_shard.name=bucată de ametist
+item.addsynthcore.quartz_shard.name=bucată de cuart
+
+# Gems
+item.addsynthcore.ruby.name=Rubin
+item.addsynthcore.topaz.name=Topaz
+item.addsynthcore.citrine.name=Citrin
+item.addsynthcore.sapphire.name=Safir
+item.addsynthcore.amethyst.name=Ametist
+
+# Gem Blocks
+tile.addsynthcore.ruby_block.name=Bloc de Ruby
+tile.addsynthcore.topaz_block.name=Bloc de topaz
+tile.addsynthcore.citrine_block.name=Bloc de citrină
+tile.addsynthcore.sapphire_block.name=Bloc de safir
+tile.addsynthcore.amethyst_block.name=Bloc de Ametist
+
+# Gem Ores
+tile.addsynthcore.ruby_ore.name=Rubia de minereu
+tile.addsynthcore.topaz_ore.name=Topaz minereu
+tile.addsynthcore.citrine_ore.name=minereu de citrină
+tile.addsynthcore.sapphire_ore.name=minereu de safir
+tile.addsynthcore.amethyst_ore.name=ametist brut
+
+# Energy Crystal, Void Crystal
+item.overpoweredmod.energy_crystal_shards.name=bucată de cristal de energie
+item.overpoweredmod.energy_crystal.name=cristal de energie
+tile.overpoweredmod.light_block.name=Blocul de Lumină
+item.overpoweredmod.void_crystal.name=cristal negativ
+tile.overpoweredmod.null_block.name=bloc null
+
+# Energy Tools
+item.overpoweredmod.energy_sword.name=Sabia energiei
+item.overpoweredmod.energy_pickaxe.name=Energia târnăcop
+item.overpoweredmod.energy_axe.name=topor energetică
+item.overpoweredmod.energy_shovel.name=lopata de energie
+item.overpoweredmod.energy_hoe.name=instrument de grădinărit energetic
+item.addsynthcore.energy_scythe.name=Coasă de energie
+
+# Void Tools
+item.overpoweredmod.void_sword.name=sabie întunecată
+item.overpoweredmod.void_pickaxe.name=Null Pickaxe [necesită traducere]
+item.overpoweredmod.void_axe.name=Null Axe [necesită traducere]
+item.overpoweredmod.void_shovel.name=lopată nulă
+item.overpoweredmod.void_hoe.name=instrument de grădinărit nul
+
+# power cores
+item.overpoweredmod.power_core.name=unitate de alimentare
+item.overpoweredmod.advanced_power_core.name=putere avansată de bază
+item.overpoweredmod.energized_power_core.name=energia de bază
+item.overpoweredmod.nullified_power_core.name=miez de putere negativ
+item.overpoweredmod.energy_grid.name=Grilă energetică
+item.overpoweredmod.vacuum_container.name=rezervor de vid
+
+# Wires
+tile.overpoweredmod.energy_wire.name=cablu de energie
+tile.overpoweredmod.data_cable.name=Cablu de date
+
+# Machines
+tile.overpoweredmod.generator.name=Distribuitor de energie
+tile.overpoweredmod.energy_storage.name=mașină de stocare a energiei
+tile.overpoweredmod.universal_energy_interface.name=Interfața energetică universală
+
+tile.overpoweredmod.compressor.name=Compresor
+tile.overpoweredmod.electric_furnace.name=Cuptor electric
+tile.overpoweredmod.gem_converter.name=convertizor bijuterie
+tile.overpoweredmod.inverter.name=invertor
+tile.overpoweredmod.magic_infuser.name=infuzatorul magie
+tile.overpoweredmod.identifier.name=Identificator
+tile.overpoweredmod.portal_frame.name=Portal cadru
+tile.overpoweredmod.portal_control_panel.name=Panoul de control al portalului
+tile.overpoweredmod.crystal_matter_generator.name=generator de materiale de cristal
+tile.overpoweredmod.advanced_ore_refinery.name=rafinărie avansată de minereu
+
+tile.overpoweredmod.fusion_chamber.name=Camera de fuziune
+tile.overpoweredmod.fusion_control_unit.name=Unitatea de control al fuziunii
+tile.overpoweredmod.fusion_control_laser.name=fuziune laser de control
+tile.overpoweredmod.fusion_energy_converter.name=convertor de energie de fuziune
+
+# Lenses
+item.overpoweredmod.focus_lens.name=Concentra Lentilă
+item.overpoweredmod.red_lens.name=Lentila roșie
+item.overpoweredmod.orange_lens.name=Lentila portocalie
+item.overpoweredmod.yellow_lens.name=Lentile galben
+item.overpoweredmod.green_lens.name=Lentila verde
+item.overpoweredmod.cyan_lens.name=lentila cian
+item.overpoweredmod.blue_lens.name=Lentila albastru
+item.overpoweredmod.magenta_lens.name=magenta lentilă
+
+# Lasers
+tile.overpoweredmod.laser_housing.name=Mașină laser
+tile.overpoweredmod.white_laser.name=Laser alb
+tile.overpoweredmod.red_laser.name=Laser roșu
+tile.overpoweredmod.orange_laser.name=portocaliu laser
+tile.overpoweredmod.yellow_laser.name=Laser galben
+tile.overpoweredmod.green_laser.name=Verde laser
+tile.overpoweredmod.cyan_laser.name=Cyan Laser
+tile.overpoweredmod.blue_laser.name=laser albastru
+tile.overpoweredmod.magenta_laser.name=purpuriu laser
+
+# Misc. Blocks
+tile.overpoweredmod.iron_frame_block.name=Blocul cadrului de fier
+tile.overpoweredmod.black_hole.name=Gaură neagră
+
+# Items
+item.overpoweredmod.beam_emitter.name=Emițător de fascicul
+item.overpoweredmod.unknown_technology.name=Tehnologie necunoscută
+item.overpoweredmod.fusion_core.name=miez de fuziune
+item.overpoweredmod.dimensional_anchor.name=Ancora dimensională
+
+# Trophies
+item.overpoweredmod.trophy_base.name=Baza de trofee
+tile.overpoweredmod.bronze_trophy.name=bronz trofeu
+tile.overpoweredmod.silver_trophy.name=Trofeul de argint
+tile.overpoweredmod.gold_trophy.name=Trofeul de aur
+tile.overpoweredmod.platinum_trophy.name=platina trofeu
+
+# unidentified armor
+item.overpoweredmod.unidentified_leather_helmet.name=Șapcă de piele neidentificată
+item.overpoweredmod.unidentified_leather_chestplate.name=Armură din piele neidentificată
+item.overpoweredmod.unidentified_leather_leggings.name=Pantaloni din piele neidentificat
+item.overpoweredmod.unidentified_leather_boots.name=Bocanci din piele neidentificată
+item.overpoweredmod.unidentified_chainmail_helmet.name=Cască neidentificată de lanț
+item.overpoweredmod.unidentified_chainmail_chestplate.name=armura cu lanț neidentificat neidentificată
+item.overpoweredmod.unidentified_chainmail_leggings.name=pantaloni cu lanț neidentificat
+item.overpoweredmod.unidentified_chainmail_boots.name=cizme neidentificate de lanț
+item.overpoweredmod.unidentified_iron_helmet.name=Căști de fier neidentificate
+item.overpoweredmod.unidentified_iron_chestplate.name=Pătrat de fier neidentificat
+item.overpoweredmod.unidentified_iron_leggings.name=Pantaloni de fier neidentificați
+item.overpoweredmod.unidentified_iron_boots.name=Bocanci de fier neidentificați
+item.overpoweredmod.unidentified_gold_helmet.name=Cască de aur neidentificată
+item.overpoweredmod.unidentified_gold_chestplate.name=Armura de aur neidentificată
+item.overpoweredmod.unidentified_gold_leggings.name=Pantaloni de aur neidentificați
+item.overpoweredmod.unidentified_gold_boots.name=Bocanci de aur neidentificați
+item.overpoweredmod.unidentified_diamond_helmet.name=Cămăși de diamant neidentificată
+item.overpoweredmod.unidentified_diamond_chestplate.name=armura diamant neidentificat
+item.overpoweredmod.unidentified_diamond_leggings.name=Pantaloni neidentificați cu diamante
+item.overpoweredmod.unidentified_diamond_boots.name=Bocanci neidentificați cu diamante
+
+# Rings
+item.overpoweredmod.ring_common.name=Inel neidentificat
+item.overpoweredmod.ring_good.name=Inel neidentificat
+item.overpoweredmod.ring_rare.name=Inel neidentificat
+item.overpoweredmod.ring_unique.name=Inel neidentificat
+item.overpoweredmod.magic_ring_common.name=Inel
+item.overpoweredmod.magic_ring_good.name=Inel
+item.overpoweredmod.magic_ring_rare.name=Inel
+item.overpoweredmod.magic_ring_unique.name=Inel
+
+# Metal Ingots
+item.addsynthcore.tin_ingot.name=Staniu lingou
+item.addsynthcore.copper_ingot.name=Cupru lingou
+item.addsynthcore.aluminum_ingot.name=Lingoul de aluminiu
+item.addsynthcore.steel_ingot.name=Oțel lingou
+item.addsynthcore.bronze_ingot.name=Lingou de bronz
+item.addsynthcore.silver_ingot.name=Argint lingou
+item.addsynthcore.platinum_ingot.name=Lingou de platină
+item.addsynthcore.titanium_ingot.name=Lingou de titan
+
+# Metal Blocks
+tile.addsynthcore.tin_block.name=staniu bloc
+tile.addsynthcore.copper_block.name=bloc de cupru
+tile.addsynthcore.aluminum_block.name=bloc de aluminiu
+tile.addsynthcore.steel_block.name=bloc de oțel
+tile.addsynthcore.bronze_block.name=bloc de bronz
+tile.addsynthcore.silver_block.name=bloc de argint
+tile.addsynthcore.platinum_block.name=platină bloc
+tile.addsynthcore.titanium_block.name=bloc de titan
+
+# Ore
+tile.addsynthcore.tin_ore.name=Minereu de staniu
+tile.addsynthcore.copper_ore.name=Minereu de cupru
+tile.addsynthcore.aluminum_ore.name=Minereu de Aluminiu
+tile.addsynthcore.silver_ore.name=minereu de argint
+tile.addsynthcore.platinum_ore.name=minereu de platină
+tile.addsynthcore.titanium_ore.name=Titaniu de minereu
+
+# Metal Plates
+item.addsynthcore.iron_plate.name=Placă de fier
+item.addsynthcore.gold_plate.name=Placă de aur
+item.addsynthcore.tin_plate.name=tablă de tablă
+item.addsynthcore.copper_plate.name=Placă de cupru
+item.addsynthcore.aluminum_plate.name=Placă de aluminiu
+item.addsynthcore.steel_plate.name=Placă de oțel
+item.addsynthcore.bronze_plate.name=Placă de bronz
+item.addsynthcore.silver_plate.name=Placare cu argint
+item.addsynthcore.platinum_plate.name=Placarea cu platină
+item.addsynthcore.titanium_plate.name=Placă de titan
+
+
+
+
+
+# Gem Achievements
+achievement.find_ruby=Rubin
+achievement.find_ruby.desc=obțineți un rubin
+achievement.find_topaz=Topaz
+achievement.find_topaz.desc=obțineți un topaz
+achievement.find_citrine=citrin
+achievement.find_citrine.desc=obțineți citrină
+achievement.find_emerald=Smarald
+achievement.find_emerald.desc=obțineți un smarald
+achievement.find_sapphire=Safir
+achievement.find_sapphire.desc=obțineți un safir
+achievement.find_amethyst=Ametist
+achievement.find_amethyst.desc=obțineți un ametist
+achievement.find_nether_quartz=Cuarţ
+achievement.find_nether_quartz.desc=obțineți cuarț
+
+achievement.make_energy_crystal=Energie Cristal
+achievement.make_energy_crystal.desc=Faceți un cristal de energie
+achievement.make_light_block=Bloc de Lumină
+achievement.make_light_block.desc=Faceți un blocaj de lumină
+achievement.energy_tools=Instrumente de energie
+achievement.energy_tools.desc=Faceți orice instrument energetic
+
+achievement.make_void_crystal=cristal negativ
+achievement.make_void_crystal.desc=Utilizați invertorul pentru a crea un cristal întunecat
+achievement.make_null_block=bloc null
+achievement.make_null_block.desc=Faceți un bloc Null
+achievement.annihilation_blade=sabia de anihilare
+achievement.annihilation_blade.desc=Faceți o sabie întunecată
+
+# Cool Achievements
+achievement.fire_laser=Laser
+achievement.fire_laser.desc=Trage un laser
+achievement.identify_a_ring=O nouă identitate
+achievement.identify_a_ring.desc=Utilizați identificatorul pentru a identifica un inel
+achievement.create_portal=Dimensional Traveler
+achievement.create_portal.desc=Generați cu succes un portal
+achievement.find_unknown_technology=Tehnologie necunoscută
+achievement.find_unknown_technology.desc=Găsiți un element de tehnologie necunoscut
+
+# Black Hole achievements
+achievement.fusion_container=Energia de fuziunii
+achievement.fusion_container.desc=Creați o structură de fuziune a energiei
+achievement.make_black_hole=Gaură neagră
+achievement.make_black_hole.desc=Faceți o gaură neagră
+achievement.make_dimensional_anchor=Ancora dimensională
+achievement.make_dimensional_anchor.desc=Efectuați un element Anchor dimensional
+achievement.survive_black_hole=Supravieţuitor
+achievement.survive_black_hole.desc=Utilizați ancora dimensională pentru a supraviețui unei găuri negre
+
+# trophy achievements
+achievement.get_bronze_trophy=bronz trofeu
+achievement.get_bronze_trophy.desc=Obțineți un Trofeu de bronz
+achievement.get_silver_trophy=Trofeul de argint
+achievement.get_silver_trophy.desc=Obțineți un trofeu de argint
+achievement.get_gold_trophy=Trofeul de aur
+achievement.get_gold_trophy.desc=Obțineți un trofeu de aur
+achievement.get_platinum_trophy=platina trofeu
+achievement.get_platinum_trophy.desc=Obțineți un trofeu Platinum

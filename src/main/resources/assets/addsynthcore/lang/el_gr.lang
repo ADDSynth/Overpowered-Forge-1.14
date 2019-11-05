@@ -1,0 +1,12 @@
+﻿itemGroup.addsynthcore=ADDSynthCore
+
+tile.addsynthcore.caution_block.name=μπλοκ προειδοποίησης
+tile.addsynthcore.music_box.name=Μουσικό κουτί
+
+item.addsynthcore.music_sheet.name=Φύλλο μουσικής
+
+item.addsynthcore.wooden_scythe.name=Ξύλινο δρεπάνι
+item.addsynthcore.stone_scythe.name=Πέτρινο δρεπάνι
+item.addsynthcore.iron_scythe.name=Σιδερένιο δρεπάνι
+item.addsynthcore.gold_scythe.name=Χρυσό δρεπάνι
+item.addsynthcore.diamond_scythe.name=Δακτύλιο δρεπάνι

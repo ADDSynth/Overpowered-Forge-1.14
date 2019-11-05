@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "overpoweredmod:bronze_trophy" },
+    "facing=east":  {"model": "overpoweredmod:bronze_trophy", "y": 90},
+    "facing=south": {"model": "overpoweredmod:bronze_trophy", "y": 180},
+    "facing=west":  {"model": "overpoweredmod:bronze_trophy", "y": 270}
+  }
+}
