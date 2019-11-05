@@ -25,12 +25,6 @@ public final class OverpoweredJEI implements IModPlugin {
     // Hide items from JEI:    (Items that are registered but don't want to show up in JEI)
     IIngredientBlacklist blacklist = registry.getJeiHelpers().getIngredientBlacklist();
     if(blacklist != null){
-      if(Compatability.BAUBLES.loaded){
-        blacklist.addIngredientToBlacklist(new ItemStack(Tools.magic_ring[0]));
-        blacklist.addIngredientToBlacklist(new ItemStack(Tools.magic_ring[1]));
-        blacklist.addIngredientToBlacklist(new ItemStack(Tools.magic_ring[2]));
-        blacklist.addIngredientToBlacklist(new ItemStack(Tools.magic_ring[3]));
-      }
       blacklist.addIngredientToBlacklist(new ItemStack(Portal.portal_image));
     }
     

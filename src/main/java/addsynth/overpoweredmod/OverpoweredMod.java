@@ -26,7 +26,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
      name    = OverpoweredMod.MOD_NAME,
      version = OverpoweredMod.VERSION,
      acceptedMinecraftVersions = "[1.12.2]",
-     dependencies = "required-after:forge@[14.23.5.2816,];required-after:addsynthcore;after:baubles@[1.5.2,]",
+     dependencies = "required-after:forge@[14.23.5.2816,];required-after:addsynthcore",
      guiFactory = "addsynth.overpoweredmod.client.gui.config.OverpoweredGuiFactory",
      updateJSON = "http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/update.json",
      modLanguage = "java",

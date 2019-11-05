@@ -73,15 +73,8 @@ public final class LootTables {
     newLootEntry(Tools.unidentified_armor[ArmorMaterial.DIAMOND.ordinal()][3],diamond_weight),
   };
   
-  private static final LootEntry[] rings = Compatability.BAUBLES.loaded ? new LootEntry[]{
-    newLootEntry(Tools.ring[0],common_ring_weight),
-    newLootEntry(Tools.ring[1],good_ring_weight),
-    newLootEntry(Tools.ring[2],rare_ring_weight),
-    newLootEntry(Tools.ring[3],unique_ring_weight)
-  } : null;
-
   private static final LootPool custom_loot_pool = new LootPool(
-    Compatability.BAUBLES.loaded ? JavaUtils.combine_arrays(unidentified_armor, rings) : unidentified_armor,
+    unidentified_armor,
     new LootCondition[] {
       new KilledByPlayer(false),
       new RandomChance(spawn_chance)

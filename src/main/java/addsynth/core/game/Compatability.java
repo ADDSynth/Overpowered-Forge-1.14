@@ -36,7 +36,7 @@ public final class Compatability {
     public static final boolean loaded = Loader.isModLoaded(modid);
   }
 
-  public static final class BAUBLES {
+  public static final class BAUBLES { // OPTIMIZE: Baubles no longer exists in Minecraft versions 1.13+. Also remove translation keys for Rings when this is permanently removed.
     public static final String name  = "Baubles";
     public static final String modid = "baubles";
     public static final boolean loaded = Loader.isModLoaded(modid);

@@ -6,7 +6,6 @@ import addsynth.core.items.ArmorMaterial;
 import addsynth.core.items.EquipmentType;
 import addsynth.core.items.Toolset;
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.compatability.baubles.Ring;
 import addsynth.overpoweredmod.items.tools.*;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
 import net.minecraft.item.EnumRarity;
@@ -64,20 +63,6 @@ public final class Tools {
       }
     }
   }
-
-  public static final Item[] ring = Compatability.BAUBLES.loaded ? new Item[] {
-    new UnidentifiedItem("ring_common"),
-    new UnidentifiedItem("ring_good"),
-    new UnidentifiedItem("ring_rare"),
-    new UnidentifiedItem("ring_unique")
-  } : null;
-  
-  public static final Item[] magic_ring = Compatability.BAUBLES.loaded ? new Item[] {
-    new Ring(0, "magic_ring_common"),
-    new Ring(1, "magic_ring_good"),
-    new Ring(2, "magic_ring_rare"),
-    new Ring(3, "magic_ring_unique")
-  } : null;
 
   static {
     Debug.log_setup_info("Finished loading Tools class.");

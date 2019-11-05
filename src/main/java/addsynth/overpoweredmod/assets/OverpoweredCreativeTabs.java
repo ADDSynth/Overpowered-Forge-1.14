@@ -235,8 +235,7 @@ public final class OverpoweredCreativeTabs {
     add_items(gem_items,     GEMS,     Features.creative_tab_gems,     "overpowered_gems",     icons[0]);
     set_creative_tab_of_items(main_items, MAIN, main_tab_name, icons[1]);
     add_items(machine_items, MACHINES, Features.creative_tab_machines, "overpowered_machines", icons[2]);
-    final Object[] final_tool_items = Compatability.BAUBLES.loaded ? JavaUtils.combine_arrays(tool_items, Tools.ring) : tool_items;
-    add_items(final_tool_items, TOOLS, Features.creative_tab_tools,    "overpowered_tools",    icons[3]);
+    add_items(tool_items,    TOOLS,    Features.creative_tab_tools,    "overpowered_tools",    icons[3]);
     add_items(metal_items,   METALS,   Features.creative_tab_metals,   "overpowered_metals",   icons[4]);
     
     Setup.creative_tabs_registered = true;

@@ -218,10 +218,6 @@ public final class Registers {
       for(Item[] armor_set : Tools.unidentified_armor){
         for(Item armor : armor_set){ game.register(armor); }
       }
-      if(Compatability.BAUBLES.loaded){
-        for(Item ring : Tools.ring){        game.register(ring); }
-        for(Item ring : Tools.magic_ring){  game.register(ring); }
-      }
     }
     
     for(Metal metal : Metals.values){ if(metal.custom){ game.register(metal.ingot); } }

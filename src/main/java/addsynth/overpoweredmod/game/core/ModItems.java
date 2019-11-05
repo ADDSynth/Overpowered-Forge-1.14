@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.game.core;
 
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.compatability.baubles.DimensionAnchor;
+import addsynth.overpoweredmod.items.DimensionAnchor;
 import addsynth.overpoweredmod.items.FusionCore;
 import addsynth.overpoweredmod.items.OverpoweredItem;
 import addsynth.overpoweredmod.items.UnknownTechnology;
