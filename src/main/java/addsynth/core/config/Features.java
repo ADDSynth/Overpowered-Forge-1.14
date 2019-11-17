@@ -2,11 +2,11 @@ package addsynth.core.config;
 
 import java.io.File;
 import addsynth.core.ADDSynthCore;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.config.ModConfig;
 
-public final class Features extends Configuration {
+public final class Features extends ModConfig {
 
   public static Features instance;
 

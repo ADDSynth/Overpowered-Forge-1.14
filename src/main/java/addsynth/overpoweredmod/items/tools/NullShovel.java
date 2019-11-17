@@ -2,11 +2,11 @@ package addsynth.overpoweredmod.items.tools;
 
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.Tools;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
+import net.minecraft.item.ShovelItem;
 
-public class NullShovel extends ItemSpade {
+public class NullShovel extends ShovelItem {
 
   public NullShovel(final String name){
     super(Tools.VOID);
@@ -29,8 +29,8 @@ public class NullShovel extends ItemSpade {
   }
 
   @Override
-  public EnumRarity getForgeRarity(ItemStack stack){
-    return EnumRarity.EPIC;
+  public Rarity getRarity(ItemStack stack){
+    return Rarity.EPIC;
   }
 
 }

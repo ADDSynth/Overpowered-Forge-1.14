@@ -6,9 +6,9 @@ import java.util.Random;
 import addsynth.core.items.enchantment.EnchantmentUtil;
 import addsynth.core.items.enchantment.EnchantPair;
 import addsynth.overpoweredmod.OverpoweredMod;
-import net.minecraft.init.Enchantments;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 public final class ArmorEffects {
@@ -22,8 +22,8 @@ public final class ArmorEffects {
   public static final void enchant(final ItemStack stack){
     if(stack != null){
       final Item item = stack.getItem();
-      if(item instanceof ItemArmor){
-        switch(((ItemArmor)item).armorType){
+      if(item instanceof ArmorItem){
+        switch(((ArmorItem)item).getEquipmentSlot()){
         case HEAD: enchant_helmet(stack); break;
         case CHEST: enchant_armor(stack); break;
         case LEGS:  enchant_armor(stack); break;

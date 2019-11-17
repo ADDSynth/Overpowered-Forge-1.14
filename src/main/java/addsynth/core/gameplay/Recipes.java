@@ -4,7 +4,7 @@ import addsynth.core.config.Features;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.ScytheTool;
 import addsynth.core.util.RecipeUtil;
-import net.minecraft.init.Blocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 
 public final class Recipes {
@@ -18,11 +18,11 @@ public final class Recipes {
     }
     if(Features.music_box){
       RecipeUtil.registerMachine(new ItemStack(Core.music_box,1), new Object[]{
-        Blocks.NOTEBLOCK, Blocks.NOTEBLOCK, Blocks.NOTEBLOCK,
-        Blocks.NOTEBLOCK, Blocks.NOTEBLOCK, Blocks.NOTEBLOCK,
-        Blocks.NOTEBLOCK, Blocks.NOTEBLOCK, Blocks.NOTEBLOCK});
+        Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK,
+        Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK,
+        Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK});
       if(Features.music_sheet){
-        RecipeUtil.register(new ItemStack(Core.music_sheet,1), new Object[]{ "paper", Blocks.NOTEBLOCK});
+        RecipeUtil.register(new ItemStack(Core.music_sheet,1), new Object[]{ "paper", Blocks.NOTE_BLOCK});
       }
     }
     if(Features.scythes){

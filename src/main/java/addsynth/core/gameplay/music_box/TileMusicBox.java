@@ -1,19 +1,19 @@
 package addsynth.core.gameplay.music_box;
 
 import addsynth.core.tiles.TileBase;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
+import net.minecraft.util.Direction;
 
-public final class TileMusicBox extends TileBase implements ITickable {
+public final class TileMusicBox extends TileBase implements ITickableTileEntity {
 
   public enum Command {
     PLAY, CHANGE_TEMPO, CYCLE_NEXT_DIRECTION, CHANGE_TRACK_INSTRUMENT, TOGGLE_MUTE;
     public static final Command[] value = Command.values();
   }
 
-  private int next_direction = EnumFacing.NORTH.getIndex();
+  private int next_direction = Direction.NORTH.getIndex();
   private final MusicGrid music_grid = new MusicGrid();
 
   private boolean playing;
@@ -61,7 +61,7 @@ public final class TileMusicBox extends TileBase implements ITickable {
   }
 
   @Override
-  public final void update(){
+  public final void tick(){
     if(world.isRemote == false){
       if(world.isBlockPowered(pos)){ // FIX: music boxes will play if block is powered when the world loads up.
         if(activated == false){
@@ -93,21 +93,21 @@ public final class TileMusicBox extends TileBase implements ITickable {
   }
 
   @Override
-  public final void readFromNBT(NBTTagCompound nbt){
-    next_direction = nbt.getInteger("Next Direction");
+  public final void read(CompoundNBT nbt){
+    next_direction = nbt.getInt("Next Direction");
     playing = nbt.getBoolean("Playing");
     playhead = nbt.getByte("Playhead Position");
     music_grid.load_from_nbt(nbt);
-    super.readFromNBT(nbt);
+    super.read(nbt);
   }
 
   @Override
-  public final NBTTagCompound writeToNBT(NBTTagCompound nbt){
-    nbt.setInteger("Next Direction", next_direction);
-    nbt.setBoolean("Playing", playing);
-    nbt.setByte("Playhead Position", playhead);
+  public final CompoundNBT write(CompoundNBT nbt){
+    nbt.putInt("Next Direction", next_direction);
+    nbt.putBoolean("Playing", playing);
+    nbt.putByte("Playhead Position", playhead);
     music_grid.save_to_nbt(nbt);
-    return super.writeToNBT(nbt);
+    return super.write(nbt);
   }
 
   public final void play(final boolean play_all){
@@ -123,7 +123,7 @@ public final class TileMusicBox extends TileBase implements ITickable {
   }
 
   private final void play_next(){
-    final TileEntity tile = world.getTileEntity(pos.offset(EnumFacing.byIndex(next_direction)));
+    final TileEntity tile = world.getTileEntity(pos.offset(Direction.byIndex(next_direction)));
     if(tile instanceof TileMusicBox){
       ((TileMusicBox)tile).play(true);
     }

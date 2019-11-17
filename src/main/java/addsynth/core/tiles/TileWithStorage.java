@@ -3,8 +3,8 @@ package addsynth.core.tiles;
 import javax.annotation.Nullable;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -26,25 +26,25 @@ public abstract class TileWithStorage extends TileBase {
   }
 
   @Override
-  public void readFromNBT(NBTTagCompound nbt){
-    super.readFromNBT(nbt);
+  public void read(CompoundNBT nbt){
+    super.read(nbt);
     if(inventory != null){
-      inventory.deserializeNBT(nbt.getCompoundTag("ItemStackHandler")); // FEATURE: develope a system that checks for the old name and saves it under the new name.
+      inventory.deserializeNBT(nbt.getCompound("ItemStackHandler")); // FEATURE: develope a system that checks for the old name and saves it under the new name.
     }
   }
 
   @Override
-  public NBTTagCompound writeToNBT(NBTTagCompound nbt){
-    super.writeToNBT(nbt);
+  public CompoundNBT write(CompoundNBT nbt){
+    super.write(nbt);
     if(inventory != null){
-      nbt.setTag("ItemStackHandler",inventory.serializeNBT());
+      nbt.put("ItemStackHandler",inventory.serializeNBT());
     }
     return nbt;
   }
 
   @Override
   @SuppressWarnings("unchecked")
-  public <T> T getCapability(final Capability<T> capability, final @Nullable EnumFacing facing){
+  public <T> T getCapability(final Capability<T> capability, final @Nullable Direction facing){
     if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
       return (T)inventory;
     }
@@ -52,7 +52,7 @@ public abstract class TileWithStorage extends TileBase {
   }
   
   @Override
-  public boolean hasCapability(final Capability<?> capability, final @Nullable EnumFacing facing){
+  public boolean hasCapability(final Capability<?> capability, final @Nullable Direction facing){
     if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
       return inventory != null;
     }

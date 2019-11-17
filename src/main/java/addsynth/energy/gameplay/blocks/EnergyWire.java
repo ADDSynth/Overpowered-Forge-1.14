@@ -6,13 +6,14 @@ import addsynth.energy.blocks.Wire;
 import addsynth.energy.gameplay.tiles.TileEnergyWire;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
@@ -20,16 +21,16 @@ import net.minecraftforge.energy.IEnergyStorage;
 public final class EnergyWire extends Wire {
 
   public EnergyWire(final String name){
-    super(Material.CLOTH, MapColor.GRAY);
+    super(Material.WOOL, MaterialColor.GRAY);
     OverpoweredMod.registry.register_block(this, name);
     setHardness(0.1f);
   }
 
   @Override
-  protected final ArrayList<EnumFacing> get_valid_sides(final IBlockAccess world, final BlockPos pos){
-    ArrayList<EnumFacing> valid_sides = new ArrayList<>(6);
+  protected final ArrayList<Direction> get_valid_sides(final IBlockAccess world, final BlockPos pos){
+    ArrayList<Direction> valid_sides = new ArrayList<>(6);
     boolean can_use_energy;
-    for(EnumFacing side : EnumFacing.values()){
+    for(Direction side : Direction.values()){
       can_use_energy = false;
       TileEntity tile = world.getTileEntity(pos.offset(side));
       if(tile != null){
@@ -48,7 +49,7 @@ public final class EnergyWire extends Wire {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(final World world, final int meta){
+  public final TileEntity createNewTileEntity(final IBlockReader world){
     return new TileEnergyWire();
   }
 
@@ -60,7 +61,7 @@ public final class EnergyWire extends Wire {
    */
   @Override
   @SuppressWarnings("deprecation")
-  public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor){
+  public void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
     if(world.isRemote == false){
       final BlockNetwork network = BlockNetwork.getNetwork(world, pos);
       if(network != null){
@@ -70,9 +71,9 @@ public final class EnergyWire extends Wire {
   }
 
   @Override
-  public final void breakBlock(final World world, final BlockPos pos, final IBlockState state){ // called on server side only
+  public final void onReplaced(BlockState state, final World world, final BlockPos pos, final BlockState newstate, boolean isMoving){ // called on server side only
     final BlockNetwork network = BlockNetwork.getNetwork(world, pos); // get network while block still exists
-    super.breakBlock(world, pos, state);                              // finish breaking the block
+    super.onReplaced(state, world, pos, newstate, isMoving);          // finish breaking the block
     BlockNetwork.block_was_broken(network, world, pos, this);         // update network
   }
 

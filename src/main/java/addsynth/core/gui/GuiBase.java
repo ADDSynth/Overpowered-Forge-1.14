@@ -1,23 +1,23 @@
 package addsynth.core.gui;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.inventory.Container;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.inventory.container.Container;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 /**
  *  <b>Note:</b>
- *  the {@link GuiScreen#drawScreen(int, int, float)} function (where background, forground, and
+ *  the {@link Screen#drawScreen(int, int, float)} function (where background, forground, and
  *  buttons is being drawed in) is called in the
  *  {@link net.minecraft.client.renderer.EntityRenderer#updateCameraAndRender} function which
  *  is called every frame in the {@link Minecraft#runGameLoop()} function.<br>
- *  The {@link GuiScreen#updateScreen()} function is called in
+ *  The {@link Screen#updateScreen()} function is called in
  *  {@link Minecraft#runTick()} function, which is called 20 times a second.
  */
-public class GuiBase extends GuiContainer {
+public class GuiBase extends ContainerScreen {
 
   protected static final int text_color = 4210752;
 
@@ -81,11 +81,11 @@ public class GuiBase extends GuiContainer {
   }
 
   protected final void draw_text_left(final String text, final int x, final int y){
-    fontRenderer.drawString(text, x, y, text_color);
+    font.drawString(text, x, y, text_color);
   }
 
   protected final void draw_text_center(final String text, final int y){
-    fontRenderer.drawString(text, (this.xSize / 2) - (fontRenderer.getStringWidth(text) / 2), y, text_color);
+    font.drawString(text, (this.xSize / 2) - (font.getStringWidth(text) / 2), y, text_color);
   }
 
   /** Vanilla has their own method but mine assumes a few arguments to make it easier.
@@ -95,15 +95,15 @@ public class GuiBase extends GuiContainer {
    * @param y
    */
   protected final void draw_text_center(final String text, final int x, final int y){
-    fontRenderer.drawString(text, x - (fontRenderer.getStringWidth(text) / 2), y, text_color);
+    font.drawString(text, x - (font.getStringWidth(text) / 2), y, text_color);
   }
 
   protected final void draw_text_right(final String text, final int y){
-    fontRenderer.drawString(text, this.xSize - 6 - fontRenderer.getStringWidth(text), y, text_color);
+    font.drawString(text, this.xSize - 6 - font.getStringWidth(text), y, text_color);
   }
 
   protected final void draw_text_right(final String text, final int x, final int y){
-    fontRenderer.drawString(text, x - fontRenderer.getStringWidth(text), y, text_color);
+    font.drawString(text, x - font.getStringWidth(text), y, text_color);
   }
 
 }

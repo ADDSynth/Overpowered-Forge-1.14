@@ -9,7 +9,7 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerCrystalGenerator;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileCrystalMatterReplicator;
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
@@ -49,7 +49,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase {
   @Override
   public final void initGui() {
     super.initGui();
-    buttonList.add(new OnOffSwitch(0, this.guiLeft + 6, this.guiTop + 17, tile));
+    buttons.add(new OnOffSwitch(0, this.guiLeft + 6, this.guiTop + 17, tile));
   }
 
   @Override
@@ -75,7 +75,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase {
   }
 
   @Override
-  protected final void actionPerformed(GuiButton button) throws IOException {
+  protected final void actionPerformed(Button button) throws IOException {
     if(button.id == 0){
       NetworkHandler.INSTANCE.sendToServer(new SwitchMachineMessage(tile.getPos()));
     }

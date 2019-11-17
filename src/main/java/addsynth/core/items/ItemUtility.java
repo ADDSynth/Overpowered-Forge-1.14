@@ -1,26 +1,26 @@
 package addsynth.core.items;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 
 public final class ItemUtility {
 
   /**
-   * Used in Items to get the {@link NBTTagCompound} of ItemStacks.
+   * Used in Items to get the {@link CompoundNBT} of ItemStacks.
    * Used in functions like <code>onItemUse()</code> or <code>onItemRightClick()</code>.
-   * Then call {@link ItemStack#setTagCompound(NBTTagCompound)} to save any changes.
+   * Then call {@link ItemStack#setTag(CompoundNBT)} to save any changes.
    * @param stack
-   * @return NBTTag if one exists, otherwise a new NBTTagCompound
+   * @return NBTTag if one exists, otherwise a new CompoundNBT
    */
-  public static final NBTTagCompound getItemStackNBT(final ItemStack stack) throws NullPointerException {
-    NBTTagCompound nbt = stack.getTagCompound();
-    return nbt == null ? new NBTTagCompound() : nbt;
+  public static final CompoundNBT getItemStackNBT(final ItemStack stack) throws NullPointerException {
+    CompoundNBT nbt = stack.getTag();
+    return nbt == null ? new CompoundNBT() : nbt;
   }
 
-  public static final void add_to_player_inventory(final EntityPlayer player, final ItemStack stack){
+  public static final void add_to_player_inventory(final PlayerEntity player, final ItemStack stack){
     if(player.inventory.addItemStackToInventory(stack) == false){
       player.dropItem(stack, false);
     }

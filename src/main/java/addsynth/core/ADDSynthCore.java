@@ -19,13 +19,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-@Mod(modid   = ADDSynthCore.MOD_ID,
-     name    = ADDSynthCore.NAME,
-     version = ADDSynthCore.VERSION,
-     acceptedMinecraftVersions = "[1.12.2]",
-     dependencies = "required-after:forge@[14.23.5.2816,]",
-     guiFactory = "addsynth.core.config.gui.ADDSynthCoreGuiFactory",
-     modLanguage = "java")
+@Mod(value = ADDSynthCore.MOD_ID)
 public final class ADDSynthCore {
 
   public static final String MOD_ID = "addsynthcore";

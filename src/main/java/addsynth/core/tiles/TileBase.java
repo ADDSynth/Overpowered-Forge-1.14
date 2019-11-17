@@ -1,7 +1,7 @@
 package addsynth.core.tiles;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -27,8 +27,8 @@ public abstract class TileBase extends TileEntity {
 
   @Override
   public final SPacketUpdateTileEntity getUpdatePacket(){
-      NBTTagCompound nbtTag = new NBTTagCompound();
-      writeToNBT(nbtTag);
+      CompoundNBT nbtTag = new CompoundNBT();
+      write(nbtTag);
       return new SPacketUpdateTileEntity(this.pos, -1, nbtTag);
   }
 
@@ -38,15 +38,15 @@ public abstract class TileBase extends TileEntity {
   }
 
   @Override
-  public final NBTTagCompound getUpdateTag(){
-    NBTTagCompound nbtTagCompound = new NBTTagCompound();
-    writeToNBT(nbtTagCompound);
+  public final CompoundNBT getUpdateTag(){
+    CompoundNBT nbtTagCompound = new CompoundNBT();
+    write(nbtTagCompound);
     return nbtTagCompound;
   }
 
   @Override
-  public final void handleUpdateTag(NBTTagCompound tag){
-    readFromNBT(tag);
+  public final void handleUpdateTag(CompoundNBT tag){
+    read(tag);
   }
 
   public void update_data(){

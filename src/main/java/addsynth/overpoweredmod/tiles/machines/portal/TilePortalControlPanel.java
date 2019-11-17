@@ -15,7 +15,7 @@ import addsynth.overpoweredmod.network.client_messages.SyncPortalDataMessage;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -26,7 +26,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver {
   public boolean valid_portal = false;
   public String message = "";
   public ArrayList<BlockPos> portal_frames = new ArrayList<>(containers);
-  private EnumFacing.Axis axis;
+  private Direction.Axis axis;
   private BlockPos lowest_portal_frame;
 
   public TilePortalControlPanel() {
@@ -85,7 +85,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver {
   private static final void portal_search_algorithm(BlockPos from, boolean[] has_gem_block, ArrayList<BlockPos> searched, World world, ArrayList<BlockPos> portal_frames){
     BlockPos position;
     Block block;
-    for(EnumFacing side : EnumFacing.values()){
+    for(Direction side : Direction.values()){
       position = from.offset(side);
       if(searched.contains(position) == false){
         searched.add(position);
@@ -145,14 +145,14 @@ public final class TilePortalControlPanel extends TileEnergyReceiver {
          check_portal_frame(x+4,y+2,z,world) && check_portal_frame(x  ,y+4,z,world) &&
          check_portal_frame(x+2,y+4,z,world) && check_portal_frame(x+4,y+4,z,world)){
            pass = true;
-           axis = EnumFacing.Axis.X;
+           axis = Direction.Axis.X;
       }
       if(check_portal_frame(x,y,  z,  world) && check_portal_frame(x,y,  z+2,world) &&
          check_portal_frame(x,y,  z+4,world) && check_portal_frame(x,y+2,z,  world) &&
          check_portal_frame(x,y+2,z+4,world) && check_portal_frame(x,y+4,z,  world) &&
          check_portal_frame(x,y+4,z+2,world) && check_portal_frame(x,y+4,z+4,world)){
            pass = true;
-           axis = EnumFacing.Axis.Z;
+           axis = Direction.Axis.Z;
       }
     }
     

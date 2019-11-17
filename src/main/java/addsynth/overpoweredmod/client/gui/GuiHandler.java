@@ -12,7 +12,7 @@ import addsynth.overpoweredmod.tiles.machines.fusion.TileFusionChamber;
 import addsynth.overpoweredmod.tiles.machines.laser.TileLaserHousing;
 import addsynth.overpoweredmod.tiles.machines.portal.TilePortalControlPanel;
 import addsynth.overpoweredmod.tiles.machines.portal.TilePortalFrame;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -41,7 +41,7 @@ public final class GuiHandler implements IGuiHandler {
   // PRIORITY: convert to an enum. all versions.
 
   @Override
-  public final Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z){
+  public final Object getServerGuiElement(int id, PlayerEntity player, World world, int x, int y, int z){
     Object object = null;
     final TileEntity tile = world.getTileEntity(new BlockPos(x,y,z));
     switch(id){
@@ -66,7 +66,7 @@ public final class GuiHandler implements IGuiHandler {
 
   @Override
   @SideOnly(Side.CLIENT) // here so I can debug this in a development environment, ran perfectly fine without it from gradlew runServer.
-  public final Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z){
+  public final Object getClientGuiElement(int id, PlayerEntity player, World world, int x, int y, int z){
     Object object = null;
     final TileEntity tile = world.getTileEntity(new BlockPos(x,y,z));
     switch(id){

@@ -9,8 +9,8 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.game.core.*;
 import addsynth.overpoweredmod.init.Setup;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
+import net.minecraft.block.Blocks;
+import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
@@ -147,14 +147,14 @@ public final class Recipes {
 
     // Machines
     RecipeUtil.register(3, 3, new ItemStack(Wires.wire,8), new Object[]{
-      Blocks.WOOL, Blocks.WOOL, Blocks.WOOL,
+      Blocks.WHITE_WOOL, Blocks.WHITE_WOOL, Blocks.WHITE_WOOL,
       "ingotCopper", "ingotCopper", "ingotCopper",
-      Blocks.WOOL, Blocks.WOOL, Blocks.WOOL});
+      Blocks.WHITE_WOOL, Blocks.WHITE_WOOL, Blocks.WHITE_WOOL});
       
     RecipeUtil.register(3,3, new ItemStack(Wires.data_cable,6), new Object[]{
-      Blocks.WOOL, Blocks.WOOL, Blocks.WOOL,
+      Blocks.WHITE_WOOL, Blocks.WHITE_WOOL, Blocks.WHITE_WOOL,
       energy_crystal_shard, energy_crystal_shard, energy_crystal_shard,
-      Blocks.WOOL, Blocks.WOOL, Blocks.WOOL});
+      Blocks.WHITE_WOOL, Blocks.WHITE_WOOL, Blocks.WHITE_WOOL});
       
     RecipeUtil.register(3, 3, new ItemStack(Machines.generator,1), new Object[]{
       "ingotIron", power_core, "ingotIron",

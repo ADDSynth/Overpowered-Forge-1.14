@@ -7,8 +7,8 @@ import addsynth.core.inventory.SlotData;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
@@ -39,25 +39,25 @@ public abstract class TileMachine extends TileBase {
   }
 
   @Override
-  public void readFromNBT(NBTTagCompound nbt){
-    super.readFromNBT(nbt);
-    if(input_inventory != null){ input_inventory.deserializeNBT(nbt.getCompoundTag("InputInventory")); }
-    if(output_inventory != null){ output_inventory.deserializeNBT(nbt.getCompoundTag("OutputInventory")); }
+  public void read(CompoundNBT nbt){
+    super.read(nbt);
+    if(input_inventory != null){ input_inventory.deserializeNBT(nbt.getCompound("InputInventory")); }
+    if(output_inventory != null){ output_inventory.deserializeNBT(nbt.getCompound("OutputInventory")); }
   }
 
   @Override
-  public NBTTagCompound writeToNBT(NBTTagCompound nbt){
-    super.writeToNBT(nbt);
-    if(input_inventory != null){ nbt.setTag("InputInventory", input_inventory.serializeNBT()); }
-    if(output_inventory != null){ nbt.setTag("OutputInventory", output_inventory.serializeNBT()); }
+  public CompoundNBT write(CompoundNBT nbt){
+    super.write(nbt);
+    if(input_inventory != null){ nbt.put("InputInventory", input_inventory.serializeNBT()); }
+    if(output_inventory != null){ nbt.put("OutputInventory", output_inventory.serializeNBT()); }
     return nbt;
   }
 
   @SuppressWarnings("unchecked")
   @Override
-  public <T> T getCapability(final Capability<T> capability, final @Nullable EnumFacing facing){
+  public <T> T getCapability(final Capability<T> capability, final @Nullable Direction facing){
     if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
-      if(facing == EnumFacing.DOWN){
+      if(facing == Direction.DOWN){
         return (T)output_inventory;
       }
       return (T)input_inventory;
@@ -66,7 +66,7 @@ public abstract class TileMachine extends TileBase {
   }
 
   @Override
-  public boolean hasCapability(final Capability<?> capability, final @Nullable EnumFacing facing){
+  public boolean hasCapability(final Capability<?> capability, final @Nullable Direction facing){
     if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
       if(facing == EnumFacing.DOWN){
         return output_inventory != null;

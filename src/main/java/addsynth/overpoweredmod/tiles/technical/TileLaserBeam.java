@@ -1,9 +1,9 @@
 package addsynth.overpoweredmod.tiles.technical;
 
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ITickable;
 
-public final class TileLaserBeam extends TileEntity implements ITickable {
+public final class TileLaserBeam extends TileEntity implements ITickableTileEntity {
 
   private static final int max_life = 10;
   private int life = max_life;
@@ -14,7 +14,7 @@ public final class TileLaserBeam extends TileEntity implements ITickable {
   //   by the LaserBeam block having light. So it's just easier to keep this as a TileEntity for now.
 
   @Override
-  public final void update(){
+  public final void tick(){
     if(world.isRemote == false){
       life -= 1;
       if(life <= 0){

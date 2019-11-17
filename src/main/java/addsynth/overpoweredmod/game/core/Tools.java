@@ -8,10 +8,10 @@ import addsynth.core.items.Toolset;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.items.tools.*;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.Rarity;
 import net.minecraftforge.common.util.EnumHelper;
 
 public final class Tools {
@@ -40,8 +40,8 @@ public final class Tools {
     }
   
     @Override
-    public EnumRarity getForgeRarity(final ItemStack stack){
-      return EnumRarity.RARE;
+    public Rarity getRarity(final ItemStack stack){
+      return Rarity.RARE;
     }
   };
 

@@ -2,11 +2,11 @@ package addsynth.overpoweredmod.items.tools;
 
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.Tools;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemAxe;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 
-public final class EnergyAxe extends ItemAxe {
+public final class EnergyAxe extends AxeItem {
 
   public EnergyAxe(final String name){
     // You have to specify attack damage and speed for axes yourself, otherwise it produces an error trying to set them
@@ -21,7 +21,7 @@ public final class EnergyAxe extends ItemAxe {
   }
 
   @Override
-  public EnumRarity getForgeRarity(ItemStack stack){
-    return EnumRarity.RARE;
+  public Rarity getRarity(ItemStack stack){
+    return Rarity.RARE;
   }
 }

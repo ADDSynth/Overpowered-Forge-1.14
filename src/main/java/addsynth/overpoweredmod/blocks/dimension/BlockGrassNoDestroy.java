@@ -6,8 +6,8 @@ import net.minecraft.block.material.Material;
 
 public final class BlockGrassNoDestroy extends Block {
 
-  public BlockGrassNoDestroy(String name) {
-    super(Material.GRASS);
+  public BlockGrassNoDestroy(String name){
+    super(Material.ORGANIC);
     setBlockUnbreakable();
     // MAYBE: Registers.add(this, name, false);
   }

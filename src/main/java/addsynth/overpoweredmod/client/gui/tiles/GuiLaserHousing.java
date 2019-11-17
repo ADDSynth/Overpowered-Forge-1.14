@@ -59,11 +59,11 @@ public final class GuiLaserHousing extends GuiEnergyBase {
   @Override
   public final void initGui(){
     super.initGui();
-    buttonList.add(new OnOffSwitch(0, this.guiLeft + 6, this.guiTop + 17, tile));
+    buttons.add(new OnOffSwitch(0, this.guiLeft + 6, this.guiTop + 17, tile));
     checkbox = new CheckBox(1, this.guiLeft + check_box_x, this.guiTop + check_box_y, tile.getAutoShutoff());
-    buttonList.add(checkbox);
+    buttons.add(checkbox);
     
-    distance_text_field = new GuiTextField(0,this.fontRenderer,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height);
+    distance_text_field = new GuiTextField(0,this.font,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height);
     distance_text_field.setMaxStringLength(4); // FEATURE: add a numbers-only textbox to ADDSynthCore.
     distance_text_field.setText(Integer.toString(tile.getLaserDistance()));
   }
@@ -144,11 +144,11 @@ public final class GuiLaserHousing extends GuiEnergyBase {
   private final void draw_energy_requirements(){
     final String required_energy = Integer.toString(tile.getEnergy().getCapacity());
     final String word_1 = "Required Energy: "+required_energy;
-    final int word_1_width = fontRenderer.getStringWidth(word_1);
+    final int word_1_width = font.getStringWidth(word_1);
     
     final String current_energy = Integer.toString(tile.getEnergy().getEnergy());
     final String word_2 = "Current Energy: "+current_energy;
-    final int word_2_width = fontRenderer.getStringWidth(word_2);
+    final int word_2_width = font.getStringWidth(word_2);
     
     if(Math.max(word_1_width, word_2_width) == word_1_width){
       draw_text_left(word_1, 6, line_3);

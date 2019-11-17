@@ -8,10 +8,10 @@ import addsynth.energy.EnergyNetwork;
 import addsynth.energy.EnergyNode;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import net.minecraft.item.Item;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
+import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.Direction;
 
-public abstract class TileEnergyTransmitter extends TileEnergyWithStorage implements ITickable {
+public abstract class TileEnergyTransmitter extends TileEnergyWithStorage implements ITickableTileEntity {
 
   protected final ArrayList<EnergyNetwork>         networks = new ArrayList<>(1);
   protected final ArrayList<TileEnergyWithStorage> machines = new ArrayList<>(6);
@@ -39,7 +39,7 @@ public abstract class TileEnergyTransmitter extends TileEnergyWithStorage implem
    * when they are ready to transmit energy.
    */
   @Override
-  public void update(){
+  public void tick(){
     if(world != null){
       if(world.isRemote == false){
         if(energy != null){
@@ -79,7 +79,7 @@ public abstract class TileEnergyTransmitter extends TileEnergyWithStorage implem
     networks.clear();
     BlockNetwork network;
     EnergyNetwork energy_network;
-    for(EnumFacing side : EnumFacing.values()){
+    for(Direction side : Direction.values()){
       network = BlockNetwork.getNetwork(world, pos.offset(side));
       if(network != null){
         if(network instanceof EnergyNetwork){

@@ -5,13 +5,13 @@ import addsynth.core.util.ServerUtils;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Config;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
@@ -25,7 +25,7 @@ public final class BlackHole extends Block {
   public static final byte MAX_RADIUS = 100;
 
   public BlackHole(final String name){
-    super(Material.GROUND, MapColor.BLACK);
+    super(Material.GROUND, MaterialColor.BLACK);
     // setResistance(100.0f);
     OverpoweredMod.registry.register_block(this, name); // we register a custom BlackHoleItem in Init class.
   }
@@ -135,7 +135,7 @@ public final class BlackHole extends Block {
   }
   
   private static final void destroyPlayers(World world, double x, double y, double z, final int radius){
-    for(EntityPlayer player : world.playerEntities){
+    for(PlayerEntity player : world.playerEntities){
       if(player.isCreative() == false && player.isSpectator() == false){
         if(MathUtility.get_distance(x, y, z, player.posX, player.posY, player.posZ) <= radius){
           player.setDead();

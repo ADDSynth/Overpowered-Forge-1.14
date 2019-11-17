@@ -3,11 +3,11 @@ package addsynth.overpoweredmod.config;
 import java.io.File;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.config.ModConfig;
 
-public final class FeatureConfig extends Configuration {
+public final class FeatureConfig extends ModConfig {
 
   public static FeatureConfig instance;
 

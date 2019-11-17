@@ -4,11 +4,11 @@ import java.io.File;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.blocks.unique.BlackHole;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.config.ModConfig;
 
-public final class Config extends Configuration {
+public final class Config extends ModConfig {
 
   public static Config instance;
 

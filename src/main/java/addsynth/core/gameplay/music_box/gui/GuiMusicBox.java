@@ -11,8 +11,8 @@ import addsynth.core.gameplay.music_box.network_messages.NoteMessage;
 import addsynth.core.gui.GuiBase;
 import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.inventory.container.BaseContainer;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.widget.Widget;
+import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
@@ -83,18 +83,18 @@ public final class GuiMusicBox extends GuiBase {
     super.initGui();
 
     // button setup
-    play_button           = new AdjustableButton(0, this.guiLeft + (xSize / 2) - (play_button_width / 2), this.guiTop + 17, play_button_width, 14, "Play");
-    tempo_lower_button    = new AdjustableButton(1, this.guiLeft + 6,                                         this.guiTop + tempo_button_y,
+    play_button           = new AdjustableButton(this.guiLeft + (xSize / 2) - (play_button_width / 2), this.guiTop + 17, play_button_width, 14, "Play");
+    tempo_lower_button    = new AdjustableButton(this.guiLeft + 6,                                         this.guiTop + tempo_button_y,
                                                     tempo_button_width, tempo_button_height, "<");
-    tempo_higher_button   = new AdjustableButton(2, this.guiLeft + 6 + tempo_button_width + tempo_text_width, this.guiTop + tempo_button_y,
+    tempo_higher_button   = new AdjustableButton(this.guiLeft + 6 + tempo_button_width + tempo_text_width, this.guiTop + tempo_button_y,
                                                     tempo_button_width, tempo_button_height,">");
-    next_direction_button = new AdjustableButton(3, this.guiRight - 6 - next_direction_button_width, this.guiTop + 17, next_direction_button_width, 14, "North");
+    next_direction_button = new AdjustableButton(this.guiRight - 6 - next_direction_button_width, this.guiTop + 17, next_direction_button_width, 14, "North");
 
     // controls list
-    buttonList.add(play_button);
-    buttonList.add(tempo_lower_button);
-    buttonList.add(tempo_higher_button);
-    buttonList.add(next_direction_button);
+    buttons.add(play_button);
+    buttons.add(tempo_lower_button);
+    buttons.add(tempo_higher_button);
+    buttons.add(next_direction_button);
     // add loop checkbox
     create_dynamic_buttons();
   }
@@ -112,7 +112,7 @@ public final class GuiMusicBox extends GuiBase {
     for(i = 0; i < MusicGrid.tracks; i++){
       id = button_base_id + i;
       y = this.guiTop + mute_button_y + (i * (mute_button_size + 1));
-      buttonList.add(new MuteButton(id,x,y,i,tile.get_mute(i)));
+      buttons.add(new MuteButton(id,x,y,i,tile.get_mute(i)));
     }
 
     // Instrument Buttons
@@ -121,7 +121,7 @@ public final class GuiMusicBox extends GuiBase {
     for(i = 0; i < MusicGrid.tracks; i++){
       id = button_base_id + i;
       y = this.guiTop + instrument_button_y + (i * (instrument_button_height + 1));
-      buttonList.add(new InstrumentButton(id,x,y,i,tile.get_track_instrument(i)));
+      buttons.add(new InstrumentButton(id,x,y,i,tile.get_track_instrument(i)));
     }
 
     // Note Buttons
@@ -134,7 +134,7 @@ public final class GuiMusicBox extends GuiBase {
         y = this.guiTop + music_grid_y + (j * note_button_height);
         button = new NoteButton(id,x,y,j,i,note[tile.get_note(i, j)]);
         button.visible = tile.note_exists(j, i);
-        buttonList.add(button);
+        buttons.add(button);
       }
     }
   }
@@ -179,17 +179,18 @@ public final class GuiMusicBox extends GuiBase {
     draw_text_center(bpm + " bpm",tempo_text_x_center, 27);
     
     draw_text_center("Next:", this.xSize - 6 - Math.round(next_direction_button_width / 2), 6);
-    next_direction_button.displayString = face[tile.get_next_direction()];
+    next_direction_button.setMessage(face[tile.get_next_direction()]);
     
     draw_text_left("Current Note: "+note[note_selected],6,info_text_y);
     
   }
 
   /**
-   * Overrides the {@link GuiContainer#keyTyped(char, int)} method.
+   * Overrides the {@link ContainerScreen#keyPressed(int, int, int)} method.
    */
   @Override
-  protected final void keyTyped(final char typed_character,final int keyCode){
+  public
+  final boolean keyPressed(final int par1, final int par2, final int par3){
     if (keyCode == Keyboard.KEY_ESCAPE){
       this.mc.player.closeScreen();
     }
@@ -228,8 +229,8 @@ public final class GuiMusicBox extends GuiBase {
   @Override
   protected final void mouseClicked(final int mouseX, final int mouseY, final int mouse_button) throws IOException {
     int i;
-    for(i = 0; i < buttonList.size(); i++){
-      GuiButton button = buttonList.get(i);
+    for(i = 0; i < buttons.size(); i++){
+      Widget button = buttons.get(i); // OPTIMIZE set this to final in all versions
       if(button.mousePressed(this.mc, mouseX, mouseY)){
         switch(mouse_button){
         case 0:
@@ -248,7 +249,7 @@ public final class GuiMusicBox extends GuiBase {
             if(button instanceof NoteButton){
               final NoteButton note_button = (NoteButton)button;
               note_button.visible = true;
-              note_button.displayString = note[note_selected];
+              note_button.setMessage(note[note_selected]);
               NetworkHandler.INSTANCE.sendToServer(new NoteMessage(tile.getPos(),note_button.frame,note_button.track,(byte)0,note_selected,1.0f));
             }
             if(button instanceof InstrumentButton){

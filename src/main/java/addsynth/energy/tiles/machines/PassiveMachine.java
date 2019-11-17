@@ -4,7 +4,7 @@ import addsynth.core.Constants;
 import addsynth.core.inventory.SlotData;
 import addsynth.energy.CustomEnergyStorage;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 
 /** <p>Passive Machines will be in the <code>ACTIVE</code> state, only if the {@link #can_run}
  *     variable is true, and in the <code>IDLE</code> state if the <code>can_run</code> variable
@@ -45,15 +45,15 @@ public abstract class PassiveMachine extends WorkMachine {
   }
 
   @Override
-  public void readFromNBT(NBTTagCompound nbt){
+  public void readFromNBT(CompoundNBT nbt){
     super.readFromNBT(nbt);
-    state = State.value[nbt.getInteger("State")];
+    state = State.value[nbt.getInt("State")];
   }
 
   @Override
-  public NBTTagCompound writeToNBT(NBTTagCompound nbt){
+  public CompoundNBT writeToNBT(CompoundNBT nbt){
     super.writeToNBT(nbt);
-    nbt.setInteger("State",state.ordinal());
+    nbt.putInt("State",state.ordinal());
     return nbt;
   }
 

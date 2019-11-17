@@ -8,12 +8,12 @@ import addsynth.core.material.blocks.MetalBlock;
 import addsynth.core.util.RecipeUtil;
 import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class Metal extends OreMaterial {
@@ -40,7 +40,7 @@ public class Metal extends OreMaterial {
   }
 
   /** Manufactured Metal */
-  protected Metal(final String unlocalized_name, final MapColor color){
+  protected Metal(final String unlocalized_name, final MaterialColor color){
     super(unlocalized_name, new CoreItem(unlocalized_name+"_ingot"), new MetalBlock(unlocalized_name+"_block", color));
     this.ingot = this.item;
     this.nugget = new CoreItem(unlocalized_name+"_nugget");
@@ -54,7 +54,7 @@ public class Metal extends OreMaterial {
   }
 
   /** Custom Metal */
-  public Metal(final String unlocalized_name, final MapColor color, final MiningStrength strength){
+  public Metal(final String unlocalized_name, final MaterialColor color, final MiningStrength strength){
     super(unlocalized_name, new CoreItem(unlocalized_name+"_ingot"), new MetalBlock(unlocalized_name+"_block", color),
       OreType.BLOCK, strength);
     this.ingot = this.item;

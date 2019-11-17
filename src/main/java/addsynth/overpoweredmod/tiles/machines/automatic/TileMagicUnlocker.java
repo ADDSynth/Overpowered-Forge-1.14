@@ -10,10 +10,10 @@ import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.game.core.Init;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
 
 public final class TileMagicUnlocker extends PassiveMachine {
 
@@ -37,7 +37,7 @@ public final class TileMagicUnlocker extends PassiveMachine {
   protected final void performWork(){
     final Enchantment enchantment = get_enchantment();
     if(enchantment != null){
-      ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1, 0);
+      ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1);
       enchant_book.addEnchantment(enchantment, enchantment == Enchantments.FORTUNE ? 2 : 1);
       output_inventory.setStackInSlot(0, enchant_book);
       input_inventory.decrease(0);

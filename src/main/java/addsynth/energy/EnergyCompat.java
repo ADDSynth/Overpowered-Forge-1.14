@@ -10,7 +10,7 @@ import cofh.redstoneflux.api.IEnergyReceiver;
 import net.darkhax.tesla.api.*;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.energy.CapabilityEnergy;
@@ -36,9 +36,9 @@ public final class EnergyCompat {
   public static final class CompatEnergyNode {
     public final EnergyType type;
     public final Object energy;
-    public final EnumFacing side;
+    public final Direction side;
     
-    public CompatEnergyNode(final EnergyType type, final Object energy, final EnumFacing side){
+    public CompatEnergyNode(final EnergyType type, final Object energy, final Direction side){
       this.type = type;
       this.energy = energy;
       this.side = side;
@@ -48,10 +48,10 @@ public final class EnergyCompat {
   public static final CompatEnergyNode[] getConnectedEnergy(final BlockPos position, final World world){
     final ArrayList<CompatEnergyNode> nodes = new ArrayList<>(6);
     TileEntity tile;
-    EnumFacing capability_side;
+    Direction capability_side;
     Object energy;
 
-    for(EnumFacing side : EnumFacing.values()){
+    for(Direction side : Direction.values()){
       tile = world.getTileEntity(position.offset(side));
       if(tile != null){
         capability_side = side.getOpposite();
@@ -167,7 +167,7 @@ public final class EnergyCompat {
     return 0;
   }
 
-  private static final int GetRedstoneFluxEnergy(final Object input, final int energy_requested, final boolean simulate, final EnumFacing side){
+  private static final int GetRedstoneFluxEnergy(final Object input, final int energy_requested, final boolean simulate, final Direction side){
     if(input instanceof IEnergyProvider){
       final IEnergyProvider energy = (IEnergyProvider)input;
       return energy.extractEnergy(side, energy_requested, simulate);
@@ -210,7 +210,7 @@ public final class EnergyCompat {
     return 0;
   }
   
-  private static final int SendRedstoneFluxEnergy(final Object input, final int transmitted_energy, final EnumFacing side){
+  private static final int SendRedstoneFluxEnergy(final Object input, final int transmitted_energy, final Direction side){
     if(input instanceof IEnergyReceiver){
       final IEnergyReceiver energy = (IEnergyReceiver)input;
       return energy.receiveEnergy(side, transmitted_energy, false);

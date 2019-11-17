@@ -5,9 +5,9 @@ import java.util.List;
 import addsynth.core.ADDSynthCore;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.ConfigElement;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.config.DummyConfigElement.DummyCategoryElement;
 import net.minecraftforge.fml.client.config.IConfigElement;
+import net.minecraftforge.fml.config.ModConfig;
 
 /**
  * This utility class is used to build your Client Gui Config screens.
@@ -29,7 +29,7 @@ public final class ConfigUtil {
    * @param config The Configuration class you want to add
    * @return a {@link DummyCategoryElement} containing everything in your configuration file.
    */
-  public static final DummyCategoryElement addConfigFile(final String name, final String modid, final Configuration config){
+  public static final DummyCategoryElement addConfigFile(final String name, final String modid, final ModConfig config){
     final ArrayList<IConfigElement> elements = new ArrayList<>(10);
     final String translation_key = modid+".config."+((name.toLowerCase()).replace(' ', '_'));
     addConfigElements(config, elements);
@@ -39,7 +39,7 @@ public final class ConfigUtil {
   /** Use this to add the child elements of a Configuration to a List of {@link IConfigElement}s.
    *  Use this if you only have 1 config file and it is suficiently categorized.
    */
-  public static final void addConfigElements(final Configuration config, final List<IConfigElement> elements){
+  public static final void addConfigElements(final ModConfig config, final List<IConfigElement> elements){
     for(ConfigCategory category : getCategories(config)){
       elements.add(new ConfigElement(category));
     }
@@ -55,7 +55,7 @@ public final class ConfigUtil {
    * @param config The {@link Configuration} that has the category
    * @param category The name of the category you want to add
    */
-  public static final DummyCategoryElement addCategoryElements(final String name, final String modid, final Configuration config, final String category){
+  public static final DummyCategoryElement addCategoryElements(final String name, final String modid, final ModConfig config, final String category){
     if(config.hasCategory(category)){
       final String translation_key = modid+".config."+((name.toLowerCase()).replace(' ', '_'));
       List<IConfigElement> children = (new ConfigElement(config.getCategory(category))).getChildElements();
@@ -68,7 +68,7 @@ public final class ConfigUtil {
   /** Gets the categories in the Configuration class that you specify.
    * @param config
    */
-  private static final ArrayList<ConfigCategory> getCategories(final Configuration config){
+  private static final ArrayList<ConfigCategory> getCategories(final ModConfig config){
     final ArrayList<ConfigCategory> categories = new ArrayList<>(20);
     for(String category : config.getCategoryNames()){
       if(category.contains(".") == false){

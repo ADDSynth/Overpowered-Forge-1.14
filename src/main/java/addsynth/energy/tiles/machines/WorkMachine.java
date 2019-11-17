@@ -5,15 +5,15 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyReceiver;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ITickable;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 
 /** WorkMachines check if their Energy Storage is full every tick, and if it is,
  *  it begins to increment a {@link #work_units} variable, then executes {@link #performWork()}
  *  when <code>work_units</code> has reached <code>work_units_required</code>.
  * @author ADDSynth
  */
-public abstract class WorkMachine extends TileEnergyReceiver implements ITickable {
+public abstract class WorkMachine extends TileEnergyReceiver implements ITickableTileEntity {
 
   protected int work_units;
   protected final int work_units_required;
@@ -29,20 +29,20 @@ public abstract class WorkMachine extends TileEnergyReceiver implements ITickabl
   }
 
   @Override
-  public void readFromNBT(final NBTTagCompound nbt){
-    super.readFromNBT(nbt);
-    work_units = nbt.getInteger("WorkUnits");
+  public void read(final CompoundNBT nbt){
+    super.read(nbt);
+    work_units = nbt.getInt("WorkUnits");
   }
 
   @Override
-  public NBTTagCompound writeToNBT(final NBTTagCompound nbt){
-    super.writeToNBT(nbt);
-    nbt.setInteger("WorkUnits",work_units);
+  public CompoundNBT write(final CompoundNBT nbt){
+    super.write(nbt);
+    nbt.putInt("WorkUnits",work_units);
     return nbt;
   }
 
   @Override
-  public void update(){ // MAYBE: make the update function protected, everywhere.
+  public void tick(){ // MAYBE: make the update function protected, everywhere.
     if(world != null){
       if(world.isRemote == false){
         if(running){

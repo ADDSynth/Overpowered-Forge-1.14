@@ -2,11 +2,11 @@ package addsynth.overpoweredmod.items.tools;
 
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.Tools;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.Rarity;
 
-public class EnergyPickaxe extends ItemPickaxe {
+public class EnergyPickaxe extends PickaxeItem {
 
   public EnergyPickaxe(final String name){
     super(Tools.ENERGY);
@@ -23,7 +23,7 @@ public class EnergyPickaxe extends ItemPickaxe {
   }
 
   @Override
-  public EnumRarity getForgeRarity(ItemStack stack){
-    return EnumRarity.RARE;
+  public Rarity getRarity(ItemStack stack){
+    return Rarity.RARE;
   }
 }

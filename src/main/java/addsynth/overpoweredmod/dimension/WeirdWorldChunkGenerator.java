@@ -2,8 +2,8 @@ package addsynth.overpoweredmod.dimension;
 
 import java.util.Random;
 import java.util.List;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome.SpawnListEntry;

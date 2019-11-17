@@ -1,11 +1,11 @@
 package addsynth.core.gameplay.music_box;
 
-import net.minecraft.init.SoundEvents;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
@@ -13,16 +13,16 @@ import net.minecraftforge.common.util.Constants;
 public final class MusicGrid {
 
   public static final SoundEvent[] instruments = new SoundEvent[] {
-    SoundEvents.BLOCK_NOTE_HARP,
-    SoundEvents.BLOCK_NOTE_BASS,
-    SoundEvents.BLOCK_NOTE_BASEDRUM,
-    SoundEvents.BLOCK_NOTE_SNARE,
-    SoundEvents.BLOCK_NOTE_HAT,
-    SoundEvents.BLOCK_NOTE_BELL,
-    SoundEvents.BLOCK_NOTE_CHIME,
-    SoundEvents.BLOCK_NOTE_FLUTE,
-    SoundEvents.BLOCK_NOTE_GUITAR,
-    SoundEvents.BLOCK_NOTE_XYLOPHONE
+    SoundEvents.BLOCK_NOTE_BLOCK_HARP,
+    SoundEvents.BLOCK_NOTE_BLOCK_BASS,
+    SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM,
+    SoundEvents.BLOCK_NOTE_BLOCK_SNARE,
+    SoundEvents.BLOCK_NOTE_BLOCK_HAT,
+    SoundEvents.BLOCK_NOTE_BLOCK_BELL,
+    SoundEvents.BLOCK_NOTE_BLOCK_CHIME,
+    SoundEvents.BLOCK_NOTE_BLOCK_FLUTE,
+    SoundEvents.BLOCK_NOTE_BLOCK_GUITAR,
+    SoundEvents.BLOCK_NOTE_BLOCK_XYLOPHONE
   };
   
   public static final byte tracks = 8;
@@ -56,58 +56,58 @@ public final class MusicGrid {
     }
   }
 
-  public final void save_to_nbt(final NBTTagCompound nbt){
-    final NBTTagCompound music_tag = new NBTTagCompound();
-    NBTTagList track_list;
-    NBTTagCompound track_tag;
-    NBTTagList note_list;
-    NBTTagCompound note_tag;
+  public final void save_to_nbt(final CompoundNBT nbt){
+    final CompoundNBT music_tag = new CompoundNBT();
+    ListNBT track_list;
+    CompoundNBT track_tag;
+    ListNBT note_list;
+    CompoundNBT note_tag;
     Note note;
     byte i;
     byte j;
     
-    music_tag.setByte("Tempo", tempo);
-    track_list = new NBTTagList();
+    music_tag.putByte("Tempo", tempo);
+    track_list = new ListNBT();
     for(j = 0; j < tracks; j++){
-      track_tag = new NBTTagCompound();
-      track_tag.setBoolean("Mute", track[j].mute);
-      track_tag.setByte("Instrument", track[j].instrument);
-      note_list = new NBTTagList();
+      track_tag = new CompoundNBT();
+      track_tag.putBoolean("Mute", track[j].mute);
+      track_tag.putByte("Instrument", track[j].instrument);
+      note_list = new ListNBT();
       for(i = 0; i < frames; i++){
-        note_tag = new NBTTagCompound();
+        note_tag = new CompoundNBT();
         note = track[j].note[i];
-        note_tag.setBoolean("On", note.on);
-        note_tag.setByte("Pitch", note.pitch);
-        note_tag.setFloat("Volume", note.volume);
-        note_list.appendTag(note_tag);
+        note_tag.putBoolean("On", note.on);
+        note_tag.putByte("Pitch", note.pitch);
+        note_tag.putFloat("Volume", note.volume);
+        note_list.add(note_tag);
       }
-      track_tag.setTag("Notes", note_list);
-      track_list.appendTag(track_tag);
+      track_tag.put("Notes", note_list);
+      track_list.add(track_tag);
     }
-    music_tag.setTag("Tracks", track_list);
+    music_tag.put("Tracks", track_list);
     
-    nbt.setTag("MusicGrid", music_tag);
+    nbt.put("MusicGrid", music_tag);
   }
 
-  public final void load_from_nbt(final NBTTagCompound nbt){
-    final NBTTagCompound music_tag = nbt.getCompoundTag("MusicGrid");
-    NBTTagList track_list;
-    NBTTagCompound track_tag;
-    NBTTagList note_list;
-    NBTTagCompound note_tag;
+  public final void load_from_nbt(final CompoundNBT nbt){
+    final CompoundNBT music_tag = nbt.getCompound("MusicGrid");
+    ListNBT track_list;
+    CompoundNBT track_tag;
+    ListNBT note_list;
+    CompoundNBT note_tag;
     Note note;
     byte i;
     byte j;
     
     tempo = music_tag.getByte("Tempo");
     for(j = 0; j < tracks; j++){
-      track_list = music_tag.getTagList("Tracks", Constants.NBT.TAG_COMPOUND);
-      track_tag = track_list.getCompoundTagAt(j);
+      track_list = music_tag.getList("Tracks", Constants.NBT.TAG_COMPOUND);
+      track_tag = track_list.getCompound(j);
       track[j].mute = track_tag.getBoolean("Mute");
       track[j].instrument = track_tag.getByte("Instrument");
-      note_list = track_tag.getTagList("Notes", Constants.NBT.TAG_COMPOUND);
+      note_list = track_tag.getList("Notes", Constants.NBT.TAG_COMPOUND);
       for (i = 0; i < frames; i++){
-        note_tag = note_list.getCompoundTagAt(i);
+        note_tag = note_list.getCompound(i);
         note = track[j].note[i];
         note.on = note_tag.getBoolean("On");
         note.pitch = note_tag.getByte("Pitch");

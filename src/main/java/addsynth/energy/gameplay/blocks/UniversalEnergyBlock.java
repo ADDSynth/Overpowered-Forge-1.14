@@ -8,11 +8,11 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.client.gui.GuiHandler;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -34,7 +34,7 @@ public final class UniversalEnergyBlock extends MachineBlockTileEntity {
   }
 
   @Override
-  public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
+  public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, PlayerEntity player, Hand hand, Direction facing, float hitX, float hitY, float hitZ){
     if(world.isRemote == false){
       player.openGui(OverpoweredMod.instance, GuiHandler.UNIVERSAL_ENERGY_INTERFACE, world, pos.getX(), pos.getY(), pos.getZ());
     }

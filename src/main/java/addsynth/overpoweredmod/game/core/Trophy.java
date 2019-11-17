@@ -4,8 +4,8 @@ import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.blocks.basic.TrophyBlock;
 import addsynth.overpoweredmod.items.OverpoweredItem;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 
 public enum Trophy {
 
@@ -19,7 +19,7 @@ public enum Trophy {
   }
 
   private final TrophyBlock trophy;
-  public final ItemBlock item_block;
+  public final BlockItem item_block;
   
   public static final Item trophy_base = new OverpoweredItem("trophy_base");
   public static final TrophyBlock bronze   = BRONZE.trophy;

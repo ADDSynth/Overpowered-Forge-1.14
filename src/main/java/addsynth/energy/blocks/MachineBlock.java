@@ -1,8 +1,8 @@
 package addsynth.energy.blocks;
 
 import addsynth.core.blocks.BlockTile;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.SoundType;
 
 /** <p>This is your typical machine-type block with a silver appearance and metallic properties.
@@ -13,13 +13,13 @@ import net.minecraft.block.SoundType;
 public abstract class MachineBlock extends BlockTile {
 
   public MachineBlock(){
-    super(Material.IRON, Material.IRON.getMaterialMapColor());
+    super(Material.IRON, Material.IRON.getColor());
     setHardness(3.5f);
     setSoundType(SoundType.METAL);
     setResistance(10.0f);
   }
 
-  public MachineBlock(final MapColor color){
+  public MachineBlock(final MaterialColor color){
     super(Material.IRON, color);
     setHardness(3.5f);
     setSoundType(SoundType.METAL);

@@ -7,10 +7,10 @@ import addsynth.energy.tiles.TileEnergyReceiver;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.block_networks.LaserNetwork;
 import addsynth.overpoweredmod.network.laser.LaserClientSyncMessage;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ITickable;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 
-public final class TileLaserHousing extends TileEnergyReceiver implements ITickable, IBlockNetworkUser {
+public final class TileLaserHousing extends TileEnergyReceiver implements ITickableTileEntity, IBlockNetworkUser {
 
   private LaserNetwork network;
 
@@ -35,7 +35,7 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
   }
 
   @Override
-  public final void update(){
+  public final void tick(){
     if(world != null){
       if(world.isRemote == false){
         if(network != null){
@@ -48,19 +48,19 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
   }
 
   @Override
-  public final void readFromNBT(final NBTTagCompound nbt){
-    super.readFromNBT(nbt);
+  public final void read(final CompoundNBT nbt){
+    super.read(nbt);
     energy.readFromNBT(nbt);
-    laser_distance = nbt.getInteger("Laser Distance");
+    laser_distance = nbt.getInt("Laser Distance");
     auto_shutoff = nbt.getBoolean("Auto Shutoff");
   }
 
   @Override
-  public final NBTTagCompound writeToNBT(final NBTTagCompound nbt){
-    super.writeToNBT(nbt);
+  public final CompoundNBT write(final CompoundNBT nbt){
+    super.write(nbt);
     energy.writeToNBT(nbt);
-    nbt.setInteger("Laser Distance", laser_distance);
-    nbt.setBoolean("Auto Shutoff", auto_shutoff);
+    nbt.putInt("Laser Distance", laser_distance);
+    nbt.putBoolean("Auto Shutoff", auto_shutoff);
     return nbt;
   }
 

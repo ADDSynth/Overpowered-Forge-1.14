@@ -6,7 +6,7 @@ import addsynth.core.ADDSynthCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -102,7 +102,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   private final void search_algorithm(final BlockPos from, ArrayList<BlockPos> searched){
     Block block;
     BlockPos position;
-    for(EnumFacing side: EnumFacing.values()){
+    for(Direction side: Direction.values()){
       position = from.offset(side);
       if(searched.contains(position) == false){
         searched.add(position);
@@ -145,7 +145,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   public static final void block_was_broken(final BlockNetwork existing_network, final World world, final BlockPos pos, final Block block){
     BlockPos new_position;
     IBlockNetworkUser tile;
-    for(EnumFacing side : EnumFacing.values()){
+    for(Direction side : Direction.values()){
       new_position = pos.offset(side);
       if(world.getBlockState(new_position).getBlock() == block){
         tile = (IBlockNetworkUser)world.getTileEntity(new_position);

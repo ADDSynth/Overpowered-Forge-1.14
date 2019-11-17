@@ -2,11 +2,11 @@ package addsynth.core.gui.objects;
 
 import addsynth.core.ADDSynthCore;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-public final class CheckBox extends GuiButton {
+public final class CheckBox extends AbstractButton {
 
   public boolean checked;
   private static final ResourceLocation texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/gui_textures.png");
@@ -15,8 +15,8 @@ public final class CheckBox extends GuiButton {
   private static final int texture_width = 24;
   private static final int texture_height = 24;
 
-  public CheckBox(final int buttonId, final int x, final int y, final boolean checked){
-    super(buttonId, x, y, 12, 12, null);
+  public CheckBox(final int x, final int y, final boolean checked){
+    super(x, y, 12, 12, null);
     this.checked = checked;
   }
 

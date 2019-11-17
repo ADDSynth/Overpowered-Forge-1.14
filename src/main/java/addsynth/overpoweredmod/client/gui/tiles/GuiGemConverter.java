@@ -57,8 +57,8 @@ public final class GuiGemConverter extends GuiEnergyBase {
   @Override
   public final void initGui(){
     super.initGui();
-    buttonList.add(new AdjustableButton(0,this.guiLeft + left_button_x, this.guiTop + cycle_button_y,cycle_button_width,cycle_button_height,"<"));
-    buttonList.add(new AdjustableButton(1,this.guiLeft + right_button_x, this.guiTop + cycle_button_y,cycle_button_width,cycle_button_height,">"));
+    buttons.add(new AdjustableButton(0,this.guiLeft + left_button_x, this.guiTop + cycle_button_y,cycle_button_width,cycle_button_height,"<"));
+    buttons.add(new AdjustableButton(1,this.guiLeft + right_button_x, this.guiTop + cycle_button_y,cycle_button_width,cycle_button_height,">"));
   }
 
   @Override

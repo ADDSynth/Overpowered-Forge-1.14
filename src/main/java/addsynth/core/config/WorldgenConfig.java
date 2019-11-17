@@ -2,14 +2,14 @@ package addsynth.core.config;
 
 import java.io.File;
 import addsynth.core.ADDSynthCore;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.config.ModConfig;
 
 /**
  *  @see net.minecraft.world.gen.ChunkGeneratorSettings.Factory
  */
-public final class WorldgenConfig extends Configuration {
+public final class WorldgenConfig extends ModConfig {
 
   public static WorldgenConfig instance;
 

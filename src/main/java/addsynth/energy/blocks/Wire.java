@@ -5,16 +5,17 @@ import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.blocks.BlockTile;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public abstract class Wire extends BlockTile {
@@ -42,11 +43,11 @@ public abstract class Wire extends BlockTile {
     // Can initialize the bounding_box[] variables here.
   }
 
-  public Wire(final Material material, final MapColor color){
+  public Wire(final Material material, final MaterialColor color){
     this( material, color, default_min_wire_size, default_max_wire_size);
   }
 
-  public Wire(final Material material, final MapColor color, final double min_wire_size, final double max_wire_size){
+  public Wire(final Material material, final MaterialColor color, final double min_wire_size, final double max_wire_size){
     super(material, color);
     if(bounding_box[0] == null){
       set_bounding_boxes(min_wire_size, max_wire_size);
@@ -87,18 +88,18 @@ public abstract class Wire extends BlockTile {
   public final IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos){
     final ArrayList<EnumFacing> valid_sides = get_valid_sides(world, pos);
     
-    final boolean north = valid_sides.contains(EnumFacing.NORTH);
-    final boolean south = valid_sides.contains(EnumFacing.SOUTH);
-    final boolean west = valid_sides.contains(EnumFacing.WEST);
-    final boolean east = valid_sides.contains(EnumFacing.EAST);
-    final boolean up = valid_sides.contains(EnumFacing.UP);
-    final boolean down = valid_sides.contains(EnumFacing.DOWN);
+    final boolean north = valid_sides.contains(Direction.NORTH);
+    final boolean south = valid_sides.contains(Direction.SOUTH);
+    final boolean west = valid_sides.contains(Direction.WEST);
+    final boolean east = valid_sides.contains(Direction.EAST);
+    final boolean up = valid_sides.contains(Direction.UP);
+    final boolean down = valid_sides.contains(Direction.DOWN);
     
     return state.withProperty(NORTH, north).withProperty(SOUTH, south).withProperty(WEST, west)
                 .withProperty(EAST, east).withProperty(UP, up).withProperty(DOWN, down);
   }
 
-  protected abstract ArrayList<EnumFacing> get_valid_sides(IBlockAccess world, BlockPos pos);
+  protected abstract ArrayList<Direction> get_valid_sides(IBlockAccess world, BlockPos pos);
 
   @Override
   @SuppressWarnings("deprecation")
@@ -138,7 +139,7 @@ public abstract class Wire extends BlockTile {
    * and specify a Tile Entity to spawn if you need to.
    */
   @Override
-  public TileEntity createNewTileEntity(World worldIn, int meta){
+  public TileEntity createNewTileEntity(IBlockReader worldIn){
     return null;
   }
 

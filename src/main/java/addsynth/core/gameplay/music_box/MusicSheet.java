@@ -3,13 +3,13 @@ package addsynth.core.gameplay.music_box;
 import addsynth.core.items.ItemUtility;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.CoreItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentString;
@@ -30,7 +30,7 @@ public final class MusicSheet extends CoreItem {
   }
 
   @Override
-  public final ActionResult<ItemStack> onItemRightClick(final World world, final EntityPlayer player, final EnumHand hand){
+  public final ActionResult<ItemStack> onItemRightClick(final World world, final PlayerEntity player, final Hand hand){
     ActionResult<ItemStack> result = null;
     final ItemStack stack = player.getHeldItemMainhand();
     if(world.isRemote == false){
@@ -38,47 +38,47 @@ public final class MusicSheet extends CoreItem {
       if(raytrace != null){
         if(raytrace.typeOfHit == RayTraceResult.Type.BLOCK){
           if(world.getBlockState(raytrace.getBlockPos()).getBlock() == Core.music_box){
-            result = new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
+            result = new ActionResult<ItemStack>(ActionResultType.PASS, stack);
           }
         }
       }
       if(result == null){
         if(player.isSneaking()){
-          stack.setTagCompound(null);
+          stack.put(null);
           player.sendMessage(new TextComponentString("Music Sheet cleared."));
-          result = new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+          result = new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
         }
       }
     }
-    return result == null ? new ActionResult<ItemStack>(EnumActionResult.PASS, stack) : result;
+    return result == null ? new ActionResult<ItemStack>(ActionResultType.PASS, stack) : result;
   }
 
   @Override // When a player Right-clicks on a block while holding this item.
-  public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ){
+  public ActionResultType onItemUse(PlayerEntity player, World world, BlockPos pos, Hand hand, Direction facing, float hitX, float hitY, float hitZ){
     final ItemStack stack = player.getHeldItemMainhand();
     if(world.getBlockState(pos).getBlock() == Core.music_box){
       if(world.isRemote){
-        return EnumActionResult.FAIL;
+        return ActionResultType.FAIL;
       }
       final TileMusicBox tile = (TileMusicBox)world.getTileEntity(pos);
       if(tile != null){
         if(player.isSneaking() == false){
-          NBTTagCompound nbt = stack.getTagCompound();
+          CompoundNBT nbt = stack.getTag();
           if(nbt != null){
             tile.getMusicGrid().load_from_nbt(nbt);
             tile.update_data();
             player.sendMessage(new TextComponentString("Music Sheet pasted to Music Box."));
-            return EnumActionResult.SUCCESS;
+            return ActionResultType.SUCCESS;
           }
         }
         return copy_music_data(stack, player, tile);
       }
     }
-    return EnumActionResult.PASS;
+    return ActionResultType.PASS;
   }
 
-  private static final EnumActionResult copy_music_data(final ItemStack stack, final EntityPlayer player, final TileMusicBox tile){
-    final NBTTagCompound nbt = new NBTTagCompound();
+  private static final ActionResultType copy_music_data(final ItemStack stack, final PlayerEntity player, final TileMusicBox tile){
+    final CompoundNBT nbt = new CompoundNBT();
     tile.getMusicGrid().save_to_nbt(nbt);
       
     if(stack.getCount() == 1){
@@ -92,7 +92,7 @@ public final class MusicSheet extends CoreItem {
     }
       
     player.sendMessage(new TextComponentString("Music data copied to Music Sheet."));
-    return EnumActionResult.SUCCESS;
+    return ActionResultType.SUCCESS;
   }
 
 }

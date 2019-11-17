@@ -3,17 +3,17 @@ package addsynth.core.material.types;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class BaseMaterial extends AbstractMaterial {
 
   public final Item item;
   public final Block block;
-  public final ItemBlock block_item;
+  public final BlockItem block_item;
 
   /** Call this, only if you're unsure of the properties of the material.
    *  This acts as a placeholder until you can properly define all of the properties.

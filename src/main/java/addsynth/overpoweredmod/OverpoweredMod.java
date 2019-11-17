@@ -22,20 +22,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 
-@Mod(modid   = OverpoweredMod.MOD_ID, // MAYBE: look into using SaveInspectionHandler to control which saved worlds are opened with THIS version of the mod.
-     name    = OverpoweredMod.MOD_NAME,
-     version = OverpoweredMod.VERSION,
-     acceptedMinecraftVersions = "[1.12.2]",
-     dependencies = "required-after:forge@[14.23.5.2816,];required-after:addsynthcore",
-     guiFactory = "addsynth.overpoweredmod.client.gui.config.OverpoweredGuiFactory",
-     updateJSON = "http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/update.json",
-     modLanguage = "java",
-     canBeDeactivated = true)
-
-// http://mcforge.readthedocs.io/en/latest/gettingstarted/structuring/#what-is-mod
-// I FINALLY found out how the dependancy string is supposed to be structured:
-//      net.minecraftforge.fml.common.Loader     on Line 713,        computeDependancies()
-//  and   FMLModContainer.class        line 209       bindMetadata(MetadataCollection mc)
+@Mod(value = OverpoweredMod.MOD_ID) // MAYBE: look into using SaveInspectionHandler to control which saved worlds are opened with THIS version of the mod.
 public class OverpoweredMod {
 
   public static final String MOD_ID = "overpoweredmod"; // FUTURE: rename mod id to just overpowered, once we rename everything to ADDSynthsMods.jar

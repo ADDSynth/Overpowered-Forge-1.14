@@ -8,8 +8,8 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 public final class TrophyBlock extends Block {
 
-  private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+  private static final PropertyDirection FACING = PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
 
   private static final AxisAlignedBB bounding_box = new AxisAlignedBB(0.125, 0.0, 0.125, 0.875, 0.9375, 0.875);
 
@@ -27,7 +27,7 @@ public final class TrophyBlock extends Block {
     setSoundType(SoundType.METAL);
     setHarvestLevel("pickaxe",2);
     setResistance(10.0f);
-    this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+    this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
     OverpoweredMod.registry.register_block(this, name);
   }
 
@@ -39,7 +39,7 @@ public final class TrophyBlock extends Block {
   @Override
   @SuppressWarnings("deprecation")
   public final IBlockState getStateFromMeta(int meta){
-    return getDefaultState().withProperty(FACING, EnumFacing.byIndex(meta));
+    return getDefaultState().withProperty(FACING, Direction.byIndex(meta));
   }
 
   @Override
@@ -48,7 +48,7 @@ public final class TrophyBlock extends Block {
   }
 
   @Override
-  public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand){
+  public IBlockState getStateForPlacement(World world, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, and hand){
     return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
   }
 

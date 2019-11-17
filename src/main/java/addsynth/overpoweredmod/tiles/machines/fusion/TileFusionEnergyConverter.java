@@ -8,8 +8,8 @@ import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.block_networks.DataCableNetwork;
 import addsynth.overpoweredmod.tiles.TileDataCable;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.EnumFacing;
 
 public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
 
@@ -72,7 +72,7 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
     data_cable_networks.clear();
     TileEntity tile;
     DataCableNetwork data_network;
-    for(EnumFacing facing : EnumFacing.values()){
+    for(Direction facing : Direction.values()){
       tile = world.getTileEntity(pos.offset(facing));
       if(tile != null){
         if(tile instanceof TileDataCable){

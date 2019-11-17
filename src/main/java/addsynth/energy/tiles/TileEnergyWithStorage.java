@@ -5,13 +5,13 @@ import addsynth.core.inventory.SlotData;
 import addsynth.core.tiles.TileMachine;
 import addsynth.energy.CustomEnergyStorage;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 
-public abstract class TileEnergyWithStorage extends TileMachine implements ITickable {
+public abstract class TileEnergyWithStorage extends TileMachine implements ITickableTileEntity {
 
   protected final CustomEnergyStorage energy;
 
@@ -35,16 +35,16 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   }
 
   @Override
-  public void readFromNBT(NBTTagCompound nbt){
-    super.readFromNBT(nbt);
+  public void read(CompoundNBT nbt){
+    super.read(nbt);
     if(energy != null){
       energy.readFromNBT(nbt);
     }
   }
 
   @Override
-  public NBTTagCompound writeToNBT(NBTTagCompound nbt){
-    super.writeToNBT(nbt);
+  public CompoundNBT write(CompoundNBT nbt){
+    super.write(nbt);
     if(energy != null){
       energy.writeToNBT(nbt);
     }
@@ -53,7 +53,7 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
 
   @Override
   @SuppressWarnings("unchecked")
-  public <T> T getCapability(final Capability<T> capability, final @Nullable EnumFacing facing){
+  public <T> T getCapability(final Capability<T> capability, final @Nullable Direction facing){
     if(capability == CapabilityEnergy.ENERGY){
       return (T)getEnergy();
     }
@@ -61,7 +61,7 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   }
   
   @Override
-  public boolean hasCapability(final Capability<?> capability, final @Nullable EnumFacing facing){
+  public boolean hasCapability(final Capability<?> capability, final @Nullable Direction facing){
     if(capability == CapabilityEnergy.ENERGY){
       return getEnergy() != null;
     }
@@ -69,7 +69,7 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   }
 
   @Override
-  public void update(){
+  public void tick(){
     if(energy != null){
       energy.update();
     }

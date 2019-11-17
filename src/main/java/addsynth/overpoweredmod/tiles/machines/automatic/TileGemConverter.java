@@ -5,7 +5,7 @@ import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.core.Gems;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 
 public final class TileGemConverter extends PassiveMachine {
 	
@@ -36,15 +36,15 @@ public final class TileGemConverter extends PassiveMachine {
   }
 
   @Override
-  public final NBTTagCompound writeToNBT(final NBTTagCompound nbt){
-    super.writeToNBT(nbt);
-    nbt.setByte("Gem Selected", selection);
+  public final CompoundNBT write(final CompoundNBT nbt){
+    super.write(nbt);
+    nbt.putByte("Gem Selected", selection);
     return nbt;
   }
 
   @Override
-  public final void readFromNBT(final NBTTagCompound nbt){
-    super.readFromNBT(nbt);
+  public final void read(final CompoundNBT nbt){
+    super.read(nbt);
     selection = nbt.getByte("Gem Selected");
     gem_selected = new ItemStack(Gems.index[selection].gem,1);
   }

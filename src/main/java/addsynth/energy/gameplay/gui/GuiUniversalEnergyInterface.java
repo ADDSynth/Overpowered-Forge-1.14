@@ -9,7 +9,7 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.network.server_messages.CycleTransferModeMessage;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.network.NetworkHandler;
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
@@ -35,15 +35,15 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase {
   public void initGui(){
     super.initGui();
     final int button_x = guiLeft + (this.xSize / 2) - (button_width / 2) + 4;
-    mode_button = new AdjustableButton(0, button_x, guiTop + 17, button_width, 16, tile.get_transfer_mode().text);
-    buttonList.add(mode_button);
+    mode_button = new AdjustableButton(button_x, guiTop + 17, button_width, 16, tile.get_transfer_mode().text);
+    buttons.add(mode_button);
   }
 
   @Override
   public void updateScreen(){
     super.updateScreen();
     if(tile != null && mode_button != null){
-      mode_button.displayString = tile.get_transfer_mode().text;
+      mode_button.setMessage(tile.get_transfer_mode().text);
     }
   }
 
@@ -62,7 +62,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase {
   }
 
   @Override
-  protected void actionPerformed(GuiButton button) throws IOException{
+  protected void actionPerformed(AbstractButton button) throws IOException{
     switch(button.id){
     case 0: NetworkHandler.INSTANCE.sendToServer(new CycleTransferModeMessage(tile.getPos())); break;
     }

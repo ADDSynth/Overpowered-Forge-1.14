@@ -4,7 +4,7 @@ import addsynth.core.gui.GuiBase;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyWithStorage;
-import net.minecraft.inventory.Container;
+import net.minecraft.inventory.container.Container;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiEnergyBase extends GuiBase {

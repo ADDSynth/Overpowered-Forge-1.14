@@ -2,7 +2,7 @@ package addsynth.energy.blocks;
 
 import addsynth.core.tiles.TileMachine;
 import addsynth.core.util.MinecraftUtility;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -18,7 +18,7 @@ public abstract class MachineBlockTileEntity extends MachineBlock {
     super();
   }
 
-  public MachineBlockTileEntity(final MapColor color){
+  public MachineBlockTileEntity(final MaterialColor color){
     super(color);
   }
 

@@ -3,7 +3,7 @@ package addsynth.energy.tiles;
 import addsynth.core.inventory.SlotData;
 import addsynth.energy.CustomEnergyStorage;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 
 public abstract class TileEnergyReceiver extends TileEnergyWithStorage {
 
@@ -24,13 +24,13 @@ public abstract class TileEnergyReceiver extends TileEnergyWithStorage {
   }
 
   @Override
-  public void readFromNBT(NBTTagCompound nbt){
+  public void readFromNBT(CompoundNBT nbt){
     super.readFromNBT(nbt);
     running = nbt.getBoolean("Running");
   }
 
   @Override
-  public NBTTagCompound writeToNBT(NBTTagCompound nbt){
+  public CompoundNBT writeToNBT(CompoundNBT nbt){
     super.writeToNBT(nbt);
     nbt.setBoolean("Running",running);
     return nbt;

@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.JavaUtils;
-import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.ModList;
 
 /**<p>
  * This class asks the Forge Mod Loader if certain mods are loaded. Since a specific string value is
@@ -33,97 +33,97 @@ public final class Compatability {
   public static final class APPLIED_ENERGISTICS {
     public static final String name  = "Applied Energistics";
     public static final String modid = "appliedenergistics2";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
 
   public static final class BAUBLES { // OPTIMIZE: Baubles no longer exists in Minecraft versions 1.13+. Also remove translation keys for Rings when this is permanently removed.
     public static final String name  = "Baubles";
     public static final String modid = "baubles";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class BIOMES_O_PLENTY {
     public static final String name  = "Biomes O' Plenty";
     public static final String modid = "biomesoplenty";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class BUILDCRAFT {
     public static final String name  = "Buildcraft";
     public static final String modid = "buildcraftcore";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class ENDER_IO {
     public static final String name  = "Ender IO";
     public static final String modid = "enderio";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class EXTREME_REACTORS {
     public static final String name  = "Extreme Reactors";
     public static final String modid = "bigreactors";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class GALACTICRAFT {
     public static final String name  = "Galacticraft";
     public static final String modid = "galacticraftcore";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class INDUSTRIAL_FOREGOING {
     public static final String name  = "Industrial Foregoing";
     public static final String modid = "industrialforegoing";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class JEI {
     public static final String name  = "JEI";
     public static final String modid = "jei";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class OPENCOMPUTERS {
     public static final String name  = "OpenComputers";
     public static final String modid = "opencomputers";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class OVERPOWERED {
     public static final String name  = "Overpowered";
     public static final String modid = "overpoweredmod";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class PROJECT_E {
     public static final String name  = "Project E";
     public static final String modid = "projecte";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class QUARK {
     public static final String name  = "Quark";
     public static final String modid = "quark";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
   public static final class RAILCRAFT {
     public static final String name  = "Railcraft";
     public static final String modid = "railcraft";
-    public static final boolean loaded = Loader.isModLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
 
   public static final class REDSTONE_FLUX {
     public static final String name  = "Redstone Flux API";
     public static final String modid = "redstoneflux";
-    public static final boolean loaded = Loader.isModLoaded(modid) || JavaUtils.packageExists("cofh.redstoneflux.api");
+    public static final boolean loaded = ModList.get().isLoaded(modid) || JavaUtils.packageExists("cofh.redstoneflux.api");
   }
 
   public static final class TESLA {
     public static final String name  = "Tesla Energy";
     public static final String modid = "tesla";
-    public static final boolean loaded = Loader.isModLoaded(modid) || JavaUtils.packageExists("net.darkhax.tesla.api");
+    public static final boolean loaded = ModList.get().isLoaded(modid) || JavaUtils.packageExists("net.darkhax.tesla.api");
   }
 
   public static final void debug(){

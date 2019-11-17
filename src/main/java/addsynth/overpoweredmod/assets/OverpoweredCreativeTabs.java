@@ -10,9 +10,9 @@ import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.game.core.*;
 import addsynth.overpoweredmod.init.Setup;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
 
 // Let this be a lesson in the future: variables initialized in the Init class can be initialized
 // in any order as necessary, but the order in which they appear in the Creative Tab and JEI depends
@@ -198,7 +198,7 @@ public final class OverpoweredCreativeTabs {
     Metals.TITANIUM.plating,
   };
 
-  private static final CreativeTabs[] tab = new CreativeTabs[5];
+  private static final ItemGroup[] tab = new ItemGroup[5];
   private static final int GEMS     = 0;
   private static final int MAIN     = 1;
   private static final int MACHINES = 2;
@@ -255,7 +255,7 @@ public final class OverpoweredCreativeTabs {
     if(tab[tab_index] == null){
       tab[tab_index] = Game.NewCreativeTab(name, icons);
     }
-    final CreativeTabs creative_tab = tab[tab_index];
+    final ItemGroup creative_tab = tab[tab_index];
     for(Object obj : item_list){
       if(obj == null){
         OverpoweredMod.log.warn(new NullPointerException("Found a null reference in Creative Tab list: "+tab_index+" - "+name+"."));

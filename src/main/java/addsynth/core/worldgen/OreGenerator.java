@@ -8,7 +8,7 @@ import addsynth.core.material.Material;
 import addsynth.core.material.types.OreMaterial;
 import addsynth.core.util.MathUtility;
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;

@@ -6,9 +6,9 @@ import addsynth.core.config.Features;
 import addsynth.core.game.Compatability;
 import addsynth.core.gameplay.items.ScytheTool;
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
+import net.minecraft.item.ToolItem;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.oredict.OreDictionary;
@@ -28,8 +28,8 @@ public final class CompatabilityManager {
     final NonNullList<ItemStack> list = OreDictionary.getOres("treeLeaves");
     final Set<Block> leaves = new HashSet<>(list.size());
     for(ItemStack stack : list){
-      if(stack.getItem() instanceof ItemBlock){
-        leaves.add(((ItemBlock)stack.getItem()).getBlock());
+      if(stack.getItem() instanceof BlockItem){
+        leaves.add(((BlockItem)stack.getItem()).getBlock());
       }
     }
     override_scythe_field(Core.wooden_scythe, leaves);
@@ -44,7 +44,7 @@ public final class CompatabilityManager {
 
   private static final void override_scythe_field(final ScytheTool tool, final Set<Block> leaves){
     try{
-      ObfuscationReflectionHelper.setPrivateValue(ItemTool.class, tool, leaves, "field_150914_c"); // "effectiveBlocks"
+      ObfuscationReflectionHelper.setPrivateValue(ToolItem.class, tool, leaves, "field_150914_c"); // "effectiveBlocks"
     }
     catch(Exception e){
       e.printStackTrace();

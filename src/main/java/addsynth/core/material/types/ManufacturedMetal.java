@@ -3,7 +3,7 @@ package addsynth.core.material.types;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.material.MiningStrength;
 import addsynth.core.util.StringUtil;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.oredict.OreDictionary;
 
 public final class ManufacturedMetal extends Metal {
@@ -19,7 +19,7 @@ public final class ManufacturedMetal extends Metal {
    * @param color
    * @param strength
    */
-  public ManufacturedMetal(final String unlocalized_name, final MapColor color, MiningStrength strength){
+  public ManufacturedMetal(final String unlocalized_name, final MaterialColor color, MiningStrength strength){
     super(unlocalized_name, color);
   }
 

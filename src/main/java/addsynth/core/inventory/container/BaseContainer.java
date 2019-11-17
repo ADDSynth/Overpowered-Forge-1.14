@@ -1,9 +1,9 @@
 package addsynth.core.inventory.container;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -57,12 +57,12 @@ public class BaseContainer<T extends TileEntity> extends Container {
    // http://www.minecraftforge.net/forum/topic/42322-1102-inventory-gui-shift-clicking/
    // https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/mapping-and-modding-tutorials/1571051-custom-container-how-to-properly-override-shift
   @Override
-  public ItemStack transferStackInSlot(EntityPlayer playerIn, int index){
+  public ItemStack transferStackInSlot(PlayerEntity playerIn, int index){
     return ItemStack.EMPTY;
   }
 
   @Override
-  public final boolean canInteractWith(EntityPlayer player){
+  public final boolean canInteractWith(PlayerEntity player){
     final BlockPos pos = tile.getPos();
     return tile.getWorld().getTileEntity(pos) == tile && player.getDistanceSqToCenter(pos) <= 64;
   }

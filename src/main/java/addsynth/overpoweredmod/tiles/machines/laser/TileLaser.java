@@ -6,16 +6,16 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.blocks.tiles.laser.LaserCannon;
 import addsynth.overpoweredmod.game.core.Laser;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
+import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 
-public final class TileLaser extends TileBase implements ITickable {
+public final class TileLaser extends TileBase implements ITickableTileEntity {
 
   private Laser laser;
-  private EnumFacing direction;
+  private Direction direction;
   private int distance;
   private int count;
   private boolean active;
@@ -56,7 +56,7 @@ public final class TileLaser extends TileBase implements ITickable {
   }
 
   @Override
-  public final void update(){
+  public final void tick(){
     if(world != null){
       if(world.isRemote == false){
         if(active){

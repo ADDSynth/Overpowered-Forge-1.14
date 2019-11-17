@@ -9,13 +9,14 @@ import addsynth.overpoweredmod.client.gui.GuiHandler;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -34,7 +35,7 @@ public final class EnergyStorageBlock extends MachineBlockTileEntity {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(World worldIn, int meta){
+  public final TileEntity createNewTileEntity(IBlockReader worldIn){
     return new TileEnergyStorage();
   }
 
@@ -55,7 +56,7 @@ public final class EnergyStorageBlock extends MachineBlockTileEntity {
     }
 
   @Override
-  public final boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ){
+  public final boolean onBlockActivated(World world, BlockPos pos, IBlockState state, PlayerEntity player, Hand hand, Direction side, float hitX, float hitY, float hitZ){
     if(world.isRemote == false){
       player.openGui(OverpoweredMod.instance,GuiHandler.ENERGY_STORAGE, world,pos.getX(),pos.getY(),pos.getZ());
     }

@@ -9,11 +9,11 @@ import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.tiles.TileDataCable;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -44,7 +44,7 @@ public final class DataCable extends Wire {
   };
 
   public DataCable(final String name){
-    super(Material.GOURD, MapColor.CLOTH, min_wire_size, max_wire_size);
+    super(Material.GOURD, MaterialColor.WOOL, min_wire_size, max_wire_size);
     OverpoweredMod.registry.register_block(this, name);
     setHardness(0.1f);
     valid_blocks[0] = this;
@@ -54,10 +54,10 @@ public final class DataCable extends Wire {
   // SAME Block Type! That's what we're checking with the == operator below, not if they are the same
   // Object, but if the Block Type that block is using is the same one we register in Init class!
   @Override
-  protected final ArrayList<EnumFacing> get_valid_sides(final IBlockAccess world, final BlockPos pos){
-    final ArrayList<EnumFacing> valid_sides = new ArrayList<>(6);
+  protected final ArrayList<Direction> get_valid_sides(final IBlockAccess world, final BlockPos pos){
+    final ArrayList<Direction> valid_sides = new ArrayList<>(6);
     Block block;
-    for(EnumFacing side : EnumFacing.values()){
+    for(Direction side : Direction.values()){
       block = world.getBlockState(pos.offset(side)).getBlock();
       for(Block test_block : valid_blocks){
         if(block == test_block){

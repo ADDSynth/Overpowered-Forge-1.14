@@ -9,9 +9,9 @@ import java.util.TreeSet;
 import addsynth.core.ADDSynthCore;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 // What? Java doesn't have unsigned numeric types? That's the stupidest thing I've ever heard!
@@ -22,8 +22,8 @@ import net.minecraftforge.registries.IForgeRegistry;
  *     Minecraft's color codes are integers that use 8 bits each to store the red,
  *     green, and blue channels in that order.
  *  <p>Myself and other developers can call the {@link #dump_map_colors()} function to
- *     dump all the {@link MapColor} color codes in RGB format and which blocks use that
- *     MapColor to assist in selecting which MapColor to use when creating new blocks.
+ *     dump all the {@link MaterialColor} color codes in RGB format and which blocks use that
+ *     MaterialColor to assist in selecting which MaterialColor to use when creating new blocks.
  *  <p>You should call it in your mod's Init event so it can query the Forge Registry
  *     for registered blocks.
  * @author ADDSynth
@@ -31,85 +31,85 @@ import net.minecraftforge.registries.IForgeRegistry;
  */
 public final class ColorUtil {
 
-  public static final ImmutableMap<MapColor, String> map_color_names = new ImmutableMap.Builder<MapColor, String>()
-    .put(MapColor.ADOBE,      "MapColor.ADOBE")
-    .put(MapColor.AIR,        "MapColor.AIR")
-    .put(MapColor.BLACK,      "MapColor.BLACK")
-    .put(MapColor.BLUE,       "MapColor.BLUE")
-    .put(MapColor.BROWN,      "MapColor.BROWN")
-    .put(MapColor.CLAY,       "MapColor.CLAY")
-    .put(MapColor.CLOTH,      "MapColor.CLOTH")
-    .put(MapColor.CYAN,       "MapColor.CYAN")
-    .put(MapColor.DIAMOND,    "MapColor.DIAMOND")
-    .put(MapColor.DIRT,       "MapColor.DIRT")
-    .put(MapColor.EMERALD,    "MapColor.EMERALD")
-    .put(MapColor.FOLIAGE,    "MapColor.FOLIAGE")
-    .put(MapColor.GOLD,       "MapColor.GOLD")
-    .put(MapColor.GRASS,      "MapColor.GRASS")
-    .put(MapColor.GRAY,       "MapColor.GRAY")
-    .put(MapColor.GREEN,      "MapColor.GREEN")
-    .put(MapColor.ICE,        "MapColor.ICE")
-    .put(MapColor.IRON,       "MapColor.IRON")
-    .put(MapColor.LAPIS,      "MapColor.LAPIS")
-    .put(MapColor.LIGHT_BLUE, "MapColor.LIGHT_BLUE")
-    .put(MapColor.LIME,       "MapColor.LIME")
-    .put(MapColor.MAGENTA,    "MapColor.MAGENTA")
-    .put(MapColor.NETHERRACK, "MapColor.NETHERRACK")
-    .put(MapColor.OBSIDIAN,   "MapColor.OBSIDIAN")
-    .put(MapColor.PINK,       "MapColor.PINK")
-    .put(MapColor.PURPLE,     "MapColor.PURPLE")
-    .put(MapColor.QUARTZ,     "MapColor.QUARTZ")
-    .put(MapColor.RED,        "MapColor.RED")
-    .put(MapColor.SAND,       "MapColor.SAND")
-    .put(MapColor.SILVER,     "MapColor.SILVER")
-    .put(MapColor.SNOW,       "MapColor.SNOW")
-    .put(MapColor.STONE,      "MapColor.STONE")
-    .put(MapColor.TNT,        "MapColor.TNT")
-    .put(MapColor.WATER,      "MapColor.WATER")
-    .put(MapColor.WOOD,       "MapColor.WOOD")
-    .put(MapColor.YELLOW,     "MapColor.YELLOW")
-    .put(MapColor.BLACK_STAINED_HARDENED_CLAY,      "MapColor.BLACK_STAINED_HARDENED_CLAY")
-    .put(MapColor.BLUE_STAINED_HARDENED_CLAY,       "MapColor.BLUE_STAINED_HARDENED_CLAY")
-    .put(MapColor.BROWN_STAINED_HARDENED_CLAY,      "MapColor.BROWN_STAINED_HARDENED_CLAY")
-    .put(MapColor.CYAN_STAINED_HARDENED_CLAY,       "MapColor.CYAN_STAINED_HARDENED_CLAY")
-    .put(MapColor.GRAY_STAINED_HARDENED_CLAY,       "MapColor.GRAY_STAINED_HARDENED_CLAY")
-    .put(MapColor.GREEN_STAINED_HARDENED_CLAY,      "MapColor.GREEN_STAINED_HARDENED_CLAY")
-    .put(MapColor.LIGHT_BLUE_STAINED_HARDENED_CLAY, "MapColor.LIGHT_BLUE_STAINED_HARDENED_CLAY")
-    .put(MapColor.LIME_STAINED_HARDENED_CLAY,       "MapColor.LIME_STAINED_HARDENED_CLAY")
-    .put(MapColor.MAGENTA_STAINED_HARDENED_CLAY,    "MapColor.MAGENTA_STAINED_HARDENED_CLAY")
-    .put(MapColor.ORANGE_STAINED_HARDENED_CLAY,     "MapColor.ORANGE_STAINED_HARDENED_CLAY")
-    .put(MapColor.PINK_STAINED_HARDENED_CLAY,       "MapColor.PINK_STAINED_HARDENED_CLAY")
-    .put(MapColor.PURPLE_STAINED_HARDENED_CLAY,     "MapColor.PURPLE_STAINED_HARDENED_CLAY")
-    .put(MapColor.RED_STAINED_HARDENED_CLAY,        "MapColor.RED_STAINED_HARDENED_CLAY")
-    .put(MapColor.SILVER_STAINED_HARDENED_CLAY,     "MapColor.SILVER_STAINED_HARDENED_CLAY")
-    .put(MapColor.WHITE_STAINED_HARDENED_CLAY,      "MapColor.WHITE_STAINED_HARDENED_CLAY")
-    .put(MapColor.YELLOW_STAINED_HARDENED_CLAY,     "MapColor.YELLOW_STAINED_HARDENED_CLAY")
+  public static final ImmutableMap<MaterialColor, String> map_color_names = new ImmutableMap.Builder<MaterialColor, String>()
+    .put(MaterialColor.ADOBE,      "MaterialColor.ADOBE")
+    .put(MaterialColor.AIR,        "MaterialColor.AIR")
+    .put(MaterialColor.BLACK,      "MaterialColor.BLACK")
+    .put(MaterialColor.BLUE,       "MaterialColor.BLUE")
+    .put(MaterialColor.BROWN,      "MaterialColor.BROWN")
+    .put(MaterialColor.CLAY,       "MaterialColor.CLAY")
+    .put(MaterialColor.WOOL,       "MaterialColor.WOOL")
+    .put(MaterialColor.CYAN,       "MaterialColor.CYAN")
+    .put(MaterialColor.DIAMOND,    "MaterialColor.DIAMOND")
+    .put(MaterialColor.DIRT,       "MaterialColor.DIRT")
+    .put(MaterialColor.EMERALD,    "MaterialColor.EMERALD")
+    .put(MaterialColor.FOLIAGE,    "MaterialColor.FOLIAGE")
+    .put(MaterialColor.GOLD,       "MaterialColor.GOLD")
+    .put(MaterialColor.GRASS,      "MaterialColor.GRASS")
+    .put(MaterialColor.GRAY,       "MaterialColor.GRAY")
+    .put(MaterialColor.GREEN,      "MaterialColor.GREEN")
+    .put(MaterialColor.ICE,        "MaterialColor.ICE")
+    .put(MaterialColor.IRON,       "MaterialColor.IRON")
+    .put(MaterialColor.LAPIS,      "MaterialColor.LAPIS")
+    .put(MaterialColor.LIGHT_BLUE, "MaterialColor.LIGHT_BLUE")
+    .put(MaterialColor.LIME,       "MaterialColor.LIME")
+    .put(MaterialColor.MAGENTA,    "MaterialColor.MAGENTA")
+    .put(MaterialColor.NETHERRACK, "MaterialColor.NETHERRACK")
+    .put(MaterialColor.OBSIDIAN,   "MaterialColor.OBSIDIAN")
+    .put(MaterialColor.PINK,       "MaterialColor.PINK")
+    .put(MaterialColor.PURPLE,     "MaterialColor.PURPLE")
+    .put(MaterialColor.QUARTZ,     "MaterialColor.QUARTZ")
+    .put(MaterialColor.RED,        "MaterialColor.RED")
+    .put(MaterialColor.SAND,       "MaterialColor.SAND")
+    .put(MaterialColor.LIGHT_GRAY, "MaterialColor.LIGHT_GRAY")
+    .put(MaterialColor.SNOW,       "MaterialColor.SNOW")
+    .put(MaterialColor.STONE,      "MaterialColor.STONE")
+    .put(MaterialColor.TNT,        "MaterialColor.TNT")
+    .put(MaterialColor.WATER,      "MaterialColor.WATER")
+    .put(MaterialColor.WOOD,       "MaterialColor.WOOD")
+    .put(MaterialColor.YELLOW,     "MaterialColor.YELLOW")
+    .put(MaterialColor.BLACK_TERRACOTTA,      "MaterialColor.BLACK_TERRACOTTA")
+    .put(MaterialColor.BLUE_TERRACOTTA,       "MaterialColor.BLUE_TERRACOTTA")
+    .put(MaterialColor.BROWN_TERRACOTTA,      "MaterialColor.BROWN_TERRACOTTA")
+    .put(MaterialColor.CYAN_TERRACOTTA,       "MaterialColor.CYAN_TERRACOTTA")
+    .put(MaterialColor.GRAY_TERRACOTTA,       "MaterialColor.GRAY_TERRACOTTA")
+    .put(MaterialColor.GREEN_TERRACOTTA,      "MaterialColor.GREEN_TERRACOTTA")
+    .put(MaterialColor.LIGHT_BLUE_TERRACOTTA, "MaterialColor.LIGHT_BLUE_TERRACOTTA")
+    .put(MaterialColor.LIME_TERRACOTTA,       "MaterialColor.LIME_TERRACOTTA")
+    .put(MaterialColor.MAGENTA_TERRACOTTA,    "MaterialColor.MAGENTA_TERRACOTTA")
+    .put(MaterialColor.ORANGE_TERRACOTTA,     "MaterialColor.ORANGE_TERRACOTTA")
+    .put(MaterialColor.PINK_TERRACOTTA,       "MaterialColor.PINK_TERRACOTTA")
+    .put(MaterialColor.PURPLE_TERRACOTTA,     "MaterialColor.PURPLE_TERRACOTTA")
+    .put(MaterialColor.RED_TERRACOTTA,        "MaterialColor.RED_TERRACOTTA")
+    .put(MaterialColor.LIGHT_GRAY_TERRACOTTA, "MaterialColor.SILVER_TERRACOTTA")
+    .put(MaterialColor.WHITE_TERRACOTTA,      "MaterialColor.WHITE_TERRACOTTA")
+    .put(MaterialColor.YELLOW_TERRACOTTA,     "MaterialColor.YELLOW_TERRACOTTA")
     .build();
 
   // Some of these colors values were obtained from looking them up on Wikipedia.
-  public static final Color WHITE     = new Color("White",     0xFFFFFF, MapColor.SNOW, MapColor.QUARTZ);
-  public static final Color SILVER    = new Color("Silver",    0xC0C0C0, MapColor.CLOTH, MapColor.IRON, MapColor.CLAY);
-  public static final Color GRAY      = new Color("Gray",      0x808080, MapColor.STONE, MapColor.SILVER);
-  public static final Color DARK_GRAY = new Color("Dark Gray", 0x404040, MapColor.GRAY);
-  public static final Color BLACK     = new Color("Black",     0x000000, MapColor.AIR, MapColor.BLACK);
-  public static final Color RED       = new Color("Red",       0xFF0000, MapColor.TNT, MapColor.RED, MapColor.NETHERRACK);
-  public static final Color ORANGE    = new Color("Orange",    0xFF8000, MapColor.ADOBE);
-  public static final Color YELLOW    = new Color("Yellow",    0xFFFF00, MapColor.YELLOW, MapColor.GOLD);
-  public static final Color GREEN     = new Color("Green",     0X00FF00, MapColor.GRASS, MapColor.LIME, MapColor.FOLIAGE, MapColor.GREEN, MapColor.EMERALD);
-  public static final Color CYAN      = new Color("Cyan",      0x00FFFF, MapColor.CYAN, MapColor.DIAMOND);
-  public static final Color BLUE      = new Color("Blue",      0x0000FF, MapColor.BLUE, MapColor.LIGHT_BLUE, MapColor.WATER, MapColor.ICE, MapColor.LAPIS);
-  public static final Color MAGENTA   = new Color("Magenta",   0xFF00FF, MapColor.MAGENTA);
-  public static final Color PURPLE    = new Color("Purple",    0x800080, MapColor.PURPLE);
-  public static final Color PINK      = new Color("Pink",      0xFFC0CB, MapColor.PINK);
-  public static final Color PEACH     = new Color("Peach",     0xFFE5B4, MapColor.SAND);
-  public static final Color BROWN     = new Color("Brown",     0x964B00, MapColor.BROWN, MapColor.DIRT, MapColor.WOOD, MapColor.OBSIDIAN);
+  public static final Color WHITE     = new Color("White",     0xFFFFFF, MaterialColor.SNOW, MaterialColor.QUARTZ);
+  public static final Color SILVER    = new Color("Silver",    0xC0C0C0, MaterialColor.WOOL, MaterialColor.IRON, MaterialColor.CLAY);
+  public static final Color GRAY      = new Color("Gray",      0x808080, MaterialColor.STONE, MaterialColor.LIGHT_GRAY);
+  public static final Color DARK_GRAY = new Color("Dark Gray", 0x404040, MaterialColor.GRAY);
+  public static final Color BLACK     = new Color("Black",     0x000000, MaterialColor.AIR, MaterialColor.BLACK);
+  public static final Color RED       = new Color("Red",       0xFF0000, MaterialColor.TNT, MaterialColor.RED, MaterialColor.NETHERRACK);
+  public static final Color ORANGE    = new Color("Orange",    0xFF8000, MaterialColor.ADOBE);
+  public static final Color YELLOW    = new Color("Yellow",    0xFFFF00, MaterialColor.YELLOW, MaterialColor.GOLD);
+  public static final Color GREEN     = new Color("Green",     0X00FF00, MaterialColor.GRASS, MaterialColor.LIME, MaterialColor.FOLIAGE, MaterialColor.GREEN, MaterialColor.EMERALD);
+  public static final Color CYAN      = new Color("Cyan",      0x00FFFF, MaterialColor.CYAN, MaterialColor.DIAMOND);
+  public static final Color BLUE      = new Color("Blue",      0x0000FF, MaterialColor.BLUE, MaterialColor.LIGHT_BLUE, MaterialColor.WATER, MaterialColor.ICE, MaterialColor.LAPIS);
+  public static final Color MAGENTA   = new Color("Magenta",   0xFF00FF, MaterialColor.MAGENTA);
+  public static final Color PURPLE    = new Color("Purple",    0x800080, MaterialColor.PURPLE);
+  public static final Color PINK      = new Color("Pink",      0xFFC0CB, MaterialColor.PINK);
+  public static final Color PEACH     = new Color("Peach",     0xFFE5B4, MaterialColor.SAND);
+  public static final Color BROWN     = new Color("Brown",     0x964B00, MaterialColor.BROWN, MaterialColor.DIRT, MaterialColor.WOOD, MaterialColor.OBSIDIAN);
 
   public static final class Color {
     public String name;
     public int value;
-    public MapColor[] colors;
+    public MaterialColor[] colors;
     
-    public Color(final String name, final int value, final MapColor ... overrides){
+    public Color(final String name, final int value, final MaterialColor ... overrides){
       this.name = name;
       this.value = value;
       this.colors = overrides;
@@ -127,11 +127,11 @@ public final class ColorUtil {
   };
 
   private static final class ColorSet implements Comparable<ColorSet> {
-    public MapColor mapcolor;
+    public MaterialColor mapcolor;
     public int difference;
     public Block[] blocks;
     
-    public ColorSet(final MapColor mapcolor, final int difference, final Block[] blocks){
+    public ColorSet(final MaterialColor mapcolor, final int difference, final Block[] blocks){
       this.mapcolor = mapcolor;
       this.difference = difference;
       this.blocks = blocks;
@@ -188,23 +188,23 @@ public final class ColorUtil {
   }
 
   private static final ColorSet[][] build_color_list(){
-    // Part 1: verify MapColor array is in order
+    // Part 1: verify MaterialColor array is in order
     int number_of_colors = 0;
-    for(MapColor c : MapColor.COLORS){
+    for(MaterialColor c : MaterialColor.COLORS){
       if(c != null){
         number_of_colors += 1;
       }
     }
-    final MapColor[] map_colors = new MapColor[number_of_colors];
+    final MaterialColor[] map_colors = new MaterialColor[number_of_colors];
     int i = 0;
-    for(MapColor c : MapColor.COLORS){
+    for(MaterialColor c : MaterialColor.COLORS){
       if(c != null){
         map_colors[i] = c;
         i += 1;
       }
     }
 
-    // Part 2: create difference list. get the difference for each MapColor aggainst each color we're testing.
+    // Part 2: create difference list. get the difference for each MaterialColor aggainst each color we're testing.
     final int length = color_list.length;
     final int[][] difference = new int[number_of_colors][length];
     int j;
@@ -226,7 +226,7 @@ public final class ColorUtil {
       }
     }
 
-    // Part 3: For each color in color_list, get associated MapColors via override or closest match.
+    // Part 3: For each color in color_list, get associated MaterialColors via override or closest match.
     final ColorSet[][] list = new ColorSet[length][];
     int lowest_value;
     int lowest_index;
@@ -241,7 +241,7 @@ public final class ColorUtil {
 
         // Part 3a: look for override
         for(k = 0; k < length && !found_override; k++){
-          for(MapColor mp : color_list[k].colors){
+          for(MaterialColor mp : color_list[k].colors){
             if(map_colors[j] == mp){
               found_override = true;
               if(k == i){
@@ -283,13 +283,13 @@ public final class ColorUtil {
     return (red & 255) << 16 | (green & 255) << 8 | (blue & 255);
   }
 
-  public static final Block[] get_blocks_that_match_color(final MapColor test_color){
+  public static final Block[] get_blocks_that_match_color(final MaterialColor test_color){
     final ArrayList<Block> blocks = new ArrayList<>(200);
     final IForgeRegistry<Block> registry = ForgeRegistries.BLOCKS;
     try{
       final Field field = ObfuscationReflectionHelper.findField(Block.class, "field_181083_K");
       for(Block block : registry){
-        if(test_color == (MapColor)field.get(block)){
+        if(test_color == (MaterialColor)field.get(block)){
           blocks.add(block);
         }
       }

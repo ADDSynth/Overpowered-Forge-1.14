@@ -8,12 +8,12 @@ import addsynth.core.material.blocks.GemBlock;
 import addsynth.core.util.RecipeUtil;
 import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public final class Gem extends OreMaterial {
@@ -26,7 +26,7 @@ public final class Gem extends OreMaterial {
   public final IRecipe block_to_gems_recipe;
 
   /** Custom Gem Material */
-  public Gem(final String unlocalized_name, final MapColor color){
+  public Gem(final String unlocalized_name, final MaterialColor color){
     super(unlocalized_name,
       new CoreItem(unlocalized_name),
       new GemBlock(unlocalized_name+"_block", color),

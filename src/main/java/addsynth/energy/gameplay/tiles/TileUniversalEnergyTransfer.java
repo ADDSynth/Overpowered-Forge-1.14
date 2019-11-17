@@ -4,7 +4,7 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.EnergyCompat;
 import addsynth.energy.tiles.TileEnergyBattery;
 import addsynth.overpoweredmod.config.Values;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 
 public final class TileUniversalEnergyTransfer extends TileEnergyBattery {
 
@@ -47,15 +47,15 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery {
   }
 
   @Override
-  public final void readFromNBT(final NBTTagCompound nbt){
-    super.readFromNBT(nbt);
+  public final void read(final CompoundNBT nbt){
+    super.read(nbt);
     transfer_mode = TRANSFER_MODE.values()[nbt.getByte("Transfer Mode")];
   }
 
   @Override
-  public final NBTTagCompound writeToNBT(final NBTTagCompound nbt){
-    super.writeToNBT(nbt);
-    nbt.setByte("Transfer Mode", (byte)transfer_mode.ordinal());
+  public final CompoundNBT write(final CompoundNBT nbt){
+    super.write(nbt);
+    nbt.putByte("Transfer Mode", (byte)transfer_mode.ordinal());
     return nbt;
   }
 

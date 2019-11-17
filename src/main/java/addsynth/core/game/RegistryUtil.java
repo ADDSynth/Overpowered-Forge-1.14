@@ -12,9 +12,9 @@ import addsynth.core.util.JavaUtils;
 import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Items;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -135,21 +135,21 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    *  you need to ensure you use the same RegistryUtil instance to get ItemBlocks.
    * @param block
    */
-  private static @Nullable final ItemBlock getVanillaItemBlock(@Nonnull final Block block){
+  private static @Nullable final BlockItem getVanillaItemBlock(@Nonnull final Block block){
     final Item vanilla_item = Item.getItemFromBlock(block);
     if(vanilla_item != null){
       if(vanilla_item != Items.AIR){
-        return (ItemBlock)vanilla_item;
+        return (BlockItem)vanilla_item;
       }
     }
     return null;
   }
 
-  private static @Nullable final ItemBlock getModdedItemBlock(@Nonnull final Block block, @Nonnull final HashSet<Item> item_set){
+  private static @Nullable final BlockItem getModdedItemBlock(@Nonnull final Block block, @Nonnull final HashSet<Item> item_set){
     for(Item item : item_set){
-      if(item instanceof ItemBlock){
-        if(((ItemBlock)item).getBlock() == block){
-          return (ItemBlock)item;
+      if(item instanceof BlockItem){
+        if(((BlockItem)item).getBlock() == block){
+          return (BlockItem)item;
         }
       }
     }
@@ -159,8 +159,8 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
   /** Generic implementation of the RegistryUtil.getItemBlock() method. Searches through all
    *  registered Lists of items for your ItemBlock.
    */
-  public static final ItemBlock getRegisteredItemBlock(final Block block){
-    ItemBlock item_block = null;
+  public static final BlockItem getRegisteredItemBlock(final Block block){
+    BlockItem item_block = null;
     try{
       if(block == null){
         throw new NullPointerException("Block input for RegistryUtil.getItemBlock() was null reference.");
@@ -263,11 +263,11 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    *
    *  @param block The block you want to register an ItemBlock for. Cannot be null!
    */
-  public final ItemBlock register_ItemBlock(final Block block){
+  public final BlockItem register_ItemBlock(final Block block){
     if(block == null){
       throw new NullPointerException("Tried to register an ItemBlock for a null block reference! Register your block first!");
     }
-    return register_ItemBlock(new ItemBlock(block), block);
+    return register_ItemBlock(new BlockItem(block), block);
   }
 
   /** <p>There are now 2 ways to register ItemBlocks. The first is by calling {@link #getItemBlock(Block)}, which
@@ -284,7 +284,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    *
    * @param itemblock
    */
-  public final void register_ItemBlock(@Nonnull final ItemBlock itemblock){
+  public final void register_ItemBlock(@Nonnull final BlockItem itemblock){
     register_ItemBlock(itemblock, itemblock.getBlock());
   }
 
@@ -294,7 +294,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    * @return Returns the passed in ItemBlock if we successfully registered it, returns null otherwise. We do this because this
    *   function is primarily called by the {@link #getItemBlock(Block, Class, Object...)} function to create new ItemBlocks.
    */
-  private final ItemBlock register_ItemBlock(@Nonnull final ItemBlock itemblock, @Nonnull final Block block){
+  private final BlockItem register_ItemBlock(@Nonnull final BlockItem itemblock, @Nonnull final Block block){
     if(block.getRegistryName() == null){
       ADDSynthCore.log.error(new RuntimeException("Unable to create new ItemBlock because the input block does not have its registry name set. Please call the setRegistryName() function!"));
       Thread.dumpStack();
@@ -323,8 +323,8 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    * @param block
    * @return a new ItemBlock, or the existing one if one already exists.
    */
-  public final ItemBlock getItemBlock(final Block block){
-    return getItemBlock(block, ItemBlock.class);
+  public final BlockItem getItemBlock(final Block block){
+    return getItemBlock(block, BlockItem.class);
   }
 
   /**
@@ -345,8 +345,8 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    *          the first argument, so structure your ItemBlock constructors accordingly.
    * @return a new ItemBlock, or the existing one if one already exists.
    */
-  public final ItemBlock getItemBlock(final Block block, @Nonnull final Class<? extends ItemBlock> itemBlock_class, final Object ... args){
-    ItemBlock item_block = null;
+  public final BlockItem getItemBlock(final Block block, @Nonnull final Class<? extends BlockItem> itemBlock_class, final Object ... args){
+    BlockItem item_block = null;
     try{
       // safety check
       if(block == null){
@@ -387,9 +387,9 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    * @param block
    * @param args
    */
-  private final static ItemBlock InvokeCustomItemBlock(final Class<? extends ItemBlock> clazz, final Block block, final Object ... args){
+  private final static BlockItem InvokeCustomItemBlock(final Class<? extends BlockItem> clazz, final Block block, final Object ... args){
     // return JavaUtils.InvokeConstructor(clazz, JavaUtils.combine_arrays(new Object[] {(Block)block}, args));
-    ItemBlock item = null;
+    BlockItem item = null;
     final Class[] arg_types = JavaUtils.combine_arrays(new Class[] {Block.class}, JavaUtils.getTypes(args));
     final Object[] final_args = JavaUtils.combine_arrays(new Object[] {block}, args);
     try{

@@ -1,13 +1,13 @@
 package addsynth.core.gui.objects;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.gui.widget.button.AbstractButton;
 
-public final class AdjustableButton extends GuiButton {
+public final class AdjustableButton extends AbstractButton {
 
-  public AdjustableButton(int buttonId, int x, int y, int width, int height, String buttonText) {
-    super(buttonId, x, y, width, height, buttonText);
+  public AdjustableButton(int x, int y, int width, int height, String buttonText) {
+    super(x, y, width, height, buttonText);
   }
 
     /**
@@ -30,8 +30,8 @@ public final class AdjustableButton extends GuiButton {
         mc.getTextureManager().bindTexture(BUTTON_TEXTURES);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             
-        this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
-        final int hover_state = this.getHoverState(this.hovered);
+        this.isHovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
+        final int hover_state = this.getHoverState(this.isHovered);
         final int button_texture_y = 46 + (hover_state * 20);
             
         GlStateManager.enableBlend();
@@ -49,18 +49,22 @@ public final class AdjustableButton extends GuiButton {
           text_color = packedFGColour;
         }
         else{
-          if (!this.enabled){
+          if (!this.active){
             text_color = 10526880;
           }
           else{
-            if (this.hovered){
+            if (this.isHovered()){
               text_color = 16777120;
             }
           }
         }
 
-        this.drawCenteredString(mc.fontRenderer, this.displayString, x + half_width, y + half_height - 4, text_color);
+        this.drawCenteredString(mc.fontRenderer, this.getMessage(), x + half_width, y + half_height - 4, text_color);
       }
+    }
+
+    @Override
+    public void onPress(){
     }
 
 }

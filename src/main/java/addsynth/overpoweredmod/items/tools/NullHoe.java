@@ -2,11 +2,11 @@ package addsynth.overpoweredmod.items.tools;
 
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.Tools;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemHoe;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 
-public class NullHoe extends ItemHoe {
+public class NullHoe extends HoeItem {
 
   public NullHoe(final String name){
     super(Tools.VOID);
@@ -30,8 +30,8 @@ public class NullHoe extends ItemHoe {
   }
 
   @Override
-  public EnumRarity getForgeRarity(ItemStack stack){
-    return EnumRarity.EPIC;
+  public Rarity getRarity(ItemStack stack){
+    return Rarity.EPIC;
   }
 
 }

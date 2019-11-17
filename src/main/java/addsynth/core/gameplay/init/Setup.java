@@ -6,8 +6,8 @@ import addsynth.core.config.*;
 import addsynth.core.game.Game;
 import addsynth.core.game.Icon;
 import addsynth.core.gameplay.Core;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
+import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 
@@ -46,7 +46,7 @@ public final class Setup {
       new Icon(Core.stone_scythe, Features.scythes),
       new Icon(ADDSynthCore.registry.getItemBlock(Blocks.GRASS))
     };
-    final CreativeTabs tab = Game.NewCreativeTab(ADDSynthCore.MOD_ID, icons);
+    final ItemGroup tab = Game.NewCreativeTab(ADDSynthCore.MOD_ID, icons);
     
     Core.caution_block.setCreativeTab(tab);
     Core.music_box.setCreativeTab(tab);

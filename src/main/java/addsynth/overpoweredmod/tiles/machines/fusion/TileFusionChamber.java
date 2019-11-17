@@ -6,7 +6,7 @@ import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 
 public final class TileFusionChamber extends TileMachine {
@@ -48,7 +48,7 @@ public final class TileFusionChamber extends TileMachine {
   public final void turn_on(){
     int i;
     BlockPos position;
-    for(EnumFacing side : EnumFacing.values()){
+    for(Direction side : Direction.values()){
       for(i = 1; i < container_radius - 1; i++){
         position = pos.offset(side, i);
         world.setBlockState(position, Machines.fusion_control_laser_beam.getDefaultState(), 3);
@@ -60,7 +60,7 @@ public final class TileFusionChamber extends TileMachine {
   public final void turn_off(){
     int i;
     BlockPos position;
-    for(EnumFacing side : EnumFacing.values()){
+    for(Direction side : Direction.values()){
       for(i = 1; i < container_radius - 1; i++){
         position = pos.offset(side, i);
         world.setBlockToAir(position);

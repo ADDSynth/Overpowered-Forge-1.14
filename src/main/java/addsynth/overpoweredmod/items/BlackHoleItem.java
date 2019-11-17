@@ -1,19 +1,19 @@
 package addsynth.overpoweredmod.items;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 
-public final class BlackHoleItem extends ItemBlock {
+public final class BlackHoleItem extends BlockItem {
 
   public BlackHoleItem(final Block block){
     super(block);
   }
 
   @Override
-  public EnumRarity getForgeRarity(final ItemStack stack){
-    return EnumRarity.EPIC;
+  public Rarity getRarity(final ItemStack stack){
+    return Rarity.EPIC;
   }
 
 }

@@ -1,11 +1,11 @@
 package addsynth.overpoweredmod.blocks.dimension;
 
-import net.minecraft.block.BlockAir;
+import net.minecraft.block.AirBlock;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public final class BlockAirNoDestroy extends BlockAir {
+public final class BlockAirNoDestroy extends AirBlock {
 
   public BlockAirNoDestroy(String name) {
     super();

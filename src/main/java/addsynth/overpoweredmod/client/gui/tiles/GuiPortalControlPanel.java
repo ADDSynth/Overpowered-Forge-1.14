@@ -12,7 +12,6 @@ import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.network.server_messages.PortalControlMessage;
 import addsynth.overpoweredmod.tiles.machines.portal.TilePortalControlPanel;
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -54,7 +53,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase {
   private static final int button_y = 84;
   private static final int button_width = 136;
   private static final int button_height = 16;
-  private GuiButton portal_button;
+  private AdjustableButton portal_button;
   
   private static final int status_message_y = button_y + button_height + 6;
 
@@ -72,16 +71,16 @@ public final class GuiPortalControlPanel extends GuiEnergyBase {
   public final void initGui(){
     super.initGui();
     NetworkHandler.INSTANCE.sendToServer(new PortalControlMessage(tile.getPos(),0));
-    buttonList.add(new OnOffSwitch(0, this.guiLeft + 6, this.guiTop + 17, tile));
-    portal_button = new AdjustableButton(1,this.guiLeft + button_x, this.guiTop + button_y, button_width, button_height,"Generate Portal");
-    buttonList.add(portal_button);
+    buttons.add(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile));
+    portal_button = new AdjustableButton(this.guiLeft + button_x, this.guiTop + button_y, button_width, button_height,"Generate Portal");
+    buttons.add(portal_button);
   }
 
   @Override
   public void updateScreen(){
     super.updateScreen();
     if(portal_button != null){
-      portal_button.enabled = tile.valid_portal;
+      portal_button.active = tile.valid_portal;
     }
   }
 

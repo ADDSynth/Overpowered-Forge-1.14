@@ -1,6 +1,6 @@
 package addsynth.energy;
 
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.energy.EnergyStorage;
 
 // Original version from CJMinecraft: https://github.com/CJMinecraft01/
@@ -46,30 +46,30 @@ public class CustomEnergyStorage extends EnergyStorage {
     }
 
       /**
-	 * Read and set all values from the data inside the given {@link NBTTagCompound}
+	 * Read and set all values from the data inside the given {@link CompoundNBT}
 	 * 
-	 * @param nbt The {@link NBTTagCompound} with all the data
+	 * @param nbt The {@link CompoundNBT} with all the data
 	 */
-	public final void readFromNBT(final NBTTagCompound nbt){
-        NBTTagCompound energy_tag = nbt.getCompoundTag("EnergyStorage");
-		this.energy = energy_tag.getInteger("Energy");
-		this.capacity = energy_tag.getInteger("Capacity");
-		this.maxReceive = energy_tag.getInteger("MaxReceive");
-		this.maxExtract = energy_tag.getInteger("MaxExtract");
+	public final void readFromNBT(final CompoundNBT nbt){
+        CompoundNBT energy_tag = nbt.getCompound("EnergyStorage");
+		this.energy = energy_tag.getInt("Energy");
+		this.capacity = energy_tag.getInt("Capacity");
+		this.maxReceive = energy_tag.getInt("MaxReceive");
+		this.maxExtract = energy_tag.getInt("MaxExtract");
 	}
 
 	/**
-	 * Write all of the data to the {@link NBTTagCompound} provided
+	 * Write all of the data to the {@link CompoundNBT} provided
 	 * 
-	 * @param nbt The {@link NBTTagCompound} to write to
+	 * @param nbt The {@link CompoundNBT} to write to
 	 */
-	public final void writeToNBT(final NBTTagCompound nbt){
-	    NBTTagCompound energy_tag = new NBTTagCompound();
-		energy_tag.setInteger("Energy", this.energy);
-		energy_tag.setInteger("Capacity", this.capacity);
-		energy_tag.setInteger("MaxReceive", this.maxReceive);
-		energy_tag.setInteger("MaxExtract", this.maxExtract);
-		nbt.setTag("EnergyStorage", energy_tag);
+	public final void writeToNBT(final CompoundNBT nbt){
+	    CompoundNBT energy_tag = new CompoundNBT();
+		energy_tag.putInt("Energy", this.energy);
+		energy_tag.putInt("Capacity", this.capacity);
+		energy_tag.putInt("MaxReceive", this.maxReceive);
+		energy_tag.putInt("MaxExtract", this.maxExtract);
+		nbt.put("EnergyStorage", energy_tag);
 	}
 
     public final void receiveEnergy(final int energy_to_add){

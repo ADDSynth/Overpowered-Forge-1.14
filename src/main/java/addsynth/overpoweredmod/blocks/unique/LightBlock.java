@@ -2,13 +2,13 @@ package addsynth.overpoweredmod.blocks.unique;
 
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 
 public final class LightBlock extends Block {
 
   public LightBlock(final String name){
-    super(Material.GLASS, MapColor.QUARTZ);
+    super(Material.GLASS, MaterialColor.QUARTZ);
     setLightLevel(1.0f);
     setHardness(5.0f);
     setHarvestLevel("pickaxe",2);

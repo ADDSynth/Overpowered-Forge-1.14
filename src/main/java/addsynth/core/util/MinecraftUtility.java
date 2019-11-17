@@ -6,8 +6,8 @@ import addsynth.core.ADDSynthCore;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.crash.CrashReport;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -38,13 +38,13 @@ public final class MinecraftUtility {
     return isVanilla(stack.getItem());
   }
 
-  public static final boolean isVanilla(final ItemBlock itemblock){
+  public static final boolean isVanilla(final BlockItem itemblock){
     return isVanilla(itemblock.getBlock());
   }
 
   public static final boolean isVanilla(final Item item){
-    if(item instanceof ItemBlock){
-      return isVanilla(((ItemBlock)item).getBlock());
+    if(item instanceof BlockItem){
+      return isVanilla(((BlockItem)item).getBlock());
     }
     final ResourceLocation registry_name = item.getRegistryName();
     if(registry_name != null){

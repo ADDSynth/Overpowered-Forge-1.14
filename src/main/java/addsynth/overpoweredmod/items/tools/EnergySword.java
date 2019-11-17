@@ -6,12 +6,12 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.Tools;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.EnumRarity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
+import net.minecraft.item.Rarity;
+import net.minecraft.item.SwordItem;
 
-public final class EnergySword extends ItemSword {
+public final class EnergySword extends SwordItem {
 
   public EnergySword(final String name){
     super(Tools.ENERGY);
@@ -25,17 +25,17 @@ public final class EnergySword extends ItemSword {
   }
 
   @Override
-  public EnumRarity getForgeRarity(ItemStack stack){
-    return EnumRarity.RARE;
+  public Rarity getRarity(ItemStack stack){
+    return Rarity.RARE;
   }
 
   // https://minecraft.gamepedia.com/Attribute
   @Override
-  public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
+  public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
 
     // Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
     Multimap<String, AttributeModifier> multimap = HashMultimap.<String, AttributeModifier>create();
-    if (equipmentSlot == EntityEquipmentSlot.MAINHAND) {
+    if (equipmentSlot == EquipmentSlotType.MAINHAND) {
       // Base Attack Damage is 3 (found in attackDamage field initializer in SwordClass),
       // + ToolMaterial Attack Damage, Wood & Gold = 0, Stone = 1, Iron = 2, Diamond = 3
       // + 1 Base attack for when the player doesn't have any tools equipped? I think? I'm not sure how sword damage is calculated.

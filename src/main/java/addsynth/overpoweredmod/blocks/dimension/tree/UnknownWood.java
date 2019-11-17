@@ -9,7 +9,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -35,7 +35,7 @@ public final class UnknownWood extends Block {
   private final void tree_destroy_loop(final World world, final BlockPos position){
     BlockPos side_position;
     Block block;
-    for(EnumFacing side : EnumFacing.values()){
+    for(Direction side : Direction.values()){
       side_position = position.offset(side);
       if(found.contains(side_position) == false){
         found.add(position);

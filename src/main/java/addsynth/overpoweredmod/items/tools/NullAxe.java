@@ -2,11 +2,11 @@ package addsynth.overpoweredmod.items.tools;
 
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.Tools;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemAxe;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 
-public class NullAxe extends ItemAxe {
+public class NullAxe extends AxeItem {
 
   public NullAxe(final String name){
     super(Tools.VOID, 14.0f, -3.0f);
@@ -29,8 +29,8 @@ public class NullAxe extends ItemAxe {
   }
 
   @Override
-  public EnumRarity getForgeRarity(ItemStack stack){
-    return EnumRarity.EPIC;
+  public Rarity getRarity(ItemStack stack){
+    return Rarity.EPIC;
   }
 
 }

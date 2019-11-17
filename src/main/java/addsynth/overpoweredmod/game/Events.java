@@ -12,7 +12,7 @@ import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
 // import addsynth.overpoweredmod.game.core.Tools;
 // import addsynth.overpoweredmod.game.core.Trophy;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
@@ -38,7 +38,7 @@ public final class Events {
   @SubscribeEvent
   public static final void pick_up_item(ItemPickupEvent event){
     final Item item = event.getStack().getItem();
-    final EntityPlayer player = event.player;
+    final PlayerEntity player = event.player;
     /*
     if(item == Gems.ruby){
       player.addStat(Achievements.FIND_RUBY);
@@ -88,7 +88,7 @@ public final class Events {
   @SubscribeEvent
   public static final void craft_event(ItemCraftedEvent event){
     final Item item = event.crafting.getItem();
-    final EntityPlayer player = event.player;
+    final PlayerEntity player = event.player;
     /*
     if(item == Init.energy_crystal){
       Game.activate_achievement(player, Achievements.ENERGY_CRYSTAL);

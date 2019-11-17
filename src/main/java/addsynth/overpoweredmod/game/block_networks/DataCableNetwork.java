@@ -10,7 +10,7 @@ import addsynth.overpoweredmod.tiles.machines.fusion.TileFusionEnergyConverter;
 import addsynth.overpoweredmod.tiles.machines.fusion.TileFusionChamber;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -26,7 +26,7 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
     public SingularityContainmentStructure(final BlockPos position_of_singularity_container){
       position = position_of_singularity_container;
     }
-    public final void add_scanning_unit(final EnumFacing direction){
+    public final void add_scanning_unit(final Direction direction){
       // yeah it's actually the opposite side, but it's still only valid if it has all 6 sides.
       side[direction.ordinal()] = true;
     }
@@ -114,7 +114,7 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
       IBlockState block_state;
       BlockPos position;
       for(BlockPos scanning_unit : scanning_units){
-        for(EnumFacing side : EnumFacing.values()){
+        for(Direction side : Direction.values()){
           block_state = world.getBlockState(scanning_unit.offset(side));
           if(block_state.getBlock() == Machines.fusion_laser){
             if(block_state.getValue(LaserCannon.FACING) == side){

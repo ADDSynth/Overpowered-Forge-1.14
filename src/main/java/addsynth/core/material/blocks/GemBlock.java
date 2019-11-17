@@ -4,11 +4,11 @@ import addsynth.core.ADDSynthCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.MaterialColor;
 
 public final class GemBlock extends Block {
 	
-  public GemBlock(final String name, final MapColor color){
+  public GemBlock(final String name, final MaterialColor color){
     super(Material.ROCK, color); // or Glass
     setHardness(5.0f);
     setResistance(10.0f);

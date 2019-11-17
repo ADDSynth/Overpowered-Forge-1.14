@@ -6,19 +6,19 @@ import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.tiles.technical.TilePortal;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.dimension.CustomTeleporter;
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -27,12 +27,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public final class PortalEnergyBlock extends BlockContainer {
+public final class PortalEnergyBlock extends ContainerBlock {
 
   // NOTE: well, after seeing a YouTube video, I was going to make this extend from the Vanilla PortalBlock class,
   //       but I want this to have a TileEntity, then just implement ITileProvider?
 
-  public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class, new EnumFacing.Axis[] {EnumFacing.Axis.X, EnumFacing.Axis.Z});
+  public static final PropertyEnum<Direction.Axis> AXIS = PropertyEnum.<Direction.Axis>create("axis", Direction.Axis.class, new Direction.Axis[] {Direction.Axis.X, Direction.Axis.Z});
 
   public PortalEnergyBlock(final String name){
     super(Material.PORTAL);
@@ -46,7 +46,7 @@ public final class PortalEnergyBlock extends BlockContainer {
   }
 
   @Override
-  public final @Nonnull ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player){
+  public final @Nonnull ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, PlayerEntity player){
     return ItemStack.EMPTY;
   }
 

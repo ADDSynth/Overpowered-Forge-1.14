@@ -4,19 +4,19 @@ import java.util.Arrays;
 import java.util.List;
 import addsynth.core.util.JavaUtils;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.init.Enchantments;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.BowItem;
+import net.minecraft.item.FishingRodItem;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemAxe;
-import net.minecraft.item.ItemBow;
-import net.minecraft.item.ItemFishingRod;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemShears;
-import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ShearsItem;
+import net.minecraft.item.ShovelItem;
+import net.minecraft.item.SwordItem;
+import net.minecraft.nbt.ListNBT;
 
 public final class EnchantmentUtil {
 
@@ -46,33 +46,33 @@ public final class EnchantmentUtil {
     Enchantment[] enchantment_list = new Enchantment[0];
     if(stack != null){
       final Item item = stack.getItem();
-      if(item instanceof ItemArmor){
-        switch(((ItemArmor)item).armorType){
+      if(item instanceof ArmorItem){
+        switch(((ArmorItem)item).getEquipmentSlot()){
         case HEAD:  enchantment_list = JavaUtils.combine_arrays(common_armor_enchantments, helmet_enchantments); break;
         case CHEST: enchantment_list = common_armor_enchantments; break;
         case LEGS:  enchantment_list = common_armor_enchantments; break;
         case FEET:  enchantment_list = JavaUtils.combine_arrays(common_armor_enchantments, boot_enchantments); break;
       }
-      if(item instanceof ItemSword){}
-      if(item instanceof ItemSpade){}
-      if(item instanceof ItemPickaxe){}
-      if(item instanceof ItemAxe){}
-      if(item instanceof ItemHoe){}
-      if(item instanceof ItemShears){}
-      if(item instanceof ItemFishingRod){}
-      if(item instanceof ItemBow){}
+      if(item instanceof SwordItem){}
+      if(item instanceof ShovelItem){}
+      if(item instanceof PickaxeItem){}
+      if(item instanceof AxeItem){}
+      if(item instanceof HoeItem){}
+      if(item instanceof ShearsItem){}
+      if(item instanceof FishingRodItem){}
+      if(item instanceof BowItem){}
       }
     }
     return Arrays.asList(enchantment_list);
   }
 
   public static final boolean does_item_have_enchantment(final ItemStack stack, final Enchantment[] enchantments){
-    if(stack.isItemEnchanted()){
-      final NBTTagList enchantment_tag_list = stack.getEnchantmentTagList();
+    if(stack.isEnchanted()){
+      final ListNBT enchantment_tag_list = stack.getEnchantmentTagList();
       int i;
       int id;
-      for(i = 0; i < enchantment_tag_list.tagCount(); i++){
-        id = enchantment_tag_list.getCompoundTagAt(i).getInteger("id");
+      for(i = 0; i < enchantment_tag_list.size(); i++){
+        id = enchantment_tag_list.getCompound(i).getInt("id");
         for(Enchantment enchantment : enchantments){
           if(id == Enchantment.getEnchantmentID(enchantment)){
             return true;
