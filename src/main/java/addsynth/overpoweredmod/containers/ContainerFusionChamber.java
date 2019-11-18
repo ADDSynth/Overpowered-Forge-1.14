@@ -10,7 +10,7 @@ public final class ContainerFusionChamber extends BaseContainer<TileFusionChambe
   public ContainerFusionChamber(final IInventory player_inventory, final TileFusionChamber tile){
     super(tile);
     make_player_inventory(player_inventory);
-    addSlotToContainer(new RestrictedSlot(tile.getInputInventory(), 0, TileFusionChamber.input_filter, 80, 37));
+    addSlot(new RestrictedSlot(tile.getInputInventory(), 0, TileFusionChamber.input_filter, 80, 37));
   }
 
 }

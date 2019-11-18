@@ -4,6 +4,7 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.recipes.OreRefineryRecipes;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -17,7 +18,7 @@ public final class TileAdvancedOreRefinery extends PassiveMachine {
   private ItemStack result;
 
   public TileAdvancedOreRefinery(){
-    super(1,OreRefineryRecipes.get_input(),1,new CustomEnergyStorage(Values.advanced_ore_refinery_required_energy),Values.advanced_ore_refinery_work_time);
+    super(Tiles.ADVANCED_ORE_REFINERY,1,OreRefineryRecipes.get_input(),1,new CustomEnergyStorage(Values.advanced_ore_refinery_required_energy),Values.advanced_ore_refinery_work_time);
   }
 
   @Override

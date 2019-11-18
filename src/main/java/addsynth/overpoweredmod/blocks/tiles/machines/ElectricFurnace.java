@@ -6,24 +6,26 @@ import addsynth.energy.blocks.MachineBlockTileEntity;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.client.gui.GuiHandler;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileElectricFurnace;
-import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public final class ElectricFurnace extends MachineBlockTileEntity {
 
-  public static final PropertyDirection FACING = BlockHorizontal.FACING;
+  public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
   public ElectricFurnace(final String name){
     super();
@@ -32,8 +34,8 @@ public final class ElectricFurnace extends MachineBlockTileEntity {
   }
 
   @Override
-  public final void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn){
-    tooltip.add("Class 1 Machine");
+  public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
+    tooltip.add(new StringTextComponent("Class 1 Machine"));
   }
 
   @Override
@@ -57,17 +59,6 @@ public final class ElectricFurnace extends MachineBlockTileEntity {
   @Override
   public final IBlockState getStateForPlacement(World world, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, Hand hand){
     return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
-  }
-
-  @Override
-  @SuppressWarnings("deprecation")
-  public final IBlockState getStateFromMeta(final int meta){
-    return getDefaultState().withProperty(FACING, Direction.byIndex(meta));
-  }
-
-  @Override
-  public final int getMetaFromState(final IBlockState state){
-    return state.getValue(FACING).getIndex();
   }
 
 }

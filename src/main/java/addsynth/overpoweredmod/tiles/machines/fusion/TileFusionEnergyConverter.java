@@ -7,6 +7,7 @@ import addsynth.energy.tiles.TileEnergyTransmitter;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.block_networks.DataCableNetwork;
 import addsynth.overpoweredmod.tiles.TileDataCable;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -20,11 +21,11 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
   private boolean valid;
 
   public TileFusionEnergyConverter(){
-    super(0, null, 0, new CustomEnergyStorage(0,Values.fusion_energy_output_per_tick));
+    super(Tiles.FUSION_ENERGY_CONVERTER, 0, null, 0, new CustomEnergyStorage(0,Values.fusion_energy_output_per_tick));
   }
 
   @Override
-  public final void update(){
+  public final void tick(){
     if(world.isRemote == false){
       if(world.getWorldTime() % sync_timer == 0){
         activated = world.isBlockPowered(pos);
@@ -34,7 +35,7 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
       }
       if(activated && valid){
         energy.set_to_full();
-        super.update();
+        super.tick();
       }
       if(singularity_container != null){
         final TileFusionChamber tile = MinecraftUtility.getTileEntity(singularity_container, world, TileFusionChamber.class);

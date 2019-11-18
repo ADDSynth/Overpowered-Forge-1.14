@@ -4,6 +4,7 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.core.Gems;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 
@@ -13,7 +14,7 @@ public final class TileGemConverter extends PassiveMachine {
   private ItemStack gem_selected;
     
   public TileGemConverter(){
-    super(1,Gems.gem_items,1,new CustomEnergyStorage(Values.gem_converter_required_energy),Values.gem_converter_work_time);
+    super(Tiles.GEM_CONVERTER,1,Gems.gem_items,1,new CustomEnergyStorage(Values.gem_converter_required_energy),Values.gem_converter_work_time);
   }
 
   public final void cycle(final boolean direction){

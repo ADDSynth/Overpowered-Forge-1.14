@@ -13,7 +13,7 @@ import addsynth.overpoweredmod.game.core.ModItems;
 // import addsynth.overpoweredmod.game.core.Tools;
 // import addsynth.overpoweredmod.game.core.Trophy;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
@@ -79,7 +79,7 @@ public final class Events {
       if(player.dimension == WeirdDimension.id){
         final MinecraftServer server = player.getServer();
         if(server != null){
-          server.getPlayerList().transferPlayerToDimension((EntityPlayerMP)player, 0, new CustomTeleporter(server.getWorld(0)));
+          server.getPlayerList().transferPlayerToDimension((ServerPlayerEntity)player, 0, new CustomTeleporter(server.getWorld(0)));
         }
       }
     }
@@ -135,7 +135,7 @@ public final class Events {
       player.addStat(Achievements.PLATINUM_TROPHY);
     }
     */
-    if(item == Item.getItemFromBlock(Machines.portal_control_panel)){
+    if(item == Item.BLOCK_TO_ITEM.get(Machines.portal_control_panel)){
       if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT){
         player.sendMessage(new TextComponentString(
           TextFormatting.RED+"Beware"+TextFormatting.RESET+": Traveling to the Unknown Dimension "+

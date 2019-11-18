@@ -4,6 +4,7 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.recipes.CompressorRecipes;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
@@ -13,7 +14,7 @@ public final class TileCompressor extends PassiveMachine {
   private ItemStack result;
 
   public TileCompressor(){
-    super(2,null,1,new CustomEnergyStorage(Values.compressor_required_energy),Values.compressor_work_time);
+    super(Tiles.COMPRESSOR,2,null,1,new CustomEnergyStorage(Values.compressor_required_energy),Values.compressor_work_time);
     // has a high work time to give the user a chance to change the recipe. (same as furnace cook time.)
   }
 

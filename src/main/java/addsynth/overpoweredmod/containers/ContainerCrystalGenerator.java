@@ -15,7 +15,7 @@ public final class ContainerCrystalGenerator extends BaseContainer<TileCrystalMa
     make_player_inventory(player_inventory,8,110);
     int i;
     for(i = 0; i < 8; i++){
-      addSlotToContainer(new OutputSlot(tile,i,8 + (i*18),54));
+      addSlot(new OutputSlot(tile,i,8 + (i*18),54));
     }
   }
 

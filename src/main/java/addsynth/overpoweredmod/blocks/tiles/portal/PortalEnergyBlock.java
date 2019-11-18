@@ -12,7 +12,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
@@ -23,9 +23,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public final class PortalEnergyBlock extends ContainerBlock {
 
@@ -57,7 +56,6 @@ public final class PortalEnergyBlock extends ContainerBlock {
   }
 
   @Override
-  @SideOnly(Side.CLIENT)
   public final BlockRenderLayer getRenderLayer(){
     return BlockRenderLayer.TRANSLUCENT;
   }
@@ -66,10 +64,10 @@ public final class PortalEnergyBlock extends ContainerBlock {
   public final void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity){
     if(world.isRemote == false){
       if(entity.isNonBoss()){
-        if(entity instanceof EntityPlayerMP){
+        if(entity instanceof ServerPlayerEntity){
           final MinecraftServer server = entity.getServer();
           if(server != null){
-            server.getPlayerList().transferPlayerToDimension((EntityPlayerMP)entity, WeirdDimension.id, new CustomTeleporter(server.getWorld(WeirdDimension.id)));
+            server.getPlayerList().transferPlayerToDimension((ServerPlayerEntity)entity, WeirdDimension.id, new CustomTeleporter(server.getWorld(WeirdDimension.id)));
           }
         }
         else{
@@ -80,7 +78,7 @@ public final class PortalEnergyBlock extends ContainerBlock {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(World worldIn, int meta) {
+  public final TileEntity createNewTileEntity(IBlockReader worldIn){
     return new TilePortal();
   }
 

@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.tileentity.TileEntityType;
 
 /** WorkMachines check if their Energy Storage is full every tick, and if it is,
  *  it begins to increment a {@link #work_units} variable, then executes {@link #performWork()}
@@ -18,13 +19,13 @@ public abstract class WorkMachine extends TileEnergyReceiver implements ITickabl
   protected int work_units;
   protected final int work_units_required;
 
-  public WorkMachine(final SlotData[] slots, final int output_slots, final CustomEnergyStorage energy, final int work_units_required){
-    super(slots, output_slots, energy);
+  public WorkMachine(final TileEntityType type, final SlotData[] slots, final int output_slots, final CustomEnergyStorage energy, final int work_units_required){
+    super(type, slots, output_slots, energy);
     this.work_units_required = work_units_required;
   }
 
-  public WorkMachine(final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy, final int work_units_required){
-    super(input_slots, filter, output_slots, energy);
+  public WorkMachine(final TileEntityType type, final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy, final int work_units_required){
+    super(type, input_slots, filter, output_slots, energy);
     this.work_units_required = work_units_required;
   }
 

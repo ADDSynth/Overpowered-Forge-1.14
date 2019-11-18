@@ -14,6 +14,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public final class UniversalEnergyBlock extends MachineBlockTileEntity {
@@ -24,12 +27,12 @@ public final class UniversalEnergyBlock extends MachineBlockTileEntity {
   }
 
   @Override
-  public final void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn){
-    tooltip.add("Energy Machine");
+  public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
+    tooltip.add(new StringTextComponent("Energy Machine"));
   }
 
   @Override
-  public final TileEntity createNewTileEntity(World worldIn, int meta){
+  public final TileEntity createNewTileEntity(IBlockReader worldIn){
     return new TileUniversalEnergyTransfer();
   }
 

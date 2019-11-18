@@ -3,13 +3,14 @@ package addsynth.core.tiles;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 
 public abstract class TileBase extends TileEntity {
 
-  public TileBase() {
-    super();
+  public TileBase(final TileEntityType type){
+    super(type);
   }
 
   // http://mcforge.readthedocs.io/en/latest/tileentities/tileentity/#synchronizing-the-data-to-the-client
@@ -26,15 +27,15 @@ public abstract class TileBase extends TileEntity {
   //   http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-tools/1262665-nbtexplorer-nbt-editor-for-windows-and-mac
 
   @Override
-  public final SPacketUpdateTileEntity getUpdatePacket(){
+  public final SUpdateTileEntityPacket getUpdatePacket(){
       CompoundNBT nbtTag = new CompoundNBT();
       write(nbtTag);
-      return new SPacketUpdateTileEntity(this.pos, -1, nbtTag);
+      return new SUpdateTileEntityPacket(this.pos, -1, nbtTag);
   }
 
   @Override
-  public final void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt){
-      readFromNBT(pkt.getNbtCompound());
+  public final void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt){
+      read(pkt.getNbtCompound());
   }
 
   @Override

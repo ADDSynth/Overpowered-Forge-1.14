@@ -1,5 +1,6 @@
 package addsynth.energy.tiles;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.tiles.TileMachine;
@@ -7,8 +8,10 @@ import addsynth.energy.CustomEnergyStorage;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 
 public abstract class TileEnergyWithStorage extends TileMachine implements ITickableTileEntity {
@@ -19,18 +22,18 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
    *  an inventory such as the Battery or Universal Energy Interface.
    *  @param energy
    */
-  public TileEnergyWithStorage(final CustomEnergyStorage energy){
-    super(0, null, 0);
+  public TileEnergyWithStorage(final TileEntityType type, final CustomEnergyStorage energy){
+    super(type, 0, null, 0);
     this.energy = energy;
   }
 
-  public TileEnergyWithStorage(final SlotData[] slots, final int output_slots, final CustomEnergyStorage energy){
-    super(slots, output_slots);
+  public TileEnergyWithStorage(final TileEntityType type, final SlotData[] slots, final int output_slots, final CustomEnergyStorage energy){
+    super(type, slots, output_slots);
     this.energy = energy;
   }
 
-  public TileEnergyWithStorage(final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy){
-    super(input_slots, filter, output_slots);
+  public TileEnergyWithStorage(final TileEntityType type, final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy){
+    super(type, input_slots, filter, output_slots);
     this.energy = energy;
   }
 
@@ -52,22 +55,13 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  public <T> T getCapability(final Capability<T> capability, final @Nullable Direction facing){
+  public @Nonnull <T> LazyOptional<T> getCapability(final @Nonnull Capability<T> capability, final @Nullable Direction facing){
     if(capability == CapabilityEnergy.ENERGY){
-      return (T)getEnergy();
+      return (LazyOptional.of(()->energy)).cast();
     }
     return super.getCapability(capability, facing);
   }
   
-  @Override
-  public boolean hasCapability(final Capability<?> capability, final @Nullable Direction facing){
-    if(capability == CapabilityEnergy.ENERGY){
-      return getEnergy() != null;
-    }
-    return super.hasCapability(capability, facing);
-  }
-
   @Override
   public void tick(){
     if(energy != null){

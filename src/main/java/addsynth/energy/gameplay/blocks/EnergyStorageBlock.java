@@ -16,10 +16,10 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public final class EnergyStorageBlock extends MachineBlockTileEntity {
 
@@ -30,8 +30,8 @@ public final class EnergyStorageBlock extends MachineBlockTileEntity {
   }
 
   @Override
-  public final void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn){
-    tooltip.add("Energy Machine");
+  public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
+    tooltip.add(new StringTextComponent("Energy Machine"));
   }
 
   @Override
@@ -50,7 +50,6 @@ public final class EnergyStorageBlock extends MachineBlockTileEntity {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
     public final BlockRenderLayer getRenderLayer(){
       return BlockRenderLayer.TRANSLUCENT;
     }

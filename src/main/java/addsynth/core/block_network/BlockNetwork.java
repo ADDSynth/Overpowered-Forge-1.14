@@ -10,7 +10,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
+import net.minecraft.world.server.ServerWorld;
 
 /**
  * A Block Network is a collection of Block Positions that we can use to search for other types of
@@ -41,7 +41,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
     if(world == null || block == null){
       throw new IllegalArgumentException("arguments to BlockNetwork(World, BlockType) can't be null.");
     }
-    this.world = world instanceof WorldServer ? world : null;
+    this.world = world instanceof ServerWorld ? world : null;
     this.block_type = block;
     this.first_tile = tile;
   }

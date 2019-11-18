@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -20,8 +21,8 @@ public abstract class TileWithStorage extends TileBase {
 
   protected final ItemStackHandler inventory;
 
-  public TileWithStorage(ItemStackHandler inventory){
-    super();
+  public TileWithStorage(final TileEntityType type, ItemStackHandler inventory){
+    super(type);
     this.inventory = inventory;
   }
 

@@ -9,8 +9,6 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public final class FusionControlLaserBeam extends Block {
 
@@ -22,7 +20,6 @@ public final class FusionControlLaserBeam extends Block {
   }
 
   @Override
-  @SideOnly(Side.CLIENT)
   public final BlockRenderLayer getRenderLayer(){
     return BlockRenderLayer.TRANSLUCENT;
   }

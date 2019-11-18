@@ -5,17 +5,18 @@ import addsynth.energy.tiles.TileEnergyTransmitter;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.core.Init;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public final class TileEnergyGenerator extends TileEnergyTransmitter {
 
   public static final Item[] input_filter = new Item[] {
-    Init.energy_crystal_shards, Init.energy_crystal, Item.getItemFromBlock(Init.light_block)
+    Init.energy_crystal_shards, Init.energy_crystal, Item.BLOCK_TO_ITEM.get(Init.light_block)
   };
 
   public TileEnergyGenerator(){
-    super(1,input_filter,0,new CustomEnergyStorage());
+    super(Tiles.GENERATOR, 1,input_filter,0,new CustomEnergyStorage());
   }
 
   private final void setGeneratorData(Item item){
@@ -34,7 +35,7 @@ public final class TileEnergyGenerator extends TileEnergyTransmitter {
   }
 
   @Override
-  public final void update(){
+  public final void tick(){
     if(world != null){
       if(world.isRemote == false){
         if(energy.isEmpty()){
@@ -44,7 +45,7 @@ public final class TileEnergyGenerator extends TileEnergyTransmitter {
             update_data();
           }
         }
-        super.update(); // Dispatch energy to the energy grid.
+        super.tick(); // Dispatch energy to the energy grid.
       }
       else{
         energy.update();

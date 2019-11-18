@@ -10,6 +10,7 @@ import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.ArmorEffects;
 import addsynth.overpoweredmod.game.core.Tools;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -24,7 +25,7 @@ public final class TileIdentifier extends PassiveMachine {
   );
 
   public TileIdentifier(){
-    super(new SlotData[]{new SlotData(input_filter,1)},0,new CustomEnergyStorage(Values.identifier_required_energy),Values.identifier_work_time);
+    super(Tiles.IDENTIFIER,new SlotData[]{new SlotData(input_filter,1)},0,new CustomEnergyStorage(Values.identifier_required_energy),Values.identifier_work_time);
   }
 
   @Override

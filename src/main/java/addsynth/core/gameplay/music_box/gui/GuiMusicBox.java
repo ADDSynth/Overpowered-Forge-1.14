@@ -1,7 +1,7 @@
 package addsynth.core.gameplay.music_box.gui;
 
 import java.io.IOException;
-import org.lwjgl.input.Keyboard;
+import org.lwjgl.glfw.GLFW;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.gameplay.music_box.MusicGrid;
@@ -191,36 +191,36 @@ public final class GuiMusicBox extends GuiBase {
   @Override
   public
   final boolean keyPressed(final int par1, final int par2, final int par3){
-    if (keyCode == Keyboard.KEY_ESCAPE){
+    if(keyCode == GLFW.GLFW_KEY_ESCAPE){
       this.mc.player.closeScreen();
     }
     else{
       switch(keyCode){ // MAYBE: maybe make these keys changeable in the Controls Options screen.
-      case Keyboard.KEY_A: note_selected = 0; break;
-      case Keyboard.KEY_Z: note_selected = 1; break;
-      case Keyboard.KEY_S: note_selected = 2; break;
-      case Keyboard.KEY_X: note_selected = 3; break;
-      case Keyboard.KEY_D: note_selected = 4; break;
-      case Keyboard.KEY_C: note_selected = 5; break;
-      case Keyboard.KEY_V: note_selected = 6; break;
-      case Keyboard.KEY_G: note_selected = 7; break;
-      case Keyboard.KEY_B: note_selected = 8; break;
-      case Keyboard.KEY_H: note_selected = 9; break;
-      case Keyboard.KEY_N: note_selected = 10; break;
-      case Keyboard.KEY_M: note_selected = 11; break;
-      case Keyboard.KEY_1: note_selected = 12; break;
-      case Keyboard.KEY_Q: note_selected = 13; break;
-      case Keyboard.KEY_2: note_selected = 14; break;
-      case Keyboard.KEY_W: note_selected = 15; break;
-      case Keyboard.KEY_3: note_selected = 16; break;
-      case Keyboard.KEY_E: note_selected = 17; break;
-      case Keyboard.KEY_R: note_selected = 18; break;
-      case Keyboard.KEY_5: note_selected = 19; break;
-      case Keyboard.KEY_T: note_selected = 20; break;
-      case Keyboard.KEY_6: note_selected = 21; break;
-      case Keyboard.KEY_Y: note_selected = 22; break;
-      case Keyboard.KEY_U: note_selected = 23; break;
-      case Keyboard.KEY_8: note_selected = 24; break;
+      case GLFW.GLFW_KEY_A: note_selected = 0; break;
+      case GLFW.GLFW_KEY_Z: note_selected = 1; break;
+      case GLFW.GLFW_KEY_S: note_selected = 2; break;
+      case GLFW.GLFW_KEY_X: note_selected = 3; break;
+      case GLFW.GLFW_KEY_D: note_selected = 4; break;
+      case GLFW.GLFW_KEY_C: note_selected = 5; break;
+      case GLFW.GLFW_KEY_V: note_selected = 6; break;
+      case GLFW.GLFW_KEY_G: note_selected = 7; break;
+      case GLFW.GLFW_KEY_B: note_selected = 8; break;
+      case GLFW.GLFW_KEY_H: note_selected = 9; break;
+      case GLFW.GLFW_KEY_N: note_selected = 10; break;
+      case GLFW.GLFW_KEY_M: note_selected = 11; break;
+      case GLFW.GLFW_KEY_1: note_selected = 12; break;
+      case GLFW.GLFW_KEY_Q: note_selected = 13; break;
+      case GLFW.GLFW_KEY_2: note_selected = 14; break;
+      case GLFW.GLFW_KEY_W: note_selected = 15; break;
+      case GLFW.GLFW_KEY_3: note_selected = 16; break;
+      case GLFW.GLFW_KEY_E: note_selected = 17; break;
+      case GLFW.GLFW_KEY_R: note_selected = 18; break;
+      case GLFW.GLFW_KEY_5: note_selected = 19; break;
+      case GLFW.GLFW_KEY_T: note_selected = 20; break;
+      case GLFW.GLFW_KEY_6: note_selected = 21; break;
+      case GLFW.GLFW_KEY_Y: note_selected = 22; break;
+      case GLFW.GLFW_KEY_U: note_selected = 23; break;
+      case GLFW.GLFW_KEY_8: note_selected = 24; break;
       }
     }
 

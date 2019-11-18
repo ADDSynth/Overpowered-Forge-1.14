@@ -13,15 +13,11 @@ import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.game.core.*;
 import addsynth.overpoweredmod.game.recipes.*;
 import addsynth.overpoweredmod.items.BlackHoleItem;
-import addsynth.overpoweredmod.tiles.TileDataCable;
-import addsynth.overpoweredmod.tiles.machines.automatic.*;
-import addsynth.overpoweredmod.tiles.machines.energy.*;
-import addsynth.overpoweredmod.tiles.machines.fusion.*;
-import addsynth.overpoweredmod.tiles.machines.laser.*;
-import addsynth.overpoweredmod.tiles.machines.portal.*;
-import addsynth.overpoweredmod.tiles.technical.*;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.block.Block;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -30,9 +26,6 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 /** The annotation is identified at compile time, Forge finds this and runs this
@@ -243,7 +236,6 @@ public final class Registers {
    * This is because the 1.11 update has updated Resource Packs format to version 3, which requires all files to be in
    * lowercase. See here: https://minecraft.gamepedia.com/1.11#General_2
    */
-  @SideOnly(Side.CLIENT)
   @SubscribeEvent
   public static final void registerModels(final ModelRegistryEvent event){
     Debug.log_setup_info("Begin Model Registry Event...");
@@ -255,37 +247,37 @@ public final class Registers {
 
 
 
-  /**
-   * Forge doesn't have a Registry Event for TileEntities.
-   */
-  public static final void registerTileEntities(){ // TEST: Maybe don't register TileEntities if they aren't enabled in the config.
+  public static final void registerTileEntities(final RegistryEvent.Register<TileEntityType<?>> event){ // TEST: Maybe don't register TileEntities if they aren't enabled in the config.
     Debug.log_setup_info("Begin registering Tile Entities...");
     /*
       https://github.com/MinecraftForge/MinecraftForge/pull/4681#issuecomment-405115908
       NOTE: If anyone needs an example of how to fix the warning caused by this change without breaking old saved games,
       I (someone else) just updated all of McJty's mods to use a DataFixer to do so.
     */
-    GameRegistry.registerTileEntity(TileEnergyGenerator.class,        new ResourceLocation(OverpoweredMod.MOD_ID,"tile_generator"));
-    GameRegistry.registerTileEntity(TileEnergyWire.class,             new ResourceLocation(OverpoweredMod.MOD_ID,"tile_energy_wire"));
-    GameRegistry.registerTileEntity(TileEnergyStorage.class,          new ResourceLocation(OverpoweredMod.MOD_ID,"tile_energy_storage"));
-    GameRegistry.registerTileEntity(TileUniversalEnergyTransfer.class,new ResourceLocation(OverpoweredMod.MOD_ID,"tile_universal_energy_interface"));
-    GameRegistry.registerTileEntity(TileCompressor.class,             new ResourceLocation(OverpoweredMod.MOD_ID,"tile_compressor"));
-    GameRegistry.registerTileEntity(TileElectricFurnace.class,        new ResourceLocation(OverpoweredMod.MOD_ID,"tile_electric_furnace"));
-    GameRegistry.registerTileEntity(TileGemConverter.class,           new ResourceLocation(OverpoweredMod.MOD_ID,"tile_gem_converter"));
-    GameRegistry.registerTileEntity(TileInverter.class,               new ResourceLocation(OverpoweredMod.MOD_ID,"tile_inverter"));
-    GameRegistry.registerTileEntity(TileMagicUnlocker.class,          new ResourceLocation(OverpoweredMod.MOD_ID,"tile_magic_infuser"));
-    GameRegistry.registerTileEntity(TileIdentifier.class,             new ResourceLocation(OverpoweredMod.MOD_ID,"tile_identifier"));
-    GameRegistry.registerTileEntity(TileLaserHousing.class,           new ResourceLocation(OverpoweredMod.MOD_ID,"tile_laser_housing"));
-    GameRegistry.registerTileEntity(TileLaser.class,                  new ResourceLocation(OverpoweredMod.MOD_ID,"tile_laser_cannon"));
-    GameRegistry.registerTileEntity(TileLaserBeam.class,              new ResourceLocation(OverpoweredMod.MOD_ID,"tile_laser_beam"));
-    GameRegistry.registerTileEntity(TileDataCable.class,              new ResourceLocation(OverpoweredMod.MOD_ID,"tile_data_cable"));
-    GameRegistry.registerTileEntity(TilePortalControlPanel.class,     new ResourceLocation(OverpoweredMod.MOD_ID,"tile_portal_control_panel"));
-    GameRegistry.registerTileEntity(TilePortalFrame.class,            new ResourceLocation(OverpoweredMod.MOD_ID,"tile_portal_frame"));
-    GameRegistry.registerTileEntity(TilePortal.class,                 new ResourceLocation(OverpoweredMod.MOD_ID,"tile_portal_block"));
-    GameRegistry.registerTileEntity(TileCrystalMatterReplicator.class,new ResourceLocation(OverpoweredMod.MOD_ID,"tile_crystal_matter_generator"));
-    GameRegistry.registerTileEntity(TileAdvancedOreRefinery.class,    new ResourceLocation(OverpoweredMod.MOD_ID,"tile_advanced_ore_refinery"));
-    GameRegistry.registerTileEntity(TileFusionEnergyConverter.class,  new ResourceLocation(OverpoweredMod.MOD_ID,"tile_fusion_energy_converter"));
-    GameRegistry.registerTileEntity(TileFusionChamber.class,          new ResourceLocation(OverpoweredMod.MOD_ID,"tile_singularity_container"));
+    final IForgeRegistry<TileEntityType<?>> game = event.getRegistry();
+
+    game.register(Tiles.ENERGY_WIRE.setRegistryName(               new ResourceLocation(OverpoweredMod.MOD_ID, "energy_wire")));
+    game.register(Tiles.GENERATOR.setRegistryName(                 new ResourceLocation(OverpoweredMod.MOD_ID, "generator")));
+    game.register(Tiles.ENERGY_CONTAINER.setRegistryName(          new ResourceLocation(OverpoweredMod.MOD_ID, "energy_storage")));
+    game.register(Tiles.UNIVERSAL_ENERGY_INTERFACE.setRegistryName(new ResourceLocation(OverpoweredMod.MOD_ID, "universal_energy_interface")));
+    game.register(Tiles.COMPRESSOR.setRegistryName(                new ResourceLocation(OverpoweredMod.MOD_ID, "compressor")));
+    game.register(Tiles.ELECTRIC_FURNACE.setRegistryName(          new ResourceLocation(OverpoweredMod.MOD_ID, "electric_furnace")));
+    game.register(Tiles.GEM_CONVERTER.setRegistryName(             new ResourceLocation(OverpoweredMod.MOD_ID, "gem_converter")));
+    game.register(Tiles.INVERTER.setRegistryName(                  new ResourceLocation(OverpoweredMod.MOD_ID, "inverter")));
+    game.register(Tiles.MAGIC_INFUSER.setRegistryName(             new ResourceLocation(OverpoweredMod.MOD_ID, "magic_infuser")));
+    game.register(Tiles.IDENTIFIER.setRegistryName(                new ResourceLocation(OverpoweredMod.MOD_ID, "identifier")));
+    game.register(Tiles.LASER_MACHINE.setRegistryName(             new ResourceLocation(OverpoweredMod.MOD_ID, "laser_housing")));
+    game.register(Tiles.LASER.setRegistryName(                     new ResourceLocation(OverpoweredMod.MOD_ID, "laser_cannon")));
+    game.register(Tiles.LASER_BEAM.setRegistryName(                new ResourceLocation(OverpoweredMod.MOD_ID, "laser_beam")));
+    game.register(Tiles.DATA_CABLE.setRegistryName(                new ResourceLocation(OverpoweredMod.MOD_ID, "data_cable")));
+    game.register(Tiles.PORTAL_CONTROL_PANEL.setRegistryName(      new ResourceLocation(OverpoweredMod.MOD_ID, "portal_control_panel")));
+    game.register(Tiles.PORTAL_FRAME.setRegistryName(              new ResourceLocation(OverpoweredMod.MOD_ID, "portal_frame")));
+    game.register(Tiles.PORTAL_BLOCK.setRegistryName(              new ResourceLocation(OverpoweredMod.MOD_ID, "portal_block")));
+    game.register(Tiles.CRYSTAL_MATTER_REPLICATOR.setRegistryName( new ResourceLocation(OverpoweredMod.MOD_ID, "crystal_matter_generator")));
+    game.register(Tiles.ADVANCED_ORE_REFINERY.setRegistryName(     new ResourceLocation(OverpoweredMod.MOD_ID, "advanced_ore_refinery")));
+    game.register(Tiles.FUSION_ENERGY_CONVERTER.setRegistryName(   new ResourceLocation(OverpoweredMod.MOD_ID, "fusion_energy_converter")));
+    game.register(Tiles.FUSION_CHAMBER.setRegistryName(            new ResourceLocation(OverpoweredMod.MOD_ID, "fusion_container")));
+
     Debug.log_setup_info("Finished registering Tile Entities.");
   }
 

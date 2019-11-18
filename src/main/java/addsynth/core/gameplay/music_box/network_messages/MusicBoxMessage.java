@@ -4,7 +4,7 @@ import addsynth.core.gameplay.music_box.TileMusicBox;
 import addsynth.core.util.MinecraftUtility;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldServer;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -47,12 +47,12 @@ public final class MusicBoxMessage implements IMessage {
 
     @Override
     public IMessage onMessage(MusicBoxMessage message, MessageContext context) {
-      final WorldServer world = context.getServerHandler().player.getServerWorld();
+      final ServerWorld world = context.getServerHandler().player.getServerWorld();
       world.addScheduledTask(() -> processMessage(world, message));
       return null;
     }
     
-    private static final void processMessage(final WorldServer world, final MusicBoxMessage message){
+    private static final void processMessage(final ServerWorld world, final MusicBoxMessage message){
       if(world.isBlockLoaded(message.position)){
         final TileMusicBox music_box = MinecraftUtility.getTileEntity(message.position, world, TileMusicBox.class);
         if(music_box != null){

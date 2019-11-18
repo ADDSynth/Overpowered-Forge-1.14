@@ -6,10 +6,10 @@ import javax.annotation.Nullable;
 import addsynth.core.blocks.BlockTile;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.state.BooleanProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -22,12 +22,12 @@ public abstract class Wire extends BlockTile {
 
   // http://mcforge.readthedocs.io/en/latest/blocks/states/
 
-  public static final PropertyBool NORTH = PropertyBool.create("north");
-  public static final PropertyBool SOUTH = PropertyBool.create("south");
-  public static final PropertyBool WEST  = PropertyBool.create("west");
-  public static final PropertyBool EAST  = PropertyBool.create("east");
-  public static final PropertyBool UP    = PropertyBool.create("up");
-  public static final PropertyBool DOWN  = PropertyBool.create("down");
+  public static final BooleanProperty NORTH = BooleanProperty.create("north");
+  public static final BooleanProperty SOUTH = BooleanProperty.create("south");
+  public static final BooleanProperty WEST  = BooleanProperty.create("west");
+  public static final BooleanProperty EAST  = BooleanProperty.create("east");
+  public static final BooleanProperty UP    = BooleanProperty.create("up");
+  public static final BooleanProperty DOWN  = BooleanProperty.create("down");
 
   private static final double default_min_wire_size =  5.0 / 16;
   private static final double default_max_wire_size = 11.0 / 16;
@@ -74,19 +74,8 @@ public abstract class Wire extends BlockTile {
 
   @Override
   @SuppressWarnings("deprecation")
-  public final IBlockState getStateFromMeta(int meta){
-    return this.getDefaultState();
-  }
-
-  @Override
-  public final int getMetaFromState(IBlockState state){
-    return 0;
-  }
-
-  @Override
-  @SuppressWarnings("deprecation")
   public final IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos){
-    final ArrayList<EnumFacing> valid_sides = get_valid_sides(world, pos);
+    final ArrayList<Direction> valid_sides = get_valid_sides(world, pos);
     
     final boolean north = valid_sides.contains(Direction.NORTH);
     final boolean south = valid_sides.contains(Direction.SOUTH);

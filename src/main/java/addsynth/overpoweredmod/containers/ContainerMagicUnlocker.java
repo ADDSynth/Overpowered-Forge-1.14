@@ -11,9 +11,9 @@ public final class ContainerMagicUnlocker extends BaseContainer<TileMagicUnlocke
   public ContainerMagicUnlocker(final IInventory player_inventory, final TileMagicUnlocker tile){
     super(tile);
     make_player_inventory(player_inventory,8,105);
-    addSlotToContainer(new InputSlot(tile,0,TileMagicUnlocker.slot_data[0].filter,38,44));
-    addSlotToContainer(new InputSlot(tile,1,TileMagicUnlocker.slot_data[1].filter,56,44));
-    addSlotToContainer(new OutputSlot(tile, 0, 111, 44));
+    addSlot(new InputSlot(tile,0,TileMagicUnlocker.slot_data[0].filter,38,44));
+    addSlot(new InputSlot(tile,1,TileMagicUnlocker.slot_data[1].filter,56,44));
+    addSlot(new OutputSlot(tile, 0, 111, 44));
   }
 
 }

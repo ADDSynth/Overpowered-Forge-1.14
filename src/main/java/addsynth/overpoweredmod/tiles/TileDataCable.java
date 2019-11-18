@@ -11,6 +11,7 @@ public final class TileDataCable extends TileEntity implements IBlockNetworkUser
   private DataCableNetwork cable_network;
 
   public TileDataCable(){
+    super(Tiles.DATA_CABLE);
   }
 
   @Override

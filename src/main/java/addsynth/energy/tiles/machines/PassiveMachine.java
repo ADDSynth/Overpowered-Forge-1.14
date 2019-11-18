@@ -5,6 +5,7 @@ import addsynth.core.inventory.SlotData;
 import addsynth.energy.CustomEnergyStorage;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.TileEntityType;
 
 /** <p>Passive Machines will be in the <code>ACTIVE</code> state, only if the {@link #can_run}
  *     variable is true, and in the <code>IDLE</code> state if the <code>can_run</code> variable
@@ -29,18 +30,18 @@ public abstract class PassiveMachine extends WorkMachine {
   protected boolean can_run;
   private final int max_passive_ticks;
 
-  public PassiveMachine(final SlotData[] slots, final int output_slots, final CustomEnergyStorage energy, final int work_units_required){
-    super(slots, output_slots, energy, work_units_required);
+  public PassiveMachine(final TileEntityType type, final SlotData[] slots, final int output_slots, final CustomEnergyStorage energy, final int work_units_required){
+    super(type, slots, output_slots, energy, work_units_required);
     this.max_passive_ticks = Constants.ticks_per_second;
   }
 
-  public PassiveMachine(final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy, final int work_units_required){
-    super(input_slots, filter, output_slots, energy, work_units_required);
+  public PassiveMachine(final TileEntityType type, final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy, final int work_units_required){
+    super(type, input_slots, filter, output_slots, energy, work_units_required);
     this.max_passive_ticks = Constants.ticks_per_second;
   }
 
-  public PassiveMachine(final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy, final int work_units_required, final int max_passive_ticks){
-    super(input_slots, filter, output_slots, energy, work_units_required);
+  public PassiveMachine(final TileEntityType type, final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy, final int work_units_required, final int max_passive_ticks){
+    super(type, input_slots, filter, output_slots, energy, work_units_required);
     this.max_passive_ticks = max_passive_ticks;
   }
 
@@ -65,7 +66,7 @@ public abstract class PassiveMachine extends WorkMachine {
   }
 
   @Override
-  public final void update(){
+  public final void tick(){
     if(world != null){
       if(world.isRemote == false){
         if(running){

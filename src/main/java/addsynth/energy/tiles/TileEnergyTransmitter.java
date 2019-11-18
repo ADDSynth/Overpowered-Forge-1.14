@@ -9,6 +9,7 @@ import addsynth.energy.EnergyNode;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 
 public abstract class TileEnergyTransmitter extends TileEnergyWithStorage implements ITickableTileEntity {
@@ -16,8 +17,8 @@ public abstract class TileEnergyTransmitter extends TileEnergyWithStorage implem
   protected final ArrayList<EnergyNetwork>         networks = new ArrayList<>(1);
   protected final ArrayList<TileEnergyWithStorage> machines = new ArrayList<>(6);
 
-  public TileEnergyTransmitter(final CustomEnergyStorage energy){
-    super(energy);
+  public TileEnergyTransmitter(final TileEntityType type, final CustomEnergyStorage energy){
+    super(type, energy);
     if(this.energy != null){
       if(this instanceof TileEnergyBattery == false){
         this.energy.set_extract_only();
@@ -25,8 +26,8 @@ public abstract class TileEnergyTransmitter extends TileEnergyWithStorage implem
     }
   }
 
-  public TileEnergyTransmitter(final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy){
-    super(input_slots, filter, output_slots, energy);
+  public TileEnergyTransmitter(final TileEntityType type, final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy){
+    super(type, input_slots, filter, output_slots, energy);
     if(this.energy != null){
       if(this instanceof TileEnergyBattery == false){
         this.energy.set_extract_only();

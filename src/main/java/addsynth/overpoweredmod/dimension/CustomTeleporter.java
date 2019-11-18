@@ -1,10 +1,10 @@
 package addsynth.overpoweredmod.dimension;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Teleporter;
-import net.minecraft.world.WorldServer;
+import net.minecraft.world.server.ServerWorld;
 
 /**
  * The Teleporter class is what spawns the Nether Portal (if going to/from the Nether) and the End spawn location,
@@ -17,13 +17,13 @@ public final class CustomTeleporter extends Teleporter {
 
   private final BlockPos spawn = WeirdWorldProvider.spawn;
 
-  public CustomTeleporter(final WorldServer worldIn){
+  public CustomTeleporter(final ServerWorld worldIn){
     super(worldIn);
   }
 
   @Override
   public void placeInPortal(final Entity entity, final float rotationYaw){
-    if(world.provider.getDimension() == WeirdDimension.id){
+    if(world.getDimension().getType().getId() == WeirdDimension.id){
       set_entity_position(entity, spawn.getX(), spawn.getY(), spawn.getZ());
     }
     else{
@@ -38,9 +38,9 @@ public final class CustomTeleporter extends Teleporter {
   private static final void set_entity_position(final Entity entity, final double x, final double y, final double z){
     final float yaw = entity.rotationYaw;
     final float pitch = entity.rotationPitch;
-    if(entity instanceof EntityPlayerMP){
+    if(entity instanceof ServerPlayerEntity){
       // TODO: set players to face North.
-      ((EntityPlayerMP)entity).connection.setPlayerLocation(x, y, z, yaw, pitch);
+      ((ServerPlayerEntity)entity).connection.setPlayerLocation(x, y, z, yaw, pitch);
       return;
     }
     entity.setPositionAndRotation(x, y, z, yaw, pitch);

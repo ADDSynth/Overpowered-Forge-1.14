@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -14,7 +15,7 @@ public final class TileElectricFurnace extends PassiveMachine {
   private ItemStack result;
 
   public TileElectricFurnace(){
-    super(1, furnace_input, 1, new CustomEnergyStorage(Values.electric_furnace_required_energy), Values.electric_furnace_work_time);
+    super(Tiles.ELECTRIC_FURNACE, 1, furnace_input, 1, new CustomEnergyStorage(Values.electric_furnace_required_energy), Values.electric_furnace_work_time);
   }
 
   @Override

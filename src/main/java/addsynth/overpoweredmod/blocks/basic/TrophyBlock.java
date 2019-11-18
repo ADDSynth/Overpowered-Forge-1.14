@@ -4,10 +4,10 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 public final class TrophyBlock extends Block {
 
-  private static final PropertyDirection FACING = PropertyDirection.create("facing", Direction.Plane.HORIZONTAL);
+  private static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
 
   private static final AxisAlignedBB bounding_box = new AxisAlignedBB(0.125, 0.0, 0.125, 0.875, 0.9375, 0.875);
 
@@ -37,18 +37,12 @@ public final class TrophyBlock extends Block {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
-  public final IBlockState getStateFromMeta(int meta){
-    return getDefaultState().withProperty(FACING, Direction.byIndex(meta));
-  }
-
-  @Override
   public final int getMetaFromState(IBlockState state){
     return state.getValue(FACING).getIndex();
   }
 
   @Override
-  public IBlockState getStateForPlacement(World world, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, and hand){
+  public IBlockState getStateForPlacement(World world, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, Hand hand){
     return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
   }
 

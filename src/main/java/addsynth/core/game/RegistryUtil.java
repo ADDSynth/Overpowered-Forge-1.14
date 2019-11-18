@@ -136,7 +136,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    * @param block
    */
   private static @Nullable final BlockItem getVanillaItemBlock(@Nonnull final Block block){
-    final Item vanilla_item = Item.getItemFromBlock(block);
+    final Item vanilla_item = Item.BLOCK_TO_ITEM.get(block);
     if(vanilla_item != null){
       if(vanilla_item != Items.AIR){
         return (BlockItem)vanilla_item;

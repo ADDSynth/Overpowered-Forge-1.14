@@ -10,13 +10,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.EnumDifficulty;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 
 public final class BlackHole extends Block {
@@ -38,7 +38,7 @@ public final class BlackHole extends Block {
   }
 
   public static final void erase_the_world(final World world, final BlockPos center){
-    if(is_black_hole_allowed(world.provider.getDimension())){
+    if(is_black_hole_allowed(world.getDimension().getType().getId())){
 
       if(Config.alert_players_of_black_hole){
         ServerUtils.send_message_to_all_players_in_world(new TextComponentString(
@@ -74,7 +74,7 @@ public final class BlackHole extends Block {
   private static final int get_black_hole_radius(final World world){
     int radius = Config.black_hole_radius;
     if(Config.black_hole_radius_depends_on_world_difficulty){
-      final EnumDifficulty difficulty = world.getDifficulty();
+      final Difficulty difficulty = world.getDifficulty();
       final int[] difficulty_radius = new int[] {
         Config.BLACK_HOLE_PEACEFUL_DIFFICULTY_RADIUS, Config.BLACK_HOLE_EASY_DIFFICULTY_RADIUS,
         Config.BLACK_HOLE_NORMAL_DIFFICULTY_RADIUS,   Config.BLACK_HOLE_HARD_DIFFICULTY_RADIUS};

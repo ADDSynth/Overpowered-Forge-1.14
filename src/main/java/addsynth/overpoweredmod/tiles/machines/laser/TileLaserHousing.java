@@ -7,6 +7,7 @@ import addsynth.energy.tiles.TileEnergyReceiver;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.block_networks.LaserNetwork;
 import addsynth.overpoweredmod.network.laser.LaserClientSyncMessage;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 
@@ -22,7 +23,7 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
   private boolean auto_shutoff = true;
 
   public TileLaserHousing(){
-    super(0, null, 0, new CustomEnergyStorage());
+    super(Tiles.LASER_MACHINE, 0, null, 0, new CustomEnergyStorage());
   }
 
   @Override

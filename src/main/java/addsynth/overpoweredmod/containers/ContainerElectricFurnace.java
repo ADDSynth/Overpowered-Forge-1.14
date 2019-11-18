@@ -11,8 +11,8 @@ public final class ContainerElectricFurnace extends BaseContainer<TileElectricFu
   public ContainerElectricFurnace(final IInventory player_inventory, final TileElectricFurnace tile){
     super(tile);
     make_player_inventory(player_inventory,8,90);
-    addSlotToContainer(new InputSlot(tile, 0, TileElectricFurnace.furnace_input,40,40));
-    addSlotToContainer(new OutputSlot(tile,0,95,40));
+    addSlot(new InputSlot(tile, 0, TileElectricFurnace.furnace_input,40,40));
+    addSlot(new OutputSlot(tile,0,95,40));
   }
 
 }

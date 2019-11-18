@@ -4,6 +4,7 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.EnergyCompat;
 import addsynth.energy.tiles.TileEnergyBattery;
 import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.nbt.CompoundNBT;
 
 public final class TileUniversalEnergyTransfer extends TileEnergyBattery {
@@ -32,7 +33,7 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery {
   private TRANSFER_MODE transfer_mode = TRANSFER_MODE.BI_DIRECTIONAL;
 
   public TileUniversalEnergyTransfer(){
-    super(new CustomEnergyStorage(Values.universal_energy_interface_buffer));
+    super(Tiles.UNIVERSAL_ENERGY_INTERFACE, new CustomEnergyStorage(Values.universal_energy_interface_buffer));
   }
 
   public final TRANSFER_MODE get_transfer_mode(){
@@ -60,7 +61,7 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery {
   }
 
   @Override
-  public final void update(){
+  public final void tick(){
     if(world.isRemote == false){
       final int energy_snapshot = energy.getEnergy();
       final EnergyCompat.CompatEnergyNode[] energy_nodes = EnergyCompat.getConnectedEnergy(pos, world);

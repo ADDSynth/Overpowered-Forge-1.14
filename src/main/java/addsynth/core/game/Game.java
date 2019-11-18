@@ -2,7 +2,7 @@ package addsynth.core.game;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.core.config.Config;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

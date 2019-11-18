@@ -24,13 +24,13 @@ public final class Icon {
     public final boolean available;
     
     public Icon(final Item item, final boolean available){
-      this.item = new ItemStack(item, 1, 0);
+      this.item = new ItemStack(item, 1);
       this.available = available;
     }
     
     public Icon(final Item item){
       if(MinecraftUtility.isVanilla(item)){
-        this.item = new ItemStack(item, 1, 0);
+        this.item = new ItemStack(item, 1);
         this.available = true;
       }
       else{

@@ -17,8 +17,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public final class GuiHandler implements IGuiHandler {
 
@@ -65,7 +63,6 @@ public final class GuiHandler implements IGuiHandler {
   }
 
   @Override
-  @SideOnly(Side.CLIENT) // here so I can debug this in a development environment, ran perfectly fine without it from gradlew runServer.
   public final Object getClientGuiElement(int id, PlayerEntity player, World world, int x, int y, int z){
     Object object = null;
     final TileEntity tile = world.getTileEntity(new BlockPos(x,y,z));

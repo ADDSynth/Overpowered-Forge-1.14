@@ -4,7 +4,7 @@ import addsynth.core.util.MinecraftUtility;
 import addsynth.energy.gameplay.tiles.TileUniversalEnergyTransfer;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldServer;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -35,12 +35,12 @@ public final class CycleTransferModeMessage implements IMessage {
 
     @Override
     public IMessage onMessage(CycleTransferModeMessage message, MessageContext context) {
-      final WorldServer world = context.getServerHandler().player.getServerWorld();
+      final ServerWorld world = context.getServerHandler().player.getServerWorld();
       world.addScheduledTask(() -> processMessage(world, message));
       return null;
     }
     
-    private static final void processMessage(final WorldServer world, final CycleTransferModeMessage message){
+    private static final void processMessage(final ServerWorld world, final CycleTransferModeMessage message){
       if(world.isBlockLoaded(message.position)){
         final TileUniversalEnergyTransfer tile = MinecraftUtility.getTileEntity(message.position, world, TileUniversalEnergyTransfer.class);
         if(tile != null){

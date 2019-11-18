@@ -12,6 +12,7 @@ import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.network.client_messages.SyncPortalDataMessage;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,7 +31,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver {
   private BlockPos lowest_portal_frame;
 
   public TilePortalControlPanel() {
-    super(0, null, 0, new CustomEnergyStorage(Values.portal_control_panel_required_energy));
+    super(Tiles.PORTAL_CONTROL_PANEL, 0, null, 0, new CustomEnergyStorage(Values.portal_control_panel_required_energy));
     int i;
     for(i = 0; i < containers; i++){
       portal_items[i] = false;

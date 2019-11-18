@@ -9,15 +9,14 @@ import addsynth.overpoweredmod.tiles.technical.TileLaserBeam;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public final class LaserBeam extends BlockTile {
 
@@ -31,7 +30,6 @@ public final class LaserBeam extends BlockTile {
   }
 
   @Override
-  @SideOnly(Side.CLIENT)
   public final BlockRenderLayer getRenderLayer(){
     return BlockRenderLayer.TRANSLUCENT;
   }
@@ -63,7 +61,7 @@ public final class LaserBeam extends BlockTile {
   @Override
   public final void onEntityCollision(final World world, final BlockPos pos, final IBlockState state, final Entity entity){
     if(Config.lasers_set_entities_on_fire){
-      if(entity instanceof EntityItem == false){
+      if(entity instanceof ItemEntity == false){
         if(Config.laser_damage_depends_on_world_difficulty){
           final int[] damage = new int[] {
             Config.LASER_DAMAGE_PEACEFUL_DIFFICULTY, Config.LASER_DAMAGE_EASY_DIFFICULTY,
@@ -79,7 +77,7 @@ public final class LaserBeam extends BlockTile {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(World worldIn, int meta) {
+  public final TileEntity createNewTileEntity(IBlockReader worldIn){
     return new TileLaserBeam();
   }
 

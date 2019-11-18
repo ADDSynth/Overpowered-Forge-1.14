@@ -1,5 +1,6 @@
 package addsynth.core.tiles;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.InputInventory;
 import addsynth.core.inventory.OutputInventory;
@@ -8,8 +9,10 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 /**
@@ -26,14 +29,14 @@ public abstract class TileMachine extends TileBase {
   protected final InputInventory input_inventory;
   protected final OutputInventory output_inventory;
 
-  public TileMachine(final SlotData[] slots, final int output_slots){
-    super();
+  public TileMachine(final TileEntityType type, final SlotData[] slots, final int output_slots){
+    super(type);
     this.input_inventory = slots != null ? (slots.length > 0 ? new InputInventory(this, slots) : null) : null;
     this.output_inventory = output_slots > 0 ? new OutputInventory(this, output_slots) : null;
   }
 
-  public TileMachine(final int input_slots, final Item[] input_filter, final int output_slots){
-    super();
+  public TileMachine(final TileEntityType type, final int input_slots, final Item[] input_filter, final int output_slots){
+    super(type);
     this.input_inventory = input_slots > 0 ? new InputInventory(this, input_slots, input_filter) : null;
     this.output_inventory = output_slots > 0 ? new OutputInventory(this, output_slots) : null;
   }
@@ -53,27 +56,15 @@ public abstract class TileMachine extends TileBase {
     return nbt;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  public <T> T getCapability(final Capability<T> capability, final @Nullable Direction facing){
+  public @Nonnull <T> LazyOptional<T> getCapability(final @Nonnull Capability<T> capability, final @Nullable Direction facing){
     if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
       if(facing == Direction.DOWN){
-        return (T)output_inventory;
+        return (LazyOptional.of(()->output_inventory)).cast();
       }
-      return (T)input_inventory;
+      return (LazyOptional.of(()->input_inventory)).cast();
     }
     return super.getCapability(capability, facing);
-  }
-
-  @Override
-  public boolean hasCapability(final Capability<?> capability, final @Nullable Direction facing){
-    if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
-      if(facing == EnumFacing.DOWN){
-        return output_inventory != null;
-      }
-      return input_inventory != null;
-    }
-    return super.hasCapability(capability, facing);
   }
 
   public InputInventory getInputInventory(){

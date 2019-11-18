@@ -4,7 +4,7 @@ import addsynth.core.util.MinecraftUtility;
 import addsynth.overpoweredmod.tiles.machines.portal.TilePortalControlPanel;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldServer;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -39,12 +39,12 @@ public final class PortalControlMessage implements IMessage {
 
     @Override
     public IMessage onMessage(PortalControlMessage message, MessageContext context) {
-      final WorldServer world = context.getServerHandler().player.getServerWorld();
+      final ServerWorld world = context.getServerHandler().player.getServerWorld();
       world.addScheduledTask(() -> processMessage(world, message));
       return null;
     }
     
-    private static final void processMessage(final WorldServer world, final PortalControlMessage message){
+    private static final void processMessage(final ServerWorld world, final PortalControlMessage message){
       if(world.isBlockLoaded(message.position)){
         final TilePortalControlPanel tile = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
         if(tile != null){

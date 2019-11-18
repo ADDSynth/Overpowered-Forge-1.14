@@ -5,12 +5,13 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.WorkMachine;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.core.Gems;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.item.ItemStack;
 
 public final class TileCrystalMatterReplicator extends WorkMachine {
 
   public TileCrystalMatterReplicator(){
-    super(0,null,8,new CustomEnergyStorage(Values.crystal_matter_generator_required_energy),Values.crystal_matter_generator_work_time);
+    super(Tiles.CRYSTAL_MATTER_REPLICATOR,0,null,8,new CustomEnergyStorage(Values.crystal_matter_generator_required_energy),Values.crystal_matter_generator_work_time);
   }
 
   @Override

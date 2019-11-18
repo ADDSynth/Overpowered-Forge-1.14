@@ -5,6 +5,7 @@ import addsynth.core.tiles.TileBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.blocks.tiles.laser.LaserCannon;
 import addsynth.overpoweredmod.game.core.Laser;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.state.IBlockState;
@@ -29,6 +30,10 @@ public final class TileLaser extends TileBase implements ITickableTileEntity {
   // 
   // https://mcforge.readthedocs.io/en/latest/tileentities/tileentity/#creating-a-tileentity
   // "It is important that your TileEntity have a default constructor so Minecraft can load it correctly."
+
+  public TileLaser(){
+    super(Tiles.LASER);
+  }
 
   public final void activate(int distance){
     this.distance = distance;

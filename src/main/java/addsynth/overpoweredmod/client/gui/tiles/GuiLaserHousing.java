@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.client.gui.tiles;
 
 import java.io.IOException;
-import org.lwjgl.input.Keyboard;
+import org.lwjgl.glfw.GLFW;
 import addsynth.core.gui.objects.CheckBox;
 import addsynth.core.inventory.container.BaseContainer;
 import addsynth.energy.gui.GuiEnergyBase;
@@ -104,7 +104,7 @@ public final class GuiLaserHousing extends GuiEnergyBase {
 
   @Override
   protected void keyTyped(char typedChar, int keyCode) throws IOException {
-    if (keyCode == Keyboard.KEY_ESCAPE || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode)){
+    if(keyCode == GLFW.GLFW_KEY_ESCAPE || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode)){
       this.mc.player.closeScreen();
     }
     else{

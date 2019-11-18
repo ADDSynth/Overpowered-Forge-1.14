@@ -4,6 +4,7 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.EnergyNetwork;
 import addsynth.energy.EnergyNode;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntityType;
 
 /**
  *  The base class is a TileEnergyWithStorage, which gives it a CustomEnergyStorage capability. Making it extend
@@ -12,12 +13,12 @@ import net.minecraft.item.Item;
  */
 public abstract class TileEnergyBattery extends TileEnergyTransmitter {
 
-  public TileEnergyBattery(final CustomEnergyStorage energy){
-    super(energy);
+  public TileEnergyBattery(final TileEntityType type, final CustomEnergyStorage energy){
+    super(type, energy);
   }
 
-  public TileEnergyBattery(final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy) {
-    super(input_slots, filter, output_slots, energy);
+  public TileEnergyBattery(final TileEntityType type, final int input_slots, final Item[] filter, final int output_slots, final CustomEnergyStorage energy) {
+    super(type, input_slots, filter, output_slots, energy);
   }
 
   /**

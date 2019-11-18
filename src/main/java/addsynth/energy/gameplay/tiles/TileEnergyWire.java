@@ -3,6 +3,7 @@ package addsynth.energy.gameplay.tiles;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.energy.EnergyNetwork;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.tileentity.TileEntity;
 
 /**
@@ -15,6 +16,11 @@ import net.minecraft.tileentity.TileEntity;
 public final class TileEnergyWire extends TileEntity implements IBlockNetworkUser {
 
   private EnergyNetwork network;
+
+  public TileEnergyWire(){
+    super(Tiles.ENERGY_WIRE);
+  }
+
   /**
    * When TileEntity loads, search for surrounding wires and join their networks. onBlockBreak() method is
    * implemented in the EnergyWire block and it seperates networks.

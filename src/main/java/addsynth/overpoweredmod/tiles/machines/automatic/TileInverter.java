@@ -4,6 +4,7 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.core.Init;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -13,7 +14,7 @@ public final class TileInverter extends PassiveMachine {
   private ItemStack result;
 
   public TileInverter(){
-    super(1,input_filter,1,new CustomEnergyStorage(Values.inverter_required_energy),Values.inverter_work_time);
+    super(Tiles.INVERTER,1,input_filter,1,new CustomEnergyStorage(Values.inverter_required_energy),Values.inverter_work_time);
   }
 
   @Override

@@ -31,6 +31,8 @@ public enum Laser {
   public final IRecipe recipe;
 
   public static final Laser[] index = Laser.values();
+  public static final Block[] cannons = {WHITE.cannon, RED.cannon, ORANGE.cannon, YELLOW.cannon, GREEN.cannon, CYAN.cannon, BLUE.cannon, MAGENTA.cannon};
+  public static final Block[] beams = {WHITE.beam, RED.beam, ORANGE.beam, YELLOW.beam, GREEN.beam, CYAN.beam, BLUE.beam, MAGENTA.beam};
   
   private Laser(final String color){
     this.cannon = new LaserCannon(color+"_laser", this.ordinal());

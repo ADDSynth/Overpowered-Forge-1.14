@@ -16,6 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public final class DataCable extends Wire {
@@ -70,7 +71,7 @@ public final class DataCable extends Wire {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(final World worldIn, final int meta){
+  public final TileEntity createNewTileEntity(final IBlockReader worldIn){
     return new TileDataCable();
   }
 

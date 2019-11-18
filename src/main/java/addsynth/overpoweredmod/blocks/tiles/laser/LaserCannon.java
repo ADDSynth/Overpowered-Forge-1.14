@@ -10,23 +10,26 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public final class LaserCannon extends BlockTile {
 
-  public static final PropertyDirection FACING = PropertyDirection.create("facing");
+  public static final DirectionProperty FACING = DirectionProperty.create("facing");
   
   private static final double min_flat = 3.0 / 16;
   private static final double max_flat = 13.0 / 16;
@@ -50,35 +53,20 @@ public final class LaserCannon extends BlockTile {
     OverpoweredMod.registry.register_block(this, name);
     setHardness(3.5f);
     setSoundType(SoundType.METAL);
-    this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+    this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
     this.color = color;
   }
 
   @Override
-  public final void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn){
+  public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
     if(color == -1){
-      tooltip.add("Fusion Energy");
+      tooltip.add(new StringTextComponent("Fusion Energy"));
     }
   }
 
   @Override
   protected final BlockStateContainer createBlockState(){
     return new BlockStateContainer(this, FACING);
-  }
-
-  /**
-   * These getStateFromMeta() and getMetaFromState() functions are used for saving the block to world data.
-   * They ensure the laser block saves and loads in the proper orientation.
-   */
-  @Override
-  @SuppressWarnings("deprecation")
-  public final IBlockState getStateFromMeta(int meta){
-    return getDefaultState().withProperty(FACING, Direction.byIndex(meta));
-  }
-
-  @Override
-  public final int getMetaFromState(IBlockState state){
-    return state.getValue(FACING).getIndex();
   }
 
   @Override
@@ -124,7 +112,7 @@ public final class LaserCannon extends BlockTile {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(IBlockAccess world){
+  public final TileEntity createNewTileEntity(IBlockReader world){
     return color == -1 ? null : new TileLaser();
   }
 
@@ -134,7 +122,7 @@ public final class LaserCannon extends BlockTile {
     if(worldIn.isRemote == false){
       if(canPlaceBlockOnSide(worldIn, pos, state.getValue(FACING)) == false){
         dropBlockAsItem(worldIn, pos, state, 0);
-        worldIn.setBlockToAir(pos);
+        worldIn.removeBlock(pos, false);
       }
     }
   }

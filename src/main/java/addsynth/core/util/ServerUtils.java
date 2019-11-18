@@ -2,12 +2,12 @@ package addsynth.core.util;
 
 import java.util.ArrayList;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -19,11 +19,11 @@ public final class ServerUtils {
     return FMLCommonHandler.instance().getMinecraftServerInstance();
   }
 
-  public static ArrayList<EntityPlayerMP> get_players_in_world(final World world){
-    final ArrayList<EntityPlayerMP> player_list = new ArrayList<>(20);
+  public static ArrayList<ServerPlayerEntity> get_players_in_world(final World world){
+    final ArrayList<ServerPlayerEntity> player_list = new ArrayList<>(20);
     final MinecraftServer server = getServer();
     if(server != null){
-      for(EntityPlayerMP player : server.getPlayerList().getPlayers()){
+      for(ServerPlayerEntity player : server.getPlayerList().getPlayers()){
         if(player.world == world){
           player_list.add(player);
         }
@@ -45,7 +45,7 @@ public final class ServerUtils {
   public static void send_message_to_all_players_in_world(final ITextComponent text_component, final World world){
     final MinecraftServer server = getServer();
     if(server != null){
-      for(EntityPlayerMP player : server.getPlayerList().getPlayers()){
+      for(ServerPlayerEntity player : server.getPlayerList().getPlayers()){
         if(player.world == world){
           player.sendMessage(text_component);
         }
@@ -64,7 +64,7 @@ public final class ServerUtils {
   //   }
   // }
 
-  public static void teleport_to_dimension(final EntityPlayerMP player, final int dimension_id, final Teleporter teleporter){
+  public static void teleport_to_dimension(final ServerPlayerEntity player, final int dimension_id, final Teleporter teleporter){
     getServer().getPlayerList().transferPlayerToDimension(player, dimension_id, teleporter);
   }
 
@@ -95,7 +95,7 @@ public final class ServerUtils {
    * @param origin
    * @return
    */
-  public static BlockPos get_spawn_position(final WorldServer world, final BlockPos origin){
+  public static BlockPos get_spawn_position(final ServerWorld world, final BlockPos origin){
     int x = origin.getX();
     int z = origin.getZ();
     int y = world.getChunk(x >> 4, z >> 4).getHeightValue(x & 15, z & 15); // OPTIMIZE: this to use the world.getChunk(BlockPos) function?

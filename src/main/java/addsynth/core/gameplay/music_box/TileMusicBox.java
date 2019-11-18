@@ -1,5 +1,6 @@
 package addsynth.core.gameplay.music_box;
 
+import addsynth.core.gameplay.Tiles;
 import addsynth.core.tiles.TileBase;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -23,6 +24,7 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity 
   public boolean keep_playing;
 
   public TileMusicBox(){
+    super(Tiles.MUSIC_BOX);
   }
 
   public final void change_tempo(final boolean direction){

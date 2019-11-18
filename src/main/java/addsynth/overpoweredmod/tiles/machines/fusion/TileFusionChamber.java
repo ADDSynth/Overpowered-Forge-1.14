@@ -4,6 +4,7 @@ import addsynth.core.inventory.SlotData;
 import addsynth.core.tiles.TileMachine;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
+import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
@@ -17,7 +18,7 @@ public final class TileFusionChamber extends TileMachine {
   private boolean on;
 
   public TileFusionChamber(){
-    super(new SlotData[]{new SlotData(input_filter,1)}, 0);
+    super(Tiles.FUSION_CHAMBER, new SlotData[]{new SlotData(input_filter,1)}, 0);
   }
 
   public final boolean has_fusion_core(){
