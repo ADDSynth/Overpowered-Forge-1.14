@@ -1,17 +1,15 @@
 package addsynth.overpoweredmod.compatability.jei.compressor;
 
-import java.util.List;
-import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.IRecipeCategory;
-import mezz.jei.api.recipe.IRecipeWrapper;
-import net.minecraft.client.Minecraft;
+import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.util.ResourceLocation;
 
-public final class CompressorRecipeCategory implements IRecipeCategory {
+public final class CompressorRecipeCategory implements IRecipeCategory<Object> {
 
   @Override
-  public String getUid() {
+  public ResourceLocation getUid() {
     return null;
   }
 
@@ -31,21 +29,16 @@ public final class CompressorRecipeCategory implements IRecipeCategory {
   }
 
   @Override
-  public void drawExtras(Minecraft minecraft) {
+  public void setRecipe(IRecipeLayout recipeLayout, Object recipe, IIngredients ingredients) {
   }
 
   @Override
-  public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
-  }
-
-  @Override
-  public List getTooltipStrings(int mouseX, int mouseY) {
+  public Class getRecipeClass(){
     return null;
   }
 
   @Override
-  public String getModName(){
-    return null;
+  public void setIngredients(Object recipe, IIngredients ingredients){
   }
 
 }
