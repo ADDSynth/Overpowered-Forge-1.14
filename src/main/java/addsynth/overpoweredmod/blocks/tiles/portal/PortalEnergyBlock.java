@@ -6,23 +6,22 @@ import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.tiles.technical.TilePortal;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.dimension.CustomTeleporter;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.state.EnumProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -31,7 +30,7 @@ public final class PortalEnergyBlock extends ContainerBlock {
   // NOTE: well, after seeing a YouTube video, I was going to make this extend from the Vanilla PortalBlock class,
   //       but I want this to have a TileEntity, then just implement ITileProvider?
 
-  public static final PropertyEnum<Direction.Axis> AXIS = PropertyEnum.<Direction.Axis>create("axis", Direction.Axis.class, new Direction.Axis[] {Direction.Axis.X, Direction.Axis.Z});
+  public static final EnumProperty<Direction.Axis> AXIS = EnumProperty.<Direction.Axis>create("axis", Direction.Axis.class, new Direction.Axis[] {Direction.Axis.X, Direction.Axis.Z});
 
   public PortalEnergyBlock(final String name){
     super(Material.PORTAL);
@@ -51,8 +50,8 @@ public final class PortalEnergyBlock extends ContainerBlock {
 
   @Override
   @SuppressWarnings("deprecation")
-  public final EnumBlockRenderType getRenderType(IBlockState state){
-    return EnumBlockRenderType.MODEL;
+  public final BlockRenderType getRenderType(BlockState state){
+    return BlockRenderType.MODEL;
   }
 
   @Override

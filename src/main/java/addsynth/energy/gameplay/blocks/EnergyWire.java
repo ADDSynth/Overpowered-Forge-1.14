@@ -12,7 +12,6 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.energy.CapabilityEnergy;
@@ -21,24 +20,21 @@ import net.minecraftforge.energy.IEnergyStorage;
 public final class EnergyWire extends Wire {
 
   public EnergyWire(final String name){
-    super(Material.WOOL, MaterialColor.GRAY);
+    super(Block.Properties.create(Material.WOOL, MaterialColor.GRAY).hardnessAndResistance(0.1f, 0.0f));
     OverpoweredMod.registry.register_block(this, name);
-    setHardness(0.1f);
   }
 
   @Override
-  protected final ArrayList<Direction> get_valid_sides(final IBlockAccess world, final BlockPos pos){
+  protected final ArrayList<Direction> get_valid_sides(final IBlockReader world, final BlockPos pos){
     ArrayList<Direction> valid_sides = new ArrayList<>(6);
     boolean can_use_energy;
     for(Direction side : Direction.values()){
       can_use_energy = false;
       TileEntity tile = world.getTileEntity(pos.offset(side));
       if(tile != null){
-        if(tile.hasCapability(CapabilityEnergy.ENERGY, side.getOpposite())){
-          IEnergyStorage energy = tile.getCapability(CapabilityEnergy.ENERGY, side.getOpposite());
-          if(energy != null){
-            can_use_energy = true;
-          }
+        IEnergyStorage energy = tile.getCapability(CapabilityEnergy.ENERGY, side.getOpposite()).orElse(null);
+        if(energy != null){
+          can_use_energy = true;
         }
         if(tile instanceof TileEnergyWire || can_use_energy){
           valid_sides.add(side);

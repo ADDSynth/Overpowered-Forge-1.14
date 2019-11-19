@@ -8,6 +8,7 @@ import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.gameplay.init.CoreRegister;
 import addsynth.core.gameplay.init.Setup;
 import addsynth.core.worldgen.OreGenerator;
+import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -33,6 +34,13 @@ public final class ADDSynthCore {
   @SidedProxy(modId = MOD_ID,clientSide="addsynth.core.gameplay.init.ClientProxy",
                              serverSide="addsynth.core.gameplay.init.ServerProxy")
   public static IProxy proxy;
+
+  public static final ItemGroup creative_tab = create_creative_tab();
+
+  private static final ItemGroup create_creative_tab(){
+    Setup.init_config();
+    return null;
+  }
 
   public static final RegistryUtil registry = new RegistryUtil(MOD_ID);
 

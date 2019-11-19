@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.blocks.BlockTile;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.block.state.BlockStateContainer;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -43,12 +42,12 @@ public abstract class Wire extends BlockTile {
     // Can initialize the bounding_box[] variables here.
   }
 
-  public Wire(final Material material, final MaterialColor color){
-    this( material, color, default_min_wire_size, default_max_wire_size);
+  public Wire(final Block.Properties properties){
+    this(properties, default_min_wire_size, default_max_wire_size);
   }
 
-  public Wire(final Material material, final MaterialColor color, final double min_wire_size, final double max_wire_size){
-    super(material, color);
+  public Wire(final Block.Properties properties, final double min_wire_size, final double max_wire_size){
+    super(properties);
     if(bounding_box[0] == null){
       set_bounding_boxes(min_wire_size, max_wire_size);
     }
@@ -68,11 +67,6 @@ public abstract class Wire extends BlockTile {
   }
 
   @Override
-  protected BlockStateContainer createBlockState(){
-    return new BlockStateContainer(this, NORTH, SOUTH, WEST, EAST, UP, DOWN);
-  }
-
-  @Override
   @SuppressWarnings("deprecation")
   public final IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos){
     final ArrayList<Direction> valid_sides = get_valid_sides(world, pos);
@@ -88,7 +82,7 @@ public abstract class Wire extends BlockTile {
                 .withProperty(EAST, east).withProperty(UP, up).withProperty(DOWN, down);
   }
 
-  protected abstract ArrayList<Direction> get_valid_sides(IBlockAccess world, BlockPos pos);
+  protected abstract ArrayList<Direction> get_valid_sides(IBlockReader world, BlockPos pos);
 
   @Override
   @SuppressWarnings("deprecation")
@@ -130,20 +124,6 @@ public abstract class Wire extends BlockTile {
   @Override
   public TileEntity createNewTileEntity(IBlockReader worldIn){
     return null;
-  }
-
-  /** In case your block has transparency or not */
-  @Override
-  @SuppressWarnings("deprecation")
-  public boolean isOpaqueCube(IBlockState state){
-    return false;
-  }
-
-  /** If your block is a full block or a custom model */
-  @Override
-  @SuppressWarnings("deprecation")
-  public boolean isFullCube(IBlockState state){
-    return false;
   }
 
 }

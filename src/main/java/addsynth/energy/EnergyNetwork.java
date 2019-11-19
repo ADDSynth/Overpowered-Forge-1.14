@@ -44,7 +44,7 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyWire> {
   */
 
   public EnergyNetwork(final World world, final TileEnergyWire energy_wire){
-    super(world, energy_wire.getBlockType(), energy_wire);
+    super(world, energy_wire.getBlockState().getBlock(), energy_wire);
   }
 
   @Override

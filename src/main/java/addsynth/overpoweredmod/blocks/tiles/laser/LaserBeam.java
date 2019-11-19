@@ -6,26 +6,22 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.DamageSources;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.tiles.technical.TileLaserBeam;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public final class LaserBeam extends BlockTile {
 
   public LaserBeam(String name){
-    super(Material.FIRE);
-    if(Config.lasers_emit_light){
-      setLightLevel((float)Config.laser_light_level / 15.0f);
-    }
-    translucent = true;
+    super(Block.Properties.create(Material.FIRE).variableOpacity().doesNotBlockMovement().lightValue(Config.laser_light_level));
     OverpoweredMod.registry.register_block(this, name);
   }
 
@@ -41,25 +37,11 @@ public final class LaserBeam extends BlockTile {
     return NULL_AABB;
   }
 
-  /**
-   * Used to determine ambient occlusion and culling when rebuilding chunks for render
-   */
-  @Override
-  @SuppressWarnings("deprecation")
-  public final boolean isOpaqueCube(IBlockState state){
-    return false;
-  }
-
-  @Override
-  public final boolean isCollidable(){
-    return false;
-  }
-
   // You cannot set this block isBurning(true) because this will also set fire to any
   //   item Entities that fall in it, negating the purpose of having a mining laser.
   //   also, that only does 1 damage at a time.
   @Override
-  public final void onEntityCollision(final World world, final BlockPos pos, final IBlockState state, final Entity entity){
+  public final void onEntityCollision(final BlockState state, final World world, final BlockPos pos, final Entity entity){
     if(Config.lasers_set_entities_on_fire){
       if(entity instanceof ItemEntity == false){
         if(Config.laser_damage_depends_on_world_difficulty){

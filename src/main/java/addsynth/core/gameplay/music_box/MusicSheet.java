@@ -1,9 +1,11 @@
 package addsynth.core.gameplay.music_box;
 
 import addsynth.core.items.ItemUtility;
+import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.CoreItem;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
@@ -11,22 +13,23 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceContext.FluidMode;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 
 /**
  * Man did I have trouble with this one. I don't feel like explaining how it works right now.
  * Just run in debug mode and step through the code yourself to see how it works.
  * @see net.minecraft.server.management.PlayerInteractionManager#processRightClickBlock
- * @see net.minecraft.block.BlockTNT#onBlockActivated
- * @see net.minecraft.item.ItemBucket
- * @see net.minecraft.item.ItemEnderEye
+ * @see net.minecraft.block.TNTBlock#onBlockActivated
+ * @see net.minecraft.item.BucketItem
+ * @see net.minecraft.item.EnderEyeItem
  */
 public final class MusicSheet extends CoreItem {
 
   public MusicSheet(String name){
-    super(name);
+    super((new Item.Properties()).group(ADDSynthCore.creative_tab), name);
   }
 
   @Override
@@ -34,10 +37,10 @@ public final class MusicSheet extends CoreItem {
     ActionResult<ItemStack> result = null;
     final ItemStack stack = player.getHeldItemMainhand();
     if(world.isRemote == false){
-      final RayTraceResult raytrace = this.rayTrace(world, player, false);
+      final RayTraceResult raytrace = rayTrace(world, player, FluidMode.NONE);
       if(raytrace != null){
-        if(raytrace.typeOfHit == RayTraceResult.Type.BLOCK){
-          if(world.getBlockState(raytrace.getBlockPos()).getBlock() == Core.music_box){
+        if(raytrace.getType() == RayTraceResult.Type.BLOCK){
+          if(world.getBlockState((new BlockPos(raytrace.getHitVec()))).getBlock() == Core.music_box){
             result = new ActionResult<ItemStack>(ActionResultType.PASS, stack);
           }
         }
@@ -45,7 +48,7 @@ public final class MusicSheet extends CoreItem {
       if(result == null){
         if(player.isSneaking()){
           stack.put(null);
-          player.sendMessage(new TextComponentString("Music Sheet cleared."));
+          player.sendMessage(new StringTextComponent("Music Sheet cleared."));
           result = new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
         }
       }
@@ -67,7 +70,7 @@ public final class MusicSheet extends CoreItem {
           if(nbt != null){
             tile.getMusicGrid().load_from_nbt(nbt);
             tile.update_data();
-            player.sendMessage(new TextComponentString("Music Sheet pasted to Music Box."));
+            player.sendMessage(new StringTextComponent("Music Sheet pasted to Music Box."));
             return ActionResultType.SUCCESS;
           }
         }
@@ -82,16 +85,16 @@ public final class MusicSheet extends CoreItem {
     tile.getMusicGrid().save_to_nbt(nbt);
       
     if(stack.getCount() == 1){
-      stack.setTagCompound(nbt);
+      stack.setTag(nbt);
     }
     else{
       stack.shrink(1);
       final ItemStack music_sheet = new ItemStack(Core.music_sheet,1);
-      music_sheet.setTagCompound(nbt);
+      music_sheet.setTag(nbt);
       ItemUtility.add_to_player_inventory(player, music_sheet);
     }
       
-    player.sendMessage(new TextComponentString("Music data copied to Music Sheet."));
+    player.sendMessage(new StringTextComponent("Music data copied to Music Sheet."));
     return ActionResultType.SUCCESS;
   }
 

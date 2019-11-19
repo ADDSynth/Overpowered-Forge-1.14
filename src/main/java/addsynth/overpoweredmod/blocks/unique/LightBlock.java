@@ -4,15 +4,12 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraftforge.common.ToolType;
 
 public final class LightBlock extends Block {
 
   public LightBlock(final String name){
-    super(Material.GLASS, MaterialColor.QUARTZ);
-    setLightLevel(1.0f);
-    setHardness(5.0f);
-    setHarvestLevel("pickaxe",2);
-    setResistance(10.0f);
+    super(Block.Properties.create(Material.GLASS, MaterialColor.QUARTZ).lightValue(15).hardnessAndResistance(5.0f, 6.0f).harvestTool(ToolType.PICKAXE).harvestLevel(2));
     OverpoweredMod.registry.register_block(this, name);
   }
 

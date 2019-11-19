@@ -10,19 +10,13 @@ import addsynth.overpoweredmod.items.tools.*;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.Rarity;
-import net.minecraftforge.common.util.EnumHelper;
 
 public final class Tools {
 
   static {
     Debug.log_setup_info("Begin loading Tools class...");
   }
-
-  public static final ToolMaterial ENERGY = EnumHelper.addToolMaterial("ENERGY", 4, ToolMaterial.DIAMOND.getMaxUses()*3, 12.0f, 4.0f, 0);
-  public static final ToolMaterial VOID   = EnumHelper.addToolMaterial("VOID",   4, ToolMaterial.DIAMOND.getMaxUses()*5, 12.0f, 5.0f, 0);
-  // MAYBE: Add Unimatter Tools, THESE will have Integer.MAX_VALUE durability.
 
   public static final Toolset energy_tools = new Toolset( // MAYBE: should I automatically assign tools their names? and just provide the base name? I should also pass the Mod ID to register translation keys as well.
     new EnergySword("energy_sword"),
@@ -33,7 +27,7 @@ public final class Tools {
     Init.energy_crystal
   );
     
-  public static final ScytheTool energy_scythe = new ScytheTool("energy_scythe", ENERGY){
+  public static final ScytheTool energy_scythe = new ScytheTool("energy_scythe", OverpoweredTiers.ENERGY){
     @Override
     public boolean isEnchantable(final ItemStack stack){
       return false;

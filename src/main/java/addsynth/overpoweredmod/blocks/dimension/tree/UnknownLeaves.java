@@ -8,10 +8,7 @@ import net.minecraft.block.material.Material;
 public final class UnknownLeaves extends Block {
 
   public UnknownLeaves(final String name){
-    super(Material.LEAVES);
-    setHardness(0.2F);
-    setLightOpacity(1);
-    setSoundType(SoundType.PLANT);
+    super(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2f, 0.0f).sound(SoundType.PLANT).variableOpacity());
     OverpoweredMod.registry.register_block(this, name);
   }
 

@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.items;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 
 public final class FusionCore extends OverpoweredItem {
@@ -10,8 +11,8 @@ public final class FusionCore extends OverpoweredItem {
   }
 
   @Override
-  public String getItemStackDisplayName(ItemStack stack){
-    return TextFormatting.GOLD.toString() + super.getItemStackDisplayName(stack);
+  public ITextComponent getDisplayName(ItemStack stack){
+    return super.getDisplayName(stack).applyTextStyle(TextFormatting.GOLD);
   }
 
 }

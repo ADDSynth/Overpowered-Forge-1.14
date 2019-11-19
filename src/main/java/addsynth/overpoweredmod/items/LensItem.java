@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.items;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 
 public final class LensItem extends OverpoweredItem {
@@ -14,8 +15,8 @@ public final class LensItem extends OverpoweredItem {
   }
 
   @Override
-  public String getItemStackDisplayName(final ItemStack stack){
-    return color_code + super.getItemStackDisplayName(stack);
+  public ITextComponent getDisplayName(final ItemStack stack){
+    return super.getDisplayName(stack).applyTextStyle(color_code);
   }
 
 }

@@ -27,7 +27,7 @@ public class BaseContainer<T extends TileEntity> extends Container {
 
   public BaseContainer(T tile){
     this.tile = tile;
-    this.handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,null);
+    this.handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,null).orElse(null);
   }
 
   protected final void make_player_inventory(IInventory player_inventory){

@@ -226,7 +226,6 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     }
     if(block.getRegistryName() == null){
       block.setRegistryName(name); // I was going to add the mod id to the registry name as well, but Forge just gets the mod id itself anyway.
-      block.setTranslationKey(mod_id+"."+name); // because translation keys are not namespaced.
       blocks.add(block);
       print_debug(mod_id, "Registered block: "+block.getRegistryName());
       return;
@@ -242,7 +241,6 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     }
     if(item.getRegistryName() == null){
       item.setRegistryName(name);
-      item.setTranslationKey(mod_id+"."+name);
       items.add(item);
       print_debug(mod_id, "Registered item: "+item.getRegistryName());
       return;

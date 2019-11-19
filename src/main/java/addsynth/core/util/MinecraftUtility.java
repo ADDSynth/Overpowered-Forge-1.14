@@ -14,10 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.fml.common.FMLContainer;
-import net.minecraftforge.fml.common.InjectedModContainer;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.ModContainer;
+import net.minecraftforge.fml.ModLoadingContext;
 
 public final class MinecraftUtility {
 
@@ -26,8 +23,7 @@ public final class MinecraftUtility {
    * @return String modID
    */
   public static final String getModID(){
-    final ModContainer mc = Loader.instance().activeModContainer();
-    final String id = mc == null || (mc instanceof InjectedModContainer && ((InjectedModContainer)mc).wrappedContainer instanceof FMLContainer) ? "minecraft" : mc.getModId().toLowerCase(Locale.ROOT);
+    final String id = ModLoadingContext.get().getActiveNamespace();
     if(id.equals("minecraft")){
       ADDSynthCore.log.warn("function addsynth.core.util.MinecraftUtil.getModID() returned 'minecraft'. This might not be what you expected. Did you call getModID() at a wrong time?");
     }
@@ -61,6 +57,10 @@ public final class MinecraftUtility {
     }
     ADDSynthCore.log.error(new NullPointerException("The block '"+block+"' doesn't have its registry name set!"));
     return false;
+  }
+
+  public static final Block.Properties setUnbreakable(final Block.Properties properties){
+    return properties.hardnessAndResistance(-1.0F, 3600000.0F).noDrops(); // Bedrock, Barrier
   }
 
   /** <p>This is a helper method to get a specific type of TileEntity.

@@ -8,13 +8,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
@@ -25,7 +24,7 @@ public final class BlackHole extends Block {
   public static final byte MAX_RADIUS = 100;
 
   public BlackHole(final String name){
-    super(Material.GROUND, MaterialColor.BLACK);
+    super(Block.Properties.create(Material.PORTAL, MaterialColor.BLACK).doesNotBlockMovement());
     // setResistance(100.0f);
     OverpoweredMod.registry.register_block(this, name); // we register a custom BlackHoleItem in Init class.
   }
@@ -41,7 +40,7 @@ public final class BlackHole extends Block {
     if(is_black_hole_allowed(world.getDimension().getType().getId())){
 
       if(Config.alert_players_of_black_hole){
-        ServerUtils.send_message_to_all_players_in_world(new TextComponentString(
+        ServerUtils.send_message_to_all_players_in_world(new StringTextComponent(
           TextFormatting.DARK_PURPLE + "Singularity Event Detected at Coordinates: "+center.getX()+" , "+center.getY()+" , "+center.getZ()
         ), world);
       }
@@ -111,11 +110,11 @@ public final class BlackHole extends Block {
           if(world.getBlockState(position).getBlock() != Blocks.AIR){
             if(MathUtility.is_inside_sphere(center,radius,position)){
               if(Config.black_holes_erase_bedrock){
-                world.setBlockToAir(position);
+                world.removeBlock(position, false);
               }
               else{
                 if(world.getBlockState(position).getBlock() != Blocks.BEDROCK){
-                  world.setBlockToAir(position);
+                  world.removeBlock(position, false);
                 }
               }
             }
@@ -129,13 +128,13 @@ public final class BlackHole extends Block {
     for(Entity entity : world.loadedEntityList){
       if(MathUtility.get_distance(x, y, z, entity.posX, entity.posY, entity.posZ) <= radius){
         // entity.attackEntityFrom(source, amount);
-        entity.setDead();
+        entity.setDead(); // possibly use .remove()
       }
     }
   }
   
   private static final void destroyPlayers(World world, double x, double y, double z, final int radius){
-    for(PlayerEntity player : world.playerEntities){
+    for(PlayerEntity player : world.getPlayers()){
       if(player.isCreative() == false && player.isSpectator() == false){
         if(MathUtility.get_distance(x, y, z, player.posX, player.posY, player.posZ) <= radius){
           player.setDead();

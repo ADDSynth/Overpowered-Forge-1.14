@@ -14,7 +14,7 @@ public class Node {
   }
 
   public boolean isInvalid(){
-    return (tile == null || position == null) ? true : (tile.isInvalid() || !tile.getPos().equals(position));
+    return (tile == null || position == null) ? true : (tile.isRemoved() || !tile.getPos().equals(position));
   }
 
   public TileEntity getTile(){

@@ -1,7 +1,8 @@
 package addsynth.overpoweredmod.items.tools;
 
+import addsynth.core.Constants;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.game.core.Tools;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
@@ -9,7 +10,7 @@ import net.minecraft.item.ShovelItem;
 public final class EnergyShovel extends ShovelItem {
 
   public EnergyShovel(final String name){
-    super(Tools.ENERGY);
+    super(OverpoweredTiers.ENERGY, Constants.axe_damage, Constants.axe_speed, new Item.Properties());
     OverpoweredMod.registry.register_item(this, name);
   }
 

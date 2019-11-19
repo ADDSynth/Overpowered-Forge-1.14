@@ -48,7 +48,7 @@ public final class Setup {
     };
     final ItemGroup tab = Game.NewCreativeTab(ADDSynthCore.MOD_ID, icons);
     
-    Core.caution_block.setCreativeTab(tab);
+    Core.caution_block.setCreativeTab(tab); // PRIORITY: must now set Creative Tabs by using new Item.Properties().group(creative_tab).
     Core.music_box.setCreativeTab(tab);
     Core.music_sheet.setCreativeTab(tab);
     Core.wooden_scythe.setCreativeTab(tab);

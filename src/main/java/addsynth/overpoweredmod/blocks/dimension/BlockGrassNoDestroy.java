@@ -1,5 +1,6 @@
 package addsynth.overpoweredmod.blocks.dimension;
 
+import addsynth.core.util.MinecraftUtility;
 import addsynth.overpoweredmod.init.Registers;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -7,8 +8,7 @@ import net.minecraft.block.material.Material;
 public final class BlockGrassNoDestroy extends Block {
 
   public BlockGrassNoDestroy(String name){
-    super(Material.ORGANIC);
-    setBlockUnbreakable();
+    super(MinecraftUtility.setUnbreakable(Block.Properties.create(Material.ORGANIC)));
     // MAYBE: Registers.add(this, name, false);
   }
 

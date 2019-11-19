@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 import addsynth.core.tiles.TileMachine;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.hooks.BasicEventHooks;
 import net.minecraftforge.items.SlotItemHandler;
 
 public final class OutputSlot extends SlotItemHandler {
@@ -21,7 +21,7 @@ public final class OutputSlot extends SlotItemHandler {
   // NOTE: warning. it's possible this is run on client and server!
   @Override
   public ItemStack onTake(PlayerEntity player, ItemStack stack){
-    FMLCommonHandler.instance().firePlayerCraftingEvent(player, stack, null);
+    BasicEventHooks.firePlayerCraftingEvent(player, stack, null);
     onSlotChanged();
     return stack;
   }

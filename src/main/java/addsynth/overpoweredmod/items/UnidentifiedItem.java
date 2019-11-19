@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.items;
 import addsynth.core.items.ArmorMaterial;
 import addsynth.core.items.EquipmentType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 
 public final class UnidentifiedItem extends OverpoweredItem {
@@ -17,8 +18,8 @@ public final class UnidentifiedItem extends OverpoweredItem {
   }
 
   @Override
-  public final String getItemStackDisplayName(final ItemStack stack){
-    return TextFormatting.ITALIC.toString() + super.getItemStackDisplayName(stack);
+  public final ITextComponent getDisplayName(final ItemStack stack){
+    return super.getDisplayName(stack).applyTextStyle(TextFormatting.ITALIC);
   }
 
 }

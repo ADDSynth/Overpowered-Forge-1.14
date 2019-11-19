@@ -6,11 +6,8 @@ import net.minecraft.block.material.Material;
 public final class TestBlock extends Block {
 
   public TestBlock(){
-    super(Material.ROCK);
-    final String name = "test_block";
-    setHardness(0.2f);
-    setTranslationKey(name);
-    setRegistryName(name);
+    super(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.2f, 6.0f));
+    setRegistryName("test_block");
   }
 
 }

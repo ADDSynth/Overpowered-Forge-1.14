@@ -16,16 +16,16 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
-import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.common.thread.EffectiveSide;
+import net.minecraftforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent.ItemPickupEvent;
 
 /** Note: functions with the <code>@SubscribeEvent</code> annotation MUST be public! */
 @Mod.EventBusSubscriber(modid = OverpoweredMod.MOD_ID)
@@ -38,7 +38,7 @@ public final class Events {
   @SubscribeEvent
   public static final void pick_up_item(ItemPickupEvent event){
     final Item item = event.getStack().getItem();
-    final PlayerEntity player = event.player;
+    final PlayerEntity player = event.getPlayer();
     /*
     if(item == Gems.ruby){
       player.addStat(Achievements.FIND_RUBY);
@@ -87,8 +87,8 @@ public final class Events {
 
   @SubscribeEvent
   public static final void craft_event(ItemCraftedEvent event){
-    final Item item = event.crafting.getItem();
-    final PlayerEntity player = event.player;
+    final Item item = event.getCrafting().getItem();
+    final PlayerEntity player = event.getPlayer();
     /*
     if(item == Init.energy_crystal){
       Game.activate_achievement(player, Achievements.ENERGY_CRYSTAL);
@@ -136,8 +136,8 @@ public final class Events {
     }
     */
     if(item == Item.BLOCK_TO_ITEM.get(Machines.portal_control_panel)){
-      if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT){
-        player.sendMessage(new TextComponentString(
+      if(EffectiveSide.get() == LogicalSide.CLIENT){
+        player.sendMessage(new StringTextComponent(
           TextFormatting.RED+"Beware"+TextFormatting.RESET+": Traveling to the Unknown Dimension "+
           "is still buggy. There's a chance you may spawn in the air and fall to your death! "+
           "(I believe this occurs when you enter for the first time because the dimension hasn't "+

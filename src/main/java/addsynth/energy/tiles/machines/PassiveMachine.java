@@ -46,14 +46,14 @@ public abstract class PassiveMachine extends WorkMachine {
   }
 
   @Override
-  public void readFromNBT(CompoundNBT nbt){
-    super.readFromNBT(nbt);
+  public void read(CompoundNBT nbt){
+    super.read(nbt);
     state = State.value[nbt.getInt("State")];
   }
 
   @Override
-  public CompoundNBT writeToNBT(CompoundNBT nbt){
-    super.writeToNBT(nbt);
+  public CompoundNBT write(CompoundNBT nbt){
+    super.write(nbt);
     nbt.putInt("State",state.ordinal());
     return nbt;
   }

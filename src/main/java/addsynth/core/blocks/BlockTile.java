@@ -1,20 +1,15 @@
 package addsynth.core.blocks;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.EnumBlockRenderType;
 
 // MAYBE: consider skipping BlockContainer, extend Block and implement ITileProvider ourselves.
 public abstract class BlockTile extends ContainerBlock {
 
-  public BlockTile(Material material){
-    super(material);
-  }
-
-  public BlockTile(final Material material, final MaterialColor map_color){
-    super(material, map_color);
+  public BlockTile(Block.Properties properties){
+    super(properties);
   }
 
   /**
@@ -22,8 +17,8 @@ public abstract class BlockTile extends ContainerBlock {
    */
   @Override
   @SuppressWarnings("deprecation")
-  public EnumBlockRenderType getRenderType(IBlockState state){
-      return EnumBlockRenderType.MODEL;
+  public BlockRenderType getRenderType(BlockState state){
+      return BlockRenderType.MODEL;
   }
 
 }

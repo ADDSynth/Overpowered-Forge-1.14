@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import javax.annotation.Nonnull;
 import addsynth.core.ADDSynthCore;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
@@ -34,7 +32,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   protected final T first_tile;
 
   public BlockNetwork(@Nonnull final World world, @Nonnull final T first_tile){
-    this(world, first_tile.getBlockType(), first_tile);
+    this(world, first_tile.getBlockState().getBlock(), first_tile);
   }
 
   public BlockNetwork(@Nonnull final World world, @Nonnull final Block block, @Nonnull final T tile){

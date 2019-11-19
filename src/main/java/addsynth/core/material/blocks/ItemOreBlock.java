@@ -3,10 +3,8 @@ package addsynth.core.material.blocks;
 import java.util.Random;
 import addsynth.core.material.MiningStrength;
 import addsynth.core.util.MathUtility;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 
 public final class ItemOreBlock extends OreBlock {
 

@@ -7,7 +7,6 @@ import addsynth.overpoweredmod.game.core.Portal;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -18,9 +17,7 @@ public final class UnknownWood extends Block {
   private final ArrayList<BlockPos> found = new ArrayList<>(50);
 
   public UnknownWood(final String name){
-    super(Material.WOOD);
-    this.setHardness(2.0F);
-    this.setSoundType(SoundType.WOOD);
+    super(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(2.0f));
     OverpoweredMod.registry.register_block(this, name);
   }
 
@@ -42,7 +39,7 @@ public final class UnknownWood extends Block {
         block = world.getBlockState(side_position).getBlock();
         if(block == Portal.unknown_wood || block == Portal.unknown_leaves){
           tree_destroy_loop(world, side_position);
-          world.setBlockToAir(side_position);
+          world.removeBlock(side_position, false);
         }
       }
     }

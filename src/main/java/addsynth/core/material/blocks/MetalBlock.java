@@ -15,9 +15,7 @@ public final class MetalBlock extends Block {
   }
 
   public MetalBlock(final String name, final MaterialColor color){
-    super(Material.IRON, color);
-    setHardness(5.0f);
-    setResistance(10.0f);
+    super(Block.Properties.create(Material.IRON, color).hardnessAndResistance(5.0f, 6.0f));
     ADDSynthCore.registry.register_block(this, name);
   }
 

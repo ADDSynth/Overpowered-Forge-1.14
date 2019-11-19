@@ -1,15 +1,16 @@
 package addsynth.overpoweredmod.items.tools;
 
+import addsynth.core.Constants;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.game.core.Tools;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.Rarity;
 
 public class NullPickaxe extends PickaxeItem {
 
   public NullPickaxe(final String name){
-    super(Tools.VOID);
+    super(OverpoweredTiers.VOID, Constants.pickaxe_damage, Constants.pickaxe_speed, new Item.Properties());
     OverpoweredMod.registry.register_item(this, name);
   }
 

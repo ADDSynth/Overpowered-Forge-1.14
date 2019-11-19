@@ -9,7 +9,7 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.client.gui.GuiHandler;
 import addsynth.overpoweredmod.tiles.machines.laser.TileLaserHousing;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -17,6 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
@@ -40,7 +41,8 @@ public final class LaserHousing extends MachineBlockTileEntity {
   }
 
   @Override
-  public final boolean onBlockActivated(World world, BlockPos pos, IBlockState state, PlayerEntity player, Hand hand, Direction side, float hitX, float hitY, float hitZ){
+  @SuppressWarnings("deprecation")
+  public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
       player.openGui(OverpoweredMod.instance,GuiHandler.LASER_HOUSING, world,pos.getX(),pos.getY(),pos.getZ());
     }
@@ -56,11 +58,13 @@ public final class LaserHousing extends MachineBlockTileEntity {
     }
   }
 
+  
+
   @Override
-  public final void breakBlock(final World world, final BlockPos pos, final IBlockState state){
+  public final void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving){
     // MAYBE I should encorporate this into MachineBlockTileEntity as well?
     final BlockNetwork network = BlockNetwork.getNetwork(world, pos);
-    super.breakBlock(world, pos, state);
+    super.onReplaced(state, world, pos, newState, isMoving);
     BlockNetwork.block_was_broken(network, world, pos, state.getBlock());
   }
 

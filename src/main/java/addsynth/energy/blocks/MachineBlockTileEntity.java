@@ -2,8 +2,9 @@ package addsynth.energy.blocks;
 
 import addsynth.core.tiles.TileMachine;
 import addsynth.core.util.MinecraftUtility;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -22,13 +23,18 @@ public abstract class MachineBlockTileEntity extends MachineBlock {
     super(color);
   }
 
+  public MachineBlockTileEntity(final SoundType sound){
+    super(sound);
+  }
+
   @Override
-  public void breakBlock(final World world, final BlockPos pos, final IBlockState state){
+  @SuppressWarnings("deprecation")
+   public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving){
     final TileMachine tile = MinecraftUtility.getTileEntity(pos, world, TileMachine.class);
     if(tile != null){
       tile.drop_inventory();
     }
-    super.breakBlock(world, pos, state);
+    super.onReplaced(state, world, pos, newState, isMoving);
   }
   
 }

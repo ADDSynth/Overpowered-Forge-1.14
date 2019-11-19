@@ -2,7 +2,7 @@ package addsynth.core.gameplay.music_box;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
@@ -191,7 +191,7 @@ public final class MusicGrid {
    * @param world
    * @param position
    * @param frame
-   * @see net.minecraft.block.BlockNote#eventReceived
+   * @see net.minecraft.block.NoteBlock#eventReceived
    */
   public final void play_frame(final World world, final BlockPos position, final byte frame){
     if(world != null && frame >= 0){
@@ -213,7 +213,7 @@ public final class MusicGrid {
                 pitch = (float)Math.pow(2.0, (float)(note.pitch - 12) / 12); // they literally use OpenAL to change the pitch, they're not seperate sound files.
                 world.playSound(null, position, instrument, SoundCategory.RECORDS, 3.0f, pitch);
                 if(spawn_particles){
-                  world.spawnParticle(EnumParticleTypes.NOTE, position.getX()+0.5, position.getY()+0.5, position.getZ()+0.5, note.pitch / 24, 0.0, 0.0);
+                  world.addParticle(ParticleTypes.NOTE, position.getX()+0.5, position.getY()+0.5, position.getZ()+0.5, note.pitch / 24, 0.0, 0.0);
                 }
               }
             }

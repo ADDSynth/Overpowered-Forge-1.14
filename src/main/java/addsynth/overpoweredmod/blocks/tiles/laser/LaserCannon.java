@@ -10,9 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
@@ -23,7 +21,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -49,10 +46,8 @@ public final class LaserCannon extends BlockTile {
   public final int color;
 
   public LaserCannon(final String name, final int color){
-    super(Material.IRON, MaterialColor.STONE);
+    super(Block.Properties.create(Material.IRON, MaterialColor.STONE).sound(SoundType.METAL).hardnessAndResistance(3.5f, 6.0f));
     OverpoweredMod.registry.register_block(this, name);
-    setHardness(3.5f);
-    setSoundType(SoundType.METAL);
     this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
     this.color = color;
   }
@@ -62,23 +57,6 @@ public final class LaserCannon extends BlockTile {
     if(color == -1){
       tooltip.add(new StringTextComponent("Fusion Energy"));
     }
-  }
-
-  @Override
-  protected final BlockStateContainer createBlockState(){
-    return new BlockStateContainer(this, FACING);
-  }
-
-  @Override
-  @SuppressWarnings("deprecation")
-  public final boolean isOpaqueCube(IBlockState state){
-    return false;
-  }
-
-  @Override
-  @SuppressWarnings("deprecation")
-  public final boolean isFullCube(IBlockState state){
-    return false;
   }
 
   @Override
