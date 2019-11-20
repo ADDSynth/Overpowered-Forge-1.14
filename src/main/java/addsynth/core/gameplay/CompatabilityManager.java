@@ -6,12 +6,9 @@ import addsynth.core.config.Features;
 import addsynth.core.game.Compatability;
 import addsynth.core.gameplay.items.ScytheTool;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
-import net.minecraft.util.NonNullList;
+import net.minecraft.tags.BlockTags;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import net.minecraftforge.oredict.OreDictionary;
 
 public final class CompatabilityManager {
 
@@ -21,17 +18,11 @@ public final class CompatabilityManager {
     }
   }
 
-  /** Automatically gets all blocks that are registered in the OreDictionary as "treeLeaves"
+  /** Automatically gets all blocks that are tagged with the "leaves" tag
    *  and uses reflection to set the effectiveBlocks list of all Scythe tools.
    */
   private static final void set_scythe_harvest_blocks(){
-    final NonNullList<ItemStack> list = OreDictionary.getOres("treeLeaves");
-    final Set<Block> leaves = new HashSet<>(list.size());
-    for(ItemStack stack : list){
-      if(stack.getItem() instanceof BlockItem){
-        leaves.add(((BlockItem)stack.getItem()).getBlock());
-      }
-    }
+    final Set<Block> leaves = (Set<Block>)BlockTags.LEAVES.getAllElements(); // TEST, if this doesn't work use HashSet
     override_scythe_field(Core.wooden_scythe, leaves);
     override_scythe_field(Core.stone_scythe, leaves);
     override_scythe_field(Core.iron_scythe, leaves);

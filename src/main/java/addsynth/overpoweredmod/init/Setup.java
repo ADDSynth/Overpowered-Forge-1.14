@@ -21,7 +21,6 @@ public final class Setup {
   public static boolean items_registered;
   public static boolean registered_recipes;
   public static boolean creative_tabs_registered;
-  public static boolean oredictionary_names_registered;
   
   public static final void init_config(){
     if(config_loaded == false){
@@ -43,23 +42,6 @@ public final class Setup {
     }
   }
   
-  public static final void register_oredictionary_names(){
-    if(oredictionary_names_registered == false){
-      Debug.log_setup_info("Begin registering OreDictionary Names...");
-      if(items_registered == false){
-        throw new RuntimeException("Overpowered Mod: Forge requires that Blocks and Items are registered before registering OreDictionary Names!");
-      }
-      for(Gem gem : Gems.index){
-        gem.register_oredictionary_name();
-      }
-      for(Metal metal : Metals.values){
-        metal.register_oredictionary_name();
-      }
-      oredictionary_names_registered = true;
-      Debug.log_setup_info("Finished registering OreDictionary Names.");
-    }
-  }
-
   /** <p>This should ONLY be called from OverpoweredMod class.</p>
    *  <p>This doesn't actually set up the WorldGenerators, instead it sets a boolean value in ADDSynthCore.
    *  It's ADDSynthCore that actually sets up the WorldGenerators when its Initialization Event is fired.

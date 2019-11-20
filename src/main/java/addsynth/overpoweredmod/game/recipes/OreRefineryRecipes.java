@@ -5,12 +5,11 @@ import java.util.HashMap;
 import addsynth.core.material.Material;
 import addsynth.core.material.types.AbstractMaterial;
 import addsynth.overpoweredmod.Debug;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.LoaderState;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.common.Tags;
 
 public final class OreRefineryRecipes {
 
@@ -22,32 +21,20 @@ public final class OreRefineryRecipes {
   
   /**
    * This will only add an Ore recipe to the Advanced Ore Refinery if, other mods have registered their
-   * ore with the OreDictionary, and it has a Furnace Recipe.
+   * ore with the "ores" tag, and it has a Furnace Recipe.
    */
   public static final void register(){
     Debug.log_setup_info("Begin registering Advanced Ore Refinery recipes...");
   
-    if(Loader.instance().getLoaderState() != LoaderState.POSTINITIALIZATION){
-      throw new Error("RegisterOreRefineryRecipes() function should be called from within PostInitialization Event.");
-    }
-  
     final ArrayList<Item> list = new ArrayList<Item>(100);
-    String ore_name;
-    for(AbstractMaterial material : Material.list){
-      ore_name = "ore"+material.name;
-      // use this because all other functions adds the name to the internal List,
-      //   which would add junk entries if the programmer MADE A SPELLING MISTAKE!
-      if(OreDictionary.doesOreNameExist(ore_name)){
-        for(final ItemStack ore : OreDictionary.getOres(ore_name)){
-          if(ore != null){
-            final ItemStack result_check = FurnaceRecipes.instance().getSmeltingResult(ore);
-            if(result_check != null){
-              list.add(ore.getItem());
-              final ItemStack result = result_check.copy();
-              result.setCount(result.getCount()*result_output);
-              recipes.put(ore.getItem(), result);
-            }
-          }
+    for(Block block : Tags.Blocks.ORES.getAllElements()){
+      // TODO: Check if Ore Block has a Furnace recipe.
+      if(false){
+        if(result_check != null){
+          list.add(ore.getItem());
+          final ItemStack result = result_check.copy();
+          result.setCount(result.getCount()*result_output);
+          recipes.put(ore.getItem(), result);
         }
       }
     }

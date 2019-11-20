@@ -66,7 +66,6 @@ public class OverpoweredMod {
   public static final void init(final FMLInitializationEvent event){
     log.info("Begin Initialization...");
     
-    Setup.register_oredictionary_names();
     // Achievements.registerAchievements();
     NetworkHandler.registerMessages();
     NetworkRegistry.INSTANCE.registerGuiHandler(OverpoweredMod.instance,new GuiHandler());

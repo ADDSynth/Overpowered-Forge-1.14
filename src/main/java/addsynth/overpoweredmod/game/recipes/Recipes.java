@@ -29,8 +29,6 @@ public final class Recipes {
   public static final void register(){
     Debug.log_setup_info("Begin registering Crafting Recipes...");
     
-    Setup.register_oredictionary_names();
-    
     // Ingredients used in recipes
     final Ingredient glass_pane           = Ingredient.fromStacks(new ItemStack(Blocks.GLASS_PANE,1)); // MAYBE: can this be an OreDictionary (and should it?)
     final Ingredient energy_crystal       = Ingredient.fromStacks(new ItemStack(Init.energy_crystal,1));

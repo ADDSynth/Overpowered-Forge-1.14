@@ -31,7 +31,6 @@ public final class Config extends ModConfig {
   private final void load_values(){
 
     debug_mod_detection       = get(DEBUG, "Print Mod Detection Results", false).getBoolean();
-    debug_materials_detection = get(DEBUG, "Print Materials Detection Results", false).getBoolean();
     dump_map_colors           = get(DEBUG, "Dump Map Colors", false).getBoolean();
 
     show_advanced_config = getBoolean("Show Advanced Config in Client Gui", ADVANCED, false,

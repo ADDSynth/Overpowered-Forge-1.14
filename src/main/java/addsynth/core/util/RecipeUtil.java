@@ -9,19 +9,22 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.OreIngredient;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.registries.ForgeRegistries;
 
+@Deprecated
 public final class RecipeUtil {
+
+  // TODO: My cool RecipeUtil class had a feature that checked each ingredient to a recipe to see if an
+  //       OreDictionary tag existed that I could use to allow blocks and items from other mods to be
+  //       used in the recipe. I wonder if I can still do this in 1.14, check the ingredients and print
+  //       a warning to the log saying there is a Tag I can use instead of the hard-coded block or item.
+
+  // PRIORITY: Actually, I may need to just go ahead and specify Recipe.json files, because I see no way
+  //           to register recipes using the old way anymore. I don't see an entry in ForgeRegistries.
 
   @Deprecated
   public static final boolean debug_recipes = false;
@@ -105,7 +108,7 @@ public final class RecipeUtil {
    */
   public static final Ingredient getIngredient(final String result, final Object ingredient){
     if(ingredient instanceof Ingredient){ return (Ingredient)ingredient; }
-    if(ingredient instanceof String){ return new OreIngredient((String)ingredient); }
+    if(ingredient instanceof String){ throw new UnsupportedOperationException("Overpowered for 1.14 is still WIP."); }
     
     ItemStack stack = null;
     if(ingredient instanceof Block){ stack = new ItemStack((Block)ingredient,1); }
@@ -115,22 +118,9 @@ public final class RecipeUtil {
       throw new IllegalArgumentException("Invalid ingredient for recipe "+result+". Input can only be a Block, Item, ItemStack, Ingredient, or OreDictionary Name!");
     }
 
-    final int[] tags = OreDictionary.getOreIDs(stack);
-    if(tags.length > 0){
-      if(tags.length == 1){
-        final String name = OreDictionary.getOreName(tags[0]);
-        ADDSynthCore.log.warn("Found the OreDictionary Name \""+name+" for "+stack.getTranslationKey()+" in recipe "+result+". Please use the OreDictionary Name instead.");
-        return new OreIngredient(name);
-      }
-      final ArrayList<String> names = new ArrayList<>();
-      for(int id : tags){
-        names.add(OreDictionary.getOreName(id));
-      }
-      // TODO: This is extremely helpful, however sometimes other mods add their own OreDictionary ID for things,
-      //       (such as Wool, which Forge doesn't assign an ID to) so I get warnings when playing with other mods.
-      //       I must find a way to get all the OreDictionary names at the beginning of mod loading.
+      // TODO: For each Item and Block, search through the Tags to see if it is registered with
+      // any of them, then suggest to use the Tag names in recipes instead of the Block or Item.
       ADDSynthCore.log.warn("The ingredient "+stack.getTranslationKey()+" for recipe "+result+" has OreDictionary Names "+names.toString()+". It is recommended that the developer use one of these instead.");
-    }
 
     return Ingredient.fromStacks(stack);
   }

@@ -10,7 +10,6 @@ import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -51,32 +50,6 @@ public class OreMaterial extends BaseMaterial {
     default: break;
     }
     return block;
-  }
-
-  @Override
-  public void register_oredictionary_name(){
-    final IForgeRegistry<Block> block_registry = ForgeRegistries.BLOCKS;
-    final IForgeRegistry<Item>  item_registry  = ForgeRegistries.ITEMS;
-    if(custom){
-      if(this.item != null && item_registry.containsValue(this.item)){
-        OreDictionary.registerOre("item"+this.name, this.item);
-      }
-      if(this.block != null && block_registry.containsValue(this.block)){
-        OreDictionary.registerOre("block"+this.name, this.block);
-      }
-      if(this.ore != null && block_registry.containsValue(this.ore)){
-        OreDictionary.registerOre("ore"+this.name, this.ore);
-      }
-    }
-  }
-
-  @Override
-  public void debug(){
-    ADDSynthCore.log.info("Material: "+name+", Type: Ore Material");
-    ADDSynthCore.log.info("item"+name+": "+StringUtil.print_minecraft_array(OreDictionary.getOres("item"+name, false)));
-    // FEATURE: maybe we should support dusts, because this does not detect Redstone Dust.
-    ADDSynthCore.log.info("block"+name+": "+StringUtil.print_minecraft_array(OreDictionary.getOres("block"+name, false)));
-    ADDSynthCore.log.info("ore"+name+": "+StringUtil.print_minecraft_array(OreDictionary.getOres("ore"+name, false)));
   }
 
 }

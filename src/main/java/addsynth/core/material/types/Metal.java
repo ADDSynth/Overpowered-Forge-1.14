@@ -12,7 +12,6 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -78,39 +77,6 @@ public class Metal extends OreMaterial {
     ingot_to_nuggets_recipe = null;
     ingots_to_block_recipe = null;
     block_to_ingots_recipe = null;
-  }
-
-  @Override
-  public void register_oredictionary_name(){
-    final IForgeRegistry<Block> block_registry = ForgeRegistries.BLOCKS;
-    final IForgeRegistry<Item>  item_registry  = ForgeRegistries.ITEMS;
-    if(custom){
-      if(this.ingot != null && item_registry.containsValue(this.ingot)){
-        OreDictionary.registerOre("ingot"+this.name, this.ingot);
-      }
-      if(this.block != null && block_registry.containsValue(this.block)){
-        OreDictionary.registerOre("block"+this.name, this.block);
-      }
-      if(this.ore != null && block_registry.containsValue(this.ore)){
-        OreDictionary.registerOre("ore"+this.name, this.ore);
-      }
-      if(this.nugget != null && item_registry.containsValue(this.nugget)){
-        OreDictionary.registerOre("nugget"+this.name, this.nugget);
-      }
-    }
-    if(this.plating != null && item_registry.containsValue(this.plating)){
-      OreDictionary.registerOre("plate"+this.name, this.plating);
-    }
-  }
-
-  @Override
-  public void debug(){
-    ADDSynthCore.log.info("Material: "+name+", Type: Metal");
-    ADDSynthCore.log.info("ingot"+name+": "+StringUtil.print_minecraft_array(OreDictionary.getOres("ingot"+name, false)));
-    ADDSynthCore.log.info("nugget"+name+": "+StringUtil.print_minecraft_array(OreDictionary.getOres("nugget"+name, false)));
-    ADDSynthCore.log.info("block"+name+": "+StringUtil.print_minecraft_array(OreDictionary.getOres("block"+name, false)));
-    ADDSynthCore.log.info("ore"+name+": "+StringUtil.print_minecraft_array(OreDictionary.getOres("ore"+name, false)));
-    ADDSynthCore.log.info("plate"+name+": "+StringUtil.print_minecraft_array(OreDictionary.getOres("plate"+name, false)));
   }
 
 }

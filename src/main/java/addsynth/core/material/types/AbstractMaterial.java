@@ -16,8 +16,4 @@ public abstract class AbstractMaterial {
     Material.list.add(this);
   }
 
-  public abstract void register_oredictionary_name();
-
-  public abstract void debug();
-
 }
