@@ -17,6 +17,7 @@ public class ScytheTool extends ToolItem {
     ADDSynthCore.registry.register_item(this, name);
   }
 
+  @Deprecated
   public static final void registerRecipe(final Item output, final Object input){
     RecipeUtil.register("Scythes", 3, 3, new ItemStack(output, 1), new Object[] {
       Ingredient.EMPTY, input,            input,

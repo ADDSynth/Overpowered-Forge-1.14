@@ -7,6 +7,7 @@ import addsynth.core.util.RecipeUtil;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 
+@Deprecated
 public final class Recipes {
 
   public static final void register(){

@@ -20,9 +20,9 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.thread.EffectiveSide;
 import net.minecraftforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.ItemPickupEvent;
@@ -76,7 +76,7 @@ public final class Events {
     */
     if(item == ModItems.unknown_technology){
       // Game.activate_achievement(player, Achievements.UNKNOWN_TECHNOLOGY);
-      if(player.dimension == WeirdDimension.id){
+      if(player.dimension.getId() == WeirdDimension.id){
         final MinecraftServer server = player.getServer();
         if(server != null){
           server.getPlayerList().transferPlayerToDimension((ServerPlayerEntity)player, 0, new CustomTeleporter(server.getWorld(0)));

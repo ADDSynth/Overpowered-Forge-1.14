@@ -20,7 +20,7 @@ public final class WeirdDimension extends ModDimension {
   public static final WeirdBiome weird_biome = new WeirdBiome();
 
   public static final void register(){
-    DimensionManager.registerDimension(new ResourceLocation(OverpoweredMod.MOD_ID, "unknown", false);
+    DimensionManager.registerDimension(new ResourceLocation(OverpoweredMod.MOD_ID, "unknown", false));
   }
 
   @Override

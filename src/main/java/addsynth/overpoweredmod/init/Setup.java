@@ -2,31 +2,27 @@ package addsynth.overpoweredmod.init;
 
 import java.io.File;
 import addsynth.core.material.Material;
-import addsynth.core.material.types.Gem;
-import addsynth.core.material.types.Metal;
 import addsynth.core.worldgen.OreGenerator;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.config.FeatureConfig;
 import addsynth.overpoweredmod.config.ValuesConfig;
-import addsynth.overpoweredmod.game.core.*;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.loading.FMLPaths;
 
 
 public final class Setup {
 
   public static boolean config_loaded;
   public static boolean items_registered;
-  public static boolean registered_recipes;
   public static boolean creative_tabs_registered;
   
   public static final void init_config(){
     if(config_loaded == false){
       OverpoweredMod.log.info("Loading Configuration files...");
 
-      final File config_directory = new File(Loader.instance().getConfigDir(),OverpoweredMod.MOD_NAME); // let java do it in case we run on other OS besides Windows.
+      final File config_directory = new File(FMLPaths.CONFIGDIR.get().toString(),OverpoweredMod.MOD_NAME); // let java do it in case we run on other OS besides Windows.
 
       Config.initialize(       new File(config_directory,"main.cfg"));
       FeatureConfig.initialize(new File(config_directory,"feature_disable.cfg"));

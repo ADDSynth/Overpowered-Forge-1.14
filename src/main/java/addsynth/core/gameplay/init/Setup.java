@@ -9,7 +9,7 @@ import addsynth.core.gameplay.Core;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.loading.FMLPaths;
 
 public final class Setup {
 
@@ -19,7 +19,7 @@ public final class Setup {
     if(config_loaded == false){
       ADDSynthCore.log.info("Begin loading configuration files...");
   
-      final File config_directory = new File(Loader.instance().getConfigDir(),ADDSynthCore.NAME);
+      final File config_directory = new File(FMLPaths.CONFIGDIR.get().toString(),ADDSynthCore.NAME);
 
       Config.initialize(        new File(config_directory,"main.cfg"));
       WorldgenConfig.initialize(new File(config_directory,"worldgen.cfg"));

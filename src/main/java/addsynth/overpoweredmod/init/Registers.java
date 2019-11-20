@@ -1,22 +1,17 @@
 package addsynth.overpoweredmod.init;
 
 import addsynth.core.ADDSynthCore;
-import addsynth.core.game.Compatability;
 import addsynth.core.material.types.Gem;
 import addsynth.core.material.types.Metal;
-import addsynth.energy.gameplay.tiles.*; // FUTURE: Maybe these will soon be registered in an ADDSynthEnergy mod.
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.game.core.*;
-import addsynth.overpoweredmod.game.recipes.*;
 import addsynth.overpoweredmod.items.BlackHoleItem;
 import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.block.Block;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -24,8 +19,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 /** The annotation is identified at compile time, Forge finds this and runs this
@@ -279,20 +274,6 @@ public final class Registers {
     game.register(Tiles.FUSION_CHAMBER.setRegistryName(            new ResourceLocation(OverpoweredMod.MOD_ID, "fusion_container")));
 
     Debug.log_setup_info("Finished registering Tile Entities.");
-  }
-
-  @SubscribeEvent
-  public static final void registerRecipes(final RegistryEvent.Register<IRecipe> event){
-    OverpoweredMod.log.info("Begin registering All Recipes...");
-
-    Recipes.register();
-    FurnaceRecipes.register();
-    if(Features.compressor){ // running this code doesn't hurt anything, but this boolean check is an optimization.
-      CompressorRecipes.register();
-    }
-    Setup.registered_recipes = true;
-    
-    OverpoweredMod.log.info("Finished registering all Recipes.");
   }
 
   @SubscribeEvent

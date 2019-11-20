@@ -7,6 +7,7 @@ import addsynth.overpoweredmod.game.core.Metals;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+@Deprecated
 public final class FurnaceRecipes {
 
   //  net.minecraft.item.crafting.FurnaceRecipes.class

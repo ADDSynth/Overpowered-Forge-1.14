@@ -2,8 +2,8 @@ package addsynth.core.config;
 
 import java.io.File;
 import addsynth.core.ADDSynthCore;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.config.ModConfig;
 
 public final class Config extends ModConfig {

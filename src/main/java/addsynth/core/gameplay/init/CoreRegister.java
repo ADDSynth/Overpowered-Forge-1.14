@@ -3,18 +3,15 @@ package addsynth.core.gameplay.init;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.config.Features;
 import addsynth.core.gameplay.Core;
-import addsynth.core.gameplay.Recipes;
 import addsynth.core.gameplay.Tiles;
-import addsynth.core.gameplay.music_box.TileMusicBox;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(modid = ADDSynthCore.MOD_ID)
@@ -66,11 +63,6 @@ public final class CoreRegister {
   public static final void register_tileentities(final RegistryEvent.Register<TileEntityType<?>> event){
     final IForgeRegistry<TileEntityType<?>> game = event.getRegistry();
     game.register(Tiles.MUSIC_BOX.setRegistryName(new ResourceLocation(ADDSynthCore.MOD_ID,"music_box")));
-  }
-
-  @SubscribeEvent
-  public static final void registerRecipes(final RegistryEvent.Register<IRecipe> event){
-    Recipes.register();
   }
 
 }

@@ -30,7 +30,7 @@ public final class Debug {
       ", Translation Key: "+item.getTranslationKey());
   }
 
-  public static final void init(){
+  public static final void debug(){
     RegistryUtil.safety_check();
     if(Config.debug_mod_detection){
       Compatability.debug();
@@ -38,9 +38,6 @@ public final class Debug {
     if(Config.dump_map_colors){
       ColorUtil.dump_map_colors();
     }
-  }
-
-  public static final void postInit(){
   }
 
 }
