@@ -35,11 +35,11 @@ public final class ADDSynthCore {
   public static final RegistryUtil registry = new RegistryUtil(MOD_ID);
 
   public ADDSynthCore(){
-    FMLJavaModLoadingContext.get().getModEventBus().addListener(this::main_setup);
+    FMLJavaModLoadingContext.get().getModEventBus().addListener(ADDSynthCore::main_setup);
     Setup.init_config();
   }
 
-  private final void main_setup(final FMLCommonSetupEvent event){
+  private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin constructing ADDSynthCore ...");
   
     OreGenerator.initialize();

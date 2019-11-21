@@ -31,11 +31,11 @@ public class OverpoweredMod {
   public static final RegistryUtil registry = new RegistryUtil(MOD_ID);
 
   public OverpoweredMod(){
-    FMLJavaModLoadingContext.get().getModEventBus().addListener(this::main_setup);
+    FMLJavaModLoadingContext.get().getModEventBus().addListener(OverpoweredMod::main_setup);
     Setup.init_config();
   }
 
-  private final void main_setup(final FMLCommonSetupEvent event){
+  private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin constructing Overpowered...");
           
     Setup.register_world_generators(); // TODO: Send this to ADDSynthCore via InterMod Communications

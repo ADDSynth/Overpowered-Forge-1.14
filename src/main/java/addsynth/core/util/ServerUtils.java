@@ -10,13 +10,12 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 public final class ServerUtils {
 
   public static final MinecraftServer getServer(){
-    // Thanks Google: http://www.minecraftforge.net/forum/topic/37211-19-minecraftservergetserver-is-missing/
-    return FMLCommonHandler.instance().getMinecraftServerInstance();
+    return ServerLifecycleHooks.getCurrentServer();
   }
 
   public static ArrayList<ServerPlayerEntity> get_players_in_world(final World world){

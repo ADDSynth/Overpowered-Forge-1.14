@@ -64,7 +64,7 @@ public final class TileFusionChamber extends TileMachine {
     for(Direction side : Direction.values()){
       for(i = 1; i < container_radius - 1; i++){
         position = pos.offset(side, i);
-        world.setBlockToAir(position);
+        world.removeBlock(position, false);
       }
     }
     on = false;

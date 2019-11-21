@@ -5,9 +5,9 @@ import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.recipes.CompressorRecipes;
 import addsynth.overpoweredmod.tiles.Tiles;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 
 public final class TileCompressor extends PassiveMachine {
 

@@ -7,8 +7,8 @@ import addsynth.overpoweredmod.blocks.tiles.laser.LaserCannon;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -44,7 +44,7 @@ public final class TileLaser extends TileBase implements ITickableTileEntity {
   @Override
   public void onLoad(){
     if(world.isRemote == false){
-      final IBlockState block_state = world.getBlockState(pos);
+      final BlockState block_state = world.getBlockState(pos);
       final LaserCannon block = (LaserCannon)block_state.getBlock();
       this.laser = Laser.index[Math.max(0, block.color)];
       if(block.color < 0){
@@ -54,9 +54,9 @@ public final class TileLaser extends TileBase implements ITickableTileEntity {
           "it's probably safe to continue playing, but this indicates a serious error. Please report this to the mod author.");
         Debug.block(block, pos);
         Thread.dumpStack();
-        invalidate();
+        remove();
       }
-      this.direction = block_state.getValue(LaserCannon.FACING);
+      this.direction = block_state.get(LaserCannon.FACING);
     }
   }
 

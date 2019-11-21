@@ -27,7 +27,7 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
   @Override
   public final void tick(){
     if(world.isRemote == false){
-      if(world.getWorldTime() % sync_timer == 0){
+      if(world.getGameTime() % sync_timer == 0){ // TODO: use our own timer seperate from the whims of Minecraft.
         activated = world.isBlockPowered(pos);
         if(activated){
           check_connection();

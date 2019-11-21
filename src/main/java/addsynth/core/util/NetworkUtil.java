@@ -2,8 +2,8 @@ package addsynth.core.util;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.network.PacketDistributor;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 public final class NetworkUtil {
 
@@ -25,8 +25,8 @@ public final class NetworkUtil {
     }
   }
 
-  public static final void send_to_clients_in_world(final SimpleNetworkWrapper network, final World world, final IMessage message){
-    network.sendToDimension(message, world.provider.getDimension());
+  public static final void send_to_clients_in_world(final SimpleChannel network, final World world, final Object message){
+    network.send(PacketDistributor.DIMENSION.with(() -> world.dimension.getType()), message);
   }
 
 }

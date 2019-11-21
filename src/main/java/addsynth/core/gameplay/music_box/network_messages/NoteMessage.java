@@ -1,15 +1,15 @@
 package addsynth.core.gameplay.music_box.network_messages;
 
+import java.util.function.Supplier;
 import addsynth.core.gameplay.music_box.TileMusicBox;
 import addsynth.core.util.MinecraftUtility;
-import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.network.NetworkEvent;
 
-public final class NoteMessage implements IMessage {
+public final class NoteMessage {
 
   private BlockPos position;
   private byte frame;
@@ -18,8 +18,6 @@ public final class NoteMessage implements IMessage {
   private byte instrument;
   private byte note;
   private float volume;
-
-  public NoteMessage(){}
 
   public NoteMessage(BlockPos position, byte frame, byte track, byte instrument, byte note, float volume){
     this.position = position;
@@ -38,51 +36,44 @@ public final class NoteMessage implements IMessage {
     this.on = false;
   }
 
-  @Override
-  public final void fromBytes(final ByteBuf buf){
-    position = new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
-    on = buf.readBoolean();
-    frame = buf.readByte();
-    track = buf.readByte();
-    instrument = buf.readByte();
-    note = buf.readByte();
-    volume = buf.readFloat();
+  public static final void encode(final NoteMessage message, final PacketBuffer buf){
+    buf.writeInt(message.position.getX());
+    buf.writeInt(message.position.getY());
+    buf.writeInt(message.position.getZ());
+    buf.writeBoolean(message.on);
+    buf.writeByte(message.frame);
+    buf.writeByte(message.track);
+    buf.writeByte(message.instrument);
+    buf.writeByte(message.note);
+    buf.writeFloat(message.volume);
   }
 
-  @Override
-  public final void toBytes(final ByteBuf buf){
-    buf.writeInt(position.getX());
-    buf.writeInt(position.getY());
-    buf.writeInt(position.getZ());
-    buf.writeBoolean(on);
-    buf.writeByte(frame);
-    buf.writeByte(track);
-    buf.writeByte(instrument);
-    buf.writeByte(note);
-    buf.writeFloat(volume);
-  }
-
-  public static final class Handler implements IMessageHandler<NoteMessage, IMessage> {
-
-    @Override
-    public IMessage onMessage(NoteMessage message, MessageContext context) {
-      final ServerWorld world = context.getServerHandler().player.getServerWorld();
-      world.addScheduledTask(() -> processMessage(world, message));
-      return null;
+  public static final NoteMessage decode(final PacketBuffer buf){
+    final BlockPos position = new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
+    if(buf.readBoolean()){
+      return new NoteMessage(position, buf.readByte(), buf.readByte(), buf.readByte(), buf.readByte(), buf.readFloat());
     }
-    
-    private static final void processMessage(final ServerWorld world, final NoteMessage message){
-      if(world.isBlockLoaded(message.position)){
-        final TileMusicBox tile = MinecraftUtility.getTileEntity(message.position,world,TileMusicBox.class);
-        if(tile != null){
-          if(message.on){
-            tile.set_note(message.track, message.frame,message.note);
-          }
-          else{
-            tile.disable_note(message.track, message.frame);
+    return new NoteMessage(position, buf.readByte(), buf.readByte());
+  }
+
+  public static void handle(final NoteMessage message, final Supplier<NetworkEvent.Context> context){
+    final ServerPlayerEntity player = context.get().getSender();
+    if(player != null){
+      final ServerWorld world = player.getServerWorld();
+      context.get().enqueueWork(() -> {
+        if(world.isAreaLoaded(message.position, 0)){
+          final TileMusicBox tile = MinecraftUtility.getTileEntity(message.position,world,TileMusicBox.class);
+          if(tile != null){
+            if(message.on){
+              tile.set_note(message.track, message.frame, message.note);
+            }
+            else{
+              tile.disable_note(message.track, message.frame);
+            }
           }
         }
-      }
+      });
+      context.get().setPacketHandled(true);
     }
   }
 

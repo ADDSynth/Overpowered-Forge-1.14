@@ -1,59 +1,51 @@
 package addsynth.overpoweredmod.network.server_messages;
 
+import java.util.function.Supplier;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.overpoweredmod.tiles.machines.portal.TilePortalControlPanel;
-import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.network.NetworkEvent;
 
-public final class PortalControlMessage implements IMessage {
+public final class PortalControlMessage {
 
-  private BlockPos position;
-  private int action;
-
-  public PortalControlMessage(){}
+  private final BlockPos position;
+  private final int action;
 
   public PortalControlMessage(final BlockPos position, final int action){
     this.position = position;
     this.action = action;
   }
 
-  @Override
-  public final void fromBytes(final ByteBuf buf){
-    position = new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
-    action = buf.readInt();
+  public static final void encode(final PortalControlMessage message, final PacketBuffer buf){
+    buf.writeInt(message.position.getX());
+    buf.writeInt(message.position.getY());
+    buf.writeInt(message.position.getZ());
+    buf.writeInt(message.action);
   }
 
-  @Override
-  public final void toBytes(final ByteBuf buf){
-    buf.writeInt(position.getX());
-    buf.writeInt(position.getY());
-    buf.writeInt(position.getZ());
-    buf.writeInt(action);
+  public static final PortalControlMessage decode(final PacketBuffer buf){
+    return new PortalControlMessage(new BlockPos(buf.readInt(),buf.readInt(),buf.readInt()),buf.readInt());
   }
 
-  public static final class Handler implements IMessageHandler<PortalControlMessage, IMessage> {
-
-    @Override
-    public IMessage onMessage(PortalControlMessage message, MessageContext context) {
-      final ServerWorld world = context.getServerHandler().player.getServerWorld();
-      world.addScheduledTask(() -> processMessage(world, message));
-      return null;
-    }
-    
-    private static final void processMessage(final ServerWorld world, final PortalControlMessage message){
-      if(world.isBlockLoaded(message.position)){
-        final TilePortalControlPanel tile = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
-        if(tile != null){
-          switch(message.action){
-          case 0: tile.check_portal(); break;
-          case 1: tile.generate_portal(); break;
+  public static void handle(final PortalControlMessage message, final Supplier<NetworkEvent.Context> context){
+    final ServerPlayerEntity player = context.get().getSender();
+    if(player != null){
+      context.get().enqueueWork(() -> {
+        final ServerWorld world = player.getServerWorld();
+        if(world.isAreaLoaded(message.position, 0)){
+          final TilePortalControlPanel tile = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
+          if(tile != null){
+            switch(message.action){
+            case 0: tile.check_portal(); break;
+            case 1: tile.generate_portal(); break;
+            }
           }
         }
-      }
+      });
+      context.get().setPacketHandled(true);
     }
   }
 

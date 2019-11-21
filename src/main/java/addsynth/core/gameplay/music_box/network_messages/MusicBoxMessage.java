@@ -1,21 +1,19 @@
 package addsynth.core.gameplay.music_box.network_messages;
 
+import java.util.function.Supplier;
 import addsynth.core.gameplay.music_box.TileMusicBox;
 import addsynth.core.util.MinecraftUtility;
-import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.network.NetworkEvent;
 
-public final class MusicBoxMessage implements IMessage {
+public final class MusicBoxMessage {
 
   private BlockPos position;
   private TileMusicBox.Command command;
   private byte info;
-
-  public MusicBoxMessage(){}
 
   public MusicBoxMessage(final BlockPos position, final TileMusicBox.Command command){
     this(position, command, 0);
@@ -27,47 +25,42 @@ public final class MusicBoxMessage implements IMessage {
     this.info = (byte)data;
   }
 
-  @Override
-  public final void fromBytes(final ByteBuf buf){
-    position = new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
-    command = TileMusicBox.Command.value[buf.readInt()];
-    info = buf.readByte();
+  public static final void encode(final MusicBoxMessage message, final PacketBuffer buf){
+    buf.writeInt(message.position.getX());
+    buf.writeInt(message.position.getY());
+    buf.writeInt(message.position.getZ());
+    buf.writeInt(message.command.ordinal());
+    buf.writeByte(message.info);
   }
 
-  @Override
-  public final void toBytes(final ByteBuf buf){
-    buf.writeInt(position.getX());
-    buf.writeInt(position.getY());
-    buf.writeInt(position.getZ());
-    buf.writeInt(command.ordinal());
-    buf.writeByte(info);
+  public static final MusicBoxMessage decode(final PacketBuffer buf){
+    final BlockPos position = new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
+    final TileMusicBox.Command command = TileMusicBox.Command.value[buf.readInt()];
+    return new MusicBoxMessage(position, command, buf.readByte());
   }
 
-  public static final class Handler implements IMessageHandler<MusicBoxMessage, IMessage> {
-
-    @Override
-    public IMessage onMessage(MusicBoxMessage message, MessageContext context) {
-      final ServerWorld world = context.getServerHandler().player.getServerWorld();
-      world.addScheduledTask(() -> processMessage(world, message));
-      return null;
-    }
-    
-    private static final void processMessage(final ServerWorld world, final MusicBoxMessage message){
-      if(world.isBlockLoaded(message.position)){
-        final TileMusicBox music_box = MinecraftUtility.getTileEntity(message.position, world, TileMusicBox.class);
-        if(music_box != null){
-          // each of these individual functions updates the tile data, so you'd think It would be
-          // better to just call it once after this switch statement? But the play() function is
-          // also called in the TileMusicBox itself! so it MUST call update_data() in the function.
-          switch(message.command){
-          case PLAY:                    music_box.play(false); break;
-          case CHANGE_TEMPO:            music_box.change_tempo(message.info > 0); break;
-          case CYCLE_NEXT_DIRECTION:    music_box.increment_next_direction(); break;
-          case CHANGE_TRACK_INSTRUMENT: music_box.change_track_instrument(message.info); break;
-          case TOGGLE_MUTE:             music_box.toggle_mute(message.info); break;
+  public static void handle(final MusicBoxMessage message, final Supplier<NetworkEvent.Context> context){
+    final ServerPlayerEntity player = context.get().getSender();
+    if(player != null){
+      final ServerWorld world = player.getServerWorld();
+      context.get().enqueueWork(() -> {
+        if(world.isAreaLoaded(message.position, 0)){
+          final TileMusicBox music_box = MinecraftUtility.getTileEntity(message.position, world, TileMusicBox.class);
+          if(music_box != null){
+            // each of these individual functions updates the tile data, so you'd think It would be
+            // better to just call it once after this switch statement? But the play() function is
+            // also called in the TileMusicBox itself! so it MUST call update_data() in the function.
+            switch(message.command){
+            case PLAY:                    music_box.play(false); break;
+            case CHANGE_TEMPO:            music_box.change_tempo(message.info > 0); break;
+            case CYCLE_NEXT_DIRECTION:    music_box.increment_next_direction(); break;
+            case CHANGE_TRACK_INSTRUMENT: music_box.change_track_instrument(message.info); break;
+            case TOGGLE_MUTE:             music_box.toggle_mute(message.info); break;
+            }
           }
         }
-      }
+      });
+      context.get().setPacketHandled(true);
     }
   }
 

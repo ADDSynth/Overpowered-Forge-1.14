@@ -1,6 +1,6 @@
 package addsynth.core.gui.objects;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 
 public class ProgressBar {
 
@@ -34,7 +34,7 @@ public class ProgressBar {
     this.replace_y = replace_y;
   }
 */
-  public void draw(GuiContainer gui, int gui_left, int gui_top, Direction direction, float value, Round round_type){
+  public void draw(ContainerScreen gui, int gui_left, int gui_top, Direction direction, float value, Round round_type){
     float texture_percentage = 0.0f;
     switch(direction){
     case LEFT_TO_RIGHT: case RIGHT_TO_LEFT: texture_percentage = width  * value; break;
@@ -48,10 +48,10 @@ public class ProgressBar {
     }
     // gui.mc.renderEngine.bindTexture(texture);
     switch(direction){
-    case LEFT_TO_RIGHT: gui.drawTexturedModalRect(gui_left + x, gui_top + y, replace_x, replace_y, progress, height); break;
-    case RIGHT_TO_LEFT: gui.drawTexturedModalRect(gui_left + x + width - progress, gui_top + y, replace_x + width - progress, replace_y, progress, height); break;
-    case TOP_TO_BOTTOM: gui.drawTexturedModalRect(gui_left + x, gui_top + y, replace_x, replace_y, width, progress); break;
-    case BOTTOM_TO_TOP: gui.drawTexturedModalRect(gui_left + x, gui_top + y + height - progress, replace_x, replace_y + height - progress, width, progress); break;
+    case LEFT_TO_RIGHT: gui.blit(gui_left + x, gui_top + y, replace_x, replace_y, progress, height); break;
+    case RIGHT_TO_LEFT: gui.blit(gui_left + x + width - progress, gui_top + y, replace_x + width - progress, replace_y, progress, height); break;
+    case TOP_TO_BOTTOM: gui.blit(gui_left + x, gui_top + y, replace_x, replace_y, width, progress); break;
+    case BOTTOM_TO_TOP: gui.blit(gui_left + x, gui_top + y + height - progress, replace_x, replace_y + height - progress, width, progress); break;
     }
   }
 

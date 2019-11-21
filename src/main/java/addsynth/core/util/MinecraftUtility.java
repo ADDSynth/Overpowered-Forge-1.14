@@ -79,8 +79,8 @@ public final class MinecraftUtility {
 
   public static final void crash(final String context, final Throwable exception){
     final CrashReport crash_report = new CrashReport(context, exception);
-    Minecraft.getMinecraft().crashed(crash_report);
-    Minecraft.getMinecraft().displayCrashReport(crash_report);
+    Minecraft.getInstance().crashed(crash_report);
+    Minecraft.getInstance().displayCrashReport(crash_report);
     // FMLCommonHandler.exitJava();
   }
 

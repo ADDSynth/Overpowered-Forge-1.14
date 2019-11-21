@@ -1,58 +1,46 @@
 package addsynth.overpoweredmod.network.laser;
 
+import java.util.function.Supplier;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.overpoweredmod.tiles.machines.laser.TileLaserHousing;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkEvent;
 
-public final class LaserClientSyncMessage implements IMessage {
+public final class LaserClientSyncMessage {
 
-  private BlockPos position;
-  private int number_of_lasers;
-
-  public LaserClientSyncMessage(){}
+  private final BlockPos position;
+  private final int number_of_lasers;
 
   public LaserClientSyncMessage(final BlockPos position, final int number_of_lasers){
     this.position = position;
     this.number_of_lasers = number_of_lasers;
   }
 
-  @Override
-  public final void fromBytes(final ByteBuf buf){
-    position = new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
-    number_of_lasers = buf.readInt();
+  public static final void encode(final LaserClientSyncMessage message, final PacketBuffer buf){
+    buf.writeInt(message.position.getX());
+    buf.writeInt(message.position.getY());
+    buf.writeInt(message.position.getZ());
+    buf.writeInt(message.number_of_lasers);
   }
 
-  @Override
-  public final void toBytes(final ByteBuf buf){
-    buf.writeInt(position.getX());
-    buf.writeInt(position.getY());
-    buf.writeInt(position.getZ());
-    buf.writeInt(number_of_lasers);
+  public static final LaserClientSyncMessage decode(final PacketBuffer buf){
+    return new LaserClientSyncMessage(new BlockPos(buf.readInt(),buf.readInt(),buf.readInt()),buf.readInt());
   }
 
-  public static final class Handler implements IMessageHandler<LaserClientSyncMessage, IMessage> {
-
-    @Override
-    public IMessage onMessage(LaserClientSyncMessage message, MessageContext context) {
-      Minecraft.getMinecraft().addScheduledTask(() -> processMessage(message));
-      return null;
-    }
-    
-    private static final void processMessage(final LaserClientSyncMessage message){
-      final WorldClient world = Minecraft.getMinecraft().world;
-      if(world.isBlockLoaded(message.position)){
+  public static void handle(final LaserClientSyncMessage message, final Supplier<NetworkEvent.Context> context){
+    context.get().enqueueWork(() -> {
+      final World world = Minecraft.getInstance().player.world;
+      if(world.isAreaLoaded(message.position, 0)){
         final TileLaserHousing tile = MinecraftUtility.getTileEntity(message.position, world, TileLaserHousing.class);
         if(tile != null){
           tile.number_of_lasers = message.number_of_lasers;
         }
       }
-    }
+    });
+    context.get().setPacketHandled(true);
   }
 
 }

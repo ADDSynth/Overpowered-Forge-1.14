@@ -1,57 +1,48 @@
 package addsynth.overpoweredmod.network.server_messages;
 
+import java.util.function.Supplier;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileGemConverter;
-import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.network.NetworkEvent;
 
-public final class CycleGemConverterMessage implements IMessage {
+public final class CycleGemConverterMessage {
 
-  private BlockPos position;
-  private boolean cycle_direction;
-
-  public CycleGemConverterMessage(){}
+  private final BlockPos position;
+  private final boolean cycle_direction;
 
   public CycleGemConverterMessage(final BlockPos position, final boolean cycle_direction){
     this.position = position;
     this.cycle_direction = cycle_direction;
   }
 
-  @Override
-  public void fromBytes(final ByteBuf buf){
-    position = new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
-    cycle_direction = buf.readBoolean();
+  public static final void encode(final CycleGemConverterMessage message, final PacketBuffer buf){
+    buf.writeInt(message.position.getX());
+    buf.writeInt(message.position.getY());
+    buf.writeInt(message.position.getZ());
+    buf.writeBoolean(message.cycle_direction);
   }
 
-  @Override
-  public void toBytes(final ByteBuf buf){
-    buf.writeInt(position.getX());
-    buf.writeInt(position.getY());
-    buf.writeInt(position.getZ());
-    buf.writeBoolean(cycle_direction);
+  public static final CycleGemConverterMessage decode(final PacketBuffer buf){
+    return new CycleGemConverterMessage(new BlockPos(buf.readInt(),buf.readInt(),buf.readInt()),buf.readBoolean());
   }
 
-  public static final class Handler implements IMessageHandler<CycleGemConverterMessage, IMessage> {
-
-    @Override
-    public IMessage onMessage(CycleGemConverterMessage message, MessageContext context) {
-      // get the GemConverter TileEntity at the position and call the method.
-      final ServerWorld world = context.getServerHandler().player.getServerWorld();
-      world.addScheduledTask(() -> processMessage(world, message));
-      return null;
-    }
-    
-    private static final void processMessage(final ServerWorld world, final CycleGemConverterMessage message){
-      if(world.isBlockLoaded(message.position)){
-        final TileGemConverter tile = MinecraftUtility.getTileEntity(message.position, world, TileGemConverter.class);
-        if(tile != null){
-          tile.cycle(message.cycle_direction);
+  public static void handle(final CycleGemConverterMessage message, final Supplier<NetworkEvent.Context> context){
+    final ServerPlayerEntity player = context.get().getSender();
+    if(player != null){
+      context.get().enqueueWork(() -> {
+        final ServerWorld world = player.getServerWorld();
+        if(world.isAreaLoaded(message.position, 0)){
+          final TileGemConverter tile = MinecraftUtility.getTileEntity(message.position, world, TileGemConverter.class);
+          if(tile != null){
+            tile.cycle(message.cycle_direction);
+          }
         }
-      }
+      });
+      context.get().setPacketHandled(true);
     }
   }
 

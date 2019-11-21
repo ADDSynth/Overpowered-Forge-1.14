@@ -6,6 +6,7 @@ import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.Node;
 import addsynth.core.util.MathUtility;
 import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.NetworkUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.blocks.tiles.laser.LaserCannon;
@@ -31,8 +32,8 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
 
   // https://stackoverflow.com/questions/4963300/which-notnull-java-annotation-should-i-use
   // https://blogs.oracle.com/java-platform-group/java-8s-new-type-annotations
-  public LaserNetwork(final @Nonnull World world, @Nonnull final TileLaserHousing laser_house){
-    super(world, laser_house.getBlockType(), laser_house);
+  public LaserNetwork(final World world, @Nonnull final TileLaserHousing laser_house){
+    super(world, laser_house.getBlockState().getBlock(), laser_house);
     this.energy.set_receive_only();
   }
 
@@ -105,7 +106,8 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
         laser_housing = MinecraftUtility.getTileEntity(block_position, world, TileLaserHousing.class);
         if(laser_housing != null){
           laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff); // updates server
-          NetworkHandler.INSTANCE.sendToDimension(new LaserClientSyncMessage(block_position,number_of_lasers), world.provider.getDimension()); // updates client
+          final LaserClientSyncMessage message = new LaserClientSyncMessage(block_position,number_of_lasers);
+          NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message); // updates client
           // FIX: Laser Networks don't initialize properly and instead initializes to default values, which sets
           //      everything to 0 or off. This will get fixed during the BlockNetwork rewrite in the next update.
         }

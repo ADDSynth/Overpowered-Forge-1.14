@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.tiles.machines.portal;
 
 import java.util.ArrayList;
 import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.NetworkUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyReceiver;
 import addsynth.overpoweredmod.config.Values;
@@ -80,7 +81,8 @@ public final class TilePortalControlPanel extends TileEnergyReceiver {
       message = "Portal requires 8 Portal Frame Blocks.";
     }
     // update_data();
-    NetworkHandler.INSTANCE.sendToDimension(new SyncPortalDataMessage(pos, portal_items, message, valid_portal), world.provider.getDimension());
+    final SyncPortalDataMessage message = new SyncPortalDataMessage(pos, portal_items, this.message, valid_portal);
+    NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message);
   }
 
   private static final void portal_search_algorithm(BlockPos from, boolean[] has_gem_block, ArrayList<BlockPos> searched, World world, ArrayList<BlockPos> portal_frames){
@@ -209,7 +211,8 @@ public final class TilePortalControlPanel extends TileEnergyReceiver {
 
       valid_portal = false;
       
-      NetworkHandler.INSTANCE.sendToDimension(new SyncPortalDataMessage(pos, portal_items, message, valid_portal),world.provider.getDimension());
+      final SyncPortalDataMessage message = new SyncPortalDataMessage(pos, portal_items, this.message, valid_portal);
+      NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message);
       
     }
   }

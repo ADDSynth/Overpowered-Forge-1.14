@@ -1,52 +1,45 @@
 package addsynth.energy.network.server_messages;
 
+import java.util.function.Supplier;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.energy.tiles.TileEnergyReceiver;
-import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.network.NetworkEvent;
 
-public final class SwitchMachineMessage implements IMessage {
+public final class SwitchMachineMessage {
 
-  private BlockPos position;
-
-  public SwitchMachineMessage(){}
+  private final BlockPos position;
 
   public SwitchMachineMessage(final BlockPos position){
     this.position = position;
   }
 
-  @Override
-  public void fromBytes(final ByteBuf buf){
-    position = new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
+  public static final void encode(final SwitchMachineMessage message, final PacketBuffer buf){
+    buf.writeInt(message.position.getX());
+    buf.writeInt(message.position.getY());
+    buf.writeInt(message.position.getZ());
   }
 
-  @Override
-  public void toBytes(final ByteBuf buf){
-    buf.writeInt(position.getX());
-    buf.writeInt(position.getY());
-    buf.writeInt(position.getZ());
+  public static final SwitchMachineMessage decode(final PacketBuffer buf){
+    return new SwitchMachineMessage(new BlockPos(buf.readInt(),buf.readInt(),buf.readInt()));
   }
 
-  public static final class Handler implements IMessageHandler<SwitchMachineMessage, IMessage> {
-
-    @Override
-    public IMessage onMessage(SwitchMachineMessage message, MessageContext context) {
-      final ServerWorld world = context.getServerHandler().player.getServerWorld();
-      world.addScheduledTask(() -> processMessage(world, message));
-      return null;
-    }
-    
-    private static final void processMessage(final ServerWorld world, final SwitchMachineMessage message){
-      if(world.isBlockLoaded(message.position)){
-        final TileEnergyReceiver tile = MinecraftUtility.getTileEntity(message.position, world, TileEnergyReceiver.class);
-        if(tile != null){
-          tile.toggleRun();
+  public static void handle(final SwitchMachineMessage message, final Supplier<NetworkEvent.Context> context){
+    final ServerPlayerEntity player = context.get().getSender();
+    if(player != null){
+      final ServerWorld world = player.getServerWorld();
+      context.get().enqueueWork(() -> {
+        if(world.isAreaLoaded(message.position, 0)){
+          final TileEnergyReceiver tile = MinecraftUtility.getTileEntity(message.position, world, TileEnergyReceiver.class);
+          if(tile != null){
+            tile.toggleRun();
+          }
         }
-      }
+      });
+      context.get().setPacketHandled(true);
     }
   }
 
