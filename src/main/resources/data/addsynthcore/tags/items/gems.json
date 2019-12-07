@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": {
+    "#forge:gems/ruby",
+    "#forge:gems/topaz",
+    "#forge:gems/citrine",
+    "#forge:gems/sapphire",
+    "#forge:gems/amethyst"
+  ]
+}

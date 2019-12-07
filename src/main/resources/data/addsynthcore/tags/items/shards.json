@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:shards/ruby",
+    "#forge:shards/citrine",
+    "#forge:shards/topaz",
+    "#forge:shards/sapphire",
+    "#forge:shards/amethyst",
+    "#forge:shards/emerald",
+    "#forge:shards/diamond",
+    "#forge:shards/quartz"
+  ]
+}
