@@ -7,11 +7,13 @@ import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.Features;
+import addsynth.overpoweredmod.containers.Containers;
 import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.game.core.*;
 import addsynth.overpoweredmod.items.BlackHoleItem;
 import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.block.Block;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -274,6 +276,26 @@ public final class Registers {
     game.register(Tiles.FUSION_CHAMBER.setRegistryName(            new ResourceLocation(OverpoweredMod.MOD_ID, "fusion_container")));
 
     Debug.log_setup_info("Finished registering Tile Entities.");
+  }
+
+  @SubscribeEvent
+  public static final void registerContainers(final RegistryEvent.Register<ContainerType<?>> event){
+    final IForgeRegistry<ContainerType<?>> game = event.getRegistry();
+    
+    game.register(Containers.GENERATOR);
+    game.register(Containers.ENERGY_STORAGE_CONTAINER);
+    game.register(Containers.UNIVERSAL_ENERGY_INTERFACE);
+    game.register(Containers.COMPRESSOR);
+    game.register(Containers.ELECTRIC_FURNACE);
+    game.register(Containers.GEM_CONVERTER);
+    game.register(Containers.INVERTER);
+    game.register(Containers.IDENTIFIER);
+    game.register(Containers.MAGIC_INFUSER);
+    game.register(Containers.ADVANCED_ORE_REFINERY);
+    game.register(Containers.CRYSTAL_MATTER_GENERATOR);
+    game.register(Containers.FUSION_CHAMBER);
+    game.register(Containers.PORTAL_CONTROL_PANEL);
+    game.register(Containers.PORTAL_FRAME);
   }
 
   @SubscribeEvent

@@ -4,16 +4,16 @@ import addsynth.core.inventory.container.BaseContainer;
 import addsynth.core.inventory.container.slots.InputSlot;
 import addsynth.core.inventory.container.slots.OutputSlot;
 import addsynth.overpoweredmod.game.core.Gems;
-import addsynth.overpoweredmod.tiles.machines.automatic.TileGemConverter;
-import net.minecraft.inventory.IInventory;
+import addsynth.overpoweredmod.game.core.Machines;
+import net.minecraft.entity.player.PlayerInventory;
 
-public final class ContainerGemConverter extends BaseContainer<TileGemConverter> {
+public final class ContainerGemConverter extends BaseContainer {
 
-  public ContainerGemConverter(final IInventory player_inventory, final TileGemConverter tile){
-    super(tile);
+  public ContainerGemConverter(final int id, final PlayerInventory player_inventory){
+    super(Containers.GEM_CONVERTER, id, player_inventory, Machines.gem_converter);
     make_player_inventory(player_inventory,8,112);
-    addSlot(new InputSlot(tile, 0, Gems.gem_items,48,45));
-    addSlot(new OutputSlot(tile,0,104,45));
+    addSlot(new InputSlot(null, 0, Gems.gem_items,48,45));
+    addSlot(new OutputSlot(null,0,104,45));
   }
 
 }

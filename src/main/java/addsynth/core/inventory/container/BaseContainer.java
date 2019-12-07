@@ -1,49 +1,42 @@
 package addsynth.core.inventory.container;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
+import net.minecraft.util.IWorldPosCallable;
 
-/** <p>
- *  Just use this if you have a gui that doesn't have any inventories or inventory slots,
- *  and all it does is display text and information from the TileEntity.
- *  </p>
- *  <p>
- * <b>Note:</b> For future reference, Containers ARE on the server-side. So it's okay to grab
- * from and update TileEntities.
- * </p>
- * @param <T>
- */
-public class BaseContainer<T extends TileEntity> extends Container {
+// Note: For future reference, Containers ARE on the server-side. So it's okay to grab from and update TileEntities.
 
-  protected final T tile;
-  protected final IItemHandler handler;
+public abstract class BaseContainer extends Container {
 
-  public BaseContainer(T tile){
-    this.tile = tile;
-    this.handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,null).orElse(null);
+  final protected Block block;
+  // protected final IItemHandler handler;
+  // FIX: Impossible to pass the TileEntity to containers now? Must find a way to add the Tile's inventory to containers.
+
+  public BaseContainer(final ContainerType type, final int id, final PlayerInventory player_inventor, final Block block){
+    super(type, id);
+    this.block = block;
+    // this.handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,null).orElse(null);
   }
 
-  protected final void make_player_inventory(IInventory player_inventory){
+  protected final void make_player_inventory(PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,84);
   }
 
-  protected final void make_player_inventory(IInventory player_inventory, int x, int y){
+  protected final void make_player_inventory(PlayerInventory player_inventory, int x, int y){
     int i;
     int j;
     for (j = 0; j < 3; j++) {
       for (i = 0; i < 9; i++) {
-        addSlotToContainer(new Slot(player_inventory, i + 9 + (j * 9), x + (i*18), y + (j*18)));
+        addSlot(new Slot(player_inventory, i + 9 + (j * 9), x + (i*18), y + (j*18)));
       }
     }
     for (i = 0; i < 9; i++) {
-        addSlotToContainer(new Slot(player_inventory, i, x + (i*18), y + 58));
+        addSlot(new Slot(player_inventory, i, x + (i*18), y + 58));
     }  
   }
 
@@ -62,9 +55,8 @@ public class BaseContainer<T extends TileEntity> extends Container {
   }
 
   @Override
-  public final boolean canInteractWith(PlayerEntity player){
-    final BlockPos pos = tile.getPos();
-    return tile.getWorld().getTileEntity(pos) == tile && player.getDistanceSqToCenter(pos) <= 64;
+  public boolean canInteractWith(final PlayerEntity player){
+    return isWithinUsableDistance(IWorldPosCallable.DUMMY, player, this.block);
   }
 
   /*

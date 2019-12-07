@@ -2,15 +2,16 @@ package addsynth.overpoweredmod.containers;
 
 import addsynth.core.inventory.container.BaseContainer;
 import addsynth.core.inventory.container.slots.RestrictedSlot;
+import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.tiles.machines.fusion.TileFusionChamber;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.PlayerInventory;
 
-public final class ContainerFusionChamber extends BaseContainer<TileFusionChamber> {
+public final class ContainerFusionChamber extends BaseContainer {
 
-  public ContainerFusionChamber(final IInventory player_inventory, final TileFusionChamber tile){
-    super(tile);
+  public ContainerFusionChamber(final int id, final PlayerInventory player_inventory){
+    super(Containers.FUSION_CHAMBER, id, player_inventory, Machines.singularity_container);
     make_player_inventory(player_inventory);
-    addSlot(new RestrictedSlot(tile.getInputInventory(), 0, TileFusionChamber.input_filter, 80, 37));
+    addSlot(new RestrictedSlot(null, 0, TileFusionChamber.input_filter, 80, 37));
   }
 
 }
