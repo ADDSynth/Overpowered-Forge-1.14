@@ -39,7 +39,7 @@ public final class BlackHole extends Block {
   public static final void erase_the_world(final World world, final BlockPos center){
     if(is_black_hole_allowed(world.getDimension().getType().getId())){
 
-      if(Config.alert_players_of_black_hole){
+      if(Config.alert_players_of_black_hole.get()){
         ServerUtils.send_message_to_all_players_in_world(new StringTextComponent(
           TextFormatting.DARK_PURPLE + "Singularity Event Detected at Coordinates: "+center.getX()+" , "+center.getY()+" , "+center.getZ()
         ), world);
@@ -61,7 +61,7 @@ public final class BlackHole extends Block {
 
   private static final boolean is_black_hole_allowed(final int dimension_id){
     boolean pass = true;
-    for(int id_check : Config.black_hole_dimension_blacklist){
+    for(int id_check : Config.black_hole_dimension_blacklist.get()){
       if(dimension_id == id_check){
         pass = false;
         break;
@@ -71,13 +71,13 @@ public final class BlackHole extends Block {
   }
 
   private static final int get_black_hole_radius(final World world){
-    int radius = Config.black_hole_radius;
-    if(Config.black_hole_radius_depends_on_world_difficulty){
+    int radius = Config.black_hole_radius.get();
+    if(Config.black_hole_radius_depends_on_world_difficulty.get()){
       final Difficulty difficulty = world.getDifficulty();
       final int[] difficulty_radius = new int[] {
         Config.BLACK_HOLE_PEACEFUL_DIFFICULTY_RADIUS, Config.BLACK_HOLE_EASY_DIFFICULTY_RADIUS,
         Config.BLACK_HOLE_NORMAL_DIFFICULTY_RADIUS,   Config.BLACK_HOLE_HARD_DIFFICULTY_RADIUS};
-      if(Config.randomize_black_hole_radius){
+      if(Config.randomize_black_hole_radius.get()){
         final int deviation = 20;
         final int min_value = difficulty_radius[difficulty.ordinal()] - deviation;
         final int max_value = difficulty_radius[difficulty.ordinal()] + deviation;
@@ -88,8 +88,8 @@ public final class BlackHole extends Block {
       }
     }
     else{
-      if(Config.randomize_black_hole_radius){
-        radius = MathUtility.RandomRange(Config.minimum_black_hole_radius, Config.maximum_black_hole_radius);
+      if(Config.randomize_black_hole_radius.get()){
+        radius = MathUtility.RandomRange(Config.minimum_black_hole_radius.get(), Config.maximum_black_hole_radius.get());
       }
     }
     return radius;
@@ -109,7 +109,7 @@ public final class BlackHole extends Block {
           position = new BlockPos(x,y,z); // this also gets the center (Black Hole) block.
           if(world.getBlockState(position).getBlock() != Blocks.AIR){
             if(MathUtility.is_inside_sphere(center,radius,position)){
-              if(Config.black_holes_erase_bedrock){
+              if(Config.black_holes_erase_bedrock.get()){
                 world.removeBlock(position, false);
               }
               else{

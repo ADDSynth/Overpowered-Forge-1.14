@@ -12,7 +12,7 @@ import net.minecraftforge.common.ModDimension;
 
 public final class WeirdDimension extends ModDimension {
 
-  public static final int id = Config.unknown_dimension_id; // DELETE
+  public static final int id = Config.unknown_dimension_id.get(); // DELETE
   // You can use DimensionManager.getNextFreeDimId() to automatically register with a non-conflicting id.
   // public static final DimensionType weird_dimension =
   //   DimensionType.register(new ResourceLocation(OverpoweredMod.MOD_ID, "unknown",false);

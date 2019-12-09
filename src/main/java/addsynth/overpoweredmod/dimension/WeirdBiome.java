@@ -14,7 +14,7 @@ public final class WeirdBiome extends Biome {
     unknown_biome_properties = new BiomeProperties("unknown");
     unknown_biome_properties.setRainDisabled();
   }
-  private static final int spawn_tree_chance = Math.round(1 / Values.unknown_dimension_tree_spawn_chance);
+  private static final int spawn_tree_chance = (int)Math.round(1 / Values.unknown_dimension_tree_spawn_chance.get());
   private static final WeirdTree weird_tree = new WeirdTree(false);
 
   public WeirdBiome() {

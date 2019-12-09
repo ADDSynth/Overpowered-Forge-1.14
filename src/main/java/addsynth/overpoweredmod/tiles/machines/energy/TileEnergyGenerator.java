@@ -21,16 +21,16 @@ public final class TileEnergyGenerator extends TileEnergyTransmitter {
 
   private final void setGeneratorData(Item item){
     if(item == Init.energy_crystal){
-      energy.setEnergyLevel(Values.energy_crystal_energy);
-      energy.setMaxExtract(Values.energy_crystal_max_extract);
+      energy.setEnergyLevel(Values.energy_crystal_energy.get());
+      energy.setMaxExtract(Values.energy_crystal_max_extract.get());
     }
     if(item == Init.energy_crystal_shards){
-      energy.setEnergyLevel(Values.energy_crystal_shards_energy);
-      energy.setMaxExtract(Values.energy_crystal_shards_max_extract);
+      energy.setEnergyLevel(Values.energy_crystal_shards_energy.get());
+      energy.setMaxExtract(Values.energy_crystal_shards_max_extract.get());
     }
     if(item == OverpoweredMod.registry.getItemBlock(Init.light_block)){
-      energy.setEnergyLevel(Values.light_block_energy);
-      energy.setMaxExtract(Values.light_block_max_extract);
+      energy.setEnergyLevel(Values.light_block_energy.get());
+      energy.setMaxExtract(Values.light_block_max_extract.get());
     }
   }
 

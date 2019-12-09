@@ -26,7 +26,7 @@ public final class Recipes {
     modRegistry.remove(VARIABLE NAME HERE);
   }
 */
-
+/*
   public static final void register(){
     Debug.log_setup_info("Begin registering Crafting Recipes...");
     
@@ -329,4 +329,5 @@ public final class Recipes {
 
     Debug.log_setup_info("Finished registering Crafting Recipes.");
   }
+*/
 }

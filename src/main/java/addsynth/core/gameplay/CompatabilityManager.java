@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 public final class CompatabilityManager {
 
   public static final void init(){
-    if(Features.scythes){
+    if(Features.scythes.get()){
       set_scythe_harvest_blocks();
     }
   }

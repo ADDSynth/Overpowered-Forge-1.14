@@ -32,7 +32,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver {
   private BlockPos lowest_portal_frame;
 
   public TilePortalControlPanel() {
-    super(Tiles.PORTAL_CONTROL_PANEL, 0, null, 0, new CustomEnergyStorage(Values.portal_control_panel_required_energy));
+    super(Tiles.PORTAL_CONTROL_PANEL, 0, null, 0, new CustomEnergyStorage(Values.portal_control_panel_required_energy.get()));
     int i;
     for(i = 0; i < containers; i++){
       portal_items[i] = false;

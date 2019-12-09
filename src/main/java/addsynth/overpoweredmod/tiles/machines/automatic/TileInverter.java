@@ -14,7 +14,7 @@ public final class TileInverter extends PassiveMachine {
   private ItemStack result;
 
   public TileInverter(){
-    super(Tiles.INVERTER,1,input_filter,1,new CustomEnergyStorage(Values.inverter_required_energy),Values.inverter_work_time);
+    super(Tiles.INVERTER,1,input_filter,1,new CustomEnergyStorage(Values.inverter_required_energy.get()),Values.inverter_work_time.get());
   }
 
   @Override

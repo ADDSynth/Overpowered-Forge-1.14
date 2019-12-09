@@ -15,7 +15,7 @@ public final class TileElectricFurnace extends PassiveMachine {
   private ItemStack result;
 
   public TileElectricFurnace(){
-    super(Tiles.ELECTRIC_FURNACE, 1, furnace_input, 1, new CustomEnergyStorage(Values.electric_furnace_required_energy), Values.electric_furnace_work_time);
+    super(Tiles.ELECTRIC_FURNACE, 1, furnace_input, 1, new CustomEnergyStorage(Values.electric_furnace_required_energy.get()), Values.electric_furnace_work_time.get());
   }
 
   @Override

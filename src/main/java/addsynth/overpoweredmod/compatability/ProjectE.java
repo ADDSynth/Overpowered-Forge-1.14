@@ -17,7 +17,7 @@ public final class ProjectE {
       
       // TODO: Move ADDSynthCore items such as gems and metal ingots to ADDSynthCore PostInit.
       
-      if(Features.crystal_matter_generator){
+      if(Features.crystal_matter_generator.get()){
         emc.registerCustomEMC(new ItemStack(Gems.RUBY.shard,1),     910L);
         emc.registerCustomEMC(new ItemStack(Gems.TOPAZ.shard,1),    910L);
         emc.registerCustomEMC(new ItemStack(Gems.CITRINE.shard,1),  910L);
@@ -67,7 +67,7 @@ public final class ProjectE {
       emc.registerCustomEMC(new ItemStack(Metals.PLATINUM.block, 1), 73728L);
       emc.registerCustomEMC(new ItemStack(Metals.TITANIUM.block, 1), 73728L);
       
-      if(Features.compressor){
+      if(Features.compressor.get()){
         emc.registerCustomEMC(new ItemStack(Metals.TIN.plating,1),       256L);
         emc.registerCustomEMC(new ItemStack(Metals.ALUMINUM.plating,1),  256L);
         emc.registerCustomEMC(new ItemStack(Metals.COPPER.plating,1),    256L);

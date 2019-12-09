@@ -33,7 +33,7 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery {
   private TRANSFER_MODE transfer_mode = TRANSFER_MODE.BI_DIRECTIONAL;
 
   public TileUniversalEnergyTransfer(){
-    super(Tiles.UNIVERSAL_ENERGY_INTERFACE, new CustomEnergyStorage(Values.universal_energy_interface_buffer));
+    super(Tiles.UNIVERSAL_ENERGY_INTERFACE, new CustomEnergyStorage(Values.universal_energy_interface_buffer.get()));
   }
 
   public final TRANSFER_MODE get_transfer_mode(){
@@ -43,7 +43,7 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery {
   public final void set_next_transfer_mode(){
     final int mode = (transfer_mode.ordinal() + 1) % TRANSFER_MODE.values().length;
     transfer_mode = TRANSFER_MODE.values()[mode];
-    energy.setTransferRate(transfer_mode.integrate ? Values.universal_energy_interface_buffer : 0);
+    energy.setTransferRate(transfer_mode.integrate ? Values.universal_energy_interface_buffer.get() : 0);
     update_data();
   }
 

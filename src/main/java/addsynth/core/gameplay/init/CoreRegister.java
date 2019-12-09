@@ -23,12 +23,10 @@ public final class CoreRegister {
 
     final IForgeRegistry<Block> game = event.getRegistry();
 
-    if(Setup.config_loaded == false){
-      Setup.init_config();
-    }
+    ADDSynthCore.init_config();
     
-    if(Features.caution_block){ game.register(Core.caution_block); }
-    if(Features.music_box){ game.register(Core.music_box); }
+    if(Features.caution_block.get()){ game.register(Core.caution_block); }
+    if(Features.music_box.get()){ game.register(Core.music_box); }
 
     ADDSynthCore.log.info("Done registering blocks.");
   }
@@ -39,12 +37,12 @@ public final class CoreRegister {
 
     final IForgeRegistry<Item> game = event.getRegistry();
 
-    if(Features.caution_block){    game.register(ADDSynthCore.registry.getItemBlock(Core.caution_block)); }
-    if(Features.music_box){
+    if(Features.caution_block.get()){    game.register(ADDSynthCore.registry.getItemBlock(Core.caution_block)); }
+    if(Features.music_box.get()){
       game.register(ADDSynthCore.registry.getItemBlock(Core.music_box));
-      if(Features.music_sheet){ game.register(Core.music_sheet); }
+      if(Features.music_sheet.get()){ game.register(Core.music_sheet); }
     }
-    if(Features.scythes){
+    if(Features.scythes.get()){
       game.register(Core.wooden_scythe);
       game.register(Core.stone_scythe);
       game.register(Core.iron_scythe);
@@ -60,6 +58,7 @@ public final class CoreRegister {
     ADDSynthCore.registry.register_inventory_item_models();
   }
 
+  @SubscribeEvent
   public static final void register_tileentities(final RegistryEvent.Register<TileEntityType<?>> event){
     final IForgeRegistry<TileEntityType<?>> game = event.getRegistry();
     game.register(Tiles.MUSIC_BOX.setRegistryName(new ResourceLocation(ADDSynthCore.MOD_ID,"music_box")));

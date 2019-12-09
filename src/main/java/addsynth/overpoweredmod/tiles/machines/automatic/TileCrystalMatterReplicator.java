@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 public final class TileCrystalMatterReplicator extends WorkMachine {
 
   public TileCrystalMatterReplicator(){
-    super(Tiles.CRYSTAL_MATTER_REPLICATOR,0,null,8,new CustomEnergyStorage(Values.crystal_matter_generator_required_energy),Values.crystal_matter_generator_work_time);
+    super(Tiles.CRYSTAL_MATTER_REPLICATOR,0,null,8,new CustomEnergyStorage(Values.crystal_matter_generator_required_energy.get()),Values.crystal_matter_generator_work_time.get());
   }
 
   @Override

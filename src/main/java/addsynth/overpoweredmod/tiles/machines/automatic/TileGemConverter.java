@@ -14,7 +14,7 @@ public final class TileGemConverter extends PassiveMachine {
   private ItemStack gem_selected;
     
   public TileGemConverter(){
-    super(Tiles.GEM_CONVERTER,1,Gems.gem_items,1,new CustomEnergyStorage(Values.gem_converter_required_energy),Values.gem_converter_work_time);
+    super(Tiles.GEM_CONVERTER,1,Gems.gem_items,1,new CustomEnergyStorage(Values.gem_converter_required_energy.get()),Values.gem_converter_work_time.get());
   }
 
   public final void cycle(final boolean direction){

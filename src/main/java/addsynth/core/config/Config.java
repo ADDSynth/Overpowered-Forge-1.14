@@ -1,56 +1,41 @@
 package addsynth.core.config;
 
-import java.io.File;
-import addsynth.core.ADDSynthCore;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.config.ModConfig;
+import org.apache.commons.lang3.tuple.Pair;
+import net.minecraftforge.common.ForgeConfigSpec;
 
-public final class Config extends ModConfig {
+public final class Config {
 
-  public static Config instance;
+  private static final Pair<Config, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Config::new);
+  public static final Config INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
-  private static final String DEBUG = "Debug";
-  private static final String ADVANCED = "Advanced";
+  public static ForgeConfigSpec.BooleanValue debug_mod_detection;
+  public static ForgeConfigSpec.BooleanValue debug_materials_detection;
+  public static ForgeConfigSpec.BooleanValue dump_map_colors;
 
-  public static boolean debug_mod_detection;
-  public static boolean debug_materials_detection;
-  public static boolean dump_map_colors;
+  public static ForgeConfigSpec.BooleanValue show_advanced_config;
 
-  public static boolean show_advanced_config;
+  public Config(final ForgeConfigSpec.Builder builder){
 
-  public Config(final File file){
-    super(file, true);
-    load_values();
-  }
+    builder.push("Main");
 
-  public static final void initialize(final File file){
-    instance = new Config(file);
-  }
+    builder.push("Debug");
+    debug_mod_detection = builder.define("Print Mod Detection Results", false);
+    dump_map_colors     = builder.define("Dump Map Colors", false);
+    builder.pop();
 
-  private final void load_values(){
-
-    debug_mod_detection       = get(DEBUG, "Print Mod Detection Results", false).getBoolean();
-    dump_map_colors           = get(DEBUG, "Dump Map Colors", false).getBoolean();
-
-    show_advanced_config = getBoolean("Show Advanced Config in Client Gui", ADVANCED, false,
+    builder.push("Advanced");
+    show_advanced_config = builder.comment(
       "Enabling this will grant you access to advanced configuration options in the Mod's Configuration screen.\n"+
       "Advanced configuration options such as those in the worldgen.cfg file allow you access to internal game values,\n"+
       "and adjusting them will vastly alter gameplay. They are only intended to be used for debug, testing, or\n"+
       "experimental purposes. In order to maintain a standard gameplay experience (the way the author intended)\n"+
       "we encourage you to leave these values at their defaults. (However, modpack authors may want to adjust these\n"+
-      "values in order to create a balanced gameplay.)");
-
-    if(this.hasChanged()){
-      save();
-    }
-  }
-
-  @SubscribeEvent
-  public final void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event){
-    if(event.getModID().equals(ADDSynthCore.MOD_ID)){
-      this.load_values();
-    }
+      "values in order to create a balanced gameplay.)")
+      .define("Show Advanced Config in Client Gui", false);
+    builder.pop();
+    
+    builder.pop();
   }
 
 }

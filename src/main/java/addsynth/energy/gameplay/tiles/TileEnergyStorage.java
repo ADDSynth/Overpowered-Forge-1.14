@@ -8,7 +8,7 @@ import addsynth.overpoweredmod.tiles.Tiles;
 public final class TileEnergyStorage extends TileEnergyBattery {
 
   public TileEnergyStorage(){
-    super(Tiles.ENERGY_CONTAINER, new CustomEnergyStorage(Values.energy_storage_container_capacity,Values.energy_storage_container_extract_rate));
+    super(Tiles.ENERGY_CONTAINER, new CustomEnergyStorage(Values.energy_storage_container_capacity.get(),Values.energy_storage_container_extract_rate.get()));
   }
 
 }

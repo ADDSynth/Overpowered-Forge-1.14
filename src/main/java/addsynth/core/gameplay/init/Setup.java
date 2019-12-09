@@ -2,7 +2,6 @@ package addsynth.core.gameplay.init;
 
 import java.io.File;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.config.*;
 import addsynth.core.game.Game;
 import addsynth.core.game.Icon;
 import addsynth.core.gameplay.Core;
@@ -15,30 +14,8 @@ public final class Setup {
 
   public static boolean config_loaded;
 
-  public static final void init_config(){
-    if(config_loaded == false){
-      ADDSynthCore.log.info("Begin loading configuration files...");
-  
-      final File config_directory = new File(FMLPaths.CONFIGDIR.get().toString(),ADDSynthCore.NAME);
-
-      Config.initialize(        new File(config_directory,"main.cfg"));
-      WorldgenConfig.initialize(new File(config_directory,"worldgen.cfg"));
-      Features.initialize(      new File(config_directory,"feature_disable.cfg"));
-
-      MinecraftForge.EVENT_BUS.register(Config.instance);
-      MinecraftForge.EVENT_BUS.register(Features.instance);
-      MinecraftForge.EVENT_BUS.register(WorldgenConfig.instance);
-
-      Setup.config_loaded = true;
-  
-      ADDSynthCore.log.info("Done loading configuration files.");
-    }
-  }
-
+  /*
   public static final void setup_creative_tab(){
-    if(config_loaded == false){
-      init_config();
-    }
 
     final Icon[] icons = {
       new Icon(ADDSynthCore.registry.getItemBlock(Core.caution_block), Features.caution_block),
@@ -57,5 +34,6 @@ public final class Setup {
     Core.gold_scythe.setCreativeTab(tab);
     Core.diamond_scythe.setCreativeTab(tab);
   }
+  */
 
 }

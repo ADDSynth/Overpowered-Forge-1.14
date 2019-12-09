@@ -24,7 +24,7 @@ public final class TileMagicUnlocker extends PassiveMachine {
   };
 
   public TileMagicUnlocker(){
-    super(Tiles.MAGIC_INFUSER,slot_data,1,new CustomEnergyStorage(Values.magic_infuser_required_energy),Values.magic_infuser_work_time);
+    super(Tiles.MAGIC_INFUSER,slot_data,1,new CustomEnergyStorage(Values.magic_infuser_required_energy.get()),Values.magic_infuser_work_time.get());
   }
 
   @Override

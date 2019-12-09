@@ -15,7 +15,7 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
 
   private LaserNetwork network;
 
-  private int laser_distance = Config.default_laser_distance;
+  private int laser_distance = Config.default_laser_distance.get();
   /** Set by {@link LaserNetwork#updateLaserNetwork()} method and used by
    *  {@link addsynth.overpoweredmod.client.gui.tiles.GuiLaserHousing}.
    */

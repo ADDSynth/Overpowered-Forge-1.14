@@ -6,6 +6,7 @@ import addsynth.core.game.Icon;
 import addsynth.core.util.JavaUtils;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.game.core.*;
 import addsynth.overpoweredmod.init.Setup;
@@ -216,9 +217,9 @@ public final class OverpoweredCreativeTabs {
       new Icon(OverpoweredMod.registry.getItemBlock(Machines.generator), true)
     },
     {
-      new Icon(Tools.energy_tools.pickaxe,     Features.energy_tools),
-      new Icon(Tools.unidentified_armor[2][0], Features.identifier),
-      new Icon(Tools.void_toolset.sword,       Features.void_tools),
+      new Icon(Tools.energy_tools.pickaxe,     Features.energy_tools.get()),
+      new Icon(Tools.unidentified_armor[2][0], Features.identifier.get()),
+      new Icon(Tools.void_toolset.sword,       Features.void_tools.get()),
       new Icon(Items.STONE_SHOVEL)
     },
     {
@@ -232,11 +233,11 @@ public final class OverpoweredCreativeTabs {
   public static final void register(){
     Debug.log_setup_info("Begin Registering Creative Tabs...");
   
-    add_items(gem_items,     GEMS,     Features.creative_tab_gems,     "overpowered_gems",     icons[0]);
+    add_items(gem_items,     GEMS,     Config.creative_tab_gems.get(),     "overpowered_gems",     icons[0]);
     set_creative_tab_of_items(main_items, MAIN, main_tab_name, icons[1]);
-    add_items(machine_items, MACHINES, Features.creative_tab_machines, "overpowered_machines", icons[2]);
-    add_items(tool_items,    TOOLS,    Features.creative_tab_tools,    "overpowered_tools",    icons[3]);
-    add_items(metal_items,   METALS,   Features.creative_tab_metals,   "overpowered_metals",   icons[4]);
+    add_items(machine_items, MACHINES, Config.creative_tab_machines.get(), "overpowered_machines", icons[2]);
+    add_items(tool_items,    TOOLS,    Config.creative_tab_tools.get(),    "overpowered_tools",    icons[3]);
+    add_items(metal_items,   METALS,   Config.creative_tab_metals.get(),   "overpowered_metals",   icons[4]);
     
     Setup.creative_tabs_registered = true;
     Debug.log_setup_info("Finished Registering Creative Tabs.");

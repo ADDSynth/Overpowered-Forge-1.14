@@ -94,8 +94,8 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
    */
   private final void update_energy_requirements(){
     energy.setCapacity(
-      (number_of_lasers * Values.required_energy_per_laser) +
-      (number_of_lasers * laser_distance * Values.required_energy_per_laser_distance)
+      (number_of_lasers * Values.required_energy_per_laser.get()) +
+      (number_of_lasers * laser_distance * Values.required_energy_per_laser_distance.get())
     );
   }
 

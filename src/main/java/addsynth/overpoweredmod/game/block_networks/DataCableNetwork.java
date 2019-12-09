@@ -9,7 +9,7 @@ import addsynth.overpoweredmod.tiles.TileDataCable;
 import addsynth.overpoweredmod.tiles.machines.fusion.TileFusionEnergyConverter;
 import addsynth.overpoweredmod.tiles.machines.fusion.TileFusionChamber;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -94,7 +94,7 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
     //   its energy output can be divided amongst multiple Fusion Energy Converter machines.
     // check_singularity_container();
     if(fusion_energy_converters.size() > 0){
-      final int actual_energy = Math.round((float)Values.fusion_energy_output_per_tick / fusion_energy_converters.size());
+      final int actual_energy = Math.round((float)Values.fusion_energy_output_per_tick.get() / fusion_energy_converters.size());
       TileFusionEnergyConverter tile;
       for(BlockPos tile_position : fusion_energy_converters){
         tile = (TileFusionEnergyConverter)world.getTileEntity(tile_position);
@@ -111,13 +111,13 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
     if(scanning_units.size() >= 6){
       boolean found_valid = false;
       SingularityContainmentStructure structure = null;
-      IBlockState block_state;
+      BlockState block_state;
       BlockPos position;
       for(BlockPos scanning_unit : scanning_units){
         for(Direction side : Direction.values()){
           block_state = world.getBlockState(scanning_unit.offset(side));
           if(block_state.getBlock() == Machines.fusion_laser){
-            if(block_state.getValue(LaserCannon.FACING) == side){
+            if(block_state.get(LaserCannon.FACING) == side){
               position = scanning_unit.offset(side, TileFusionChamber.container_radius);
               if(world.getBlockState(position).getBlock() == Machines.singularity_container){
                 // FIX: we need to keep a list of singularity containers, otherwise, if the scanning units are out of order, we immediately replace the current one.

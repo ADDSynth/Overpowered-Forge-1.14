@@ -11,22 +11,22 @@ import net.minecraft.item.ItemStack;
 public final class Recipes {
 
   public static final void register(){
-    if(Features.caution_block){
+    if(Features.caution_block.get()){
       RecipeUtil.register(3, 3, new ItemStack(Core.caution_block,8), new Object[]{
         "dyeYellow", "dyeBlack", "dyeYellow",
         "dyeBlack",  "stone",    "dyeBlack",
         "dyeYellow", "dyeBlack", "dyeYellow"});
     }
-    if(Features.music_box){
+    if(Features.music_box.get()){
       RecipeUtil.registerMachine(new ItemStack(Core.music_box,1), new Object[]{
         Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK,
         Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK,
         Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK, Blocks.NOTE_BLOCK});
-      if(Features.music_sheet){
+      if(Features.music_sheet.get()){
         RecipeUtil.register(new ItemStack(Core.music_sheet,1), new Object[]{ "paper", Blocks.NOTE_BLOCK});
       }
     }
-    if(Features.scythes){
+    if(Features.scythes.get()){
       ScytheTool.registerRecipe(Core.wooden_scythe, "plankWood");
       ScytheTool.registerRecipe(Core.stone_scythe, "cobblestone");
       ScytheTool.registerRecipe(Core.iron_scythe, "ingotIron");

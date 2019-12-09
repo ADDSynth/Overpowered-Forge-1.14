@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public final class LaserBeam extends BlockTile {
 
   public LaserBeam(String name){
-    super(Block.Properties.create(Material.FIRE).variableOpacity().doesNotBlockMovement().lightValue(Config.laser_light_level));
+    super(Block.Properties.create(Material.FIRE).variableOpacity().doesNotBlockMovement().lightValue(Config.laser_light_level.get()));
     OverpoweredMod.registry.register_block(this, name);
   }
 
@@ -42,9 +42,9 @@ public final class LaserBeam extends BlockTile {
   //   also, that only does 1 damage at a time.
   @Override
   public final void onEntityCollision(final BlockState state, final World world, final BlockPos pos, final Entity entity){
-    if(Config.lasers_set_entities_on_fire){
+    if(Config.lasers_set_entities_on_fire.get()){
       if(entity instanceof ItemEntity == false){
-        if(Config.laser_damage_depends_on_world_difficulty){
+        if(Config.laser_damage_depends_on_world_difficulty.get()){
           final int[] damage = new int[] {
             Config.LASER_DAMAGE_PEACEFUL_DIFFICULTY, Config.LASER_DAMAGE_EASY_DIFFICULTY,
             Config.LASER_DAMAGE_NORMAL_DIFFICULTY, Config.LASER_DAMAGE_HARD_DIFFICULTY};

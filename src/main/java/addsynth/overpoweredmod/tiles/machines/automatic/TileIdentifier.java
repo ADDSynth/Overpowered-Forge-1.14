@@ -25,7 +25,7 @@ public final class TileIdentifier extends PassiveMachine {
   );
 
   public TileIdentifier(){
-    super(Tiles.IDENTIFIER,new SlotData[]{new SlotData(input_filter,1)},0,new CustomEnergyStorage(Values.identifier_required_energy),Values.identifier_work_time);
+    super(Tiles.IDENTIFIER,new SlotData[]{new SlotData(input_filter,1)},0,new CustomEnergyStorage(Values.identifier_required_energy.get()),Values.identifier_work_time.get());
   }
 
   @Override

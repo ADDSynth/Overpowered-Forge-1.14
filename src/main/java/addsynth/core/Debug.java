@@ -32,10 +32,10 @@ public final class Debug {
 
   public static final void debug(){
     RegistryUtil.safety_check();
-    if(Config.debug_mod_detection){
+    if(Config.debug_mod_detection.get()){
       Compatability.debug();
     }
-    if(Config.dump_map_colors){
+    if(Config.dump_map_colors.get()){
       ColorUtil.dump_map_colors();
     }
   }

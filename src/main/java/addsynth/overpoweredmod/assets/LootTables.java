@@ -91,7 +91,7 @@ public final class LootTables {
 
   @SubscribeEvent
   public static void inject_loot(LootTableLoadEvent event){
-    if(Features.identifier){
+    if(Features.identifier.get()){
       final String prefix = "minecraft:entities/";
       final String name = event.getName().toString();
       if(Debug.debug_loot_tables){
@@ -100,27 +100,27 @@ public final class LootTables {
       if(name.startsWith(prefix)){
         final String mob = name.substring(prefix.length());
         boolean add_rings = false;
-        if(mob.equals("zombie")            && Config.drop_for_zombie){            add_rings = true; }
-        if(mob.equals("zombie_villager")   && Config.drop_for_zombie_villager){   add_rings = true; }
-        if(mob.equals("husk")              && Config.drop_for_husk){              add_rings = true; }
-        if(mob.equals("spider")            && Config.drop_for_spider){            add_rings = true; }
-        if(mob.equals("cave_spider")       && Config.drop_for_cave_spider){       add_rings = true; }
-        if(mob.equals("creeper")           && Config.drop_for_creeper){           add_rings = true; }
-        if(mob.equals("skeleton")          && Config.drop_for_skeleton){          add_rings = true; }
-        if(mob.equals("zombie_pigman")     && Config.drop_for_zombie_pigman){     add_rings = true; }
-        if(mob.equals("blaze")             && Config.drop_for_blaze){             add_rings = true; }
-        if(mob.equals("witch")             && Config.drop_for_witch){             add_rings = true; }
-        if(mob.equals("ghast")             && Config.drop_for_ghast){             add_rings = true; }
-        if(mob.equals("enderman")          && Config.drop_for_enderman){          add_rings = true; }
-        if(mob.equals("stray")             && Config.drop_for_stray){             add_rings = true; }
-        if(mob.equals("guardian")          && Config.drop_for_guardian){          add_rings = true; }
-        if(mob.equals("elder_guardian")    && Config.drop_for_elder_guardian){    add_rings = true; }
-        if(mob.equals("wither_skeleton")   && Config.drop_for_wither_skeleton){   add_rings = true; }
-        if(mob.equals("magma_cube")        && Config.drop_for_magma_cube){        add_rings = true; }
-        if(mob.equals("shulker")           && Config.drop_for_shulker){           add_rings = true; }
-        if(mob.equals("vex")               && Config.drop_for_vex){               add_rings = true; }
-        if(mob.equals("evocation_illager") && Config.drop_for_evocation_illager){ add_rings = true; }
-        if(mob.equals("vindication_illager") && Config.drop_for_vindication_illager){ add_rings = true; }
+        if(mob.equals("zombie")            && Config.drop_for_zombie.get()){            add_rings = true; }
+        if(mob.equals("zombie_villager")   && Config.drop_for_zombie_villager.get()){   add_rings = true; }
+        if(mob.equals("husk")              && Config.drop_for_husk.get()){              add_rings = true; }
+        if(mob.equals("spider")            && Config.drop_for_spider.get()){            add_rings = true; }
+        if(mob.equals("cave_spider")       && Config.drop_for_cave_spider.get()){       add_rings = true; }
+        if(mob.equals("creeper")           && Config.drop_for_creeper.get()){           add_rings = true; }
+        if(mob.equals("skeleton")          && Config.drop_for_skeleton.get()){          add_rings = true; }
+        if(mob.equals("zombie_pigman")     && Config.drop_for_zombie_pigman.get()){     add_rings = true; }
+        if(mob.equals("blaze")             && Config.drop_for_blaze.get()){             add_rings = true; }
+        if(mob.equals("witch")             && Config.drop_for_witch.get()){             add_rings = true; }
+        if(mob.equals("ghast")             && Config.drop_for_ghast.get()){             add_rings = true; }
+        if(mob.equals("enderman")          && Config.drop_for_enderman.get()){          add_rings = true; }
+        if(mob.equals("stray")             && Config.drop_for_stray.get()){             add_rings = true; }
+        if(mob.equals("guardian")          && Config.drop_for_guardian.get()){          add_rings = true; }
+        if(mob.equals("elder_guardian")    && Config.drop_for_elder_guardian.get()){    add_rings = true; }
+        if(mob.equals("wither_skeleton")   && Config.drop_for_wither_skeleton.get()){   add_rings = true; }
+        if(mob.equals("magma_cube")        && Config.drop_for_magma_cube.get()){        add_rings = true; }
+        if(mob.equals("shulker")           && Config.drop_for_shulker.get()){           add_rings = true; }
+        if(mob.equals("vex")               && Config.drop_for_vex.get()){               add_rings = true; }
+        if(mob.equals("evocation_illager") && Config.drop_for_evocation_illager.get()){ add_rings = true; }
+        if(mob.equals("vindication_illager") && Config.drop_for_vindication_illager.get()){ add_rings = true; }
         // FUTURE: New Illusioner mob in 1.12, but they don't have a Loot Table or Loot Table Load Event until 1.14, and they don't naturally spawn anywhere.
 
         if(add_rings){

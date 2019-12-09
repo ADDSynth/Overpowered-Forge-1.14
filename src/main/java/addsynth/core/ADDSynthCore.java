@@ -1,5 +1,7 @@
 package addsynth.core;
 
+import java.io.File;
+import addsynth.core.config.*;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.gameplay.CompatabilityManager;
 import addsynth.core.gameplay.GuiHandler;
@@ -8,12 +10,16 @@ import addsynth.core.gameplay.init.CoreRegister;
 import addsynth.core.gameplay.init.Setup;
 import addsynth.core.worldgen.OreGenerator;
 import net.minecraft.item.ItemGroup;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -23,20 +29,43 @@ public final class ADDSynthCore {
   public static final String MOD_ID = "addsynthcore";
   public static final String NAME = "ADDSynthCore";
   public static final String VERSION = "October 7, 2019";
+
+  private static boolean config_loaded;
   public static final Logger log = LogManager.getLogger(NAME);
-
-  public static final ItemGroup creative_tab = create_creative_tab();
-
-  private static final ItemGroup create_creative_tab(){
-    Setup.init_config();
-    return null;
-  }
-
+  private static ItemGroup creative_tab;
   public static final RegistryUtil registry = new RegistryUtil(MOD_ID);
 
   public ADDSynthCore(){
     FMLJavaModLoadingContext.get().getModEventBus().addListener(ADDSynthCore::main_setup);
-    Setup.init_config();
+    init_config();
+    creative_tab = create_creative_tab();
+  }
+
+  public static final ItemGroup creative_tab(){ // Security!
+    return creative_tab;
+  }
+
+  public static final void init_config(){
+    if(config_loaded == false){
+      ADDSynthCore.log.info("Begin loading configuration files...");
+  
+      new File(FMLPaths.CONFIGDIR.get().toString(), NAME).mkdir();
+
+      final ModLoadingContext context = ModLoadingContext.get();
+      context.registerConfig(ModConfig.Type.COMMON, Config.CONFIG_SPEC,         NAME+File.separator+"main.toml");
+      context.registerConfig(ModConfig.Type.COMMON, Features.CONFIG_SPEC,       NAME+File.separator+"feature_disable.toml");
+      context.registerConfig(ModConfig.Type.COMMON, WorldgenConfig.CONFIG_SPEC, NAME+File.separator+"worldgen.toml");
+
+      FMLJavaModLoadingContext.get().getModEventBus().addListener(ADDSynthCore::mod_config_event);
+
+      Setup.config_loaded = true;
+  
+      ADDSynthCore.log.info("Done loading configuration files.");
+    }
+  }
+
+  private static final ItemGroup create_creative_tab(){
+    return null;
   }
 
   private static final void main_setup(final FMLCommonSetupEvent event){
@@ -49,6 +78,10 @@ public final class ADDSynthCore {
     Debug.debug();
 
     log.info("Done constructing ADDSynthCore.");
+  }
+
+  public static final void mod_config_event(final ModConfig.ModConfigEvent event){
+    event.getConfig().save();
   }
 
 }

@@ -14,7 +14,7 @@ public final class TileCompressor extends PassiveMachine {
   private ItemStack result;
 
   public TileCompressor(){
-    super(Tiles.COMPRESSOR,2,null,1,new CustomEnergyStorage(Values.compressor_required_energy),Values.compressor_work_time);
+    super(Tiles.COMPRESSOR,2,null,1,new CustomEnergyStorage(Values.compressor_required_energy.get()),Values.compressor_work_time.get());
     // has a high work time to give the user a chance to change the recipe. (same as furnace cook time.)
   }
 

@@ -1,48 +1,29 @@
 package addsynth.core.config;
 
-import java.io.File;
-import addsynth.core.ADDSynthCore;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.config.ModConfig;
+import org.apache.commons.lang3.tuple.Pair;
+import net.minecraftforge.common.ForgeConfigSpec;
 
-public final class Features extends ModConfig {
+public final class Features {
 
-  public static Features instance;
+  private static final Pair<Features, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Features::new);
+  public static final Features INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
-  public static final String MAIN = "Main";
+  public static ForgeConfigSpec.BooleanValue caution_block;
+  public static ForgeConfigSpec.BooleanValue music_box;
+  public static ForgeConfigSpec.BooleanValue music_sheet;
+  public static ForgeConfigSpec.BooleanValue scythes;
 
-  public Features(final File file){
-    super(file, true);
-    load_values();
-  }
+  public Features(final ForgeConfigSpec.Builder builder){
 
-  public static boolean caution_block;
-  public static boolean music_box;
-  public static boolean music_sheet;
-  public static boolean scythes;
+    builder.push("Feature Disable");
 
-  public static final void initialize(final File file){
-    instance = new Features(file);
-  }
+    caution_block = builder.define("Caution Block", true);
+    music_box     = builder.define("Music Box", true);
+    music_sheet   = builder.define("Music Sheet", true);
+    scythes       = builder.define("Scythes", true);
 
-  private final void load_values(){
-
-    caution_block    = get(MAIN, "Caution Block", true).getBoolean();
-    music_box        = get(MAIN, "Music Box", true).getBoolean();
-    music_sheet      = get(MAIN, "Music Sheet", true).getBoolean();
-    scythes          = get(MAIN, "Scythes", true).getBoolean();
-
-    if(this.hasChanged()){
-      save();
-    }
-  }
-
-  @SubscribeEvent
-  public final void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event){
-    if(event.getModID().equals(ADDSynthCore.MOD_ID)){
-      this.load_values();
-    }
+    builder.pop();
   }
 
 }
