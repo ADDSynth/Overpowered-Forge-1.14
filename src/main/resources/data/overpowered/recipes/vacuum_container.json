@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "gvg",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:glass_panes/colorless"
+    },
+    "v": {
+      "item": "overpowered:void_crystal"
+    }
+  },
+  "result": {
+    "item": "overpowered:vacuum_container"
+  }
+}

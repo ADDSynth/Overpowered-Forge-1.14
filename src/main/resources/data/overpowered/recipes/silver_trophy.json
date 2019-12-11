@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ppp",
+    "ppp",
+    " s "
+  ],
+  "key": {
+    "p": {
+      "tag": "forge:plates/silver"
+    },
+    "s": {
+      "item": "overpowered:trophy_stand"
+    }
+  },
+  "result": {
+    "item": "overpowered:silver_trophy"
+  }
+}

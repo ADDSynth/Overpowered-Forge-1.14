@@ -1,5 +1,6 @@
 package addsynth.core.tiles;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -7,6 +8,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -44,22 +46,13 @@ public abstract class TileWithStorage extends TileBase {
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  public <T> T getCapability(final Capability<T> capability, final @Nullable Direction facing){
+  public @Nonnull <T> LazyOptional<T> getCapability(final @Nonnull Capability<T> capability, final @Nullable Direction facing){
     if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
-      return (T)inventory;
+      return (LazyOptional.of(()->inventory)).cast();
     }
     return super.getCapability(capability, facing);
   }
   
-  @Override
-  public boolean hasCapability(final Capability<?> capability, final @Nullable Direction facing){
-    if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
-      return inventory != null;
-    }
-    return super.hasCapability(capability, facing);
-  }
-
   /**
    * I suppose I can use this within my own code, like in guis and stuff, as long as I know that tile has
    * an ItemStackHandler.

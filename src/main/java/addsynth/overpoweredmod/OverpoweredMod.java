@@ -74,6 +74,8 @@ public class OverpoweredMod {
     NetworkHandler.registerMessages();
     NetworkRegistry.INSTANCE.registerGuiHandler(OverpoweredMod.instance,new GuiHandler());
     WeirdDimension.register();
+    // TODO: Railcraft doesn't exist for 1.14 yet, but still should find a way to disable the Iron to Steel smelting recipe.
+    // PRIORITY: Also must find a way to adjust recipes to use ingots if the Compressor is disabled!
     DeferredWorkQueue.runLater(() -> OreRefineryRecipes.register());
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());
     

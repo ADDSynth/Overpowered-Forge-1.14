@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yby",
+    "bsb",
+    "yby"
+  ],
+  "key": {
+    "b": {
+      "tag": "forge:dyes/black"
+    },
+    "y": {
+      "tag": "forge:dyes/yellow"
+    },
+    "s": {
+      "tag": "forge:stone"
+    }
+  },
+  "result": {
+    "item": "addsynthcore:caution_block"
+  }
+}

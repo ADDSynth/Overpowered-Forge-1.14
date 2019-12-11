@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " ss",
+    "lbw",
+    " ss"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:stone"
+    },
+    "l": {
+      "item": "overpowered:yellow_lens"
+    },
+    "b": {
+      "item": "overpowered:beam_emitter"
+    },
+    "w": {
+      "item": "overpowered:energy_wire"
+    }
+  },
+  "result": {
+    "item": "overpowered:yellow_laser"
+  }
+}

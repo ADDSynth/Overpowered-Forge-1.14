@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "bpb",
+    " b "
+  ],
+  "key": {
+    "p": {
+      "item": "overpowered:power_core"
+    },
+    "b": {
+      "tag": "forge:gems/lapis"
+    }
+  },
+  "result": {
+    "item": "overpowered:advanced_power_core"
+  }
+}

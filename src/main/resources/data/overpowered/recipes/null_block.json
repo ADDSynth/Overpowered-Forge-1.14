@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "vv",
+    "vv"
+  ],
+  "key": {
+    "v": {
+      "item": "overpowered:void_crystal"
+    }
+  },
+  "result": {
+    "item": "overpowered:null_block"
+  }
+}

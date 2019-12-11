@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sus",
+    "afa",
+    "ses"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:plates/steel"
+    },
+    "u": {
+      "item": "overpowered:unknown_technology"
+    },
+    "a": {
+      "item": "overpowered:advanced_power_core"
+    },
+    "f": {
+      "item": "minecraft:furnace"
+    },
+    "e": {
+      "item": "overpowered:energy_grid"
+    }
+  },
+  "result": {
+    "item": "overpowered:advanced_ore_refinery"
+  }
+}

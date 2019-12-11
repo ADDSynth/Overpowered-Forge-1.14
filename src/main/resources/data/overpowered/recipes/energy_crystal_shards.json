@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "overpowered:energy_crystal"
+    }
+  ],
+  "result": {
+    "item": "overpowered:energy_crystal_shards",
+    "count": 9
+  }
+}

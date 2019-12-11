@@ -1,0 +1,11 @@
+{
+  "type": "overpowered:compressor",
+  "ingredients": [
+    {"tag": "forge:ingots/tin"},
+    {"tag": "forge:ingots/copper"}
+  ],
+  "result": {
+    "item": "addsynthcore:bronze_ingot",
+    "count": 2
+  }
+}

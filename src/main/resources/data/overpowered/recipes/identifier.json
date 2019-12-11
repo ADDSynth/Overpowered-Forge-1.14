@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "afa",
+    "dpd",
+    "ava"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:plates/aluminum"
+    },
+    "f": {
+      "item": "overpowered:focus_lens"
+    },
+    "d": {
+      "item": "overpowered:data_cable"
+    },
+    "p": {
+      "item": "overpowered:advanced_power_core"
+    },
+    "v": {
+      "item": "overpowered:void_crystal"
+    }
+  },
+  "result": {
+    "item": "overpowered:identifier"
+  }
+}

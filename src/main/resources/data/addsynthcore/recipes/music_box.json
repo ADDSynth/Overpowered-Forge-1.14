@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nnn",
+    "nnn",
+    "nnn"
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:note_block"
+    }
+  },
+  "result": {
+    "item": "addsynthcore:music_box"
+  }
+}

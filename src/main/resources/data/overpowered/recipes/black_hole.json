@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "vvv",
+    "vfv",
+    "vvv"
+  ],
+  "key": {
+    "v": {
+      "item": "overpowered:void_crystal"
+    },
+    "f": {
+      "item": "overpowered:fusion_core"
+    }
+  },
+  "result": {
+    "item": "overpowered:black_hole"
+  }
+}

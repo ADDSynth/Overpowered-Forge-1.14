@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sps",
+    "c c",
+    "sas"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:ingot:steel"
+    },
+    "p": {
+      "item": "minecraft:piston"
+    },
+    "c": {
+      "item": "overpowered:power_core"
+    },
+    "a": {
+      "item": "minecraft:anvil"
+    }
+  },
+  "result": {
+    "item": "overpowered:compressor"
+  }
+}

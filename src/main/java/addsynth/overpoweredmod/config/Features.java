@@ -52,9 +52,6 @@ public final class Features {
   public static ForgeConfigSpec.BooleanValue gold_trophy;
   public static ForgeConfigSpec.BooleanValue platinum_trophy;
 
-  public static boolean disable_steel_recipe; // MAYBE, delete
-  public static boolean disable_bronze_recipe;
-
   // https://github.com/micdoodle8/Galacticraft/blob/MC1.10/src/main/java/micdoodle8/mods/galacticraft/core/util/ConfigManagerCore.java
   // https://github.com/Railcraft/Railcraft/blob/mc-1.10.2/src/main/java/mods/railcraft/common/core/RailcraftConfig.java
   // https://github.com/Glitchfiend/BiomesOPlenty/blob/BOP-1.10.2-5.0.x/src/main/java/biomesoplenty/common/config/GameplayConfigurationHandler.java

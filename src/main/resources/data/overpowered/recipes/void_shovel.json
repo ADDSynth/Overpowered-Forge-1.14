@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "v",
+    "s",
+    "s"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:rods/wooden"
+    },
+    "v": {
+      "item": "overpowered:void_crystal"
+    }
+  },
+  "result": {
+    "item": "overpowered:void_shovel"
+  }
+}

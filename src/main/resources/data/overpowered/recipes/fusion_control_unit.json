@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "tdt",
+    "ded",
+    "tdt"
+  ],
+  "key": {
+    "t": {
+      "tag": "forge/plates/titanium"
+    },
+    "d": {
+      "item": "overpowered:data_cable"
+    },
+    "e": {
+      "item": "overpowered:energized_power_core"
+    }
+  },
+  "result": {
+    "item": "overpowered:fusion_control_unit"
+  }
+}

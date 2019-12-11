@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "tgt",
+    "gcg",
+    "tgt"
+  ],
+  "key": {
+    "t": {
+      "tags": "forge:plates/titanium"
+    },
+    "g": {
+      "tags": "forge:glass_panes"
+    },
+    "c": {
+      "item": "overpowered:vacuum_container"
+    }
+  },
+  "result": {
+    "item": "overpowered:fusion_chamber"
+  }
+}

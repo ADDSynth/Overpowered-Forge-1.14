@@ -1,0 +1,9 @@
+{
+  "type": "overpowered:compressor",
+  "ingredients": [
+    {"tag": "forge:ingots/bronze"}
+  ],
+  "result": {
+    "item": "addsynthcore:bronze_plate"
+  }
+}

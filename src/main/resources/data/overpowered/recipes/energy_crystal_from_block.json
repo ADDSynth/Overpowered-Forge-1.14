@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "overpowered:light_block"
+    }
+  ],
+  "result": {
+    "overpowered:energy_crystal",
+    "count": 9
+  }
+}

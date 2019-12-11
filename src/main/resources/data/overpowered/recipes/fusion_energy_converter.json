@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "tat",
+    "nue",
+    "tat"
+  ],
+  "key": {
+    "t": {
+      "tag": "forge:plates/titanium"
+    },
+    "a": {
+      "item": "overpowered:advanced_power_core"
+    },
+    "n": {
+      "item": "overpowered:nullified_power_core"
+    },
+    "e": {
+      "item": "overpowered:energized_power_core"
+    },
+    "u": {
+      "item": "overpowered:unknown_technology"
+    }
+  },
+  "result": {
+    "item": "overpowered:fusion_energy_converter"
+  }
+}

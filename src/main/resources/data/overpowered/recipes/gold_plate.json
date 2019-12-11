@@ -1,0 +1,9 @@
+{
+  "type": "overpowered:compressor",
+  "ingredients": [
+    {"tag": "forge:ingots/gold"}
+  ],
+  "result": {
+    "item": "addsynthcore:gold_plate"
+  }
+}

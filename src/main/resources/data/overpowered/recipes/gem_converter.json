@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "rqa",
+    "tis",
+    "ced"
+  ],
+  "key": {
+    "r": {
+      "tag": "forge:gems/ruby"
+    },
+    "t": {
+      "tag": "forge:gems/topaz"
+    },
+    "c": {
+      "tag": "forge:gems/citrine"
+    },
+    "e": {
+      "tag": "forge:gems/emerald"
+    },
+    "d": {
+      "tag": "forge:gems/diamond"
+    },
+    "s": {
+      "tag": "forge:gems/sapphire"
+    },
+    "a": {
+      "tag": "forge:gems/amethyst"
+    },
+    "q": {
+      "tag": "forge:gems/quartz"
+    },
+    "i": {
+      "item": "overpowered:iron_frame_block"
+    }
+  },
+  "result": {
+    "item": "overpowered:gem_converter"
+  }
+}

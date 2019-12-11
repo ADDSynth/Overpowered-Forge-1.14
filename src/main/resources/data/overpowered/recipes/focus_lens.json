@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"tag": "forge:gems/quartz"}
+  ],
+  "result": {
+    "item": "overpowered:focus_lens"
+  }
+}

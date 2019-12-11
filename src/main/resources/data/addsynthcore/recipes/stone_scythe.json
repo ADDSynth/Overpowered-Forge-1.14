@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " mm",
+    "m s",
+    "  s"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:rods/wooden"
+    },
+    "m": {
+      "tag": "forge:cobblestone"
+    }
+  },
+  "result": {
+    "item": "addsynthcore:stone_scythe"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "overpowered:compressor",
+  "ingredients": [
+    {"tag": "forge:ingots/copper"}
+  ],
+  "result": {
+    "item": "addsynthcore:copper_plate"
+  }
+}

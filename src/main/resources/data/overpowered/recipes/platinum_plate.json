@@ -1,0 +1,9 @@
+{
+  "type": "overpowered:compressor",
+  "ingredients": [
+    {"tag": "forge:ingots/platinum"}
+  ],
+  "result": {
+    "item": "addsynthcore:platinum_plate"
+  }
+}

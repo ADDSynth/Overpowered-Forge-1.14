@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "overpowered:energy_crystal"},
+    {"item": "overpowered:energy_crystal"},
+    {"item": "overpowered:void_crystal"},
+    {"item": "overpowered:void_crystal"},
+    {"tag": "forge:ender_pearls"},
+    {"tag": "forge:ender_pearls"},
+    {"tag": "forge:ender_pearls"},
+    {"tag": "forge:ender_pearls"},
+    {"item": "overpowered:unknown_technology"}
+  ],
+  "result": {
+    "item": "overpowered:dimensional_anchor"
+  }
+}

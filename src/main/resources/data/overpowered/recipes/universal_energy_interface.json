@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "idi",
+    "wew",
+    "iai"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge/plates/iron"
+    },
+    "w": {
+      "item": "overpowered:energy_wire"
+    },
+    "d": {
+      "item": "overpowered:data_cable"
+    },
+    "e": {
+      "item": "overpowered:energy_grid"
+    },
+    "a": {
+      "item": "overpowered:advanced_power_core"
+    }
+  },
+  "result": {
+    "item": "overpowered:universal_energy_interface"
+  }
+}

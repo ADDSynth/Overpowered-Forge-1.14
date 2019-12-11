@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "www",
+    "eee",
+    "www"
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:white_wool"
+    },
+    "e": {
+      "item": "overpowered:energy_crystal_shards"
+    }
+  },
+  "result": {
+    "item": "overpowered:data_cable",
+    "count": 6
+  }
+}

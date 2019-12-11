@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ee",
+    " s",
+    " s"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:rods/wooden"
+    },
+    "e": {
+      "item": "overpowered:energy_crystal"
+    }
+  },
+  "result": {
+    "item": "overpowered:energy_hoe"
+  }
+}

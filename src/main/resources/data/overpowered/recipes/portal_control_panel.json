@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aea",
+    "dnd",
+    "aea"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:plates/aluminum"
+    },
+    "e": {
+      "tag": "forge:ender_pearls"
+    },
+    "d": {
+      "item": "overpowered:data_cable"
+    },
+    "n": {
+      "item": "overpowered:nullified_power_core"
+    }
+  },
+  "result": {
+    "item": "overpowered:portal_control_panel"
+  }
+}

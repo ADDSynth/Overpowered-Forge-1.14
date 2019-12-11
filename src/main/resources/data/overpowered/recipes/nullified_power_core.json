@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "overpowered:advanced_power_core"},
+    {"item": "overpowered:void_crystal"},
+    {"item": "overpowered:void_crystal"}
+  ],
+  "result": {
+    "item": "overpowered:nullified_power_core"
+  }
+}

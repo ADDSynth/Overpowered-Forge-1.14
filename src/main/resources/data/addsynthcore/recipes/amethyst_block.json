@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "ggg",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:gems/amethyst"
+    }
+  },
+  "result": {
+    "item": "addsynthcore:amethyst_block"
+  }
+}

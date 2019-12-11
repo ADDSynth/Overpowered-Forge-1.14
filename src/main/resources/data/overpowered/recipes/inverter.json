@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ses",
+    "aga",
+    "ses"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:plates/silver"
+    },
+    "e": {
+      "item": "overpowered:energy_crystal"
+    },
+    "g": {
+      "item": "overpowered:energy_grid"
+    },
+    "a": {
+      "item": "overpowered:advanced_power_core"
+    }
+  },
+  "result": {
+    "item": "overpowered:inverter"
+  }
+}

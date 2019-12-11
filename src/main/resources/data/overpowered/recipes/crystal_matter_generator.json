@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "pbp",
+    "efe",
+    "pup"
+  ],
+  "key": {
+    "p": {
+      "tag": "forge:plates/platinum"
+    },
+    "b": {
+      "item": "overpowered:beam_emitter"
+    },
+    "e": {
+      "item": "overpowered:energized_power_core"
+    },
+    "f": {
+      "item": "overpowered:focus_lens"
+    },
+    "u": {
+      "item": "overpowered:unknown_technology"
+    }
+  },
+  "result": {
+    "item": "overpowered:crystal_matter_generator"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ava",
+    "vbv",
+    "ava"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:plates/aluminum"
+    },
+    "v": {
+      "item": "overpowered:void_crystal"
+    },
+    "b": {
+      "item": "minecraft:bookshelf"
+    }
+  },
+  "result": {
+    "item": "overpowered:magic_infuser"
+  }
+}

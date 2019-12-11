@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ioi",
+    "ogo",
+    "ioi"
+  ],
+  "key": {
+    "i" {
+      "tag": "forge:ingots/iron"
+    },
+    "o" {
+      "tag": "forge:obsidian"
+    },
+    "g" {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "item": "overpowered:iron_frame_block"
+  }
+}
