@@ -44,7 +44,7 @@ public final class TileLaser extends TileBase implements ITickableTileEntity {
   @Override
   public void onLoad(){
     if(world.isRemote == false){
-      final BlockState block_state = world.getBlockState(pos);
+      final BlockState block_state = getBlockState();
       final LaserCannon block = (LaserCannon)block_state.getBlock();
       this.laser = Laser.index[Math.max(0, block.color)];
       if(block.color < 0){

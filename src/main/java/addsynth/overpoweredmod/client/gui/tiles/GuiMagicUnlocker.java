@@ -5,10 +5,11 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerMagicUnlocker;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileMagicUnlocker;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiMagicUnlocker extends GuiEnergyBase {
+public final class GuiMagicUnlocker extends GuiEnergyBase<ContainerMagicUnlocker> {
 
   private final TileMagicUnlocker tile;
 
@@ -35,9 +36,9 @@ public final class GuiMagicUnlocker extends GuiEnergyBase {
   private static final int draw_work_bar_y = 194;
   private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
   
-  public GuiMagicUnlocker(IInventory player_inventory, TileMagicUnlocker tile){
-    super(new ContainerMagicUnlocker(player_inventory,tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/magic_infuser.png"));
-    this.tile = tile;
+  public GuiMagicUnlocker(final ContainerMagicUnlocker container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/magic_infuser.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 187;
   }
 

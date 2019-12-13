@@ -2,14 +2,15 @@ package addsynth.overpoweredmod.blocks.tiles.machines;
 
 import java.util.List;
 import javax.annotation.Nullable;
+import addsynth.core.util.MinecraftUtility;
 import addsynth.energy.blocks.MachineBlockTileEntity;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.client.gui.GuiHandler;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileElectricFurnace;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.tileentity.TileEntity;
@@ -21,6 +22,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public final class ElectricFurnace extends MachineBlockTileEntity {
 
@@ -29,7 +31,7 @@ public final class ElectricFurnace extends MachineBlockTileEntity {
   public ElectricFurnace(final String name){
     super();
     OverpoweredMod.registry.register_block(this, name);
-    this.setDefaultState(this.stateContainer.getBaseState().withProperty(FACING, Direction.NORTH));
+    this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
   }
 
   @Override
@@ -46,7 +48,10 @@ public final class ElectricFurnace extends MachineBlockTileEntity {
   @SuppressWarnings("deprecation")
   public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      player.openGui(OverpoweredMod.instance,GuiHandler.ELECTRIC_FURNACE, world,pos.getX(),pos.getY(),pos.getZ());
+      final TileElectricFurnace tile = MinecraftUtility.getTileEntity(pos, world, TileElectricFurnace.class);
+      if(tile != null){
+        NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
+      }
     }
     return true;
   }

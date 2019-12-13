@@ -5,10 +5,11 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerOreRefinery;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileAdvancedOreRefinery;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiAdvancedOreRefinery extends GuiEnergyBase {
+public final class GuiAdvancedOreRefinery extends GuiEnergyBase<ContainerOreRefinery> {
 
   private final TileAdvancedOreRefinery tile;
 
@@ -35,10 +36,9 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase {
   private static final int energy_percentage_text_x = 156;
   private static final int energy_percentage_text_y = 28;
 
-  public GuiAdvancedOreRefinery(IInventory player_inventory, TileAdvancedOreRefinery tile) {
-    super(new ContainerOreRefinery(player_inventory, tile),tile,
-          new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/advanced_ore_refinery.png"));
-    this.tile = tile;
+  public GuiAdvancedOreRefinery(final ContainerOreRefinery container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/advanced_ore_refinery.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 186;
   }
 

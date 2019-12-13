@@ -1,17 +1,25 @@
 package addsynth.overpoweredmod.tiles.machines.laser;
 
+import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyReceiver;
 import addsynth.overpoweredmod.config.Config;
+import addsynth.overpoweredmod.containers.ContainerLaserHousing;
 import addsynth.overpoweredmod.game.block_networks.LaserNetwork;
 import addsynth.overpoweredmod.network.laser.LaserClientSyncMessage;
 import addsynth.overpoweredmod.tiles.Tiles;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileLaserHousing extends TileEnergyReceiver implements ITickableTileEntity, IBlockNetworkUser {
+public final class TileLaserHousing extends TileEnergyReceiver implements ITickableTileEntity, IBlockNetworkUser, INamedContainerProvider {
 
   private LaserNetwork network;
 
@@ -140,6 +148,17 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
   public final void toggle_auto_shutoff(){
     network.auto_shutoff = !network.auto_shutoff;
     network.updateLaserNetwork();
+  }
+
+  @Override
+  @Nullable
+  public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
+    return new ContainerLaserHousing(id, player_inventory, this);
+  }
+
+  @Override
+  public ITextComponent getDisplayName(){
+    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }

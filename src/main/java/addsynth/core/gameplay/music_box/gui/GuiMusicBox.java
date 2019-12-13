@@ -11,12 +11,15 @@ import addsynth.core.gameplay.music_box.network_messages.NoteMessage;
 import addsynth.core.gui.GuiBase;
 import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.inventory.container.BaseContainer;
+import addsynth.overpoweredmod.containers.ContainerCompressor;
 import net.minecraft.client.gui.widget.Widget;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiMusicBox extends GuiBase {
+public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
 
   private final TileMusicBox tile;
 
@@ -71,16 +74,16 @@ public final class GuiMusicBox extends GuiBase {
   private static final int playhead_texture_x = 64;
   private static final int playhead_texture_y = 24;
 
-  public GuiMusicBox(IInventory player_inventory, TileMusicBox tile) {
-    super(new BaseContainer<>(tile),tile,new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/music_box.png"));
-    this.tile = tile;
+  public GuiMusicBox(final ContainerMusicBox container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/music_box.png"));
+    this.tile = container.getTileEntity();
     this.xSize = gui_width;
     this.ySize = gui_height;
   }
 
   @Override
-  public final void initGui() {
-    super.initGui();
+  public final void init(){
+    super.init();
 
     // button setup
     play_button           = new AdjustableButton(this.guiLeft + (xSize / 2) - (play_button_width / 2), this.guiTop + 17, play_button_width, 14, "Play");

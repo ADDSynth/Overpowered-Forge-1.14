@@ -5,10 +5,11 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerElectricFurnace;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileElectricFurnace;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiElectricFurnace extends GuiEnergyBase {
+public final class GuiElectricFurnace extends GuiEnergyBase<ContainerElectricFurnace> {
 
   private final TileElectricFurnace tile;
 
@@ -36,10 +37,9 @@ public final class GuiElectricFurnace extends GuiEnergyBase {
   private static final int work_percentage_text_y = 65;
   private static final int time_left_y = 78;
 
-  public GuiElectricFurnace(IInventory player_inventory, TileElectricFurnace tile){
-    super(new ContainerElectricFurnace(player_inventory, tile),tile,
-          new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/electric_furnace.png"));
-    this.tile = tile;
+  public GuiElectricFurnace(final ContainerElectricFurnace container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/electric_furnace.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 172;
   }
 

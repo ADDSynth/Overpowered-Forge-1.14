@@ -5,10 +5,11 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerInverter;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileInverter;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiInverter extends GuiEnergyBase {
+public final class GuiInverter extends GuiEnergyBase<ContainerInverter> {
 
   private final TileInverter tile;
 
@@ -35,9 +36,9 @@ public final class GuiInverter extends GuiEnergyBase {
   private static final int energy_percentage_text_x = 156;
   private static final int energy_percentage_text_y = 28;
 
-  public GuiInverter(IInventory player_inventory, TileInverter tile) {
-    super(new ContainerInverter(player_inventory, tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/inverter.png"));
-    this.tile = tile;
+  public GuiInverter(final ContainerInverter container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/inverter.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 187;
   }
 

@@ -8,16 +8,20 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
 import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.containers.ContainerGenerator;
+import addsynth.overpoweredmod.containers.ContainerPortalControlPanel;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.network.server_messages.PortalControlMessage;
 import addsynth.overpoweredmod.tiles.machines.portal.TilePortalControlPanel;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiPortalControlPanel extends GuiEnergyBase {
+public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalControlPanel> {
 
   private final TilePortalControlPanel tile;
 
@@ -60,16 +64,16 @@ public final class GuiPortalControlPanel extends GuiEnergyBase {
   // TODO: record which player has this gui open so you can award them with the achievement when they
   //          activate the portal.
 
-  public GuiPortalControlPanel(IInventory player_inventory, TilePortalControlPanel tile) {
-    super(new BaseContainer<>(tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_control_panel.png"));
-    this.tile = tile;
+  public GuiPortalControlPanel(final ContainerPortalControlPanel container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_control_panel.png"));
+    this.tile = container.getTileEntity();
     this.xSize = 192;
     this.ySize = 124;
   }
 
   @Override
-  public final void initGui(){
-    super.initGui();
+  public final void init(){
+    super.init();
     NetworkHandler.INSTANCE.sendToServer(new PortalControlMessage(tile.getPos(),0));
     buttons.add(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile));
     portal_button = new AdjustableButton(this.guiLeft + button_x, this.guiTop + button_y, button_width, button_height,"Generate Portal");

@@ -5,14 +5,16 @@ import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerGemConverter;
+import addsynth.overpoweredmod.containers.ContainerGenerator;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.network.server_messages.CycleGemConverterMessage;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileGemConverter;
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiGemConverter extends GuiEnergyBase {
+public final class GuiGemConverter extends GuiEnergyBase<ContainerGemConverter> {
 
   private final TileGemConverter tile;
 
@@ -48,15 +50,15 @@ public final class GuiGemConverter extends GuiEnergyBase {
   private static final int draw_work_bar_y = 199;
   private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
   
-  public GuiGemConverter(final IInventory player_inventory, final TileGemConverter tile){
-    super(new ContainerGemConverter(player_inventory, tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gem_converter.png"));
-    this.tile = tile;
+  public GuiGemConverter(final ContainerGemConverter container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gem_converter.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 194;
   }
 
   @Override
-  public final void initGui(){
-    super.initGui();
+  public final void init(){
+    super.init();
     buttons.add(new AdjustableButton(0,this.guiLeft + left_button_x, this.guiTop + cycle_button_y,cycle_button_width,cycle_button_height,"<"));
     buttons.add(new AdjustableButton(1,this.guiLeft + right_button_x, this.guiTop + cycle_button_y,cycle_button_width,cycle_button_height,">"));
   }

@@ -1,13 +1,21 @@
 package addsynth.energy.gameplay.tiles;
 
+import javax.annotation.Nullable;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.EnergyCompat;
 import addsynth.energy.tiles.TileEnergyBattery;
 import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.containers.ContainerUniversalInterface;
 import addsynth.overpoweredmod.tiles.Tiles;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileUniversalEnergyTransfer extends TileEnergyBattery {
+public final class TileUniversalEnergyTransfer extends TileEnergyBattery implements INamedContainerProvider {
 
   public enum TRANSFER_MODE {
     BI_DIRECTIONAL(true,  true,  true,  "Bi-Directional"),
@@ -86,6 +94,17 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery {
       }
     }
     energy.update();
+  }
+
+  @Override
+  @Nullable
+  public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
+    return new ContainerUniversalInterface(id, player_inventory, this);
+  }
+
+  @Override
+  public ITextComponent getDisplayName(){
+    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }

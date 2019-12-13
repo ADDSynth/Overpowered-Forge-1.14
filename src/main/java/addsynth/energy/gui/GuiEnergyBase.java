@@ -3,14 +3,15 @@ package addsynth.energy.gui;
 import addsynth.core.gui.GuiBase;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.CustomEnergyStorage;
-import addsynth.energy.tiles.TileEnergyWithStorage;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public class GuiEnergyBase extends GuiBase {
+public abstract class GuiEnergyBase<T extends Container> extends GuiBase<T> {
 
-  public GuiEnergyBase(final Container container, final TileEnergyWithStorage tile, final ResourceLocation gui_texture_location){
-    super(container, tile, gui_texture_location);
+  public GuiEnergyBase(final T container, final PlayerInventory player_inventory, final ITextComponent title, final ResourceLocation gui_texture_location){
+    super(container, player_inventory, title, gui_texture_location);
   }
 
   /** Draws Energy: Level / Capacity in the standard location, just below the title, at y = 17 pixels.

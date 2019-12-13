@@ -1,15 +1,23 @@
 package addsynth.overpoweredmod.tiles.machines.energy;
 
+import javax.annotation.Nullable;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyTransmitter;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.containers.ContainerGenerator;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.tiles.Tiles;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileEnergyGenerator extends TileEnergyTransmitter {
+public final class TileEnergyGenerator extends TileEnergyTransmitter implements INamedContainerProvider {
 
   public static final Item[] input_filter = new Item[] {
     Init.energy_crystal_shards, Init.energy_crystal, Item.BLOCK_TO_ITEM.get(Init.light_block)
@@ -51,6 +59,17 @@ public final class TileEnergyGenerator extends TileEnergyTransmitter {
         energy.update();
       }
     }
+  }
+
+  @Override
+  @Nullable
+  public Container createMenu(final int windowID, final PlayerInventory player_inventory, final PlayerEntity player){
+    return new ContainerGenerator(windowID, player_inventory, this);
+  }
+
+  @Override
+  public ITextComponent getDisplayName(){
+    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }

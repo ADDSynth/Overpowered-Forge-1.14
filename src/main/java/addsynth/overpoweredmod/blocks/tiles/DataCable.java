@@ -75,7 +75,7 @@ public final class DataCable extends Wire {
 
   @Override
   @SuppressWarnings("deprecation")
-  public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor){
+  public void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
     if(world.isRemote == false){
       final BlockNetwork network = ((IBlockNetworkUser)(world.getTileEntity(pos))).getNetwork();
       network.neighbor_was_changed(pos, neighbor);

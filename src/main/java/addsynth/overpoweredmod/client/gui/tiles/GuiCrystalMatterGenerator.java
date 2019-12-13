@@ -7,13 +7,16 @@ import addsynth.energy.gui.widgets.OnOffSwitch;
 import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerCrystalGenerator;
+import addsynth.overpoweredmod.containers.ContainerGenerator;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileCrystalMatterReplicator;
 import net.minecraft.client.gui.widget.button.Button;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiCrystalMatterGenerator extends GuiEnergyBase {
+public final class GuiCrystalMatterGenerator extends GuiEnergyBase<ContainerCrystalGenerator> {
 
   private final TileCrystalMatterReplicator tile;
 
@@ -40,15 +43,15 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase {
   private static final int energy_percentage_text_y = 33;
   private static final int work_percentage_text_y = 77;
 
-  public GuiCrystalMatterGenerator(IInventory player_inventory, TileCrystalMatterReplicator tile) {
-    super(new ContainerCrystalGenerator(player_inventory, tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/crystal_matter_generator.png"));
-    this.tile = tile;
+  public GuiCrystalMatterGenerator(final ContainerCrystalGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/crystal_matter_generator.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 194;
   }
 
   @Override
-  public final void initGui() {
-    super.initGui();
+  public final void init(){
+    super.init();
     buttons.add(new OnOffSwitch(0, this.guiLeft + 6, this.guiTop + 17, tile));
   }
 

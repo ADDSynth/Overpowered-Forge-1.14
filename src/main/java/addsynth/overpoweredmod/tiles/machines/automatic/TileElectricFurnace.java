@@ -1,15 +1,24 @@
 package addsynth.overpoweredmod.tiles.machines.automatic;
 
 import java.util.ArrayList;
+import javax.annotation.Nullable;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.containers.ContainerElectricFurnace;
 import addsynth.overpoweredmod.tiles.Tiles;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileElectricFurnace extends PassiveMachine {
+public final class TileElectricFurnace extends PassiveMachine implements INamedContainerProvider {
 
   public static final Item[] furnace_input = get_furnace_input();
   private ItemStack result;
@@ -52,6 +61,17 @@ public final class TileElectricFurnace extends PassiveMachine {
       // }
     }
     return input;
+  }
+
+  @Override
+  @Nullable
+  public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
+    return new ContainerElectricFurnace(id, player_inventory, this);
+  }
+
+  @Override
+  public ITextComponent getDisplayName(){
+    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }

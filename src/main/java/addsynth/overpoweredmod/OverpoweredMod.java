@@ -2,22 +2,25 @@ package addsynth.overpoweredmod;
 
 import java.io.File;
 import addsynth.core.game.RegistryUtil;
+import addsynth.energy.gameplay.gui.*;
 // import addsynth.overpoweredmod.assets.Achievements;
-import addsynth.overpoweredmod.client.gui.GuiHandler;
+import addsynth.overpoweredmod.client.gui.tiles.*;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
+import addsynth.overpoweredmod.containers.Containers;
 import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.game.recipes.CompressorRecipes;
 import addsynth.overpoweredmod.game.recipes.OreRefineryRecipes;
 import addsynth.overpoweredmod.init.Registers;
 import addsynth.overpoweredmod.init.Setup;
 import addsynth.overpoweredmod.network.NetworkHandler;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -38,7 +41,9 @@ public class OverpoweredMod {
   private static boolean config_loaded;
 
   public OverpoweredMod(){
-    FMLJavaModLoadingContext.get().getModEventBus().addListener(OverpoweredMod::main_setup);
+    final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
+    context.getModEventBus().addListener(OverpoweredMod::main_setup);
+    context.getModEventBus().addListener(OverpoweredMod::client_setup);
     // OPTIMIZE: the two ways to get the mod context can probably be combined/merged, but I don't want to think about that right now.
     init_config();
   }
@@ -72,7 +77,6 @@ public class OverpoweredMod {
       CompressorRecipes.register();
     }
     NetworkHandler.registerMessages();
-    NetworkRegistry.INSTANCE.registerGuiHandler(OverpoweredMod.instance,new GuiHandler());
     WeirdDimension.register();
     // TODO: Railcraft doesn't exist for 1.14 yet, but still should find a way to disable the Iron to Steel smelting recipe.
     // PRIORITY: Also must find a way to adjust recipes to use ingots if the Compressor is disabled!
@@ -80,6 +84,28 @@ public class OverpoweredMod {
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());
     
     log.info("Done constructing Overpowered.");
+  }
+
+  private static final void client_setup(final FMLClientSetupEvent event){
+    register_guis();
+  }
+
+  private static final void register_guis(){
+    ScreenManager.registerFactory(Containers.GENERATOR,                  GuiGenerator::new);
+    ScreenManager.registerFactory(Containers.ENERGY_STORAGE_CONTAINER,   GuiEnergyStorageContainer::new);
+    ScreenManager.registerFactory(Containers.UNIVERSAL_ENERGY_INTERFACE, GuiUniversalEnergyInterface::new);
+    ScreenManager.registerFactory(Containers.COMPRESSOR,                 GuiCompressor::new);
+    ScreenManager.registerFactory(Containers.ELECTRIC_FURNACE,           GuiElectricFurnace::new);
+    ScreenManager.registerFactory(Containers.GEM_CONVERTER,              GuiGemConverter::new);
+    ScreenManager.registerFactory(Containers.INVERTER,                   GuiInverter::new);
+    ScreenManager.registerFactory(Containers.MAGIC_INFUSER,              GuiMagicUnlocker::new);
+    ScreenManager.registerFactory(Containers.IDENTIFIER,                 GuiIdentifier::new);
+    ScreenManager.registerFactory(Containers.PORTAL_CONTROL_PANEL,       GuiPortalControlPanel::new);
+    ScreenManager.registerFactory(Containers.PORTAL_FRAME,               GuiPortalFrame::new);
+    ScreenManager.registerFactory(Containers.LASER_HOUSING,              GuiLaserHousing::new);
+    ScreenManager.registerFactory(Containers.ADVANCED_ORE_REFINERY,      GuiAdvancedOreRefinery::new);
+    ScreenManager.registerFactory(Containers.CRYSTAL_MATTER_GENERATOR,   GuiCrystalMatterGenerator::new);
+    ScreenManager.registerFactory(Containers.FUSION_CHAMBER,             GuiSingularityContainer::new);
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

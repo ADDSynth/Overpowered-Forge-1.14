@@ -19,9 +19,12 @@ public final class Containers {
   public static final ContainerType<ContainerOreRefinery> ADVANCED_ORE_REFINERY = register("advanced_ore_refinery", ContainerOreRefinery::new);
   public static final ContainerType<ContainerCrystalGenerator> CRYSTAL_MATTER_GENERATOR = register("crystal_matter_generator", ContainerCrystalGenerator::new);
   
-  public static final ContainerType<ContainerFusionChamber> FUSION_CHAMBER = register("fusion_chamber", ContainerFusionChamber::new);
   public static final ContainerType<ContainerPortalControlPanel> PORTAL_CONTROL_PANEL = register("portal_control_panel", ContainerPortalControlPanel::new);
   public static final ContainerType<ContainerPortalFrame> PORTAL_FRAME = register("portal_frame", ContainerPortalFrame::new);
+
+  public static final ContainerType<ContainerLaserHousing> LASER_HOUSING = register("laser_housing", ContainerLaserHousing::new);
+
+  public static final ContainerType<ContainerFusionChamber> FUSION_CHAMBER = register("fusion_chamber", ContainerFusionChamber::new);
 
   private static final <T extends Container> ContainerType<T> register(final String name, final ContainerType.IFactory<T> factory){
     final ContainerType<T> container = new ContainerType<>(factory);

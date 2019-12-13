@@ -3,18 +3,18 @@ package addsynth.overpoweredmod.client.gui.tiles;
 import addsynth.core.gui.GuiBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerPortalFrame;
-import addsynth.overpoweredmod.tiles.machines.portal.TilePortalFrame;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiPortalFrame extends GuiBase {
+public final class GuiPortalFrame extends GuiBase<ContainerPortalFrame> {
 
-  public GuiPortalFrame(IInventory player_inventory, TilePortalFrame tile) {
-    super(new ContainerPortalFrame(player_inventory, tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_frame.png"));
+  public GuiPortalFrame(final ContainerPortalFrame container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_frame.png"));
   }
 
   @Override
-  protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+  protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
   }
 

@@ -7,6 +7,7 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.tiles.machines.laser.TileLaser;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -62,7 +63,7 @@ public final class LaserCannon extends BlockTile {
   @Override
   public final IBlockState getStateForPlacement(World world, BlockPos pos, Direction facing, float hitX, float hitY,
                                           float hitZ, int meta, EntityLivingBase placer, Hand hand){
-    return getDefaultState().withProperty(FACING, facing);
+    return getDefaultState().with(FACING, facing);
   }
 
   @Override
@@ -96,9 +97,9 @@ public final class LaserCannon extends BlockTile {
 
   @Override
   @SuppressWarnings("deprecation")
-  public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos position_of_neighbor){
+  public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving){
     if(worldIn.isRemote == false){
-      if(canPlaceBlockOnSide(worldIn, pos, state.getValue(FACING)) == false){
+      if(canPlaceBlockOnSide(worldIn, pos, state.get(FACING)) == false){
         dropBlockAsItem(worldIn, pos, state, 0);
         worldIn.removeBlock(pos, false);
       }

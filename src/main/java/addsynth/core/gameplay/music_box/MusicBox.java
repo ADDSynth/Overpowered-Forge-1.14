@@ -3,12 +3,13 @@ package addsynth.core.gameplay.music_box;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.blocks.BlockTile;
 import addsynth.core.gameplay.Core;
-import addsynth.core.gameplay.GuiHandler;
+import addsynth.core.util.MinecraftUtility;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -17,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public final class MusicBox extends BlockTile {
 
@@ -45,7 +47,10 @@ public final class MusicBox extends BlockTile {
           return false; // let the music sheet item handle it.
         }
       }
-      player.openGui(ADDSynthCore.instance,GuiHandler.MUSIC_BOX, world,pos.getX(),pos.getY(),pos.getZ());
+      final TileMusicBox tile = MinecraftUtility.getTileEntity(pos, world, TileMusicBox.class);
+      if(tile != null){
+        NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
+      }
     }
     return true;
   }

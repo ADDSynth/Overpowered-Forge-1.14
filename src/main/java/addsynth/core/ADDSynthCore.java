@@ -4,19 +4,18 @@ import java.io.File;
 import addsynth.core.config.*;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.gameplay.CompatabilityManager;
-import addsynth.core.gameplay.GuiHandler;
+import addsynth.core.gameplay.Containers;
 import addsynth.core.gameplay.NetworkHandler;
-import addsynth.core.gameplay.init.CoreRegister;
 import addsynth.core.gameplay.init.Setup;
+import addsynth.core.gameplay.music_box.gui.GuiMusicBox;
 import addsynth.core.worldgen.OreGenerator;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -36,7 +35,9 @@ public final class ADDSynthCore {
   public static final RegistryUtil registry = new RegistryUtil(MOD_ID);
 
   public ADDSynthCore(){
-    FMLJavaModLoadingContext.get().getModEventBus().addListener(ADDSynthCore::main_setup);
+    final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
+    context.getModEventBus().addListener(ADDSynthCore::main_setup);
+    context.getModEventBus().addListener(ADDSynthCore::client_setup);
     init_config();
     creative_tab = create_creative_tab();
   }
@@ -73,7 +74,6 @@ public final class ADDSynthCore {
   
     OreGenerator.initialize();
     NetworkHandler.registerMessages();
-    NetworkRegistry.INSTANCE.registerGuiHandler(ADDSynthCore.instance,new GuiHandler());
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init());
     Debug.debug();
 
@@ -82,6 +82,10 @@ public final class ADDSynthCore {
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){
     event.getConfig().save();
+  }
+
+  private static final void client_setup(final FMLClientSetupEvent event){
+    ScreenManager.registerFactory(Containers.MUSIC_BOX, GuiMusicBox::new);
   }
 
 }

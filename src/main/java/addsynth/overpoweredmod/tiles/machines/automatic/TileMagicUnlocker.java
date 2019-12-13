@@ -1,22 +1,30 @@
 package addsynth.overpoweredmod.tiles.machines.automatic;
 
 import java.util.Random;
+import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.util.JavaUtils;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.containers.ContainerMagicUnlocker;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.item.ItemStack;
 
-public final class TileMagicUnlocker extends PassiveMachine {
+public final class TileMagicUnlocker extends PassiveMachine implements INamedContainerProvider {
 
   public static final SlotData[] slot_data = new SlotData[]{
     new SlotData(Items.BOOK),
@@ -127,6 +135,17 @@ public final class TileMagicUnlocker extends PassiveMachine {
       Thread.dumpStack();
     }
     return enchantment;
+  }
+
+  @Override
+  @Nullable
+  public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
+    return new ContainerMagicUnlocker(id, player_inventory, this);
+  }
+
+  @Override
+  public ITextComponent getDisplayName(){
+    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }

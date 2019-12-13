@@ -5,10 +5,11 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerIdentifier;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileIdentifier;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiIdentifier extends GuiEnergyBase {
+public final class GuiIdentifier extends GuiEnergyBase<ContainerIdentifier> {
 
   private final TileIdentifier tile;
 
@@ -35,9 +36,9 @@ public final class GuiIdentifier extends GuiEnergyBase {
   private static final int draw_energy_y = 24;
   private final ProgressBar energy_progress_bar = new ProgressBar(energy_bar_x,energy_bar_y,energy_bar_width,energy_bar_height,draw_energy_x,draw_energy_y);
 
-  public GuiIdentifier(final IInventory player_inventory, final TileIdentifier tile){
-    super(new ContainerIdentifier(player_inventory, tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/identifier.png"));
-    this.tile = tile;
+  public GuiIdentifier(final ContainerIdentifier container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/identifier.png"));
+    this.tile = container.getTileEntity();
   }
 
   @Override

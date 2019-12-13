@@ -5,10 +5,11 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerCompressor;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileCompressor;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiCompressor extends GuiEnergyBase {
+public final class GuiCompressor extends GuiEnergyBase<ContainerCompressor> {
 
   private final TileCompressor tile;
 
@@ -36,14 +37,14 @@ public final class GuiCompressor extends GuiEnergyBase {
   private static final int draw_work_bar_y = 194;
   private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
   
-  public GuiCompressor(IInventory player_inventory, TileCompressor tile) {
-    super(new ContainerCompressor(player_inventory, tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/compressor.png"));
-    this.tile = tile;
+  public GuiCompressor(final ContainerCompressor container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/compressor.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 182;
   }
 
   @Override
-  protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+  protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     draw_background_texture();
     final float energy_float = tile.getEnergyPercentage();
     energy_percentage = Math.round(energy_float*100);

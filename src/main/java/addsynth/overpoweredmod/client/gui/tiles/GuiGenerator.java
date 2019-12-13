@@ -5,10 +5,11 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerGenerator;
 import addsynth.overpoweredmod.tiles.machines.energy.TileEnergyGenerator;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiGenerator extends GuiEnergyBase {
+public final class GuiGenerator extends GuiEnergyBase<ContainerGenerator> {
 
   private final TileEnergyGenerator tile;
 
@@ -33,9 +34,9 @@ public final class GuiGenerator extends GuiEnergyBase {
   private static final int energy_text_line_1 = 44;
   private static final int energy_text_line_2 = 56;
 
-  public GuiGenerator(final IInventory player_inventory, final TileEnergyGenerator tile){
-    super(new ContainerGenerator(player_inventory,tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/generator.png"));
-    this.tile = tile;
+  public GuiGenerator(final ContainerGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/generator.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 176;
   }
 

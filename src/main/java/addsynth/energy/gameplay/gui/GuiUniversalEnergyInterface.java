@@ -8,12 +8,16 @@ import addsynth.energy.gameplay.tiles.TileUniversalEnergyTransfer;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.network.server_messages.CycleTransferModeMessage;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.containers.ContainerGenerator;
+import addsynth.overpoweredmod.containers.ContainerUniversalInterface;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import net.minecraft.client.gui.widget.button.AbstractButton;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiUniversalEnergyInterface extends GuiEnergyBase {
+public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUniversalInterface> {
 
   private final TileUniversalEnergyTransfer tile;
 
@@ -25,15 +29,15 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase {
   private static final int line_1 = 21;
   private static final int line_2 = 41;
 
-  public GuiUniversalEnergyInterface(final IInventory player_inventory, TileUniversalEnergyTransfer tile){
-    super(new BaseContainer<>(tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/universal_energy_interface.png"));
-    this.tile = tile;
+  public GuiUniversalEnergyInterface(final ContainerUniversalInterface container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/universal_energy_interface.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 60;
   }
 
   @Override
-  public void initGui(){
-    super.initGui();
+  public void init(){
+    super.init();
     final int button_x = guiLeft + (this.xSize / 2) - (button_width / 2) + 4;
     mode_button = new AdjustableButton(button_x, guiTop + 17, button_width, 16, tile.get_transfer_mode().text);
     buttons.add(mode_button);

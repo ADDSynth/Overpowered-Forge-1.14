@@ -8,16 +8,19 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
 import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.containers.ContainerGenerator;
+import addsynth.overpoweredmod.containers.ContainerLaserHousing;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.network.laser.SetLaserDistanceMessage;
 import addsynth.overpoweredmod.network.laser.ToggleLaserShutoffMessage;
 import addsynth.overpoweredmod.tiles.machines.laser.TileLaserHousing;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiLaserHousing extends GuiEnergyBase {
+public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> {
 
   private final TileLaserHousing tile;
 
@@ -28,7 +31,7 @@ public final class GuiLaserHousing extends GuiEnergyBase {
   private static final int text_box_height = 14;
   private static final int text_box_x = 60; // 6 + fontRendererObj.getStringWidth("Distance") + space
   private static final int text_box_y = line_1 + 8 + space;
-  private GuiTextField distance_text_field;
+  private TextFieldWidget distance_text_field;
   private static final int line_2 = text_box_y + 3;
 
   private static final int line_3 = text_box_y + text_box_height + space;
@@ -50,20 +53,20 @@ public final class GuiLaserHousing extends GuiEnergyBase {
   private final ProgressBar energy_progress_bar = new ProgressBar(energy_x, energy_y, energy_width, energy_height, draw_energy_x, draw_energy_y);
   */
 
-  public GuiLaserHousing(IInventory player_inventory, TileLaserHousing tile) {
-    super(new BaseContainer<>(tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/laser_machine.png"));
-    this.tile = tile;
+  public GuiLaserHousing(final ContainerLaserHousing container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/laser_machine.png"));
+    this.tile = container.getTileEntity();
     this.ySize = 104;
   }
 
   @Override
-  public final void initGui(){
-    super.initGui();
+  public final void init(){
+    super.init();
     buttons.add(new OnOffSwitch(0, this.guiLeft + 6, this.guiTop + 17, tile));
     checkbox = new CheckBox(1, this.guiLeft + check_box_x, this.guiTop + check_box_y, tile.getAutoShutoff());
     buttons.add(checkbox);
     
-    distance_text_field = new GuiTextField(0,this.font,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height);
+    distance_text_field = new TextFieldWidget(0,this.font,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height);
     distance_text_field.setMaxStringLength(4); // FEATURE: add a numbers-only textbox to ADDSynthCore.
     distance_text_field.setText(Integer.toString(tile.getLaserDistance()));
   }
@@ -128,7 +131,7 @@ public final class GuiLaserHousing extends GuiEnergyBase {
     // final float energy_float = tile.getEnergyPercentage();
     // energy_percentage = Math.round(energy_float*100);
     // energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
-    distance_text_field.drawTextBox();
+    distance_text_field.renderButton(mouseX, mouseY, partialTicks);
   }
 
   @Override

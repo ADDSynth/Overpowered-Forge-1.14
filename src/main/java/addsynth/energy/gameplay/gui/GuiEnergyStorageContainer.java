@@ -1,16 +1,16 @@
 package addsynth.energy.gameplay.gui;
 
 import addsynth.core.gui.objects.ProgressBar;
-import addsynth.core.inventory.container.BaseContainer;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.tiles.TileEnergyBattery;
 import addsynth.overpoweredmod.OverpoweredMod;
-import net.minecraft.inventory.IInventory;
+import addsynth.overpoweredmod.containers.ContainerEnergyStorage;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraft.util.text.ITextComponent;
 
-public final class GuiEnergyStorageContainer extends GuiEnergyBase {
+public final class GuiEnergyStorageContainer extends GuiEnergyBase<ContainerEnergyStorage> {
 
   private final TileEnergyBattery tile;
   private CustomEnergyStorage tile_energy;
@@ -20,17 +20,17 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase {
   private static final int draw_energy_percentage_y = 36;
   private final ProgressBar energy_bar = new ProgressBar(9,48,174,17,9,95);
 
-  public GuiEnergyStorageContainer(final IInventory player_inventory, final TileEnergyBattery tile){
-    super(new BaseContainer<>(tile),tile,new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/energy_storage.png"));
-    this.tile = tile;
+  public GuiEnergyStorageContainer(final ContainerEnergyStorage container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/energy_storage.png"));
+    this.tile = container.getTileEntity();
     this.xSize = 190;
     this.ySize = 83;
   }
 
   @Override
-  public final void initGui(){
-    super.initGui();
-    tile_energy = (CustomEnergyStorage)tile.getCapability(CapabilityEnergy.ENERGY,null); // FUTURE OPTIMIZE
+  public final void init(){
+    super.init();
+    tile_energy = tile.getEnergy(); // FUTURE OPTIMIZE
   }
 
   @Override

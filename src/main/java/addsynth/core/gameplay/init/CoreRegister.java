@@ -2,9 +2,11 @@ package addsynth.core.gameplay.init;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.core.config.Features;
+import addsynth.core.gameplay.Containers;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.Tiles;
 import net.minecraft.block.Block;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
@@ -64,4 +66,10 @@ public final class CoreRegister {
     game.register(Tiles.MUSIC_BOX.setRegistryName(new ResourceLocation(ADDSynthCore.MOD_ID,"music_box")));
   }
 
+  @SubscribeEvent
+  public static final void registerContainers(final RegistryEvent.Register<ContainerType<?>> event){
+    final IForgeRegistry<ContainerType<?>> game = event.getRegistry();
+    game.register(Containers.MUSIC_BOX);
+  }
+    
 }

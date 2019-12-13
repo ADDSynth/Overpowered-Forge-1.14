@@ -1,11 +1,19 @@
 package addsynth.overpoweredmod.tiles.machines.automatic;
 
+import javax.annotation.Nullable;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.containers.ContainerOreRefinery;
 import addsynth.overpoweredmod.game.recipes.OreRefineryRecipes;
 import addsynth.overpoweredmod.tiles.Tiles;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
 /**
  *  The Advanced Ore Refinery sort of acts like a Furnace, in that it essentially smelts things.
@@ -13,7 +21,7 @@ import net.minecraft.item.ItemStack;
  *  work on Ores. After an ore is done being worked on it will return its smelted output in the
  *  multiplied factor amount.
  */
-public final class TileAdvancedOreRefinery extends PassiveMachine {
+public final class TileAdvancedOreRefinery extends PassiveMachine implements INamedContainerProvider {
 
   private ItemStack result;
 
@@ -38,6 +46,17 @@ public final class TileAdvancedOreRefinery extends PassiveMachine {
   protected final void performWork(){
     output_inventory.insertItem(0, result.copy(), false);
     input_inventory.extractItem(0, 1, false);
+  }
+
+  @Override
+  @Nullable
+  public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
+    return new ContainerOreRefinery(id, player_inventory, this);
+  }
+
+  @Override
+  public ITextComponent getDisplayName(){
+    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }

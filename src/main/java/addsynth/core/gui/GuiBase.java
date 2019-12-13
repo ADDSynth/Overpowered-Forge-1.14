@@ -4,9 +4,11 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
 /**
  *  <b>Note:</b>
@@ -17,20 +19,18 @@ import net.minecraft.util.ResourceLocation;
  *  The {@link Screen#updateScreen()} function is called in
  *  {@link Minecraft#runTick()} function, which is called 20 times a second.
  */
-public class GuiBase extends ContainerScreen {
+public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
 
   protected static final int text_color = 4210752;
 
   private final ResourceLocation GUI_TEXTURE;
-  private final String title;
   
   /** This variable can't be used when drawing text, but CAN be used when drawing textures or buttons. */
   protected int guiRight;
 
-  public GuiBase(final Container container, final TileEntity tile, final ResourceLocation gui_texture_location){
-    super(container);
+  public GuiBase(final T container, final PlayerInventory player_inventory, final ITextComponent title, final ResourceLocation gui_texture_location){
+    super(container, player_inventory, title);
     GUI_TEXTURE = gui_texture_location;
-    this.title = tile.getBlockType().getLocalizedName();
   }
 
   // protected final void set_texture_location(final ResourceLocation texture_location){
@@ -38,8 +38,8 @@ public class GuiBase extends ContainerScreen {
   // }
 
   @Override
-  public void initGui(){
-    super.initGui();
+  public void init(){
+    super.init();
     guiRight = guiLeft + xSize; // the guiLeft variable isn't set up until we call super.initGui().
     // OPTIMIZE: add a center variable that is automatically calculated as this.xSize / 2;
   }
@@ -77,7 +77,7 @@ public class GuiBase extends ContainerScreen {
   }
 
   protected final void draw_title(){
-    draw_text_center(title, this.xSize / 2, 6);
+    draw_text_center(title.getString(), this.xSize / 2, 6);
   }
 
   protected final void draw_text_left(final String text, final int x, final int y){

@@ -1,11 +1,13 @@
 package addsynth.overpoweredmod.tiles.machines.portal;
 
 import java.util.ArrayList;
+import javax.annotation.Nullable;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.core.util.NetworkUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyReceiver;
 import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.containers.ContainerPortalControlPanel;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
@@ -15,13 +17,19 @@ import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.network.client_messages.SyncPortalDataMessage;
 import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public final class TilePortalControlPanel extends TileEnergyReceiver {
+public final class TilePortalControlPanel extends TileEnergyReceiver implements INamedContainerProvider {
 
   private static final int containers = 8;
   public boolean[] portal_items = new boolean[containers];
@@ -215,6 +223,17 @@ public final class TilePortalControlPanel extends TileEnergyReceiver {
       NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message);
       
     }
+  }
+
+  @Override
+  @Nullable
+  public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
+    return new ContainerPortalControlPanel(id, player_inventory, this);
+  }
+
+  @Override
+  public ITextComponent getDisplayName(){
+    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }

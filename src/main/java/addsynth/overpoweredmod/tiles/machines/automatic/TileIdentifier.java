@@ -1,20 +1,28 @@
 package addsynth.overpoweredmod.tiles.machines.automatic;
 
-import addsynth.core.game.Compatability;
+import javax.annotation.Nullable;
+import addsynth.core.game.Compatability; // DELETE
 import addsynth.core.inventory.SlotData;
 import addsynth.core.items.ItemUtility;
 import addsynth.core.util.JavaUtils;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.containers.ContainerIdentifier;
 import addsynth.overpoweredmod.game.ArmorEffects;
 import addsynth.overpoweredmod.game.core.Tools;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
 import addsynth.overpoweredmod.tiles.Tiles;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileIdentifier extends PassiveMachine {
+public final class TileIdentifier extends PassiveMachine implements INamedContainerProvider {
 
   public static final Item[] input_filter = JavaUtils.combine_arrays(
     Tools.unidentified_armor[0],
@@ -55,6 +63,17 @@ public final class TileIdentifier extends PassiveMachine {
       }
     }
     can_run = false;
+  }
+
+  @Override
+  @Nullable
+  public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
+    return new ContainerIdentifier(id, player_inventory, this);
+  }
+
+  @Override
+  public ITextComponent getDisplayName(){
+    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }

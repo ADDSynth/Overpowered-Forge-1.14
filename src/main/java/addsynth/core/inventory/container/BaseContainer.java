@@ -1,26 +1,36 @@
 package addsynth.core.inventory.container;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 
 // Note: For future reference, Containers ARE on the server-side. So it's okay to grab from and update TileEntities.
 
-public abstract class BaseContainer extends Container {
+public abstract class BaseContainer<T extends TileEntity> extends Container {
 
-  final protected Block block;
-  // protected final IItemHandler handler;
-  // FIX: Impossible to pass the TileEntity to containers now? Must find a way to add the Tile's inventory to containers.
+  protected final T tile;
 
-  public BaseContainer(final ContainerType type, final int id, final PlayerInventory player_inventor, final Block block){
+  public BaseContainer(final ContainerType type, final int id, final PlayerInventory player_inventory){
     super(type, id);
-    this.block = block;
-    // this.handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,null).orElse(null);
+    this.tile = null;
+  }
+
+  public BaseContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final T tile){
+    super(type, id);
+    this.tile = tile;
+  }
+
+  // New in 1.14, thanks again to this guy: https://github.com/Cadiboo/Example-Mod/blob/1.14.4/src/main/java/io/github/cadiboo/examplemod/container/ElectricFurnaceContainer.java
+  @SuppressWarnings("unchecked")
+  public BaseContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final PacketBuffer data){
+    super(type, id);
+    this.tile = (T)(player_inventory.player.world.getTileEntity(data.readBlockPos()));
   }
 
   protected final void make_player_inventory(PlayerInventory player_inventory){
@@ -56,7 +66,7 @@ public abstract class BaseContainer extends Container {
 
   @Override
   public boolean canInteractWith(final PlayerEntity player){
-    return isWithinUsableDistance(IWorldPosCallable.DUMMY, player, this.block);
+    return isWithinUsableDistance(IWorldPosCallable.DUMMY, player, tile.getBlockState().getBlock());
   }
 
   /*
@@ -83,5 +93,9 @@ public abstract class BaseContainer extends Container {
     return stack;
   }
     */
+
+  public final T getTileEntity(){
+    return tile;
+  }
 
 }

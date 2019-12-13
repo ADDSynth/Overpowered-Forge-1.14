@@ -1,16 +1,24 @@
 package addsynth.overpoweredmod.tiles.machines.fusion;
 
+import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.tiles.TileMachine;
+import addsynth.overpoweredmod.containers.ContainerFusionChamber;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
 import addsynth.overpoweredmod.tiles.Tiles;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileFusionChamber extends TileMachine {
+public final class TileFusionChamber extends TileMachine implements INamedContainerProvider {
 
   public static final Item[] input_filter = new Item[]{ModItems.fusion_core};
 
@@ -68,6 +76,17 @@ public final class TileFusionChamber extends TileMachine {
       }
     }
     on = false;
+  }
+
+  @Override
+  @Nullable
+  public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
+    return new ContainerFusionChamber(id, player_inventory, this);
+  }
+
+  @Override
+  public ITextComponent getDisplayName(){
+    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }
