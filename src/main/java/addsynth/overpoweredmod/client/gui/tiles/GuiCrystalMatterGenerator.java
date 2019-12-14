@@ -1,18 +1,12 @@
 package addsynth.overpoweredmod.client.gui.tiles;
 
-import java.io.IOException;
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
-import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerCrystalGenerator;
-import addsynth.overpoweredmod.containers.ContainerGenerator;
-import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileCrystalMatterReplicator;
-import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -52,7 +46,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<ContainerCrys
   @Override
   public final void init(){
     super.init();
-    buttons.add(new OnOffSwitch(0, this.guiLeft + 6, this.guiTop + 17, tile));
+    addButton(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile));
   }
 
   @Override
@@ -75,13 +69,6 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<ContainerCrys
     draw_status(tile.getStatus(), 36); // this is the only call to the other draw_status() function that specifies the y level. Likely to be removed once we rewrite the energy system, because all machines will have a On/Off switch and will need to draw at THIS y level.
     draw_text_center(work_percentage + "%", work_percentage_text_y);
     draw_time_left(tile.getTimeLeft(), 98);
-  }
-
-  @Override
-  protected final void actionPerformed(Button button) throws IOException {
-    if(button.id == 0){
-      NetworkHandler.INSTANCE.sendToServer(new SwitchMachineMessage(tile.getPos()));
-    }
   }
 
 }

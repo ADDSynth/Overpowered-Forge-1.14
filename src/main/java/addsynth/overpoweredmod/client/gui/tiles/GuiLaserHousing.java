@@ -1,22 +1,17 @@
 package addsynth.overpoweredmod.client.gui.tiles;
 
-import java.io.IOException;
-import org.lwjgl.glfw.GLFW;
 import addsynth.core.gui.objects.CheckBox;
-import addsynth.core.inventory.container.BaseContainer;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
-import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.containers.ContainerGenerator;
 import addsynth.overpoweredmod.containers.ContainerLaserHousing;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.network.laser.SetLaserDistanceMessage;
 import addsynth.overpoweredmod.network.laser.ToggleLaserShutoffMessage;
 import addsynth.overpoweredmod.tiles.machines.laser.TileLaserHousing;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -31,14 +26,12 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
   private static final int text_box_height = 14;
   private static final int text_box_x = 60; // 6 + fontRendererObj.getStringWidth("Distance") + space
   private static final int text_box_y = line_1 + 8 + space;
-  private TextFieldWidget distance_text_field;
   private static final int line_2 = text_box_y + 3;
 
   private static final int line_3 = text_box_y + text_box_height + space;
   private static final int line_4 = line_3 + 8 + space;
   private static final int line_5 = line_4 + 8 + space;
 
-  private CheckBox checkbox;
   private static final int check_box_x = 70;
   private static final int check_box_y = 19;
 
@@ -59,79 +52,90 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
     this.ySize = 104;
   }
 
+  private static final class ToggleAutoShutoff extends CheckBox {
+
+    private final TileLaserHousing tile;
+
+    public ToggleAutoShutoff(int x, int y, TileLaserHousing tile){
+      super(x, y);
+      this.tile = tile;
+    }
+
+    @Override
+    protected boolean get_toggle_state(){
+      return tile.getAutoShutoff();
+    }
+
+    @Override
+    public void onPress(){
+      NetworkHandler.INSTANCE.sendToServer(new ToggleLaserShutoffMessage(tile.getPos()));
+    }
+  }
+
+  private static final class LaserDistanceTextField extends TextFieldWidget {
+
+    private final TileLaserHousing tile;
+
+    public LaserDistanceTextField(FontRenderer fontIn, int x, int y, int width, int height, TileLaserHousing tile){
+      super(fontIn, x, y, width, height, Integer.toString(tile.getLaserDistance()));
+      this.tile = tile;
+      setMaxStringLength(4); // FEATURE: add a numbers-only textbox to ADDSynthCore.
+    }
+    
+    @Override
+    public boolean charTyped(char p_charTyped_1_, int p_charTyped_2_){
+      if(super.charTyped(p_charTyped_1_, p_charTyped_2_)){
+        int captured_distance = get_laser_distance();
+        if(captured_distance >= 0){
+          if(captured_distance != tile.getLaserDistance()){
+            if(captured_distance > 1000){
+              captured_distance = 1000;
+            }
+            NetworkHandler.INSTANCE.sendToServer(new SetLaserDistanceMessage(tile.getPos(), captured_distance));
+          }
+        }
+        return true;
+      }
+      return false;
+    }
+
+    private final int get_laser_distance(){
+      try{
+        return Integer.parseUnsignedInt(getText());
+      }
+      catch(NumberFormatException e){
+        return -1;
+      }
+    }
+  
+  }
+
   @Override
   public final void init(){
     super.init();
-    buttons.add(new OnOffSwitch(0, this.guiLeft + 6, this.guiTop + 17, tile));
-    checkbox = new CheckBox(1, this.guiLeft + check_box_x, this.guiTop + check_box_y, tile.getAutoShutoff());
-    buttons.add(checkbox);
+    addButton(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile));
+    addButton(new ToggleAutoShutoff(this.guiLeft + check_box_x, this.guiTop + check_box_y, tile));
     
-    distance_text_field = new TextFieldWidget(0,this.font,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height);
-    distance_text_field.setMaxStringLength(4); // FEATURE: add a numbers-only textbox to ADDSynthCore.
-    distance_text_field.setText(Integer.toString(tile.getLaserDistance()));
+    this.children.add(new LaserDistanceTextField(this.font,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height, tile));
   }
+
+  // NOTE: The only thing that doesn't sync with the client is when 2 people have the gui open
+  //   and one of them changes the Laser Distance. The energy requirements sucessfully updates,
+  //   but not the Laser Distance text field of the other player. Here is my solution, but it looked
+  //   too weird and I didn't feel it was absolutely necessary to keep things THAT much in-sync.
+  // final int captured_distance = get_laser_distance();
+  // if(captured_distance >= 0){
+  //   if(captured_distance != tile.getLaserDistance()){
+  //     distance_text_field.setText(Integer.toString(tile.getLaserDistance()));
+  //   }
+  // }
 
   @Override
-  protected final void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-    super.mouseClicked(mouseX, mouseY, mouseButton);
-    distance_text_field.mouseClicked(mouseX, mouseY, mouseButton);
-  }
-
-  /**
-   * Called 20 times a second.
-   */
-  @Override
-  public final void updateScreen(){
-    distance_text_field.updateCursorCounter();
-    // NOTE: The only thing that doesn't sync with the client is when 2 people have the gui open
-    //   and one of them changes the Laser Distance. The energy requirements sucessfully updates,
-    //   but not the Laser Distance text field of the other player. Here is my solution, but it looked
-    //   too weird and I didn't feel it was absolutely necessary to keep things THAT much in-sync.
-    // final int captured_distance = get_laser_distance();
-    // if(captured_distance >= 0){
-    //   if(captured_distance != tile.getLaserDistance()){
-    //     distance_text_field.setText(Integer.toString(tile.getLaserDistance()));
-    //   }
-    // }
-    checkbox.checked = tile.getAutoShutoff();
-  }
-
-  private final int get_laser_distance(){
-    try{
-      return Integer.parseUnsignedInt(distance_text_field.getText());
-    }
-    catch(NumberFormatException e){
-      return -1;
-    }
-  }
-
-  @Override
-  protected void keyTyped(char typedChar, int keyCode) throws IOException {
-    if(keyCode == GLFW.GLFW_KEY_ESCAPE || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode)){
-      this.mc.player.closeScreen();
-    }
-    else{
-      distance_text_field.textboxKeyTyped(typedChar, keyCode);
-      int captured_distance = get_laser_distance();
-      if(captured_distance >= 0){
-        if(captured_distance != tile.getLaserDistance()){
-          if(captured_distance > 1000){
-            captured_distance = 1000;
-          }
-          NetworkHandler.INSTANCE.sendToServer(new SetLaserDistanceMessage(tile.getPos(), captured_distance));
-        }
-      }
-    }
-  }
-
-  @Override
-  protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+  protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     draw_background_texture();
-    
     // final float energy_float = tile.getEnergyPercentage();
     // energy_percentage = Math.round(energy_float*100);
     // energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
-    distance_text_field.renderButton(mouseX, mouseY, partialTicks);
   }
 
   @Override
@@ -162,14 +166,6 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
       draw_text_left("Required Energy:", 6, line_3);
       draw_text_right(required_energy, 6 + word_2_width, line_3);
       draw_text_left(word_2, 6, line_4);
-    }
-  }
-
-  @Override
-  protected final void actionPerformed(GuiButton button) throws IOException {
-    switch(button.id){
-    case 0: NetworkHandler.INSTANCE.sendToServer(new SwitchMachineMessage(tile.getPos())); break;
-    case 1: NetworkHandler.INSTANCE.sendToServer(new ToggleLaserShutoffMessage(tile.getPos())); break;
     }
   }
 

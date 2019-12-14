@@ -49,7 +49,7 @@ public final class Generator extends MachineBlockTileEntity {
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }
     }
-    return true;
+    return true; // TODO: in all versions, for all blocks, only return true if we successfully activated the block, otherwise return super.onBlockActivated, which returns false.
   }
 
 }

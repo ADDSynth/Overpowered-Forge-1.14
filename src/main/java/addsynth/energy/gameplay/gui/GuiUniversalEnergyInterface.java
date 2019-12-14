@@ -1,29 +1,21 @@
 package addsynth.energy.gameplay.gui;
 
-import java.io.IOException;
-import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
-import addsynth.core.inventory.container.BaseContainer;
 import addsynth.energy.gameplay.tiles.TileUniversalEnergyTransfer;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.network.server_messages.CycleTransferModeMessage;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.containers.ContainerGenerator;
 import addsynth.overpoweredmod.containers.ContainerUniversalInterface;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUniversalInterface> {
 
-  private final TileUniversalEnergyTransfer tile;
-
-  private AdjustableButton mode_button;
   private static final int button_width = 90;
-  
+  private final TileUniversalEnergyTransfer tile;
   private final ProgressBar energy_bar = new ProgressBar(156,18,12,34,206, 28);
   
   private static final int line_1 = 21;
@@ -35,20 +27,33 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUn
     this.ySize = 60;
   }
 
-  @Override
-  public void init(){
-    super.init();
-    final int button_x = guiLeft + (this.xSize / 2) - (button_width / 2) + 4;
-    mode_button = new AdjustableButton(button_x, guiTop + 17, button_width, 16, tile.get_transfer_mode().text);
-    buttons.add(mode_button);
+  private static final class CycleTransferModeButton extends AbstractButton {
+
+    private final TileUniversalEnergyTransfer tile;
+
+    public CycleTransferModeButton(int xIn, int yIn, TileUniversalEnergyTransfer tile){
+      super(xIn, yIn, button_width, 16, tile.get_transfer_mode().text);
+      this.tile = tile;
+    }
+
+    @Override
+    public final void renderButton(int p_renderButton_1_, int p_renderButton_2_, float p_renderButton_3_){
+      setMessage(tile.get_transfer_mode().text);
+      super.renderButton(p_renderButton_1_, p_renderButton_2_, p_renderButton_3_);
+    }
+
+    @Override
+    public void onPress(){
+      NetworkHandler.INSTANCE.sendToServer(new CycleTransferModeMessage(tile.getPos()));
+    }
+
   }
 
   @Override
-  public void updateScreen(){
-    super.updateScreen();
-    if(tile != null && mode_button != null){
-      mode_button.setMessage(tile.get_transfer_mode().text);
-    }
+  public final void init(){
+    super.init();
+    final int button_x = guiLeft + (this.xSize / 2) - (button_width / 2) + 4;
+    addButton(new CycleTransferModeButton(button_x, guiTop + 17, tile));
   }
 
   @Override
@@ -63,13 +68,6 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUn
     draw_text_left("Mode:", 6, line_1);
     draw_text_left("Energy:", 6, line_2);
     draw_text_right(tile.getEnergy().getEnergy() + " / "+tile.getEnergy().getCapacity(), 130, line_2);
-  }
-
-  @Override
-  protected void actionPerformed(AbstractButton button) throws IOException{
-    switch(button.id){
-    case 0: NetworkHandler.INSTANCE.sendToServer(new CycleTransferModeMessage(tile.getPos())); break;
-    }
   }
 
 }

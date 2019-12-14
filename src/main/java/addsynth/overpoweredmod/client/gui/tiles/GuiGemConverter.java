@@ -1,16 +1,14 @@
 package addsynth.overpoweredmod.client.gui.tiles;
 
-import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.containers.ContainerGemConverter;
-import addsynth.overpoweredmod.containers.ContainerGenerator;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.network.server_messages.CycleGemConverterMessage;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileGemConverter;
+import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -56,11 +54,29 @@ public final class GuiGemConverter extends GuiEnergyBase<ContainerGemConverter> 
     this.ySize = 194;
   }
 
+  private static final class CycleGemButton extends AbstractButton {
+
+    private final TileGemConverter tile;
+    private final boolean direction;
+
+    public CycleGemButton(int xIn, int yIn, boolean direction, TileGemConverter tile){
+      super(xIn, yIn, cycle_button_width, cycle_button_height, direction ? ">" : "<"); // true goes right
+      this.tile = tile;
+      this.direction = direction;
+    }
+
+    @Override
+    public void onPress(){
+      NetworkHandler.INSTANCE.sendToServer(new CycleGemConverterMessage(tile.getPos(),direction));
+    }
+
+  }
+
   @Override
   public final void init(){
     super.init();
-    buttons.add(new AdjustableButton(0,this.guiLeft + left_button_x, this.guiTop + cycle_button_y,cycle_button_width,cycle_button_height,"<"));
-    buttons.add(new AdjustableButton(1,this.guiLeft + right_button_x, this.guiTop + cycle_button_y,cycle_button_width,cycle_button_height,">"));
+    addButton(new CycleGemButton(this.guiLeft + left_button_x, this.guiTop + cycle_button_y,false, tile));
+    addButton(new CycleGemButton(this.guiLeft + right_button_x, this.guiTop + cycle_button_y,true, tile));
   }
 
   @Override
@@ -74,7 +90,7 @@ public final class GuiGemConverter extends GuiEnergyBase<ContainerGemConverter> 
     work_percentage = (int)Math.floor(work_float*100);
     work_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,work_float,ProgressBar.Round.FLOOR);
     
-    this.itemRender.renderItemIntoGUI(tile.get_gem_selected(), this.guiLeft + left_button_x + 12, this.guiTop + cycle_button_y);
+    this.itemRenderer.renderItemIntoGUI(tile.get_gem_selected(), this.guiLeft + left_button_x + 12, this.guiTop + cycle_button_y);
   }
 
   @Override
@@ -87,12 +103,4 @@ public final class GuiGemConverter extends GuiEnergyBase<ContainerGemConverter> 
     draw_time_left(tile.getTotalTimeLeft(), time_left_y);
   }
 
-  @Override
-  protected final void actionPerformed(final GuiButton button){
-    switch(button.id){
-    case 0: NetworkHandler.INSTANCE.sendToServer(new CycleGemConverterMessage(tile.getPos(),false)); break;
-    case 1: NetworkHandler.INSTANCE.sendToServer(new CycleGemConverterMessage(tile.getPos(),true)); break;
-    }
-  }
-    
 }

@@ -1,42 +1,36 @@
 package addsynth.core.gui.objects;
 
 import addsynth.core.ADDSynthCore;
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.button.AbstractButton;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-public final class CheckBox extends AbstractButton {
+public abstract class CheckBox extends AbstractButton {
 
-  public boolean checked;
   private static final ResourceLocation texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/gui_textures.png");
   private static final int texture_x = 0;
   private static final int texture_y = 32;
   private static final int texture_width = 24;
   private static final int texture_height = 24;
 
-  public CheckBox(final int x, final int y, final boolean checked){
+  public CheckBox(final int x, final int y){
     super(x, y, 12, 12, null);
-    this.checked = checked;
   }
 
-  public final void toggle(){
-    checked = !checked;
-  }
+  protected abstract boolean get_toggle_state();
 
   @Override
-  public final void drawButton(final Minecraft mc, final int mouseX, final int mouseY, final float partial_ticks){
-    if(visible){
-      mc.getTextureManager().bindTexture(texture);
-      GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+  public final void renderButton(final int mouseX, final int mouseY, final float partial_ticks){
+    final boolean checked = get_toggle_state();
+    Minecraft.getInstance().getTextureManager().bindTexture(texture);
+    GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-      GlStateManager.enableBlend();
-      GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-      GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
+    GlStateManager.enableBlend();
+    GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+    GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 
-      drawScaledCustomSizeModalRect(x, y, checked ? texture_x : texture_x + 24, texture_y,
-        texture_width, texture_height, 12, 12, 256, 256);
-    }
+    blit(x, y, checked ? texture_x : texture_x + 24, texture_y, texture_width, texture_height, 12, 12, 256, 256);
   }
 
 }

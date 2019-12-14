@@ -1,14 +1,13 @@
 package addsynth.core.gui.objects.sliders;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.widget.Widget;
 
 /** 
  *  Using sliders, there will be a button click sound. To solve this, override the onMouseClicked() method,
  *  loop through all the objects in buttonList, get the GuiButton objects, then check if they are an instance
  *  of this Slider class. otherwise call this.actionPerformed() method.
  */
-public abstract class Slider extends GuiButton {
+public abstract class Slider extends Widget {
 
   private final int min_value;
   private final int max_value;
@@ -19,8 +18,8 @@ public abstract class Slider extends GuiButton {
   // private static final int draw_x;
   // private static final int draw_y;
 
-  public Slider(int id, int x, int y, int width, int height, int min_value, int max_value, int default_value) {
-    super(id, x, y, width, height, null);
+  public Slider(int x, int y, int width, int height, int min_value, int max_value, int default_value){
+    super(x, y, width, height, null);
     this.min_value = min_value;
     this.max_value = max_value;
     this.default_value = default_value;
@@ -29,8 +28,7 @@ public abstract class Slider extends GuiButton {
   }
 
   @Override
-  protected void mouseDragged(Minecraft mc, int mouseX, int mouseY) {
-    
+  protected void onDrag(double p_onDrag_1_, double p_onDrag_3_, double p_onDrag_5_, double p_onDrag_7_){
   }
 
   public final int get_value(){

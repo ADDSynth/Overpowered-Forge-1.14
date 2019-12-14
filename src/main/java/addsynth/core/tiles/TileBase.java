@@ -1,6 +1,6 @@
 package addsynth.core.tiles;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
@@ -53,7 +53,7 @@ public abstract class TileBase extends TileEntity {
   public void update_data(){
     if(world != null){
       markDirty();
-      IBlockState blockstate = world.getBlockState(pos);
+      final BlockState blockstate = world.getBlockState(pos);
       world.notifyBlockUpdate(pos, blockstate, blockstate, 3); // TEST, is this necessary?
     }
   }

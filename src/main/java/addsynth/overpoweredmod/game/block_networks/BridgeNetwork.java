@@ -12,7 +12,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   public final CustomEnergyStorage energy = new CustomEnergyStorage(0,1000);
 
   public BridgeNetwork(final World world, final TileSuspensionBridge first_tile){
-    super(world, first_tile.getBlockType(), first_tile);
+    super(world, first_tile.getBlockState().getBlock(), first_tile);
     energy.set_receive_only();
   }
 

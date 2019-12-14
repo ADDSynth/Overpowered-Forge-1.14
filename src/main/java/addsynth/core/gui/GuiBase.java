@@ -6,7 +6,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -45,9 +44,9 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
   }
 
   @Override
-  public final void drawScreen(final int mouseX, final int mouseY, final float partialTicks){
-    this.drawDefaultBackground();
-    super.drawScreen(mouseX, mouseY, partialTicks);
+  public final void render(final int mouseX, final int mouseY, final float partialTicks){
+    this.renderBackground();
+    super.render(mouseX, mouseY, partialTicks);
     this.renderHoveredToolTip(mouseX, mouseY);
   }
 
@@ -60,9 +59,9 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
   }
 
   protected void draw_background_texture(){
-    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-    this.mc.getTextureManager().bindTexture(GUI_TEXTURE);
-    this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
+    GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+    this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
+    this.blit(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
   }
 
   /**
@@ -71,9 +70,9 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
    * @param texture_height
    */
   protected void draw_custom_background_texture(final int texture_width, int texture_height){
-    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-    this.mc.getTextureManager().bindTexture(GUI_TEXTURE);
-    drawModalRectWithCustomSizedTexture(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize, texture_width, texture_height);
+    GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+    this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
+    blit(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize, texture_width, texture_height);
   }
 
   protected final void draw_title(){
