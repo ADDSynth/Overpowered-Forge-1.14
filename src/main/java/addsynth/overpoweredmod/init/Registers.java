@@ -10,7 +10,6 @@ import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.containers.Containers;
 import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.game.core.*;
-import addsynth.overpoweredmod.items.BlackHoleItem;
 import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
@@ -189,7 +188,7 @@ public final class Registers {
     }
     
     if(Features.iron_frame_block.get()){ game.register(OverpoweredMod.registry.getItemBlock(Init.iron_frame_block)); }
-    if(Features.black_hole.get()){       game.register(OverpoweredMod.registry.getItemBlock(Init.black_hole, BlackHoleItem.class)); }
+    if(Features.black_hole.get()){       game.register(OverpoweredMod.registry.getItemBlock(Init.black_hole)); }
     
     if(Features.energy_tools.get()){
       for(Item tool : Tools.energy_tools.tools){ game.register(tool); }

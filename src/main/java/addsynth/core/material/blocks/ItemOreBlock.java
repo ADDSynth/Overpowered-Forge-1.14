@@ -12,7 +12,7 @@ public final class ItemOreBlock extends OreBlock {
   private static final int number_of_drops = 1;
 
 	public ItemOreBlock(final String name, final Item itemdrop, final MiningStrength strength){
-      super(name, strength);
+      super(name, itemdrop, strength);
       this.itemdrop = itemdrop;
 	}
 

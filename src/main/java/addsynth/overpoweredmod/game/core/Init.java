@@ -17,8 +17,10 @@ public final class Init {
   public static final Item                    energy_crystal_shards    = new OverpoweredItem("energy_crystal_shards");
   public static final Item                    energy_crystal           = new OverpoweredItem("energy_crystal");
   public static final Block                   light_block              = new LightBlock("light_block");
+
   public static final Item                    void_crystal             = new VoidCrystal("void_crystal");
   public static final Block                   null_block               = new NullBlock("null_block");
+
   public static final Block                   iron_frame_block         = new IronFrameBlock("iron_frame_block");
   public static final BlackHole               black_hole               = new BlackHole("black_hole");
 

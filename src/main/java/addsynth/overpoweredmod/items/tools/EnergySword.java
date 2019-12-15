@@ -15,7 +15,7 @@ import net.minecraft.item.SwordItem;
 public final class EnergySword extends SwordItem {
 
   public EnergySword(final String name){
-    super(OverpoweredTiers.ENERGY_SWORD, Constants.sword_damage, Constants.sword_damage, new Item.Properties());
+    super(OverpoweredTiers.ENERGY_SWORD, Constants.sword_damage, Constants.sword_damage, new Item.Properties().group(OverpoweredMod.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

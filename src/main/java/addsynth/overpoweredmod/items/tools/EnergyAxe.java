@@ -9,7 +9,7 @@ import net.minecraft.item.Rarity;
 public final class EnergyAxe extends AxeItem {
 
   public EnergyAxe(final String name){
-    super(OverpoweredTiers.ENERGY, 14.0f, -3.0f, new Item.Properties());
+    super(OverpoweredTiers.ENERGY, 14.0f, -3.0f, new Item.Properties().group(OverpoweredMod.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

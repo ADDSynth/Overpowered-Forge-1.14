@@ -4,6 +4,7 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
@@ -21,7 +22,7 @@ public final class TrophyBlock extends Block {
   public TrophyBlock(String name){
     super(Block.Properties.create(Material.IRON).sound(SoundType.METAL).hardnessAndResistance(3.0f, 6.0f).harvestTool(ToolType.PICKAXE).harvestLevel(2));
     this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.creative_tab));
   }
 
   @Override

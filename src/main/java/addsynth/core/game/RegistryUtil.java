@@ -211,10 +211,10 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    *  <p>Hmm. I <i>could</i> register ItemBlocks as soon as modders register a block (by passing a
    *  boolean value to this function), but I don't for two reasons. We make modders register
    *  ItemBlocks themselves either through {@link #getItemBlock} or by explicitly registering
-   *  ItemBlocks by calling {@link #register_ItemBlock(Block)}, both return a reference to the
-   *  ItemBlock in case they need it. The second reason is so that modders can register ItemBlocks
-   *  using a custom ItemBlock class which they can use to register ItemBlocks by calling
-   *  {@link #getItemBlock(Block, Class, Object...)}.
+   *  ItemBlocks by calling {@link #register_ItemBlock(Block, Item.Properties)},
+   *  both return a reference to the ItemBlock in case they need it. The second reason is so that
+   *  modders can register ItemBlocks using a custom ItemBlock class which they can use to register
+   *  ItemBlocks by calling {@link #getItemBlock(Block, Class, Item.Properties)}.
    * @param block The block you want to register.
    * @param name The block id name you want to register this block as.
    */
@@ -231,6 +231,11 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
       return;
     }
     ADDSynthCore.log.error("Tried to register "+name+" Block after one is already registered!");
+  }
+
+  public final void register_block(@Nonnull final Block block, final String name, final Item.Properties properties){
+    register_block(block, name);
+    register_ItemBlock(block, properties);
   }
 
   public final void register_item(final Item item, final String name){
@@ -261,11 +266,11 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    *
    *  @param block The block you want to register an ItemBlock for. Cannot be null!
    */
-  public final BlockItem register_ItemBlock(final Block block){
+  public final BlockItem register_ItemBlock(final Block block, final Item.Properties properties){
     if(block == null){
       throw new NullPointerException("Tried to register an ItemBlock for a null block reference! Register your block first!");
     }
-    return register_ItemBlock(new BlockItem(block), block);
+    return register_ItemBlock(new BlockItem(block, properties), block);
   }
 
   /** <p>There are now 2 ways to register ItemBlocks. The first is by calling {@link #getItemBlock(Block)}, which
@@ -282,6 +287,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    *
    * @param itemblock
    */
+  @Deprecated
   public final void register_ItemBlock(@Nonnull final BlockItem itemblock){
     register_ItemBlock(itemblock, itemblock.getBlock());
   }
@@ -292,6 +298,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    * @return Returns the passed in ItemBlock if we successfully registered it, returns null otherwise. We do this because this
    *   function is primarily called by the {@link #getItemBlock(Block, Class, Object...)} function to create new ItemBlocks.
    */
+  @Deprecated
   private final BlockItem register_ItemBlock(@Nonnull final BlockItem itemblock, @Nonnull final Block block){
     if(block.getRegistryName() == null){
       ADDSynthCore.log.error(new RuntimeException("Unable to create new ItemBlock because the input block does not have its registry name set. Please call the setRegistryName() function!"));
@@ -325,6 +332,8 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     return getItemBlock(block, BlockItem.class);
   }
 
+  // OPTIMIZE remove the deprecated function below, and redo all this JavaDoc.
+
   /**
    * This is an advanced form of {@link Item#getItemFromBlock(Block)} that returns the ItemBlock
    * if it exists, and returns a new ItemBlock if it doesn't.
@@ -343,7 +352,8 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    *          the first argument, so structure your ItemBlock constructors accordingly.
    * @return a new ItemBlock, or the existing one if one already exists.
    */
-  public final BlockItem getItemBlock(final Block block, @Nonnull final Class<? extends BlockItem> itemBlock_class, final Object ... args){
+  @Deprecated
+  private final BlockItem getItemBlock(final Block block, @Nonnull final Class<? extends BlockItem> itemBlock_class /*, final Object ... args*/){
     BlockItem item_block = null;
     try{
       // safety check
@@ -354,11 +364,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
       if(item_block == null){
         item_block = getModdedItemBlock(block, items); // check 2 (created but not registered?)
         if(item_block == null){
-          // creates a new ItemBlock instance, which also sets unlocalized name and creative tab.
-          item_block = InvokeCustomItemBlock(itemBlock_class, block, args);
-          if(item_block != null){
-            register_ItemBlock(item_block, block);
-          }
+          ADDSynthCore.log.fatal("No ItemBlock exists for "+block.toString()+". ItemBlocks should've been registered when you called RegistryUtil.register_block() or register_ItemBlock() with your preferred Item.Properties!");
         }
       }
     }
@@ -368,6 +374,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     return item_block;
   }
 
+/* MAYBE: restore functionality of calling custom ItemBlocks with a custom Constructor, ONLY if absolutely necessary.
   /** <p>Normally, I would use the new {@link JavaUtils#InvokeConstructor(Class, Object...)} function for
    *  a job such as this, but the {@link Class#getConstructor(Class...)} function explicitdly searches
    *  for a constructor that matches the types it is given. So let's say the input block is of type
@@ -384,7 +391,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    * @param clazz
    * @param block
    * @param args
-   */
+   *
   private final static BlockItem InvokeCustomItemBlock(final Class<? extends BlockItem> clazz, final Block block, final Object ... args){
     // return JavaUtils.InvokeConstructor(clazz, JavaUtils.combine_arrays(new Object[] {(Block)block}, args));
     BlockItem item = null;
@@ -398,6 +405,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     }
     return item;
   }
+*/
 
   // FEATURE: some blocks are registered just to be present in the game, not for the player to use,
   //  therefore they wouldn't have ItemBlocks. So to effectively use this I'd need to seperate the

@@ -12,6 +12,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
@@ -48,7 +49,7 @@ public final class LaserCannon extends BlockTile {
 
   public LaserCannon(final String name, final int color){
     super(Block.Properties.create(Material.IRON, MaterialColor.STONE).sound(SoundType.METAL).hardnessAndResistance(3.5f, 6.0f));
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.machines_creative_tab));
     this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, Direction.NORTH));
     this.color = color;
   }

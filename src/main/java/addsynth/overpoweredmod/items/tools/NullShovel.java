@@ -10,7 +10,7 @@ import net.minecraft.item.ShovelItem;
 public class NullShovel extends ShovelItem {
 
   public NullShovel(final String name){
-    super(OverpoweredTiers.VOID, Constants.shovel_damage, Constants.shovel_speed, new Item.Properties());
+    super(OverpoweredTiers.VOID, Constants.shovel_damage, Constants.shovel_speed, new Item.Properties().group(OverpoweredMod.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

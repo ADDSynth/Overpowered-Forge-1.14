@@ -10,7 +10,8 @@ import net.minecraft.item.Rarity;
 public class EnergyPickaxe extends PickaxeItem {
 
   public EnergyPickaxe(final String name){
-    super(OverpoweredTiers.ENERGY_PICKAXE, Constants.pickaxe_damage, Constants.pickaxe_speed, new Item.Properties());
+    super(OverpoweredTiers.ENERGY_PICKAXE, Constants.pickaxe_damage, Constants.pickaxe_speed,
+      new Item.Properties().group(OverpoweredMod.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

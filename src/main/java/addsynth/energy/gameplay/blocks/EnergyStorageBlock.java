@@ -11,6 +11,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
@@ -27,7 +28,7 @@ public final class EnergyStorageBlock extends MachineBlockTileEntity {
 
   public EnergyStorageBlock(final String name){
     super(SoundType.GLASS);
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.machines_creative_tab));
   }
 
   @Override

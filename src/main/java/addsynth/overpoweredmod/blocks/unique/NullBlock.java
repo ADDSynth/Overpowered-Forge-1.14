@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.BlockRenderLayer;
@@ -12,7 +13,7 @@ public final class NullBlock extends Block {
 
   public NullBlock(String name){
     super(Block.Properties.create(Material.AIR).variableOpacity().doesNotBlockMovement());
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.creative_tab));
   }
 
     @Override

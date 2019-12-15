@@ -6,6 +6,7 @@ import addsynth.energy.blocks.MachineBlockTileEntity;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.tiles.machines.fusion.TileFusionEnergyConverter;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
@@ -16,7 +17,7 @@ public final class FusionEnergyConverter extends MachineBlockTileEntity {
 
   public FusionEnergyConverter(final String name){
     super();
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.machines_creative_tab));
   }
 
   @Override

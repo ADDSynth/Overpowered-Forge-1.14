@@ -10,7 +10,7 @@ import net.minecraft.item.Rarity;
 public class NullPickaxe extends PickaxeItem {
 
   public NullPickaxe(final String name){
-    super(OverpoweredTiers.VOID, Constants.pickaxe_damage, Constants.pickaxe_speed, new Item.Properties());
+    super(OverpoweredTiers.VOID, Constants.pickaxe_damage, Constants.pickaxe_speed, new Item.Properties().group(OverpoweredMod.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

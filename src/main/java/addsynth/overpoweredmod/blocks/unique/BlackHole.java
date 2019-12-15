@@ -6,11 +6,14 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Config;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
@@ -26,11 +29,11 @@ public final class BlackHole extends Block {
   public BlackHole(final String name){
     super(Block.Properties.create(Material.PORTAL, MaterialColor.BLACK).doesNotBlockMovement());
     // setResistance(100.0f);
-    OverpoweredMod.registry.register_block(this, name); // we register a custom BlackHoleItem in Init class.
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.creative_tab).rarity(Rarity.EPIC));
   }
 
   @Override
-  public final void onBlockAdded(final World world, final BlockPos pos, final IBlockState state){
+  public final void onBlockAdded(final World world, final BlockPos pos, final BlockState state){
     if(world.isRemote == false){
       erase_the_world(world, pos);
     }

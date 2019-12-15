@@ -9,7 +9,7 @@ import net.minecraft.item.Rarity;
 public class EnergyHoe extends HoeItem {
 
   public EnergyHoe(final String name){
-    super(OverpoweredTiers.ENERGY, 0.0f, new Item.Properties());
+    super(OverpoweredTiers.ENERGY, 0.0f, new Item.Properties().group(OverpoweredMod.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

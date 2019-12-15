@@ -10,7 +10,7 @@ import net.minecraft.item.ShovelItem;
 public final class EnergyShovel extends ShovelItem {
 
   public EnergyShovel(final String name){
-    super(OverpoweredTiers.ENERGY, Constants.axe_damage, Constants.axe_speed, new Item.Properties());
+    super(OverpoweredTiers.ENERGY, Constants.axe_damage, Constants.axe_speed, new Item.Properties().group(OverpoweredMod.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

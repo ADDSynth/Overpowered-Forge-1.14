@@ -10,8 +10,6 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 
-// Note: For future reference, Containers ARE on the server-side. So it's okay to grab from and update TileEntities.
-
 public abstract class BaseContainer<T extends TileEntity> extends Container {
 
   protected final T tile;

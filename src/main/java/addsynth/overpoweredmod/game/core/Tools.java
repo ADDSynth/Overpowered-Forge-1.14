@@ -6,6 +6,7 @@ import addsynth.core.items.ArmorMaterial;
 import addsynth.core.items.EquipmentType;
 import addsynth.core.items.Toolset;
 import addsynth.overpoweredmod.Debug;
+import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.items.tools.*;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
 import net.minecraft.item.Item;
@@ -27,7 +28,8 @@ public final class Tools {
     Init.energy_crystal
   );
     
-  public static final ScytheTool energy_scythe = new ScytheTool("energy_scythe", OverpoweredTiers.ENERGY){
+  public static final ScytheTool energy_scythe =
+  new ScytheTool("energy_scythe", OverpoweredTiers.ENERGY, OverpoweredMod.registry, new Item.Properties().group(OverpoweredMod.tools_creative_tab)){
     @Override
     public boolean isEnchantable(final ItemStack stack){
       return false;

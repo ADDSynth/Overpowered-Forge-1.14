@@ -2,13 +2,16 @@ package addsynth.core;
 
 import java.io.File;
 import addsynth.core.config.*;
+import addsynth.core.game.Game;
+import addsynth.core.game.Icon;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.gameplay.CompatabilityManager;
 import addsynth.core.gameplay.Containers;
+import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.NetworkHandler;
-import addsynth.core.gameplay.init.Setup;
 import addsynth.core.gameplay.music_box.gui.GuiMusicBox;
 import addsynth.core.worldgen.OreGenerator;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -31,7 +34,7 @@ public final class ADDSynthCore {
 
   private static boolean config_loaded;
   public static final Logger log = LogManager.getLogger(NAME);
-  private static ItemGroup creative_tab;
+  public static ItemGroup creative_tab;
   public static final RegistryUtil registry = new RegistryUtil(MOD_ID);
 
   public ADDSynthCore(){
@@ -39,11 +42,6 @@ public final class ADDSynthCore {
     context.getModEventBus().addListener(ADDSynthCore::main_setup);
     context.getModEventBus().addListener(ADDSynthCore::client_setup);
     init_config();
-    creative_tab = create_creative_tab();
-  }
-
-  public static final ItemGroup creative_tab(){ // Security!
-    return creative_tab;
   }
 
   public static final void init_config(){
@@ -59,14 +57,8 @@ public final class ADDSynthCore {
 
       FMLJavaModLoadingContext.get().getModEventBus().addListener(ADDSynthCore::mod_config_event);
 
-      Setup.config_loaded = true;
-  
       ADDSynthCore.log.info("Done loading configuration files.");
     }
-  }
-
-  private static final ItemGroup create_creative_tab(){
-    return null;
   }
 
   private static final void main_setup(final FMLCommonSetupEvent event){
@@ -85,7 +77,19 @@ public final class ADDSynthCore {
   }
 
   private static final void client_setup(final FMLClientSetupEvent event){
+    create_creative_tab();
     ScreenManager.registerFactory(Containers.MUSIC_BOX, GuiMusicBox::new);
+  }
+
+  // Phew! Thank god the FMLClientSetupEvent runs after Blocks and Items are registered!
+  private static final void create_creative_tab(){
+    final Icon[] icons = {
+      new Icon(registry.getItemBlock(Core.caution_block), Features.caution_block.get()),
+      new Icon(registry.getItemBlock(Core.music_box), Features.music_box.get()),
+      new Icon(Core.stone_scythe, Features.scythes.get()),
+      new Icon(registry.getItemBlock(Blocks.GRASS))
+    };
+    creative_tab = Game.NewCreativeTab("addsynthcore", icons);
   }
 
 }

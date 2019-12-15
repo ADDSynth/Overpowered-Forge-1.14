@@ -10,7 +10,7 @@ import net.minecraft.item.SwordItem;
 public class NullSword extends SwordItem {
 
   public NullSword(final String name){
-    super(OverpoweredTiers.VOID, Constants.sword_damage, Constants.sword_speed, new Item.Properties());
+    super(OverpoweredTiers.VOID, Constants.sword_damage, Constants.sword_speed, new Item.Properties().group(OverpoweredMod.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

@@ -9,7 +9,7 @@ import net.minecraft.item.Rarity;
 public class NullAxe extends AxeItem {
 
   public NullAxe(final String name){
-    super(OverpoweredTiers.VOID, 14.0f, -3.0f, new Item.Properties());
+    super(OverpoweredTiers.VOID, 14.0f, -3.0f, new Item.Properties().group(OverpoweredMod.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

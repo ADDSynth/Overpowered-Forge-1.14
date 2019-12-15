@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
@@ -15,7 +16,7 @@ public final class FusionControlUnit extends MachineBlock {
 
   public FusionControlUnit(final String name){
     super();
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.machines_creative_tab));
   }
 
   @Override

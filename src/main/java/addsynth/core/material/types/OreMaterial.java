@@ -6,12 +6,9 @@ import addsynth.core.material.MiningStrength;
 import addsynth.core.material.OreType;
 import addsynth.core.material.blocks.OreBlock;
 import addsynth.core.material.blocks.ItemOreBlock;
-import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
 
 public class OreMaterial extends BaseMaterial {
 
@@ -31,7 +28,8 @@ public class OreMaterial extends BaseMaterial {
 
   /** Custom Material */
   public OreMaterial(final String name, final MaterialColor color, final OreType ore_type, final MiningStrength strength){
-    super(true, name, new CoreItem(name), null); // TODO: needs generic block
+    // Silicon, Urnaium, and Yellorium
+    super(true, name, new CoreItem(new Item.Properties(), name), null); // TODO: needs generic block
     this.ore = NewOreBlock(name, ore_type, this.item, strength);
   }
 

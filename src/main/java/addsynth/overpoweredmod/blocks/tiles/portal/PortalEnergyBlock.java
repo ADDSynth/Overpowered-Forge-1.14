@@ -13,6 +13,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.state.EnumProperty;
@@ -34,7 +35,8 @@ public final class PortalEnergyBlock extends ContainerBlock {
 
   public PortalEnergyBlock(final String name){
     super(Material.PORTAL);
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties());
+    // Portal Energy Block needs an ItemBlock form to use as an icon for the Achievement.
   }
 
   @Override
