@@ -60,6 +60,10 @@ public final class Tools {
     }
   }
 
+  // TODO: in Overpowered version 1.5, add Rings back using the new Baubles API: Curios
+  //         https://www.curseforge.com/minecraft/mc-mods/curios
+  // available only for Minecraft versions 1.14 and up.
+
   static {
     Debug.log_setup_info("Finished loading Tools class.");
   }

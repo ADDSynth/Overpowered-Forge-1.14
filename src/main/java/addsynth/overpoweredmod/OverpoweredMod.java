@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod;
 
 import java.io.File;
+import addsynth.core.game.Compatability;
 import addsynth.core.game.Game;
 import addsynth.core.game.Icon;
 import addsynth.core.game.RegistryUtil;
@@ -31,6 +32,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.Logger;
@@ -59,6 +61,7 @@ public class OverpoweredMod {
     final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
     context.getModEventBus().addListener(OverpoweredMod::main_setup);
     context.getModEventBus().addListener(OverpoweredMod::client_setup);
+    context.getModEventBus().addListener(OverpoweredMod::inter_mod_communications);
     // OPTIMIZE: the two ways to get the mod context can probably be combined/merged, but I don't want to think about that right now.
     init_config();
   }
@@ -99,6 +102,12 @@ public class OverpoweredMod {
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());
     
     log.info("Done constructing Overpowered.");
+  }
+
+  private static final void inter_mod_communications(final InterModEnqueueEvent event){
+    if(Compatability.PROJECT_E.loaded){
+      ProjectE.register_emc_values();
+    }
   }
 
   private static final void client_setup(final FMLClientSetupEvent event){

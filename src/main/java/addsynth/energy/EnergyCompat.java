@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import addsynth.core.game.Compatability;
 import addsynth.core.util.JavaUtils;
 import addsynth.core.util.MathUtility;
+/*
 import cofh.redstoneflux.api.IEnergyHandler;
 import cofh.redstoneflux.api.IEnergyProvider;
 import cofh.redstoneflux.api.IEnergyReceiver;
 import net.darkhax.tesla.api.*;
 import net.darkhax.tesla.capability.TeslaCapabilities;
+*/
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -49,7 +51,7 @@ public final class EnergyCompat {
     final ArrayList<CompatEnergyNode> nodes = new ArrayList<>(6);
     TileEntity tile;
     Direction capability_side;
-    Object energy;
+    // Object energy;
 
     for(Direction side : Direction.values()){
       tile = world.getTileEntity(position.offset(side));
@@ -57,18 +59,17 @@ public final class EnergyCompat {
         capability_side = side.getOpposite();
 
         // Forge Energy
-        if(tile.hasCapability(CapabilityEnergy.ENERGY, capability_side)){
-          energy = tile.getCapability(CapabilityEnergy.ENERGY, capability_side);
-          if(energy != null){
-            nodes.add(new CompatEnergyNode(EnergyType.FORGE, energy, capability_side));
-            continue;
-          }
+        final IEnergyStorage energy = tile.getCapability(CapabilityEnergy.ENERGY, capability_side).orElseGet(null);
+        if(energy != null){
+          nodes.add(new CompatEnergyNode(EnergyType.FORGE, energy, capability_side));
+          continue;
         }
         
         try{
         
           // RF Energy
           if(EnergyType.RF.available){
+            /*
             if(JavaUtils.classExists("cofh.redstoneflux.api.IEnergyHandler")){
               if(tile instanceof IEnergyHandler){
                 nodes.add(new CompatEnergyNode(EnergyType.RF, tile, capability_side));
@@ -87,11 +88,13 @@ public final class EnergyCompat {
                 continue;
               }
             }
+            */
           }
           
           // Tesla Energy
           if(EnergyType.TESLA.available){
             // MAYBE: And then I rediscovered the existance of Forge's CapabilityInjector annotation.
+            /*
             if(JavaUtils.classExists("net.darkhax.tesla.capability.TeslaCapabilities")){
               if(tile.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, capability_side)){
                 energy = tile.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, capability_side);
@@ -115,6 +118,7 @@ public final class EnergyCompat {
                 }
               }
             }
+            */
           }
         }
         catch(Exception e){
@@ -133,8 +137,8 @@ public final class EnergyCompat {
       try{
         switch(nodes[i].type){
         case FORGE: available_energy[i] = GetForgeEnergy(       nodes[i].energy, energy_needed, true);                break;
-        case RF:    available_energy[i] = GetRedstoneFluxEnergy(nodes[i].energy, energy_needed, true, nodes[i].side); break;
-        case TESLA: available_energy[i] = GetTeslaEnergy(       nodes[i].energy, energy_needed, true);                break;
+        //case RF:    available_energy[i] = GetRedstoneFluxEnergy(nodes[i].energy, energy_needed, true, nodes[i].side); break;
+        //case TESLA: available_energy[i] = GetTeslaEnergy(       nodes[i].energy, energy_needed, true);                break;
         }
       }
       catch(Exception e){
@@ -148,8 +152,8 @@ public final class EnergyCompat {
       try{
         switch(nodes[i].type){
         case FORGE: GetForgeEnergy(       nodes[i].energy, energy_to_extract[i], false);                break;
-        case RF:    GetRedstoneFluxEnergy(nodes[i].energy, energy_to_extract[i], false, nodes[i].side); break;
-        case TESLA: GetTeslaEnergy(       nodes[i].energy, energy_to_extract[i], false);                break;
+        //case RF:    GetRedstoneFluxEnergy(nodes[i].energy, energy_to_extract[i], false, nodes[i].side); break;
+        //case TESLA: GetTeslaEnergy(       nodes[i].energy, energy_to_extract[i], false);                break;
         }
         our_energy.receiveEnergy(energy_to_extract[i]);
       }
@@ -167,6 +171,7 @@ public final class EnergyCompat {
     return 0;
   }
 
+/*
   private static final int GetRedstoneFluxEnergy(final Object input, final int energy_requested, final boolean simulate, final Direction side){
     if(input instanceof IEnergyProvider){
       final IEnergyProvider energy = (IEnergyProvider)input;
@@ -182,6 +187,7 @@ public final class EnergyCompat {
     }
     return 0;
   }
+*/
 
   public static final void transmitEnergy(final CompatEnergyNode[] nodes, final CustomEnergyStorage our_energy){
     final int[] energy_available = MathUtility.divide_evenly(our_energy.getEnergy(), nodes.length);
@@ -191,8 +197,8 @@ public final class EnergyCompat {
       try{
         switch(nodes[i].type){
         case FORGE: actual_energy_extracted = SendForgeEnergy(       nodes[i].energy, energy_available[i]);                break;
-        case RF:    actual_energy_extracted = SendRedstoneFluxEnergy(nodes[i].energy, energy_available[i], nodes[i].side); break;
-        case TESLA: actual_energy_extracted = SendTeslaEnergy(       nodes[i].energy, energy_available[i]);                break;
+        //case RF:    actual_energy_extracted = SendRedstoneFluxEnergy(nodes[i].energy, energy_available[i], nodes[i].side); break;
+        //case TESLA: actual_energy_extracted = SendTeslaEnergy(       nodes[i].energy, energy_available[i]);                break;
         }
         our_energy.extractEnergy(actual_energy_extracted, false);
       }
@@ -210,6 +216,7 @@ public final class EnergyCompat {
     return 0;
   }
   
+/*
   private static final int SendRedstoneFluxEnergy(final Object input, final int transmitted_energy, final Direction side){
     if(input instanceof IEnergyReceiver){
       final IEnergyReceiver energy = (IEnergyReceiver)input;
@@ -225,5 +232,6 @@ public final class EnergyCompat {
     }
     return 0;
   }
-  
+*/
+
 }

@@ -11,10 +11,6 @@ public final class CompatabilityManager {
   public static final void init_mod_compatability(){
     Debug.log_setup_info("Begin Mod Compatability Init...");
     
-    if(Compatability.PROJECT_E.loaded){
-      ProjectE.register_emc_values();
-    }
-    
     Debug.log_setup_info("Finished Mod Compatability Init.");
   }
 
