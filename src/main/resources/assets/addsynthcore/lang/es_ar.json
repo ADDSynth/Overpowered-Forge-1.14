@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Bloque de precaución",
+"block.addsynthcore.music_box": "Caja de música",
+
+"item.addsynthcore.music_sheet": "Partitura",
+
+"item.addsynthcore.wooden_scythe": "Guadaña de madera",
+"item.addsynthcore.stone_scythe": "Guadaña de piedra",
+"item.addsynthcore.iron_scythe": "Guadaña de hierro",
+"item.addsynthcore.gold_scythe": "Guadaña dorada",
+"item.addsynthcore.diamond_scythe": "Guadaña de diamante"
+}

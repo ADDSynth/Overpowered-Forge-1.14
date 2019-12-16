@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "كتلة تحذيرية",
+"block.addsynthcore.music_box": "صندوق الموسيقى",
+
+"item.addsynthcore.music_sheet": "ورقة الموسيقى",
+
+"item.addsynthcore.wooden_scythe": "منجل خشبي",
+"item.addsynthcore.stone_scythe": "منجل الحجر",
+"item.addsynthcore.iron_scythe": "المنجل الحديدي",
+"item.addsynthcore.gold_scythe": "المنجل الذهبي",
+"item.addsynthcore.diamond_scythe": "منجل الماس"
+}

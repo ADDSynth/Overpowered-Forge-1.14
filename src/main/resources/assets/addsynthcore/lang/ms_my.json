@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Blok Perhatian",
+"block.addsynthcore.music_box": "Kotak muzik",
+
+"item.addsynthcore.music_sheet": "Lembaran Muzik",
+
+"item.addsynthcore.wooden_scythe": "Sabit kayu",
+"item.addsynthcore.stone_scythe": "Batu sabit",
+"item.addsynthcore.iron_scythe": "Besi sabit",
+"item.addsynthcore.gold_scythe": "sabit emas",
+"item.addsynthcore.diamond_scythe": "Berlian sabit"
+}

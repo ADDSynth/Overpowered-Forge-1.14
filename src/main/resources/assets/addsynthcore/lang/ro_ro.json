@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Atenție Blocați",
+"block.addsynthcore.music_box": "Cutie muzicală",
+
+"item.addsynthcore.music_sheet": "hârtie muzicală",
+
+"item.addsynthcore.wooden_scythe": "Coasă de lemn",
+"item.addsynthcore.stone_scythe": "Secera de piatra",
+"item.addsynthcore.iron_scythe": "Secera de fier",
+"item.addsynthcore.gold_scythe": "Secera de aur",
+"item.addsynthcore.diamond_scythe": "Secera de diamant"
+}

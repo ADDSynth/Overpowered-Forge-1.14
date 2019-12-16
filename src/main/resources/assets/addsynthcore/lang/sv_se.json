@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Varning Block",
+"block.addsynthcore.music_box": "Speldosa",
+
+"item.addsynthcore.music_sheet": "Notblad",
+
+"item.addsynthcore.wooden_scythe": "Träskylt [behöver översätta]",
+"item.addsynthcore.stone_scythe": "Stensjö [behöver översätta]",
+"item.addsynthcore.iron_scythe": "Järnsegel",
+"item.addsynthcore.gold_scythe": "Gyllene segel",
+"item.addsynthcore.diamond_scythe": "Diamantsjälte"
+}

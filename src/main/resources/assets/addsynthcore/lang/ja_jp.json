@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "警告ブロック",
+"block.addsynthcore.music_box": "オルゴール",
+
+"item.addsynthcore.music_sheet": "五線紙",
+
+"item.addsynthcore.wooden_scythe": "木製鎌",
+"item.addsynthcore.stone_scythe": "石鎌",
+"item.addsynthcore.iron_scythe": "鉄の鎌",
+"item.addsynthcore.gold_scythe": "ゴールデン鎌",
+"item.addsynthcore.diamond_scythe": "ダイヤモンド鎌"
+}

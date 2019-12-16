@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "எச்சரிக்கை கல்",
+"block.addsynthcore.music_box": "இசை பெட்டி",
+
+"item.addsynthcore.music_sheet": "இசை குறிப்பு தாள்",
+
+"item.addsynthcore.wooden_scythe": "மர அரிவாள்",
+"item.addsynthcore.stone_scythe": "கல் அரிவாள்",
+"item.addsynthcore.iron_scythe": "இரும்பு அரிவாள்",
+"item.addsynthcore.gold_scythe": "கோல்டன் அரிவாள்",
+"item.addsynthcore.diamond_scythe": "வைர அரிவாள்"
+}

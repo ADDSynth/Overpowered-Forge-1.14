@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "بلوک احتیاط",
+"block.addsynthcore.music_box": "جعبه موسیقی",
+
+"item.addsynthcore.music_sheet": "ورق موسیقی",
+
+"item.addsynthcore.wooden_scythe": "داس چوبی",
+"item.addsynthcore.stone_scythe": "داس سنگ",
+"item.addsynthcore.iron_scythe": "داس آهنی",
+"item.addsynthcore.gold_scythe": "داس طلایی",
+"item.addsynthcore.diamond_scythe": "داس الماس"
+}

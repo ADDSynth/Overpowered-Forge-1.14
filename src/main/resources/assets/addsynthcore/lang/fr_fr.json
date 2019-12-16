@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Bloc de prudence",
+"block.addsynthcore.music_box": "Boîte à musique",
+
+"item.addsynthcore.music_sheet": "Feuille de musique",
+
+"item.addsynthcore.wooden_scythe": "Faucille en bois",
+"item.addsynthcore.stone_scythe": "Faucille de pierre",
+"item.addsynthcore.iron_scythe": "Faucille de fer",
+"item.addsynthcore.gold_scythe": "Faucille d'or",
+"item.addsynthcore.diamond_scythe": "Faucille de diamant"
+}

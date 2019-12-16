@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Upozornenie Blokovať",
+"block.addsynthcore.music_box": "hudobný box",
+
+"item.addsynthcore.music_sheet": "Hudobný list",
+
+"item.addsynthcore.wooden_scythe": "Drevená kosa",
+"item.addsynthcore.stone_scythe": "Kamenná kosa",
+"item.addsynthcore.iron_scythe": "Železná kosa",
+"item.addsynthcore.gold_scythe": "Zlatá kosa",
+"item.addsynthcore.diamond_scythe": "Diamantová kosa"
+}

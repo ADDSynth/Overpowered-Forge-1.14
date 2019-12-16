@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Forsigtighedsblok",
+"block.addsynthcore.music_box": "Musik boks",
+
+"item.addsynthcore.music_sheet": "Musikark",
+
+"item.addsynthcore.wooden_scythe": "Træ Le",
+"item.addsynthcore.stone_scythe": "sten Le",
+"item.addsynthcore.iron_scythe": "jern Le",
+"item.addsynthcore.gold_scythe": "Gyldne Le",
+"item.addsynthcore.diamond_scythe": "diamant Le"
+}

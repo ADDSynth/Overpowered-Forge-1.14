@@ -1,0 +1,14 @@
+{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Caution Block",
+"block.addsynthcore.music_box": "Music Box",
+
+"item.addsynthcore.music_sheet": "Music Sheet",
+
+"item.addsynthcore.wooden_scythe": "Wooden Scythe",
+"item.addsynthcore.stone_scythe": "Stone Scythe",
+"item.addsynthcore.iron_scythe": "Iron Scythe",
+"item.addsynthcore.gold_scythe": "Golden Scythe",
+"item.addsynthcore.diamond_scythe": "Diamond Scythe"
+}

@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Блок попередження",
+"block.addsynthcore.music_box": "Музична скринька",
+
+"item.addsynthcore.music_sheet": "Музичний аркуш",
+
+"item.addsynthcore.wooden_scythe": "Дерев'яна коса",
+"item.addsynthcore.stone_scythe": "Кам’яна коса",
+"item.addsynthcore.iron_scythe": "Залізна коса",
+"item.addsynthcore.gold_scythe": "Золота коса",
+"item.addsynthcore.diamond_scythe": "Алмазна коса"
+}

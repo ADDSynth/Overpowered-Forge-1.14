@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "सावधानी ब्लॉक",
+"block.addsynthcore.music_box": "संगीत बक्सा",
+
+"item.addsynthcore.music_sheet": "संगीत नोटशीट",
+
+"item.addsynthcore.wooden_scythe": "लकड़ी की दरांती",
+"item.addsynthcore.stone_scythe": "स्टोन दरांती",
+"item.addsynthcore.iron_scythe": "लोहे की दरांती",
+"item.addsynthcore.gold_scythe": "सुनहरी दरांती",
+"item.addsynthcore.diamond_scythe": "हीरा दरांती"
+}

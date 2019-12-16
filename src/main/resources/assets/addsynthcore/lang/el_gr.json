@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "μπλοκ προειδοποίησης",
+"block.addsynthcore.music_box": "Μουσικό κουτί",
+
+"item.addsynthcore.music_sheet": "Φύλλο μουσικής",
+
+"item.addsynthcore.wooden_scythe": "Ξύλινο δρεπάνι",
+"item.addsynthcore.stone_scythe": "Πέτρινο δρεπάνι",
+"item.addsynthcore.iron_scythe": "Σιδερένιο δρεπάνι",
+"item.addsynthcore.gold_scythe": "Χρυσό δρεπάνι",
+"item.addsynthcore.diamond_scythe": "Δακτύλιο δρεπάνι"
+}

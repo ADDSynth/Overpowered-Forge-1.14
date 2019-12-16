@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Bloco de aviso",
+"block.addsynthcore.music_box": "Caixa de música",
+
+"item.addsynthcore.music_sheet": "Folha de música",
+
+"item.addsynthcore.wooden_scythe": "Foice de madeira",
+"item.addsynthcore.stone_scythe": "Foice de Pedra",
+"item.addsynthcore.iron_scythe": "Foice de Ferro",
+"item.addsynthcore.gold_scythe": "Foice de Ouro",
+"item.addsynthcore.diamond_scythe": "Foice de diamante"
+}

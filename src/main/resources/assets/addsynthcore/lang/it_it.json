@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "blocco di avviso",
+"block.addsynthcore.music_box": "Carillon",
+
+"item.addsynthcore.music_sheet": "Spartito",
+
+"item.addsynthcore.wooden_scythe": "Falce di legno",
+"item.addsynthcore.stone_scythe": "Falce di pietra",
+"item.addsynthcore.iron_scythe": "Falce di ferro",
+"item.addsynthcore.gold_scythe": "Falce d'oro",
+"item.addsynthcore.diamond_scythe": "Falce di diamante"
+}

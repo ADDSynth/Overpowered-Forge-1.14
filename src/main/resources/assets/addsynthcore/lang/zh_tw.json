@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "警告塊",
+"block.addsynthcore.music_box": "音樂盒",
+
+"item.addsynthcore.music_sheet": "音樂表",
+
+"item.addsynthcore.wooden_scythe": "木鐮刀",
+"item.addsynthcore.stone_scythe": "石鐮刀",
+"item.addsynthcore.iron_scythe": "鐵鐮刀",
+"item.addsynthcore.gold_scythe": "金鐮刀",
+"item.addsynthcore.diamond_scythe": "鑽石鐮刀"
+}

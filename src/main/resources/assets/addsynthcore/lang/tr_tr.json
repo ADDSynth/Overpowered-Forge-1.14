@@ -1,0 +1,14 @@
+﻿{
+"itemGroup.addsynthcore": "ADDSynthCore",
+
+"block.addsynthcore.caution_block": "Dikkatli blok",
+"block.addsynthcore.music_box": "Müzik kutusu",
+
+"item.addsynthcore.music_sheet": "Müzik sayfası",
+
+"item.addsynthcore.wooden_scythe": "Ahşap Tırpan",
+"item.addsynthcore.stone_scythe": "Taş tırpan",
+"item.addsynthcore.iron_scythe": "Demir Tırpan",
+"item.addsynthcore.gold_scythe": "Altın tırpan",
+"item.addsynthcore.diamond_scythe": "Elmas tırpan"
+}
