@@ -1,11 +1,7 @@
 package addsynth.overpoweredmod.blocks.tiles.portal;
 
-import java.util.Random;
-import javax.annotation.Nonnull;
-import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.tiles.technical.TilePortal;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.dimension.CustomTeleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -22,7 +18,6 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -70,6 +65,7 @@ public final class PortalEnergyBlock extends ContainerBlock {
   @SuppressWarnings("deprecation")
   public final void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity){
     if(world.isRemote == false){
+      /*
       if(entity.isNonBoss()){
         if(entity instanceof ServerPlayerEntity){
           final MinecraftServer server = entity.getServer();
@@ -81,6 +77,7 @@ public final class PortalEnergyBlock extends ContainerBlock {
           entity.changeDimension(WeirdDimension.id);
         }
       }
+      */
     }
   }
 

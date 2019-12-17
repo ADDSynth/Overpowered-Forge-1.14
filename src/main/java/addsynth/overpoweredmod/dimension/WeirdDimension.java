@@ -1,5 +1,5 @@
 package addsynth.overpoweredmod.dimension;
-
+/*
 import java.util.function.BiFunction;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Config;
@@ -16,7 +16,7 @@ public final class WeirdDimension extends ModDimension {
   // You can use DimensionManager.getNextFreeDimId() to automatically register with a non-conflicting id.
   // public static final DimensionType weird_dimension =
   //   DimensionType.register(new ResourceLocation(OverpoweredMod.MOD_ID, "unknown",false);
-  /** only used once in WeirdWorldProvider and registered in Registries. */
+  /** only used once in WeirdWorldProvider and registered in Registries. *
   public static final WeirdBiome weird_biome = new WeirdBiome();
 
   public static final void register(){
@@ -29,3 +29,4 @@ public final class WeirdDimension extends ModDimension {
   }
 
 }
+*/

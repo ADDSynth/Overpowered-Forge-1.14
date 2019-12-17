@@ -1,5 +1,5 @@
 package addsynth.overpoweredmod.dimension;
-
+/*
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
@@ -74,3 +74,4 @@ public final class WeirdTree extends AbstractTreeFeature<NoFeatureConfig> {
   }
 
 }
+*/

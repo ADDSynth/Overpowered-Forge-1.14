@@ -4,8 +4,6 @@ package addsynth.overpoweredmod.game;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 // import addsynth.overpoweredmod.assets.Achievements;
-import addsynth.overpoweredmod.dimension.CustomTeleporter;
-import addsynth.overpoweredmod.dimension.WeirdDimension;
 // import addsynth.overpoweredmod.game.core.Gems;
 // import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
@@ -76,12 +74,14 @@ public final class Events {
     */
     if(item == ModItems.unknown_technology){
       // Game.activate_achievement(player, Achievements.UNKNOWN_TECHNOLOGY);
+      /*
       if(player.dimension.getId() == WeirdDimension.id){
         final MinecraftServer server = player.getServer();
         if(server != null){
           server.getPlayerList().transferPlayerToDimension((ServerPlayerEntity)player, 0, new CustomTeleporter(server.getWorld(0)));
         }
       }
+      */
     }
   }
 

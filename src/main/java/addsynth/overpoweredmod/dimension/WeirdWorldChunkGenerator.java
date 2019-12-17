@@ -1,5 +1,5 @@
 package addsynth.overpoweredmod.dimension;
-
+/*
 import java.util.Random;
 import java.util.List;
 import net.minecraft.block.Blocks;
@@ -73,3 +73,4 @@ public final class WeirdWorldChunkGenerator implements IChunkGenerator {
   }
 
 }
+*/

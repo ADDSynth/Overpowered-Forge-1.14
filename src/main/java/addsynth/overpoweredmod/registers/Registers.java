@@ -7,7 +7,6 @@ import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.Features;
-import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.game.core.*;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
@@ -302,7 +301,7 @@ public final class Registers {
   public static final void registerBiomes(final RegistryEvent.Register<Biome> event){
     Debug.log_setup_info("Begin Biome Registry Event...");
     final IForgeRegistry<Biome> game = event.getRegistry();
-    game.register(WeirdDimension.weird_biome);
+    // game.register(WeirdDimension.weird_biome);
     Debug.log_setup_info("Finished Biome Registry Event.");
   }
 

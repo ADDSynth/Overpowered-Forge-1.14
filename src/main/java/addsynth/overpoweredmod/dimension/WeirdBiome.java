@@ -1,5 +1,5 @@
 package addsynth.overpoweredmod.dimension;
-
+/*
 import java.util.Random;
 import addsynth.overpoweredmod.config.Values;
 import net.minecraft.util.math.BlockPos;
@@ -31,6 +31,7 @@ public final class WeirdBiome extends Biome {
   public final void decorate(final World world, final Random random, final BlockPos chunk_position){
     if(random.nextInt(spawn_tree_chance) == 0){
       // world.getHeight() isn't working beause it doesn't think the chunk is loaded?
+*/
       /*
       int y;
       BlockPos true_position = position;
@@ -42,6 +43,7 @@ public final class WeirdBiome extends Biome {
         }
       }
       */
+/*
       final int x = chunk_position.getX() + random.nextInt(16);
       final int z = chunk_position.getZ() + random.nextInt(16);
       final int y = world.getHeight(x, z);
@@ -55,3 +57,4 @@ public final class WeirdBiome extends Biome {
   }
 
 }
+*/

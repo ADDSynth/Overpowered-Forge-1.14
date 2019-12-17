@@ -1,5 +1,5 @@
 package addsynth.overpoweredmod.dimension;
-
+/*
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
@@ -12,7 +12,7 @@ import net.minecraft.world.server.ServerWorld;
  * Since using the default Teleporter will try to spawn a Nether Portal for all dimensions that are not The End,
  * I create my own Teleporter and override all relevant functions so they don't do anything, because I just want
  * to teleport the player to and from the Unknown Dimension.
- */
+ *
 public final class CustomTeleporter extends Teleporter {
 
   private final BlockPos spawn = WeirdWorldProvider.spawn;
@@ -22,7 +22,7 @@ public final class CustomTeleporter extends Teleporter {
   }
 
   @Override
-  public void placeInPortal(final Entity entity, final float rotationYaw){
+  public boolean placeInPortal(final Entity entity, final float rotationYaw){
     if(world.getDimension().getType().getId() == WeirdDimension.id){
       set_entity_position(entity, spawn.getX(), spawn.getY(), spawn.getZ());
     }
@@ -47,3 +47,4 @@ public final class CustomTeleporter extends Teleporter {
   }
 
 }
+*/

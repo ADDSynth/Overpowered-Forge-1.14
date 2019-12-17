@@ -1,5 +1,5 @@
 package addsynth.overpoweredmod.dimension;
-
+/*
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
@@ -80,3 +80,4 @@ public final class WeirdWorldProvider extends WorldProvider {
     return false;
   }
 }
+*/

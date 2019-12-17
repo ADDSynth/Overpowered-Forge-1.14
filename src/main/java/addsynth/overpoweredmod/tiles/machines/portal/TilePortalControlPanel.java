@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.annotation.Nullable;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.core.util.NetworkUtil;
+import addsynth.core.util.WorldUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyReceiver;
 import addsynth.overpoweredmod.config.Values;
@@ -11,6 +12,7 @@ import addsynth.overpoweredmod.containers.ContainerPortalControlPanel;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
+import addsynth.overpoweredmod.game.core.ModItems;
 import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
 import addsynth.overpoweredmod.network.NetworkHandler;
@@ -70,6 +72,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
       if(portal_items[0] && portal_items[1] && portal_items[2] && portal_items[3] && portal_items[4] && portal_items[5] && portal_items[6] && portal_items[7]){
         if(check_portal_construction()){
           if(energy.isFull()){
+            // TODO: add a new check to ensure the space inside the portal frame is clear before you generate the portal, for all versions.
             valid_portal = true;
             message = "Portal is Ready.";
           }
@@ -192,28 +195,34 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
       int x;
       int y;
       int z;
+      int center;
       switch(axis){
       case X:
         start_x = lowest_portal_frame.getX()+1;
         start_y = lowest_portal_frame.getY()+1;
         start_z = lowest_portal_frame.getZ();
+        center = lowest_portal_frame.getX()+2;
         z = start_z;
         for(y = start_y; y < start_y + 3; y++){
           for(x = start_x; x < start_x + 3; x++){
             world.setBlockState(new BlockPos(x,y,z),Portal.portal.getDefaultState()); // .withProperty(PortalEnergyBlock.AXIS, EnumFacing.Axis.X));
           }
         }
+        // TODO: make this a config option in disable_feature.cfg in Overpowered version 1.3, to allow the Portal Construction, but disable the Unknown Dimension.
+        WorldUtil.spawnItemStack(world, center, start_y, start_z, new ItemStack(ModItems.unknown_technology, 2));
         break;
       case Z:
         start_x = lowest_portal_frame.getX();
         start_y = lowest_portal_frame.getY()+1;
         start_z = lowest_portal_frame.getZ()+1;
+        center = lowest_portal_frame.getZ()+2;
         x = start_x;
         for(y = start_y; y < start_y + 3; y++){
           for(z = start_z; z < start_z + 3; z++){
             world.setBlockState(new BlockPos(x,y,z),Portal.portal.getDefaultState()); // .withProperty(PortalEnergyBlock.AXIS, EnumFacing.Axis.Z));
           }
         }
+        WorldUtil.spawnItemStack(world, start_x, start_y, center, new ItemStack(ModItems.unknown_technology, 2));
         break;
       }
 
