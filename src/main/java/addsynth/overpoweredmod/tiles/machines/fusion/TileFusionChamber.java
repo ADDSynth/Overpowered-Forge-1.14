@@ -6,7 +6,7 @@ import addsynth.core.tiles.TileMachine;
 import addsynth.overpoweredmod.containers.ContainerFusionChamber;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;

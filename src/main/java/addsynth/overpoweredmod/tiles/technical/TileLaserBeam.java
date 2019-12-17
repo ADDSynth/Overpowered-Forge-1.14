@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.tiles.technical;
 
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 

@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.containers;
 
 import addsynth.core.inventory.container.BaseContainer;
 import addsynth.core.inventory.container.slots.RestrictedSlot;
+import addsynth.overpoweredmod.registers.Containers;
 import addsynth.overpoweredmod.tiles.machines.portal.TilePortalFrame;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;

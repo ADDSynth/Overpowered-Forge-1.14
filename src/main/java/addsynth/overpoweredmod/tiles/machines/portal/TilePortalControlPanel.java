@@ -15,7 +15,7 @@ import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.network.client_messages.SyncPortalDataMessage;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

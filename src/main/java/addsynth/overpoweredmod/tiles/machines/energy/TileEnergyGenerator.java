@@ -7,7 +7,7 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.containers.ContainerGenerator;
 import addsynth.overpoweredmod.game.core.Init;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;

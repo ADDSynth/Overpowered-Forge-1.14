@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.containers;
 
 import addsynth.core.inventory.container.BaseContainer;
 import addsynth.energy.gameplay.tiles.TileUniversalEnergyTransfer;
+import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 

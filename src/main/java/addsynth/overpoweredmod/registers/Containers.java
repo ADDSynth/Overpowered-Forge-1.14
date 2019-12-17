@@ -1,6 +1,7 @@
-package addsynth.overpoweredmod.containers;
+package addsynth.overpoweredmod.registers;
 
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.containers.*;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 

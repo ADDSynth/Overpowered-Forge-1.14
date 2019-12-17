@@ -5,7 +5,7 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyBattery;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.containers.ContainerEnergyStorage;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;

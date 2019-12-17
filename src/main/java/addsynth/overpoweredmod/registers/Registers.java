@@ -1,4 +1,4 @@
-package addsynth.overpoweredmod.init;
+package addsynth.overpoweredmod.registers;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.core.material.types.Gem;
@@ -7,10 +7,8 @@ import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.Features;
-import addsynth.overpoweredmod.containers.Containers;
 import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.game.core.*;
-import addsynth.overpoweredmod.tiles.Tiles;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntityType;
@@ -214,7 +212,6 @@ public final class Registers {
     
     game.register(Portal.portal_image);
 
-    Setup.items_registered = true;
     OverpoweredMod.log.info("Finished Item Registration Event.");
   }
 

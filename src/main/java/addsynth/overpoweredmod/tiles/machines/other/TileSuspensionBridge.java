@@ -6,7 +6,7 @@ import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyReceiver;
 import addsynth.overpoweredmod.game.core.Lens;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;

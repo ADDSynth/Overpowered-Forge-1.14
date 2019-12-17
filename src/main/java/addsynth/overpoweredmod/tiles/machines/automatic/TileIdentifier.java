@@ -12,7 +12,7 @@ import addsynth.overpoweredmod.containers.ContainerIdentifier;
 import addsynth.overpoweredmod.game.ArmorEffects;
 import addsynth.overpoweredmod.game.core.Tools;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;

@@ -1,10 +1,11 @@
 package addsynth.core.config;
 
 import org.apache.commons.lang3.tuple.Pair;
+import addsynth.core.Constants;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 /**
- *  @see net.minecraft.world.gen.ChunkGeneratorSettings.Factory
+ *  @see net.minecraft.world.biome.DefaultBiomeFeatures
  */
 public final class WorldgenConfig {
 
@@ -199,7 +200,7 @@ public final class WorldgenConfig {
   }
 
   private static final ForgeConfigSpec.IntValue worldgen(final ForgeConfigSpec.Builder builder, final String name, final int default_value){
-    return builder.defineInRange(name, default_value, 0, 255);
+    return builder.defineInRange(name, default_value, 0, Constants.world_height - 1);
   }
 
   private static final ForgeConfigSpec.IntValue tries(final ForgeConfigSpec.Builder builder, final int default_value){

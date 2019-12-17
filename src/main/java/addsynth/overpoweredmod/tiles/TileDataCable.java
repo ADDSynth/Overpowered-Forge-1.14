@@ -4,6 +4,7 @@ import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.overpoweredmod.game.block_networks.DataCableNetwork;
 import addsynth.overpoweredmod.game.core.Wires;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.tileentity.TileEntity;
 
 public final class TileDataCable extends TileEntity implements IBlockNetworkUser {

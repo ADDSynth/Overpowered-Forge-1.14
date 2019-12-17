@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.containers;
 
 import addsynth.core.inventory.container.BaseContainer;
+import addsynth.overpoweredmod.registers.Containers;
 import addsynth.overpoweredmod.tiles.machines.laser.TileLaserHousing;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;

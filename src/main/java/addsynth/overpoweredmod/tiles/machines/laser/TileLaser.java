@@ -5,7 +5,7 @@ import addsynth.core.tiles.TileBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.blocks.tiles.laser.LaserCannon;
 import addsynth.overpoweredmod.game.core.Laser;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

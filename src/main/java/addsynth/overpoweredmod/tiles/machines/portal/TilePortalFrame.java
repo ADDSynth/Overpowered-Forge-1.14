@@ -5,7 +5,7 @@ import addsynth.core.inventory.SlotData;
 import addsynth.core.tiles.TileMachine;
 import addsynth.overpoweredmod.containers.ContainerPortalFrame;
 import addsynth.overpoweredmod.game.core.Gems;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;

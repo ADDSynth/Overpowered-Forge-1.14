@@ -4,7 +4,6 @@ import java.lang.Math;
 import java.util.List;
 import java.util.Random;
 import javax.annotation.Nonnegative;
-import addsynth.core.Constants;
 import net.minecraft.util.math.BlockPos;
 
 public final class MathUtility {
@@ -146,44 +145,6 @@ public final class MathUtility {
 
   public static final boolean is_inside_sphere(final BlockPos center, final float radius, final BlockPos position){
     return get_distance(center,position) <= radius;
-  }
-
-  /** <p>Use this function to get worldgen coordinates if you're not using a Vanilla Worldgen function to generate.</p>
-   *  <p>Minecraft terrain generation doesn't actually work the way you expect. Modders are given
-   *     a chunk to decorate only after its +X, +Z, and +XZ chunks have been loaded. For this reason,
-   *     in order to prevent Cascading Worldgen issues, this function offsets the position by +8 in
-   *     the X and Z axiis. Vanilla Worldgen functions already do this internally.</p>
-   *  <a href="https://www.reddit.com/r/feedthebeast/comments/5x0twz/investigating_extreme_worldgen_lag/">
-   *    https://www.reddit.com/r/feedthebeast/comments/5x0twz/investigating_extreme_worldgen_lag/</a>
-   * @param random
-   * @param chunkX
-   * @param chunkZ
-   * @param minHeight
-   * @param maxHeight
-   * @return
-   */
-  public static final BlockPos get_custom_worldgen_position(final Random random, final int chunkX, final int chunkZ, final int minHeight, final int maxHeight){
-    return get_vanilla_worldgen_position(random, chunkX, chunkZ, minHeight, maxHeight).add(8, 0, 8);
-  }
-
-  /** <p>Use this function to get a random position in the chunk for worldgen.</p>
-   *  <p><b>Important:</b> Use this function when using Vanilla Worldgen functions because they have
-   *     built-in offsets that prevent Cascading Worldgen lag.</p>
-   * @param random
-   * @param chunkX
-   * @param chunkZ
-   * @param minHeight
-   * @param maxHeight
-   * @return BlockPos
-   */
-  public static final BlockPos get_vanilla_worldgen_position(final Random random, final int chunkX, final int chunkZ, final int minHeight, final int maxHeight){
-    if(minHeight < 0 || maxHeight >= Constants.world_height || maxHeight < minHeight ){
-      throw new IllegalArgumentException("Invalid minHeight and maxHeight arguments.");
-    }
-    final int x = chunkX * 16 + 1 + random.nextInt(14);
-    final int y = minHeight + random.nextInt(maxHeight - minHeight + 1); // FUTURE: use RandomRange() function below. and Clamp from Minecraft.MathHelper.
-    final int z = chunkZ * 16 + 1 + random.nextInt(14);
-    return new BlockPos(x,y,z);
   }
 
   public static final BlockPos getCenter(List<BlockPos> list){

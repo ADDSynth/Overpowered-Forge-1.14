@@ -1,7 +1,6 @@
 package addsynth.overpoweredmod.blocks.dimension;
 
 import addsynth.core.util.MinecraftUtility;
-import addsynth.overpoweredmod.init.Registers;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 

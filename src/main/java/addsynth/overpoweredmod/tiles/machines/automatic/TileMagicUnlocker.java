@@ -11,7 +11,7 @@ import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.containers.ContainerMagicUnlocker;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.game.core.Init;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;

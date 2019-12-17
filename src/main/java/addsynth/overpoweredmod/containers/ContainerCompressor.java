@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.containers;
 import addsynth.core.inventory.container.BaseContainer;
 import addsynth.core.inventory.container.slots.InputSlot;
 import addsynth.core.inventory.container.slots.OutputSlot;
+import addsynth.overpoweredmod.registers.Containers;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileCompressor;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;

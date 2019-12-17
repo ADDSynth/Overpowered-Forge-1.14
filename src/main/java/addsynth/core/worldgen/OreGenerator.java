@@ -1,207 +1,129 @@
 package addsynth.core.worldgen;
 
 import java.util.ArrayList;
-import java.util.Random;
 import addsynth.core.ADDSynthCore;
+import addsynth.core.Constants;
 import addsynth.core.config.WorldgenConfig;
 import addsynth.core.material.Material;
 import addsynth.core.material.types.OreMaterial;
-import addsynth.core.util.MathUtility;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraftforge.fml.common.IWorldGenerator;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.LoaderState;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.ReplaceBlockConfig;
+import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.placement.Placement;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public final class OreGenerator {
 
-  private static final ArrayList<Block> requested_ores = new ArrayList<>(30);
+  public static final String REQUEST_ORE = "request_ore_to_generate";
 
-  private static boolean generate_ruby;
-  private static boolean generate_topaz;
-  private static boolean generate_citrine;
-  private static boolean generate_emerald;
-  private static boolean generate_sapphire;
-  private static boolean generate_amethyst;
-  private static boolean generate_tin;
-  private static boolean generate_copper;
-  private static boolean generate_aluminum;
-  private static boolean generate_silver;
-  private static boolean generate_platinum;
-  private static boolean generate_titanium;
+  private static final ArrayList<OreMaterial> requested_ores = new ArrayList<>(20);
 
-  private static final WorldGenMinable tin_generator      = new WorldGenMinable(Material.TIN.ore.getDefaultState(),      WorldgenConfig.tin_ore_size.get());
-  private static final WorldGenMinable copper_generator   = new WorldGenMinable(Material.COPPER.ore.getDefaultState(),   WorldgenConfig.copper_ore_size.get());
-  private static final WorldGenMinable aluminum_generator = new WorldGenMinable(Material.ALUMINUM.ore.getDefaultState(), WorldgenConfig.aluminum_ore_size.get());
-  private static final WorldGenMinable silver_generator   = new WorldGenMinable(Material.SILVER.ore.getDefaultState(),   WorldgenConfig.silver_ore_size.get());
-  private static final WorldGenMinable platinum_generator = new WorldGenMinable(Material.PLATINUM.ore.getDefaultState(), WorldgenConfig.platinum_ore_size.get());
-  private static final WorldGenMinable titanium_generator = new WorldGenMinable(Material.TITANIUM.ore.getDefaultState(), WorldgenConfig.titanium_ore_size.get());
+  private static boolean done;
 
-  public static final void request_to_generate(final OreMaterial material){
-    Block ore = material.ore;
-    if(ore == null){
-      ADDSynthCore.log.error("Material "+material.name+" does not have an Ore Block!");
-      return;
+  public static final void request_to_generate(final String mod_id, final OreMaterial material){
+    if(done == false){
+      if(requested_ores.contains(material) == false){
+        requested_ores.add(material);
+      }
     }
-    // Add Material.
-    if(requested_ores.contains(ore) == false){
-      requested_ores.add(ore);
+    else{
+      ADDSynthCore.log.error("ADDSynthCore is done registering Ores to generate, but the mod '"+mod_id+
+        "' has requested to register another ore. You should ONLY be registering Ores to generate using "+
+        "Forge's Inter-Mod communications feature!");
     }
   }
 
-  // TEST: Maybe this should only execute on the server-side.
-  public static final void initialize(){
-    if(Loader.instance().getLoaderState() != LoaderState.INITIALIZATION){
-      throw new Error("OreGenerators.initialize() should be called from within the Initialization Event.");
+  public static final void register(){
+    ADDSynthCore.log.info("Begin registering all requested Ores...");
+    done = true;
+    
+    // This is how it's done now apparently.
+    for(Biome biome : ForgeRegistries.BIOMES){
+      if(biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND){
+
+        if(requested_ores.contains(Material.RUBY) && WorldgenConfig.generate_ruby.get()){
+          generate_gem_ore(biome, Material.RUBY, WorldgenConfig.ruby_spawn_tries.get(), WorldgenConfig.ruby_min_height.get(), WorldgenConfig.ruby_max_height.get());
+        }
+        if(requested_ores.contains(Material.TOPAZ) && WorldgenConfig.generate_topaz.get()){
+          generate_gem_ore(biome, Material.TOPAZ, WorldgenConfig.topaz_spawn_tries.get(), WorldgenConfig.topaz_min_height.get(), WorldgenConfig.topaz_max_height.get());
+        }
+        if(requested_ores.contains(Material.CITRINE) && WorldgenConfig.generate_citrine.get()){
+          generate_gem_ore(biome, Material.CITRINE, WorldgenConfig.citrine_spawn_tries.get(), WorldgenConfig.citrine_min_height.get(), WorldgenConfig.citrine_max_height.get());
+        }
+        if(requested_ores.contains(Material.EMERALD) && WorldgenConfig.generate_emerald.get()){
+          generate_gem_ore(biome, Material.EMERALD, WorldgenConfig.emerald_spawn_tries.get(), WorldgenConfig.emerald_min_height.get(), WorldgenConfig.emerald_max_height.get());
+        }
+        if(requested_ores.contains(Material.SAPPHIRE) && WorldgenConfig.generate_sapphire.get()){
+          generate_gem_ore(biome, Material.SAPPHIRE, WorldgenConfig.sapphire_spawn_tries.get(), WorldgenConfig.sapphire_min_height.get(), WorldgenConfig.sapphire_max_height.get());
+        }
+        if(requested_ores.contains(Material.AMETHYST) && WorldgenConfig.generate_amethyst.get()){
+          generate_gem_ore(biome, Material.AMETHYST, WorldgenConfig.amethyst_spawn_tries.get(), WorldgenConfig.amethyst_min_height.get(), WorldgenConfig.amethyst_max_height.get());
+        }
+        
+        if(requested_ores.contains(Material.TIN) && WorldgenConfig.generate_tin.get()){
+          generate_metal_ore(biome, Material.TIN, WorldgenConfig.tin_ore_size.get(), WorldgenConfig.tin_spawn_tries.get(),
+                             WorldgenConfig.tin_min_height.get(), WorldgenConfig.tin_max_height.get());
+        }
+        if(requested_ores.contains(Material.COPPER) && WorldgenConfig.generate_copper.get()){
+          generate_metal_ore(biome, Material.COPPER, WorldgenConfig.copper_ore_size.get(), WorldgenConfig.copper_spawn_tries.get(),
+                             WorldgenConfig.copper_min_height.get(), WorldgenConfig.copper_max_height.get());
+        }
+        if(requested_ores.contains(Material.ALUMINUM) && WorldgenConfig.generate_aluminum.get()){
+          generate_metal_ore(biome, Material.ALUMINUM, WorldgenConfig.aluminum_ore_size.get(), WorldgenConfig.aluminum_spawn_tries.get(),
+                             WorldgenConfig.aluminum_min_height.get(), WorldgenConfig.aluminum_max_height.get());
+        }
+        if(requested_ores.contains(Material.SILVER) && WorldgenConfig.generate_silver.get()){
+          generate_metal_ore(biome, Material.SILVER, WorldgenConfig.silver_ore_size.get(), WorldgenConfig.silver_spawn_tries.get(),
+                             WorldgenConfig.silver_min_height.get(), WorldgenConfig.silver_max_height.get());
+        }
+        if(requested_ores.contains(Material.PLATINUM) && WorldgenConfig.generate_platinum.get()){
+          generate_metal_ore(biome, Material.PLATINUM, WorldgenConfig.platinum_ore_size.get(), WorldgenConfig.platinum_spawn_tries.get(),
+                             WorldgenConfig.platinum_min_height.get(), WorldgenConfig.platinum_max_height.get());
+        }
+        if(requested_ores.contains(Material.TITANIUM) && WorldgenConfig.generate_titanium.get()){
+          generate_metal_ore(biome, Material.TITANIUM, WorldgenConfig.titanium_ore_size.get(), WorldgenConfig.titanium_spawn_tries.get(),
+                             WorldgenConfig.titanium_min_height.get(), WorldgenConfig.titanium_max_height.get());
+        }
+      }
     }
     
-    generate_tin      = WorldgenConfig.generate_tin.get()      && requested_ores.contains(Material.TIN.ore);
-    generate_aluminum = WorldgenConfig.generate_aluminum.get() && requested_ores.contains(Material.ALUMINUM.ore);
-    generate_copper   = WorldgenConfig.generate_copper.get()   && requested_ores.contains(Material.COPPER.ore);
-    generate_ruby     = WorldgenConfig.generate_ruby.get()     && requested_ores.contains(Material.RUBY.ore);
-    generate_topaz    = WorldgenConfig.generate_topaz.get()    && requested_ores.contains(Material.TOPAZ.ore);
-    generate_citrine  = WorldgenConfig.generate_citrine.get()  && requested_ores.contains(Material.CITRINE.ore);
-    generate_emerald  = WorldgenConfig.generate_emerald.get()  && requested_ores.contains(Material.EMERALD.ore);
-    generate_sapphire = WorldgenConfig.generate_sapphire.get() && requested_ores.contains(Material.SAPPHIRE.ore);
-    generate_amethyst = WorldgenConfig.generate_amethyst.get() && requested_ores.contains(Material.AMETHYST.ore);
-    generate_silver   = WorldgenConfig.generate_silver.get()   && requested_ores.contains(Material.SILVER.ore);
-    generate_platinum = WorldgenConfig.generate_platinum.get() && requested_ores.contains(Material.PLATINUM.ore);
-    generate_titanium = WorldgenConfig.generate_titanium.get() && requested_ores.contains(Material.TITANIUM.ore);
-    
-    GameRegistry.registerWorldGenerator(new MasterOreGenerator(),0);
+    ADDSynthCore.log.info("Done registering requested Ores.");
   }
 
+  private static final boolean valid_min_max_values(final String name, final int min, final int max){
+    final boolean pass = min >= 0 && max >= 0 && min < Constants.world_height && max < Constants.world_height;
+    if(pass == false){
+      ADDSynthCore.log.error("Invalid Worldgen Min/Max values: Min: "+min+", Max: "+max+", while generating Ores for "+name+".");
+    }
+    return pass;
+  }
 
-/** All Ores have to be generated in the same generator class that implements IWolrdGenerator.
- *  If each ore had their own generator class, and registered to the generator list...
- *  Because for each IWorldGenerator in the list, Minecraft will reset the Random Number generator to the
- *  same chunk seed each time. Which means, for each generator, the first random coordinates picked will
- *  be the same one every time. So only do all ore generating in one generator.
- *  
- *  @see net.minecraftforge.fml.common.registry.GameRegistry#generateWorld(int, int, World, IChunkGenerator, IChunkProvider)
- */
-  private static final class MasterOreGenerator implements IWorldGenerator {
+  private static final void generate_gem_ore(final Biome biome, final OreMaterial material, final int tries, final int min, final int max){
+    if(valid_min_max_values(material.name, min, max)){
+      final int min_depth = Math.min(min, max);
+      final int max_depth = Math.max(min, max);
+      biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(
+        Feature.EMERALD_ORE,
+        new ReplaceBlockConfig(Blocks.STONE.getDefaultState(), material.ore.getDefaultState()),
+        Placement.COUNT_RANGE, new CountRangeConfig(tries, min_depth, min_depth, max_depth)
+      ));
+    }
+  }
 
-    @Override
-    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider){
-      if(world.provider.getDimension() == 0){
-      
-        int i;
-        BlockPos position;
-        
-        // common metals
-        if(generate_tin){
-          for(i = 0; i < WorldgenConfig.tin_spawn_tries.get(); i++){
-            position = MathUtility.get_vanilla_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.tin_min_height.get(), WorldgenConfig.tin_max_height.get());
-            tin_generator.generate(world, random, position);
-          }
-        }
-        if(generate_copper){
-          for(i = 0; i < WorldgenConfig.copper_spawn_tries.get(); i++){
-            position = MathUtility.get_vanilla_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.copper_min_height.get(), WorldgenConfig.copper_max_height.get());
-            copper_generator.generate(world, random, position);
-          }
-        }
-        if(generate_aluminum){
-          for(i = 0; i < WorldgenConfig.aluminum_spawn_tries.get(); i++){
-            position = MathUtility.get_vanilla_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.aluminum_min_height.get(), WorldgenConfig.aluminum_max_height.get());
-            aluminum_generator.generate(world, random, position);
-          }
-        }
-
-        // gems
-        if(generate_ruby){
-          for(i = 0; i < WorldgenConfig.ruby_spawn_tries.get(); i++){
-            position = MathUtility.get_custom_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.ruby_min_height.get(), WorldgenConfig.ruby_max_height.get());
-            if(world.getBlockState(position).getBlock() == Blocks.STONE){ // returns Air block if position is outside build height.
-              world.setBlockState(position,Material.RUBY.ore.getDefaultState(),2); // will simply fail if position is outside build height.
-            }
-          }
-        }
-        if(generate_topaz){
-          for(i = 0; i < WorldgenConfig.topaz_spawn_tries.get(); i++){
-            position = MathUtility.get_custom_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.topaz_min_height.get(), WorldgenConfig.topaz_max_height.get());
-            if(world.getBlockState(position).getBlock() == Blocks.STONE){
-              world.setBlockState(position,Material.TOPAZ.ore.getDefaultState(),2);
-            }
-          }
-        }
-        if(generate_citrine){
-          for(i = 0; i < WorldgenConfig.citrine_spawn_tries.get(); i++){
-            position = MathUtility.get_custom_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.citrine_min_height.get(), WorldgenConfig.citrine_max_height.get());
-            if(world.getBlockState(position).getBlock() == Blocks.STONE){
-              world.setBlockState(position,Material.CITRINE.ore.getDefaultState(),2);
-            }
-          }
-        }
-        if(generate_emerald){
-          for(i = 0; i < WorldgenConfig.emerald_spawn_tries.get(); i++){
-            position = MathUtility.get_custom_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.emerald_min_height.get(), WorldgenConfig.emerald_max_height.get());
-            if(world.getBlockState(position).getBlock() == Blocks.STONE){
-              world.setBlockState(position,Material.EMERALD.ore.getDefaultState(),2);
-            }
-          }
-        }
-        if(generate_sapphire){
-          for(i = 0; i < WorldgenConfig.sapphire_spawn_tries.get(); i++){
-            position = MathUtility.get_custom_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.sapphire_min_height.get(), WorldgenConfig.sapphire_max_height.get());
-            if(world.getBlockState(position).getBlock() == Blocks.STONE){
-              world.setBlockState(position,Material.SAPPHIRE.ore.getDefaultState(),2);
-            }
-          }
-        }
-        if(generate_amethyst){
-          for(i = 0; i < WorldgenConfig.amethyst_spawn_tries.get(); i++){
-            position = MathUtility.get_custom_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.amethyst_min_height.get(), WorldgenConfig.amethyst_max_height.get());
-            if(world.getBlockState(position).getBlock() == Blocks.STONE){
-              world.setBlockState(position,Material.AMETHYST.ore.getDefaultState(),2);
-            }
-          }
-        }
-
-        // semi rare metals
-        if(generate_silver){
-          for(i = 0; i < WorldgenConfig.silver_spawn_tries.get(); i++){
-            position = MathUtility.get_vanilla_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.silver_min_height.get(), WorldgenConfig.silver_max_height.get());
-            silver_generator.generate(world, random, position);
-          }
-        }
-        
-        // rare metals
-        if(generate_platinum){
-          for(i = 0; i < WorldgenConfig.platinum_spawn_tries.get(); i++){
-            position = MathUtility.get_vanilla_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.platinum_min_height.get(), WorldgenConfig.platinum_max_height.get());
-            platinum_generator.generate(world, random, position);
-          }
-        }
-        if(generate_titanium){
-          for(i = 0; i < WorldgenConfig.titanium_spawn_tries.get(); i++){
-            position = MathUtility.get_vanilla_worldgen_position(random, chunkX, chunkZ,
-              WorldgenConfig.titanium_min_height.get(), WorldgenConfig.titanium_max_height.get());
-            titanium_generator.generate(world, random, position);
-          }
-        }
-        
-      } // end dimension id if statement
-    } // end generate function
-  } // end MasterGenerator class
-
+  private static final void generate_metal_ore(final Biome biome, final OreMaterial material, final int size, final int tries, final int min, final int max){
+    if(valid_min_max_values(material.name, min, max)){
+      final int min_depth = Math.min(min, max);
+      final int max_depth = Math.min(min, max);
+      biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(
+        Feature.ORE,
+        new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, material.ore.getDefaultState(), size),
+        Placement.COUNT_RANGE, new CountRangeConfig(tries, min_depth, min_depth, max_depth)
+      ));
+    }
+  }
 
 }

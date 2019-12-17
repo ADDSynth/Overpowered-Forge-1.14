@@ -9,7 +9,7 @@ import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.containers.ContainerLaserHousing;
 import addsynth.overpoweredmod.game.block_networks.LaserNetwork;
 import addsynth.overpoweredmod.network.laser.LaserClientSyncMessage;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;

@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.tiles.technical;
 
 import addsynth.core.tiles.TileBase;
-import addsynth.overpoweredmod.tiles.Tiles;
+import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.tileentity.ITickableTileEntity;
 
 public final class TilePortal extends TileBase implements ITickableTileEntity {

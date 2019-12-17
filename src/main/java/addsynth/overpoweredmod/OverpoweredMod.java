@@ -1,16 +1,18 @@
 package addsynth.overpoweredmod;
 
 import java.io.File;
+import addsynth.core.ADDSynthCore;
 import addsynth.core.game.Compatability;
 import addsynth.core.game.Game;
 import addsynth.core.game.Icon;
 import addsynth.core.game.RegistryUtil;
+import addsynth.core.material.Material;
+import addsynth.core.worldgen.OreGenerator;
 import addsynth.energy.gameplay.gui.*;
 // import addsynth.overpoweredmod.assets.Achievements;
 import addsynth.overpoweredmod.client.gui.tiles.*;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
-import addsynth.overpoweredmod.containers.Containers;
 import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.game.core.Init;
@@ -19,14 +21,15 @@ import addsynth.overpoweredmod.game.core.Metals;
 import addsynth.overpoweredmod.game.core.Tools;
 import addsynth.overpoweredmod.game.recipes.CompressorRecipes;
 import addsynth.overpoweredmod.game.recipes.OreRefineryRecipes;
-import addsynth.overpoweredmod.init.Registers;
-import addsynth.overpoweredmod.init.Setup;
 import addsynth.overpoweredmod.network.NetworkHandler;
+import addsynth.overpoweredmod.registers.Containers;
+import addsynth.overpoweredmod.registers.Registers;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DeferredWorkQueue;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -62,7 +65,6 @@ public class OverpoweredMod {
     context.getModEventBus().addListener(OverpoweredMod::main_setup);
     context.getModEventBus().addListener(OverpoweredMod::client_setup);
     context.getModEventBus().addListener(OverpoweredMod::inter_mod_communications);
-    // OPTIMIZE: the two ways to get the mod context can probably be combined/merged, but I don't want to think about that right now.
     init_config();
   }
 
@@ -73,6 +75,7 @@ public class OverpoweredMod {
       new File(FMLPaths.CONFIGDIR.get().toString(), MOD_NAME).mkdir();
 
       final ModLoadingContext context = ModLoadingContext.get();
+      // OPTIMIZE: the two ways to get the mod context can probably be combined/merged, but I don't want to think about that right now.
   
       context.registerConfig(ModConfig.Type.COMMON, Config.CONFIG_SPEC,   MOD_NAME+File.separator+"main.toml");
       context.registerConfig(ModConfig.Type.COMMON, Features.CONFIG_SPEC, MOD_NAME+File.separator+"feature_disable.toml");
@@ -88,8 +91,7 @@ public class OverpoweredMod {
   
   private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin constructing Overpowered...");
-          
-    Setup.register_world_generators(); // TODO: Send this to ADDSynthCore via InterMod Communications
+    
     // Achievements.registerAchievements();
     if(Features.compressor.get()){ // running this code doesn't hurt anything, but this boolean check is an optimization.
       CompressorRecipes.register();
@@ -105,9 +107,27 @@ public class OverpoweredMod {
   }
 
   private static final void inter_mod_communications(final InterModEnqueueEvent event){
+    request_ores_to_generate();
     if(Compatability.PROJECT_E.loaded){
       ProjectE.register_emc_values();
     }
+  }
+
+  private static final void request_ores_to_generate(){
+    final String mod = ADDSynthCore.MOD_ID;
+    final String message = OreGenerator.REQUEST_ORE;
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.RUBY);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.TOPAZ);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.CITRINE);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.EMERALD);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.SAPPHIRE);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.AMETHYST);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.TIN);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.COPPER);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.ALUMINUM);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.SILVER);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.PLATINUM);
+    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.TITANIUM);
   }
 
   private static final void client_setup(final FMLClientSetupEvent event){
@@ -134,6 +154,8 @@ public class OverpoweredMod {
   }
 
   private static final void setup_creative_tabs(){
+    init_config();
+    
     final Icon[] main_icons =     {new Icon(Init.energy_crystal, true)};
     final Icon[] gem_icons =      {new Icon(Gems.ruby, true)};
     final Icon[] machines_icons = {new Icon(OverpoweredMod.registry.getItemBlock(Machines.generator), true)};

@@ -1,10 +1,11 @@
-package addsynth.overpoweredmod.tiles;
+package addsynth.overpoweredmod.registers;
 
 import addsynth.energy.gameplay.tiles.*;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
+import addsynth.overpoweredmod.tiles.TileDataCable;
 import addsynth.overpoweredmod.tiles.machines.automatic.*;
 import addsynth.overpoweredmod.tiles.machines.energy.TileEnergyGenerator;
 import addsynth.overpoweredmod.tiles.machines.fusion.*;
