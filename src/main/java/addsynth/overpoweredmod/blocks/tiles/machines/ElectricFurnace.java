@@ -11,6 +11,7 @@ import net.minecraft.block.HorizontalBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
@@ -58,8 +59,9 @@ public final class ElectricFurnace extends MachineBlockTileEntity {
   }
 
   @Override
-  public final IBlockState getStateForPlacement(World world, BlockPos pos, Direction facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, Hand hand){
-    return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+  @Nullable
+  public BlockState getStateForPlacement(BlockItemUseContext context){
+    return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
   }
 
 }

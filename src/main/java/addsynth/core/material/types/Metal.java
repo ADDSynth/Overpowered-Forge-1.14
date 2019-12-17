@@ -2,8 +2,8 @@ package addsynth.core.material.types;
 
 import addsynth.core.gameplay.items.CoreItem;
 import addsynth.core.material.MiningStrength;
-import addsynth.core.material.OreType;
 import addsynth.core.material.blocks.MetalBlock;
+import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
@@ -34,7 +34,7 @@ public class Metal extends OreMaterial {
   /** Custom Metal */
   public Metal(final String unlocalized_name, final MaterialColor color, final MiningStrength strength){
     super(unlocalized_name, new CoreItem(unlocalized_name+"_ingot", false), new MetalBlock(unlocalized_name+"_block", color),
-      OreType.BLOCK, strength);
+      strength, OverpoweredMod.metals_creative_tab);
     this.ingot = this.item;
     this.nugget = new CoreItem(unlocalized_name+"_nugget", false);
     this.plating = new CoreItem(unlocalized_name+"_plate", false);

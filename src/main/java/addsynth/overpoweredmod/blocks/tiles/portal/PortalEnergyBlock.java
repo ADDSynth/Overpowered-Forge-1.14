@@ -6,6 +6,7 @@ import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.tiles.technical.TilePortal;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.dimension.CustomTeleporter;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
@@ -17,12 +18,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.state.EnumProperty;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -31,22 +36,22 @@ public final class PortalEnergyBlock extends ContainerBlock {
   // NOTE: well, after seeing a YouTube video, I was going to make this extend from the Vanilla PortalBlock class,
   //       but I want this to have a TileEntity, then just implement ITileProvider?
 
-  public static final EnumProperty<Direction.Axis> AXIS = EnumProperty.<Direction.Axis>create("axis", Direction.Axis.class, new Direction.Axis[] {Direction.Axis.X, Direction.Axis.Z});
+  public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
 
   public PortalEnergyBlock(final String name){
-    super(Material.PORTAL);
+    super(Block.Properties.create(Material.PORTAL));
     OverpoweredMod.registry.register_block(this, name, new Item.Properties());
     // Portal Energy Block needs an ItemBlock form to use as an icon for the Achievement.
   }
 
   @Override
   @SuppressWarnings("deprecation")
-  public final AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos){
-    return NULL_AABB;
+  public final VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
+     return VoxelShapes.empty();
   }
 
   @Override
-  public final @Nonnull ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, PlayerEntity player){
+  public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player){
     return ItemStack.EMPTY;
   }
 
@@ -62,7 +67,8 @@ public final class PortalEnergyBlock extends ContainerBlock {
   }
 
   @Override
-  public final void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity){
+  @SuppressWarnings("deprecation")
+  public final void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity){
     if(world.isRemote == false){
       if(entity.isNonBoss()){
         if(entity instanceof ServerPlayerEntity){
@@ -84,13 +90,8 @@ public final class PortalEnergyBlock extends ContainerBlock {
   }
 
   @Override
-  public int quantityDropped(Random random){
-    return 0;
-  }
-
-  @Override
   @SuppressWarnings("deprecation")
-  public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state){
+  public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state){
     return ItemStack.EMPTY;
   }
 

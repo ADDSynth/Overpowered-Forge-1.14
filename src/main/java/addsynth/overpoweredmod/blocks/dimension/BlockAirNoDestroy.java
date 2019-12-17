@@ -2,9 +2,10 @@ package addsynth.overpoweredmod.blocks.dimension;
 
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.IWorld;
 
 public final class BlockAirNoDestroy extends AirBlock {
 
@@ -14,8 +15,8 @@ public final class BlockAirNoDestroy extends AirBlock {
   }
 
   @Override
-  public void onPlayerDestroy(World world, BlockPos pos, IBlockState state){
-    if(world.isRemote == false){
+  public void onPlayerDestroy(IWorld world, BlockPos pos, BlockState state){
+    if(world.isRemote() == false){
       // world.setBlockState(pos, Init.custom_air_block.getDefaultState(), 2);
     }
   }

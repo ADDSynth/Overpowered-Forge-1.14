@@ -1,32 +1,29 @@
 package addsynth.energy.blocks;
 
 import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
 import addsynth.core.blocks.BlockTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
-import net.minecraft.entity.Entity;
+import net.minecraft.block.IWaterLoggable;
 import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
 
-public abstract class Wire extends BlockTile {
+public abstract class Wire extends BlockTile implements IWaterLoggable {
 
   // http://mcforge.readthedocs.io/en/latest/blocks/states/
 
-  public static final BooleanProperty NORTH = BooleanProperty.create("north");
-  public static final BooleanProperty SOUTH = BooleanProperty.create("south");
-  public static final BooleanProperty WEST  = BooleanProperty.create("west");
-  public static final BooleanProperty EAST  = BooleanProperty.create("east");
-  public static final BooleanProperty UP    = BooleanProperty.create("up");
-  public static final BooleanProperty DOWN  = BooleanProperty.create("down");
+  public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
+  public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
+  public static final BooleanProperty WEST  = BlockStateProperties.WEST;
+  public static final BooleanProperty EAST  = BlockStateProperties.EAST;
+  public static final BooleanProperty UP    = BlockStateProperties.UP;
+  public static final BooleanProperty DOWN  = BlockStateProperties.DOWN;
+  public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
   private static final double default_min_wire_size =  5.0 / 16;
   private static final double default_max_wire_size = 11.0 / 16;
@@ -51,9 +48,9 @@ public abstract class Wire extends BlockTile {
     if(bounding_box[0] == null){
       set_bounding_boxes(min_wire_size, max_wire_size);
     }
-    this.setDefaultState(this.blockState.getBaseState()
-       .withProperty(NORTH, false).withProperty(SOUTH, false).withProperty(WEST, false)
-       .withProperty(EAST, false).withProperty(UP, false).withProperty(DOWN, false));
+    this.setDefaultState(this.stateContainer.getBaseState()
+       .with(NORTH, false).with(SOUTH, false).with(WEST, false).with(EAST, false).with(UP, false).with(DOWN, false)
+       .with(WATERLOGGED, false));
   }
 
   private static final void set_bounding_boxes(double min_wire_size, double max_wire_size){
@@ -66,54 +63,7 @@ public abstract class Wire extends BlockTile {
     bounding_box[6] = new AxisAlignedBB(min_wire_size, min_wire_size, min_wire_size, max_wire_size, max_wire_size, 1);
   }
 
-  @Override
-  @SuppressWarnings("deprecation")
-  public final IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos){
-    final ArrayList<Direction> valid_sides = get_valid_sides(world, pos);
-    
-    final boolean north = valid_sides.contains(Direction.NORTH);
-    final boolean south = valid_sides.contains(Direction.SOUTH);
-    final boolean west = valid_sides.contains(Direction.WEST);
-    final boolean east = valid_sides.contains(Direction.EAST);
-    final boolean up = valid_sides.contains(Direction.UP);
-    final boolean down = valid_sides.contains(Direction.DOWN);
-    
-    return state.withProperty(NORTH, north).withProperty(SOUTH, south).withProperty(WEST, west)
-                .withProperty(EAST, east).withProperty(UP, up).withProperty(DOWN, down);
-  }
-
   protected abstract ArrayList<Direction> get_valid_sides(IBlockReader world, BlockPos pos);
-
-  @Override
-  @SuppressWarnings("deprecation")
-  public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entity, boolean unused){
-    state = getActualState(state, world, pos);
-    addCollisionBoxToList(pos, entityBox, collidingBoxes, bounding_box[0]);
-    if(state.getValue(WEST)){  addCollisionBoxToList(pos, entityBox, collidingBoxes, bounding_box[1]);}
-    if(state.getValue(DOWN)){  addCollisionBoxToList(pos, entityBox, collidingBoxes, bounding_box[2]);}
-    if(state.getValue(NORTH)){ addCollisionBoxToList(pos, entityBox, collidingBoxes, bounding_box[3]);}
-    if(state.getValue(EAST)){  addCollisionBoxToList(pos, entityBox, collidingBoxes, bounding_box[4]);}
-    if(state.getValue(UP)){    addCollisionBoxToList(pos, entityBox, collidingBoxes, bounding_box[5]);}
-    if(state.getValue(SOUTH)){ addCollisionBoxToList(pos, entityBox, collidingBoxes, bounding_box[6]);}
-  }
-
-  /**
-   * Will eventually get replaced with IBlockState.getBoundingBox(). The implementation in BlockStateContainer
-   * currently calls the getBoundingBox() method in the Block class.
-   */
-  @Override
-  @SuppressWarnings("deprecation")
-  public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
-    state = getActualState(state, source, pos);
-    AxisAlignedBB box = bounding_box[0];
-    if(state.getValue(WEST)){  box = box.union(bounding_box[1]);}
-    if(state.getValue(DOWN)){  box = box.union(bounding_box[2]);}
-    if(state.getValue(NORTH)){ box = box.union(bounding_box[3]);}
-    if(state.getValue(EAST)){  box = box.union(bounding_box[4]);}
-    if(state.getValue(UP)){    box = box.union(bounding_box[5]);}
-    if(state.getValue(SOUTH)){ box = box.union(bounding_box[6]);}
-    return box;
-  }
 
   /**
    * This is here because the Wire class is derived from the BlockTile class, which is derived from the BlockContainer class,

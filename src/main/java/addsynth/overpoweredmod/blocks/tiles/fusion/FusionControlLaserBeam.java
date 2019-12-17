@@ -1,13 +1,15 @@
 package addsynth.overpoweredmod.blocks.tiles.fusion;
 
-import javax.annotation.Nullable;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.IBlockReader;
 
 public final class FusionControlLaserBeam extends Block {
 
@@ -22,10 +24,9 @@ public final class FusionControlLaserBeam extends Block {
   }
 
   @Override
-  @Nullable
   @SuppressWarnings("deprecation")
-  public final AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos){
-    return NULL_AABB;
+  public final VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
+     return VoxelShapes.empty();
   }
 
 }

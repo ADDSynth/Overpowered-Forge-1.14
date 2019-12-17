@@ -1,6 +1,5 @@
 package addsynth.overpoweredmod.blocks.tiles.laser;
 
-import javax.annotation.Nullable;
 import addsynth.core.blocks.BlockTile;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.DamageSources;
@@ -13,8 +12,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -31,10 +32,9 @@ public final class LaserBeam extends BlockTile {
   }
 
   @Override
-  @Nullable
   @SuppressWarnings("deprecation")
-  public final AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos){
-    return NULL_AABB;
+  public final VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
+     return VoxelShapes.empty();
   }
 
   // You cannot set this block isBurning(true) because this will also set fire to any

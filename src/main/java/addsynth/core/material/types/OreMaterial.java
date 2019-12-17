@@ -3,12 +3,11 @@ package addsynth.core.material.types;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.items.CoreItem;
 import addsynth.core.material.MiningStrength;
-import addsynth.core.material.OreType;
 import addsynth.core.material.blocks.OreBlock;
-import addsynth.core.material.blocks.ItemOreBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 
 public class OreMaterial extends BaseMaterial {
 
@@ -27,27 +26,16 @@ public class OreMaterial extends BaseMaterial {
   }
 
   /** Custom Material */
-  public OreMaterial(final String name, final MaterialColor color, final OreType ore_type, final MiningStrength strength){
+  public OreMaterial(final String name, final MaterialColor color, final MiningStrength strength, final ItemGroup group){
     // Silicon, Urnaium, and Yellorium
     super(true, name, new CoreItem(new Item.Properties(), name), null); // TODO: needs generic block
-    this.ore = NewOreBlock(name, ore_type, this.item, strength);
+    this.ore = new OreBlock(name+"_ore", strength, group);
   }
-
 
   /** Specific Type Material */
-  protected OreMaterial(final String name, final Item item, final Block block, final OreType ore_type, final MiningStrength strength){
+  protected OreMaterial(final String name, final Item item, final Block block, final MiningStrength strength, final ItemGroup group){
     super(true, name, item, block);
-    this.ore = ore_type == null ? null : NewOreBlock(name, ore_type, this.item, strength);
-  }
-
-  private static final Block NewOreBlock(final String name, final OreType ore_type, final Item item_drop, final MiningStrength strength){
-    Block block = null;
-    switch(ore_type){
-    case BLOCK: block = new OreBlock(name+"_ore", strength); break;
-    case ITEM:  block = new ItemOreBlock(name+"_ore", item_drop, strength); break;
-    default: break;
-    }
-    return block;
+    this.ore = new OreBlock(name+"_ore", strength, group);
   }
 
 }

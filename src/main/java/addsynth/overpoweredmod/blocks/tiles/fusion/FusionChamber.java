@@ -13,7 +13,6 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -67,7 +66,7 @@ public final class FusionChamber extends MachineBlock {
   }
 
   @Override
-  public final void onBlockExploded(final World world, final BlockPos pos, final Explosion explosion){
+  public final void onExplosionDestroy(final World world, final BlockPos pos, final Explosion explosion){
     check_container(world, pos);
   }
 

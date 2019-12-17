@@ -1,13 +1,16 @@
 package addsynth.overpoweredmod.blocks.unique;
 
-import javax.annotation.Nullable;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.IBlockReader;
 
 public final class NullBlock extends Block {
 
@@ -16,24 +19,15 @@ public final class NullBlock extends Block {
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.creative_tab));
   }
 
-    @Override
-    public final BlockRenderLayer getRenderLayer(){
-        return BlockRenderLayer.TRANSLUCENT;
-    }
+  @Override
+  @SuppressWarnings("deprecation")
+  public final VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
+     return VoxelShapes.empty();
+  }
 
-    @Override
-    @Nullable
-    @SuppressWarnings("deprecation")
-    public final AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos){
-        return NULL_AABB;
-    }
-
-    /**
-     * Whether this Block can be replaced directly by other blocks (true for e.g. tall grass)
-     */
-    @Override
-    public final boolean isReplaceable(IBlockAccess worldIn, BlockPos pos){
-        return true;
-    }
+  @Override
+  public final BlockRenderLayer getRenderLayer(){
+      return BlockRenderLayer.TRANSLUCENT;
+  }
 
 }

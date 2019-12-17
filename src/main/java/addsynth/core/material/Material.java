@@ -71,9 +71,9 @@ public final class Material {
   public static final Metal STEEL    = new ManufacturedMetal("steel",  MaterialColor.GRAY,   MiningStrength.IRON); // (advanced version of iron)
   
   // other materials
-  public static final OreMaterial SILICON   = new OreMaterial("silicon",   MaterialColor.GRAY,   OreType.ITEM,  MiningStrength.IRON);
-  public static final OreMaterial URANIUM   = new OreMaterial("uranium",   MaterialColor.LIME,   OreType.BLOCK, MiningStrength.IRON);
-  public static final OreMaterial YELLORIUM = new OreMaterial("yellorium", MaterialColor.YELLOW, OreType.ITEM,  MiningStrength.ANY);
+  public static final OreMaterial SILICON   = new OreMaterial("silicon",   MaterialColor.GRAY,   MiningStrength.IRON, null);
+  public static final OreMaterial URANIUM   = new OreMaterial("uranium",   MaterialColor.LIME,   MiningStrength.IRON, null);
+  public static final OreMaterial YELLORIUM = new OreMaterial("yellorium", MaterialColor.YELLOW, MiningStrength.ANY, null);
 
   /** Call this function if you want a material in your mod.  */
   public static final void register(final BaseMaterial material){

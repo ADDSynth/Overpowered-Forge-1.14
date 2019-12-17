@@ -33,7 +33,8 @@ public final class BlackHole extends Block {
   }
 
   @Override
-  public final void onBlockAdded(final World world, final BlockPos pos, final BlockState state){
+  @SuppressWarnings("deprecation")
+  public final void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving){
     if(world.isRemote == false){
       erase_the_world(world, pos);
     }
