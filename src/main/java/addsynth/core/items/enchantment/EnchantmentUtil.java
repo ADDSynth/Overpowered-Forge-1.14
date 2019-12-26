@@ -66,16 +66,20 @@ public final class EnchantmentUtil {
     return Arrays.asList(enchantment_list);
   }
 
+  /** @see ItemStack#addEnchantment(Enchantment, int) */
   public static final boolean does_item_have_enchantment(final ItemStack stack, final Enchantment[] enchantments){
     if(stack.isEnchanted()){
       final ListNBT enchantment_tag_list = stack.getEnchantmentTagList();
       int i;
-      int id;
+      String id;
       for(i = 0; i < enchantment_tag_list.size(); i++){
-        id = enchantment_tag_list.getCompound(i).getInt("id");
+        id = enchantment_tag_list.getCompound(i).getString("id");
         for(Enchantment enchantment : enchantments){
-          if(id == Enchantment.getEnchantmentID(enchantment)){
-            return true;
+          // FIX
+          if(enchantment.getRegistryName() != null){
+            if(id.equals(enchantment.getRegistryName().getPath())){
+              return true;
+            }
           }
         }
       }

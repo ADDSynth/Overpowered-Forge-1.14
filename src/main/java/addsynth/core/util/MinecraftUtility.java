@@ -1,6 +1,5 @@
 package addsynth.core.util;
 
-import java.util.Locale;
 import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
 import net.minecraft.block.Block;
@@ -13,7 +12,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.ModLoadingContext;
 
 public final class MinecraftUtility {
@@ -82,34 +80,6 @@ public final class MinecraftUtility {
     Minecraft.getInstance().crashed(crash_report);
     Minecraft.getInstance().displayCrashReport(crash_report);
     // FMLCommonHandler.exitJava();
-  }
-
-  /**
-   * <p>
-   * This is for biomes. The {@link net.minecraftforge.common.DimensionManager} already has a method
-   * for getting the next available Dimension id.
-   * </p>
-   * <p>
-   * SO FAR, THIS IS NOT USED!
-   * </p>
-   */
-  public static final int getNextBiomeID(){
-    int i = 0;
-    while(Biome.getBiomeForId(i) != null){
-      i++;
-      if(i == Integer.MIN_VALUE){
-        /*
-        i = -1;
-        while(Biome.getBiomeForId(i) != null){
-          i--;
-          if(i == Integer.MAX_VALUE){
-          }
-        }
-        */
-        throw new RuntimeException("Could not get a free Biome ID, all values are used.");
-      }
-    }
-    return i;
   }
 
 }

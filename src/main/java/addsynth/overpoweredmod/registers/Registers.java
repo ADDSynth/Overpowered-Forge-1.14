@@ -18,13 +18,10 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.registries.IForgeRegistry;
 
-/** The annotation is identified at compile time, Forge finds this and runs this
- *  before running PreInit().
- */
-@Mod.EventBusSubscriber(modid = OverpoweredMod.MOD_ID)
+@EventBusSubscriber(modid = OverpoweredMod.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public final class Registers {
 
   static {
@@ -116,7 +113,7 @@ public final class Registers {
     }
     for(Gem gem : Gems.index){ if(gem.custom){ game.register(gem.gem); } }
     for(Gem gem : Gems.index){ if(gem.custom){ game.register(gem.block_item); } }
-    for(Gem gem : Gems.index){ if(gem.custom){ game.register(ADDSynthCore.registry.getItemBlock(gem.ore)); } }
+    for(Gem gem : Gems.index){ if(gem.custom){ game.register(OverpoweredMod.registry.getItemBlock(gem.ore)); } }
     
     game.register(Init.energy_crystal_shards);
     game.register(Init.energy_crystal);
@@ -203,8 +200,8 @@ public final class Registers {
     }
     
     for(Metal metal : Metals.values){ if(metal.custom){ game.register(metal.ingot); } }
-    for(Metal metal : Metals.values){ if(metal.custom){ game.register(ADDSynthCore.registry.getItemBlock(metal.block)); } }
-    for(Metal metal : Metals.values){ if(metal.custom){ if(metal.ore != null){ game.register(ADDSynthCore.registry.getItemBlock(metal.ore)); } } }
+    for(Metal metal : Metals.values){ if(metal.custom){ game.register(OverpoweredMod.registry.getItemBlock(metal.block)); } }
+    for(Metal metal : Metals.values){ if(metal.custom){ if(metal.ore != null){ game.register(OverpoweredMod.registry.getItemBlock(metal.ore)); } } }
     if(Features.compressor.get()){
       for(Metal metal : Metals.values){ game.register(metal.plating); }
     }

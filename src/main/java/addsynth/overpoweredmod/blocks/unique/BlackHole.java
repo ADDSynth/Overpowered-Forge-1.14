@@ -15,6 +15,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -56,9 +57,10 @@ public final class BlackHole extends Block {
       final double center_x = center.getX() + 0.5;
       final double center_y = center.getY() + 0.5;
       final double center_z = center.getZ() + 0.5;
+      final AxisAlignedBB area = new AxisAlignedBB(center_x, center_y, center_z, center_x, center_y, center_z);
+      area.grow(radius);
       destroyBlocks(world, center, radius);
-      destroyEntities(world, center_x, center_y, center_z, radius);
-      destroyPlayers(world, center_x, center_y, center_z, radius);
+      destroyEntities(world, area);
       destroyItems();
     }
   }
@@ -128,22 +130,22 @@ public final class BlackHole extends Block {
     }
   }
   
-  private static final void destroyEntities(World world, double x, double y, double z, final int radius){
-    for(Entity entity : world.loadedEntityList){
-      if(MathUtility.get_distance(x, y, z, entity.posX, entity.posY, entity.posZ) <= radius){
-        // entity.attackEntityFrom(source, amount);
-        entity.setDead(); // possibly use .remove()
-      }
-    }
-  }
-  
-  private static final void destroyPlayers(World world, double x, double y, double z, final int radius){
-    for(PlayerEntity player : world.getPlayers()){
-      if(player.isCreative() == false && player.isSpectator() == false){
-        if(MathUtility.get_distance(x, y, z, player.posX, player.posY, player.posZ) <= radius){
-          player.setDead();
+  private static final void destroyEntities(final World world, final AxisAlignedBB area){
+    for(Entity entity : world.getEntitiesWithinAABB(Entity.class, area, null)){
+      if(entity instanceof PlayerEntity){
+        final PlayerEntity player = (PlayerEntity)entity;
+        if(player.isCreative() == false && player.isSpectator() == false){
+          player.setHealth(0.0f);
+          continue;
         }
       }
+      if(entity instanceof LivingEntity){
+        // entity.attackEntityFrom(source, amount);
+        // entity.setDead(); // possibly use .remove()
+        ((LivingEntity)entity).setHealth(0.0f);
+        continue;
+      }
+      entity.remove();
     }
   }
   

@@ -10,13 +10,10 @@ import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.game.core.Tools;
 import net.minecraft.item.Item;
 import net.minecraft.world.storage.loot.LootEntry;
-import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.RandomValueRange;
 import net.minecraft.world.storage.loot.conditions.KilledByPlayer;
-import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.conditions.RandomChance;
-import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -32,7 +29,7 @@ public final class LootTables {
   static {
     Debug.log_setup_info("LootTables class was loaded.");
   }
-
+/*
   private static final float default_spawn_chance = 1.0f / 40.0f; // before, it was just with rings and it was 1 / 15 chance.
   private static final float spawn_chance = default_spawn_chance;
 
@@ -88,6 +85,7 @@ public final class LootTables {
   private static final LootEntryItem newLootEntry(final Item item, final int weight){
     return new LootEntryItem(item, weight, 0, new LootFunction[0], new LootCondition[0],item.getRegistryName().toString());
   }
+*/
 
   @SubscribeEvent
   public static void inject_loot(LootTableLoadEvent event){
@@ -124,7 +122,7 @@ public final class LootTables {
         // FUTURE: New Illusioner mob in 1.12, but they don't have a Loot Table or Loot Table Load Event until 1.14, and they don't naturally spawn anywhere.
 
         if(add_rings){
-          event.getTable().addPool(custom_loot_pool);
+          // event.getTable().addPool(custom_loot_pool);
           if(Debug.debug_loot_tables){
             OverpoweredMod.log.info("Successfully injected custom loot pool into Loot Table for: "+mob);
           }

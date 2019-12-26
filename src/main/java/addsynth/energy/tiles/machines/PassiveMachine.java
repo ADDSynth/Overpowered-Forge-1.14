@@ -145,7 +145,7 @@ public abstract class PassiveMachine extends WorkMachine {
     if(running){
       switch(state){
       case IDLE:
-        if(world.getTotalWorldTime() % max_passive_ticks == 0){
+        if(world.getGameTime() % max_passive_ticks == 0){
           pass = energy.needsEnergy();
         }
         break;

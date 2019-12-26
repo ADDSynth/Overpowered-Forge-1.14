@@ -8,16 +8,13 @@ import java.util.Map.Entry;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.util.JavaUtils;
 import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.registries.IForgeRegistry;
 
 // Remember: The order an item shows up in the creative tab depends on the ID, which is determined
@@ -436,6 +433,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
    *  call this method during your mod's {@link ModelRegistryEvent} to automatically register
    *  Inventory Item models for all your items. It also assists in debugging common errors.
    */
+  @Deprecated
   public final void register_inventory_item_models(){
     String item_string;
     ResourceLocation registryname;
@@ -450,7 +448,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
         if(registryname.getNamespace().equals(this.mod_id) == false){
           //ADDSynthCore.log.warn("The item "+item_string+" is not registered with the expected mod "+this.mod_id+". It is actually registered with the "+registryname.getNamespace()+" mod.");
         }
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(registryname, "inventory"));
+        // ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(registryname, "inventory"));
       }
     }
   }

@@ -1,6 +1,7 @@
 package addsynth.core.material.types;
 
 import addsynth.core.ADDSynthCore;
+import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -27,7 +28,7 @@ public class BaseMaterial extends AbstractMaterial {
     super(custom, name);
     this.item = item;
     this.block = block;
-    this.block_item = block == null ? null : ADDSynthCore.registry.getItemBlock(this.block); // FUTURE: Registerd to Overpowered Mod for now, but Common materials will probably be moved to ADDSynthCore in the future, and requested in the PreInit event, just like the WorldGenerators are.
+    this.block_item = block == null ? null : OverpoweredMod.registry.getItemBlock(this.block); // FUTURE: Registerd to Overpowered Mod for now, but Common materials will probably be moved to ADDSynthCore in the future, and requested in the PreInit event, just like the WorldGenerators are.
   }
 
 }

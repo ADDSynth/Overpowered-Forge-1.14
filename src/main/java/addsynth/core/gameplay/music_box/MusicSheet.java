@@ -7,10 +7,10 @@ import addsynth.core.gameplay.items.CoreItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUseContext;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceContext.FluidMode;
@@ -47,7 +47,7 @@ public final class MusicSheet extends CoreItem {
       }
       if(result == null){
         if(player.isSneaking()){
-          stack.put(null);
+          stack.setTag(null);
           player.sendMessage(new StringTextComponent("Music Sheet cleared."));
           result = new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
         }
@@ -56,8 +56,11 @@ public final class MusicSheet extends CoreItem {
     return result == null ? new ActionResult<ItemStack>(ActionResultType.PASS, stack) : result;
   }
 
-  @Override // When a player Right-clicks on a block while holding this item.
-  public ActionResultType onItemUse(PlayerEntity player, World world, BlockPos pos, Hand hand, Direction facing, float hitX, float hitY, float hitZ){
+  @Override
+  public ActionResultType onItemUse(final ItemUseContext context){
+    final PlayerEntity player = context.getPlayer();
+    final World world = context.getWorld();
+    final BlockPos pos = new BlockPos(context.getHitVec());
     final ItemStack stack = player.getHeldItemMainhand();
     if(world.getBlockState(pos).getBlock() == Core.music_box){
       if(world.isRemote){

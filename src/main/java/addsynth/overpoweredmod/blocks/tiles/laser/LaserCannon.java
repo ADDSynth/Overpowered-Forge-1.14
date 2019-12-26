@@ -16,6 +16,7 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
+import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -80,6 +81,11 @@ public final class LaserCannon extends BlockTile {
   @Override
   public final TileEntity createNewTileEntity(IBlockReader world){
     return color == -1 ? null : new TileLaser();
+  }
+
+  @Override
+  protected void fillStateContainer(Builder<Block, BlockState> builder){
+    builder.add(FACING);
   }
 
 }

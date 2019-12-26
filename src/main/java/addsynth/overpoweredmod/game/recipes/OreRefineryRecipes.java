@@ -8,7 +8,6 @@ import addsynth.overpoweredmod.Debug;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.Tags;
 
 public final class OreRefineryRecipes {
@@ -30,12 +29,14 @@ public final class OreRefineryRecipes {
     for(Block block : Tags.Blocks.ORES.getAllElements()){
       // TODO: Check if Ore Block has a Furnace recipe.
       if(false){
+        /*
         if(result_check != null){
           list.add(ore.getItem());
           final ItemStack result = result_check.copy();
           result.setCount(result.getCount()*result_output);
           recipes.put(ore.getItem(), result);
         }
+        */
       }
     }
     

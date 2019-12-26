@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -74,6 +75,11 @@ public abstract class Wire extends BlockTile implements IWaterLoggable {
   @Override
   public TileEntity createNewTileEntity(IBlockReader worldIn){
     return null;
+  }
+
+  @Override
+  protected void fillStateContainer(Builder<Block, BlockState> builder){
+    builder.add(NORTH, SOUTH, WEST, EAST, UP, DOWN, WATERLOGGED);
   }
 
 }

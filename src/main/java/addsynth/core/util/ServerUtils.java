@@ -7,6 +7,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.math.BlockPos;
@@ -54,7 +55,7 @@ public final class ServerUtils {
 
   /** Allows any Entity and not EntityLiving? */
   public static void teleport_to_dimension(final Entity entity, final int dimension_id){
-    entity.changeDimension(dimension_id);
+    // entity.changeDimension(dimension_id);
   }
 
   //public static void teleport_to_dimension(final Entity entity, final int dimension_id, final Teleporter teleporter){
@@ -64,7 +65,7 @@ public final class ServerUtils {
   // }
 
   public static void teleport_to_dimension(final ServerPlayerEntity player, final int dimension_id, final Teleporter teleporter){
-    getServer().getPlayerList().transferPlayerToDimension(player, dimension_id, teleporter);
+    // getServer().getPlayerList().transferPlayerToDimension(player, dimension_id, teleporter);
   }
 
   /*
@@ -97,7 +98,7 @@ public final class ServerUtils {
   public static BlockPos get_spawn_position(final ServerWorld world, final BlockPos origin){
     int x = origin.getX();
     int z = origin.getZ();
-    int y = world.getChunk(x >> 4, z >> 4).getHeightValue(x & 15, z & 15); // OPTIMIZE: this to use the world.getChunk(BlockPos) function?
+    int y = 80; // world.getChunk(x >> 4, z >> 4).getHeight(); // getHeightmap(HeightMap.Type.WORLD_SURFACE).; // OPTIMIZE: this to use the world.getChunk(BlockPos) function?
     return new BlockPos(x,y,z);
     // Would have used:
     //   if (this.worldServerInstance.isAirBlock(blockpos$mutableblockpos.setPos(j2, j3, l2)))

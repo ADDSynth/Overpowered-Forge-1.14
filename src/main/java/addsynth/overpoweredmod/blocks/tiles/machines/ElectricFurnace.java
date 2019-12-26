@@ -6,6 +6,7 @@ import addsynth.core.util.MinecraftUtility;
 import addsynth.energy.blocks.MachineBlockTileEntity;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileElectricFurnace;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.client.util.ITooltipFlag;
@@ -15,6 +16,7 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
+import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
@@ -62,6 +64,11 @@ public final class ElectricFurnace extends MachineBlockTileEntity {
   @Nullable
   public BlockState getStateForPlacement(BlockItemUseContext context){
     return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
+  }
+
+  @Override
+  protected void fillStateContainer(Builder<Block, BlockState> builder){
+    builder.add(FACING);
   }
 
 }

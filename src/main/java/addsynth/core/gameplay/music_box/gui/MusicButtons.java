@@ -27,6 +27,8 @@ public final class MusicButtons {
     public void onPress(){
       NetworkHandler.INSTANCE.sendToServer(new MusicBoxMessage(tile.getPos(),TileMusicBox.Command.PLAY));
     }
+    
+    // TODO Mute the Play button when we Re-add the Adjustable Button.
   }
 
   public static final class TempoButton extends AbstractButton {
@@ -119,7 +121,7 @@ public final class MusicButtons {
     private static final int texture_height = 64;
   
     private final TileMusicBox tile;
-    public final byte track;
+    private final byte track;
 
     public InstrumentButton(final int x, final int y, final byte track, final TileMusicBox tile){
       super(x, y, GuiMusicBox.instrument_button_width, GuiMusicBox.instrument_button_height, null);
@@ -162,13 +164,14 @@ public final class MusicButtons {
 
   public static final class NoteButton extends Widget {
   
-    private final TileMusicBox tile;
-    private final byte track;
-    private final byte frame;
     private static final int center_x = Math.round((float)GuiMusicBox.note_button_width / 2);
     private static final int text_draw_y = Math.round((float)GuiMusicBox.note_button_height / 2) - 4;
     private static final int text_color = 4210752; //Color.make_color(0,0,0); // 4210752;
   
+    private final TileMusicBox tile;
+    private final byte track;
+    private final byte frame;
+
     public NoteButton(int x_position, int y_position, byte track, byte frame, TileMusicBox tile){
       super(x_position, y_position , GuiMusicBox.note_button_width, GuiMusicBox.note_button_height, note[tile.get_note(frame, track)]);
       this.tile = tile;

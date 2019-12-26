@@ -13,9 +13,7 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileElectricFurnace extends PassiveMachine implements INamedContainerProvider {
@@ -31,7 +29,7 @@ public final class TileElectricFurnace extends PassiveMachine implements INamedC
   protected final void test_condition(){
     final ItemStack input = input_inventory.getStackInSlot(0);
     final ItemStack output = output_inventory.getStackInSlot(0);
-    result = input == ItemStack.EMPTY ? null : FurnaceRecipes.instance().getSmeltingResult(input);
+    result = ItemStack.EMPTY; // input == ItemStack.EMPTY ? null : FurnaceRecipes.instance().getSmeltingResult(input);
     can_run = (input != ItemStack.EMPTY && input.getCount() > 0) && (output == ItemStack.EMPTY || output_inventory.can_add(0, result));
   }
 
@@ -43,7 +41,7 @@ public final class TileElectricFurnace extends PassiveMachine implements INamedC
 
   /** Gets all of the input Items from Furnace recipes to use as an Item Filter. */
   private static final Item[] get_furnace_input(){ // MAYBE: eventually calculate this at a more stable time?
-    final ArrayList<ItemStack> list = new ArrayList<>(FurnaceRecipes.instance().getSmeltingList().keySet());
+    final ArrayList<ItemStack> list = new ArrayList<ItemStack>(); // new ArrayList<>(FurnaceRecipes.instance().getSmeltingList().keySet());
     final int max = list.size();
     final Item[] input = new Item[max];
     int i;

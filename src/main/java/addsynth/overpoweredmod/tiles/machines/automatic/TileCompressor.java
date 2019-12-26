@@ -31,8 +31,8 @@ public final class TileCompressor extends PassiveMachine implements INamedContai
     final ItemStack[] input = new ItemStack[2];
       input[0] = input_inventory.getStackInSlot(0);
       input[1] = input_inventory.getStackInSlot(1);
-    if(CompressorRecipes.match(input)){
-      result = CompressorRecipes.getResult(input);
+    if(false /*CompressorRecipes.match(input)*/){
+      // result = CompressorRecipes.getResult(input);
       can_run = output_inventory.can_add(0, result);
     }
     else{

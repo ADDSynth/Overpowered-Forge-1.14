@@ -13,21 +13,17 @@ import addsynth.energy.gameplay.gui.*;
 import addsynth.overpoweredmod.client.gui.tiles.*;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
-import addsynth.overpoweredmod.dimension.WeirdDimension;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.Metals;
 import addsynth.overpoweredmod.game.core.Tools;
-import addsynth.overpoweredmod.game.recipes.CompressorRecipes;
 import addsynth.overpoweredmod.game.recipes.OreRefineryRecipes;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.registers.Containers;
-import addsynth.overpoweredmod.registers.Registers;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -93,9 +89,6 @@ public class OverpoweredMod {
     log.info("Begin constructing Overpowered...");
     
     // Achievements.registerAchievements();
-    if(Features.compressor.get()){ // running this code doesn't hurt anything, but this boolean check is an optimization.
-      CompressorRecipes.register();
-    }
     NetworkHandler.registerMessages();
     // WeirdDimension.register();
     // TODO: Railcraft doesn't exist for 1.14 yet, but still should find a way to disable the Iron to Steel smelting recipe.

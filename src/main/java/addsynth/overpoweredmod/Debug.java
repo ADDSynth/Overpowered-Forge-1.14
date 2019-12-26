@@ -10,7 +10,7 @@ public final class Debug {
   private static final int debug_level = 1; // UNUSED  this, and the function below.
   
   /** This is the master debug variable that determines verbose init logging. */
-  private static final boolean debug_setup = false;
+  private static final boolean debug_setup = true;
 
   public static final boolean debug_loot_tables = false;
 
