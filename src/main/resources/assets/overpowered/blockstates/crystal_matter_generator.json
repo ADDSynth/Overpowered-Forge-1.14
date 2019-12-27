@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:crystal_matter_generator" }
+		"": { "model": "overpowered:block/crystal_matter_generator" }
 	}
 }

@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "overpoweredmod:null_block" }
+    "": { "model": "overpowered:block/null_block" }
   }
 }

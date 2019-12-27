@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:titanium_block" }
+		"": { "model": "overpowered:block/titanium_block" }
 	}
 }

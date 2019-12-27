@@ -6,13 +6,13 @@
     "ioi"
   ],
   "key": {
-    "i" {
+    "i": {
       "tag": "forge:ingots/iron"
     },
-    "o" {
+    "o": {
       "tag": "forge:obsidian"
     },
-    "g" {
+    "g": {
       "tag": "forge:glass"
     }
   },

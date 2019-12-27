@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overpoweredmod:items/gems/sapphire"
+    "layer0": "overpowered:items/gems/sapphire"
   }
 }

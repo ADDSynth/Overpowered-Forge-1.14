@@ -1,6 +1,6 @@
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"all": "overpoweredmod:blocks/metal_blocks/tin_block"
+		"all": "overpowered:blocks/metal_blocks/tin_block"
 	}
 }

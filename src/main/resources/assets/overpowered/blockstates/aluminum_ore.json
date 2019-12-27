@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:aluminum_ore" }
+		"": { "model": "overpowered:block/aluminum_ore" }
 	}
 }

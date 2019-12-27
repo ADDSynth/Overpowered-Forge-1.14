@@ -1,6 +1,6 @@
 {
   "replace": false,
-  "values": {
+  "values": [
     "#forge:gems/ruby",
     "#forge:gems/topaz",
     "#forge:gems/citrine",

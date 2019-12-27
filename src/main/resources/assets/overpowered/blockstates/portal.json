@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:portal" }
+		"": { "model": "overpowered:block/portal" }
 	}
 }

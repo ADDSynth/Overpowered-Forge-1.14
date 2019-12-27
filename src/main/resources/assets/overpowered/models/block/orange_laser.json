@@ -1,7 +1,7 @@
 {
-  "parent": "overpoweredmod:block/laser_cannon",
+  "parent": "overpowered:block/laser_cannon",
    "textures": {
-    "laser_side": "overpoweredmod:blocks/lasers/orange_laser_side",
-    "laser_front": "overpoweredmod:blocks/lasers/orange_laser_front"
+    "laser_side": "overpowered:blocks/lasers/orange_laser_side",
+    "laser_front": "overpowered:blocks/lasers/orange_laser_front"
   }
 }

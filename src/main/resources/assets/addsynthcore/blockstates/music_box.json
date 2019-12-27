@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "addsynthcore:music_box" }
+		"": { "model": "addsynthcore:block/music_box" }
 	}
 }

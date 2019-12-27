@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:universal_energy_interface" }
+		"": { "model": "overpowered:block/universal_energy_interface" }
 	}
 }

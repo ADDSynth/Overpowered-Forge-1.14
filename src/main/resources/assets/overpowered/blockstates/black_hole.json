@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:black_hole" }
+		"": { "model": "overpowered:block/black_hole" }
 	}
 }

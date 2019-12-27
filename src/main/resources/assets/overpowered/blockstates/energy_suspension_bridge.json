@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:energy_suspension_bridge" }
+		"": { "model": "overpowered:block/energy_suspension_bridge" }
 	}
 }

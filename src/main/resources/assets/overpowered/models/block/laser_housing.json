@@ -1,6 +1,6 @@
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"all": "overpoweredmod:blocks/machines/laser_housing"
+		"all": "overpowered:blocks/machines/laser_housing"
 	}
 }

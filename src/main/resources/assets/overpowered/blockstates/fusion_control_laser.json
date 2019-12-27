@@ -1,11 +1,11 @@
 {
   "variants": {
-    "facing=north": {"model": "overpoweredmod:fusion_control_laser" },
-    "facing=east":  {"model": "overpoweredmod:fusion_control_laser", "y": 90},
-    "facing=south": {"model": "overpoweredmod:fusion_control_laser", "y": 180},
-    "facing=west":  {"model": "overpoweredmod:fusion_control_laser", "y": 270},
-    "facing=down":  {"model": "overpoweredmod:fusion_control_laser", "x": 90},
-    "facing=up":    {"model": "overpoweredmod:fusion_control_laser", "x": 270}
+    "facing=north": {"model": "overpowered:block/fusion_control_laser" },
+    "facing=east":  {"model": "overpowered:block/fusion_control_laser", "y": 90},
+    "facing=south": {"model": "overpowered:block/fusion_control_laser", "y": 180},
+    "facing=west":  {"model": "overpowered:block/fusion_control_laser", "y": 270},
+    "facing=down":  {"model": "overpowered:block/fusion_control_laser", "x": 90},
+    "facing=up":    {"model": "overpowered:block/fusion_control_laser", "x": 270}
   }
 }
 

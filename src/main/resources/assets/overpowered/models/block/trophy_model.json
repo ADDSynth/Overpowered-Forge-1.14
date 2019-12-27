@@ -31,8 +31,8 @@
            }
         },
 	"textures": {
-		"1": "overpoweredmod:blocks/trophies/trophy_base_top",
-		"2": "overpoweredmod:blocks/trophies/trophy_base_bottom",
+		"1": "overpowered:blocks/trophies/trophy_base_top",
+		"2": "overpowered:blocks/trophies/trophy_base_bottom",
 		"3": "#trophy_texture",
 		"4": "#trophy_texture_inside"
 	},

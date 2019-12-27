@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "overpoweredmod:fusion_chamber" }
+    "": { "model": "overpowered:block/fusion_chamber" }
   }
 }

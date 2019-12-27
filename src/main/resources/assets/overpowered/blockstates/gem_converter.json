@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:gem_converter" }
+		"": { "model": "overpowered:block/gem_converter" }
 	}
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overpoweredmod:items/metals/steel_plate"
+    "layer0": "overpowered:items/metals/steel_plate"
   }
 }

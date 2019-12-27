@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:iron_frame_block" }
+		"": { "model": "overpowered:block/iron_frame_block" }
 	}
 }

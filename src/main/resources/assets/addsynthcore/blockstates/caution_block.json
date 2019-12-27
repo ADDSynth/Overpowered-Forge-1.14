@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "addsynthcore:caution_block" }
+    "": { "model": "addsynthcore:block/caution_block" }
   }
 }

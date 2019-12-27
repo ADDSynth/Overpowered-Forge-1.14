@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:amethyst_ore" }
+		"": { "model": "overpowered:block/amethyst_ore" }
 	}
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overpoweredmod:items/metals/silver_ingot"
+    "layer0": "overpowered:items/metals/silver_ingot"
   }
 }

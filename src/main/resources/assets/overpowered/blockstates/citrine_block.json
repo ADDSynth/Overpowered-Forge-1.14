@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "overpoweredmod:citrine_block" }
+    "": { "model": "overpowered:block/citrine_block" }
   }
 }

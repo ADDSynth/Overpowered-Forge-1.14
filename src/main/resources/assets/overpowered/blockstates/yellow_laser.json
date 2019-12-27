@@ -1,11 +1,11 @@
 {
   "variants": {
-    "facing=north": {"model": "overpoweredmod:yellow_laser" },
-    "facing=east":  {"model": "overpoweredmod:yellow_laser", "y": 90},
-    "facing=south": {"model": "overpoweredmod:yellow_laser", "y": 180},
-    "facing=west":  {"model": "overpoweredmod:yellow_laser", "y": 270},
-    "facing=down":  {"model": "overpoweredmod:yellow_laser", "x": 90},
-    "facing=up":    {"model": "overpoweredmod:yellow_laser", "x": 270}
+    "facing=north": {"model": "overpowered:block/yellow_laser" },
+    "facing=east":  {"model": "overpowered:block/yellow_laser", "y": 90},
+    "facing=south": {"model": "overpowered:block/yellow_laser", "y": 180},
+    "facing=west":  {"model": "overpowered:block/yellow_laser", "y": 270},
+    "facing=down":  {"model": "overpowered:block/yellow_laser", "x": 90},
+    "facing=up":    {"model": "overpowered:block/yellow_laser", "x": 270}
   }
 }
 

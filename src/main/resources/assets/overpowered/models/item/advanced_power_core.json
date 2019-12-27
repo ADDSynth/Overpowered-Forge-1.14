@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overpoweredmod:items/advanced_power_core"
+    "layer0": "overpowered:items/advanced_power_core"
   }
 }

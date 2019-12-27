@@ -1,11 +1,11 @@
 {
   "variants": {
-    "facing=north": {"model": "overpoweredmod:cyan_laser" },
-    "facing=east":  {"model": "overpoweredmod:cyan_laser", "y": 90},
-    "facing=south": {"model": "overpoweredmod:cyan_laser", "y": 180},
-    "facing=west":  {"model": "overpoweredmod:cyan_laser", "y": 270},
-    "facing=down":  {"model": "overpoweredmod:cyan_laser", "x": 90},
-    "facing=up":    {"model": "overpoweredmod:cyan_laser", "x": 270}
+    "facing=north": {"model": "overpowered:block/cyan_laser" },
+    "facing=east":  {"model": "overpowered:block/cyan_laser", "y": 90},
+    "facing=south": {"model": "overpowered:block/cyan_laser", "y": 180},
+    "facing=west":  {"model": "overpowered:block/cyan_laser", "y": 270},
+    "facing=down":  {"model": "overpowered:block/cyan_laser", "x": 90},
+    "facing=up":    {"model": "overpowered:block/cyan_laser", "x": 270}
   }
 }
 

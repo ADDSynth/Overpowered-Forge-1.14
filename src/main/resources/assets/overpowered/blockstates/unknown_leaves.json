@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "overpoweredmod:unknown_leaves" }
+    "": { "model": "overpowered:block/unknown_leaves" }
   }
 }

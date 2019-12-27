@@ -1,6 +1,6 @@
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"all": "overpoweredmod:blocks/machines/identifier"
+		"all": "overpowered:blocks/machines/identifier"
 	}
 }

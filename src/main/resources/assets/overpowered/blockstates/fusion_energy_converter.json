@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "overpoweredmod:fusion_energy_converter" }
+    "": { "model": "overpowered:block/fusion_energy_converter" }
   }
 }

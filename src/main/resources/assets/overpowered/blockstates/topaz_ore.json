@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:topaz_ore" }
+		"": { "model": "overpowered:block/topaz_ore" }
 	}
 }

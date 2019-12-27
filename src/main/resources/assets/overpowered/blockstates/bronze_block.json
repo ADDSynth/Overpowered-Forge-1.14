@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:bronze_block" }
+		"": { "model": "overpowered:block/bronze_block" }
 	}
 }

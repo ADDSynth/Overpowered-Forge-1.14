@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:fusion_control_unit" }
+		"": { "model": "overpowered:block/fusion_control_unit" }
 	}
 }

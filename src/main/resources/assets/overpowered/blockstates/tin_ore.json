@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:tin_ore" }
+		"": { "model": "overpowered:block/tin_ore" }
 	}
 }

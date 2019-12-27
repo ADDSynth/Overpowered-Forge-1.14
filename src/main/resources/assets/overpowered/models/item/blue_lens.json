@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overpoweredmod:items/lenses/blue_lens"
+    "layer0": "overpowered:items/lenses/blue_lens"
   }
 }

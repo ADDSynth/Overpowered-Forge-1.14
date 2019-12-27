@@ -1,9 +1,9 @@
 {
     "parent": "block/cube_bottom_top",
     "textures": {
-        "particle": "overpoweredmod:blocks/machines/gem_converter",
-        "bottom":   "overpoweredmod:blocks/machines/default_machine_texture",
-        "top":      "overpoweredmod:blocks/machines/top_texture",
-        "side":     "overpoweredmod:blocks/machines/gem_converter"
+        "particle": "overpowered:blocks/machines/gem_converter",
+        "bottom":   "overpowered:blocks/machines/default_machine_texture",
+        "top":      "overpowered:blocks/machines/top_texture",
+        "side":     "overpowered:blocks/machines/gem_converter"
     }
 }

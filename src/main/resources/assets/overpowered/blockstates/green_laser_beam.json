@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "overpoweredmod:green_laser_beam" }
+    "": { "model": "overpowered:block/green_laser_beam" }
   }
 }

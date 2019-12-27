@@ -13,10 +13,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@Mod.EventBusSubscriber(modid = ADDSynthCore.MOD_ID)
+@EventBusSubscriber(modid = ADDSynthCore.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public final class CoreRegister {
 
   @SubscribeEvent
@@ -57,7 +57,7 @@ public final class CoreRegister {
 
   @SubscribeEvent
   public static final void registerModels(final ModelRegistryEvent event){
-    ADDSynthCore.registry.register_inventory_item_models();
+    // ADDSynthCore.registry.register_inventory_item_models();
   }
 
   @SubscribeEvent

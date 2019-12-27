@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:copper_block" }
+		"": { "model": "overpowered:block/copper_block" }
 	}
 }

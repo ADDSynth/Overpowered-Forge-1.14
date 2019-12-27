@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overpoweredmod:items/gem_shards/ruby_shard"
+    "layer0": "overpowered:items/gem_shards/ruby_shard"
   }
 }

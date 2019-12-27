@@ -1,5 +1,5 @@
 {
-  "parent": "overpoweredmod:block/fusion_energy_converter",
+  "parent": "overpowered:block/fusion_energy_converter",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

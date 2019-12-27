@@ -1,8 +1,8 @@
 {
-  "parent": "overpoweredmod:block/trophy_model",
+  "parent": "overpowered:block/trophy_model",
   "textures": {
-    "particle":              "overpoweredmod:blocks/trophies/silver_trophy",
-    "trophy_texture":        "overpoweredmod:blocks/trophies/silver_trophy",
-    "trophy_texture_inside": "overpoweredmod:blocks/trophies/silver_trophy_inside"
+    "particle":              "overpowered:blocks/trophies/silver_trophy",
+    "trophy_texture":        "overpowered:blocks/trophies/silver_trophy",
+    "trophy_texture_inside": "overpowered:blocks/trophies/silver_trophy_inside"
   }
 }

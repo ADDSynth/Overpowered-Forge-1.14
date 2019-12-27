@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overpoweredmod:items/rings/ring_unique"
+    "layer0": "overpowered:items/rings/ring_unique"
   }
 }

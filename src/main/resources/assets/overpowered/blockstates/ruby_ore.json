@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:ruby_ore" }
+		"": { "model": "overpowered:block/ruby_ore" }
 	}
 }

@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:platinum_block" }
+		"": { "model": "overpowered:block/platinum_block" }
 	}
 }

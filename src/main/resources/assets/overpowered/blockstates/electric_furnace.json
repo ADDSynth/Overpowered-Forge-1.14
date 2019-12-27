@@ -1,8 +1,8 @@
 {
     "variants": {
-        "facing=north": { "model": "overpoweredmod:electric_furnace" },
-        "facing=south": { "model": "overpoweredmod:electric_furnace", "y": 180 },
-        "facing=west":  { "model": "overpoweredmod:electric_furnace", "y": 270 },
-        "facing=east":  { "model": "overpoweredmod:electric_furnace", "y": 90 }
+        "facing=north": { "model": "overpowered:block/electric_furnace" },
+        "facing=south": { "model": "overpowered:block/electric_furnace", "y": 180 },
+        "facing=west":  { "model": "overpowered:block/electric_furnace", "y": 270 },
+        "facing=east":  { "model": "overpowered:block/electric_furnace", "y": 90 }
     }
 }

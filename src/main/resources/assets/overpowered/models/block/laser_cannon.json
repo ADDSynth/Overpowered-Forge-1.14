@@ -4,7 +4,7 @@
 	"textures": {
 		"0": "#laser_side",
 		"1": "#laser_front",
-		"2": "overpoweredmod:blocks/lasers/laser_back",
+		"2": "overpowered:blocks/lasers/laser_back",
 		"particle": "#laser_side"
 	},
 	"elements": [

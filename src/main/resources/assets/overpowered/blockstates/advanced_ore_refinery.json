@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:advanced_ore_refinery" }
+		"": { "model": "overpowered:block/advanced_ore_refinery" }
 	}
 }

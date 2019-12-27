@@ -9,13 +9,13 @@
     "i": {
       "tag": "forge:ingots/iron"
     },
-    "p" {
+    "p": {
       "item": "overpowered:power_core"
     },
-    "w" {
+    "w": {
       "item": "overpowered:energy_wire"
     },
-    "f" {
+    "f": {
       "item": "minecraft:furnace"
     }
   },

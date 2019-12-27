@@ -1,7 +1,7 @@
 {
     "parent": "block/cube_column",
     "textures": {
-        "end":   "overpoweredmod:blocks/machines/default_machine_texture",
-        "side":  "overpoweredmod:blocks/machines/generator"
+        "end":   "overpowered:blocks/machines/default_machine_texture",
+        "side":  "overpowered:blocks/machines/generator"
     }
 }

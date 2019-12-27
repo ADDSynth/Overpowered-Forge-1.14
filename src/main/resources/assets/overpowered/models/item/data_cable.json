@@ -1,5 +1,5 @@
 {
-  "parent": "overpoweredmod:block/data_cable_base",
+  "parent": "overpowered:block/data_cable_base",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

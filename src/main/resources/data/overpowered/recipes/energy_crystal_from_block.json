@@ -6,7 +6,7 @@
     }
   ],
   "result": {
-    "overpowered:energy_crystal",
+    "item": "overpowered:energy_crystal",
     "count": 9
   }
 }

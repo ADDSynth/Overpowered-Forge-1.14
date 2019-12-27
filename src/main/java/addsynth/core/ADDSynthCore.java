@@ -63,6 +63,8 @@ public final class ADDSynthCore {
 
       FMLJavaModLoadingContext.get().getModEventBus().addListener(ADDSynthCore::mod_config_event);
 
+      config_loaded = true;
+
       ADDSynthCore.log.info("Done loading configuration files.");
     }
   }

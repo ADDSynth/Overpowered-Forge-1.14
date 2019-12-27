@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:block/leaves",
     "textures": {
-        "all": "overpoweredmod:blocks/oak_leaves"
+        "all": "overpowered:blocks/oak_leaves"
     }
 }

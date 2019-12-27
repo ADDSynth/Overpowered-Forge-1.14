@@ -1,6 +1,6 @@
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"all": "overpoweredmod:blocks/lasers/blue_laser_beam"
+		"all": "overpowered:blocks/lasers/blue_laser_beam"
 	}
 }

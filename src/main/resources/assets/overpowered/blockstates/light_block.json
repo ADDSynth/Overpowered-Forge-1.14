@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:light_block" }
+		"": { "model": "overpowered:block/light_block" }
 	}
 }

@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "overpoweredmod:items/tools/energy_pickaxe"
+    "layer0": "overpowered:items/tools/energy_pickaxe"
   }
 }

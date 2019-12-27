@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "overpoweredmod:magic_infuser" }
+		"": { "model": "overpowered:block/magic_infuser" }
 	}
 }

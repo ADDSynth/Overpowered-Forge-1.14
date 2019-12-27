@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overpoweredmod:items/energy_grid"
+    "layer0": "overpowered:items/energy_grid"
   }
 }

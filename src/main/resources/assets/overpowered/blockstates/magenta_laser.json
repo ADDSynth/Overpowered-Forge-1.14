@@ -1,11 +1,11 @@
 {
   "variants": {
-    "facing=north": {"model": "overpoweredmod:magenta_laser" },
-    "facing=east":  {"model": "overpoweredmod:magenta_laser", "y": 90},
-    "facing=south": {"model": "overpoweredmod:magenta_laser", "y": 180},
-    "facing=west":  {"model": "overpoweredmod:magenta_laser", "y": 270},
-    "facing=down":  {"model": "overpoweredmod:magenta_laser", "x": 90},
-    "facing=up":    {"model": "overpoweredmod:magenta_laser", "x": 270}
+    "facing=north": {"model": "overpowered:block/magenta_laser" },
+    "facing=east":  {"model": "overpowered:block/magenta_laser", "y": 90},
+    "facing=south": {"model": "overpowered:block/magenta_laser", "y": 180},
+    "facing=west":  {"model": "overpowered:block/magenta_laser", "y": 270},
+    "facing=down":  {"model": "overpowered:block/magenta_laser", "x": 90},
+    "facing=up":    {"model": "overpowered:block/magenta_laser", "x": 270}
   }
 }
 

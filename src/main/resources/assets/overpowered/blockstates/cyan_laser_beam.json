@@ -1,5 +1,5 @@
 {
   "variants": {
-    "normal": { "model": "overpoweredmod:cyan_laser_beam" }
+    "": { "model": "overpowered:block/cyan_laser_beam" }
   }
 }
