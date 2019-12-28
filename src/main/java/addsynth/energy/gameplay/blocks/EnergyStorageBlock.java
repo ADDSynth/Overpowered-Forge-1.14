@@ -6,6 +6,7 @@ import addsynth.core.util.MinecraftUtility;
 import addsynth.energy.blocks.MachineBlockTileEntity;
 import addsynth.energy.gameplay.tiles.TileEnergyStorage;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.client.util.ITooltipFlag;
@@ -28,7 +29,7 @@ public final class EnergyStorageBlock extends MachineBlockTileEntity {
 
   public EnergyStorageBlock(final String name){
     super(SoundType.GLASS);
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.machines_creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
   }
 
   @Override

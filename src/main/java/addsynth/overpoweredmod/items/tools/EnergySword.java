@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import addsynth.core.Constants;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -15,7 +16,7 @@ import net.minecraft.item.SwordItem;
 public final class EnergySword extends SwordItem {
 
   public EnergySword(final String name){
-    super(OverpoweredTiers.ENERGY_SWORD, Constants.sword_damage, Constants.sword_damage, new Item.Properties().group(OverpoweredMod.tools_creative_tab));
+    super(OverpoweredTiers.ENERGY_SWORD, Constants.sword_damage, Constants.sword_damage, new Item.Properties().group(CreativeTabs.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

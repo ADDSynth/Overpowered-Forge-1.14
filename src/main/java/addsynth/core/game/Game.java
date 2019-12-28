@@ -3,7 +3,6 @@ package addsynth.core.game;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.config.Config;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -89,16 +88,6 @@ public final class Game {
   }
 
 */
-
-  public static final ItemGroup NewCreativeTab(final String name, final Icon[] icons){
-    final ItemStack icon = Icon.get(icons);
-    return new ItemGroup(name){
-      @Override
-      public final ItemStack createIcon(){
-        return icon;
-      }
-    };
-  }
 
   public static final SoundEvent newSound(final String mod_id, final String name){
     SoundEvent sound = new SoundEvent(new ResourceLocation(mod_id,name));

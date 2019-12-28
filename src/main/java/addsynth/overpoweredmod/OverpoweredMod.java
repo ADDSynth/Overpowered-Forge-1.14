@@ -3,8 +3,6 @@ package addsynth.overpoweredmod;
 import java.io.File;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.game.Compatability;
-import addsynth.core.game.Game;
-import addsynth.core.game.Icon;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.material.Material;
 import addsynth.core.worldgen.OreGenerator;
@@ -13,17 +11,10 @@ import addsynth.energy.gameplay.gui.*;
 import addsynth.overpoweredmod.client.gui.tiles.*;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
-import addsynth.overpoweredmod.game.core.Gems;
-import addsynth.overpoweredmod.game.core.Init;
-import addsynth.overpoweredmod.game.core.Machines;
-import addsynth.overpoweredmod.game.core.Metals;
-import addsynth.overpoweredmod.game.core.Tools;
 import addsynth.overpoweredmod.game.recipes.OreRefineryRecipes;
 import addsynth.overpoweredmod.network.NetworkHandler;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.client.gui.ScreenManager;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -48,12 +39,6 @@ public class OverpoweredMod {
 
   public static final RegistryUtil registry = new RegistryUtil(MOD_ID);
 
-  public static ItemGroup creative_tab;
-  public static ItemGroup gems_creative_tab;
-  public static ItemGroup machines_creative_tab;
-  public static ItemGroup tools_creative_tab;
-  public static ItemGroup metals_creative_tab;
-
   private static boolean config_loaded;
 
   public OverpoweredMod(){
@@ -62,7 +47,6 @@ public class OverpoweredMod {
     context.getModEventBus().addListener(OverpoweredMod::client_setup);
     context.getModEventBus().addListener(OverpoweredMod::inter_mod_communications);
     init_config();
-    setup_creative_tabs();
   }
 
   public static final void init_config(){
@@ -126,7 +110,6 @@ public class OverpoweredMod {
 
   private static final void client_setup(final FMLClientSetupEvent event){
     register_guis();
-    // setup_creative_tabs();
   }
 
   private static final void register_guis(){
@@ -145,29 +128,6 @@ public class OverpoweredMod {
     ScreenManager.registerFactory(Containers.ADVANCED_ORE_REFINERY,      GuiAdvancedOreRefinery::new);
     ScreenManager.registerFactory(Containers.CRYSTAL_MATTER_GENERATOR,   GuiCrystalMatterGenerator::new);
     ScreenManager.registerFactory(Containers.FUSION_CHAMBER,             GuiSingularityContainer::new);
-  }
-
-  private static final void setup_creative_tabs(){
-    init_config();
-    // FIX: need to fix Creative Tabs, when the these items are loaded they are assigned the null creative tab,
-    //      which then gets rewritten with a new value below. Cannot build Icon List before the Tabs, I must
-    //      dynamically assign the Icon DURING Creative Tab construction!
-    final Icon[] main_icons =     {new Icon(Init.energy_crystal, true)};
-    final Icon[] gem_icons =      {new Icon(Gems.ruby, true)};
-    final Icon[] machines_icons = {new Icon(OverpoweredMod.registry.getItemBlock(Machines.generator), true)};
-    final Icon[] tool_icons = {
-                               new Icon(Tools.energy_tools.pickaxe,     Features.energy_tools.get()),
-                               new Icon(Tools.unidentified_armor[2][0], Features.identifier.get()),
-                               new Icon(Tools.void_toolset.sword,       Features.void_tools.get()),
-                               new Icon(Items.STONE_SHOVEL)
-                             };
-    final Icon[] metal_icons = {new Icon(Metals.TIN.ingot, true)};
-
-    creative_tab          = Game.NewCreativeTab("overpowered", main_icons);
-    gems_creative_tab     = Config.creative_tab_gems.get()     ? Game.NewCreativeTab("overpowered_gems",     gem_icons)      : creative_tab;
-    machines_creative_tab = Config.creative_tab_machines.get() ? Game.NewCreativeTab("overpowered_machines", machines_icons) : creative_tab;
-    tools_creative_tab    = Config.creative_tab_tools.get()    ? Game.NewCreativeTab("overpowered_tools",    tool_icons)     : creative_tab;
-    metals_creative_tab   = Config.creative_tab_metals.get()   ? Game.NewCreativeTab("overpowered_metals",   metal_icons)    : creative_tab;
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

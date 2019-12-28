@@ -17,8 +17,11 @@ import net.minecraft.item.ItemStack;
  *     disabled were not displaying their icon properly or not at all.
  * @author ADDSynth
  * @since October 23, 2019
+ * @deprecated if using with Creative Tabs, just insert all the boolean checks directly in the
+ *   getIcon() method. See {@link addsynth.overpoweredmod.assets.CreativeTabs} for an example.
  */
-public final class Icon {
+@Deprecated
+public final class Icon { // OPTIMIZE, Icons are possibly outdated now, Wait until after we add Advancements to check this.
 
     public final ItemStack item;
     public final boolean available;

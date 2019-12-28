@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.energy.blocks.MachineBlockTileEntity;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.tiles.machines.automatic.TileMagicUnlocker;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -26,7 +27,7 @@ public final class MagicUnlocker extends MachineBlockTileEntity {
 
   public MagicUnlocker(final String name){
     super();
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.machines_creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
   }
 
   @Override

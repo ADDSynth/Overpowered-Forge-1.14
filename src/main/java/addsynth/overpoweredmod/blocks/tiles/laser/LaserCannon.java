@@ -4,6 +4,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.blocks.BlockTile;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.tiles.machines.laser.TileLaser;
 import net.minecraft.block.Block;
@@ -50,7 +51,7 @@ public final class LaserCannon extends BlockTile {
 
   public LaserCannon(final String name, final int color){
     super(Block.Properties.create(Material.IRON, MaterialColor.STONE).sound(SoundType.METAL).hardnessAndResistance(3.5f, 6.0f));
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.machines_creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
     this.color = color;
   }

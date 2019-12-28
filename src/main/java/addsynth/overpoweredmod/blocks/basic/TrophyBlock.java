@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.blocks.basic;
 
 import javax.annotation.Nullable;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -24,7 +25,7 @@ public final class TrophyBlock extends Block {
   public TrophyBlock(String name){
     super(Block.Properties.create(Material.IRON).sound(SoundType.METAL).hardnessAndResistance(3.0f, 6.0f).harvestTool(ToolType.PICKAXE).harvestLevel(2));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override

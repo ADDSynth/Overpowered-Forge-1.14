@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.blocks.unique;
 import addsynth.core.util.MathUtility;
 import addsynth.core.util.ServerUtils;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.config.Config;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -30,7 +31,7 @@ public final class BlackHole extends Block {
   public BlackHole(final String name){
     super(Block.Properties.create(Material.PORTAL, MaterialColor.BLACK).doesNotBlockMovement());
     // setResistance(100.0f);
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.creative_tab).rarity(Rarity.EPIC));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab).rarity(Rarity.EPIC));
   }
 
   @Override

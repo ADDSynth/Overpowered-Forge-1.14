@@ -3,8 +3,6 @@ package addsynth.core;
 import java.io.File;
 import java.util.stream.Stream;
 import addsynth.core.config.*;
-import addsynth.core.game.Game;
-import addsynth.core.game.Icon;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.gameplay.CompatabilityManager;
 import addsynth.core.gameplay.Containers;
@@ -17,6 +15,7 @@ import addsynth.core.worldgen.OreGenerator;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms.IMCMessage;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -39,8 +38,17 @@ public final class ADDSynthCore {
 
   private static boolean config_loaded;
   public static final Logger log = LogManager.getLogger(NAME);
-  public static ItemGroup creative_tab;
   public static final RegistryUtil registry = new RegistryUtil(MOD_ID);
+
+  public static final ItemGroup creative_tab = new ItemGroup("addsynthcore"){
+    @Override
+    public final ItemStack createIcon(){
+      return Features.caution_block.get() ? new ItemStack(registry.getItemBlock(Core.caution_block), 1) :
+             Features.music_box.get()     ? new ItemStack(registry.getItemBlock(Core.music_box), 1) :
+             Features.scythes.get()       ? new ItemStack(Core.stone_scythe, 1) :
+             new ItemStack(Blocks.GRASS, 1);
+    }
+  };
 
   public ADDSynthCore(){
     final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
@@ -80,7 +88,6 @@ public final class ADDSynthCore {
   }
 
   private static final void client_setup(final FMLClientSetupEvent event){
-    create_creative_tab();
     ScreenManager.registerFactory(Containers.MUSIC_BOX, GuiMusicBox::new);
   }
 
@@ -110,17 +117,6 @@ public final class ADDSynthCore {
         "You can only register ore generators with ADDSynthCore by sending an IMC message with the "+
         Material.class.getName()+" you want to generate. The Material must be of type OreMaterial or an extension.");
     }
-  }
-
-  // Phew! Thank god the FMLClientSetupEvent runs after Blocks and Items are registered!
-  private static final void create_creative_tab(){
-    final Icon[] icons = {
-      new Icon(registry.getItemBlock(Core.caution_block), Features.caution_block.get()),
-      new Icon(registry.getItemBlock(Core.music_box), Features.music_box.get()),
-      new Icon(Core.stone_scythe, Features.scythes.get()),
-      new Icon(registry.getItemBlock(Blocks.GRASS))
-    };
-    creative_tab = Game.NewCreativeTab("addsynthcore", icons);
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

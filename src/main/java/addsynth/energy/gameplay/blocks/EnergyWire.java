@@ -5,6 +5,7 @@ import addsynth.core.block_network.BlockNetwork;
 import addsynth.energy.blocks.Wire;
 import addsynth.energy.gameplay.tiles.TileEnergyWire;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -22,7 +23,7 @@ public final class EnergyWire extends Wire {
 
   public EnergyWire(final String name){
     super(Block.Properties.create(Material.WOOL, MaterialColor.GRAY).hardnessAndResistance(0.1f, 0.0f));
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.machines_creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
   }
 
   @Override

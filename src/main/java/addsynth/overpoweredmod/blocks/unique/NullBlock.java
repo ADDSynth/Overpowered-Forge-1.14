@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.blocks.unique;
 
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -16,7 +17,7 @@ public final class NullBlock extends Block {
 
   public NullBlock(String name){
     super(Block.Properties.create(Material.AIR).variableOpacity().doesNotBlockMovement());
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(OverpoweredMod.creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override
