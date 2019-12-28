@@ -22,6 +22,7 @@ public final class CompatabilityManager {
    *  and uses reflection to set the effectiveBlocks list of all Scythe tools.
    */
   private static final void set_scythe_harvest_blocks(){
+    // FIX: list of leaf blocks at this point is null! Must find a way to listen to the Block Tag Reload event, and assign Scythe effective blocks then.
     final Set<Block> leaves = (Set<Block>)BlockTags.LEAVES.getAllElements(); // TEST, if this doesn't work use HashSet
     override_scythe_field(Core.wooden_scythe, leaves);
     override_scythe_field(Core.stone_scythe, leaves);

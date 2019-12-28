@@ -87,21 +87,29 @@ public final class ADDSynthCore {
   private static final void process_imc_messages(final InterModProcessEvent event){
     final Stream<IMCMessage> message_stream = event.getIMCStream();
     message_stream.forEach(message -> {
-      final String sender = message.getSenderModId();
-      final String type = message.getMethod();
+      final String sender  = message.getSenderModId();
+      final String type    = message.getMethod();
       final Object payload = message.getMessageSupplier().get();
       if(type.equals(OreGenerator.REQUEST_ORE)){
-        if(payload instanceof OreMaterial){
-          OreGenerator.request_to_generate(sender, (OreMaterial)payload);
-        }
-        else{
-          ADDSynthCore.log.error("Mod '"+sender+"' sent an IMC message to ADDSynthCore requesting to generate an ore "+
-            "for '"+payload.getClass().getSimpleName()+"{"+payload.toString()+"}' but it is not an OreMaterial type! "+
-            "You can only register ore generators with ADDSynthCore by sending an IMC message with the "+
-            Material.class.getName()+" you want to generate. The Material must be of type OreMaterial or an extension.");
-        }
+        handle_generate_ore_requests(sender, payload);
       }
     });
+  }
+
+  private static final void handle_generate_ore_requests(final String sender, final Object payload){
+    if(payload instanceof OreMaterial){
+      OreGenerator.request_to_generate(sender, (OreMaterial)payload);
+      if(OreGenerator.generate == false){
+        DeferredWorkQueue.runLater(() -> OreGenerator.register());
+        OreGenerator.generate = true;
+      }
+    }
+    else{
+      ADDSynthCore.log.error("Mod '"+sender+"' sent an IMC message to ADDSynthCore requesting to generate an ore "+
+        "for '"+payload.getClass().getSimpleName()+"{"+payload.toString()+"}' but it is not an OreMaterial type! "+
+        "You can only register ore generators with ADDSynthCore by sending an IMC message with the "+
+        Material.class.getName()+" you want to generate. The Material must be of type OreMaterial or an extension.");
+    }
   }
 
   // Phew! Thank god the FMLClientSetupEvent runs after Blocks and Items are registered!

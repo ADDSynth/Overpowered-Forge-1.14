@@ -7,10 +7,10 @@
   ],
   "key": {
     "s": {
-      "item": "addsynthcore:sapphire_shard"
+      "item": "overpowered:sapphire_shard"
     }
   },
   "result": {
-    "item": "addsynthcore:sapphire"
+    "item": "overpowered:sapphire"
   }
 }

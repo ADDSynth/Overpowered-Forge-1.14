@@ -62,6 +62,7 @@ public class OverpoweredMod {
     context.getModEventBus().addListener(OverpoweredMod::client_setup);
     context.getModEventBus().addListener(OverpoweredMod::inter_mod_communications);
     init_config();
+    setup_creative_tabs();
   }
 
   public static final void init_config(){
@@ -125,7 +126,7 @@ public class OverpoweredMod {
 
   private static final void client_setup(final FMLClientSetupEvent event){
     register_guis();
-    setup_creative_tabs();
+    // setup_creative_tabs();
   }
 
   private static final void register_guis(){
@@ -148,7 +149,9 @@ public class OverpoweredMod {
 
   private static final void setup_creative_tabs(){
     init_config();
-    
+    // FIX: need to fix Creative Tabs, when the these items are loaded they are assigned the null creative tab,
+    //      which then gets rewritten with a new value below. Cannot build Icon List before the Tabs, I must
+    //      dynamically assign the Icon DURING Creative Tab construction!
     final Icon[] main_icons =     {new Icon(Init.energy_crystal, true)};
     final Icon[] gem_icons =      {new Icon(Gems.ruby, true)};
     final Icon[] machines_icons = {new Icon(OverpoweredMod.registry.getItemBlock(Machines.generator), true)};

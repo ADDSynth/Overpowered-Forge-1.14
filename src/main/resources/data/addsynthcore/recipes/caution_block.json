@@ -17,6 +17,7 @@
     }
   },
   "result": {
-    "item": "addsynthcore:caution_block"
+    "item": "addsynthcore:caution_block",
+    "count": 8
   }
 }

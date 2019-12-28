@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "addsynthcore:tin_ore"
+    "item": "overpowered:tin_ore"
   },
-  "result": "addsynthcore:tin_ingot",
+  "result": "overpowered:tin_ingot",
   "experience": 0.7,
   "cookingtime": 200
 }

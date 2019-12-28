@@ -7,10 +7,10 @@
   ],
   "key": {
     "s": {
-      "item": "addsynthcore:topaz_shard"
+      "item": "overpowered:topaz_shard"
     }
   },
   "result": {
-    "item": "addsynthcore:topaz"
+    "item": "overpowered:topaz"
   }
 }

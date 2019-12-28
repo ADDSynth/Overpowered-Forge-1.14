@@ -7,7 +7,7 @@
   ],
   "key": {
     "s": {
-      "tag": "forge:ingot:steel"
+      "tag": "forge:ingots/steel"
     },
     "p": {
       "item": "minecraft:piston"

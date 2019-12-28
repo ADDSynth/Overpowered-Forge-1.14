@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.game.core;
 
+import addsynth.core.material.Material;
 import addsynth.core.material.types.Gem;
 import addsynth.overpoweredmod.Debug;
-import addsynth.core.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 

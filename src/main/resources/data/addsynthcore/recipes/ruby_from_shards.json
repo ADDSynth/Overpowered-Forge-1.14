@@ -7,10 +7,10 @@
   ],
   "key": {
     "s": {
-      "item": "addsynthcore:ruby_shard"
+      "item": "overpowered:ruby_shard"
     }
   },
   "result": {
-    "item": "addsynthcore:ruby"
+    "item": "overpowered:ruby"
   }
 }

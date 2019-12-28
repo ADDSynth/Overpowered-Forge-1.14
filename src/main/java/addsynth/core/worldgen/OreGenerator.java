@@ -22,6 +22,7 @@ public final class OreGenerator {
 
   private static final ArrayList<OreMaterial> requested_ores = new ArrayList<>(20);
 
+  public static boolean generate;
   private static boolean done;
 
   public static final void request_to_generate(final String mod_id, final OreMaterial material){
@@ -38,6 +39,8 @@ public final class OreGenerator {
   }
 
   public static final void register(){
+    if(done == false){
+    
     ADDSynthCore.log.info("Begin registering all requested Ores...");
     done = true;
     
@@ -46,22 +49,28 @@ public final class OreGenerator {
       if(biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND){
 
         if(requested_ores.contains(Material.RUBY) && WorldgenConfig.generate_ruby.get()){
-          generate_gem_ore(biome, Material.RUBY, WorldgenConfig.ruby_spawn_tries.get(), WorldgenConfig.ruby_min_height.get(), WorldgenConfig.ruby_max_height.get());
+          generate_gem_ore(biome, Material.RUBY, WorldgenConfig.ruby_spawn_tries.get(),
+                           WorldgenConfig.ruby_min_height.get(), WorldgenConfig.ruby_max_height.get());
         }
         if(requested_ores.contains(Material.TOPAZ) && WorldgenConfig.generate_topaz.get()){
-          generate_gem_ore(biome, Material.TOPAZ, WorldgenConfig.topaz_spawn_tries.get(), WorldgenConfig.topaz_min_height.get(), WorldgenConfig.topaz_max_height.get());
+          generate_gem_ore(biome, Material.TOPAZ, WorldgenConfig.topaz_spawn_tries.get(),
+                           WorldgenConfig.topaz_min_height.get(), WorldgenConfig.topaz_max_height.get());
         }
         if(requested_ores.contains(Material.CITRINE) && WorldgenConfig.generate_citrine.get()){
-          generate_gem_ore(biome, Material.CITRINE, WorldgenConfig.citrine_spawn_tries.get(), WorldgenConfig.citrine_min_height.get(), WorldgenConfig.citrine_max_height.get());
+          generate_gem_ore(biome, Material.CITRINE, WorldgenConfig.citrine_spawn_tries.get(),
+                           WorldgenConfig.citrine_min_height.get(), WorldgenConfig.citrine_max_height.get());
         }
         if(requested_ores.contains(Material.EMERALD) && WorldgenConfig.generate_emerald.get()){
-          generate_gem_ore(biome, Material.EMERALD, WorldgenConfig.emerald_spawn_tries.get(), WorldgenConfig.emerald_min_height.get(), WorldgenConfig.emerald_max_height.get());
+          generate_gem_ore(biome, Material.EMERALD, WorldgenConfig.emerald_spawn_tries.get(),
+                           WorldgenConfig.emerald_min_height.get(), WorldgenConfig.emerald_max_height.get());
         }
         if(requested_ores.contains(Material.SAPPHIRE) && WorldgenConfig.generate_sapphire.get()){
-          generate_gem_ore(biome, Material.SAPPHIRE, WorldgenConfig.sapphire_spawn_tries.get(), WorldgenConfig.sapphire_min_height.get(), WorldgenConfig.sapphire_max_height.get());
+          generate_gem_ore(biome, Material.SAPPHIRE, WorldgenConfig.sapphire_spawn_tries.get(),
+                           WorldgenConfig.sapphire_min_height.get(), WorldgenConfig.sapphire_max_height.get());
         }
         if(requested_ores.contains(Material.AMETHYST) && WorldgenConfig.generate_amethyst.get()){
-          generate_gem_ore(biome, Material.AMETHYST, WorldgenConfig.amethyst_spawn_tries.get(), WorldgenConfig.amethyst_min_height.get(), WorldgenConfig.amethyst_max_height.get());
+          generate_gem_ore(biome, Material.AMETHYST, WorldgenConfig.amethyst_spawn_tries.get(),
+                           WorldgenConfig.amethyst_min_height.get(), WorldgenConfig.amethyst_max_height.get());
         }
         
         if(requested_ores.contains(Material.TIN) && WorldgenConfig.generate_tin.get()){
@@ -92,6 +101,7 @@ public final class OreGenerator {
     }
     
     ADDSynthCore.log.info("Done registering requested Ores.");
+    }
   }
 
   private static final boolean valid_min_max_values(final String name, final int min, final int max){
@@ -117,7 +127,7 @@ public final class OreGenerator {
   private static final void generate_metal_ore(final Biome biome, final OreMaterial material, final int size, final int tries, final int min, final int max){
     if(valid_min_max_values(material.name, min, max)){
       final int min_depth = Math.min(min, max);
-      final int max_depth = Math.min(min, max);
+      final int max_depth = Math.max(min, max);
       biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(
         Feature.ORE,
         new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, material.ore.getDefaultState(), size),

@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "addsynthcore:topaz_ore"
+    "item": "overpowered:topaz_ore"
   },
-  "result": "addsynthcore:topaz",
+  "result": "overpowered:topaz",
   "experience": 1.0,
   "cookingtime": 200
 }

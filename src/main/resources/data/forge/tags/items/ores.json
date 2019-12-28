@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:ores/ruby",
+    "#forge:ores/topaz",
+    "#forge:ores/citrine",
+    "#forge:ores/sapphire",
+    "#forge:ores/amethyst",
+    "#forge:ores/aluminum",
+    "#forge:ores/copper",
+    "#forge:ores/tin",
+    "#forge:ores/silver",
+    "#forge:ores/platinum",
+    "#forge:ores/titanium"
+  ]
+}

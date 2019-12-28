@@ -7,10 +7,10 @@
   ],
   "key": {
     "t": {
-      "tags": "forge:plates/titanium"
+      "tag": "forge:plates/titanium"
     },
     "g": {
-      "tags": "forge:glass_panes"
+      "tag": "forge:glass_panes"
     },
     "c": {
       "item": "overpowered:vacuum_container"

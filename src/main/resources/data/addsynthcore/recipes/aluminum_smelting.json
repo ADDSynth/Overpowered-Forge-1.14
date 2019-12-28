@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "addsynthcore:aluminum_ore"
+    "item": "overpowered:aluminum_ore"
   },
-  "result": "addsynthcore:aluminum_ingot",
+  "result": "overpowered:aluminum_ingot",
   "experience": 0.7,
   "cookingtime": 200
 }

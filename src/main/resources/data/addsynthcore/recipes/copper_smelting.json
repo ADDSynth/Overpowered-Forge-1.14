@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "addsynthcore:copper_ore"
+    "item": "overpowered:copper_ore"
   },
-  "result": "addsynthcore:copper_ingot",
+  "result": "overpowered:copper_ingot",
   "experience": 0.7,
   "cookingtime": 200
 }

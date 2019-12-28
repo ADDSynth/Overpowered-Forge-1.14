@@ -7,10 +7,10 @@
   ],
   "key": {
     "s": {
-      "item": "addsynthcore:amethyst_shard"
+      "item": "overpowered:amethyst_shard"
     }
   },
   "result": {
-    "item": "addsynthcore:amethyst"
+    "item": "overpowered:amethyst"
   }
 }

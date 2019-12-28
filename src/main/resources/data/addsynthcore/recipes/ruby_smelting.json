@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "addsynthcore:ruby_ore"
+    "item": "overpowered:ruby_ore"
   },
-  "result": "addsynthcore:ruby",
+  "result": "overpowered:ruby",
   "experience": 1.0,
   "cookingtime": 200
 }
