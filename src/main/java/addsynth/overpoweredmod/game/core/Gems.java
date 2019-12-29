@@ -3,7 +3,6 @@ package addsynth.overpoweredmod.game.core;
 import addsynth.core.material.Material;
 import addsynth.core.material.types.Gem;
 import addsynth.overpoweredmod.Debug;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 
 public final class Gems {
@@ -32,17 +31,6 @@ public final class Gems {
 
   public static final Gem[] index = new Gem[] {RUBY, TOPAZ, CITRINE, EMERALD, DIAMOND, SAPPHIRE, AMETHYST, QUARTZ};
   public static final int max_index = index.length;
-  public static final Item[]      gem_items       = new Item[max_index];
-  public static final BlockItem[] gem_block_items = new BlockItem[max_index];
-
-  // https://stackoverflow.com/questions/443980/why-cant-enums-constructor-access-static-fields
-  static {
-    int i;
-    for(i = 0; i < index.length; i++){
-      gem_items[i] = index[i].gem;
-      gem_block_items[i] = index[i].block_item;
-    }
-  }
 
   static {
     Debug.log_setup_info("Finished loading Gems class.");

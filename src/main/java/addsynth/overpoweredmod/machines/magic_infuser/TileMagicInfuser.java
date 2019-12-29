@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.machines.magic_infuser;
 import java.util.Random;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
+import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.JavaUtils;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
@@ -25,13 +26,23 @@ import net.minecraft.item.ItemStack;
 
 public final class TileMagicInfuser extends PassiveMachine implements INamedContainerProvider {
 
-  public static final SlotData[] slot_data = new SlotData[]{
-    new SlotData(Items.BOOK),
-    new SlotData(JavaUtils.combine_arrays(Gems.gem_items, new Item[]{Init.energy_crystal, Init.void_crystal}))
-  };
+  public static final Item[] getFilter(){
+    return MaterialsUtil.getFilter(
+      MaterialsUtil.getRubies(), MaterialsUtil.getTopaz(), MaterialsUtil.getCitrine(), MaterialsUtil.getEmeralds(),
+      MaterialsUtil.getDiamonds(), MaterialsUtil.getSapphires(), MaterialsUtil.getAmethysts(), MaterialsUtil.getQuartz()
+    );
+  }
 
   public TileMagicInfuser(){
-    super(Tiles.MAGIC_INFUSER,slot_data,1,new CustomEnergyStorage(Values.magic_infuser_required_energy.get()),Values.magic_infuser_work_time.get());
+    super(
+      Tiles.MAGIC_INFUSER,
+      new SlotData[]{ // now the SlotData needs to be constructed every time, because of the Item Tags in getFilter().
+        new SlotData(Items.BOOK),
+        new SlotData(JavaUtils.combine_arrays(getFilter(), new Item[]{Init.energy_crystal, Init.void_crystal}))
+      },
+      1,
+      new CustomEnergyStorage(Values.magic_infuser_required_energy.get()),Values.magic_infuser_work_time.get()
+    );
   }
 
   @Override

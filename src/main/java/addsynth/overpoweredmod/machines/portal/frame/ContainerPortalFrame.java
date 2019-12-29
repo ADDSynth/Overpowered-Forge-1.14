@@ -24,7 +24,7 @@ public final class ContainerPortalFrame extends BaseContainer<TilePortalFrame> {
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory);
-    addSlot(new RestrictedSlot(tile.getInputInventory(), 0, TilePortalFrame.input_filter, 80, 37));
+    addSlot(new RestrictedSlot(tile.getInputInventory(), 0, TilePortalFrame.getFilter(), 80, 37));
   }
 
 }

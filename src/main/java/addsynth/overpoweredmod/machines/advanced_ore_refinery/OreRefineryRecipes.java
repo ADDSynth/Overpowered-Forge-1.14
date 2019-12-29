@@ -2,13 +2,10 @@ package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import addsynth.core.material.Material;
-import addsynth.core.material.types.AbstractMaterial;
+import addsynth.core.material.MaterialsUtil;
 import addsynth.overpoweredmod.Debug;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.Tags;
 
 public final class OreRefineryRecipes {
 
@@ -26,7 +23,7 @@ public final class OreRefineryRecipes {
     Debug.log_setup_info("Begin registering Advanced Ore Refinery recipes...");
   
     final ArrayList<Item> list = new ArrayList<Item>(100);
-    for(Block block : Tags.Blocks.ORES.getAllElements()){
+    for(final Item item : MaterialsUtil.getOres()){
       // TODO: Check if Ore Block has a Furnace recipe.
       if(false){
         /*

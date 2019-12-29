@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.machines.gem_converter;
 
 import javax.annotation.Nullable;
+import addsynth.core.material.MaterialsUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
@@ -10,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.ITextComponent;
@@ -19,9 +21,16 @@ public final class TileGemConverter extends PassiveMachine implements INamedCont
 	
   private byte selection;
   private ItemStack gem_selected;
-    
+  
+  public static final Item[] getFilter(){
+    return MaterialsUtil.getFilter(
+      MaterialsUtil.getRubies(), MaterialsUtil.getTopaz(), MaterialsUtil.getCitrine(), MaterialsUtil.getEmeralds(),
+      MaterialsUtil.getDiamonds(), MaterialsUtil.getSapphires(), MaterialsUtil.getAmethysts(), MaterialsUtil.getQuartz()
+    );
+  }
+  
   public TileGemConverter(){
-    super(Tiles.GEM_CONVERTER,1,Gems.gem_items,1,new CustomEnergyStorage(Values.gem_converter_required_energy.get()),Values.gem_converter_work_time.get());
+    super(Tiles.GEM_CONVERTER,1,getFilter(),1,new CustomEnergyStorage(Values.gem_converter_required_energy.get()),Values.gem_converter_work_time.get());
   }
 
   public final void cycle(final boolean direction){

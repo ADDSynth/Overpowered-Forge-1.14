@@ -5,6 +5,8 @@ import addsynth.core.inventory.container.slots.InputSlot;
 import addsynth.core.inventory.container.slots.OutputSlot;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.network.PacketBuffer;
 
 public final class ContainerMagicInfuser extends BaseContainer<TileMagicInfuser> {
@@ -25,8 +27,8 @@ public final class ContainerMagicInfuser extends BaseContainer<TileMagicInfuser>
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,105);
-    addSlot(new InputSlot(tile,0,TileMagicInfuser.slot_data[0].filter,38,44));
-    addSlot(new InputSlot(tile,1,TileMagicInfuser.slot_data[1].filter,56,44));
+    addSlot(new InputSlot(tile,0,new Item[]{Items.BOOK},38,44));
+    addSlot(new InputSlot(tile,1,TileMagicInfuser.getFilter(),56,44));
     addSlot(new OutputSlot(tile, 0, 111, 44));
   }
 
