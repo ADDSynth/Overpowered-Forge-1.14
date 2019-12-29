@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.config;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.tuple.Pair;
-import addsynth.overpoweredmod.blocks.unique.BlackHole;
+import addsynth.overpoweredmod.blocks.BlackHole;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class Config {

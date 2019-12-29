@@ -4,7 +4,7 @@ import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.blocks.dimension.*;
 import addsynth.overpoweredmod.blocks.dimension.tree.*;
-import addsynth.overpoweredmod.blocks.tiles.portal.PortalEnergyBlock;
+import addsynth.overpoweredmod.machines.portal.rift.PortalEnergyBlock;
 import net.minecraft.item.Item;
 
 public final class Portal {

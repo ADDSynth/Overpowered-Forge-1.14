@@ -1,7 +1,21 @@
 package addsynth.overpoweredmod.registers;
 
+import addsynth.energy.gameplay.compressor.ContainerCompressor;
+import addsynth.energy.gameplay.electric_furnace.ContainerElectricFurnace;
+import addsynth.energy.gameplay.energy_storage.ContainerEnergyStorage;
+import addsynth.energy.gameplay.universal_energy_interface.ContainerUniversalInterface;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.containers.*;
+import addsynth.overpoweredmod.machines.advanced_ore_refinery.ContainerOreRefinery;
+import addsynth.overpoweredmod.machines.crystal_matter_generator.ContainerCrystalGenerator;
+import addsynth.overpoweredmod.machines.fusion.chamber.ContainerFusionChamber;
+import addsynth.overpoweredmod.machines.gem_converter.ContainerGemConverter;
+import addsynth.overpoweredmod.machines.generator.ContainerGenerator;
+import addsynth.overpoweredmod.machines.identifier.ContainerIdentifier;
+import addsynth.overpoweredmod.machines.inverter.ContainerInverter;
+import addsynth.overpoweredmod.machines.laser.machine.ContainerLaserHousing;
+import addsynth.overpoweredmod.machines.magic_infuser.ContainerMagicInfuser;
+import addsynth.overpoweredmod.machines.portal.control_panel.ContainerPortalControlPanel;
+import addsynth.overpoweredmod.machines.portal.frame.ContainerPortalFrame;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 
@@ -15,7 +29,7 @@ public final class Containers {
   public static final ContainerType<ContainerElectricFurnace> ELECTRIC_FURNACE = register("electric_furnace", ContainerElectricFurnace::new);
   public static final ContainerType<ContainerInverter> INVERTER = register("inverter", ContainerInverter::new);
   public static final ContainerType<ContainerGemConverter> GEM_CONVERTER = register("gem_converter", ContainerGemConverter::new);
-  public static final ContainerType<ContainerMagicUnlocker> MAGIC_INFUSER = register("magic_infuser", ContainerMagicUnlocker::new);
+  public static final ContainerType<ContainerMagicInfuser> MAGIC_INFUSER = register("magic_infuser", ContainerMagicInfuser::new);
   public static final ContainerType<ContainerIdentifier> IDENTIFIER = register("identifier", ContainerIdentifier::new);
   public static final ContainerType<ContainerOreRefinery> ADVANCED_ORE_REFINERY = register("advanced_ore_refinery", ContainerOreRefinery::new);
   public static final ContainerType<ContainerCrystalGenerator> CRYSTAL_MATTER_GENERATOR = register("crystal_matter_generator", ContainerCrystalGenerator::new);

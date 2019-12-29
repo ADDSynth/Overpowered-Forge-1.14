@@ -87,9 +87,9 @@ public final class Registers {
     }
     if(Features.fusion_container.get()){
       game.register(Machines.fusion_converter);
-      game.register(Machines.laser_scanning_unit);
-      game.register(Machines.singularity_container);
-      game.register(Machines.fusion_laser);
+      game.register(Machines.fusion_control_unit);
+      game.register(Machines.fusion_chamber);
+      game.register(Machines.fusion_control_laser);
       game.register(Machines.fusion_control_laser_beam);
     }
     for(Metal metal : Metals.values){
@@ -176,9 +176,9 @@ public final class Registers {
     
     if(Features.fusion_container.get()){
       game.register(OverpoweredMod.registry.getItemBlock(Machines.fusion_converter));
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.laser_scanning_unit));
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.singularity_container));
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.fusion_laser));
+      game.register(OverpoweredMod.registry.getItemBlock(Machines.fusion_control_unit));
+      game.register(OverpoweredMod.registry.getItemBlock(Machines.fusion_chamber));
+      game.register(OverpoweredMod.registry.getItemBlock(Machines.fusion_control_laser));
     }
     
     if(Features.iron_frame_block.get()){ game.register(OverpoweredMod.registry.getItemBlock(Init.iron_frame_block)); }

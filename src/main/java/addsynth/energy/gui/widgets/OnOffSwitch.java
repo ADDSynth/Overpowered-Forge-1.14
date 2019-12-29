@@ -3,7 +3,7 @@ package addsynth.energy.gui.widgets;
 import addsynth.core.ADDSynthCore;
 import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import addsynth.energy.tiles.TileEnergyReceiver;
-import addsynth.overpoweredmod.network.NetworkHandler;
+import addsynth.overpoweredmod.game.NetworkHandler;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

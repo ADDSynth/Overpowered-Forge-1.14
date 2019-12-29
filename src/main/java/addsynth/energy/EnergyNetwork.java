@@ -3,7 +3,7 @@ package addsynth.energy;
 import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.util.MinecraftUtility;
-import addsynth.energy.gameplay.tiles.TileEnergyWire;
+import addsynth.energy.gameplay.energy_wire.TileEnergyWire;
 import addsynth.energy.tiles.TileEnergyWithStorage;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;

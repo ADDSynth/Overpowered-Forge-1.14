@@ -1,18 +1,31 @@
 package addsynth.overpoweredmod.registers;
 
-import addsynth.energy.gameplay.tiles.*;
+import addsynth.energy.gameplay.compressor.TileCompressor;
+import addsynth.energy.gameplay.electric_furnace.TileElectricFurnace;
+import addsynth.energy.gameplay.energy_storage.TileEnergyStorage;
+import addsynth.energy.gameplay.energy_wire.TileEnergyWire;
+import addsynth.energy.gameplay.universal_energy_interface.TileUniversalEnergyTransfer;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
-import addsynth.overpoweredmod.tiles.TileDataCable;
-import addsynth.overpoweredmod.tiles.machines.automatic.*;
-import addsynth.overpoweredmod.tiles.machines.energy.TileEnergyGenerator;
-import addsynth.overpoweredmod.tiles.machines.fusion.*;
-import addsynth.overpoweredmod.tiles.machines.laser.*;
-import addsynth.overpoweredmod.tiles.machines.other.*;
-import addsynth.overpoweredmod.tiles.machines.portal.*;
-import addsynth.overpoweredmod.tiles.technical.*;
+import addsynth.overpoweredmod.machines.advanced_ore_refinery.TileAdvancedOreRefinery;
+import addsynth.overpoweredmod.machines.crystal_matter_generator.TileCrystalMatterReplicator;
+import addsynth.overpoweredmod.machines.data_cable.TileDataCable;
+import addsynth.overpoweredmod.machines.fusion.chamber.TileFusionChamber;
+import addsynth.overpoweredmod.machines.fusion.converter.TileFusionEnergyConverter;
+import addsynth.overpoweredmod.machines.gem_converter.TileGemConverter;
+import addsynth.overpoweredmod.machines.generator.TileEnergyGenerator;
+import addsynth.overpoweredmod.machines.identifier.TileIdentifier;
+import addsynth.overpoweredmod.machines.inverter.TileInverter;
+import addsynth.overpoweredmod.machines.laser.beam.TileLaserBeam;
+import addsynth.overpoweredmod.machines.laser.cannon.TileLaser;
+import addsynth.overpoweredmod.machines.laser.machine.TileLaserHousing;
+import addsynth.overpoweredmod.machines.magic_infuser.TileMagicInfuser;
+import addsynth.overpoweredmod.machines.portal.control_panel.TilePortalControlPanel;
+import addsynth.overpoweredmod.machines.portal.frame.TilePortalFrame;
+import addsynth.overpoweredmod.machines.portal.rift.TilePortal;
+import addsynth.overpoweredmod.machines.suspension_bridge.TileSuspensionBridge;
 import net.minecraft.tileentity.TileEntityType;
 
 public final class Tiles {
@@ -41,8 +54,8 @@ public final class Tiles {
   public static final TileEntityType<TileInverter> INVERTER =
     TileEntityType.Builder.create(TileInverter::new, Machines.inverter).build(null);
 
-  public static final TileEntityType<TileMagicUnlocker> MAGIC_INFUSER =
-    TileEntityType.Builder.create(TileMagicUnlocker::new, Machines.magic_infuser).build(null);
+  public static final TileEntityType<TileMagicInfuser> MAGIC_INFUSER =
+    TileEntityType.Builder.create(TileMagicInfuser::new, Machines.magic_infuser).build(null);
 
   public static final TileEntityType<TileIdentifier> IDENTIFIER =
     TileEntityType.Builder.create(TileIdentifier::new, Machines.identifier).build(null);
@@ -80,6 +93,6 @@ public final class Tiles {
     TileEntityType.Builder.create(TileFusionEnergyConverter::new, Machines.fusion_converter).build(null);
 
   public static final TileEntityType<TileFusionChamber> FUSION_CHAMBER =
-    TileEntityType.Builder.create(TileFusionChamber::new, Machines.singularity_container).build(null);
+    TileEntityType.Builder.create(TileFusionChamber::new, Machines.fusion_chamber).build(null);
 
 }

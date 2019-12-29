@@ -1,15 +1,25 @@
 package addsynth.overpoweredmod.game.core;
 
-import addsynth.energy.gameplay.blocks.EnergyStorageBlock;
-import addsynth.energy.gameplay.blocks.UniversalEnergyBlock;
+import addsynth.energy.gameplay.compressor.Compressor;
+import addsynth.energy.gameplay.electric_furnace.ElectricFurnace;
+import addsynth.energy.gameplay.energy_storage.EnergyStorageBlock;
+import addsynth.energy.gameplay.universal_energy_interface.UniversalEnergyBlock;
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.blocks.tiles.energy.*;
-import addsynth.overpoweredmod.blocks.tiles.fusion.*;
-import addsynth.overpoweredmod.blocks.tiles.laser.LaserCannon;
-import addsynth.overpoweredmod.blocks.tiles.laser.LaserHousing;
-import addsynth.overpoweredmod.blocks.tiles.machines.*;
-import addsynth.overpoweredmod.blocks.tiles.portal.PortalControlPanel;
-import addsynth.overpoweredmod.blocks.tiles.portal.PortalFrame;
+import addsynth.overpoweredmod.machines.advanced_ore_refinery.AdvancedOreRefinery;
+import addsynth.overpoweredmod.machines.crystal_matter_generator.CrystalMatterGenerator;
+import addsynth.overpoweredmod.machines.fusion.chamber.FusionChamber;
+import addsynth.overpoweredmod.machines.fusion.control.FusionControlLaserBeam;
+import addsynth.overpoweredmod.machines.fusion.control.FusionControlUnit;
+import addsynth.overpoweredmod.machines.fusion.converter.FusionEnergyConverter;
+import addsynth.overpoweredmod.machines.gem_converter.GemConverter;
+import addsynth.overpoweredmod.machines.generator.Generator;
+import addsynth.overpoweredmod.machines.identifier.Identifier;
+import addsynth.overpoweredmod.machines.inverter.Inverter;
+import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
+import addsynth.overpoweredmod.machines.laser.machine.LaserHousing;
+import addsynth.overpoweredmod.machines.magic_infuser.MagicInfuser;
+import addsynth.overpoweredmod.machines.portal.control_panel.PortalControlPanel;
+import addsynth.overpoweredmod.machines.portal.frame.PortalFrame;
 
 public final class Machines {
 
@@ -26,18 +36,18 @@ public final class Machines {
   public static final ElectricFurnace         electric_furnace         = new ElectricFurnace("electric_furnace");
   public static final GemConverter            gem_converter            = new GemConverter("gem_converter");
   public static final Inverter                inverter                 = new Inverter("inverter");
-  public static final MagicUnlocker           magic_infuser            = new MagicUnlocker("magic_infuser");
+  public static final MagicInfuser            magic_infuser            = new MagicInfuser("magic_infuser");
   public static final Identifier              identifier               = new Identifier("identifier");
   public static final PortalControlPanel      portal_control_panel     = new PortalControlPanel("portal_control_panel");
   public static final PortalFrame             portal_frame             = new PortalFrame("portal_frame");
-  public static final CrystalMatterReplicator crystal_matter_generator = new CrystalMatterReplicator("crystal_matter_generator");
+  public static final CrystalMatterGenerator  crystal_matter_generator = new CrystalMatterGenerator("crystal_matter_generator");
   public static final AdvancedOreRefinery     advanced_ore_refinery    = new AdvancedOreRefinery("advanced_ore_refinery");
 
   public static final FusionEnergyConverter   fusion_converter         = new FusionEnergyConverter("fusion_energy_converter");
-  public static final FusionControlUnit       laser_scanning_unit      = new FusionControlUnit("fusion_control_unit");
-  public static final FusionChamber           singularity_container    = new FusionChamber("fusion_chamber");
-  public static final LaserCannon             fusion_laser             = new LaserCannon("fusion_control_laser", -1);
-  public static final FusionControlLaserBeam    fusion_control_laser_beam = new FusionControlLaserBeam("fusion_control_laser_beam");
+  public static final FusionChamber           fusion_chamber           = new FusionChamber("fusion_chamber");
+  public static final FusionControlUnit       fusion_control_unit      = new FusionControlUnit("fusion_control_unit");
+  public static final LaserCannon             fusion_control_laser     = new LaserCannon("fusion_control_laser", -1);
+  public static final FusionControlLaserBeam  fusion_control_laser_beam = new FusionControlLaserBeam("fusion_control_laser_beam");
 
   public static final LaserHousing            laser_housing            = new LaserHousing("laser_housing");
 

@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.game.core;
 
-import addsynth.energy.gameplay.blocks.EnergyWire;
+import addsynth.energy.gameplay.energy_wire.EnergyWire;
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.blocks.tiles.DataCable;
+import addsynth.overpoweredmod.machines.data_cable.DataCable;
 
 public final class Wires {
 

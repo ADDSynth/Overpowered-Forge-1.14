@@ -6,13 +6,26 @@ import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.material.Material;
 import addsynth.core.worldgen.OreGenerator;
-import addsynth.energy.gameplay.gui.*;
+import addsynth.energy.gameplay.compressor.GuiCompressor;
+import addsynth.energy.gameplay.electric_furnace.GuiElectricFurnace;
+import addsynth.energy.gameplay.energy_storage.GuiEnergyStorageContainer;
+import addsynth.energy.gameplay.universal_energy_interface.GuiUniversalEnergyInterface;
 // import addsynth.overpoweredmod.assets.Achievements;
-import addsynth.overpoweredmod.client.gui.tiles.*;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
-import addsynth.overpoweredmod.game.recipes.OreRefineryRecipes;
-import addsynth.overpoweredmod.network.NetworkHandler;
+import addsynth.overpoweredmod.game.NetworkHandler;
+import addsynth.overpoweredmod.machines.advanced_ore_refinery.GuiAdvancedOreRefinery;
+import addsynth.overpoweredmod.machines.advanced_ore_refinery.OreRefineryRecipes;
+import addsynth.overpoweredmod.machines.crystal_matter_generator.GuiCrystalMatterGenerator;
+import addsynth.overpoweredmod.machines.fusion.chamber.GuiFusionChamber;
+import addsynth.overpoweredmod.machines.gem_converter.GuiGemConverter;
+import addsynth.overpoweredmod.machines.generator.GuiGenerator;
+import addsynth.overpoweredmod.machines.identifier.GuiIdentifier;
+import addsynth.overpoweredmod.machines.inverter.GuiInverter;
+import addsynth.overpoweredmod.machines.laser.machine.GuiLaserHousing;
+import addsynth.overpoweredmod.machines.magic_infuser.GuiMagicInfuser;
+import addsynth.overpoweredmod.machines.portal.control_panel.GuiPortalControlPanel;
+import addsynth.overpoweredmod.machines.portal.frame.GuiPortalFrame;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -120,14 +133,14 @@ public class OverpoweredMod {
     ScreenManager.registerFactory(Containers.ELECTRIC_FURNACE,           GuiElectricFurnace::new);
     ScreenManager.registerFactory(Containers.GEM_CONVERTER,              GuiGemConverter::new);
     ScreenManager.registerFactory(Containers.INVERTER,                   GuiInverter::new);
-    ScreenManager.registerFactory(Containers.MAGIC_INFUSER,              GuiMagicUnlocker::new);
+    ScreenManager.registerFactory(Containers.MAGIC_INFUSER,              GuiMagicInfuser::new);
     ScreenManager.registerFactory(Containers.IDENTIFIER,                 GuiIdentifier::new);
     ScreenManager.registerFactory(Containers.PORTAL_CONTROL_PANEL,       GuiPortalControlPanel::new);
     ScreenManager.registerFactory(Containers.PORTAL_FRAME,               GuiPortalFrame::new);
     ScreenManager.registerFactory(Containers.LASER_HOUSING,              GuiLaserHousing::new);
     ScreenManager.registerFactory(Containers.ADVANCED_ORE_REFINERY,      GuiAdvancedOreRefinery::new);
     ScreenManager.registerFactory(Containers.CRYSTAL_MATTER_GENERATOR,   GuiCrystalMatterGenerator::new);
-    ScreenManager.registerFactory(Containers.FUSION_CHAMBER,             GuiSingularityContainer::new);
+    ScreenManager.registerFactory(Containers.FUSION_CHAMBER,             GuiFusionChamber::new);
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

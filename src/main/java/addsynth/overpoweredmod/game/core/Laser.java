@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.game.core;
 
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.blocks.tiles.laser.LaserBeam;
-import addsynth.overpoweredmod.blocks.tiles.laser.LaserCannon;
+import addsynth.overpoweredmod.machines.laser.beam.LaserBeam;
+import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
 import net.minecraft.block.Block;
 
 public enum Laser {

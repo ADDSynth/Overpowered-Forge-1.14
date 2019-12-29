@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.game.core;
 
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.blocks.basic.TrophyBlock;
+import addsynth.overpoweredmod.blocks.TrophyBlock;
 import addsynth.overpoweredmod.items.OverpoweredItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
