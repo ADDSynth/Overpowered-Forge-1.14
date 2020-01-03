@@ -22,7 +22,7 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
   private boolean valid;
 
   public TileFusionEnergyConverter(){
-    super(Tiles.FUSION_ENERGY_CONVERTER, 0, null, 0, new CustomEnergyStorage(0,Values.fusion_energy_output_per_tick.get()));
+    super(Tiles.FUSION_ENERGY_CONVERTER, new CustomEnergyStorage(0,Values.fusion_energy_output_per_tick.get()));
   }
 
   @Override

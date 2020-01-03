@@ -9,7 +9,6 @@ import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyReceiver;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.game.NetworkHandler;
-import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
@@ -23,7 +22,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -109,16 +107,10 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
             final TilePortalFrame portal_frame = (TilePortalFrame)world.getTileEntity(position); // we already know this is a portal frame block, its okay to do this.
             if(portal_frame != null){
               portal_frames.add(position);
-              final Item item = portal_frame.get_item();
-              // currently this is more efficient.
-              if(item == Gems.index[0].block_item){ has_gem_block[0] = true; }
-              if(item == Gems.index[1].block_item){ has_gem_block[1] = true; }
-              if(item == Gems.index[2].block_item){ has_gem_block[2] = true; }
-              if(item == Gems.index[3].block_item){ has_gem_block[3] = true; }
-              if(item == Gems.index[4].block_item){ has_gem_block[4] = true; }
-              if(item == Gems.index[5].block_item){ has_gem_block[5] = true; }
-              if(item == Gems.index[6].block_item){ has_gem_block[6] = true; }
-              if(item == Gems.index[7].block_item){ has_gem_block[7] = true; }
+              final int item = portal_frame.check_item();
+              if(item >= 0){
+                has_gem_block[item] = true;
+              }
             }
           }
           if(portal_frames.size() < containers){

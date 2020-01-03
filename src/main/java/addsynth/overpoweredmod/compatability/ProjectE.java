@@ -73,12 +73,14 @@ public final class ProjectE {
     InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.TITANIUM.block), 73728L));
     
     if(Features.compressor.get()){
+      InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.IRON.plating),      256L));
       InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.TIN.plating),       256L));
       InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.ALUMINUM.plating),  256L));
       InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.COPPER.plating),    256L));
       InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.STEEL.plating),     512L));
       InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.BRONZE.plating),    512L));
       InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.SILVER.plating),   2048L));
+      InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.GOLD.plating),     2048L));
       InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.PLATINUM.plating), 8192L));
       InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Metals.TITANIUM.plating), 8192L));
     }

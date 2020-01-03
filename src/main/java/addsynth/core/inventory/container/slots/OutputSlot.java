@@ -3,6 +3,7 @@ package addsynth.core.inventory.container.slots;
 import javax.annotation.Nonnull;
 import addsynth.core.tiles.TileMachine;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.hooks.BasicEventHooks;
 import net.minecraftforge.items.SlotItemHandler;
@@ -20,8 +21,8 @@ public final class OutputSlot extends SlotItemHandler {
 
   // NOTE: warning. it's possible this is run on client and server!
   @Override
-  public ItemStack onTake(PlayerEntity player, ItemStack stack){
-    BasicEventHooks.firePlayerCraftingEvent(player, stack, null);
+  public final ItemStack onTake(final PlayerEntity player, final ItemStack stack){
+    BasicEventHooks.firePlayerCraftingEvent(player, stack, new Inventory(0));
     onSlotChanged();
     return stack;
   }

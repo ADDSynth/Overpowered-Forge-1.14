@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.identifier;
 
 import javax.annotation.Nullable;
-import addsynth.core.game.Compatability; // DELETE
+import addsynth.core.game.Compatability;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.items.ItemUtility;
 import addsynth.core.util.JavaUtils;
@@ -35,13 +35,13 @@ public final class TileIdentifier extends PassiveMachine implements INamedContai
   }
 
   @Override
-  protected final void test_condition(){ // OPTIMIZE all versions
+  protected final void test_condition(){ // The Identifier only has 1 Input slot and 0 Output slots. This must remain AS IS.
     can_run = false;
     final ItemStack input_stack = input_inventory.getStackInSlot(0);
-    if(input_stack != null){
+    if(input_stack.isEmpty() == false){
       final Item input_item = input_stack.getItem();
       for(Item item : input_filter){
-        if(input_item == item && input_stack.getCount() == 1){
+        if(input_item == item){
           can_run = true;
           break;
         }
@@ -60,7 +60,6 @@ public final class TileIdentifier extends PassiveMachine implements INamedContai
         input_inventory.setStackInSlot(0,stack);
       }
     }
-    can_run = false;
   }
 
   @Override

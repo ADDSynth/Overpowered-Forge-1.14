@@ -141,6 +141,15 @@ public final class MaterialsUtil {
     return getTagCollection(new ResourceLocation("forge:ingots/titanium"));
   }
 
+  public static final boolean match(final Item item, final Collection<Item> list){
+    for(final Item check_item : list){
+      if(item == check_item){
+        return true;
+      }
+    }
+    return false;
+  }
+
   @SafeVarargs
   public static final Item[] getFilter(final Collection<Item> ... lists){
     int count = 0;

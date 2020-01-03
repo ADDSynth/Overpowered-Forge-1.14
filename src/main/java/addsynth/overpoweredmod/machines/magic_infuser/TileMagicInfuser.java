@@ -56,7 +56,7 @@ public final class TileMagicInfuser extends PassiveMachine implements INamedCont
   protected final void performWork(){
     final Enchantment enchantment = get_enchantment();
     if(enchantment != null){
-      ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1);
+      final ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1);
       enchant_book.addEnchantment(enchantment, enchantment == Enchantments.FORTUNE ? 2 : 1);
       output_inventory.setStackInSlot(0, enchant_book);
       input_inventory.decrease(0);

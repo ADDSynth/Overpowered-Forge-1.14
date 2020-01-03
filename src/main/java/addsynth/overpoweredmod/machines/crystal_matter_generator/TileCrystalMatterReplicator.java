@@ -25,8 +25,7 @@ public final class TileCrystalMatterReplicator extends WorkMachine implements IN
 
   @Override
   protected final void performWork(){
-    final Random random = new Random();
-    final int slot = random.nextInt(8);
+    final int slot = (new Random()).nextInt(8);
     final ItemStack stack = new ItemStack(Gems.index[slot].shard,1);
     output_inventory.insertItem(slot, stack, false);
   }

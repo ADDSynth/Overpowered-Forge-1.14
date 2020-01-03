@@ -28,7 +28,7 @@ public final class TileElectricFurnace extends PassiveMachine implements INamedC
   protected final void test_condition(){
     final ItemStack input = input_inventory.getStackInSlot(0);
     final ItemStack output = output_inventory.getStackInSlot(0);
-    result = ItemStack.EMPTY; // input == ItemStack.EMPTY ? null : FurnaceRecipes.instance().getSmeltingResult(input);
+    result = input.isEmpty() ? null : null; // FurnaceRecipes.instance().getSmeltingResult(input);
     can_run = (input != ItemStack.EMPTY && input.getCount() > 0) && (output == ItemStack.EMPTY || output_inventory.can_add(0, result));
   }
 

@@ -26,7 +26,7 @@ public final class TileEnergyGenerator extends TileEnergyTransmitter implements 
     super(Tiles.GENERATOR, 1,input_filter,0,new CustomEnergyStorage());
   }
 
-  private final void setGeneratorData(Item item){
+  private final void setGeneratorData(final Item item){
     if(item == Init.energy_crystal){
       energy.setEnergyLevel(Values.energy_crystal_energy.get());
       energy.setMaxExtract(Values.energy_crystal_max_extract.get());
@@ -46,8 +46,8 @@ public final class TileEnergyGenerator extends TileEnergyTransmitter implements 
     if(world != null){
       if(world.isRemote == false){
         if(energy.isEmpty()){
-          if(input_inventory.getStackInSlot(0) != null){ // is there an item in the slot?
-            ItemStack stack = input_inventory.extractItem(0,1,false);
+          if(input_inventory.getStackInSlot(0).isEmpty() == false){ // is there an item in the slot?
+            final ItemStack stack = input_inventory.extractItem(0,1,false);
             setGeneratorData(stack.getItem()); // set energy units and extraction rate
             update_data();
           }

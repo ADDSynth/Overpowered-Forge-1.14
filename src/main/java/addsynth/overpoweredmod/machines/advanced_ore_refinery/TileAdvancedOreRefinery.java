@@ -24,20 +24,14 @@ public final class TileAdvancedOreRefinery extends PassiveMachine implements INa
   private ItemStack result;
 
   public TileAdvancedOreRefinery(){
-    super(Tiles.ADVANCED_ORE_REFINERY,1,OreRefineryRecipes.get_input(),1,
+    super(Tiles.ADVANCED_ORE_REFINERY,1,OreRefineryRecipes.get_input_filter(),1,
       new CustomEnergyStorage(Values.advanced_ore_refinery_required_energy.get()),Values.advanced_ore_refinery_work_time.get());
   }
 
   @Override
   protected final void test_condition(){
-    can_run = false;
-    final ItemStack input = input_inventory.getStackInSlot(0);
-    if(input != null){
-      if(OreRefineryRecipes.matches(input.getItem())){
-        result = OreRefineryRecipes.get_result(input.getItem());
-        can_run = output_inventory.can_add(0, result);
-      }
-    }
+    result = OreRefineryRecipes.get_result(input_inventory.getStackInSlot(0).getItem());
+    can_run = output_inventory.can_add(0, result);
   }
 
   @Override

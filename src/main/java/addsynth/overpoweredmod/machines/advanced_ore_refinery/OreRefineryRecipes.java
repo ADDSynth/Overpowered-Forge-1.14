@@ -9,9 +9,9 @@ import net.minecraft.item.ItemStack;
 
 public final class OreRefineryRecipes {
 
-  private static final int result_output = 2;
+  private static final int output_multiplier = 2;
   private static Item[] valid_ores;
-  private static final HashMap<Item,ItemStack> recipes = new HashMap<>(100);
+  private static final HashMap<Item,ItemStack> recipes = new HashMap<>(200);
 
   // https://github.com/skyboy/MineFactoryReloaded/blob/master/src/main/java/powercrystals/minefactoryreloaded/modhelpers/vanilla/Minecraft.java
   
@@ -42,7 +42,7 @@ public final class OreRefineryRecipes {
     Debug.log_setup_info("Finished registering Advanced Ore Refinery recipes.");
   }
 
-  public static final Item[] get_input(){
+  public static final Item[] get_input_filter(){
     if(valid_ores == null){
       throw new NullPointerException("OreRefineryRecipes Item[] array input filter is null! It is created "+
                                      "in the register() function. Was OreRefineryRecipes.register() not called?");

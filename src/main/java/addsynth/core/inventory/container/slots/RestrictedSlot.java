@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class RestrictedSlot extends SlotItemHandler { // OPTIMIZE: should I combine InputSlot and Restricted Slot?
+public class RestrictedSlot extends SlotItemHandler { // OPTIMIZE: combine InputSlot and Restricted Slot
 
   private final Item[] valid_items;
 

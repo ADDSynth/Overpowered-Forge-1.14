@@ -29,9 +29,19 @@ public final class TilePortalFrame extends TileMachine implements INamedContaine
     super(Tiles.PORTAL_FRAME, new SlotData[]{new SlotData(getFilter(), 1)}, 0);
   }
 
-  public final Item get_item(){
+  public final int check_item(){
     final ItemStack stack = input_inventory.getStackInSlot(0);
-    return stack.isEmpty() ? null : stack.getItem();
+    if(stack.isEmpty()){ return -1; }
+    final Item item = stack.getItem();
+    if(MaterialsUtil.match(item, MaterialsUtil.getRubyBlocks())){     return 0; }
+    if(MaterialsUtil.match(item, MaterialsUtil.getTopazBlocks())){    return 1; }
+    if(MaterialsUtil.match(item, MaterialsUtil.getCitrineBlocks())){  return 2; }
+    if(MaterialsUtil.match(item, MaterialsUtil.getEmeraldBlocks())){  return 3; }
+    if(MaterialsUtil.match(item, MaterialsUtil.getDiamondBlocks())){  return 4; }
+    if(MaterialsUtil.match(item, MaterialsUtil.getSapphireBlocks())){ return 5; }
+    if(MaterialsUtil.match(item, MaterialsUtil.getAmethystBlocks())){ return 6; }
+    if(MaterialsUtil.match(item, MaterialsUtil.getQuartzBlocks())){   return 7; }
+    return -1;
   }
 
   @Override
