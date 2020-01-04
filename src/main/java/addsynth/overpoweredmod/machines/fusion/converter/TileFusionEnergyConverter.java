@@ -15,9 +15,9 @@ import net.minecraft.util.math.BlockPos;
 
 public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
 
-  private static final int sync_timer = 10;
+  private static final int sync_timer = 4; // TODO: remove sync timer in version 1.3
   private final ArrayList<DataCableNetwork> data_cable_networks = new ArrayList<>(1);
-  private BlockPos singularity_container;
+  private TileFusionChamber fusion_chamber;
   private boolean activated;
   private boolean valid;
 
@@ -28,21 +28,32 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
   @Override
   public final void tick(){
     if(world.isRemote == false){
-      if(world.getGameTime() % sync_timer == 0){ // TODO: use our own timer seperate from the whims of Minecraft.
+      if(world.getGameTime() % sync_timer == 0){
+        
+        final BlockPos previous_position = fusion_chamber != null ? fusion_chamber.getPos() : null;
+        final boolean previous_valid = valid;
+        
+        check_connection(); // keep up-to-date, always.
         activated = world.isBlockPowered(pos);
-        if(activated){
-          check_connection();
+        
+        if(fusion_chamber == null){
+          if(previous_position != null){
+            fusion_chamber = MinecraftUtility.getTileEntity(previous_position, world, TileFusionChamber.class);
+          }
+        }
+        
+        if(fusion_chamber != null){ // Cannot be valid without fusion chamber
+          fusion_chamber.set_state(activated && valid); // keep fusion chamber up-to-date if it exists.
+          if(activated && valid == false && previous_valid == true){
+            fusion_chamber.explode();
+            fusion_chamber = null;
+          }
         }
       }
+      // every tick
       if(activated && valid){
         energy.set_to_full();
         super.tick();
-      }
-      if(singularity_container != null){
-        final TileFusionChamber tile = MinecraftUtility.getTileEntity(singularity_container, world, TileFusionChamber.class);
-        if(tile != null){
-          tile.keep_updated(activated && valid);
-        }
       }
     }
     else{
@@ -53,14 +64,15 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
   private final void check_connection(){
     get_networks();
     valid = false;
+    fusion_chamber = null;
+    BlockPos position;
     if(data_cable_networks.size() > 0){
-      TileFusionChamber tile;
       for(DataCableNetwork network : data_cable_networks){
-        singularity_container = network.get_valid_singularity_container();
-        if(singularity_container != null){
-          tile = (TileFusionChamber)world.getTileEntity(singularity_container);
-          if(tile != null){
-            if(tile.has_fusion_core()){
+        position = network.get_valid_fusion_container();
+        if(position != null){
+          fusion_chamber = (TileFusionChamber)world.getTileEntity(position);
+          if(fusion_chamber != null){
+            if(fusion_chamber.has_fusion_core()){
               valid = true;
               break;
             }

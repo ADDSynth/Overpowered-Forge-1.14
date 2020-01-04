@@ -25,9 +25,6 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public final class FusionChamber extends MachineBlock {
 
-  /** A standard TNT explosion is size of 4. */
-  private static final float FUSION_CHAMBER_EXPLOSION_SIZE = 8.0f;
-
   public FusionChamber(final String name){
     super();
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
@@ -46,18 +43,13 @@ public final class FusionChamber extends MachineBlock {
   @Override
   @SuppressWarnings("deprecation")
   public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
-    // FIX, getting variable on the client side which is never updated and will always be false.
-    // if(world.isRemote == false){
+    if(world.isRemote == false){
       final TileFusionChamber tile = MinecraftUtility.getTileEntity(pos, world, TileFusionChamber.class);
-      if(tile != null){
-        if((tile).is_on() == false){
-          NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
-          return true;
-        }
-      }
-      return false;
-    // }
-    // return true;
+      if(tile == null){ return false; }
+      if(tile.is_on()){ return false; }
+      NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
+    }
+    return true;
   }
 
   @Override
@@ -70,18 +62,15 @@ public final class FusionChamber extends MachineBlock {
     check_container(world, pos);
   }
 
-  private static final boolean check_container(final World world, final BlockPos position){
+  private static final void check_container(final World world, final BlockPos position){
     if(world.isRemote == false){
-      final TileEntity tile = world.getTileEntity(position);
+      final TileFusionChamber tile = MinecraftUtility.getTileEntity(position, world, TileFusionChamber.class);
       if(tile != null){
-        if(((TileFusionChamber)tile).has_fusion_core()){
-          world.removeBlock(position, false);
-          world.createExplosion(null, position.getX()+0.5, position.getY()+0.5, position.getZ()+0.5, FUSION_CHAMBER_EXPLOSION_SIZE, true, Explosion.Mode.DESTROY);
-          return true;
+        if(tile.is_on()){
+          tile.explode();
         }
       }
     }
-    return false;
   }
 
 }

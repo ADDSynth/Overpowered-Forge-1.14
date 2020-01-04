@@ -19,10 +19,10 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
   private final ArrayList<BlockPos> scanning_units = new ArrayList<>(6);
   private final ArrayList<BlockPos> fusion_energy_converters = new ArrayList<>(1);
 
-  private static final class SingularityContainmentStructure {
+  private static final class FusionEnergyStructure {
     public final BlockPos position;
     private boolean[] side = new boolean[] {false, false, false, false, false, false};
-    public SingularityContainmentStructure(final BlockPos position_of_singularity_container){
+    public FusionEnergyStructure(final BlockPos position_of_singularity_container){
       position = position_of_singularity_container;
     }
     public final void add_scanning_unit(final Direction direction){
@@ -105,11 +105,11 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
   /** THIS, is the algorithm that goes through all the scanning units, and performs an arsenal of
    *  validity checks on them! It ends as soon as it finds 1 valid Singularity Containment structure!
    */
-  public final BlockPos get_valid_singularity_container(){
-    BlockPos valid_singularity_container = null;
+  public final BlockPos get_valid_fusion_container(){
+    BlockPos valid_fusion_chamber = null;
     if(scanning_units.size() >= 6){
       boolean found_valid = false;
-      SingularityContainmentStructure structure = null;
+      FusionEnergyStructure structure = null;
       BlockState block_state;
       BlockPos position;
       for(BlockPos scanning_unit : scanning_units){
@@ -121,17 +121,17 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
               if(world.getBlockState(position).getBlock() == Machines.fusion_chamber){
                 // FIX: we need to keep a list of singularity containers, otherwise, if the scanning units are out of order, we immediately replace the current one.
                 if(structure == null){
-                  structure = new SingularityContainmentStructure(position);
+                  structure = new FusionEnergyStructure(position);
                 }
                 else{
                   if(position.equals(structure.position) == false){
-                    structure = new SingularityContainmentStructure(position);
+                    structure = new FusionEnergyStructure(position);
                   }
                 }
                 structure.add_scanning_unit(side);
                 if(structure.is_valid()){
                   found_valid = true;
-                  valid_singularity_container = structure.position;
+                  valid_fusion_chamber = structure.position;
                   break;
                 }
               }
@@ -143,7 +143,7 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
         }
       }
     }
-    return valid_singularity_container;
+    return valid_fusion_chamber;
   }
 
 }

@@ -16,10 +16,14 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.Explosion;
 
 public final class TileFusionChamber extends TileMachine implements INamedContainerProvider {
 
   public static final Item[] input_filter = new Item[]{ModItems.fusion_core};
+
+  /** A standard TNT explosion is size of 4. */
+  private static final float FUSION_CHAMBER_EXPLOSION_SIZE = 10.0f;
 
   public static final byte container_radius = 5;
   private boolean on;
@@ -40,41 +44,29 @@ public final class TileFusionChamber extends TileMachine implements INamedContai
     return on;
   }
 
-  public final void keep_updated(final boolean valid){
-    if(valid){
-      if(on == false){
-        turn_on();
+  public final void set_state(final boolean state){
+    if(on != state){
+      int i;
+      BlockPos position;
+      for(Direction side: Direction.values()){
+        for(i = 1; i < container_radius - 1; i++){
+          position = pos.offset(side, i);
+          if(state){
+            world.setBlockState(position, Machines.fusion_control_laser_beam.getDefaultState(), 3); // TEST why would we need block updates for this? Can this just be set to 2 for Client updates?
+          }
+          else{
+            world.removeBlock(position, false);
+          }
+        }
       }
-    }
-    else{
-      if(on){
-        turn_off();
-      }
+      on = state;
     }
   }
 
-  public final void turn_on(){
-    int i;
-    BlockPos position;
-    for(Direction side : Direction.values()){
-      for(i = 1; i < container_radius - 1; i++){
-        position = pos.offset(side, i);
-        world.setBlockState(position, Machines.fusion_control_laser_beam.getDefaultState(), 3);
-      }
-    }
-    on = true;
-  }
-
-  public final void turn_off(){
-    int i;
-    BlockPos position;
-    for(Direction side : Direction.values()){
-      for(i = 1; i < container_radius - 1; i++){
-        position = pos.offset(side, i);
-        world.removeBlock(position, false);
-      }
-    }
-    on = false;
+  public final void explode(){
+    set_state(false);
+    world.removeBlock(pos, false);
+    world.createExplosion(null, pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, FUSION_CHAMBER_EXPLOSION_SIZE, true, Explosion.Mode.DESTROY);
   }
 
   @Override
