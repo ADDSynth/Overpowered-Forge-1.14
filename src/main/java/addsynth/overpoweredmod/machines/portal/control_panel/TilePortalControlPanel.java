@@ -14,6 +14,7 @@ import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
 import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
+import addsynth.overpoweredmod.machines.portal.PortalMessage;
 import addsynth.overpoweredmod.machines.portal.SyncPortalDataMessage;
 import addsynth.overpoweredmod.machines.portal.frame.TilePortalFrame;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -34,7 +35,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
   private static final int containers = 8;
   public boolean[] portal_items = new boolean[containers];
   public boolean valid_portal = false;
-  public String message = "";
+  public PortalMessage message;
   public ArrayList<BlockPos> portal_frames = new ArrayList<>(containers);
   private Direction.Axis axis;
   private BlockPos lowest_portal_frame;
@@ -67,27 +68,27 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
     portal_search_algorithm(this.pos, this.portal_items, new ArrayList<BlockPos>(30), this.world, this.portal_frames);
 
     if(portal_frames.size() >= containers){
-      if(portal_items[0] && portal_items[1] && portal_items[2] && portal_items[3] && portal_items[4] && portal_items[5] && portal_items[6] && portal_items[7]){
-        if(check_portal_construction()){
+      if(check_portal_construction()){
+        if(portal_items[0] && portal_items[1] && portal_items[2] && portal_items[3] && portal_items[4] && portal_items[5] && portal_items[6] && portal_items[7]){
           if(energy.isFull()){
             // TODO: add a new check to ensure the space inside the portal frame is clear before you generate the portal, for all versions.
             valid_portal = true;
-            message = "Portal is Ready.";
+            message = PortalMessage.PORTAL_READY;
           }
           else{
-            message = "Needs Energy.";
+            message = PortalMessage.NEEDS_ENERGY;
           }
         }
         else{
-          message = "Portal is not constructed correctly.";
+          message = PortalMessage.INCORRECT_ITEMS;
         }
       }
       else{
-        message = "Incorrect items in Portal Frames.";
+        message = PortalMessage.PORTAL_NOT_CONSTRUCTED;
       }
     }
     else{
-      message = "Portal requires 8 Portal Frame Blocks.";
+      message = PortalMessage.REQUIRE_PORTAL_FRAMES;
     }
     // update_data();
     final SyncPortalDataMessage message = new SyncPortalDataMessage(pos, portal_items, this.message, valid_portal);
@@ -173,9 +174,8 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
   public final void generate_portal(){
     if(valid_portal){
     
-      TilePortalFrame tile;
       for(BlockPos position : portal_frames){
-        tile = MinecraftUtility.getTileEntity(position, world, TilePortalFrame.class);
+        final TilePortalFrame tile = MinecraftUtility.getTileEntity(position, world, TilePortalFrame.class);
         if(tile != null){
           tile.getInputInventory().setStackInSlot(0, ItemStack.EMPTY);
         }
@@ -218,6 +218,15 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
         break;
       }
 
+      portal_items[0] = false;
+      portal_items[1] = false;
+      portal_items[2] = false;
+      portal_items[3] = false;
+      portal_items[4] = false;
+      portal_items[5] = false;
+      portal_items[6] = false;
+      portal_items[7] = false;
+      message = PortalMessage.INCORRECT_ITEMS;
       valid_portal = false;
       
       final SyncPortalDataMessage message = new SyncPortalDataMessage(pos, portal_items, this.message, valid_portal);

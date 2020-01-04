@@ -81,7 +81,7 @@ public final class PortalEnergyBlock extends ContainerBlock {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(IBlockReader worldIn){
+  public final TileEntity createNewTileEntity(final IBlockReader world){
     return new TilePortal();
   }
 

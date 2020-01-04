@@ -28,7 +28,7 @@ import net.minecraft.world.World;
  */
 public final class MusicSheet extends CoreItem {
 
-  public MusicSheet(String name){
+  public MusicSheet(final String name){
     super(new Item.Properties().group(ADDSynthCore.creative_tab), name);
   }
 

@@ -105,7 +105,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalCo
     super.draw_title();
     super.draw_energy_after_switch(tile.getEnergy());
     draw_energy_difference(tile.getEnergy().getEnergyDifference(), tile.getEnergy(), 36);
-    draw_text_center(tile.message,status_message_y);
+    draw_text_center(tile.message.getMessage(),status_message_y);
   }
   
   /**

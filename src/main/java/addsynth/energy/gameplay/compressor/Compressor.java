@@ -3,7 +3,7 @@ package addsynth.energy.gameplay.compressor;
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.util.MinecraftUtility;
-import addsynth.energy.blocks.MachineBlockTileEntity;
+import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;
@@ -22,7 +22,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class Compressor extends MachineBlockTileEntity {
+public final class Compressor extends MachineBlock {
 
   public Compressor(final String name){
     super();

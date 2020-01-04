@@ -12,7 +12,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
 
 // What? Java doesn't have unsigned numeric types? That's the stupidest thing I've ever heard!
 // https://stackoverflow.com/questions/430346/why-doesnt-java-support-unsigned-ints
@@ -21,11 +20,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 /** <p>This utility class is used to assist in dealing with Minecraft's color codes.
  *     Minecraft's color codes are integers that use 8 bits each to store the red,
  *     green, and blue channels in that order.
- *  <p>Myself and other developers can call the {@link #dump_map_colors()} function to
- *     dump all the {@link MaterialColor} color codes in RGB format and which blocks use that
- *     MaterialColor to assist in selecting which MaterialColor to use when creating new blocks.
- *  <p>You should call it in your mod's Init event so it can query the Forge Registry
- *     for registered blocks.
+ *  <p>ADDSynthCore will automatically call {@link #dump_map_colors()} if it is enabled
+ *     in the config.
  * @author ADDSynth
  * @since October 23, 2019
  */
@@ -285,10 +281,9 @@ public final class ColorUtil {
 
   public static final Block[] get_blocks_that_match_color(final MaterialColor test_color){
     final ArrayList<Block> blocks = new ArrayList<>(200);
-    final IForgeRegistry<Block> registry = ForgeRegistries.BLOCKS;
     try{
       final Field field = ObfuscationReflectionHelper.findField(Block.class, "field_181083_K");
-      for(Block block : registry){
+      for(Block block : ForgeRegistries.BLOCKS){
         if(test_color == (MaterialColor)field.get(block)){
           blocks.add(block);
         }

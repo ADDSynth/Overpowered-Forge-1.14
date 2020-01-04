@@ -34,7 +34,7 @@ public abstract class TileBase extends TileEntity {
   }
 
   @Override
-  public final void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt){
+  public final void onDataPacket(final NetworkManager net, final SUpdateTileEntityPacket pkt){
       read(pkt.getNbtCompound());
   }
 
@@ -46,7 +46,7 @@ public abstract class TileBase extends TileEntity {
   }
 
   @Override
-  public final void handleUpdateTag(CompoundNBT tag){
+  public final void handleUpdateTag(final CompoundNBT tag){
     read(tag);
   }
 

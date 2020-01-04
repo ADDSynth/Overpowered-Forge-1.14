@@ -94,7 +94,7 @@ public final class StringUtil {
           }
           else{
             if(array[i] instanceof ItemStack){
-              output.append(getName(((ItemStack)array[i]).getItem()));
+              output.append(((ItemStack)array[i]).toString());
             }
             else{
               ADDSynthCore.log.error(new IllegalArgumentException("An object in the array is of the wrong type. StringUtil.print_minecraft_array() only recognizes arrays of Item, Block, or ItemStack objects."));

@@ -79,17 +79,28 @@ public final class TileGemConverter extends PassiveMachine implements INamedCont
     boolean transfer = false;
     final ItemStack input_stack = input_inventory.getStackInSlot(0);
     if(input_stack.isEmpty() == false){
-      if(input_stack.getItem() == gem_selected.getItem()){
-        transfer = true;
-      }
+      transfer = match(input_stack.getItem(), selection);
     }
     if(transfer){
-      performWork();
+      final ItemStack insert = input_inventory.extractItem(0, 1, false);
+      output_inventory.insertItem(0, insert, false);
       update_data();
     }
     else{
       super.machine_tick();
     }
+  }
+
+  private static final boolean match(final Item item, final byte id){
+    if(id == 0){ return MaterialsUtil.match(item, MaterialsUtil.getRubies()); }
+    if(id == 1){ return MaterialsUtil.match(item, MaterialsUtil.getTopaz()); }
+    if(id == 2){ return MaterialsUtil.match(item, MaterialsUtil.getCitrine()); }
+    if(id == 3){ return MaterialsUtil.match(item, MaterialsUtil.getEmeralds()); }
+    if(id == 4){ return MaterialsUtil.match(item, MaterialsUtil.getDiamonds()); }
+    if(id == 5){ return MaterialsUtil.match(item, MaterialsUtil.getSapphires()); }
+    if(id == 6){ return MaterialsUtil.match(item, MaterialsUtil.getAmethysts()); }
+    if(id == 7){ return MaterialsUtil.match(item, MaterialsUtil.getQuartz()); }
+    return false;
   }
 
   @Override

@@ -15,7 +15,7 @@ import net.minecraft.world.IBlockReader;
 
 public final class NullBlock extends Block {
 
-  public NullBlock(String name){
+  public NullBlock(final String name){
     super(Block.Properties.create(Material.AIR).variableOpacity().doesNotBlockMovement());
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }

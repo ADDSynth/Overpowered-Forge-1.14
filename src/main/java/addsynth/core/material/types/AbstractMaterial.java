@@ -16,4 +16,9 @@ public abstract class AbstractMaterial {
     Material.list.add(this);
   }
 
+  @Override
+  public String toString(){
+    return "Material{Type: "+this.getClass().getSimpleName()+", Name: "+name+"}";
+  }
+
 }

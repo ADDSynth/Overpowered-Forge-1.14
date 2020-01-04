@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.fusion.converter;
 
 import java.util.List;
 import javax.annotation.Nullable;
-import addsynth.energy.blocks.MachineBlockTileEntity;
+import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.client.util.ITooltipFlag;
@@ -13,7 +13,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 
-public final class FusionEnergyConverter extends MachineBlockTileEntity {
+public final class FusionEnergyConverter extends MachineBlock {
 
   public FusionEnergyConverter(final String name){
     super();

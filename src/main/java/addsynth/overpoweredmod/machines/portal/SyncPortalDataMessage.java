@@ -2,7 +2,6 @@ package addsynth.overpoweredmod.machines.portal;
 
 import java.util.function.Supplier;
 import addsynth.core.util.MinecraftUtility;
-import addsynth.core.util.NetworkUtil;
 import addsynth.overpoweredmod.machines.portal.control_panel.TilePortalControlPanel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.PacketBuffer;
@@ -14,10 +13,10 @@ public final class SyncPortalDataMessage {
 
   private final BlockPos position;
   private final boolean[] items;
-  private final String message;
+  private final PortalMessage message;
   private final boolean valid_portal;
 
-  public SyncPortalDataMessage(final BlockPos position, final boolean[] items, final String message, final boolean valid){
+  public SyncPortalDataMessage(final BlockPos position, final boolean[] items, final PortalMessage message, final boolean valid){
     this.position = position;
     this.items = items;
     this.message = message;
@@ -36,7 +35,7 @@ public final class SyncPortalDataMessage {
     buf.writeBoolean(message.items[5]);
     buf.writeBoolean(message.items[6]);
     buf.writeBoolean(message.items[7]);
-    NetworkUtil.writeString(buf, message.message); // OPTIMIZE: convert Portal Messages to an enum and only send the enum index as a byte.
+    buf.writeInt(message.message.ordinal());
     buf.writeBoolean(message.valid_portal);
   }
 
@@ -46,7 +45,7 @@ public final class SyncPortalDataMessage {
       buf.readBoolean(), buf.readBoolean(), buf.readBoolean(), buf.readBoolean(),
       buf.readBoolean(), buf.readBoolean(), buf.readBoolean(), buf.readBoolean()
     };
-    final String message = NetworkUtil.readString(buf);
+    final PortalMessage message = PortalMessage.values()[buf.readInt()];
     final boolean valid_portal = buf.readBoolean();
     return new SyncPortalDataMessage(position, items, message, valid_portal);
   }

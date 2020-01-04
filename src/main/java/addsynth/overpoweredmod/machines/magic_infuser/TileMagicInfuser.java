@@ -5,11 +5,11 @@ import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.JavaUtils;
+import addsynth.core.util.StringUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Values;
-import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.enchantment.Enchantment;
@@ -70,13 +70,13 @@ public final class TileMagicInfuser extends PassiveMachine implements INamedCont
     final Item item = input_inventory.getStackInSlot(1).getItem();
     final Random random = new Random();
     // 1 in 50 chance you get either Curse of Binding or Curse of Vanishing
-    if(item == Gems.ruby){
+    if(MaterialsUtil.match(item, MaterialsUtil.getRubies())){
       switch(random.nextInt(2)){
       case 0: enchantment = Enchantments.POWER; break;
       case 1: enchantment = Enchantments.PUNCH; break;
       }
     }
-    if(item == Gems.topaz){
+    if(MaterialsUtil.match(item, MaterialsUtil.getTopaz())){
       switch(random.nextInt(4)){
       case 0: enchantment = Enchantments.BLAST_PROTECTION; break;
       case 1: enchantment = Enchantments.FIRE_ASPECT; break;
@@ -84,27 +84,27 @@ public final class TileMagicInfuser extends PassiveMachine implements INamedCont
       case 3: enchantment = Enchantments.FLAME; break;
       }
     }
-    if(item == Gems.citrine){
+    if(MaterialsUtil.match(item, MaterialsUtil.getCitrine())){
       switch(random.nextInt(3)){
       case 0: enchantment = Enchantments.SHARPNESS; break;
       case 1: enchantment = Enchantments.BANE_OF_ARTHROPODS; break;
       case 2: enchantment = Enchantments.SMITE; break;
       }
     }
-    if(item == Gems.emerald){
+    if(MaterialsUtil.match(item, MaterialsUtil.getEmeralds())){
       switch(random.nextInt(2)){
       case 0: enchantment = Enchantments.FEATHER_FALLING; break;
       case 1: enchantment = Enchantments.RESPIRATION; break;
       }
     }
-    if(item == Gems.diamond){
+    if(MaterialsUtil.match(item, MaterialsUtil.getDiamonds())){
       switch(random.nextInt(3)){
       case 0: enchantment = Enchantments.PROJECTILE_PROTECTION; break;
       case 1: enchantment = Enchantments.PROTECTION; break;
       case 2: enchantment = Enchantments.THORNS; break;
       }
     }
-    if(item == Gems.sapphire){
+    if(MaterialsUtil.match(item, MaterialsUtil.getSapphires())){
       switch(random.nextInt(5)){
       case 0: enchantment = Enchantments.DEPTH_STRIDER; break;
       case 1: enchantment = Enchantments.AQUA_AFFINITY; break;
@@ -113,14 +113,14 @@ public final class TileMagicInfuser extends PassiveMachine implements INamedCont
       case 4: enchantment = Enchantments.LURE; break;
       }
     }
-    if(item == Gems.amethyst){
+    if(MaterialsUtil.match(item, MaterialsUtil.getAmethysts())){
       switch(random.nextInt(3)){
       case 0: enchantment = Enchantments.LOOTING; break;
       case 1: enchantment = Enchantments.KNOCKBACK; break;
       case 2: enchantment = Enchantments.SWEEPING; break;
       }
     }
-    if(item == Gems.quartz){
+    if(MaterialsUtil.match(item, MaterialsUtil.getQuartz())){
       switch(random.nextInt(2)){
       case 0: enchantment = Enchantments.EFFICIENCY; break;
       case 1: enchantment = Enchantments.UNBREAKING; break;
@@ -141,7 +141,7 @@ public final class TileMagicInfuser extends PassiveMachine implements INamedCont
       }
     }
     if(enchantment == null){
-      OverpoweredMod.log.error("function get_enchantment() in TileMagicUnlocker returned a null enchantment! With "+item.toString()+" as input.");
+      OverpoweredMod.log.error("function get_enchantment() in TileMagicUnlocker returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
       Thread.dumpStack();
     }
     return enchantment;

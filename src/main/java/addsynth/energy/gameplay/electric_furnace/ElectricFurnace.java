@@ -3,7 +3,7 @@ package addsynth.energy.gameplay.electric_furnace;
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.util.MinecraftUtility;
-import addsynth.energy.blocks.MachineBlockTileEntity;
+import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
@@ -28,7 +28,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class ElectricFurnace extends MachineBlockTileEntity {
+public final class ElectricFurnace extends MachineBlock {
 
   public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 

@@ -8,20 +8,25 @@ import addsynth.core.ADDSynthCore;
 
 public final class JavaUtils {
 
+  public static final int get_length_of_arrays(final Object[] ... arrays){
+    int total_length = 0;
+    for(Object[] array : arrays){
+      if(array != null){
+        total_length += array.length;
+      }
+    }
+    return total_length;
+  }
+
   // https://stackoverflow.com/questions/12462079/potential-heap-pollution-via-varargs-parameter
   // https://softwareengineering.stackexchange.com/questions/155994/java-heap-pollution#
   // https://docs.oracle.com/javase/tutorial/java/generics/nonReifiableVarargsType.html
   // https://docs.oracle.com/javase/8/docs/api/java/lang/SafeVarargs.html
+  // THIS WORKS PERFECTLY!!! NEVER CHANGE!!!
   @SafeVarargs
   public static final <T> T[] combine_arrays(@Nonnull final T[] first_array, final T[] ... additional_arrays){
-    int final_array_length = first_array.length;
-    for(T[] array : additional_arrays){
-      if(array != null){
-        final_array_length += array.length;
-      }
-    }
-    final T[] final_array = Arrays.copyOf(first_array, final_array_length); // creates a new array with the total size.
     int i = first_array.length;
+    final T[] final_array = Arrays.copyOf(first_array, i + get_length_of_arrays(additional_arrays)); // creates a new array with the total size.
     for(T[] array : additional_arrays){
       if(array == null){
         ADDSynthCore.log.error(new NullPointerException("Encountered a null array in JavaUtils.combine_arrays() function."));
@@ -32,7 +37,7 @@ public final class JavaUtils {
         i++;
       }
     }
-    return final_array;
+    return Arrays.copyOfRange(final_array, 0, i);
   }
 
   public static final int cast_to_int(final long value){
