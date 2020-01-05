@@ -1,21 +1,21 @@
 package addsynth.overpoweredmod.registers;
 
 import addsynth.core.ADDSynthCore;
+import addsynth.core.game.RegistryUtil;
 import addsynth.core.material.types.Gem;
 import addsynth.core.material.types.Metal;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.Features;
+import addsynth.overpoweredmod.game.Names;
 import addsynth.overpoweredmod.game.core.*;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -242,27 +242,27 @@ public final class Registers {
     */
     final IForgeRegistry<TileEntityType<?>> game = event.getRegistry();
 
-    game.register(Tiles.ENERGY_WIRE.setRegistryName(               new ResourceLocation(OverpoweredMod.MOD_ID, "energy_wire")));
-    game.register(Tiles.GENERATOR.setRegistryName(                 new ResourceLocation(OverpoweredMod.MOD_ID, "generator")));
-    game.register(Tiles.ENERGY_CONTAINER.setRegistryName(          new ResourceLocation(OverpoweredMod.MOD_ID, "energy_storage")));
-    game.register(Tiles.UNIVERSAL_ENERGY_INTERFACE.setRegistryName(new ResourceLocation(OverpoweredMod.MOD_ID, "universal_energy_interface")));
-    game.register(Tiles.COMPRESSOR.setRegistryName(                new ResourceLocation(OverpoweredMod.MOD_ID, "compressor")));
-    game.register(Tiles.ELECTRIC_FURNACE.setRegistryName(          new ResourceLocation(OverpoweredMod.MOD_ID, "electric_furnace")));
-    game.register(Tiles.GEM_CONVERTER.setRegistryName(             new ResourceLocation(OverpoweredMod.MOD_ID, "gem_converter")));
-    game.register(Tiles.INVERTER.setRegistryName(                  new ResourceLocation(OverpoweredMod.MOD_ID, "inverter")));
-    game.register(Tiles.MAGIC_INFUSER.setRegistryName(             new ResourceLocation(OverpoweredMod.MOD_ID, "magic_infuser")));
-    game.register(Tiles.IDENTIFIER.setRegistryName(                new ResourceLocation(OverpoweredMod.MOD_ID, "identifier")));
-    game.register(Tiles.LASER_MACHINE.setRegistryName(             new ResourceLocation(OverpoweredMod.MOD_ID, "laser_housing")));
-    game.register(Tiles.LASER.setRegistryName(                     new ResourceLocation(OverpoweredMod.MOD_ID, "laser_cannon")));
-    game.register(Tiles.LASER_BEAM.setRegistryName(                new ResourceLocation(OverpoweredMod.MOD_ID, "laser_beam")));
-    game.register(Tiles.DATA_CABLE.setRegistryName(                new ResourceLocation(OverpoweredMod.MOD_ID, "data_cable")));
-    game.register(Tiles.PORTAL_CONTROL_PANEL.setRegistryName(      new ResourceLocation(OverpoweredMod.MOD_ID, "portal_control_panel")));
-    game.register(Tiles.PORTAL_FRAME.setRegistryName(              new ResourceLocation(OverpoweredMod.MOD_ID, "portal_frame")));
-    game.register(Tiles.PORTAL_BLOCK.setRegistryName(              new ResourceLocation(OverpoweredMod.MOD_ID, "portal_block")));
-    game.register(Tiles.CRYSTAL_MATTER_REPLICATOR.setRegistryName( new ResourceLocation(OverpoweredMod.MOD_ID, "crystal_matter_generator")));
-    game.register(Tiles.ADVANCED_ORE_REFINERY.setRegistryName(     new ResourceLocation(OverpoweredMod.MOD_ID, "advanced_ore_refinery")));
-    game.register(Tiles.FUSION_ENERGY_CONVERTER.setRegistryName(   new ResourceLocation(OverpoweredMod.MOD_ID, "fusion_energy_converter")));
-    game.register(Tiles.FUSION_CHAMBER.setRegistryName(            new ResourceLocation(OverpoweredMod.MOD_ID, "fusion_container")));
+    RegistryUtil.register(game, Tiles.ENERGY_WIRE,                Names.ENERGY_WIRE);
+    RegistryUtil.register(game, Tiles.GENERATOR,                  Names.GENERATOR);
+    RegistryUtil.register(game, Tiles.ENERGY_CONTAINER,           Names.ENERGY_STORAGE);
+    RegistryUtil.register(game, Tiles.UNIVERSAL_ENERGY_INTERFACE, Names.UNIVERSAL_ENERGY_INTERFACE);
+    RegistryUtil.register(game, Tiles.COMPRESSOR,                 Names.COMPRESSOR);
+    RegistryUtil.register(game, Tiles.ELECTRIC_FURNACE,           Names.ELECTRIC_FURNACE);
+    RegistryUtil.register(game, Tiles.GEM_CONVERTER,              Names.GEM_CONVERTER);
+    RegistryUtil.register(game, Tiles.INVERTER,                   Names.INVERTER);
+    RegistryUtil.register(game, Tiles.MAGIC_INFUSER,              Names.MAGIC_INFUSER);
+    RegistryUtil.register(game, Tiles.IDENTIFIER,                 Names.IDENTIFIER);
+    RegistryUtil.register(game, Tiles.LASER_MACHINE,              Names.LASER_HOUSING);
+    RegistryUtil.register(game, Tiles.LASER,                      Names.LASER_CANNON);
+    RegistryUtil.register(game, Tiles.LASER_BEAM,                 Names.LASER_BEAM);
+    RegistryUtil.register(game, Tiles.DATA_CABLE,                 Names.DATA_CABLE);
+    RegistryUtil.register(game, Tiles.PORTAL_CONTROL_PANEL,       Names.PORTAL_CONTROL_PANEL);
+    RegistryUtil.register(game, Tiles.PORTAL_FRAME,               Names.PORTAL_FRAME);
+    RegistryUtil.register(game, Tiles.PORTAL_BLOCK,               Names.PORTAL_RIFT);
+    RegistryUtil.register(game, Tiles.CRYSTAL_MATTER_REPLICATOR,  Names.CRYSTAL_MATTER_GENERATOR);
+    RegistryUtil.register(game, Tiles.ADVANCED_ORE_REFINERY,      Names.ADVANCED_ORE_REFINERY);
+    RegistryUtil.register(game, Tiles.FUSION_ENERGY_CONVERTER,    Names.FUSION_CONVERTER);
+    RegistryUtil.register(game, Tiles.FUSION_CHAMBER,             Names.FUSION_CHAMBER);
 
     Debug.log_setup_info("Finished registering Tile Entities.");
   }
@@ -271,20 +271,20 @@ public final class Registers {
   public static final void registerContainers(final RegistryEvent.Register<ContainerType<?>> event){
     final IForgeRegistry<ContainerType<?>> game = event.getRegistry();
     
-    game.register(Containers.GENERATOR);
-    game.register(Containers.ENERGY_STORAGE_CONTAINER);
-    game.register(Containers.UNIVERSAL_ENERGY_INTERFACE);
-    game.register(Containers.COMPRESSOR);
-    game.register(Containers.ELECTRIC_FURNACE);
-    game.register(Containers.GEM_CONVERTER);
-    game.register(Containers.INVERTER);
-    game.register(Containers.IDENTIFIER);
-    game.register(Containers.MAGIC_INFUSER);
-    game.register(Containers.ADVANCED_ORE_REFINERY);
-    game.register(Containers.CRYSTAL_MATTER_GENERATOR);
-    game.register(Containers.FUSION_CHAMBER);
-    game.register(Containers.PORTAL_CONTROL_PANEL);
-    game.register(Containers.PORTAL_FRAME);
+    RegistryUtil.register(game, Containers.GENERATOR,                  Names.GENERATOR);
+    RegistryUtil.register(game, Containers.ENERGY_STORAGE_CONTAINER,   Names.ENERGY_STORAGE);
+    RegistryUtil.register(game, Containers.UNIVERSAL_ENERGY_INTERFACE, Names.UNIVERSAL_ENERGY_INTERFACE);
+    RegistryUtil.register(game, Containers.COMPRESSOR,                 Names.COMPRESSOR);
+    RegistryUtil.register(game, Containers.ELECTRIC_FURNACE,           Names.ELECTRIC_FURNACE);
+    RegistryUtil.register(game, Containers.GEM_CONVERTER,              Names.GEM_CONVERTER);
+    RegistryUtil.register(game, Containers.INVERTER,                   Names.INVERTER);
+    RegistryUtil.register(game, Containers.IDENTIFIER,                 Names.IDENTIFIER);
+    RegistryUtil.register(game, Containers.MAGIC_INFUSER,              Names.MAGIC_INFUSER);
+    RegistryUtil.register(game, Containers.ADVANCED_ORE_REFINERY,      Names.ADVANCED_ORE_REFINERY);
+    RegistryUtil.register(game, Containers.CRYSTAL_MATTER_GENERATOR,   Names.CRYSTAL_MATTER_GENERATOR);
+    RegistryUtil.register(game, Containers.FUSION_CHAMBER,             Names.FUSION_CHAMBER);
+    RegistryUtil.register(game, Containers.PORTAL_CONTROL_PANEL,       Names.PORTAL_CONTROL_PANEL);
+    RegistryUtil.register(game, Containers.PORTAL_FRAME,               Names.PORTAL_FRAME);
   }
 
   @SubscribeEvent

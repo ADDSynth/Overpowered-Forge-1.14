@@ -16,6 +16,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 // Remember: The order an item shows up in the creative tab depends on the ID, which is determined
 //             when you register that item, so you want to register Items in a certain order.
@@ -125,6 +126,21 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
   }
 
   private static final HashMap<String, RegistryUtil> registryutil_global_cache = new HashMap<>(15,1.0f);
+
+  public static final void register(final IForgeRegistry<Item> registry, final BlockItem item){
+    final ResourceLocation registry_name = item.getBlock().getRegistryName();
+    if(registry_name == null){
+      ADDSynthCore.log.error(new IllegalArgumentException("Cannot register ItemBlock for Block: "+StringUtil.getName(item.getBlock())+", because it doesn't have its RegistryName set!"));
+      return;
+    }
+    item.setRegistryName(registry_name);
+    registry.register(item);
+  }
+
+  public static final <T extends IForgeRegistryEntry<T>> void register(final IForgeRegistry<T> registry, final T object, final ResourceLocation id){
+    object.setRegistryName(id); // OPTIMIZE: This way is FAR superior to the old way of registering. Move to registering this way only for Minecraft versions 1.14+ and finalize in Overpowered v1.4.
+    registry.register(object);
+  }
 
   /** As soon as items are registered in the Item Registry event, all of your ItemBlocks are now
    *  registered in the system and this function will correctly return your ItemBlock regardless
