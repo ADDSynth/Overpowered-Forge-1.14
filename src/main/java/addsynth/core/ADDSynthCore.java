@@ -16,6 +16,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms.IMCMessage;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -24,6 +25,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.Logger;
@@ -55,6 +57,7 @@ public final class ADDSynthCore {
     context.getModEventBus().addListener(ADDSynthCore::main_setup);
     context.getModEventBus().addListener(ADDSynthCore::client_setup);
     context.getModEventBus().addListener(ADDSynthCore::process_imc_messages);
+    MinecraftForge.EVENT_BUS.addListener(ADDSynthCore::onServerStarting);
     init_config();
   }
 
@@ -117,6 +120,10 @@ public final class ADDSynthCore {
         "You can only register ore generators with ADDSynthCore by sending an IMC message with the "+
         Material.class.getName()+" you want to generate. The Material must be of type OreMaterial or an extension.");
     }
+  }
+
+  public static void onServerStarting(final FMLServerStartingEvent event){
+    CompatabilityManager.run_data_compatability();
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

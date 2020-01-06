@@ -1,8 +1,6 @@
 package addsynth.core.gameplay;
 
-import java.util.HashSet;
 import java.util.Set;
-import addsynth.core.config.Features;
 import addsynth.core.game.Compatability;
 import addsynth.core.gameplay.items.ScytheTool;
 import net.minecraft.block.Block;
@@ -12,18 +10,27 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 public final class CompatabilityManager {
 
+  /** Fires once after all mods have been loaded. */
   public static final void init(){
-    if(Features.scythes.get()){
-      set_scythe_harvest_blocks();
-    }
+  }
+
+  /** Must be executed every time the data packs are loaded or reloaded. */
+  public static final void run_data_compatability(){
+    set_scythe_harvest_blocks();
   }
 
   /** Automatically gets all blocks that are tagged with the "leaves" tag
    *  and uses reflection to set the effectiveBlocks list of all Scythe tools.
    */
   private static final void set_scythe_harvest_blocks(){
-    // FIX: list of leaf blocks at this point is null! Must find a way to listen to the Block Tag Reload event, and assign Scythe effective blocks then.
-    final Set<Block> leaves = (Set<Block>)BlockTags.LEAVES.getAllElements(); // TEST, if this doesn't work use HashSet
+    // FUTURE: Works because it currently fires after Servers (dedicated and integrated) loads the worlds
+    //         which also loads DataPacks, but should really be fired every time data packs are reloaded,
+    //         because they can also be loaded with the /reload command.
+    // NOTE: It would be really helpful to developers if Minecraft Forge fired a DataPacks Loaded event AFTER datapacks
+    //       are loaded/reloaded, So developers can reconfigure their in-game behaviour based on what data is loaded.
+    //  See: MinecraftServer -> loadDataPacks()
+    //  See: minecraftforge -> resource -> ISelectiveResourceReloadListener
+    final Set<Block> leaves = (Set<Block>)BlockTags.LEAVES.getAllElements();
     override_scythe_field(Core.wooden_scythe, leaves);
     override_scythe_field(Core.stone_scythe, leaves);
     override_scythe_field(Core.iron_scythe, leaves);
