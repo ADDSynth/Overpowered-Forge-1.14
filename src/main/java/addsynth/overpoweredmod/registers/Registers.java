@@ -233,6 +233,7 @@ public final class Registers {
 
 
 
+  @SubscribeEvent
   public static final void registerTileEntities(final RegistryEvent.Register<TileEntityType<?>> event){ // TEST: Maybe don't register TileEntities if they aren't enabled in the config.
     Debug.log_setup_info("Begin registering Tile Entities...");
     /*
