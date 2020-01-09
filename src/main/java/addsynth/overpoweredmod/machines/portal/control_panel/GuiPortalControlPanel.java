@@ -1,12 +1,12 @@
 package addsynth.overpoweredmod.machines.portal.control_panel;
 
+import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Gems;
-import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -62,7 +62,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalCo
     this.ySize = 124;
   }
 
-  private static final class GeneratePortalButton extends AbstractButton {
+  private static final class GeneratePortalButton extends AdjustableButton {
 
     private final TilePortalControlPanel tile;
 

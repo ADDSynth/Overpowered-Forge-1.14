@@ -6,6 +6,7 @@ import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.gameplay.music_box.TileMusicBox;
 import addsynth.core.gameplay.music_box.network_messages.MusicBoxMessage;
 import addsynth.core.gameplay.music_box.network_messages.NoteMessage;
+import addsynth.core.gui.objects.AdjustableButton;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.widget.Widget;
@@ -14,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 
 public final class MusicButtons {
 
-  public static final class PlayButton extends AbstractButton {
+  public static final class PlayButton extends AdjustableButton {
 
     private final TileMusicBox tile;
 
@@ -31,7 +32,7 @@ public final class MusicButtons {
     // TODO Mute the Play button when we Re-add the Adjustable Button.
   }
 
-  public static final class TempoButton extends AbstractButton {
+  public static final class TempoButton extends AdjustableButton {
 
     private final boolean direction;
     private final TileMusicBox tile;
@@ -48,7 +49,7 @@ public final class MusicButtons {
     }
   }
 
-  public static final class NextDirectionButton extends AbstractButton {
+  public static final class NextDirectionButton extends AdjustableButton {
 
     private final TileMusicBox tile;
     private static final String[] face = new String[] {"Down", "Up", "North", "South", "West", "East"};

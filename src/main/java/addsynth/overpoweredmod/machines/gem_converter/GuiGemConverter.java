@@ -1,10 +1,10 @@
 package addsynth.overpoweredmod.machines.gem_converter;
 
+import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.NetworkHandler;
-import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -51,7 +51,7 @@ public final class GuiGemConverter extends GuiEnergyBase<ContainerGemConverter> 
     this.ySize = 194;
   }
 
-  private static final class CycleGemButton extends AbstractButton {
+  private static final class CycleGemButton extends AdjustableButton {
 
     private final TileGemConverter tile;
     private final boolean direction;

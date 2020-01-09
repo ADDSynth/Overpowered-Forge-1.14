@@ -1,10 +1,10 @@
 package addsynth.energy.gameplay.universal_energy_interface;
 
+import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.NetworkHandler;
-import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -24,7 +24,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUn
     this.ySize = 60;
   }
 
-  private static final class CycleTransferModeButton extends AbstractButton {
+  private static final class CycleTransferModeButton extends AdjustableButton {
 
     private final TileUniversalEnergyTransfer tile;
 
