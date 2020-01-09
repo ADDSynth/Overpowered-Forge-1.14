@@ -1,6 +1,5 @@
 package addsynth.overpoweredmod.registers;
 
-import addsynth.core.ADDSynthCore;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.material.types.Gem;
 import addsynth.core.material.types.Metal;
@@ -210,28 +209,6 @@ public final class Registers {
 
     OverpoweredMod.log.info("Finished Item Registration Event.");
   }
-
-  /*
-   * <p>
-   * Strings that are used in the ResourceLocation() function are used to find a file on disk, and all files must be
-   * in lowercase snake_case, this will be enforced in Minecraft 1.11.
-   * <p>
-   * http://mcforge.readthedocs.io/en/latest/models/introduction/
-   * <p>
-   * This is because the 1.11 update has updated Resource Packs format to version 3, which requires all files to be in
-   * lowercase. See here: https://minecraft.gamepedia.com/1.11#General_2
-   */
-  /*
-  @SubscribeEvent
-  public static final void registerModels(final ModelRegistryEvent event){
-    Debug.log_setup_info("Begin Model Registry Event...");
-    OverpoweredMod.registry.register_inventory_item_models();
-    Debug.log_setup_info("Finished Model Registry Event.");
-  }
-*/
-
-
-
 
   @SubscribeEvent
   public static final void registerTileEntities(final RegistryEvent.Register<TileEntityType<?>> event){ // TEST: Maybe don't register TileEntities if they aren't enabled in the config.

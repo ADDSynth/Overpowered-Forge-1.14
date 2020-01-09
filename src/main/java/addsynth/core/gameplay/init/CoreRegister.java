@@ -11,7 +11,6 @@ import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -54,11 +53,6 @@ public final class CoreRegister {
     }
 
     ADDSynthCore.log.info("Done registering items.");
-  }
-
-  @SubscribeEvent
-  public static final void registerModels(final ModelRegistryEvent event){
-    // ADDSynthCore.registry.register_inventory_item_models();
   }
 
   @SubscribeEvent

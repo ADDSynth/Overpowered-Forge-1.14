@@ -14,7 +14,6 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -442,30 +441,6 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
         break;
       }
       registry.register(block);
-    }
-  }
-
-  /** Since registering the Inventory model for all your items is so common in my opinion,
-   *  call this method during your mod's {@link ModelRegistryEvent} to automatically register
-   *  Inventory Item models for all your items. It also assists in debugging common errors.
-   */
-  @Deprecated
-  public final void register_inventory_item_models(){
-    String item_string;
-    ResourceLocation registryname;
-    for(Item item : items){
-      if(item != null){
-        registryname = item.getRegistryName();
-        item_string = "'"+item.getClass().getName()+", "+(registryname != null ? registryname : item.toString())+"'";
-        if(registryname == null){
-          ADDSynthCore.log.error(new NullPointerException("Cannot register Inventory Item Model for item "+item_string+" because it doesn't have its registryname set!"));
-          continue; // otherwise it crashes
-        }
-        if(registryname.getNamespace().equals(this.mod_id) == false){
-          //ADDSynthCore.log.warn("The item "+item_string+" is not registered with the expected mod "+this.mod_id+". It is actually registered with the "+registryname.getNamespace()+" mod.");
-        }
-        // ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(registryname, "inventory"));
-      }
     }
   }
 
