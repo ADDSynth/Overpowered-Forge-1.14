@@ -7,10 +7,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerLaserHousing extends BaseContainer<TileLaserHousing> {
 
-  public ContainerLaserHousing(final int id, final PlayerInventory player_inventory){
-    super(Containers.LASER_HOUSING, id, player_inventory);
-  }
-
   public ContainerLaserHousing(final int id, final PlayerInventory player_inventory, final TileLaserHousing tile){
     super(Containers.LASER_HOUSING, id, player_inventory, tile);
   }

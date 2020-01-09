@@ -9,10 +9,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerElectricFurnace extends BaseContainer<TileElectricFurnace> {
 
-  public ContainerElectricFurnace(final int id, final PlayerInventory player_inventory){
-    super(Containers.ELECTRIC_FURNACE, id, player_inventory);
-  }
-
   public ContainerElectricFurnace(final int id, final PlayerInventory player_inventory, final TileElectricFurnace tile){
     super(Containers.ELECTRIC_FURNACE, id, player_inventory, tile);
     common_setup(player_inventory);

@@ -7,10 +7,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerUniversalInterface extends BaseContainer<TileUniversalEnergyTransfer> {
 
-  public ContainerUniversalInterface(final int id, final PlayerInventory player_inventory){
-    super(Containers.UNIVERSAL_ENERGY_INTERFACE, id, player_inventory);
-  }
-
   public ContainerUniversalInterface(final int id, final PlayerInventory player_inventory, final TileUniversalEnergyTransfer tile){
     super(Containers.UNIVERSAL_ENERGY_INTERFACE, id, player_inventory, tile);
   }

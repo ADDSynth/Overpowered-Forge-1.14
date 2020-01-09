@@ -8,10 +8,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerCrystalGenerator extends BaseContainer<TileCrystalMatterReplicator> {
 
-  public ContainerCrystalGenerator(final int id, final PlayerInventory player_inventory){
-    super(Containers.CRYSTAL_MATTER_GENERATOR, id, player_inventory);
-  }
-
   public ContainerCrystalGenerator(final int id, final PlayerInventory player_inventory, final TileCrystalMatterReplicator tile){
     super(Containers.CRYSTAL_MATTER_GENERATOR, id, player_inventory, tile);
     common_setup(player_inventory);

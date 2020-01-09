@@ -7,10 +7,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerPortalControlPanel extends BaseContainer<TilePortalControlPanel> {
 
-  public ContainerPortalControlPanel(final int id, final PlayerInventory player_inventory){
-    super(Containers.PORTAL_CONTROL_PANEL, id, player_inventory);
-  }
-
   public ContainerPortalControlPanel(final int id, final PlayerInventory player_inventory, final TilePortalControlPanel tile){
     super(Containers.PORTAL_CONTROL_PANEL, id, player_inventory, tile);
   }

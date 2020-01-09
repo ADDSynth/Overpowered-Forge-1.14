@@ -8,10 +8,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerPortalFrame extends BaseContainer<TilePortalFrame> {
 
-  public ContainerPortalFrame(final int id, final PlayerInventory player_inventory){
-    super(Containers.PORTAL_FRAME, id, player_inventory);
-  }
-
   public ContainerPortalFrame(final int id, final PlayerInventory player_inventory, final TilePortalFrame tile){
     super(Containers.PORTAL_FRAME, id, player_inventory, tile);
     common_setup(player_inventory);

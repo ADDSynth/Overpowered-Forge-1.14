@@ -9,10 +9,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerCompressor extends BaseContainer<TileCompressor> {
 
-  public ContainerCompressor(final int id, final PlayerInventory player_inventory){
-    super(Containers.COMPRESSOR, id, player_inventory);
-  }
-
   public ContainerCompressor(final int id, final PlayerInventory player_inventory, final TileCompressor tile){
     super(Containers.COMPRESSOR, id, player_inventory, tile);
     common_setup(player_inventory);

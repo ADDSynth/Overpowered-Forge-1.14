@@ -9,10 +9,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerGemConverter extends BaseContainer<TileGemConverter> {
 
-  public ContainerGemConverter(final int id, final PlayerInventory player_inventory){
-    super(Containers.GEM_CONVERTER, id, player_inventory);
-  }
-
   public ContainerGemConverter(final int id, final PlayerInventory player_inventory, final TileGemConverter tile){
     super(Containers.GEM_CONVERTER, id, player_inventory, tile);
     common_setup(player_inventory);

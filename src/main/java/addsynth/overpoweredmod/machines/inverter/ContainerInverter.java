@@ -9,10 +9,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerInverter extends BaseContainer<TileInverter> {
 
-  public ContainerInverter(final int id, final PlayerInventory player_inventory){
-    super(Containers.INVERTER, id, player_inventory);
-  }
-
   public ContainerInverter(final int id, final PlayerInventory player_inventory, final TileInverter tile){
     super(Containers.INVERTER, id, player_inventory, tile);
     common_setup(player_inventory);

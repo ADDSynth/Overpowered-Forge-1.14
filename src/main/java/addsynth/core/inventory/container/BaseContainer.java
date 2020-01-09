@@ -14,11 +14,6 @@ public abstract class BaseContainer<T extends TileEntity> extends Container {
 
   protected final T tile;
 
-  public BaseContainer(final ContainerType type, final int id, final PlayerInventory player_inventory){
-    super(type, id);
-    this.tile = null;
-  }
-
   public BaseContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final T tile){
     super(type, id);
     this.tile = tile;

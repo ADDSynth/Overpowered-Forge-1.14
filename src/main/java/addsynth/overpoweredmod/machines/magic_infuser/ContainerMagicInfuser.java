@@ -11,10 +11,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerMagicInfuser extends BaseContainer<TileMagicInfuser> {
 
-  public ContainerMagicInfuser(final int id, final PlayerInventory player_inventory){
-    super(Containers.MAGIC_INFUSER, id, player_inventory);
-  }
-
   public ContainerMagicInfuser(final int id, final PlayerInventory player_inventory, final TileMagicInfuser tile){
     super(Containers.MAGIC_INFUSER, id, player_inventory, tile);
     common_setup(player_inventory);

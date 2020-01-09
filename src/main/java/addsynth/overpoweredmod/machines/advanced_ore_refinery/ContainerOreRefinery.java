@@ -9,10 +9,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerOreRefinery extends BaseContainer<TileAdvancedOreRefinery> {
 
-  public ContainerOreRefinery(final int id, final PlayerInventory player_inventory){
-    super(Containers.ADVANCED_ORE_REFINERY, id, player_inventory);
-  }
-
   public ContainerOreRefinery(final int id, final PlayerInventory player_inventory, final TileAdvancedOreRefinery tile){
     super(Containers.ADVANCED_ORE_REFINERY, id, player_inventory, tile);
     common_setup(player_inventory);

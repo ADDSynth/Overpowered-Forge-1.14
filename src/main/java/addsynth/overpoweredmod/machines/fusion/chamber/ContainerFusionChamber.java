@@ -8,10 +8,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerFusionChamber extends BaseContainer<TileFusionChamber> {
 
-  public ContainerFusionChamber(final int id, final PlayerInventory player_inventory){
-    super(Containers.FUSION_CHAMBER, id, player_inventory);
-  }
-
   public ContainerFusionChamber(final int id, final PlayerInventory player_inventory, final TileFusionChamber tile){
     super(Containers.FUSION_CHAMBER, id, player_inventory, tile);
     common_setup(player_inventory);

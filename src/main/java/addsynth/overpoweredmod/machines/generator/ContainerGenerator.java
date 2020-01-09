@@ -8,10 +8,6 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerGenerator extends BaseContainer<TileEnergyGenerator> {
 
-  public ContainerGenerator(final int id, final PlayerInventory player_inventory){
-    super(Containers.GENERATOR, id, player_inventory);
-  }
-
   public ContainerGenerator(final int id, final PlayerInventory player_inventory, final TileEnergyGenerator tile){
     super(Containers.GENERATOR, id, player_inventory, tile);
     common_setup(player_inventory);
