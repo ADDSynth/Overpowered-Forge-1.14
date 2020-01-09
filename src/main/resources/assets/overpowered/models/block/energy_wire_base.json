@@ -2,7 +2,8 @@
   "parent": "minecraft:block/block",
   "ambientocclusion": false,
   "textures": {
-    "texture": "overpowered:blocks/energy_wire"
+    "texture":  "overpowered:blocks/energy_wire",
+    "particle": "overpowered:blocks/energy_wire"
   },
   "display": {
     "gui": {

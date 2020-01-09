@@ -1,18 +1,25 @@
 package addsynth.energy.blocks;
 
-import java.util.ArrayList;
+import javax.annotation.Nullable;
+import addsynth.core.Constants;
 import addsynth.core.blocks.BlockTile;
+import addsynth.core.util.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.fluid.IFluidState;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
 
 public abstract class Wire extends BlockTile implements IWaterLoggable {
 
@@ -29,42 +36,76 @@ public abstract class Wire extends BlockTile implements IWaterLoggable {
   private static final double default_min_wire_size =  5.0 / 16;
   private static final double default_max_wire_size = 11.0 / 16;
 
-  /**
-   * This is the default bounding boxes for ALL wires. If your wire is of a different size, then you need to
-   * "hide" this field by declaring your own field in subclasses with THE SAME NAME, and also declare them
-   * as static, because all wires of that type use the same bounding boxes.
-   */
-  protected static final AxisAlignedBB bounding_box[] = new AxisAlignedBB[7];
-
-  static {
-    // Can initialize the bounding_box[] variables here.
-  }
+  protected final VoxelShape[] shapes;
 
   public Wire(final Block.Properties properties){
-    this(properties, default_min_wire_size, default_max_wire_size);
-  }
-
-  public Wire(final Block.Properties properties, final double min_wire_size, final double max_wire_size){
     super(properties);
-    if(bounding_box[0] == null){
-      set_bounding_boxes(min_wire_size, max_wire_size);
-    }
+    shapes = makeShapes();
     this.setDefaultState(this.stateContainer.getBaseState()
        .with(NORTH, false).with(SOUTH, false).with(WEST, false).with(EAST, false).with(UP, false).with(DOWN, false)
        .with(WATERLOGGED, false));
   }
 
-  private static final void set_bounding_boxes(double min_wire_size, double max_wire_size){
-    bounding_box[0] = new AxisAlignedBB(min_wire_size, min_wire_size, min_wire_size, max_wire_size, max_wire_size, max_wire_size);
-    bounding_box[1] = new AxisAlignedBB(0, min_wire_size, min_wire_size, max_wire_size, max_wire_size, max_wire_size);
-    bounding_box[2] = new AxisAlignedBB(min_wire_size, 0, min_wire_size, max_wire_size, max_wire_size, max_wire_size);
-    bounding_box[3] = new AxisAlignedBB(min_wire_size, min_wire_size, 0, max_wire_size, max_wire_size, max_wire_size);
-    bounding_box[4] = new AxisAlignedBB(min_wire_size, min_wire_size, min_wire_size, 1, max_wire_size, max_wire_size);
-    bounding_box[5] = new AxisAlignedBB(min_wire_size, min_wire_size, min_wire_size, max_wire_size, 1, max_wire_size);
-    bounding_box[6] = new AxisAlignedBB(min_wire_size, min_wire_size, min_wire_size, max_wire_size, max_wire_size, 1);
+  /** Override this method in extended classes to assign different size shapes.
+   *  The base Wire class automatically calls this to assign the shapes array.
+   */
+  protected VoxelShape[] makeShapes(){
+    return BlockUtil.create_six_sided_binary_voxel_shapes(default_min_wire_size, default_max_wire_size);
   }
 
-  protected abstract ArrayList<Direction> get_valid_sides(IBlockReader world, BlockPos pos);
+  @Override
+  @Nullable
+  public final BlockState getStateForPlacement(final BlockItemUseContext context){
+    final IWorld world = context.getWorld();
+    final BlockPos position  = context.getPos();
+    final boolean[] valid_sides = get_valid_sides(world, position);
+    return getState(getDefaultState(), valid_sides, world, position);
+  }
+
+  protected abstract boolean[] get_valid_sides(IBlockReader world, BlockPos pos);
+
+  private static final BlockState getState(final BlockState state, final boolean[] valid_sides, final IWorld world, final BlockPos position){
+    final boolean down  = valid_sides[Constants.DOWN];
+    final boolean up    = valid_sides[Constants.UP];
+    final boolean north = valid_sides[Constants.NORTH];
+    final boolean south = valid_sides[Constants.SOUTH];
+    final boolean west  = valid_sides[Constants.WEST];
+    final boolean east  = valid_sides[Constants.EAST];
+    final boolean water = world.getFluidState(position).getFluid() == Fluids.WATER;
+    return state.with(DOWN, down).with(UP, up).with(NORTH, north).with(SOUTH, south).with(WEST, west).with(EAST, east).with(WATERLOGGED, water);
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
+    return shapes[BlockUtil.getIndex(state)];
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
+    return shapes[BlockUtil.getIndex(state)];
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos){
+    if(state.get(WATERLOGGED)){
+      world.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+    }
+    return getState(state, get_valid_sides(world, currentPos), world, currentPos);
+  }
+
+  @Override
+  public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos){
+    return !state.get(WATERLOGGED);
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public IFluidState getFluidState(BlockState state){
+    return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+  }
 
   /**
    * This is here because the Wire class is derived from the BlockTile class, which is derived from the BlockContainer class,

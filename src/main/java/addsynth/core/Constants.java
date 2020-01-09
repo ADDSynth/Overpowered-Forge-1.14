@@ -1,5 +1,7 @@
 package addsynth.core;
 
+import net.minecraft.util.Direction;
+
 public final class Constants {
 
 public static final int world_height = 256;
@@ -9,6 +11,13 @@ public static final int ticks_per_second = 20;
 public static final int ticks_per_minute = ticks_per_second * 60;
 public static final int ticks_per_hour = ticks_per_minute * 60;
 public static final int ticks_per_day = ticks_per_hour * 24;
+
+public static final int DOWN  = Direction.DOWN.ordinal();
+public static final int UP    = Direction.UP.ordinal();
+public static final int NORTH = Direction.NORTH.ordinal();
+public static final int SOUTH = Direction.SOUTH.ordinal();
+public static final int WEST  = Direction.WEST.ordinal();
+public static final int EAST  = Direction.EAST.ordinal();
 
 @SuppressWarnings("deprecation")
 public static final float block_resistance = net.minecraft.block.Blocks.STONE.getExplosionResistance(); //6.0f; // same as Stone

@@ -2,7 +2,8 @@
   "parent": "minecraft:block/block",
   "ambientocclusion": false,
   "textures": {
-    "texture": "overpowered:blocks/data_cable"
+    "texture":  "overpowered:blocks/data_cable",
+    "particle": "overpowered:blocks/data_cable"
   },
   "display": {
     "gui": {

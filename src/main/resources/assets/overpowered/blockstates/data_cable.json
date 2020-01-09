@@ -1,35 +1,23 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "textures": {
-      "particle": "overpowered:block/blocks/data_cable"
+  "multipart": [
+    { "apply": { "model": "overpowered:block/data_cable_base" }},
+    { "when": { "west": "true" },
+      "apply": { "model": "overpowered:block/data_cable_left" }
     },
-    "model": "overpowered:block/data_cable_base"
-  },
-  "variants": {
-    "west": {
-      "true": {"submodel": "overpowered:block/data_cable_left"},
-      "false": {}
+    { "when": { "north": "true" },
+      "apply": { "model": "overpowered:block/data_cable_left", "y": 90 }
     },
-    "north": {
-      "true": {"submodel": "overpowered:block/data_cable_left", "y": 90},
-      "false": {}
+    { "when": { "east": "true" },
+      "apply": { "model": "overpowered:block/data_cable_left", "y": 180 }
     },
-    "east": {
-      "true": {"submodel": "overpowered:block/data_cable_left", "y": 180},
-      "false": {}
+    { "when": { "down": "true" },
+      "apply": { "model": "overpowered:block/data_cable_up" }
     },
-    "down": {
-      "true": {"submodel": "overpowered:block/data_cable_up"},
-      "false": {}
+    { "when": { "south": "true" },
+      "apply": { "model": "overpowered:block/data_cable_up", "x": 90 }
     },
-    "south": {
-      "true": {"submodel": "overpowered:block/data_cable_up", "x": 90},
-      "false": {}
-    },
-    "up": {
-      "true": {"submodel": "overpowered:block/data_cable_up", "x": 180},
-      "false": {}
+    { "when": { "up": "true" },
+      "apply": { "model": "overpowered:block/data_cable_up", "x": 180 }
     }
-  }
+  ]
 }

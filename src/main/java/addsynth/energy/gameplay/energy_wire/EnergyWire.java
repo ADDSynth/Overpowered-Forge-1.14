@@ -1,6 +1,5 @@
 package addsynth.energy.gameplay.energy_wire;
 
-import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.energy.blocks.Wire;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -26,10 +25,11 @@ public final class EnergyWire extends Wire {
   }
 
   @Override
-  protected final ArrayList<Direction> get_valid_sides(final IBlockReader world, final BlockPos pos){
-    ArrayList<Direction> valid_sides = new ArrayList<>(6);
+  protected final boolean[] get_valid_sides(final IBlockReader world, final BlockPos pos){
+    final boolean[] valid_sides = new boolean[6];
     boolean can_use_energy;
     for(Direction side : Direction.values()){
+      valid_sides[side.ordinal()] = false;
       can_use_energy = false;
       TileEntity tile = world.getTileEntity(pos.offset(side));
       if(tile != null){
@@ -38,7 +38,7 @@ public final class EnergyWire extends Wire {
           can_use_energy = true;
         }
         if(tile instanceof TileEnergyWire || can_use_energy){
-          valid_sides.add(side);
+          valid_sides[side.ordinal()] = true;
         }
       }
     }

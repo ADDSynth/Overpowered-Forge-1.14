@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.machines.data_cable;
 
-import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
+import addsynth.core.util.BlockUtil;
 import addsynth.energy.blocks.Wire;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
@@ -16,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -45,23 +46,29 @@ public final class DataCable extends Wire {
   };
 
   public DataCable(final String name){
-    super(Block.Properties.create(Material.GOURD, MaterialColor.WOOL).hardnessAndResistance(0.1f, 0.0f), min_wire_size, max_wire_size);
+    super(Block.Properties.create(Material.GOURD, MaterialColor.WOOL).hardnessAndResistance(0.1f, 0.0f));
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
     valid_blocks[0] = this;
+  }
+
+  @Override
+  protected VoxelShape[] makeShapes(){
+    return BlockUtil.create_six_sided_binary_voxel_shapes(min_wire_size, max_wire_size);
   }
 
   // The world may contain multiple BLOCK Objects, but those are internal, and they all reference the
   // SAME Block Type! That's what we're checking with the == operator below, not if they are the same
   // Object, but if the Block Type that block is using is the same one we register in Init class!
   @Override
-  protected final ArrayList<Direction> get_valid_sides(final IBlockReader world, final BlockPos pos){
-    final ArrayList<Direction> valid_sides = new ArrayList<>(6);
+  protected final boolean[] get_valid_sides(final IBlockReader world, final BlockPos pos){
+    final boolean[] valid_sides = new boolean[6];
     Block block;
     for(Direction side : Direction.values()){
+      valid_sides[side.ordinal()] = false;
       block = world.getBlockState(pos.offset(side)).getBlock();
       for(Block test_block : valid_blocks){
         if(block == test_block){
-          valid_sides.add(side);
+          valid_sides[side.ordinal()] = true;
           break;
         }
       }
