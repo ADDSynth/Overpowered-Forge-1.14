@@ -6,7 +6,6 @@ import addsynth.energy.gui.widgets.OnOffSwitch;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Gems;
-import addsynth.overpoweredmod.machines.portal.PortalControlMessage;
 import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.PlayerInventory;
@@ -74,13 +73,13 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalCo
 
     @Override
     public void renderButton(int p_renderButton_1_, int p_renderButton_2_, float p_renderButton_3_){
-      this.active = tile.valid_portal;
+      this.active = tile.isValid();
       super.renderButton(p_renderButton_1_, p_renderButton_2_, p_renderButton_3_);
     }
 
     @Override
     public void onPress(){
-      NetworkHandler.INSTANCE.sendToServer(new PortalControlMessage(tile.getPos(),1));
+      NetworkHandler.INSTANCE.sendToServer(new GeneratePortalMessage(tile.getPos()));
     }
 
   }
@@ -88,7 +87,6 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalCo
   @Override
   public final void init(){
     super.init();
-    NetworkHandler.INSTANCE.sendToServer(new PortalControlMessage(tile.getPos(),0));
     addButton(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile));
     addButton(new GeneratePortalButton(this.guiLeft + button_x, this.guiTop + button_y, tile));
   }
@@ -105,7 +103,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalCo
     super.draw_title();
     super.draw_energy_after_switch(tile.getEnergy());
     draw_energy_difference(tile.getEnergy().getEnergyDifference(), tile.getEnergy(), 36);
-    draw_text_center(tile.message.getMessage(),status_message_y);
+    draw_text_center(tile.getMessage(),status_message_y);
   }
   
   /**
@@ -135,7 +133,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalCo
         index = (j*4) + i;
         x = this.guiLeft + image_x + (i * space_x) + 16;
         y = this.guiTop + image_y + (j * space_y);
-        if(tile.portal_items[index]){
+        if(tile.getPortalItem(index)){
           blit(x, y, 64, 0, 16, 16);
         }
         else{

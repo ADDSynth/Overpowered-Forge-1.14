@@ -1,8 +1,7 @@
-package addsynth.overpoweredmod.machines.portal;
+package addsynth.overpoweredmod.machines.portal.control_panel;
 
 import java.util.function.Supplier;
 import addsynth.core.util.MinecraftUtility;
-import addsynth.overpoweredmod.machines.portal.control_panel.TilePortalControlPanel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
@@ -56,9 +55,7 @@ public final class SyncPortalDataMessage {
       if(world.isAreaLoaded(message.position, 0)){
         final TilePortalControlPanel control_panel = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
         if(control_panel != null){
-          control_panel.portal_items = message.items;
-          control_panel.message      = message.message;
-          control_panel.valid_portal = message.valid_portal;
+          control_panel.setData(message.items, message.message, message.valid_portal);
         }
       }
     });

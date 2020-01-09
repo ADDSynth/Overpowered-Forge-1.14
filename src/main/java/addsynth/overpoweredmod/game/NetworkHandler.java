@@ -8,8 +8,8 @@ import addsynth.overpoweredmod.machines.gem_converter.CycleGemConverterMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.SetLaserDistanceMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.ToggleLaserShutoffMessage;
-import addsynth.overpoweredmod.machines.portal.PortalControlMessage;
-import addsynth.overpoweredmod.machines.portal.SyncPortalDataMessage;
+import addsynth.overpoweredmod.machines.portal.control_panel.GeneratePortalMessage;
+import addsynth.overpoweredmod.machines.portal.control_panel.SyncPortalDataMessage;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
@@ -47,10 +47,10 @@ public final class NetworkHandler {
       LaserClientSyncMessage::handle
     );
     INSTANCE.registerMessage(3,
-      PortalControlMessage.class,
-      PortalControlMessage::encode,
-      PortalControlMessage::decode,
-      PortalControlMessage::handle
+      GeneratePortalMessage.class,
+      GeneratePortalMessage::encode,
+      GeneratePortalMessage::decode,
+      GeneratePortalMessage::handle
     );
     INSTANCE.registerMessage(4,
       SwitchMachineMessage.class,

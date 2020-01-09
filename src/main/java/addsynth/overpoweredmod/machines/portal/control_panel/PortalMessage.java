@@ -1,4 +1,4 @@
-package addsynth.overpoweredmod.machines.portal;
+package addsynth.overpoweredmod.machines.portal.control_panel;
 
 public enum PortalMessage {
 

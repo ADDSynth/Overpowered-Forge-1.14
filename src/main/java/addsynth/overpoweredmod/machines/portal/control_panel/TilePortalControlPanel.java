@@ -14,8 +14,6 @@ import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
 import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
-import addsynth.overpoweredmod.machines.portal.PortalMessage;
-import addsynth.overpoweredmod.machines.portal.SyncPortalDataMessage;
 import addsynth.overpoweredmod.machines.portal.frame.TilePortalFrame;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.block.Block;
@@ -33,14 +31,25 @@ import net.minecraft.world.World;
 public final class TilePortalControlPanel extends TileEnergyReceiver implements INamedContainerProvider {
 
   private static final int containers = 8;
-  public boolean[] portal_items = new boolean[containers];
-  public boolean valid_portal = false;
-  public PortalMessage message;
-  public ArrayList<BlockPos> portal_frames = new ArrayList<>(containers);
+  private boolean[] portal_items = new boolean[containers];
+  private boolean valid_portal = false;
+  private PortalMessage message;
+  private ArrayList<BlockPos> portal_frames = new ArrayList<>(containers);
   private Direction.Axis axis;
   private BlockPos lowest_portal_frame;
 
-  public TilePortalControlPanel() {
+  // Gui methods:
+  public final String getMessage(){ return message == null ? "" : message.getMessage(); }
+  public final boolean getPortalItem(final int index){  return portal_items[index]; }
+  public final boolean isValid(){ return valid_portal; }
+
+  public final void setData(final boolean[] items, final PortalMessage message, final boolean valid_portal){
+    this.portal_items = items;
+    this.message = message;
+    this.valid_portal = valid_portal;
+  }
+
+  public TilePortalControlPanel(){
     super(Tiles.PORTAL_CONTROL_PANEL, 0, null, 0, new CustomEnergyStorage(Values.portal_control_panel_required_energy.get()));
     int i;
     for(i = 0; i < containers; i++){

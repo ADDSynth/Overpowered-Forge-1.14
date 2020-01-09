@@ -45,6 +45,7 @@ public final class PortalControlPanel extends MachineBlock {
     if(world.isRemote == false){
       final TilePortalControlPanel tile = MinecraftUtility.getTileEntity(pos, world, TilePortalControlPanel.class);
       if(tile != null){
+        tile.check_portal();
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }
     }
