@@ -1,5 +1,6 @@
 package addsynth.core.gui.objects;
 
+import javax.annotation.Nonnull;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.Widget;
@@ -7,7 +8,11 @@ import net.minecraft.client.gui.widget.button.AbstractButton;
 
 public abstract class AdjustableButton extends AbstractButton {
 
-  public AdjustableButton(int x, int y, int width, int height, String buttonText){
+  public AdjustableButton(int x, int y, int width, int height){
+    super(x, y, width, height, "");
+  }
+
+  public AdjustableButton(int x, int y, int width, int height, @Nonnull String buttonText){
     super(x, y, width, height, buttonText);
   }
 

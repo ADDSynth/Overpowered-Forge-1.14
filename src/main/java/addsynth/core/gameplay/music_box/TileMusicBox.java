@@ -70,6 +70,13 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity,
     }
   }
 
+  public final void toggle_mute(final byte track){
+    if(music_grid != null){
+      music_grid.toggle_mute(track);
+    }
+    update_data();
+  }
+
   @Override
   public final void tick(){
     if(world.isRemote == false){
@@ -188,12 +195,6 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity,
       return music_grid.get_mute(track);
     }
     return false;
-  }
-
-  public final void toggle_mute(final byte track){
-    if(music_grid != null){
-      music_grid.toggle_mute(track);
-    }
   }
 
   @Override

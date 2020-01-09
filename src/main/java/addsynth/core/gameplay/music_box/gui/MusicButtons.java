@@ -29,7 +29,10 @@ public final class MusicButtons {
       NetworkHandler.INSTANCE.sendToServer(new MusicBoxMessage(tile.getPos(),TileMusicBox.Command.PLAY));
     }
     
-    // TODO Mute the Play button when we Re-add the Adjustable Button.
+    @Override
+    public final void playDownSound(final SoundHandler p_playDownSound_1_){
+    }
+  
   }
 
   public static final class TempoButton extends AdjustableButton {
@@ -84,7 +87,7 @@ public final class MusicButtons {
     private final byte track;
 
     public MuteButton(final int x, final int y, final byte track, final TileMusicBox tile){
-      super(x, y, GuiMusicBox.mute_button_size, GuiMusicBox.mute_button_size, null);
+      super(x, y, GuiMusicBox.mute_button_size, GuiMusicBox.mute_button_size, "");
       this.tile = tile;
       this.track = track;
     }
@@ -100,8 +103,8 @@ public final class MusicButtons {
       GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
       GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
   
-      blit(x, y, mute ? texture_x + 24 : texture_x, texture_y,
-        texture_width, texture_height, GuiMusicBox.mute_button_size, GuiMusicBox.mute_button_size, 256, 256);
+      blit(x, y, GuiMusicBox.mute_button_size, GuiMusicBox.mute_button_size,
+        mute ? texture_x + 24 : texture_x, texture_y, texture_width, texture_height, 256, 256);
     }
   
     @Override
@@ -110,7 +113,7 @@ public final class MusicButtons {
     }
   
     @Override
-    public void playDownSound(SoundHandler p_playDownSound_1_){
+    public final void playDownSound(final SoundHandler p_playDownSound_1_){
     }
   
   }
@@ -125,7 +128,7 @@ public final class MusicButtons {
     private final byte track;
 
     public InstrumentButton(final int x, final int y, final byte track, final TileMusicBox tile){
-      super(x, y, GuiMusicBox.instrument_button_width, GuiMusicBox.instrument_button_height, null);
+      super(x, y, GuiMusicBox.instrument_button_width, GuiMusicBox.instrument_button_height, "");
       this.tile = tile;
       this.track = track;
     }
@@ -144,8 +147,7 @@ public final class MusicButtons {
       GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
       GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 
-      // drawTexturedModalRect((float)xPosition, (float)yPosition, texture_x, texture_y, texture_x + texture_width, texture_y + texture_height);
-      blit(x, y, texture_x, texture_y, texture_width, texture_height, GuiMusicBox.instrument_button_width, GuiMusicBox.instrument_button_height, 256, 256);
+      blit(x, y, GuiMusicBox.instrument_button_width, GuiMusicBox.instrument_button_height, texture_x, texture_y, texture_width, texture_height, 256, 256);
     }
   
     @Override
@@ -154,7 +156,7 @@ public final class MusicButtons {
     }
 
     @Override
-    public void playDownSound(SoundHandler p_playDownSound_1_){
+    public final void playDownSound(final SoundHandler p_playDownSound_1_){
     }
   
   }
@@ -208,8 +210,8 @@ public final class MusicButtons {
             set_note();
             flag = true;
             break;
-          case 2: // right mouse button
-            delete_note();
+          case 1: // right mouse button
+            delete_note(); // TODO: Dur, I completely forgot why I did this! In the future, add configs to swap the add and delete note mouse buttons, for left-handed people.
             flag = true;
             break;
           }

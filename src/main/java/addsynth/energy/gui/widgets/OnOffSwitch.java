@@ -26,7 +26,7 @@ public final class OnOffSwitch extends AbstractButton {
    * @param tile
    */
   public OnOffSwitch(final int x, final int y, final TileEnergyReceiver tile){
-    super(x, y, 34, 16, null);
+    super(x, y, 34, 16, "");
     this.tile = tile;
   }
 
@@ -61,10 +61,12 @@ public final class OnOffSwitch extends AbstractButton {
     final int text_color = 14737632;
     if(tile != null){
       if(tile.isRunning()){
+        setMessage("On");
         this.drawCenteredString(fontrenderer, "On", x + 20, y + 4, text_color);
         // TODO: detect state changes and call setMessage() to change what the narrator says when players mouse over this button.
       }
       else{
+        setMessage("Off");
         this.drawCenteredString(fontrenderer, "Off", x + 14, y + 4, text_color);
       }
     }
