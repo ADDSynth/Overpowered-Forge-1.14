@@ -4,6 +4,7 @@ import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.energy.EnergyNetwork;
 import addsynth.overpoweredmod.registers.Tiles;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 /**
@@ -13,9 +14,10 @@ import net.minecraft.tileentity.TileEntity;
  * connect to other blocks of the same type.
  * @author ADDSynth
  */
-public final class TileEnergyWire extends TileEntity implements IBlockNetworkUser {
+public final class TileEnergyWire extends TileEntity implements IBlockNetworkUser, ITickableTileEntity {
 
   private EnergyNetwork network;
+  private boolean first_tick = true;
 
   public TileEnergyWire(){
     super(Tiles.ENERGY_WIRE);
@@ -27,9 +29,16 @@ public final class TileEnergyWire extends TileEntity implements IBlockNetworkUse
    */
   @Override
   public final void onLoad(){
-    if(world.isRemote == false){
-      if(network == null){
-        createBlockNetwork();
+  }
+
+  @Override
+  public void tick(){
+    if(first_tick){
+      if(world.isRemote == false){
+        if(network == null){
+          createBlockNetwork();
+          first_tick = false;
+        }
       }
     }
   }
@@ -52,7 +61,9 @@ public final class TileEnergyWire extends TileEntity implements IBlockNetworkUse
   @Override
   public void createBlockNetwork(){
     if(world.isRemote == false){
-      network = new EnergyNetwork(world, this);
+      if(network == null){
+        network = new EnergyNetwork(world, this);
+      }
       network.updateNetwork(pos);
     }
   }

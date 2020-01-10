@@ -13,6 +13,11 @@ loaderVersion="[28.1.0,)" #mandatory
 # A URL to refer people to when problems occur with this mod
 #issueTrackerURL="http://my.issue.tracker/" #optional
 
+
+
+
+
+
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 
@@ -52,7 +57,7 @@ description='''
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[28.1.0,)" #mandatory
+    versionRange="[28.1.56,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
@@ -81,7 +86,7 @@ description='''
 [[dependencies.overpowered]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[28.1.0,)" #mandatory
+    versionRange="[28.1.56,)" #mandatory
     ordering="NONE"
     side="BOTH"
 [[dependencies.overpowered]]

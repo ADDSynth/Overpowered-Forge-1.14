@@ -20,6 +20,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 public final class TileLaserHousing extends TileEnergyReceiver implements ITickableTileEntity, IBlockNetworkUser, INamedContainerProvider {
 
   private LaserNetwork network;
+  private boolean first_tick = true;
 
   private int laser_distance = Config.default_laser_distance.get();
   /** Set by {@link LaserNetwork#updateLaserNetwork()} method and used by
@@ -34,15 +35,18 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
 
   @Override
   public final void onLoad(){
-    if(world.isRemote == false){
-      if(network == null){
-        createBlockNetwork();
-      }
-    }
   }
 
   @Override
   public final void tick(){
+    if(first_tick){
+      if(world.isRemote == false){
+        if(network == null){
+          createBlockNetwork();
+          first_tick = false;
+        }
+      }
+    }
     if(world != null){
       if(world.isRemote == false){
         if(network != null){

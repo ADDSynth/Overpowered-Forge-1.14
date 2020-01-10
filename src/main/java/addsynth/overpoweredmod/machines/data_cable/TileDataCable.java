@@ -4,11 +4,13 @@ import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.overpoweredmod.game.core.Wires;
 import addsynth.overpoweredmod.registers.Tiles;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public final class TileDataCable extends TileEntity implements IBlockNetworkUser {
+public final class TileDataCable extends TileEntity implements IBlockNetworkUser, ITickableTileEntity {
 
   private DataCableNetwork cable_network;
+  private boolean first_tick = true;
 
   public TileDataCable(){
     super(Tiles.DATA_CABLE);
@@ -16,8 +18,17 @@ public final class TileDataCable extends TileEntity implements IBlockNetworkUser
 
   @Override
   public final void onLoad(){
-    if(world.isRemote == false){
-      createBlockNetwork();
+  }
+
+  @Override
+  public void tick(){
+    if(first_tick){
+      if(world.isRemote == false){
+        if(cable_network == null){
+          createBlockNetwork();
+          first_tick = false;
+        }
+      }
     }
   }
 
