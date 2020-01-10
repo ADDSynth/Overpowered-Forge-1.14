@@ -2,18 +2,24 @@ package addsynth.energy.gameplay.electric_furnace;
 
 import java.util.ArrayList;
 import javax.annotation.Nullable;
+import addsynth.core.util.RecipeUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 
 public final class TileElectricFurnace extends PassiveMachine implements INamedContainerProvider {
 
@@ -28,7 +34,7 @@ public final class TileElectricFurnace extends PassiveMachine implements INamedC
   protected final void test_condition(){
     final ItemStack input = input_inventory.getStackInSlot(0);
     final ItemStack output = output_inventory.getStackInSlot(0);
-    result = input.isEmpty() ? null : null; // FurnaceRecipes.instance().getSmeltingResult(input);
+    result = input.isEmpty() ? null : getFurnaceRecipeResult(input, world);
     can_run = (input != ItemStack.EMPTY && input.getCount() > 0) && (output == ItemStack.EMPTY || output_inventory.can_add(0, result));
   }
 
@@ -40,24 +46,24 @@ public final class TileElectricFurnace extends PassiveMachine implements INamedC
 
   /** Gets all of the input Items from Furnace recipes to use as an Item Filter. */
   private static final Item[] get_furnace_input(){ // MAYBE: eventually calculate this at a more stable time?
-    final ArrayList<ItemStack> list = new ArrayList<ItemStack>(); // new ArrayList<>(FurnaceRecipes.instance().getSmeltingList().keySet());
-    final int max = list.size();
-    final Item[] input = new Item[max];
-    int i;
-    ItemStack stack;
-    for(i = 0; i < max; i++){
-      stack = list.get(i);
-      if(stack != null){
-        if(stack != ItemStack.EMPTY){
-          input[i] = stack.getItem();
+    final ArrayList<Item> items = new ArrayList<>(500);
+    for(final IRecipe<?> recipe : RecipeUtil.getFurnaceRecipes()){
+      for(final Ingredient ingredient : recipe.getIngredients()){
+        for(final ItemStack stack : ingredient.getMatchingStacks()){
+          items.add(stack.getItem());
         }
       }
-      // else{
-      //   OverpoweredMod.log.error("Found a null key in the HashMap for Furnace recipes. I don't think "+
-      //   "it's supposed to be there. No crash, you can keep playing.");
-      // }
     }
-    return input;
+    return items.toArray(new Item[items.size()]);
+  }
+
+  private static final ItemStack getFurnaceRecipeResult(final ItemStack stack, final World world){
+    for(final IRecipe<IInventory> recipe : RecipeUtil.getFurnaceRecipes()){
+      if(recipe.matches(new Inventory(stack), world)){
+        return recipe.getRecipeOutput();
+      }
+    }
+    return null;
   }
 
   @Override
