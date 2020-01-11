@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 import java.util.ArrayList;
 import java.util.HashMap;
 import addsynth.core.material.MaterialsUtil;
+import addsynth.core.util.RecipeUtil;
 import addsynth.overpoweredmod.Debug;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,30 +17,31 @@ public final class OreRefineryRecipes {
   // https://github.com/skyboy/MineFactoryReloaded/blob/master/src/main/java/powercrystals/minefactoryreloaded/modhelpers/vanilla/Minecraft.java
   
   /**
-   * This will only add an Ore recipe to the Advanced Ore Refinery if, other mods have registered their
-   * ore with the "ores" tag, and it has a Furnace Recipe.
+   * <p>This will only add an Ore recipe to the Advanced Ore Refinery if, other mods have registered their
+   *    ore with the "ores" tag, and it has a Furnace Recipe.
+   * <p>This is registered as an Event Responder in {@link addsynth.overpoweredmod.OverpoweredMod} and executed
+   *    whenever {@link addsynth.core.material.MaterialsUtil} or {@link addsynth.core.util.RecipeUtil} is updated.
    */
-  public static final void register(){
-    Debug.log_setup_info("Begin registering Advanced Ore Refinery recipes...");
-  
+  public static final void refresh_ore_refinery_recipes(){
+    // Debug.log_setup_info("Begin registering Advanced Ore Refinery recipes..."); DELETE
+    recipes.clear();
     final ArrayList<Item> list = new ArrayList<Item>(100);
+    ItemStack result_check;
     for(final Item item : MaterialsUtil.getOres()){
-      // TODO: Check if Ore Block has a Furnace recipe.
-      if(false){
-        /*
-        if(result_check != null){
-          list.add(ore.getItem());
+      if(RecipeUtil.isFurnaceIngredient(item)){
+        result_check = RecipeUtil.getFurnaceRecipeResult(item);
+        if(result_check.isEmpty() == false){
+          list.add(item);
           final ItemStack result = result_check.copy();
-          result.setCount(result.getCount()*result_output);
-          recipes.put(ore.getItem(), result);
+          result.setCount(result.getCount()*output_multiplier);
+          recipes.put(item, result);
         }
-        */
       }
     }
     
     valid_ores = list.toArray(new Item[list.size()]);
     
-    Debug.log_setup_info("Finished registering Advanced Ore Refinery recipes.");
+    // Debug.log_setup_info("Finished registering Advanced Ore Refinery recipes.");
   }
 
   public static final Item[] get_input_filter(){

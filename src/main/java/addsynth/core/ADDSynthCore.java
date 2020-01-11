@@ -10,6 +10,7 @@ import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.gameplay.music_box.gui.GuiMusicBox;
 import addsynth.core.material.Material;
+import addsynth.core.material.MaterialsUtil;
 import addsynth.core.material.types.OreMaterial;
 import addsynth.core.worldgen.OreGenerator;
 import net.minecraft.block.Blocks;
@@ -57,7 +58,7 @@ public final class ADDSynthCore {
     context.getModEventBus().addListener(ADDSynthCore::main_setup);
     context.getModEventBus().addListener(ADDSynthCore::client_setup);
     context.getModEventBus().addListener(ADDSynthCore::process_imc_messages);
-    MinecraftForge.EVENT_BUS.addListener(ADDSynthCore::onServerStarting);
+    MinecraftForge.EVENT_BUS.addListener(ADDSynthCore::onServerStarting); // UNUSED
     init_config();
   }
 
@@ -84,6 +85,7 @@ public final class ADDSynthCore {
     log.info("Begin constructing ADDSynthCore ...");
   
     NetworkHandler.registerMessages();
+    MaterialsUtil.registerResponder(CompatabilityManager::set_scythe_harvest_blocks);
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init());
     Debug.debug();
 
@@ -123,7 +125,6 @@ public final class ADDSynthCore {
   }
 
   public static void onServerStarting(final FMLServerStartingEvent event){
-    CompatabilityManager.run_data_compatability();
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

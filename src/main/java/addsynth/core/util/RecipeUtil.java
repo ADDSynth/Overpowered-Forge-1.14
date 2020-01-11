@@ -1,13 +1,18 @@
 package addsynth.core.util;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 import addsynth.core.ADDSynthCore;
+import addsynth.core.inventory.InventoryUtil;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipe;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RecipesUpdatedEvent;
@@ -21,27 +26,73 @@ public final class RecipeUtil {
 
   private static RecipeManager recipe_manager;
 
-  private static Collection<IRecipe> furnace_recipes;
+  private static HashMap<Item, ItemStack> furnace_recipes;
 
-  public static final Collection<IRecipe> getFurnaceRecipes(){
+  public static final Set<Item> getFurnaceIngredients(){
+    check_furnace_recipes();
+    return furnace_recipes != null ? furnace_recipes.keySet() : null;
+  }
+
+  public static final boolean isFurnaceIngredient(final Item item){
+    if(check_furnace_recipes()){
+      for(final Item item2 : furnace_recipes.keySet()){
+        if(item == item2){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  public static final ItemStack getFurnaceResult(final ItemStack stack){
+    return getFurnaceRecipeResult(stack.getItem());
+  }
+
+  public static final ItemStack getFurnaceRecipeResult(final Item item){
+    if(check_furnace_recipes()){
+      for(final Entry<Item, ItemStack> entry : furnace_recipes.entrySet()){
+        if(entry.getKey() == item){
+          return entry.getValue();
+        }
+      }
+    }
+    return ItemStack.EMPTY;
+  }
+
+  private static final boolean check_furnace_recipes(){
     if(furnace_recipes == null){
       update_furnace_recipes();
     }
-    return furnace_recipes;
+    if(furnace_recipes.size() == 0){
+      ADDSynthCore.log.error(new RuntimeException(
+        "Attempted to access Furnace Recipes at an inappropiate time. Recipes should automatically update when "+
+        "recipes are reloaded, such as when joining worlds."));
+      Thread.dumpStack();
+      return false;
+    }
+    return true;
   }
 
   public static final boolean match(final IRecipe<IInventory> recipe, final ItemStackHandler inventory, final World world){
-    return recipe.matches(new Inventory(getItemStacks(inventory)), world);
+    return recipe.matches(InventoryUtil.toInventory(inventory), world);
   }
 
-  public static final ItemStack[] getItemStacks(final ItemStackHandler handler){
-    final int max = handler.getSlots();
-    final ItemStack[] stacks = new ItemStack[max];
-    int i;
-    for(i = 0; i < max; i++){
-      stacks[i] = handler.getStackInSlot(i);
+  private static final ArrayList<Runnable> responders = new ArrayList<>();
+
+  public static final void registerResponder(final Runnable executable){
+    if(responders.contains(executable)){
+      ADDSynthCore.log.warn("That function is already registered as an event responder.");
+      // Thread.dumpStack();
     }
-    return stacks;
+    else{
+      responders.add(executable);
+    }
+  }
+
+  private static final void dispatchEvent(){
+    for(final Runnable responder : responders){
+      responder.run();
+    }
   }
 
   // This event should only fire when Clients connect to Server Worlds.
@@ -49,6 +100,7 @@ public final class RecipeUtil {
   public static final void onRecipesUpdated(final RecipesUpdatedEvent event){
     recipe_manager = event.getRecipeManager();
     update_furnace_recipes();
+    dispatchEvent();
   }
 
   private static final void updateRecipeManager(){
@@ -57,7 +109,7 @@ public final class RecipeUtil {
     }
   }
 
-  public static final Collection<IRecipe> getRecipesofType(final IRecipeType type){
+  public static final ArrayList<IRecipe> getRecipesofType(final IRecipeType type){
     updateRecipeManager();
     final ArrayList<IRecipe> list = new ArrayList<>(200);
     for(IRecipe recipe : recipe_manager.getRecipes()){
@@ -69,7 +121,28 @@ public final class RecipeUtil {
   }
 
   private static final void update_furnace_recipes(){
-    furnace_recipes = getRecipesofType(IRecipeType.SMELTING);
+    if(furnace_recipes == null){
+      furnace_recipes = new HashMap<>(300);
+    }
+    else{
+      furnace_recipes.clear();
+    }
+    FurnaceRecipe furnace_recipe;
+    Ingredient ingredient;
+    ItemStack result;
+    for(final IRecipe recipe : getRecipesofType(IRecipeType.SMELTING)){
+      if(recipe instanceof FurnaceRecipe){ // only for safety reasons
+        furnace_recipe = (FurnaceRecipe)recipe;
+        ingredient = furnace_recipe.getIngredients().get(0); // furnace recipes only have 1 ingredient
+        result = furnace_recipe.getRecipeOutput();
+        for(final ItemStack stack : ingredient.getMatchingStacks()){
+          furnace_recipes.put(stack.getItem(), result);
+        }
+      }
+      else{
+        ADDSynthCore.log.warn("RecipeUtil.update_furnace_recipes() found a Recipe of type SMELTING but it is not a Furnace Recipe?");
+      }
+    }
   }
 
 }

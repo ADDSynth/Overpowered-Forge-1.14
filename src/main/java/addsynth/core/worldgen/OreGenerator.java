@@ -22,6 +22,10 @@ public final class OreGenerator {
 
   private static final ArrayList<OreMaterial> requested_ores = new ArrayList<>(20);
 
+  /** Used by {@link ADDSynthCore} when an ore is requested to generate. ADDSynthCore checks if
+   *    this is false, schedules a {@link net.minecraftforge.fml.DeferredWorkQueue} to run
+   *    the {@link #register()} function below, then sets this to true.
+   */
   public static boolean generate;
   private static boolean done;
 

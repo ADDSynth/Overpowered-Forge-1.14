@@ -1,15 +1,53 @@
 package addsynth.core.material;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.NetworkTagCollection;
+import net.minecraft.tags.NetworkTagManager;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.event.TagsUpdatedEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
+@EventBusSubscriber(modid = ADDSynthCore.MOD_ID, bus = Bus.FORGE)
 public final class MaterialsUtil {
+
+  // FUTURE: the responders field, registerResponder method, and dispatchEvent method that you see here is
+  //         exactly the same as that in the RecipeUtil class. Once we update to Java 9 it is likely that
+  //         you can move this common code to an interface and use private access methods, new in Java 9.
+  private static final ArrayList<Runnable> responders = new ArrayList<>();
+
+  public static final void registerResponder(final Runnable executable){
+    if(responders.contains(executable)){
+      ADDSynthCore.log.warn("That function is already registered as an event responder.");
+      // Thread.dumpStack();
+    }
+    else{
+      responders.add(executable);
+    }
+  }
+
+  private static final void dispatchEvent(){
+    for(final Runnable responder : responders){
+      responder.run();
+    }
+  }
+
+  @SubscribeEvent
+  public static final void reload_tags_event(final TagsUpdatedEvent event){
+    final NetworkTagManager tag_manager = event.getTagManager();
+    // final NetworkTagCollection<Block> blocks = tag_manager.getBlocks();
+    final NetworkTagCollection<Item>  items  = tag_manager.getItems();
+    dispatchEvent();
+  }
 
   public static final Collection<Item> getOres(){
     return Tags.Items.ORES.getAllElements();
@@ -83,7 +121,7 @@ public final class MaterialsUtil {
 
   @Nullable
   public static final Collection<Item> getDiamonds(){
-    return getTagCollection(new ResourceLocation("forge:gems/diamonds"));
+    return getTagCollection(new ResourceLocation("forge:gems/diamond"));
   }
 
   @Nullable

@@ -5,6 +5,8 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.material.Material;
+import addsynth.core.material.MaterialsUtil;
+import addsynth.core.util.RecipeUtil;
 import addsynth.core.worldgen.OreGenerator;
 import addsynth.energy.gameplay.compressor.GuiCompressor;
 import addsynth.energy.gameplay.electric_furnace.GuiElectricFurnace;
@@ -91,7 +93,8 @@ public class OverpoweredMod {
     // WeirdDimension.register();
     // TODO: Railcraft doesn't exist for 1.14 yet, but still should find a way to disable the Iron to Steel smelting recipe.
     // PRIORITY: Also must find a way to adjust recipes to use ingots if the Compressor is disabled!
-    DeferredWorkQueue.runLater(() -> OreRefineryRecipes.register());
+    MaterialsUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
+    RecipeUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());
     
     log.info("Done constructing Overpowered.");
