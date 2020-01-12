@@ -33,7 +33,7 @@ public final class CompressorRecipeCategory implements IRecipeCategory<Object> {
   }
 
   @Override
-  public Class getRecipeClass(){
+  public Class<Object> getRecipeClass(){
     return null;
   }
 

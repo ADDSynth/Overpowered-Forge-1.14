@@ -13,11 +13,27 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0'
-group = 'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'modid'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+
+
+
+
+
+
+
+def mod_version = "v1.2.2"
+def mc_version = "1.14.4"
+
+version = "Forge-" + mc_version + "-" + mod_version
+group = 'addsynth.overpowered' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "Overpowered"
+
+// Need this here so eclipse task generates correctly.
+def java_version = "1.8"
+sourceCompatibility = java_version
+targetCompatibility = java_version
+compileJava.sourceCompatibility = java_version
+compileJava.targetCompatibility = java_version
 
 sourceSets {
     main {
@@ -47,6 +63,7 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
             // Recommended logging level for the console
+            // can be (from least to most) fatal, error, warning, info, debug, or trace
             property 'forge.logging.console.level', 'debug'
 
             mods {

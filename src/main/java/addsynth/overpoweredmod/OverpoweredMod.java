@@ -48,7 +48,8 @@ public class OverpoweredMod {
 
   public static final String MOD_ID = "overpowered";
   public static final String MOD_NAME = "Overpowered";
-  public static final String VERSION = "v1.1.0 - July 16, 2019";
+  public static final String VERSION = "1.2.2";
+  public static final String VERSION_DATE = "January 12, 2020";
     
   public static final Logger log = LogManager.getLogger(MOD_NAME);
 
@@ -71,7 +72,8 @@ public class OverpoweredMod {
       new File(FMLPaths.CONFIGDIR.get().toString(), MOD_NAME).mkdir();
 
       final ModLoadingContext context = ModLoadingContext.get();
-      // OPTIMIZE: the two ways to get the mod context can probably be combined/merged, but I don't want to think about that right now.
+      // MAYBE: the two ways to get the mod context can probably be combined/merged, but I don't want to think about that right now.
+      //        what exactly is the relationship of FMLJavaModLoadingContext and ModLoadingContext?
   
       context.registerConfig(ModConfig.Type.COMMON, Config.CONFIG_SPEC,   MOD_NAME+File.separator+"main.toml");
       context.registerConfig(ModConfig.Type.COMMON, Features.CONFIG_SPEC, MOD_NAME+File.separator+"feature_disable.toml");
@@ -87,6 +89,8 @@ public class OverpoweredMod {
   
   private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin constructing Overpowered...");
+    
+    log.info("Overpowered Mod by ADDSynth, version "+VERSION+", built on "+VERSION_DATE+".");
     
     // Achievements.registerAchievements();
     NetworkHandler.registerMessages();
