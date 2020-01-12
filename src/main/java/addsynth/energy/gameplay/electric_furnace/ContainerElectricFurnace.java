@@ -21,7 +21,7 @@ public final class ContainerElectricFurnace extends BaseContainer<TileElectricFu
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,90);
-    addSlot(new InputSlot(tile, 0, TileElectricFurnace.furnace_input,40,40));
+    addSlot(new InputSlot(tile, 0, TileElectricFurnace.get_filter(),40,40));
     addSlot(new OutputSlot(tile,0,95,40));
   }
 

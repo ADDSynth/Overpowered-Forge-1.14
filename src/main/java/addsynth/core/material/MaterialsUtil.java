@@ -43,10 +43,14 @@ public final class MaterialsUtil {
 
   @SubscribeEvent
   public static final void reload_tags_event(final TagsUpdatedEvent event){
+    ADDSynthCore.log.info("Tags were Reloaded. Sending update events...");
+
     final NetworkTagManager tag_manager = event.getTagManager();
     // final NetworkTagCollection<Block> blocks = tag_manager.getBlocks();
     final NetworkTagCollection<Item>  items  = tag_manager.getItems();
     dispatchEvent();
+
+    ADDSynthCore.log.info("Done responding to Tag reload.");
   }
 
   public static final Collection<Item> getOres(){

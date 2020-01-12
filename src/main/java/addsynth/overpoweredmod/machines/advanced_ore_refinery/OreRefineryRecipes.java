@@ -23,25 +23,27 @@ public final class OreRefineryRecipes {
    *    whenever {@link addsynth.core.material.MaterialsUtil} or {@link addsynth.core.util.RecipeUtil} is updated.
    */
   public static final void refresh_ore_refinery_recipes(){
-    // Debug.log_setup_info("Begin registering Advanced Ore Refinery recipes..."); DELETE
-    recipes.clear();
-    final ArrayList<Item> list = new ArrayList<Item>(100);
-    ItemStack result_check;
-    for(final Item item : MaterialsUtil.getOres()){
-      if(RecipeUtil.isFurnaceIngredient(item)){
-        result_check = RecipeUtil.getFurnaceRecipeResult(item);
-        if(result_check.isEmpty() == false){
-          list.add(item);
-          final ItemStack result = result_check.copy();
-          result.setCount(result.getCount()*output_multiplier);
-          recipes.put(item, result);
+    if(RecipeUtil.furnace_recipes_loaded()){
+      // Debug.log_setup_info("Begin registering Advanced Ore Refinery recipes..."); DELETE
+      recipes.clear();
+      final ArrayList<Item> list = new ArrayList<Item>(100);
+      ItemStack result_check;
+      for(final Item item : MaterialsUtil.getOres()){
+        if(RecipeUtil.isFurnaceIngredient(item)){
+          result_check = RecipeUtil.getFurnaceRecipeResult(item);
+          if(result_check.isEmpty() == false){
+            list.add(item);
+            final ItemStack result = result_check.copy();
+            result.setCount(result.getCount()*output_multiplier);
+            recipes.put(item, result);
+          }
         }
       }
+      
+      valid_ores = list.toArray(new Item[list.size()]);
+      
+      // Debug.log_setup_info("Finished registering Advanced Ore Refinery recipes.");
     }
-    
-    valid_ores = list.toArray(new Item[list.size()]);
-    
-    // Debug.log_setup_info("Finished registering Advanced Ore Refinery recipes.");
   }
 
   public static final Item[] get_input_filter(){

@@ -2,6 +2,7 @@ package addsynth.energy.gameplay.compressor;
 
 import javax.annotation.Nullable;
 import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.config.Values;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -26,16 +27,9 @@ public final class TileCompressor extends PassiveMachine implements INamedContai
 
   @Override
   protected final void test_condition(){
-    final ItemStack[] input = new ItemStack[2];
-      input[0] = input_inventory.getStackInSlot(0);
-      input[1] = input_inventory.getStackInSlot(1);
-    if(false /*CompressorRecipes.match(input)*/){
-      // result = CompressorRecipes.getResult(input);
-      can_run = output_inventory.can_add(0, result);
-    }
-    else{
-      can_run = false;
-    }
+    final ItemStack[] input = {input_inventory.getStackInSlot(0), input_inventory.getStackInSlot(1)};
+    result = CompressorRecipes.getResult(input, world);
+    can_run = result != null ? output_inventory.can_add(0, result) : false;
   }
 
   @Override

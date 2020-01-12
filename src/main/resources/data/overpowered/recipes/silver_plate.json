@@ -1,9 +1,9 @@
 {
   "type": "overpowered:compressor",
   "ingredients": [
-    {"tag": "forge:ingots/platinum"}
+    {"tag": "forge:ingots/silver"}
   ],
   "result": {
-    "item": "addsynthcore:platinum_plate"
+    "item": "overpowered:silver_plate"
   }
 }

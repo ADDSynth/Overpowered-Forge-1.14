@@ -28,9 +28,11 @@ public final class RecipeUtil {
 
   private static HashMap<Item, ItemStack> furnace_recipes;
 
-  public static final Set<Item> getFurnaceIngredients(){
+  public static final Item[] getFurnaceIngredients(){
     check_furnace_recipes();
-    return furnace_recipes != null ? furnace_recipes.keySet() : null;
+    if(furnace_recipes == null){ return null;}
+    final Set<Item> furnace_input = furnace_recipes.keySet();
+    return furnace_input.toArray(new Item[furnace_input.size()]);
   }
 
   public static final boolean isFurnaceIngredient(final Item item){
@@ -59,11 +61,16 @@ public final class RecipeUtil {
     return ItemStack.EMPTY;
   }
 
+  public static final boolean furnace_recipes_loaded(){
+    if(furnace_recipes == null){ return false; }
+    if(furnace_recipes.size() == 0){ return false; }
+    return true;
+  }
+
   private static final boolean check_furnace_recipes(){
-    if(furnace_recipes == null){
-      update_furnace_recipes();
-    }
-    if(furnace_recipes.size() == 0){
+    if(furnace_recipes_loaded() == true){ return true;}
+    update_furnace_recipes();
+    if(furnace_recipes_loaded() == false){
       ADDSynthCore.log.error(new RuntimeException(
         "Attempted to access Furnace Recipes at an inappropiate time. Recipes should automatically update when "+
         "recipes are reloaded, such as when joining worlds."));
@@ -98,9 +105,13 @@ public final class RecipeUtil {
   // This event should only fire when Clients connect to Server Worlds.
   @SubscribeEvent
   public static final void onRecipesUpdated(final RecipesUpdatedEvent event){
+    ADDSynthCore.log.info("Recipes were reloaded. Sending update events...");
+  
     recipe_manager = event.getRecipeManager();
     update_furnace_recipes();
     dispatchEvent();
+
+    ADDSynthCore.log.info("Done responding to Recipe reload.");
   }
 
   private static final void updateRecipeManager(){

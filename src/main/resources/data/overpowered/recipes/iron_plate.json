@@ -1,9 +1,9 @@
 {
   "type": "overpowered:compressor",
   "ingredients": [
-    {"tag": "forge:ingots/titanium"}
+    {"tag": "forge:ingots/iron"}
   ],
   "result": {
-    "item": "addsynthcore:titanium_plate"
+    "item": "overpowered:iron_plate"
   }
 }

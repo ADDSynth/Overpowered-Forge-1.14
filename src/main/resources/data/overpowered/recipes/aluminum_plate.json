@@ -1,9 +1,9 @@
 {
   "type": "overpowered:compressor",
   "ingredients": [
-    {"tag": "forge:ingots/steel"}
+    {"tag": "forge:ingots/aluminum"}
   ],
   "result": {
-    "item": "addsynthcore:steel_plate"
+    "item": "overpowered:aluminum_plate"
   }
 }

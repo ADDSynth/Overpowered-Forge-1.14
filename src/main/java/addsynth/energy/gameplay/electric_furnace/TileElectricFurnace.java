@@ -17,11 +17,15 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileElectricFurnace extends PassiveMachine implements INamedContainerProvider {
 
-  public static final Item[] furnace_input = (Item[])RecipeUtil.getFurnaceIngredients().toArray();
+  // public static Item[] furnace_input = get_filter();
   private ItemStack result;
 
   public TileElectricFurnace(){
-    super(Tiles.ELECTRIC_FURNACE, 1, furnace_input, 1, new CustomEnergyStorage(Values.electric_furnace_required_energy.get()), Values.electric_furnace_work_time.get());
+    super(Tiles.ELECTRIC_FURNACE, 1, get_filter(), 1, new CustomEnergyStorage(Values.electric_furnace_required_energy.get()), Values.electric_furnace_work_time.get());
+  }
+
+  public static final Item[] get_filter(){
+    return RecipeUtil.getFurnaceIngredients();
   }
 
   @Override
