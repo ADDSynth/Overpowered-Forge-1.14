@@ -26,7 +26,7 @@ modId="addsynthcore" #mandatory
 
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 #version="${file.jarVersion}" #mandatory
-version="1"
+version="1.0"
 
 # A display name for the mod
 displayName="ADDSynthCore" #mandatory
@@ -72,7 +72,7 @@ description='''
 
 [[mods]]
 modId="overpowered" #mandatory
-version="1.2" #mandatory
+version="1.2.2" #mandatory
 displayName="Overpowered" #mandatory
 updateJSONURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/update.json" #optional
 displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/index.html" #optional
@@ -98,6 +98,6 @@ description='''
 [[dependencies.overpowered]]
     modId="addsynthcore"
     mandatory=true
-    versionRange="[1]"
+    versionRange="[1,)"
     ordering="BEFORE"
     side="BOTH"

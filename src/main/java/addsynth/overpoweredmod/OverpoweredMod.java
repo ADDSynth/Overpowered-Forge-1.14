@@ -30,6 +30,7 @@ import addsynth.overpoweredmod.machines.portal.control_panel.GuiPortalControlPan
 import addsynth.overpoweredmod.machines.portal.frame.GuiPortalFrame;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -49,7 +50,7 @@ public class OverpoweredMod {
   public static final String MOD_ID = "overpowered";
   public static final String MOD_NAME = "Overpowered";
   public static final String VERSION = "1.2.2";
-  public static final String VERSION_DATE = "January 12, 2020";
+  public static final String VERSION_DATE = "January 13, 2020";
     
   public static final Logger log = LogManager.getLogger(MOD_NAME);
 
@@ -58,11 +59,14 @@ public class OverpoweredMod {
   private static boolean config_loaded;
 
   public OverpoweredMod(){
+    OverpoweredMod.log.info("Begin constructing OverpoweredMod class object...");
     final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
-    context.getModEventBus().addListener(OverpoweredMod::main_setup);
-    context.getModEventBus().addListener(OverpoweredMod::client_setup);
-    context.getModEventBus().addListener(OverpoweredMod::inter_mod_communications);
+    final IEventBus bus = context.getModEventBus();
+    bus.addListener(OverpoweredMod::main_setup);
+    bus.addListener(OverpoweredMod::client_setup);
+    bus.addListener(OverpoweredMod::inter_mod_communications);
     init_config();
+    OverpoweredMod.log.info("Done constructing OverpoweredMod class object.");
   }
 
   public static final void init_config(){
@@ -88,7 +92,7 @@ public class OverpoweredMod {
   }
   
   private static final void main_setup(final FMLCommonSetupEvent event){
-    log.info("Begin constructing Overpowered...");
+    log.info("Begin Overpowered main setup...");
     
     log.info("Overpowered Mod by ADDSynth, version "+VERSION+", built on "+VERSION_DATE+".");
     
@@ -101,7 +105,7 @@ public class OverpoweredMod {
     RecipeUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());
     
-    log.info("Done constructing Overpowered.");
+    log.info("Finished Overpowered main setup.");
   }
 
   private static final void inter_mod_communications(final InterModEnqueueEvent event){

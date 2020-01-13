@@ -18,6 +18,7 @@ import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms.IMCMessage;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -55,12 +56,15 @@ public final class ADDSynthCore {
   };
 
   public ADDSynthCore(){
+    ADDSynthCore.log.info("Begin constructing ADDSynthCore class object...");
     final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
-    context.getModEventBus().addListener(ADDSynthCore::main_setup);
-    context.getModEventBus().addListener(ADDSynthCore::client_setup);
-    context.getModEventBus().addListener(ADDSynthCore::process_imc_messages);
+    final IEventBus bus = context.getModEventBus();
+    bus.addListener(ADDSynthCore::main_setup);
+    bus.addListener(ADDSynthCore::client_setup);
+    bus.addListener(ADDSynthCore::process_imc_messages);
     MinecraftForge.EVENT_BUS.addListener(ADDSynthCore::onServerStarting); // UNUSED
     init_config();
+    ADDSynthCore.log.info("Done constructing ADDSynthCore class object.");
   }
 
   public static final void init_config(){
@@ -83,14 +87,14 @@ public final class ADDSynthCore {
   }
 
   private static final void main_setup(final FMLCommonSetupEvent event){
-    log.info("Begin constructing ADDSynthCore ...");
+    log.info("Begin ADDSynthCore main setup...");
   
+    Debug.debug();
     NetworkHandler.registerMessages();
     MaterialsUtil.registerResponder(CompatabilityManager::set_scythe_harvest_blocks);
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init());
-    Debug.debug();
 
-    log.info("Done constructing ADDSynthCore.");
+    log.info("Finished ADDSynthCore main setup.");
   }
 
   private static final void client_setup(final FMLClientSetupEvent event){

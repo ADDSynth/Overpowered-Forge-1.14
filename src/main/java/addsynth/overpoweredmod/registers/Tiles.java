@@ -5,6 +5,7 @@ import addsynth.energy.gameplay.electric_furnace.TileElectricFurnace;
 import addsynth.energy.gameplay.energy_storage.TileEnergyStorage;
 import addsynth.energy.gameplay.energy_wire.TileEnergyWire;
 import addsynth.energy.gameplay.universal_energy_interface.TileUniversalEnergyTransfer;
+import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.Portal;
@@ -29,6 +30,10 @@ import addsynth.overpoweredmod.machines.suspension_bridge.TileSuspensionBridge;
 import net.minecraft.tileentity.TileEntityType;
 
 public final class Tiles {
+
+  static {
+    Debug.log_setup_info(Tiles.class.getName()+" class was loaded...");
+  }
 
   public static final TileEntityType<TileEnergyWire> ENERGY_WIRE =
     TileEntityType.Builder.create(TileEnergyWire::new, Wires.wire).build(null);
@@ -94,5 +99,9 @@ public final class Tiles {
 
   public static final TileEntityType<TileFusionChamber> FUSION_CHAMBER =
     TileEntityType.Builder.create(TileFusionChamber::new, Machines.fusion_chamber).build(null);
+
+  static {
+    Debug.log_setup_info(Tiles.class.getName()+" class finished loading.");
+  }
 
 }

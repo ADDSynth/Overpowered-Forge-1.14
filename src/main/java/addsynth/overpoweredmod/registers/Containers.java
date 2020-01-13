@@ -4,6 +4,7 @@ import addsynth.energy.gameplay.compressor.ContainerCompressor;
 import addsynth.energy.gameplay.electric_furnace.ContainerElectricFurnace;
 import addsynth.energy.gameplay.energy_storage.ContainerEnergyStorage;
 import addsynth.energy.gameplay.universal_energy_interface.ContainerUniversalInterface;
+import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.ContainerOreRefinery;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.ContainerCrystalGenerator;
 import addsynth.overpoweredmod.machines.fusion.chamber.ContainerFusionChamber;
@@ -19,6 +20,10 @@ import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.fml.network.IContainerFactory;
 
 public final class Containers {
+
+  static {
+    Debug.log_setup_info(Containers.class.getName()+" class was loaded...");
+  }
 
   public static final ContainerType<ContainerGenerator> GENERATOR =
     new ContainerType<>((IContainerFactory<ContainerGenerator>)ContainerGenerator::new);
@@ -64,5 +69,9 @@ public final class Containers {
 
   public static final ContainerType<ContainerFusionChamber> FUSION_CHAMBER =
     new ContainerType<>((IContainerFactory<ContainerFusionChamber>)ContainerFusionChamber::new);
+
+  static {
+    Debug.log_setup_info(Containers.class.getName()+" class finished loading.");
+  }
 
 }
