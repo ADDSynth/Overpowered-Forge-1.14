@@ -29,7 +29,7 @@ public final class TileCompressor extends PassiveMachine implements INamedContai
   protected final void test_condition(){
     final ItemStack[] input = {input_inventory.getStackInSlot(0), input_inventory.getStackInSlot(1)};
     result = CompressorRecipes.getResult(input, world);
-    can_run = result != null ? output_inventory.can_add(0, result) : false;
+    can_run = output_inventory.can_add(0, result);
   }
 
   @Override

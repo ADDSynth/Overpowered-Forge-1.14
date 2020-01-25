@@ -1,5 +1,6 @@
 package addsynth.core.inventory;
 
+import javax.annotation.Nullable;
 import addsynth.core.tiles.TileMachine;
 import net.minecraft.item.ItemStack;
 
@@ -10,7 +11,7 @@ public final class OutputInventory extends CommonInventory {
   }
 
   /** This is useful for machines. Tests whether the input stack can fully be added to the output slot. */
-  public final boolean can_add(final int slot, final ItemStack input_stack){
+  public final boolean can_add(final int slot, @Nullable final ItemStack input_stack){
     if(input_stack == null){   return false; }
     if(input_stack.isEmpty()){ return false; }
     if(is_valid_slot(slot)){

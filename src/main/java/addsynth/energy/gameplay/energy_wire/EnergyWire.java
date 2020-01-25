@@ -31,9 +31,9 @@ public final class EnergyWire extends Wire {
     for(Direction side : Direction.values()){
       valid_sides[side.ordinal()] = false;
       can_use_energy = false;
-      TileEntity tile = world.getTileEntity(pos.offset(side));
+      final TileEntity tile = world.getTileEntity(pos.offset(side));
       if(tile != null){
-        IEnergyStorage energy = tile.getCapability(CapabilityEnergy.ENERGY, side.getOpposite()).orElse(null);
+        final IEnergyStorage energy = tile.getCapability(CapabilityEnergy.ENERGY, side.getOpposite()).orElse(null);
         if(energy != null){
           can_use_energy = true;
         }
@@ -52,7 +52,7 @@ public final class EnergyWire extends Wire {
 
   /** Starting in Minecraft 1.11, {@link World#addTileEntity(TileEntity)} no longer calls
    *  {@link World#updateComparatorOutputLevel(BlockPos, Block)} at the end of the function.
-   *  For this reason we have to use {@link #neighborChanged(IBlockState, World, BlockPos, Block, BlockPos)}
+   *  For this reason we have to use {@link #neighborChanged(BlockState, World, BlockPos, Block, BlockPos, boolean)}
    *  instead of {@link #onNeighborChange(IBlockAccess, BlockPos, BlockPos)} like we do in Minecraft 1.10.
    *  As it turns out, not even Vanilla Minecraft uses the <code>onNeighborChange()</code> function a whole lot.
    */
