@@ -260,6 +260,7 @@ public final class Registers {
     RegistryUtil.register(game, Containers.INVERTER,                   Names.INVERTER);
     RegistryUtil.register(game, Containers.IDENTIFIER,                 Names.IDENTIFIER);
     RegistryUtil.register(game, Containers.MAGIC_INFUSER,              Names.MAGIC_INFUSER);
+    RegistryUtil.register(game, Containers.LASER_HOUSING,              Names.LASER_HOUSING);
     RegistryUtil.register(game, Containers.ADVANCED_ORE_REFINERY,      Names.ADVANCED_ORE_REFINERY);
     RegistryUtil.register(game, Containers.CRYSTAL_MATTER_GENERATOR,   Names.CRYSTAL_MATTER_GENERATOR);
     RegistryUtil.register(game, Containers.FUSION_CHAMBER,             Names.FUSION_CHAMBER);

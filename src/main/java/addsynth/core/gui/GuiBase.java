@@ -44,7 +44,7 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
   }
 
   @Override
-  public final void render(final int mouseX, final int mouseY, final float partialTicks){
+  public void render(final int mouseX, final int mouseY, final float partialTicks){
     this.renderBackground();
     super.render(mouseX, mouseY, partialTicks);
     this.renderHoveredToolTip(mouseX, mouseY);

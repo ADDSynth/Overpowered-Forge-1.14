@@ -1,7 +1,9 @@
 package addsynth.core.util;
 
+import addsynth.core.ADDSynthCore;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 
@@ -52,6 +54,46 @@ public final class BlockUtil {
     final int west  = state.get(BlockStateProperties.WEST)  ? WEST  : 0;
     final int east  = state.get(BlockStateProperties.EAST)  ? EAST  : 0;
     return down + up + north + south + east + west; // MAYBE computationally faster to use bitwise OR instead of adding?
+  }
+
+  public static final VoxelShape combine(final VoxelShape ... shapes){
+    if(shapes.length == 0){
+      ADDSynthCore.log.error(new IllegalArgumentException("Improper use of the BlockUtil.combine(VoxelShape[] shapes) function! There are no shapes to combine!"));
+      return null;
+    }
+    if(shapes.length == 1){ return shapes[0]; }
+    VoxelShape final_shape = shapes[0];
+    int i;
+    for(i = 1; i < shapes.length; i++){
+      final_shape = VoxelShapes.or(final_shape, shapes[i]);
+    }
+    return final_shape;
+  }
+
+  private static final boolean is_90_degrees(final int degrees){
+    if(degrees == 0 || degrees == 90 || degrees == 180 || degrees == 270){ return true; }
+    ADDSynthCore.log.error(new IllegalArgumentException("degrees input for rotation functions in BlockUtil is not a multiple of 90!"));
+    return false;
+  }
+
+  // public static final VoxelShape[] rotate(final VoxelShape[] shape, final Direction.Axis axis, final int degrees){
+  //   
+  // } FEATURE Add BlockUtil.rotate() function.
+
+  @Deprecated
+  public static final VoxelShape rotate(double x0, double x1, double y0, double y1, double z0, double z1, Direction.Axis axis, int degrees){
+    if(is_90_degrees(degrees)){
+      switch(axis){
+      case X: // left/right
+        // damn quaternion magic...
+        break;
+      case Y:
+        break;
+      case Z:
+        break;
+      }
+    }
+    return VoxelShapes.create(x0, y0, z0, x1, y1, z1);
   }
 
 }

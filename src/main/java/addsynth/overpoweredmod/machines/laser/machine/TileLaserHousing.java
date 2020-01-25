@@ -43,9 +43,9 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
       if(world.isRemote == false){
         if(network == null){
           createBlockNetwork();
-          first_tick = false;
         }
       }
+      first_tick = false;
     }
     if(world != null){
       if(world.isRemote == false){

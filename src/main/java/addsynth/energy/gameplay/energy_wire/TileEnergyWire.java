@@ -37,9 +37,9 @@ public final class TileEnergyWire extends TileEntity implements IBlockNetworkUse
       if(world.isRemote == false){
         if(network == null){
           createBlockNetwork();
-          first_tick = false;
         }
       }
+      first_tick = false;
     }
   }
 

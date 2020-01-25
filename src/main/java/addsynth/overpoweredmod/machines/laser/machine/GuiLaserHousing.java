@@ -17,6 +17,8 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
 
   private final TileLaserHousing tile;
 
+  private TextFieldWidget text_box;
+
   private static final int space = 4;
 
   private static final int line_1 = 36;
@@ -75,37 +77,36 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
     private final TileLaserHousing tile;
 
     public LaserDistanceTextField(FontRenderer fontIn, int x, int y, int width, int height, TileLaserHousing tile){
-      super(fontIn, x, y, width, height, Integer.toString(tile.getLaserDistance()));
+      super(fontIn, x, y, width, height, "");
       this.tile = tile;
+      final String initial_distance = Integer.toString(tile.getLaserDistance());
+      setText(initial_distance);
       setMaxStringLength(4); // FEATURE: add a numbers-only textbox to ADDSynthCore.
-    }
-    
-    @Override
-    public boolean charTyped(char p_charTyped_1_, int p_charTyped_2_){
-      if(super.charTyped(p_charTyped_1_, p_charTyped_2_)){
-        int captured_distance = get_laser_distance();
-        if(captured_distance >= 0){
-          if(captured_distance != tile.getLaserDistance()){
-            if(captured_distance > 1000){
-              captured_distance = 1000;
-            }
-            NetworkHandler.INSTANCE.sendToServer(new SetLaserDistanceMessage(tile.getPos(), captured_distance));
-          }
-        }
-        return true;
-      }
-      return false;
+      setEnableBackgroundDrawing(true);
+      setVisible(true);
+      setTextColor(16777215);
+      setResponder((String text)-> text_field_changed()); // can be static or instance method, don't want to bother figuring out which one is better right now.
     }
 
-    private final int get_laser_distance(){
+    private final void text_field_changed(){
+      int captured_distance = 0;
       try{
-        return Integer.parseUnsignedInt(getText());
+        captured_distance = Integer.parseUnsignedInt(getText());
       }
       catch(NumberFormatException e){
-        return -1;
+        captured_distance = -1;
+      }
+      if(captured_distance >= 0){
+        if(captured_distance != tile.getLaserDistance()){
+          if(captured_distance > 1000){
+            captured_distance = 1000;
+            setText("1000");
+          }
+          NetworkHandler.INSTANCE.sendToServer(new SetLaserDistanceMessage(tile.getPos(), captured_distance));
+        }
       }
     }
-  
+
   }
 
   @Override
@@ -114,7 +115,8 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
     addButton(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile));
     addButton(new ToggleAutoShutoff(this.guiLeft + check_box_x, this.guiTop + check_box_y, tile));
     
-    this.children.add(new LaserDistanceTextField(this.font,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height, tile));
+    this.text_box = new LaserDistanceTextField(this.font,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height, tile);
+    this.children.add(text_box);
   }
 
   // NOTE: The only thing that doesn't sync with the client is when 2 people have the gui open
@@ -127,6 +129,22 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
   //     distance_text_field.setText(Integer.toString(tile.getLaserDistance()));
   //   }
   // }
+
+  @Override
+  public void tick(){
+    super.tick();
+    if(text_box != null){
+      text_box.tick();
+    }
+  }
+
+  @Override
+  public void render(final int mouseX, final int mouseY, final float partialTicks){
+    super.render(mouseX, mouseY, partialTicks);
+    if(text_box != null){
+      text_box.render(mouseX, mouseY, partialTicks);
+    }
+  }
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){

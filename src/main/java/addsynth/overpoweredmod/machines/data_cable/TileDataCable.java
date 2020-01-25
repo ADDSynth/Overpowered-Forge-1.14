@@ -26,9 +26,9 @@ public final class TileDataCable extends TileEntity implements IBlockNetworkUser
       if(world.isRemote == false){
         if(cable_network == null){
           createBlockNetwork();
-          first_tick = false;
         }
       }
+      first_tick = false;
     }
   }
 

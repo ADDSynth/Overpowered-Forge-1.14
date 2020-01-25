@@ -15,7 +15,7 @@ public abstract class CheckBox extends AbstractButton {
   private static final int texture_height = 24;
 
   public CheckBox(final int x, final int y){
-    super(x, y, 12, 12, null);
+    super(x, y, 12, 12, "");
   }
 
   protected abstract boolean get_toggle_state();
@@ -30,7 +30,7 @@ public abstract class CheckBox extends AbstractButton {
     GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
     GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 
-    blit(x, y, checked ? texture_x : texture_x + 24, texture_y, texture_width, texture_height, 12, 12, 256, 256);
+    blit(x, y, 12, 12, checked ? texture_x : texture_x + 24, texture_y, texture_width, texture_height, 256, 256);
   }
 
 }

@@ -25,13 +25,13 @@ public abstract class Wire extends BlockTile implements IWaterLoggable {
 
   // http://mcforge.readthedocs.io/en/latest/blocks/states/
 
-  public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
-  public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
-  public static final BooleanProperty WEST  = BlockStateProperties.WEST;
-  public static final BooleanProperty EAST  = BlockStateProperties.EAST;
-  public static final BooleanProperty UP    = BlockStateProperties.UP;
-  public static final BooleanProperty DOWN  = BlockStateProperties.DOWN;
-  public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+  private static final BooleanProperty NORTH = BlockStateProperties.NORTH;
+  private static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
+  private static final BooleanProperty WEST  = BlockStateProperties.WEST;
+  private static final BooleanProperty EAST  = BlockStateProperties.EAST;
+  private static final BooleanProperty UP    = BlockStateProperties.UP;
+  private static final BooleanProperty DOWN  = BlockStateProperties.DOWN;
+  private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
   private static final double default_min_wire_size =  5.0 / 16;
   private static final double default_max_wire_size = 11.0 / 16;

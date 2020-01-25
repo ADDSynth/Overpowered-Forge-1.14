@@ -14,6 +14,8 @@ import net.minecraft.util.math.BlockPos;
 
 public final class TileLaser extends TileBase implements ITickableTileEntity {
 
+  private boolean first_tick = true;
+
   private Laser laser;
   private Direction direction;
   private int distance;
@@ -42,25 +44,29 @@ public final class TileLaser extends TileBase implements ITickableTileEntity {
 
   @Override
   public void onLoad(){
-    if(world.isRemote == false){
-      final BlockState block_state = getBlockState();
-      final LaserCannon block = (LaserCannon)block_state.getBlock();
-      this.laser = Laser.index[Math.max(0, block.color)];
-      if(block.color < 0){
-        OverpoweredMod.log.fatal(
-          "Standard Lasers have a color index indicating the type of laser 0-"+(Laser.index.length-1)+", but this laser has an "+
-          "index of "+block.color+". Non-standard lasers currently don't need a TileEntity. If you're receiving this message, "+
-          "it's probably safe to continue playing, but this indicates a serious error. Please report this to the mod author.");
-        Debug.block(block, pos);
-        Thread.dumpStack();
-        remove();
-      }
-      this.direction = block_state.get(LaserCannon.FACING);
-    }
   }
 
   @Override
+  @SuppressWarnings("null")
   public final void tick(){
+    if(first_tick){
+      if(world.isRemote == false){
+        final BlockState block_state = getBlockState();
+        final LaserCannon block = (LaserCannon)block_state.getBlock();
+        this.laser = Laser.index[Math.max(0, block.color)];
+        if(block.color < 0){
+          OverpoweredMod.log.fatal(
+            "Standard Lasers have a color index indicating the type of laser 0-"+(Laser.index.length-1)+", but this laser has an "+
+            "index of "+block.color+". Non-standard lasers currently don't need a TileEntity. If you're receiving this message, "+
+            "it's probably safe to continue playing, but this indicates a serious error. Please report this to the mod author.");
+          Debug.block(block, pos);
+          Thread.dumpStack();
+          remove();
+        }
+        this.direction = block_state.get(LaserCannon.FACING);
+      }
+      first_tick = false;
+    }
     if(world != null){
       if(world.isRemote == false){
         if(active){
