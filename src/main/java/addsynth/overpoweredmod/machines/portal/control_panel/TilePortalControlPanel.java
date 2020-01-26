@@ -210,7 +210,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
           }
         }
         // TODO: make this a config option in disable_feature.cfg in Overpowered version 1.3, to allow the Portal Construction, but disable the Unknown Dimension.
-        WorldUtil.spawnItemStack(world, center, start_y, start_z, new ItemStack(ModItems.unknown_technology, 2));
+        WorldUtil.spawnItemStack(world, center, start_y, start_z, new ItemStack(ModItems.unknown_technology, 2), false);
         break;
       case Z:
         start_x = lowest_portal_frame.getX();
@@ -223,7 +223,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
             world.setBlockState(new BlockPos(x,y,z),Portal.portal.getDefaultState()); // .withProperty(PortalEnergyBlock.AXIS, EnumFacing.Axis.Z));
           }
         }
-        WorldUtil.spawnItemStack(world, start_x, start_y, center, new ItemStack(ModItems.unknown_technology, 2));
+        WorldUtil.spawnItemStack(world, start_x, start_y, center, new ItemStack(ModItems.unknown_technology, 2), false);
         break;
       }
 
