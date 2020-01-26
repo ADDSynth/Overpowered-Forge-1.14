@@ -5,8 +5,10 @@ import javax.annotation.Nullable;
 import addsynth.core.Constants;
 import addsynth.core.blocks.BlockTile;
 import addsynth.core.util.BlockUtil;
+import addsynth.core.util.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
+import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.game.core.Machines;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -35,6 +37,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
+import net.minecraft.world.World;
 
 public final class LaserCannon extends BlockTile implements IWaterLoggable {
 
@@ -180,6 +183,18 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
   @Override
   protected void fillStateContainer(Builder<Block, BlockState> builder){
     builder.add(FACING, WATERLOGGED);
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public final void neighborChanged(BlockState state, World world, BlockPos position, Block block, BlockPos neighbor, boolean isMoving){
+    if(world.isRemote == false){
+      if(isValidPosition(state, world, position) == false){
+        final ItemStack stack = color >= 0 ? new ItemStack(Laser.index[color].cannon, 1) : new ItemStack(Machines.fusion_control_laser, 1);
+        WorldUtil.spawnItemStack(world, position, stack);
+        world.removeBlock(position, isMoving);
+      }
+    }
   }
 
 }

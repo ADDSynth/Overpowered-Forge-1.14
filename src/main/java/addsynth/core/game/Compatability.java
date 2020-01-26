@@ -92,7 +92,7 @@ public final class Compatability {
   
   public static final class OVERPOWERED {
     public static final String name  = "Overpowered";
-    public static final String modid = "overpoweredmod";
+    public static final String modid = "overpowered";
     public static final boolean loaded = ModList.get().isLoaded(modid);
   }
   
