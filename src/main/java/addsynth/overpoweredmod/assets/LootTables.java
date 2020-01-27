@@ -2,16 +2,13 @@ package addsynth.overpoweredmod.assets;
 
 import addsynth.core.game.Compatability;
 import addsynth.core.items.ArmorMaterial;
-import addsynth.core.util.JavaUtils;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.game.core.Tools;
-import net.minecraft.item.Item;
-import net.minecraft.world.storage.loot.LootEntry;
+import net.minecraft.world.storage.loot.ItemLootEntry;
 import net.minecraft.world.storage.loot.LootPool;
-import net.minecraft.world.storage.loot.RandomValueRange;
 import net.minecraft.world.storage.loot.conditions.KilledByPlayer;
 import net.minecraft.world.storage.loot.conditions.RandomChance;
 import net.minecraftforge.event.LootTableLoadEvent;
@@ -29,7 +26,7 @@ public final class LootTables {
   static {
     Debug.log_setup_info("LootTables class was loaded.");
   }
-/*
+
   private static final float default_spawn_chance = 1.0f / 40.0f; // before, it was just with rings and it was 1 / 15 chance.
   private static final float spawn_chance = default_spawn_chance;
 
@@ -47,52 +44,44 @@ public final class LootTables {
   private static final int rare_ring_weight = 3;
   private static final int unique_ring_weight = 1;
 
-  private static final LootEntry[] unidentified_armor = {
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.LEATHER.ordinal()][0],leather_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.LEATHER.ordinal()][1],leather_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.LEATHER.ordinal()][2],leather_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.LEATHER.ordinal()][3],leather_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.GOLD.ordinal()][0],gold_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.GOLD.ordinal()][1],gold_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.GOLD.ordinal()][2],gold_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.GOLD.ordinal()][3],gold_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.CHAINMAIL.ordinal()][0],chainmail_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.CHAINMAIL.ordinal()][1],chainmail_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.CHAINMAIL.ordinal()][2],chainmail_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.CHAINMAIL.ordinal()][3],chainmail_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.IRON.ordinal()][0],iron_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.IRON.ordinal()][1],iron_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.IRON.ordinal()][2],iron_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.IRON.ordinal()][3],iron_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.DIAMOND.ordinal()][0],diamond_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.DIAMOND.ordinal()][1],diamond_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.DIAMOND.ordinal()][2],diamond_weight),
-    newLootEntry(Tools.unidentified_armor[ArmorMaterial.DIAMOND.ordinal()][3],diamond_weight),
-  };
+  private static final LootPool custom_loot_pool = build_loot_pool();
   
-  private static final LootPool custom_loot_pool = new LootPool(
-    unidentified_armor,
-    new LootCondition[] {
-      new KilledByPlayer(false),
-      new RandomChance(spawn_chance)
-    },
-    new RandomValueRange(1.0f),
-    new RandomValueRange(0.0f),
-    "overpowered_custom_loot_table"
-  );
-
-  @SuppressWarnings("null")
-  private static final LootEntryItem newLootEntry(final Item item, final int weight){
-    return new LootEntryItem(item, weight, 0, new LootFunction[0], new LootCondition[0],item.getRegistryName().toString());
+  private static final LootPool build_loot_pool(){
+    final LootPool.Builder loot = new LootPool.Builder();
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.LEATHER.ordinal()][0]).weight(leather_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.LEATHER.ordinal()][1]).weight(leather_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.LEATHER.ordinal()][2]).weight(leather_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.LEATHER.ordinal()][3]).weight(leather_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.GOLD.ordinal()][0]).weight(gold_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.GOLD.ordinal()][1]).weight(gold_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.GOLD.ordinal()][2]).weight(gold_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.GOLD.ordinal()][3]).weight(gold_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.CHAINMAIL.ordinal()][0]).weight(chainmail_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.CHAINMAIL.ordinal()][1]).weight(chainmail_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.CHAINMAIL.ordinal()][2]).weight(chainmail_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.CHAINMAIL.ordinal()][3]).weight(chainmail_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.IRON.ordinal()][0]).weight(iron_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.IRON.ordinal()][1]).weight(iron_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.IRON.ordinal()][2]).weight(iron_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.IRON.ordinal()][3]).weight(iron_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.DIAMOND.ordinal()][0]).weight(diamond_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.DIAMOND.ordinal()][1]).weight(diamond_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.DIAMOND.ordinal()][2]).weight(diamond_weight));
+    loot.addEntry(ItemLootEntry.builder(Tools.unidentified_armor[ArmorMaterial.DIAMOND.ordinal()][3]).weight(diamond_weight));
+    loot.acceptCondition(KilledByPlayer.builder());
+    loot.acceptCondition(RandomChance.builder(spawn_chance));
+    loot.name("overpowered_custom_loot_table");
+    return loot.build();
   }
-*/
 
+  private static final boolean debug_loot_tables = false;
+  
   @SubscribeEvent
-  public static void inject_loot(LootTableLoadEvent event){
+  public static void inject_loot(LootTableLoadEvent event){ // TODO: add final to this ALL VERSIONS.
     if(Features.identifier.get()){
       final String prefix = "minecraft:entities/";
       final String name = event.getName().toString();
-      if(Debug.debug_loot_tables){
+      if(debug_loot_tables){
         OverpoweredMod.log.info("Loading Loot Table: "+name);
       }
       if(name.startsWith(prefix)){
@@ -122,8 +111,8 @@ public final class LootTables {
         // FUTURE: New Illusioner mob in 1.12, but they don't have a Loot Table or Loot Table Load Event until 1.14, and they don't naturally spawn anywhere.
 
         if(add_rings){
-          // event.getTable().addPool(custom_loot_pool);
-          if(Debug.debug_loot_tables){
+          event.getTable().addPool(custom_loot_pool);
+          if(debug_loot_tables){
             OverpoweredMod.log.info("Successfully injected custom loot pool into Loot Table for: "+mob);
           }
         }

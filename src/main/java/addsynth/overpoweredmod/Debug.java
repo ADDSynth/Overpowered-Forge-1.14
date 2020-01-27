@@ -12,8 +12,6 @@ public final class Debug {
   /** This is the master debug variable that determines verbose init logging. */
   private static final boolean debug_setup = false;
 
-  public static final boolean debug_loot_tables = false;
-
   public static final void log_setup_info(final String message){
     if(debug_setup){
       OverpoweredMod.log.info(message);
