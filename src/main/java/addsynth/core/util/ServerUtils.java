@@ -1,6 +1,8 @@
 package addsynth.core.util;
 
 import java.util.ArrayList;
+import javax.annotation.Nullable;
+import addsynth.core.ADDSynthCore;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
@@ -15,8 +17,13 @@ import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 public final class ServerUtils {
 
+  @Nullable
   public static final MinecraftServer getServer(){
-    return ServerLifecycleHooks.getCurrentServer();
+    final MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
+    if(server == null){
+      ADDSynthCore.log.fatal(new NullPointerException("ServerUtils.getServer() was unable to retrieve the current running server! Maybe there is no server running?"));
+    }
+    return server;
   }
 
   public static ArrayList<ServerPlayerEntity> get_players_in_world(final World world){
@@ -33,7 +40,7 @@ public final class ServerUtils {
   }
 
   public static void send_message_to_all_players(final ITextComponent text_component) {
-    MinecraftServer server = getServer();
+    final MinecraftServer server = getServer();
     if(server != null){
       PlayerList player_list = server.getPlayerList();
       if(player_list != null){

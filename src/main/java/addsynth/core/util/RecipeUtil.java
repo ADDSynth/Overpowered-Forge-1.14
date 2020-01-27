@@ -61,13 +61,19 @@ public final class RecipeUtil {
     return ItemStack.EMPTY;
   }
 
+  /** This only returns whether furnace recipes are loaded. For a more robust check,
+   *  call the check_furnace_recipes() function.
+   */
   public static final boolean furnace_recipes_loaded(){
     if(furnace_recipes == null){ return false; }
     if(furnace_recipes.size() == 0){ return false; }
     return true;
   }
 
-  private static final boolean check_furnace_recipes(){
+  /** Checks if Furnace Recipes are loaded, and attempts to load them if they aren't.
+   *  Returns true if they are loaded.
+   */
+  public static final boolean check_furnace_recipes(){
     if(furnace_recipes_loaded() == true){ return true;}
     update_furnace_recipes();
     if(furnace_recipes_loaded() == false){
@@ -114,6 +120,8 @@ public final class RecipeUtil {
     ADDSynthCore.log.info("Done responding to Recipe reload.");
   }
 
+  /** Attempts to get an instance of the RecipeManager from the server. */
+  @SuppressWarnings("null")
   private static final void updateRecipeManager(){
     if(recipe_manager == null){
       recipe_manager = ServerUtils.getServer().getRecipeManager();

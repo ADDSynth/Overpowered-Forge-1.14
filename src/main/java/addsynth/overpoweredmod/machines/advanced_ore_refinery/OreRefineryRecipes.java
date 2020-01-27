@@ -5,6 +5,7 @@ import java.util.HashMap;
 import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.RecipeUtil;
 import addsynth.overpoweredmod.Debug;
+import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -23,7 +24,7 @@ public final class OreRefineryRecipes {
    *    whenever {@link addsynth.core.material.MaterialsUtil} or {@link addsynth.core.util.RecipeUtil} is updated.
    */
   public static final void refresh_ore_refinery_recipes(){
-    if(RecipeUtil.furnace_recipes_loaded()){
+    if(RecipeUtil.check_furnace_recipes()){
       // Debug.log_setup_info("Begin registering Advanced Ore Refinery recipes..."); DELETE
       recipes.clear();
       final ArrayList<Item> list = new ArrayList<Item>(100);
@@ -48,8 +49,12 @@ public final class OreRefineryRecipes {
 
   public static final Item[] get_input_filter(){
     if(valid_ores == null){
-      throw new NullPointerException("OreRefineryRecipes Item[] array input filter is null! It is created "+
-                                     "in the register() function. Was OreRefineryRecipes.register() not called?");
+      refresh_ore_refinery_recipes();
+      if(valid_ores == null){
+        OverpoweredMod.log.error(new NullPointerException("OreRefineryRecipes Item[] array input filter is null! There must be "+
+                                                          "a problem in the refresh_ore_refinery_recipes() function!"));
+        return new Item[0];
+      }
     }
     return valid_ores;
   }
