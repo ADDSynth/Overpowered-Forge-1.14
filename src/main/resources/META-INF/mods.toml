@@ -35,7 +35,7 @@ displayName="ADDSynthCore" #mandatory
 #updateJSONURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/update.json" #optional
 
 # A URL for the "homepage" for this mod, displayed in the mod UI
-displayURL="file:///D:/Linux%20Server/Website/website/minecraft/mods/minecraft_mods.html" #optional
+displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/minecraft_mods.html" #optional
 
 # A file name (in the root of the mod JAR) containing a logo for display
 #logoFile="examplemod.png" #optional
