@@ -3,9 +3,8 @@ package addsynth.energy.gameplay.electric_furnace;
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.util.MinecraftUtility;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.blocks.MachineBlock;
-import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -34,7 +33,7 @@ public final class ElectricFurnace extends MachineBlock {
 
   public ElectricFurnace(final String name){
     super();
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
+    ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
   }
 

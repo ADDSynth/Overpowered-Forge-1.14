@@ -1,10 +1,6 @@
 package addsynth.overpoweredmod.registers;
 
 import addsynth.energy.gameplay.compressor.TileCompressor;
-import addsynth.energy.gameplay.electric_furnace.TileElectricFurnace;
-import addsynth.energy.gameplay.energy_storage.TileEnergyStorage;
-import addsynth.energy.gameplay.energy_wire.TileEnergyWire;
-import addsynth.energy.gameplay.universal_energy_interface.TileUniversalEnergyTransfer;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.game.core.Machines;
@@ -35,23 +31,11 @@ public final class Tiles {
     Debug.log_setup_info(Tiles.class.getName()+" class was loaded...");
   }
 
-  public static final TileEntityType<TileEnergyWire> ENERGY_WIRE =
-    TileEntityType.Builder.create(TileEnergyWire::new, Wires.wire).build(null);
-
   public static final TileEntityType<TileEnergyGenerator> GENERATOR =
     TileEntityType.Builder.create(TileEnergyGenerator::new, Machines.generator).build(null);
 
-  public static final TileEntityType<TileEnergyStorage> ENERGY_CONTAINER =
-    TileEntityType.Builder.create(TileEnergyStorage::new, Machines.energy_storage).build(null);
-
-  public static final TileEntityType<TileUniversalEnergyTransfer> UNIVERSAL_ENERGY_INTERFACE =
-    TileEntityType.Builder.create(TileUniversalEnergyTransfer::new, Machines.universal_energy_machine).build(null);
-
   public static final TileEntityType<TileCompressor> COMPRESSOR =
     TileEntityType.Builder.create(TileCompressor::new, Machines.compressor).build(null);
-
-  public static final TileEntityType<TileElectricFurnace> ELECTRIC_FURNACE =
-    TileEntityType.Builder.create(TileElectricFurnace::new, Machines.electric_furnace).build(null);
 
   public static final TileEntityType<TileGemConverter> GEM_CONVERTER =
     TileEntityType.Builder.create(TileGemConverter::new, Machines.gem_converter).build(null);

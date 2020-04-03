@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "Pá nula",
 "item.overpowered.void_hoe": "nulo enxada",
 
-"item.overpowered.power_core": "Núcleo de poder",
-"item.overpowered.advanced_power_core": "Núcleo de Potência Avançada",
 "item.overpowered.energized_power_core": "núcleo de energia",
 "item.overpowered.nullified_power_core": "Nnúcleo de poder nulo",
 "item.overpowered.energy_grid": "Grade de energia",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "Núcleo de Fusão",
 "item.overpowered.dimensional_anchor": "Âncora dimensional",
 
-"block.overpowered.energy_wire": "Fio de energia",
 "block.overpowered.data_cable": "Cabo de dados",
 
 "block.overpowered.generator": "Distribuidora de Energia",
-"block.overpowered.energy_storage": "Recipiente de armazenamento de energia",
-"block.overpowered.universal_energy_interface": "Máquina de interface de energia",
 
 "block.overpowered.compressor": "Compressor",
-"block.overpowered.electric_furnace": "Forno elétrico",
 "block.overpowered.gem_converter": "conversor de gema",
 "block.overpowered.inverter": "Inversor",
 "block.overpowered.magic_infuser": "Infusor Mágico",

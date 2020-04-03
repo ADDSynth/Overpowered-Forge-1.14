@@ -1,9 +1,9 @@
 package addsynth.energy.gui.widgets;
 
-import addsynth.core.ADDSynthCore;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.network.server_messages.SwitchMachineMessage;
+import addsynth.energy.registers.NetworkHandler;
 import addsynth.energy.tiles.TileEnergyReceiver;
-import addsynth.overpoweredmod.game.NetworkHandler;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -17,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 public final class OnOffSwitch extends AbstractButton {
 
   private final TileEnergyReceiver tile;
-  private static final ResourceLocation gui_switch = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/gui_textures.png");
+  private static final ResourceLocation gui_switch = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/gui_textures.png");
 
   /**
    * Call with guiLeft + standard x = 6 and guiTop + standard y = 17.

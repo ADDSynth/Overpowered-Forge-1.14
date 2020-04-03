@@ -16,9 +16,6 @@ public final class Values {
   public static ForgeConfigSpec.ConfigValue<Integer> light_block_energy;
   public static ForgeConfigSpec.ConfigValue<Integer> light_block_max_extract;
 
-  public static ForgeConfigSpec.ConfigValue<Integer> energy_storage_container_capacity;
-  public static ForgeConfigSpec.ConfigValue<Integer> energy_storage_container_extract_rate;
-  public static ForgeConfigSpec.ConfigValue<Integer> universal_energy_interface_buffer;
   public static ForgeConfigSpec.ConfigValue<Integer> fusion_energy_output_per_tick;
   
   public static ForgeConfigSpec.ConfigValue<Integer> compressor_required_energy;
@@ -31,7 +28,6 @@ public final class Values {
   public static ForgeConfigSpec.ConfigValue<Integer> required_energy_per_laser_distance;
   public static ForgeConfigSpec.ConfigValue<Integer> crystal_matter_generator_required_energy;
   public static ForgeConfigSpec.ConfigValue<Integer> advanced_ore_refinery_required_energy;
-  public static ForgeConfigSpec.ConfigValue<Integer> electric_furnace_required_energy;
 
   public static ForgeConfigSpec.ConfigValue<Integer> compressor_work_time;
   public static ForgeConfigSpec.ConfigValue<Integer> gem_converter_work_time;
@@ -40,7 +36,6 @@ public final class Values {
   public static ForgeConfigSpec.ConfigValue<Integer> identifier_work_time;
   public static ForgeConfigSpec.ConfigValue<Integer> crystal_matter_generator_work_time;
   public static ForgeConfigSpec.ConfigValue<Integer> advanced_ore_refinery_work_time;
-  public static ForgeConfigSpec.ConfigValue<Integer> electric_furnace_work_time;
 
   public static ForgeConfigSpec.DoubleValue unknown_dimension_tree_spawn_chance;
 
@@ -54,9 +49,6 @@ public final class Values {
   private static final int DEFAULT_LIGHT_BLOCK_ENERGY                = DEFAULT_ENERGY_CRYSTAL_ENERGY * 9;
   private static final int DEFAULT_LIGHT_BLOCK_MAX_EXTRACT           = 500;
 
-  private static final int DEFAULT_ENERGY_STORAGE_CAPACITY       = 1_000_000;
-  private static final int DEFAULT_ENERGY_STORAGE_MAX_EXTRACT        =   500;
-  private static final int DEFAULT_UNIVERSAL_ENERGY_INTERFACE_BUFFER = 1_000;
   private static final int DEFAULT_FUSION_ENERGY_PER_TICK            =   100;
 
   private static final int DEFAULT_COMPRESSOR_REQUIRED_ENERGY     =   4_000;
@@ -69,7 +61,6 @@ public final class Values {
   private static final int DEFAULT_ENERGY_PER_LASER_DISTANCE      =     100;
   private static final int DEFAULT_GEM_REPLICATOR_REQUIRED_ENERGY = 500_000; // for 1 shard
   private static final int DEFAULT_ORE_REFINERY_REQUIRED_ENERGY   =  10_000;
-  private static final int DEFAULT_ELECTRIC_FURNACE_REQUIRED_ENERGY = 1_000;
 
   private static final int DEFAULT_COMPRESSOR_WORK_TIME       =  200;
   private static final int DEFAULT_GEM_CONVERTER_WORK_TIME    =  600;
@@ -78,7 +69,6 @@ public final class Values {
   private static final int DEFAULT_IDENTIFIER_WORK_TIME       =  100;
   private static final int DEFAULT_CRYSTAL_MATTER_GENERATOR_WORK_TIME = 18000;
   private static final int DEFAULT_ORE_REFINERY_WORK_TIME     =  200;
-  private static final int DEFAULT_ELECTRIC_FURNACE_WORK_TIME =  200;
 
   private static final float DEFAULT_UNKNOWN_TREE_SPAWN_CHANCE = 0.002f; // 1 / 500
 
@@ -104,12 +94,6 @@ public final class Values {
 
     // Other Energy Values
     builder.push("Misc. Energy Values");
-    energy_storage_container_capacity     = builder.defineInRange("Energy Storage Container Capacity",
-                                              DEFAULT_ENERGY_STORAGE_CAPACITY, 0, Integer.MAX_VALUE);
-    energy_storage_container_extract_rate = builder.defineInRange("Energy Storage Container Extract Rate",
-                                              DEFAULT_ENERGY_STORAGE_MAX_EXTRACT, 0, Integer.MAX_VALUE);
-    universal_energy_interface_buffer     = builder.defineInRange("Universal Energy Interface Capacity",
-                                              DEFAULT_UNIVERSAL_ENERGY_INTERFACE_BUFFER, 0, Integer.MAX_VALUE);
     fusion_energy_output_per_tick         = builder.defineInRange("Fusion Energy Production Rate",
                                               DEFAULT_FUSION_ENERGY_PER_TICK, 0, Integer.MAX_VALUE);
     builder.pop();
@@ -136,8 +120,6 @@ public final class Values {
                                               DEFAULT_GEM_REPLICATOR_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
     advanced_ore_refinery_required_energy = builder.defineInRange("Advanced Ore Refinery",
                                               DEFAULT_ORE_REFINERY_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
-    electric_furnace_required_energy      = builder.defineInRange("Electric Furnace",
-                                              DEFAULT_ELECTRIC_FURNACE_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
     builder.pop();
 
     // Machine Work Time
@@ -151,8 +133,6 @@ public final class Values {
                                            DEFAULT_CRYSTAL_MATTER_GENERATOR_WORK_TIME, 0, Integer.MAX_VALUE);
     advanced_ore_refinery_work_time    = builder.defineInRange("Advanced Ore Refinery",
                                            DEFAULT_ORE_REFINERY_WORK_TIME, 0, Integer.MAX_VALUE);
-    electric_furnace_work_time         = builder.defineInRange("Electric Furnace",
-                                           DEFAULT_ELECTRIC_FURNACE_WORK_TIME, 0, Integer.MAX_VALUE);
     builder.pop();
 
     // float value, chance that ANYTHING will drop

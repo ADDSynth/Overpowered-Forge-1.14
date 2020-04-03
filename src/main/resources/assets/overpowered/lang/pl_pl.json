@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "ciemna łopata",
 "item.overpowered.void_hoe": "ciemna motyka",
 
-"item.overpowered.power_core": "Rdzeń zasilający",
-"item.overpowered.advanced_power_core": "Zaawansowany rdzeń zasilania",
 "item.overpowered.energized_power_core": "Energetyczny rdzeń zasilania",
 "item.overpowered.nullified_power_core": "ujemny rdzeń zasilania",
 "item.overpowered.energy_grid": "Sieć energetyczna",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "rdzeń fuzyjny",
 "item.overpowered.dimensional_anchor": "kotwica wymiarowa",
 
-"block.overpowered.energy_wire": "Przewód energetyczny",
 "block.overpowered.data_cable": "Kabel do transmisji danych",
 
 "block.overpowered.generator": "Dystrybutor energii",
-"block.overpowered.energy_storage": "Pojemnik do przechowywania energii",
-"block.overpowered.universal_energy_interface": "Uniwersalny interfejs energetyczny",
 
 "block.overpowered.compressor": "Kompresor",
-"block.overpowered.electric_furnace": "Piec elektryczny",
 "block.overpowered.gem_converter": "konwerter kamieni szlachetnych",
 "block.overpowered.inverter": "Falownik",
 "block.overpowered.magic_infuser": "magiczny ekstraktor",

@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "ダークショベル",
 "item.overpowered.void_hoe": "ダークホー",
 
-"item.overpowered.power_core": "パワーコア",
-"item.overpowered.advanced_power_core": "高度な電源コア",
 "item.overpowered.energized_power_core": "通電された電力コア",
 "item.overpowered.nullified_power_core": "ヌルパワーコア",
 "item.overpowered.energy_grid": "エネルギーグリッド",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "フュージョンコア",
 "item.overpowered.dimensional_anchor": "寸法アンカー",
 
-"block.overpowered.energy_wire": "エネルギー線",
 "block.overpowered.data_cable": "データケーブル",
 
 "block.overpowered.generator": "エネルギー分配器",
-"block.overpowered.energy_storage": "エネルギー貯蔵容器",
-"block.overpowered.universal_energy_interface": "ユニバーサルエネルギーインタフェース",
 
 "block.overpowered.compressor": "コンプレッサー",
-"block.overpowered.electric_furnace": "電気炉",
 "block.overpowered.gem_converter": "宝石コンバータ",
 "block.overpowered.inverter": "インバータ",
 "block.overpowered.magic_infuser": "マジックマシン",

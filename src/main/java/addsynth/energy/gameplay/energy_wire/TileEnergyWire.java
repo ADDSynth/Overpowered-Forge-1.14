@@ -3,7 +3,7 @@ package addsynth.energy.gameplay.energy_wire;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.energy.EnergyNetwork;
-import addsynth.overpoweredmod.registers.Tiles;
+import addsynth.energy.registers.Tiles;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 

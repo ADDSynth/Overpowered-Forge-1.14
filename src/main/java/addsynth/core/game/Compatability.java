@@ -30,6 +30,12 @@ public final class Compatability {
            modid.equals(ADDSynthCore.MOD_ID);
   }
 
+  public static final class ADDSYNTH_ENERGY {
+    public static final String name = "ADDSynth Energy";
+    public static final String modid = "addsynth_energy";
+    public static final boolean loded = ModList.get().isLoaded(modid);
+  }
+
   public static final class APPLIED_ENERGISTICS {
     public static final String name  = "Applied Energistics";
     public static final String modid = "appliedenergistics2";

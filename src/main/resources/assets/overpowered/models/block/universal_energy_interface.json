@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end":   "overpowered:blocks/machines/default_machine_texture",
-        "side":  "overpowered:blocks/machines/universal_energy_interface"
-    }
-}

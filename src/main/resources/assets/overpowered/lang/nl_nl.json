@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "donkere schop",
 "item.overpowered.void_hoe": "donkere schoffel",
 
-"item.overpowered.power_core": "kracht kern",
-"item.overpowered.advanced_power_core": "geavanceerde vermogenskern",
 "item.overpowered.energized_power_core": "energie kern",
 "item.overpowered.nullified_power_core": "nul kracht kern",
 "item.overpowered.energy_grid": "energienet",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "fusie kern",
 "item.overpowered.dimensional_anchor": "Dimensionaal anker",
 
-"block.overpowered.energy_wire": "Energiedraad",
 "block.overpowered.data_cable": "Datakabel",
 
 "block.overpowered.generator": "Energiedistributeur",
-"block.overpowered.energy_storage": "Energie Opslag",
-"block.overpowered.universal_energy_interface": "Universal Energy Interface",
 
 "block.overpowered.compressor": "Compressor",
-"block.overpowered.electric_furnace": "Elektrische oven",
 "block.overpowered.gem_converter": "edelsteenwisselaar",
 "block.overpowered.inverter": "omkeren machine",
 "block.overpowered.magic_infuser": "Magische Infuser",

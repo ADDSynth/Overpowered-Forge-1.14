@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "ifi",
+    "ppp"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:plates/iron"
+    },
+    "p": {
+      "item": "addsynth_energy:power_core"
+    },
+    "f": {
+      "item": "minecraft:furnace"
+    }
+  },
+  "result": {
+    "item": "addsynth_energy:electric_furnace"
+  }
+}

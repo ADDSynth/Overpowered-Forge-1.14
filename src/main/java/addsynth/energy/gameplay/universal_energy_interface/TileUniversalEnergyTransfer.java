@@ -1,11 +1,11 @@
 package addsynth.energy.gameplay.universal_energy_interface;
 
 import javax.annotation.Nullable;
+import addsynth.energy.Config;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.compat.EnergyCompat;
+import addsynth.energy.registers.Tiles;
 import addsynth.energy.tiles.TileEnergyBattery;
-import addsynth.overpoweredmod.config.Values;
-import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -40,7 +40,7 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery impleme
   private TRANSFER_MODE transfer_mode = TRANSFER_MODE.BI_DIRECTIONAL;
 
   public TileUniversalEnergyTransfer(){
-    super(Tiles.UNIVERSAL_ENERGY_INTERFACE, new CustomEnergyStorage(Values.universal_energy_interface_buffer.get()));
+    super(Tiles.UNIVERSAL_ENERGY_INTERFACE, new CustomEnergyStorage(Config.universal_energy_interface_buffer.get()));
   }
 
   public final TRANSFER_MODE get_transfer_mode(){
@@ -50,7 +50,7 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery impleme
   public final void set_next_transfer_mode(){
     final int mode = (transfer_mode.ordinal() + 1) % TRANSFER_MODE.values().length;
     transfer_mode = TRANSFER_MODE.values()[mode];
-    energy.setTransferRate(transfer_mode.integrate ? Values.universal_energy_interface_buffer.get() : 0);
+    energy.setTransferRate(transfer_mode.integrate ? Config.universal_energy_interface_buffer.get() : 0);
     update_data();
   }
 

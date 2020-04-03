@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "kraftkärna",
+"item.addsynth_energy.advanced_power_core": "avancerad kraftkärna",
+
+"block.addsynth_energy.energy_wire": "energitråd",
+"block.addsynth_energy.generator": "energidistributör",
+"block.addsynth_energy.energy_storage": "Energilagringsbehållare",
+"block.addsynth_energy.universal_energy_interface": "universellt energi gränssnitt",
+"block.addsynth_energy.electric_furnace": "Elektrisk ugn"
+}

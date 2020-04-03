@@ -3,9 +3,8 @@ package addsynth.energy.gameplay.universal_energy_interface;
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.util.MinecraftUtility;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.blocks.MachineBlock;
-import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -26,7 +25,7 @@ public final class UniversalEnergyBlock extends MachineBlock {
 
   public UniversalEnergyBlock(final String name){
     super();
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
+    ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
   }
 
   @Override

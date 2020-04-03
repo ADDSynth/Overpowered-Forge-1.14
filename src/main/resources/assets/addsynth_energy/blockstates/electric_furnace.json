@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "addsynth_energy:block/electric_furnace" },
+        "facing=south": { "model": "addsynth_energy:block/electric_furnace", "y": 180 },
+        "facing=west":  { "model": "addsynth_energy:block/electric_furnace", "y": 270 },
+        "facing=east":  { "model": "addsynth_energy:block/electric_furnace", "y": 90 }
+    }
+}

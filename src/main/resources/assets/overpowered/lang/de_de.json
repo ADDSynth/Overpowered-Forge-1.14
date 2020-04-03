@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "Null-Schaufel",
 "item.overpowered.void_hoe": "Nullhacke",
 
-"item.overpowered.power_core": "Leistungskern",
-"item.overpowered.advanced_power_core": "fortschrittlicher Stromkern",
 "item.overpowered.energized_power_core": "Energiegeladener Energiekern",
 "item.overpowered.nullified_power_core": "Ungültiger Stromkern",
 "item.overpowered.energy_grid": "Energienetz",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "Fusionskern",
 "item.overpowered.dimensional_anchor": "Dimensionaler Anker",
 
-"block.overpowered.energy_wire": "Energiedraht",
 "block.overpowered.data_cable": "Datenkabel",
 
 "block.overpowered.generator": "Energieverteiler",
-"block.overpowered.energy_storage": "Energiespeicherbehälter",
-"block.overpowered.universal_energy_interface": "Energie Schnittstelle Maschine",
 
 "block.overpowered.compressor": "Kompressor",
-"block.overpowered.electric_furnace": "Elektroofen",
 "block.overpowered.gem_converter": "Edelstein-Konverter",
 "block.overpowered.inverter": "Wechselrichter",
 "block.overpowered.magic_infuser": "Zauberextraktor",

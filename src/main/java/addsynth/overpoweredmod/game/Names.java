@@ -40,11 +40,7 @@ public final class Names {
   public static final ResourceLocation BLUE_LENS             = new ResourceLocation(OverpoweredMod.MOD_ID, "blue_lens");
   public static final ResourceLocation MAGENTA_LENS          = new ResourceLocation(OverpoweredMod.MOD_ID, "magenta_lens");
 
-  public static final ResourceLocation ENERGY_WIRE           = new ResourceLocation(OverpoweredMod.MOD_ID, "energy_wire");
   public static final ResourceLocation GENERATOR             = new ResourceLocation(OverpoweredMod.MOD_ID, "generator");
-  public static final ResourceLocation ENERGY_STORAGE        = new ResourceLocation(OverpoweredMod.MOD_ID, "energy_storage");
-  public static final ResourceLocation UNIVERSAL_ENERGY_INTERFACE = new ResourceLocation(OverpoweredMod.MOD_ID, "universal_energy_interface");
-  public static final ResourceLocation ELECTRIC_FURNACE      = new ResourceLocation(OverpoweredMod.MOD_ID, "electric_furnace");
   public static final ResourceLocation COMPRESSOR            = new ResourceLocation(OverpoweredMod.MOD_ID, "compressor");
 
   public static final ResourceLocation DATA_CABLE            = new ResourceLocation(OverpoweredMod.MOD_ID, "data_cable");

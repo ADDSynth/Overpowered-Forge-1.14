@@ -54,13 +54,9 @@ public final class Registers {
       if(Features.platinum_trophy.get()){ game.register(Trophy.platinum); }
     }
     
-    game.register(Wires.wire);
     game.register(Wires.data_cable);
     game.register(Machines.generator);
-    if(Features.energy_storage_container.get()){ game.register(Machines.energy_storage); }
-    if(Features.universal_energy_interface.get()){ game.register(Machines.universal_energy_machine); }
     if(Features.compressor.get()){ game.register(Machines.compressor); }
-    if(Features.electric_furnace.get()){ game.register(Machines.electric_furnace); }
     if(Features.gem_converter.get()){ game.register(Machines.gem_converter); }
     game.register(Machines.inverter);
     if(Features.magic_infuser.get()){ game.register(Machines.magic_infuser); }
@@ -122,8 +118,6 @@ public final class Registers {
     game.register(Init.void_crystal);
     if(Features.null_block.get()){ game.register(OverpoweredMod.registry.getItemBlock(Init.null_block)); }
     
-    game.register(ModItems.power_core);
-    game.register(ModItems.advanced_power_core);
     game.register(ModItems.energized_power_core);
     game.register(ModItems.nullified_power_core);
     game.register(ModItems.energy_grid);
@@ -144,13 +138,9 @@ public final class Registers {
       if(Features.platinum_trophy.get()){ game.register(Trophy.PLATINUM.item_block); }
     }
     
-    game.register(OverpoweredMod.registry.getItemBlock(Wires.wire));
     game.register(OverpoweredMod.registry.getItemBlock(Wires.data_cable));
     game.register(OverpoweredMod.registry.getItemBlock(Machines.generator));
-    if(Features.energy_storage_container.get()){ game.register(OverpoweredMod.registry.getItemBlock(Machines.energy_storage)); }
-    if(Features.universal_energy_interface.get()){ game.register(OverpoweredMod.registry.getItemBlock(Machines.universal_energy_machine)); }
     if(Features.compressor.get()){       game.register(OverpoweredMod.registry.getItemBlock(Machines.compressor)); }
-    if(Features.electric_furnace.get()){ game.register(OverpoweredMod.registry.getItemBlock(Machines.electric_furnace)); }
     if(Features.gem_converter.get()){    game.register(OverpoweredMod.registry.getItemBlock(Machines.gem_converter)); }
     game.register(OverpoweredMod.registry.getItemBlock(Machines.inverter));
     if(Features.magic_infuser.get()){    game.register(OverpoweredMod.registry.getItemBlock(Machines.magic_infuser)); }
@@ -222,12 +212,8 @@ public final class Registers {
     */
     final IForgeRegistry<TileEntityType<?>> game = event.getRegistry();
 
-    RegistryUtil.register(game, Tiles.ENERGY_WIRE,                Names.ENERGY_WIRE);
     RegistryUtil.register(game, Tiles.GENERATOR,                  Names.GENERATOR);
-    RegistryUtil.register(game, Tiles.ENERGY_CONTAINER,           Names.ENERGY_STORAGE);
-    RegistryUtil.register(game, Tiles.UNIVERSAL_ENERGY_INTERFACE, Names.UNIVERSAL_ENERGY_INTERFACE);
     RegistryUtil.register(game, Tiles.COMPRESSOR,                 Names.COMPRESSOR);
-    RegistryUtil.register(game, Tiles.ELECTRIC_FURNACE,           Names.ELECTRIC_FURNACE);
     RegistryUtil.register(game, Tiles.GEM_CONVERTER,              Names.GEM_CONVERTER);
     RegistryUtil.register(game, Tiles.INVERTER,                   Names.INVERTER);
     RegistryUtil.register(game, Tiles.MAGIC_INFUSER,              Names.MAGIC_INFUSER);
@@ -252,10 +238,7 @@ public final class Registers {
     final IForgeRegistry<ContainerType<?>> game = event.getRegistry();
     
     RegistryUtil.register(game, Containers.GENERATOR,                  Names.GENERATOR);
-    RegistryUtil.register(game, Containers.ENERGY_STORAGE_CONTAINER,   Names.ENERGY_STORAGE);
-    RegistryUtil.register(game, Containers.UNIVERSAL_ENERGY_INTERFACE, Names.UNIVERSAL_ENERGY_INTERFACE);
     RegistryUtil.register(game, Containers.COMPRESSOR,                 Names.COMPRESSOR);
-    RegistryUtil.register(game, Containers.ELECTRIC_FURNACE,           Names.ELECTRIC_FURNACE);
     RegistryUtil.register(game, Containers.GEM_CONVERTER,              Names.GEM_CONVERTER);
     RegistryUtil.register(game, Containers.INVERTER,                   Names.INVERTER);
     RegistryUtil.register(game, Containers.IDENTIFIER,                 Names.IDENTIFIER);

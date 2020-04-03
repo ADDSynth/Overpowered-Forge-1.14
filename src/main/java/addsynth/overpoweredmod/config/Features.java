@@ -20,10 +20,7 @@ public final class Features {
   public static ForgeConfigSpec.BooleanValue light_block;
   public static ForgeConfigSpec.BooleanValue null_block;
 
-  public static ForgeConfigSpec.BooleanValue energy_storage_container;
-  public static ForgeConfigSpec.BooleanValue universal_energy_interface;
   public static ForgeConfigSpec.BooleanValue compressor;
-  public static ForgeConfigSpec.BooleanValue electric_furnace;
   public static ForgeConfigSpec.BooleanValue gem_converter;
   public static ForgeConfigSpec.BooleanValue magic_infuser;
   public static ForgeConfigSpec.BooleanValue identifier;
@@ -80,11 +77,8 @@ public final class Features {
     builder.pop();
 
     builder.push("Machines");
-    energy_storage_container   = builder.define("Energy Storage Container", true);
-    universal_energy_interface = builder.define("Universal Energy Interface", true);
     compressor                 = builder.comment("If this is disabled, crafting recipes will use ingots instead of plates.")
                                         .define("Compressor", true);
-    electric_furnace           = builder.define("Electric Furnace",         true);
     gem_converter              = builder.define("Gem Converter",            true);
     magic_infuser              = builder.define("Magic Infuser",            true);
     identifier                 = builder.define("Identifier",               true);

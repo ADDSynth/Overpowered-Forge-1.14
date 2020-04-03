@@ -1,9 +1,6 @@
 package addsynth.overpoweredmod.registers;
 
 import addsynth.energy.gameplay.compressor.ContainerCompressor;
-import addsynth.energy.gameplay.electric_furnace.ContainerElectricFurnace;
-import addsynth.energy.gameplay.energy_storage.ContainerEnergyStorage;
-import addsynth.energy.gameplay.universal_energy_interface.ContainerUniversalInterface;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.ContainerOreRefinery;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.ContainerCrystalGenerator;
@@ -28,17 +25,8 @@ public final class Containers {
   public static final ContainerType<ContainerGenerator> GENERATOR =
     new ContainerType<>((IContainerFactory<ContainerGenerator>)ContainerGenerator::new);
 
-  public static final ContainerType<ContainerEnergyStorage> ENERGY_STORAGE_CONTAINER =
-    new ContainerType<>((IContainerFactory<ContainerEnergyStorage>)ContainerEnergyStorage::new);
-
-  public static final ContainerType<ContainerUniversalInterface> UNIVERSAL_ENERGY_INTERFACE =
-    new ContainerType<>((IContainerFactory<ContainerUniversalInterface>)ContainerUniversalInterface::new);
-
   public static final ContainerType<ContainerCompressor> COMPRESSOR =
     new ContainerType<>((IContainerFactory<ContainerCompressor>)ContainerCompressor::new);
-
-  public static final ContainerType<ContainerElectricFurnace> ELECTRIC_FURNACE =
-    new ContainerType<>((IContainerFactory<ContainerElectricFurnace>)ContainerElectricFurnace::new);
 
   public static final ContainerType<ContainerInverter> INVERTER =
     new ContainerType<>((IContainerFactory<ContainerInverter>)ContainerInverter::new);

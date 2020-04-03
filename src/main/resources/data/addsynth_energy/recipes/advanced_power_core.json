@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "bpb",
+    " b "
+  ],
+  "key": {
+    "p": {
+      "item": "addsynth_energy:power_core"
+    },
+    "b": {
+      "tag": "forge:gems/lapis"
+    }
+  },
+  "result": {
+    "item": "addsynth_energy:advanced_power_core"
+  }
+}

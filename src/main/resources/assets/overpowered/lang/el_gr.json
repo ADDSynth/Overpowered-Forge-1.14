@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "μηδενικό φτυάρι",
 "item.overpowered.void_hoe": "σκοτεινή σκαπάνη",
 
-"item.overpowered.power_core": "πυρήνα ισχύος",
-"item.overpowered.advanced_power_core": "Προηγμένος πυρήνας ισχύος",
 "item.overpowered.energized_power_core": "πυρήνα ενέργειας",
 "item.overpowered.nullified_power_core": "πυρήνα αρνητικής ισχύος",
 "item.overpowered.energy_grid": "Ενεργειακό δίκτυο",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "Πυρήνα σύντηξης",
 "item.overpowered.dimensional_anchor": "Διαστατική άγκυρα",
 
-"block.overpowered.energy_wire": "Ενεργειακό καλώδιο",
 "block.overpowered.data_cable": "Καλώδιο δεδομένων",
 
 "block.overpowered.generator": "Διανομέας Ενέργειας",
-"block.overpowered.energy_storage": "Συσκευασία αποθήκευσης ενέργειας",
-"block.overpowered.universal_energy_interface": "Παγκόσμια ενεργειακή διασύνδεση",
 
 "block.overpowered.compressor": "Συμπιεστής",
-"block.overpowered.electric_furnace": "Ηλεκτρικός φούρνος",
 "block.overpowered.gem_converter": "μετατροπέας πολύτιμων λίθων",
 "block.overpowered.inverter": "Αντιστροφέας",
 "block.overpowered.magic_infuser": "μαγικός εγχυτήρας",

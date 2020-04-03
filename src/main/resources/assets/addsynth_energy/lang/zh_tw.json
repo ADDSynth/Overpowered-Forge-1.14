@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "電源核心",
+"item.addsynth_energy.advanced_power_core": "高級電源核心",
+
+"block.addsynth_energy.energy_wire": "能源線",
+"block.addsynth_energy.generator": "能量分配器",
+"block.addsynth_energy.energy_storage": "儲能容器",
+"block.addsynth_energy.universal_energy_interface": "通用能量接口",
+"block.addsynth_energy.electric_furnace": "電爐"
+}

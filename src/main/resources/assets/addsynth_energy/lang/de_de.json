@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "Leistungskern",
+"item.addsynth_energy.advanced_power_core": "fortschrittlicher Stromkern",
+
+"block.addsynth_energy.energy_wire": "Energiedraht",
+"block.addsynth_energy.generator": "Energieverteiler",
+"block.addsynth_energy.energy_storage": "Energiespeicherbehälter",
+"block.addsynth_energy.universal_energy_interface": "Energie Schnittstelle Maschine",
+"block.addsynth_energy.electric_furnace": "Elektroofen"
+}

@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "파워 코어",
+"item.addsynth_energy.advanced_power_core": "고급 전원 코어",
+
+"block.addsynth_energy.energy_wire": "에너지 와이어",
+"block.addsynth_energy.generator": "에너지 발생기",
+"block.addsynth_energy.energy_storage": "에너지 저장 용기",
+"block.addsynth_energy.universal_energy_interface": "유니버설 에너지 인터페이스",
+"block.addsynth_energy.electric_furnace": "전기로"
+}

@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "هسته قدرت",
+"item.addsynth_energy.advanced_power_core": "هسته قدرت پیشرفته",
+
+"block.addsynth_energy.energy_wire": "سیم برق",
+"block.addsynth_energy.generator": "توزیع کننده انرژی",
+"block.addsynth_energy.energy_storage": "مخزن ذخیره انرژی",
+"block.addsynth_energy.universal_energy_interface": "رابط انرژی جهانی",
+"block.addsynth_energy.electric_furnace": "کوره الکتریکی"
+}

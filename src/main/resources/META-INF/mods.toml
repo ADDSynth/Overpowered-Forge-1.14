@@ -71,6 +71,34 @@ description='''
     side="BOTH"
 
 [[mods]]
+modId="addsynth_energy"
+version="1.0"
+displayName="ADDSynth Energy"
+displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/minecraft_mods.html"
+credits="Mojang, and the Forge Development Team"
+authors="ADDSynth"
+description="Library by ADDSynth, for ADDSynth's mods. Adds Energy Wire, a Generator, an Electric Furnace, and the Universal Energy Interface."
+[[dependencies.overpowered]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[28.1.56,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.overpowered]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.4]"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.overpowered]]
+    modId="addsynthcore"
+    mandatory=true
+    versionRange="[1,)"
+    ordering="BEFORE"
+    side="BOTH"
+
+
+[[mods]]
 modId="overpowered" #mandatory
 version="1.2.2" #mandatory
 displayName="Overpowered" #mandatory
@@ -97,6 +125,12 @@ description='''
     side="BOTH"
 [[dependencies.overpowered]]
     modId="addsynthcore"
+    mandatory=true
+    versionRange="[1,)"
+    ordering="BEFORE"
+    side="BOTH"
+[[dependencies.overpowered]]
+    modId="addsynth_energy"
     mandatory=true
     versionRange="[1,)"
     ordering="BEFORE"

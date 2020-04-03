@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "πυρήνα ισχύος",
+"item.addsynth_energy.advanced_power_core": "Προηγμένος πυρήνας ισχύος",
+
+"block.addsynth_energy.energy_wire": "Ενεργειακό καλώδιο",
+"block.addsynth_energy.generator": "Διανομέας Ενέργειας",
+"block.addsynth_energy.energy_storage": "Συσκευασία αποθήκευσης ενέργειας",
+"block.addsynth_energy.universal_energy_interface": "Παγκόσμια ενεργειακή διασύνδεση",
+"block.addsynth_energy.electric_furnace": "Ηλεκτρικός φούρνος"
+}

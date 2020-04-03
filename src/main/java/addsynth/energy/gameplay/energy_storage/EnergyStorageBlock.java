@@ -3,9 +3,8 @@ package addsynth.energy.gameplay.energy_storage;
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.util.MinecraftUtility;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.blocks.MachineBlock;
-import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.client.util.ITooltipFlag;
@@ -28,7 +27,7 @@ public final class EnergyStorageBlock extends MachineBlock {
 
   public EnergyStorageBlock(final String name){
     super(SoundType.GLASS);
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
+    ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
   }
 
   @Override

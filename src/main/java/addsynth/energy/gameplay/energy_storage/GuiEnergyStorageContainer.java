@@ -1,10 +1,10 @@
 package addsynth.energy.gameplay.energy_storage;
 
 import addsynth.core.gui.objects.ProgressBar;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.tiles.TileEnergyBattery;
-import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -20,7 +20,7 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<ContainerEner
   private final ProgressBar energy_bar = new ProgressBar(9,48,174,17,9,95);
 
   public GuiEnergyStorageContainer(final ContainerEnergyStorage container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/energy_storage.png"));
+    super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/energy_storage.png"));
     this.tile = container.getTileEntity();
     this.xSize = 190;
     this.ySize = 83;

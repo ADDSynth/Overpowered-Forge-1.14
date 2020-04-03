@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "Güç çekirdeği",
+"item.addsynth_energy.advanced_power_core": "Gelişmiş Güç Çekirdeği",
+
+"block.addsynth_energy.energy_wire": "Enerji teli",
+"block.addsynth_energy.generator": "Enerji Dağıtıcı",
+"block.addsynth_energy.energy_storage": "Enerji Depolama Modülü",
+"block.addsynth_energy.universal_energy_interface": "Evrensel enerji arayüzü",
+"block.addsynth_energy.electric_furnace": "Elektrikli fırın"
+}

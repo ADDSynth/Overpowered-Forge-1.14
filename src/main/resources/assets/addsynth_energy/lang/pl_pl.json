@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "Rdzeń zasilający",
+"item.addsynth_energy.advanced_power_core": "Zaawansowany rdzeń zasilania",
+
+"block.addsynth_energy.energy_wire": "Przewód energetyczny",
+"block.addsynth_energy.generator": "Dystrybutor energii",
+"block.addsynth_energy.energy_storage": "Pojemnik do przechowywania energii",
+"block.addsynth_energy.universal_energy_interface": "Uniwersalny interfejs energetyczny",
+"block.addsynth_energy.electric_furnace": "Piec elektryczny"
+}

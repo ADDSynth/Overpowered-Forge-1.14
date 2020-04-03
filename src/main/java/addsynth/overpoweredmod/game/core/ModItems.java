@@ -13,8 +13,6 @@ public final class ModItems {
     Debug.log_setup_info("Begin loading Items class...");
   }
 
-  public static final Item            power_core               = new OverpoweredItem("power_core");
-  public static final Item            advanced_power_core      = new OverpoweredItem("advanced_power_core");
   public static final Item            energized_power_core     = new OverpoweredItem("energized_power_core");
   public static final Item            nullified_power_core     = new OverpoweredItem("nullified_power_core");
   public static final Item            energy_grid              = new OverpoweredItem("energy_grid");

@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end":   "addsynth_energy:blocks/universal_energy_interface/default_machine_texture",
+        "side":  "addsynth_energy:blocks/universal_energy_interface/universal_energy_interface"
+    }
+}

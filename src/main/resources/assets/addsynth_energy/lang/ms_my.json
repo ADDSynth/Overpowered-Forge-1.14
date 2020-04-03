@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "Kuasa Teras",
+"item.addsynth_energy.advanced_power_core": "Teras Kuasa Lanjutan",
+
+"block.addsynth_energy.energy_wire": "wayar tenaga",
+"block.addsynth_energy.generator": "Pengedar Tenaga",
+"block.addsynth_energy.energy_storage": "Bekas Penyimpanan Tenaga",
+"block.addsynth_energy.universal_energy_interface": "antara muka tenaga sejagat",
+"block.addsynth_energy.electric_furnace": "Relau Elektrik"
+}

@@ -2,9 +2,9 @@ package addsynth.energy.gameplay.universal_energy_interface;
 
 import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
-import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.game.NetworkHandler;
+import addsynth.energy.registers.NetworkHandler;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -19,7 +19,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUn
   private static final int line_2 = 41;
 
   public GuiUniversalEnergyInterface(final ContainerUniversalInterface container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/universal_energy_interface.png"));
+    super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/universal_energy_interface.png"));
     this.tile = container.getTileEntity();
     this.ySize = 60;
   }

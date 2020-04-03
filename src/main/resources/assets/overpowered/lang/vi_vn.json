@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "xẻng tối",
 "item.overpowered.void_hoe": "cuốc tối",
 
-"item.overpowered.power_core": "Cốt lõi sức mạnh",
-"item.overpowered.advanced_power_core": "Lõi điện tiên tiến",
 "item.overpowered.energized_power_core": "Lõi năng lượng",
 "item.overpowered.nullified_power_core": "lõi điện âm",
 "item.overpowered.energy_grid": "Lưới năng lượng",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "lõi nhiệt hạch",
 "item.overpowered.dimensional_anchor": "Neo chiều",
 
-"block.overpowered.energy_wire": "Dây năng lượng",
 "block.overpowered.data_cable": "Cáp dữ liệu",
 
 "block.overpowered.generator": "Nhà phân phối năng lượng",
-"block.overpowered.energy_storage": "máy lưu trữ năng lượng",
-"block.overpowered.universal_energy_interface": "Giao diện năng lượng toàn cầu",
 
 "block.overpowered.compressor": "Máy nén",
-"block.overpowered.electric_furnace": "Lò sưởi điện",
 "block.overpowered.gem_converter": "Bộ chuyển đổi đá quý",
 "block.overpowered.inverter": "Biến tần",
 "block.overpowered.magic_infuser": "khai thác ma thuật",

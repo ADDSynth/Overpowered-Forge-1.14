@@ -16,7 +16,7 @@
       "item": "overpowered:beam_emitter"
     },
     "w": {
-      "item": "overpowered:energy_wire"
+      "item": "addsynth_energy:energy_wire"
     }
   },
   "result": {

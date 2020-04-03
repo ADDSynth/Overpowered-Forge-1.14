@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "अंधेरा फावड़ा",
 "item.overpowered.void_hoe": "अंधेरे बागवानी उपकरण",
 
-"item.overpowered.power_core": "पावर मॉड्यूल",
-"item.overpowered.advanced_power_core": "उन्नत पावर कोर",
 "item.overpowered.energized_power_core": "ऊर्जावान पावर कोर",
 "item.overpowered.nullified_power_core": "नलिफाइड पावर कोर",
 "item.overpowered.energy_grid": "ऊर्जा ग्रिड",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "फ्यूजन कोर",
 "item.overpowered.dimensional_anchor": "आयामी एंकर",
 
-"block.overpowered.energy_wire": "ऊर्जा तार",
 "block.overpowered.data_cable": "डेटा केबल",
 
 "block.overpowered.generator": "ऊर्जा वितरक",
-"block.overpowered.energy_storage": "ऊर्जा भंडारण मशीन",
-"block.overpowered.universal_energy_interface": "यूनिवर्सल एनर्जी इंटरफेस",
 
 "block.overpowered.compressor": "कंप्रेसर",
-"block.overpowered.electric_furnace": "विद्युत भट्ठी",
 "block.overpowered.gem_converter": "जेम कनवर्टर",
 "block.overpowered.inverter": "पलटनेवाला",
 "block.overpowered.magic_infuser": "जादू इन्फूसर",

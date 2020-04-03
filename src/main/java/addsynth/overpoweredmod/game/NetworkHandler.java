@@ -1,7 +1,5 @@
 package addsynth.overpoweredmod.game;
 
-import addsynth.energy.gameplay.universal_energy_interface.CycleTransferModeMessage;
-import addsynth.energy.network.server_messages.*;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.machines.gem_converter.CycleGemConverterMessage;
@@ -53,28 +51,16 @@ public final class NetworkHandler {
       GeneratePortalMessage::handle
     );
     INSTANCE.registerMessage(4,
-      SwitchMachineMessage.class,
-      SwitchMachineMessage::encode,
-      SwitchMachineMessage::decode,
-      SwitchMachineMessage::handle
-    );
-    INSTANCE.registerMessage(5,
       SyncPortalDataMessage.class,
       SyncPortalDataMessage::encode,
       SyncPortalDataMessage::decode,
       SyncPortalDataMessage::handle
     );
-    INSTANCE.registerMessage(6,
+    INSTANCE.registerMessage(5,
       ToggleLaserShutoffMessage.class,
       ToggleLaserShutoffMessage::encode,
       ToggleLaserShutoffMessage::decode,
       ToggleLaserShutoffMessage::handle
-    );
-    INSTANCE.registerMessage(7,
-      CycleTransferModeMessage.class,
-      CycleTransferModeMessage::encode,
-      CycleTransferModeMessage::decode,
-      CycleTransferModeMessage::handle
     );
 
     Debug.log_setup_info("Finished Registering Network Messages.");

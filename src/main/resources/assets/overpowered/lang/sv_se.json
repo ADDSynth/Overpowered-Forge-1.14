@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "mörk Skyffel",
 "item.overpowered.void_hoe": "mörkt trädgårdsredskap",
 
-"item.overpowered.power_core": "kraftkärna",
-"item.overpowered.advanced_power_core": "avancerad kraftkärna",
 "item.overpowered.energized_power_core": "Energierad kraftkärna",
 "item.overpowered.nullified_power_core": "negativ kraftkärna",
 "item.overpowered.energy_grid": "Energistöd",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "fusionskärna",
 "item.overpowered.dimensional_anchor": "Dimensionellt ankare",
 
-"block.overpowered.energy_wire": "energitråd",
 "block.overpowered.data_cable": "Datakabel",
 
 "block.overpowered.generator": "energidistributör",
-"block.overpowered.energy_storage": "Energilagringsbehållare",
-"block.overpowered.universal_energy_interface": "universellt energi gränssnitt",
 
 "block.overpowered.compressor": "Kompressor",
-"block.overpowered.electric_furnace": "Elektrisk ugn",
 "block.overpowered.gem_converter": "pärlaomvandlare",
 "block.overpowered.inverter": "Inverter",
 "block.overpowered.magic_infuser": "magiska extraktor",

@@ -9,9 +9,6 @@ import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.RecipeUtil;
 import addsynth.core.worldgen.OreGenerator;
 import addsynth.energy.gameplay.compressor.GuiCompressor;
-import addsynth.energy.gameplay.electric_furnace.GuiElectricFurnace;
-import addsynth.energy.gameplay.energy_storage.GuiEnergyStorageContainer;
-import addsynth.energy.gameplay.universal_energy_interface.GuiUniversalEnergyInterface;
 // import addsynth.overpoweredmod.assets.Achievements;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
@@ -138,10 +135,7 @@ public class OverpoweredMod {
 
   private static final void register_guis(){
     ScreenManager.registerFactory(Containers.GENERATOR,                  GuiGenerator::new);
-    ScreenManager.registerFactory(Containers.ENERGY_STORAGE_CONTAINER,   GuiEnergyStorageContainer::new);
-    ScreenManager.registerFactory(Containers.UNIVERSAL_ENERGY_INTERFACE, GuiUniversalEnergyInterface::new);
     ScreenManager.registerFactory(Containers.COMPRESSOR,                 GuiCompressor::new);
-    ScreenManager.registerFactory(Containers.ELECTRIC_FURNACE,           GuiElectricFurnace::new);
     ScreenManager.registerFactory(Containers.GEM_CONVERTER,              GuiGemConverter::new);
     ScreenManager.registerFactory(Containers.INVERTER,                   GuiInverter::new);
     ScreenManager.registerFactory(Containers.MAGIC_INFUSER,              GuiMagicInfuser::new);
@@ -160,5 +154,6 @@ public class OverpoweredMod {
 
   // TODO: add item_explosion command in Overpowered version 1.4.
   //       also add a zombie_raid command.
+  //       also add bat blackout command.
 
 }

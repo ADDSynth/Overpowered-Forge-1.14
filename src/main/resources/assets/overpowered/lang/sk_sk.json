@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "tmavá lopata",
 "item.overpowered.void_hoe": "tmavej motyky",
 
-"item.overpowered.power_core": "výkonové jadro",
-"item.overpowered.advanced_power_core": "pokročilé jadro výkonu",
 "item.overpowered.energized_power_core": "Energizované jadro výkonu",
 "item.overpowered.nullified_power_core": "záporné napájacie jadro",
 "item.overpowered.energy_grid": "Energetická sieť",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "jadro fúzie",
 "item.overpowered.dimensional_anchor": "Rozmerová kotva",
 
-"block.overpowered.energy_wire": "Energický drôt",
 "block.overpowered.data_cable": "Dátový kábel",
 
 "block.overpowered.generator": "Distribútor energie",
-"block.overpowered.energy_storage": "Modul na ukladanie energie",
-"block.overpowered.universal_energy_interface": "Univerzálne energetické rozhranie",
 
 "block.overpowered.compressor": "kompresor",
-"block.overpowered.electric_furnace": "Elektrická pec",
 "block.overpowered.gem_converter": "drahokam konvertor",
 "block.overpowered.inverter": "stroj inverzie",
 "block.overpowered.magic_infuser": "magický extraktor",

@@ -10,7 +10,7 @@
       "tag": "forge:plates/tin"
     },
     "w": {
-      "item": "overpowered:energy_wire"
+      "item": "addsynth_energy:energy_wire"
     },
     "e": {
       "item": "overpowered:energized_power_core"

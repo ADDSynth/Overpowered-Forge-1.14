@@ -10,10 +10,10 @@
       "tag": "forge:ingots/iron"
     },
     "p": {
-      "item": "overpowered:power_core"
+      "item": "addsynth_energy:power_core"
     },
     "w": {
-      "item": "overpowered:energy_wire"
+      "item": "addsynth_energy:energy_wire"
     },
     "f": {
       "item": "minecraft:furnace"

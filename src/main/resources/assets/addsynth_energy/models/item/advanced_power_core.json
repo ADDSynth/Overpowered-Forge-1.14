@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "addsynth_energy:items/advanced_power_core"
+  }
+}

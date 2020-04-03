@@ -1,9 +1,6 @@
 package addsynth.overpoweredmod.game.core;
 
 import addsynth.energy.gameplay.compressor.Compressor;
-import addsynth.energy.gameplay.electric_furnace.ElectricFurnace;
-import addsynth.energy.gameplay.energy_storage.EnergyStorageBlock;
-import addsynth.energy.gameplay.universal_energy_interface.UniversalEnergyBlock;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.AdvancedOreRefinery;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.CrystalMatterGenerator;
@@ -28,12 +25,9 @@ public final class Machines {
   }
 
   public static final Generator               generator                = new Generator("generator");
-  public static final EnergyStorageBlock      energy_storage           = new EnergyStorageBlock("energy_storage");
-  public static final UniversalEnergyBlock    universal_energy_machine = new UniversalEnergyBlock("universal_energy_interface");
   
   
   public static final Compressor              compressor               = new Compressor("compressor");
-  public static final ElectricFurnace         electric_furnace         = new ElectricFurnace("electric_furnace");
   public static final GemConverter            gem_converter            = new GemConverter("gem_converter");
   public static final Inverter                inverter                 = new Inverter("inverter");
   public static final MagicInfuser            magic_infuser            = new MagicInfuser("magic_infuser");

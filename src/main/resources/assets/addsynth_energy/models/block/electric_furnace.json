@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "addsynth_energy:blocks/electric_furnace/electric_furnace_top_and_bottom",
+        "front": "addsynth_energy:blocks/electric_furnace/electric_furnace_front",
+        "side": "addsynth_energy:blocks/electric_furnace/electric_furnace_side"
+    }
+}

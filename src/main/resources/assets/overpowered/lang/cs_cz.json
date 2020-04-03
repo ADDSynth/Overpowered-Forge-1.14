@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "negativní lopata",
 "item.overpowered.void_hoe": "negativní motyka",
 
-"item.overpowered.power_core": "Napájecí jádro",
-"item.overpowered.advanced_power_core": "Pokročilé jádro výkonu",
 "item.overpowered.energized_power_core": "Energizované jádro výkonu",
 "item.overpowered.nullified_power_core": "záporné jádro výkonu",
 "item.overpowered.energy_grid": "Energetická rozvodná síť",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "fúzního jádra",
 "item.overpowered.dimensional_anchor": "Rozměrová kotva",
 
-"block.overpowered.energy_wire": "Energetický vodič",
 "block.overpowered.data_cable": "Datový kabel",
 
 "block.overpowered.generator": "výkonový generátor",
-"block.overpowered.energy_storage": "Kontejner pro skladování energie",
-"block.overpowered.universal_energy_interface": "Univerzální energetické rozhraní",
 
 "block.overpowered.compressor": "Kompresor",
-"block.overpowered.electric_furnace": "Elektrické pece",
 "block.overpowered.gem_converter": "konvertor drahokamů",
 "block.overpowered.inverter": "Měnič",
 "block.overpowered.magic_infuser": "kouzelný extraktor",

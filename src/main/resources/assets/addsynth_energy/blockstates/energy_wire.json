@@ -1,0 +1,23 @@
+{
+  "multipart": [
+    { "apply": { "model": "addsynth_energy:block/energy_wire_base" }},
+    { "when": { "west": "true" },
+      "apply": { "model": "addsynth_energy:block/energy_wire_left" }
+    },
+    { "when": { "north": "true" },
+      "apply": { "model": "addsynth_energy:block/energy_wire_left", "y": 90 }
+    },
+    { "when": { "east": "true" },
+      "apply": { "model": "addsynth_energy:block/energy_wire_left", "y": 180 }
+    },
+    { "when": { "down": "true" },
+      "apply": { "model": "addsynth_energy:block/energy_wire_up" }
+    },
+    { "when": { "south": "true" },
+      "apply": { "model": "addsynth_energy:block/energy_wire_up", "x": 90 }
+    },
+    { "when": { "up": "true" },
+      "apply": { "model": "addsynth_energy:block/energy_wire_up", "x": 180 }
+    }
+  ]
+}

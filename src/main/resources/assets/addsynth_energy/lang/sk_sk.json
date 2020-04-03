@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "výkonové jadro",
+"item.addsynth_energy.advanced_power_core": "pokročilé jadro výkonu",
+
+"block.addsynth_energy.energy_wire": "Energický drôt",
+"block.addsynth_energy.generator": "Distribútor energie",
+"block.addsynth_energy.energy_storage": "Modul na ukladanie energie",
+"block.addsynth_energy.universal_energy_interface": "Univerzálne energetické rozhranie",
+"block.addsynth_energy.electric_furnace": "Elektrická pec"
+}

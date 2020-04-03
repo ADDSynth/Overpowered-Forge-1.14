@@ -3,9 +3,8 @@ package addsynth.energy.gameplay.electric_furnace;
 import javax.annotation.Nullable;
 import addsynth.core.util.RecipeUtil;
 import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.registers.Tiles;
 import addsynth.energy.tiles.machines.PassiveMachine;
-import addsynth.overpoweredmod.config.Values;
-import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -21,7 +20,7 @@ public final class TileElectricFurnace extends PassiveMachine implements INamedC
   private ItemStack result;
 
   public TileElectricFurnace(){
-    super(Tiles.ELECTRIC_FURNACE, 1, get_filter(), 1, new CustomEnergyStorage(Values.electric_furnace_required_energy.get()), Values.electric_furnace_work_time.get());
+    super(Tiles.ELECTRIC_FURNACE, 1, get_filter(), 1, new CustomEnergyStorage(1000), 200);
   }
 
   public static final Item[] get_filter(){

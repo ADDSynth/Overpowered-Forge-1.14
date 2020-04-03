@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "消極鏟",
 "item.overpowered.void_hoe": "負鋤頭",
 
-"item.overpowered.power_core": "電源核心",
-"item.overpowered.advanced_power_core": "高級電源核心",
 "item.overpowered.energized_power_core": "能源核心",
 "item.overpowered.nullified_power_core": "無效的核心",
 "item.overpowered.energy_grid": "能源網",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "融合核心",
 "item.overpowered.dimensional_anchor": "尺寸錨",
 
-"block.overpowered.energy_wire": "能源線",
 "block.overpowered.data_cable": "數據線",
 
 "block.overpowered.generator": "能量分配器",
-"block.overpowered.energy_storage": "儲能容器",
-"block.overpowered.universal_energy_interface": "通用能量接口",
 
 "block.overpowered.compressor": "壓縮機",
-"block.overpowered.electric_furnace": "電爐",
 "block.overpowered.gem_converter": "寶石轉換器",
 "block.overpowered.inverter": "逆變器",
 "block.overpowered.magic_infuser": "魔術提取器",

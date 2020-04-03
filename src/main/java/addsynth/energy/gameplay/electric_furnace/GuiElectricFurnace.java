@@ -1,8 +1,8 @@
 package addsynth.energy.gameplay.electric_furnace;
 
 import addsynth.core.gui.objects.ProgressBar;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
-import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -36,7 +36,7 @@ public final class GuiElectricFurnace extends GuiEnergyBase<ContainerElectricFur
   private static final int time_left_y = 78;
 
   public GuiElectricFurnace(final ContainerElectricFurnace container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/electric_furnace.png"));
+    super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/electric_furnace.png"));
     this.tile = container.getTileEntity();
     this.ySize = 172;
   }

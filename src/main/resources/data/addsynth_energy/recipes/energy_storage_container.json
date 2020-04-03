@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gwg",
+    "wew",
+    "gwg"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:glass"
+    },
+    "w": {
+      "item": "addsynth_energy:energy_wire"
+    },
+    "e": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "addsynth_energy:energy_storage"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "texture": "addsynth_energy:blocks/energy_wire"
+  },
+  "display": {
+    "gui": {
+        "rotation": [ 30, 225, 0 ],
+        "translation": [ 0, 0, 0],
+        "scale":[ 1.0, 1.0, 1.0 ]
+    },
+    "ground": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 3, 0],
+        "scale":[ 0.75, 0.75, 0.75 ]
+    },
+    "fixed": {
+        "rotation": [ 0, 0, 0 ],
+        "translation": [ 0, 0, 0],
+        "scale":[ 1.0, 1.0, 1.0 ]
+    }
+  },
+  "elements": [
+    {
+       "from": [5,0,5],
+       "to": [11,5,11],
+       "shade": false,
+       "faces": {
+         "north": {"texture": "#texture" },
+         "south": {"texture": "#texture" },
+         "east":  {"texture": "#texture" },
+         "west":  {"texture": "#texture" },
+         "up":    {"texture": "#texture" },
+         "down":  {"texture": "#texture" }
+       }
+    }
+  ]
+}

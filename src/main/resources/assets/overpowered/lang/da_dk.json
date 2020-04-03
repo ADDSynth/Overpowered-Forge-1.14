@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "negativ skovl",
 "item.overpowered.void_hoe": "negativ hakke",
 
-"item.overpowered.power_core": "strømkernen",
-"item.overpowered.advanced_power_core": "avanceret magt kerne",
 "item.overpowered.energized_power_core": "energikraftkernen",
 "item.overpowered.nullified_power_core": "negativ kraftkerne",
 "item.overpowered.energy_grid": "Energi nettet",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "fusionskerne",
 "item.overpowered.dimensional_anchor": "Dimensionelt anker",
 
-"block.overpowered.energy_wire": "Strømkabel",
 "block.overpowered.data_cable": "Datakabel",
 
 "block.overpowered.generator": "Energidistributør",
-"block.overpowered.energy_storage": "Energiladningsbeholder",
-"block.overpowered.universal_energy_interface": "Energikonverter",
 
 "block.overpowered.compressor": "Kompressor",
-"block.overpowered.electric_furnace": "Elektrisk ovn",
 "block.overpowered.gem_converter": "ædelsten konverter",
 "block.overpowered.inverter": "Inverter",
 "block.overpowered.magic_infuser": "magiske ekstraktor",

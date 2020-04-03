@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "kracht kern",
+"item.addsynth_energy.advanced_power_core": "geavanceerde vermogenskern",
+
+"block.addsynth_energy.energy_wire": "Energiedraad",
+"block.addsynth_energy.generator": "Energiedistributeur",
+"block.addsynth_energy.energy_storage": "Energie Opslag",
+"block.addsynth_energy.universal_energy_interface": "Universal Energy Interface",
+"block.addsynth_energy.electric_furnace": "Elektrische oven"
+}

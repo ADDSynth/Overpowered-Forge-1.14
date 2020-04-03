@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "unitate de alimentare",
+"item.addsynth_energy.advanced_power_core": "putere avansată de bază",
+
+"block.addsynth_energy.energy_wire": "cablu de energie",
+"block.addsynth_energy.generator": "Distribuitor de energie",
+"block.addsynth_energy.energy_storage": "mașină de stocare a energiei",
+"block.addsynth_energy.universal_energy_interface": "Interfața energetică universală",
+"block.addsynth_energy.electric_furnace": "Cuptor electric"
+}

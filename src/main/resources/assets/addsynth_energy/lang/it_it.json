@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "nucleo di potenza",
+"item.addsynth_energy.advanced_power_core": "nucleo di potenza avanzato",
+
+"block.addsynth_energy.energy_wire": "Filo di energia",
+"block.addsynth_energy.generator": "Distributore di energia",
+"block.addsynth_energy.energy_storage": "Contenitore di stoccaggio dell'energia",
+"block.addsynth_energy.universal_energy_interface": "Macchina interfaccia energia",
+"block.addsynth_energy.electric_furnace": "Forno elettrico"
+}

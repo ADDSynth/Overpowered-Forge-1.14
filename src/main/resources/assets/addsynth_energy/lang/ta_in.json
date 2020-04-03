@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "பவர் கோர்",
+"item.addsynth_energy.advanced_power_core": "மேம்பட்ட பவர் கோர்",
+
+"block.addsynth_energy.energy_wire": "சக்தி வயர்",
+"block.addsynth_energy.generator": "எரிசக்தி விநியோகிப்பாளர்",
+"block.addsynth_energy.energy_storage": "ஆற்றல் சேமிப்பு கொள்கலன்",
+"block.addsynth_energy.universal_energy_interface": "யுனிவர்சல் எரிசக்தி இடைமுகம்",
+"block.addsynth_energy.electric_furnace": "மின்சார உலை"
+}

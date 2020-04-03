@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "sötét lapát",
 "item.overpowered.void_hoe": "sötét kapa",
 
-"item.overpowered.power_core": "teljesítmény mag",
-"item.overpowered.advanced_power_core": "Fejlett teljesítménymag",
 "item.overpowered.energized_power_core": "energizált teljesítmény mag",
 "item.overpowered.nullified_power_core": "Megszüntetett teljesítmény mag",
 "item.overpowered.energy_grid": "Energiahálózat",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "Fúziós mag",
 "item.overpowered.dimensional_anchor": "Dimenziós horgony",
 
-"block.overpowered.energy_wire": "Energiahuzal",
 "block.overpowered.data_cable": "Adatkábel",
 
 "block.overpowered.generator": "energiaelosztó",
-"block.overpowered.energy_storage": "Energia tároló konténer",
-"block.overpowered.universal_energy_interface": "Univerzális energiainterfész",
 
 "block.overpowered.compressor": "kompresszor",
-"block.overpowered.electric_furnace": "Elektromos kemence",
 "block.overpowered.gem_converter": "gemstone átalakító",
 "block.overpowered.inverter": "Inverter",
 "block.overpowered.magic_infuser": "mágikus infúzió",

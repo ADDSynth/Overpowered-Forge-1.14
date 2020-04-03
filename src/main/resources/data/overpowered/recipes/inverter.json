@@ -16,7 +16,7 @@
       "item": "overpowered:energy_grid"
     },
     "a": {
-      "item": "overpowered:advanced_power_core"
+      "item": "addsynth_energy:advanced_power_core"
     }
   },
   "result": {

@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "இருண்ட திணி",
 "item.overpowered.void_hoe": "இருண்ட தோட்டக்கலை கருவி",
 
-"item.overpowered.power_core": "பவர் கோர்",
-"item.overpowered.advanced_power_core": "மேம்பட்ட பவர் கோர்",
 "item.overpowered.energized_power_core": "ஆற்றல் மையம்",
 "item.overpowered.nullified_power_core": "எதிர்மறை சக்தி மையம்",
 "item.overpowered.energy_grid": "எரிசக்தி கட்டம்",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "ஃப்யூஷன் கோர்",
 "item.overpowered.dimensional_anchor": "பரிமாண ஆங்கர்",
 
-"block.overpowered.energy_wire": "சக்தி வயர்",
 "block.overpowered.data_cable": "தரவு கேபிள்",
 
 "block.overpowered.generator": "எரிசக்தி விநியோகிப்பாளர்",
-"block.overpowered.energy_storage": "ஆற்றல் சேமிப்பு கொள்கலன்",
-"block.overpowered.universal_energy_interface": "யுனிவர்சல் எரிசக்தி இடைமுகம்",
 
 "block.overpowered.compressor": "அமுக்கி",
-"block.overpowered.electric_furnace": "மின்சார உலை",
 "block.overpowered.gem_converter": "ஜெம் மாற்றி",
 "block.overpowered.inverter": "இன்வெர்ட்டர்",
 "block.overpowered.magic_infuser": "மேஜிக் இன்ஃபுஸர்",

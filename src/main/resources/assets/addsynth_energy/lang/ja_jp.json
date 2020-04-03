@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "パワーコア",
+"item.addsynth_energy.advanced_power_core": "高度な電源コア",
+
+"block.addsynth_energy.energy_wire": "エネルギー線",
+"block.addsynth_energy.generator": "エネルギー分配器",
+"block.addsynth_energy.energy_storage": "エネルギー貯蔵容器",
+"block.addsynth_energy.universal_energy_interface": "ユニバーサルエネルギーインタフェース",
+"block.addsynth_energy.electric_furnace": "電気炉"
+}

@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "силовой сердечник",
+"item.addsynth_energy.advanced_power_core": "передовые питания ядра",
+
+"block.addsynth_energy.energy_wire": "Энергетический кабель",
+"block.addsynth_energy.generator": "Распределитель энергии",
+"block.addsynth_energy.energy_storage": "Контейнер для хранения энергии",
+"block.addsynth_energy.universal_energy_interface": "Универсальный энергетический интерфейс",
+"block.addsynth_energy.electric_furnace": "Электрическая печь"
+}

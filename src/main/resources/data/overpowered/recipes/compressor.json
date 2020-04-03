@@ -13,7 +13,7 @@
       "item": "minecraft:piston"
     },
     "c": {
-      "item": "overpowered:power_core"
+      "item": "addsynth_energy:power_core"
     },
     "a": {
       "item": "minecraft:anvil"

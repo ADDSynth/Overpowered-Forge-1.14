@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "مجرفة فارغة",
 "item.overpowered.void_hoe": "فارغة مجرفة",
 
-"item.overpowered.power_core": "مصدر القوة",
-"item.overpowered.advanced_power_core": "المتقدمة السلطة الأساسية",
 "item.overpowered.energized_power_core": "جوهر الطاقة",
 "item.overpowered.nullified_power_core": "نواة الطاقة السلبية",
 "item.overpowered.energy_grid": "شبكة الطاقة",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "الانصهار الأساسية",
 "item.overpowered.dimensional_anchor": "مرساة الأبعاد",
 
-"block.overpowered.energy_wire": "سلك الطاقة",
 "block.overpowered.data_cable": "كابل البيانات",
 
 "block.overpowered.generator": "موزع الطاقة",
-"block.overpowered.energy_storage": "آلة تخزين الطاقة",
-"block.overpowered.universal_energy_interface": "آلة واجهة الطاقة",
 
 "block.overpowered.compressor": "ضاغط",
-"block.overpowered.electric_furnace": "الفرن الكهربائي",
 "block.overpowered.gem_converter": "جوهرة المحول",
 "block.overpowered.inverter": "العاكس",
 "block.overpowered.magic_infuser": "ماجيك إينفوسير",

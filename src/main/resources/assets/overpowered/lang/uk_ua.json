@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "Нульова лопата",
 "item.overpowered.void_hoe": "темний інструмент садівництва",
 
-"item.overpowered.power_core": "живлення ядра",
-"item.overpowered.advanced_power_core": "Розширений блок живлення",
 "item.overpowered.energized_power_core": "Енергетичне ядро",
 "item.overpowered.nullified_power_core": "негативне енергетичне ядро",
 "item.overpowered.energy_grid": "Енергетична сітка",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "ядро синтезу",
 "item.overpowered.dimensional_anchor": "Розмірний якір",
 
-"block.overpowered.energy_wire": "Енергетичний дріт",
 "block.overpowered.data_cable": "Кабель передачі даних",
 
 "block.overpowered.generator": "Розподільник енергії",
-"block.overpowered.energy_storage": "Контейнер для зберігання енергії",
-"block.overpowered.universal_energy_interface": "Універсальний енергетичний інтерфейс",
 
 "block.overpowered.compressor": "Компресор",
-"block.overpowered.electric_furnace": "Електрична піч",
 "block.overpowered.gem_converter": "конвертер дорогоцінного каміння",
 "block.overpowered.inverter": "Інвертора",
 "block.overpowered.magic_infuser": "магія машини",

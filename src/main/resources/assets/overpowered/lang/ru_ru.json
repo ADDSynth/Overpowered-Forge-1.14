@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "Отрицательная лопата",
 "item.overpowered.void_hoe": "Отрицательный мотыга",
 
-"item.overpowered.power_core": "силовой сердечник",
-"item.overpowered.advanced_power_core": "передовые питания ядра",
 "item.overpowered.energized_power_core": "Энергетическое ядро",
 "item.overpowered.nullified_power_core": "Отрицательное силовое ядро",
 "item.overpowered.energy_grid": "Энергетическая сеть",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "сердечник слияния",
 "item.overpowered.dimensional_anchor": "Габаритный анкер",
 
-"block.overpowered.energy_wire": "Энергетический кабель",
 "block.overpowered.data_cable": "Кабель для передачи данных",
 
 "block.overpowered.generator": "Распределитель энергии",
-"block.overpowered.energy_storage": "Контейнер для хранения энергии",
-"block.overpowered.universal_energy_interface": "Универсальный энергетический интерфейс",
 
 "block.overpowered.compressor": "компрессор",
-"block.overpowered.electric_furnace": "Электрическая печь",
 "block.overpowered.gem_converter": "конвертер драгоценных камней",
 "block.overpowered.inverter": "инвертор",
 "block.overpowered.magic_infuser": "Магический инфузор",

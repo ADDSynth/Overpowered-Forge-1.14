@@ -51,8 +51,6 @@
 "item.overpowered.void_shovel": "어두운 삽",
 "item.overpowered.void_hoe": "어두운 괭이",
 
-"item.overpowered.power_core": "파워 코어",
-"item.overpowered.advanced_power_core": "고급 전원 코어",
 "item.overpowered.energized_power_core": "에너지 화 된 전력 코어",
 "item.overpowered.nullified_power_core": "음의 전력 코어",
 "item.overpowered.energy_grid": "에너지 그리드",
@@ -63,15 +61,11 @@
 "item.overpowered.fusion_core": "퓨전 코어",
 "item.overpowered.dimensional_anchor": "차원 앵커",
 
-"block.overpowered.energy_wire": "에너지 와이어",
 "block.overpowered.data_cable": "데이터 케이블",
 
 "block.overpowered.generator": "에너지 발생기",
-"block.overpowered.energy_storage": "에너지 저장 용기",
-"block.overpowered.universal_energy_interface": "유니버설 에너지 인터페이스",
 
 "block.overpowered.compressor": "압축기",
-"block.overpowered.electric_furnace": "전기로",
 "block.overpowered.gem_converter": "보석 변환기",
 "block.overpowered.inverter": "인버터",
 "block.overpowered.magic_infuser": "마술 추출기",

@@ -1,0 +1,12 @@
+﻿{
+"itemGroup.addsynth_energy": "ADDSynth Energy",
+
+"item.addsynth_energy.power_core": "teljesítmény mag",
+"item.addsynth_energy.advanced_power_core": "Fejlett teljesítménymag",
+
+"block.addsynth_energy.energy_wire": "Energiahuzal",
+"block.addsynth_energy.generator": "energiaelosztó",
+"block.addsynth_energy.energy_storage": "Energia tároló konténer",
+"block.addsynth_energy.universal_energy_interface": "Univerzális energiainterfész",
+"block.addsynth_energy.electric_furnace": "Elektromos kemence"
+}

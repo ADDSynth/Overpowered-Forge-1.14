@@ -1,8 +1,0 @@
-{
-    "parent": "block/orientable",
-    "textures": {
-        "top": "overpowered:blocks/machines/electric_furnace_top_and_bottom",
-        "front": "overpowered:blocks/machines/electric_furnace_front",
-        "side": "overpowered:blocks/machines/electric_furnace_side"
-    }
-}
