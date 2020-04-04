@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.inverter;
 import javax.annotation.Nullable;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,7 +21,8 @@ public final class TileInverter extends PassiveMachine implements INamedContaine
   private ItemStack result;
 
   public TileInverter(){
-    super(Tiles.INVERTER,1,input_filter,1,new CustomEnergyStorage(Values.inverter_required_energy.get()),Values.inverter_work_time.get());
+    super(Tiles.INVERTER,1,input_filter,1,new CustomEnergyStorage(
+      MachineValues.inverter_required_energy.get()),MachineValues.inverter_work_time.get());
   }
 
   @Override

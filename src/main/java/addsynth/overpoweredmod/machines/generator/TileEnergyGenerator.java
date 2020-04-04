@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyTransmitter;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,16 +28,16 @@ public final class TileEnergyGenerator extends TileEnergyTransmitter implements 
 
   private final void setGeneratorData(final Item item){
     if(item == Init.energy_crystal){
-      energy.setEnergyLevel(Values.energy_crystal_energy.get());
-      energy.setMaxExtract(Values.energy_crystal_max_extract.get());
+      energy.setEnergyLevel(MachineValues.energy_crystal_energy.get());
+      energy.setMaxExtract(MachineValues.energy_crystal_max_extract.get());
     }
     if(item == Init.energy_crystal_shards){
-      energy.setEnergyLevel(Values.energy_crystal_shards_energy.get());
-      energy.setMaxExtract(Values.energy_crystal_shards_max_extract.get());
+      energy.setEnergyLevel(MachineValues.energy_crystal_shards_energy.get());
+      energy.setMaxExtract(MachineValues.energy_crystal_shards_max_extract.get());
     }
     if(item == OverpoweredMod.registry.getItemBlock(Init.light_block)){
-      energy.setEnergyLevel(Values.light_block_energy.get());
-      energy.setMaxExtract(Values.light_block_max_extract.get());
+      energy.setEnergyLevel(MachineValues.light_block_energy.get());
+      energy.setMaxExtract(MachineValues.light_block_max_extract.get());
     }
   }
 

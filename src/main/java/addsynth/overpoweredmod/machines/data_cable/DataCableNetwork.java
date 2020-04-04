@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.data_cable;
 
 import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.machines.fusion.chamber.TileFusionChamber;
 import addsynth.overpoweredmod.machines.fusion.converter.TileFusionEnergyConverter;
@@ -93,7 +93,7 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
     //   its energy output can be divided amongst multiple Fusion Energy Converter machines.
     // check_singularity_container();
     if(fusion_energy_converters.size() > 0){
-      final int actual_energy = Math.round((float)Values.fusion_energy_output_per_tick.get() / fusion_energy_converters.size());
+      final int actual_energy = Math.round((float)MachineValues.fusion_energy_output_per_tick.get() / fusion_energy_converters.size());
       TileFusionEnergyConverter tile;
       for(BlockPos tile_position : fusion_energy_converters){
         tile = (TileFusionEnergyConverter)world.getTileEntity(tile_position);

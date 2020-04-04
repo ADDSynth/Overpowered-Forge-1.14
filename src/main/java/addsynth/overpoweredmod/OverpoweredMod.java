@@ -76,9 +76,10 @@ public class OverpoweredMod {
       // MAYBE: the two ways to get the mod context can probably be combined/merged, but I don't want to think about that right now.
       //        what exactly is the relationship of FMLJavaModLoadingContext and ModLoadingContext?
   
-      context.registerConfig(ModConfig.Type.COMMON, Config.CONFIG_SPEC,   MOD_NAME+File.separator+"main.toml");
-      context.registerConfig(ModConfig.Type.COMMON, Features.CONFIG_SPEC, MOD_NAME+File.separator+"feature_disable.toml");
-      context.registerConfig(ModConfig.Type.COMMON, Values.CONFIG_SPEC,   MOD_NAME+File.separator+"values.toml");
+      context.registerConfig(ModConfig.Type.COMMON, Config.CONFIG_SPEC,        MOD_NAME+File.separator+"main.toml");
+      context.registerConfig(ModConfig.Type.COMMON, Features.CONFIG_SPEC,      MOD_NAME+File.separator+"feature_disable.toml");
+      context.registerConfig(ModConfig.Type.COMMON, MachineValues.CONFIG_SPEC, MOD_NAME+File.separator+"machine_values.toml");
+      context.registerConfig(ModConfig.Type.COMMON, Values.CONFIG_SPEC,        MOD_NAME+File.separator+"values.toml");
 
       FMLJavaModLoadingContext.get().getModEventBus().addListener(OverpoweredMod::mod_config_event);
 

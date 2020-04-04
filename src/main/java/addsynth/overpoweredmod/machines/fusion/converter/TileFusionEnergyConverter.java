@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyTransmitter;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.machines.data_cable.DataCableNetwork;
 import addsynth.overpoweredmod.machines.data_cable.TileDataCable;
 import addsynth.overpoweredmod.machines.fusion.chamber.TileFusionChamber;
@@ -22,7 +22,7 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
   private boolean valid;
 
   public TileFusionEnergyConverter(){
-    super(Tiles.FUSION_ENERGY_CONVERTER, new CustomEnergyStorage(0,Values.fusion_energy_output_per_tick.get()));
+    super(Tiles.FUSION_ENERGY_CONVERTER, new CustomEnergyStorage(0,MachineValues.fusion_energy_output_per_tick.get()));
   }
 
   @Override

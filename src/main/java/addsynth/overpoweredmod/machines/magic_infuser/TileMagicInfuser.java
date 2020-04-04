@@ -9,7 +9,7 @@ import addsynth.core.util.StringUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.enchantment.Enchantment;
@@ -41,7 +41,7 @@ public final class TileMagicInfuser extends PassiveMachine implements INamedCont
         new SlotData(JavaUtils.combine_arrays(getFilter(), new Item[]{Init.energy_crystal, Init.void_crystal}))
       },
       1,
-      new CustomEnergyStorage(Values.magic_infuser_required_energy.get()),Values.magic_infuser_work_time.get()
+      new CustomEnergyStorage(MachineValues.magic_infuser_required_energy.get()),MachineValues.magic_infuser_work_time.get()
     );
   }
 

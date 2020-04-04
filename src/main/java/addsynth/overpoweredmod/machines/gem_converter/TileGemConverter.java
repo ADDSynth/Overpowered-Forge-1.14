@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 import addsynth.core.material.MaterialsUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,7 +30,8 @@ public final class TileGemConverter extends PassiveMachine implements INamedCont
   }
   
   public TileGemConverter(){
-    super(Tiles.GEM_CONVERTER,1,getFilter(),1,new CustomEnergyStorage(Values.gem_converter_required_energy.get()),Values.gem_converter_work_time.get());
+    super(Tiles.GEM_CONVERTER,1,getFilter(),1,new CustomEnergyStorage(
+      MachineValues.gem_converter_required_energy.get()),MachineValues.gem_converter_work_time.get());
   }
 
   public final void cycle(final boolean direction){

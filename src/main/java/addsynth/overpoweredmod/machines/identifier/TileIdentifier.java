@@ -7,7 +7,7 @@ import addsynth.core.items.ItemUtility;
 import addsynth.core.util.JavaUtils;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Tools;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -31,7 +31,8 @@ public final class TileIdentifier extends PassiveMachine implements INamedContai
   );
 
   public TileIdentifier(){
-    super(Tiles.IDENTIFIER,new SlotData[]{new SlotData(input_filter,1)},0,new CustomEnergyStorage(Values.identifier_required_energy.get()),Values.identifier_work_time.get());
+    super(Tiles.IDENTIFIER,new SlotData[]{new SlotData(input_filter,1)},0,new CustomEnergyStorage(
+      MachineValues.identifier_required_energy.get()),MachineValues.identifier_work_time.get());
   }
 
   @Override

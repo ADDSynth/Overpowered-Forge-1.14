@@ -9,7 +9,7 @@ import addsynth.core.util.MinecraftUtility;
 import addsynth.core.util.NetworkUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.overpoweredmod.assets.Sounds;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
 import addsynth.overpoweredmod.machines.laser.cannon.TileLaser;
@@ -93,8 +93,8 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
    */
   private final void update_energy_requirements(){
     energy.setCapacity(
-      (number_of_lasers * Values.required_energy_per_laser.get()) +
-      (number_of_lasers * laser_distance * Values.required_energy_per_laser_distance.get())
+      (number_of_lasers * MachineValues.required_energy_per_laser.get()) +
+      (number_of_lasers * laser_distance * MachineValues.required_energy_per_laser_distance.get())
     );
   }
 

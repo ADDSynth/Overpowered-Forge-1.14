@@ -7,7 +7,7 @@ import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.WorldUtil;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.TileEnergyReceiver;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
@@ -50,7 +50,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
   }
 
   public TilePortalControlPanel(){
-    super(Tiles.PORTAL_CONTROL_PANEL, 0, null, 0, new CustomEnergyStorage(Values.portal_control_panel_required_energy.get()));
+    super(Tiles.PORTAL_CONTROL_PANEL, 0, null, 0, new CustomEnergyStorage(MachineValues.portal_control_panel_required_energy.get()));
     int i;
     for(i = 0; i < containers; i++){
       portal_items[i] = false;

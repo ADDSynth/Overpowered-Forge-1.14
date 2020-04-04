@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 import javax.annotation.Nullable;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.PassiveMachine;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -25,7 +25,7 @@ public final class TileAdvancedOreRefinery extends PassiveMachine implements INa
 
   public TileAdvancedOreRefinery(){
     super(Tiles.ADVANCED_ORE_REFINERY,1,OreRefineryRecipes.get_input_filter(),1,
-      new CustomEnergyStorage(Values.advanced_ore_refinery_required_energy.get()),Values.advanced_ore_refinery_work_time.get());
+      new CustomEnergyStorage(MachineValues.advanced_ore_refinery_required_energy.get()),MachineValues.advanced_ore_refinery_work_time.get());
   }
 
   @Override

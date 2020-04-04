@@ -4,7 +4,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.tiles.machines.WorkMachine;
-import addsynth.overpoweredmod.config.Values;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,8 +19,8 @@ public final class TileCrystalMatterReplicator extends WorkMachine implements IN
 
   public TileCrystalMatterReplicator(){
     super(Tiles.CRYSTAL_MATTER_REPLICATOR, 0, null, 8,
-      new CustomEnergyStorage(Values.crystal_matter_generator_required_energy.get()),
-      Values.crystal_matter_generator_work_time.get());
+      new CustomEnergyStorage(MachineValues.crystal_matter_generator_required_energy.get()),
+      MachineValues.crystal_matter_generator_work_time.get());
   }
 
   @Override
