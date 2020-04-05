@@ -1,8 +1,9 @@
 {
-  "parent": "block/cube_bottom_top",
+  "parent": "block/orientable_with_bottom",
   "textures": {
-    "bottom":   "overpowered:blocks/machines/default_machine_texture",
-    "top":      "overpowered:blocks/machines/top_texture",
-    "side":     "overpowered:blocks/machines/portal_control_panel"
+    "front":  "overpowered:blocks/machines/portal_control_panel/portal_control_panel_front",
+    "bottom": "overpowered:blocks/machines/portal_control_panel/portal_control_panel_side",
+    "top":    "overpowered:blocks/machines/top_texture",
+    "side":   "overpowered:blocks/machines/portal_control_panel/portal_control_panel_side"
   }
 }

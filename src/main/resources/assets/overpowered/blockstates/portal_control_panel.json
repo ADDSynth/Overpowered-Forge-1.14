@@ -1,5 +1,8 @@
 {
-	"variants": {
-		"": { "model": "overpowered:block/portal_control_panel" }
-	}
+    "variants": {
+        "facing=north": { "model": "overpowered:block/portal_control_panel" },
+        "facing=south": { "model": "overpowered:block/portal_control_panel", "y": 180 },
+        "facing=west":  { "model": "overpowered:block/portal_control_panel", "y": 270 },
+        "facing=east":  { "model": "overpowered:block/portal_control_panel", "y": 90 }
+    }
 }
