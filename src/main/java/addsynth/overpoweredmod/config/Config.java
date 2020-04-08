@@ -3,7 +3,8 @@ package addsynth.overpoweredmod.config;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.tuple.Pair;
-import addsynth.overpoweredmod.blocks.BlackHole;
+import addsynth.core.Constants;
+import addsynth.overpoweredmod.machines.black_hole.TileBlackHole;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class Config {
@@ -16,8 +17,6 @@ public final class Config {
   public static final Config INSTANCE = SPEC_PAIR.getLeft();
   public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
-  private static final byte DEFAULT_BLACK_HOLE_RADIUS = 70;
-  
   public static ForgeConfigSpec.ConfigValue<Integer> unknown_dimension_id;
   public static ForgeConfigSpec.ConfigValue<Integer> weird_biome_id;
 
@@ -37,6 +36,13 @@ public final class Config {
   public static final byte LASER_DAMAGE_NORMAL_DIFFICULTY   = 6; // 3 hearts
   public static final byte LASER_DAMAGE_HARD_DIFFICULTY     = 10; // 5 hearts
   
+  public static final int BLACK_HOLE_PEACEFUL_DIFFICULTY_RADIUS = 30;
+  public static final int BLACK_HOLE_EASY_DIFFICULTY_RADIUS     = 60;
+  public static final int BLACK_HOLE_NORMAL_DIFFICULTY_RADIUS   = 90;
+  public static final int BLACK_HOLE_HARD_DIFFICULTY_RADIUS     = 120;
+  
+  private static final int DEFAULT_BLACK_HOLE_RADIUS = BLACK_HOLE_NORMAL_DIFFICULTY_RADIUS;
+  
   public static ForgeConfigSpec.BooleanValue randomize_black_hole_radius;
   public static ForgeConfigSpec.BooleanValue black_hole_radius_depends_on_world_difficulty;
   public static ForgeConfigSpec.ConfigValue<Integer> black_hole_radius;
@@ -45,12 +51,8 @@ public final class Config {
   public static ForgeConfigSpec.BooleanValue alert_players_of_black_hole;
   public static ForgeConfigSpec.BooleanValue black_holes_erase_bedrock;
   public static ForgeConfigSpec.ConfigValue<List<Integer>> black_hole_dimension_blacklist;
+  public static ForgeConfigSpec.DoubleValue black_hole_max_tick_time;
 
-  public static final int BLACK_HOLE_PEACEFUL_DIFFICULTY_RADIUS = 10;
-  public static final int BLACK_HOLE_EASY_DIFFICULTY_RADIUS     = 30;
-  public static final int BLACK_HOLE_NORMAL_DIFFICULTY_RADIUS   = 50;
-  public static final int BLACK_HOLE_HARD_DIFFICULTY_RADIUS     = 70;
-  
   public static ForgeConfigSpec.BooleanValue drop_for_zombie;
   public static ForgeConfigSpec.BooleanValue drop_for_zombie_villager;
   public static ForgeConfigSpec.BooleanValue drop_for_husk;
@@ -102,7 +104,7 @@ public final class Config {
                                          .defineInRange("Laser Light Amount", 15, 0, 15);
     lasers_set_entities_on_fire = builder.comment("If set to true, Living Entities that are inside Laser Beams will receive fire damage.")
                                          .define("Lasers Set Entities On Fire", true);
-    laser_damage_depends_on_world_difficulty = builder.define("Laser Damage depends on World Difficulty", true); // PRIORITY: Will I still need to set the comment to a null or empty string?
+    laser_damage_depends_on_world_difficulty = builder.define("Laser Damage depends on World Difficulty", true);
     builder.pop();
     
     // Black Hole Config
@@ -112,21 +114,36 @@ public final class Config {
       "If 'Black Hole Radius depends on World Difficulty' is set to true, then Black Holes will deviate from\n"+
       "the predefined value chosen for that difficulty.")
                                             .define("Randomize Black Hole Radius", false);
+
     black_hole_radius_depends_on_world_difficulty = builder.define("Black Hole Radius depends on World Difficulty", false);
-    black_hole_radius              = builder.comment("Defines Black Hole destroy radius. For slow computers, set this to a lower value.")
-                                            .defineInRange("Black Hole radius", DEFAULT_BLACK_HOLE_RADIUS, BlackHole.MIN_RADIUS, BlackHole.MAX_RADIUS);
-    minimum_black_hole_radius      = builder.comment("This value is used if 'Randomize Black Hole radius' is set to true.") // FIX in all versions radius is not capitalized.
-                                            .defineInRange("Minimum Black Hole radius", 20, BlackHole.MIN_RADIUS, BlackHole.MAX_RADIUS);
-    maximum_black_hole_radius      = builder.comment("This value is used if 'Randomize Black Hole radius' is set to true.")
-                                            .defineInRange("Maximum Black Hole radius", DEFAULT_BLACK_HOLE_RADIUS, BlackHole.MIN_RADIUS, BlackHole.MAX_RADIUS);
+
+    black_hole_radius              = builder.defineInRange("Black Hole Radius", DEFAULT_BLACK_HOLE_RADIUS, TileBlackHole.MIN_RADIUS, TileBlackHole.MAX_RADIUS);
+
+    minimum_black_hole_radius      = builder.comment("This value is used if 'Randomize Black Hole Radius' is set to true.")
+                                            .defineInRange("Minimum Black Hole Radius", 20, TileBlackHole.MIN_RADIUS, TileBlackHole.MAX_RADIUS);
+
+    maximum_black_hole_radius      = builder.comment("This value is used if 'Randomize Black Hole Radius' is set to true.")
+                                            .defineInRange("Maximum Black Hole Radius", DEFAULT_BLACK_HOLE_RADIUS, TileBlackHole.MIN_RADIUS, TileBlackHole.MAX_RADIUS);
+
     alert_players_of_black_hole    = builder.comment("If set to true, displays a chat message for all players in that world when a player sets down a Black Hole.")
                                             .define("Alert Players of Black Hole Occurrence", true);
+
     black_holes_erase_bedrock      = builder.comment("Warning: If used in Survival-Only worlds, you will not be able to replace the Bedrock.")
                                             .define("Black Holes erase Bedrock", false);
+
     black_hole_dimension_blacklist = builder.comment(
       "Specify a list of Dimension IDs you don't want the Black Hole to destroy. Placing a Black Hole\n"+
       "in these dimensions will not do anything. By default, the Black Hole is allowed in all dimensions.")
                                             .define("Black Hole Dimension ID Blacklist", new ArrayList<>());
+
+    black_hole_max_tick_time       = builder.comment(
+      "The algorithm the Black Hole uses to erase the world is now spread across multiple ticks. A tick in\n"+
+      "Minecraft occurs every 50 milliseconds. However, the amount of time it takes for your computer to\n"+
+      "process the tick varies depending on your computer and all the stuff that occurs in a tick. This value\n"+
+      "is a percentage of how much of a tick is allocated to the Black Hole algorithm. The algorithm is\n"+
+      "self balancing, meaning it will slow down if it detects the algorithm is taking too long to process in\n"+
+      "a single tick. One block per tick will always be deleted, no matter how low you specify this value.")
+      .defineInRange("Black Hole Max Tick Time", 0.5, (double)1 / Constants.tick_time_in_nanoseconds, 1.0);
     builder.pop();
 
     builder.push("Unidentified Mob Drops");

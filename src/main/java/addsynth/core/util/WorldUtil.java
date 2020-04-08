@@ -1,5 +1,6 @@
 package addsynth.core.util;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -8,6 +9,10 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
 public final class WorldUtil {
+
+  public static final void delete_block(final World world, final BlockPos position){
+    world.setBlockState(position, Blocks.AIR.getDefaultState(), 3);
+  }
 
   /** Spawns an ItemStack using the vanilla method. */
   public static final void spawnItemStack(IWorld world, BlockPos pos, ItemStack stack){

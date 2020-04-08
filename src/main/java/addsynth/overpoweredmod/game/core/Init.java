@@ -1,12 +1,12 @@
 package addsynth.overpoweredmod.game.core;
 
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.blocks.BlackHole;
 import addsynth.overpoweredmod.blocks.IronFrameBlock;
 import addsynth.overpoweredmod.blocks.LightBlock;
 import addsynth.overpoweredmod.blocks.NullBlock;
 import addsynth.overpoweredmod.items.OverpoweredItem;
 import addsynth.overpoweredmod.items.VoidCrystal;
+import addsynth.overpoweredmod.machines.black_hole.BlackHole;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 

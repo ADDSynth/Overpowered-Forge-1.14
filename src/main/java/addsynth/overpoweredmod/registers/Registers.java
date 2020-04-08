@@ -229,6 +229,7 @@ public final class Registers {
     RegistryUtil.register(game, Tiles.ADVANCED_ORE_REFINERY,      Names.ADVANCED_ORE_REFINERY);
     RegistryUtil.register(game, Tiles.FUSION_ENERGY_CONVERTER,    Names.FUSION_CONVERTER);
     RegistryUtil.register(game, Tiles.FUSION_CHAMBER,             Names.FUSION_CHAMBER);
+    RegistryUtil.register(game, Tiles.BLACK_HOLE,                 Names.BLACK_HOLE);
 
     Debug.log_setup_info("Finished registering Tile Entities.");
   }

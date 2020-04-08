@@ -2,11 +2,13 @@ package addsynth.overpoweredmod.registers;
 
 import addsynth.energy.gameplay.compressor.TileCompressor;
 import addsynth.overpoweredmod.Debug;
+import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.TileAdvancedOreRefinery;
+import addsynth.overpoweredmod.machines.black_hole.TileBlackHole;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.TileCrystalMatterReplicator;
 import addsynth.overpoweredmod.machines.data_cable.TileDataCable;
 import addsynth.overpoweredmod.machines.fusion.chamber.TileFusionChamber;
@@ -83,6 +85,9 @@ public final class Tiles {
 
   public static final TileEntityType<TileFusionChamber> FUSION_CHAMBER =
     TileEntityType.Builder.create(TileFusionChamber::new, Machines.fusion_chamber).build(null);
+
+  public static final TileEntityType<TileBlackHole> BLACK_HOLE =
+    TileEntityType.Builder.create(TileBlackHole::new, Init.black_hole).build(null);
 
   static {
     Debug.log_setup_info(Tiles.class.getName()+" class finished loading.");
