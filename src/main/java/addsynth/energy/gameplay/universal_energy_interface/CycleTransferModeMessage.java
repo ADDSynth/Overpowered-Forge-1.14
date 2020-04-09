@@ -29,7 +29,7 @@ public final class CycleTransferModeMessage {
   public static void handle(final CycleTransferModeMessage message, final Supplier<NetworkEvent.Context> context){
     final ServerPlayerEntity player = context.get().getSender();
     if(player != null){
-      final ServerWorld world = player.getServerWorld();
+      final ServerWorld world = player.func_71121_q();
       context.get().enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
           final TileUniversalEnergyTransfer tile = MinecraftUtility.getTileEntity(message.position, world, TileUniversalEnergyTransfer.class);

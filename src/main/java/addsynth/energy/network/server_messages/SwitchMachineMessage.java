@@ -30,7 +30,7 @@ public final class SwitchMachineMessage {
   public static void handle(final SwitchMachineMessage message, final Supplier<NetworkEvent.Context> context){
     final ServerPlayerEntity player = context.get().getSender();
     if(player != null){
-      final ServerWorld world = player.getServerWorld();
+      final ServerWorld world = player.func_71121_q();
       context.get().enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
           final TileEnergyReceiver tile = MinecraftUtility.getTileEntity(message.position, world, TileEnergyReceiver.class);

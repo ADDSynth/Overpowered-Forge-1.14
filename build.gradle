@@ -52,7 +52,7 @@ minecraft {
     // FROM NOW ON!!!
     // Make sure it doesn't go any higher than what Forge's MCP Mappings is set to:
     // https://github.com/MinecraftForge/MinecraftForge/blob/1.14.x/build.gradle#L61
-    mappings channel: 'snapshot', version: '20200106-1.14.3'
+    mappings channel: 'stable', version: '58-1.14.4'
 
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
@@ -69,7 +69,7 @@ minecraft {
 
             // Recommended logging level for the console
             // can be (from least to most) fatal, error, warning, info, debug, or trace
-            property 'forge.logging.console.level', 'debug'
+            property 'forge.logging.console.level', 'info'
 
             mods {
                 examplemod {
@@ -135,7 +135,7 @@ dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.14.4-28.1.56'
+    minecraft 'net.minecraftforge:forge:1.14.4-28.2.1'
 
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"

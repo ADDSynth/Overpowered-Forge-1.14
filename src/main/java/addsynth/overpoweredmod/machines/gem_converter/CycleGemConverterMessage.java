@@ -33,7 +33,7 @@ public final class CycleGemConverterMessage {
     final ServerPlayerEntity player = context.get().getSender();
     if(player != null){
       context.get().enqueueWork(() -> {
-        final ServerWorld world = player.getServerWorld();
+        final ServerWorld world = player.func_71121_q();
         if(world.isAreaLoaded(message.position, 0)){
           final TileGemConverter tile = MinecraftUtility.getTileEntity(message.position, world, TileGemConverter.class);
           if(tile != null){

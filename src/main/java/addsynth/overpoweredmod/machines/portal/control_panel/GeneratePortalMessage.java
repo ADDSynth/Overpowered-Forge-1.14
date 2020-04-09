@@ -30,7 +30,7 @@ public final class GeneratePortalMessage {
     final ServerPlayerEntity player = context.get().getSender();
     if(player != null){
       context.get().enqueueWork(() -> {
-        final ServerWorld world = player.getServerWorld();
+        final ServerWorld world = player.func_71121_q();
         if(world.isAreaLoaded(message.position, 0)){
           final TilePortalControlPanel tile = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
           if(tile != null){
