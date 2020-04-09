@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.portal.control_panel;
 
-import addsynth.core.inventory.container.BaseContainer;
+import addsynth.core.container.BaseContainer;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;

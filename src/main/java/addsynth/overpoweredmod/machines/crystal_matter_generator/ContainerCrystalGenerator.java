@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.crystal_matter_generator;
 
-import addsynth.core.inventory.container.BaseContainer;
-import addsynth.core.inventory.container.slots.OutputSlot;
+import addsynth.core.container.BaseContainer;
+import addsynth.core.container.slots.OutputSlot;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;

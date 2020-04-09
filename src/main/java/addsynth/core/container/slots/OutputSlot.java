@@ -1,4 +1,4 @@
-package addsynth.core.inventory.container.slots;
+package addsynth.core.container.slots;
 
 import javax.annotation.Nonnull;
 import addsynth.core.tiles.TileMachine;

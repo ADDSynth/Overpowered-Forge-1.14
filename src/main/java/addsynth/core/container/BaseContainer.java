@@ -1,4 +1,4 @@
-package addsynth.core.inventory.container;
+package addsynth.core.container;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

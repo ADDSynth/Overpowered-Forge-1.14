@@ -1,6 +1,6 @@
 package addsynth.energy.gameplay.universal_energy_interface;
 
-import addsynth.core.inventory.container.BaseContainer;
+import addsynth.core.container.BaseContainer;
 import addsynth.energy.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;

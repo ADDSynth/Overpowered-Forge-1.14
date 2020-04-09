@@ -1,8 +1,8 @@
 package addsynth.core.gameplay.music_box.gui;
 
+import addsynth.core.container.BaseContainer;
 import addsynth.core.gameplay.Containers;
 import addsynth.core.gameplay.music_box.TileMusicBox;
-import addsynth.core.inventory.container.BaseContainer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
