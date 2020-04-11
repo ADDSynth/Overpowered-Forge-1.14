@@ -78,7 +78,7 @@ public abstract class TileMachine extends TileBase {
   public void onInventoryChanged(){
   }
 
-  public final void drop_inventory(){
+  public void drop_inventory(){
     final double x = (double)pos.getX();
     final double y = (double)pos.getY();
     final double z = (double)pos.getZ();

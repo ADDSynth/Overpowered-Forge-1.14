@@ -123,14 +123,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   public final void update(final TileLaserHousing tile){
     if(tile == first_tile){
       if(tile.getWorld().isRemote == false){
-        boolean block_powered = false;
-        for(BlockPos position : blocks){
-          if(world.isBlockPowered(position)){
-            block_powered = true;
-            break;
-          }
-        }
-        if(block_powered){
+        if(is_redstone_powered()){
           if(activated == false){
             if(lasers.size() > 0 && laser_distance > 0){
               if(energy.isFull()){

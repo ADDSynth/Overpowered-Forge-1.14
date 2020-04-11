@@ -1,5 +1,6 @@
 package addsynth.core;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.util.Direction;
 
 public final class Constants {
@@ -24,7 +25,9 @@ public static final int WEST  = Direction.WEST.ordinal();
 public static final int EAST  = Direction.EAST.ordinal();
 
 @SuppressWarnings("deprecation")
-public static final float block_resistance = net.minecraft.block.Blocks.STONE.getExplosionResistance(); //6.0f; // same as Stone
+public static final float block_resistance = Blocks.STONE.getExplosionResistance(); //6.0f; // same as Stone
+@SuppressWarnings("deprecation")
+public static final float infinite_resistance = Blocks.BEDROCK.getExplosionResistance();
 
 public static final int   sword_damage   = 3;
 public static final float shovel_damage  = 1.5f;

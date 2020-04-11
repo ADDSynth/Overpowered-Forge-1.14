@@ -17,6 +17,8 @@ import addsynth.overpoweredmod.machines.laser.machine.LaserHousing;
 import addsynth.overpoweredmod.machines.magic_infuser.MagicInfuser;
 import addsynth.overpoweredmod.machines.portal.control_panel.PortalControlPanel;
 import addsynth.overpoweredmod.machines.portal.frame.PortalFrame;
+import addsynth.overpoweredmod.machines.suspension_bridge.EnergyBridge;
+import addsynth.overpoweredmod.machines.suspension_bridge.EnergySuspensionBridge;
 
 public final class Machines {
 
@@ -25,7 +27,6 @@ public final class Machines {
   }
 
   public static final Generator               generator                = new Generator("generator");
-  
   
   public static final Compressor              compressor               = new Compressor("compressor");
   public static final GemConverter            gem_converter            = new GemConverter("gem_converter");
@@ -44,6 +45,16 @@ public final class Machines {
   public static final FusionControlLaserBeam  fusion_control_laser_beam = new FusionControlLaserBeam("fusion_control_laser_beam");
 
   public static final LaserHousing            laser_housing            = new LaserHousing("laser_housing");
+
+  public static final EnergySuspensionBridge  energy_suspension_bridge = new EnergySuspensionBridge("energy_suspension_bridge");
+  public static final EnergyBridge            white_energy_bridge      = new EnergyBridge("white_energy_bridge", Lens.WHITE);
+  public static final EnergyBridge            red_energy_bridge        = new EnergyBridge("red_energy_bridge", Lens.RED);
+  public static final EnergyBridge            orange_energy_bridge     = new EnergyBridge("orange_energy_bridge", Lens.ORANGE);
+  public static final EnergyBridge            yellow_energy_bridge     = new EnergyBridge("yellow_energy_bridge", Lens.YELLOW);
+  public static final EnergyBridge            green_energy_bridge      = new EnergyBridge("green_energy_bridge", Lens.GREEN);
+  public static final EnergyBridge            cyan_energy_bridge       = new EnergyBridge("cyan_energy_bridge", Lens.CYAN);
+  public static final EnergyBridge            blue_energy_bridge       = new EnergyBridge("blue_energy_bridge", Lens.BLUE);
+  public static final EnergyBridge            magenta_energy_bridge    = new EnergyBridge("magenta_energy_bridge", Lens.MAGENTA);
 
   static {
     Debug.log_setup_info("Finished loading Machines class.");

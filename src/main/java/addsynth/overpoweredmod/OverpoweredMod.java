@@ -25,6 +25,7 @@ import addsynth.overpoweredmod.machines.laser.machine.GuiLaserHousing;
 import addsynth.overpoweredmod.machines.magic_infuser.GuiMagicInfuser;
 import addsynth.overpoweredmod.machines.portal.control_panel.GuiPortalControlPanel;
 import addsynth.overpoweredmod.machines.portal.frame.GuiPortalFrame;
+import addsynth.overpoweredmod.machines.suspension_bridge.GuiEnergySuspensionBridge;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -141,6 +142,7 @@ public class OverpoweredMod {
     ScreenManager.registerFactory(Containers.INVERTER,                   GuiInverter::new);
     ScreenManager.registerFactory(Containers.MAGIC_INFUSER,              GuiMagicInfuser::new);
     ScreenManager.registerFactory(Containers.IDENTIFIER,                 GuiIdentifier::new);
+    ScreenManager.registerFactory(Containers.ENERGY_SUSPENSION_BRIDGE,   GuiEnergySuspensionBridge::new);
     ScreenManager.registerFactory(Containers.PORTAL_CONTROL_PANEL,       GuiPortalControlPanel::new);
     ScreenManager.registerFactory(Containers.PORTAL_FRAME,               GuiPortalFrame::new);
     ScreenManager.registerFactory(Containers.LASER_HOUSING,              GuiLaserHousing::new);

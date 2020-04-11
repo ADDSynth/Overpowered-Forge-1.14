@@ -13,6 +13,7 @@ import addsynth.overpoweredmod.machines.laser.machine.ContainerLaserHousing;
 import addsynth.overpoweredmod.machines.magic_infuser.ContainerMagicInfuser;
 import addsynth.overpoweredmod.machines.portal.control_panel.ContainerPortalControlPanel;
 import addsynth.overpoweredmod.machines.portal.frame.ContainerPortalFrame;
+import addsynth.overpoweredmod.machines.suspension_bridge.ContainerSuspensionBridge;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.fml.network.IContainerFactory;
 
@@ -39,6 +40,9 @@ public final class Containers {
 
   public static final ContainerType<ContainerIdentifier> IDENTIFIER =
     new ContainerType<>((IContainerFactory<ContainerIdentifier>)ContainerIdentifier::new);
+
+  public static final ContainerType<ContainerSuspensionBridge> ENERGY_SUSPENSION_BRIDGE =
+    new ContainerType<>((IContainerFactory<ContainerSuspensionBridge>)ContainerSuspensionBridge::new);
 
   public static final ContainerType<ContainerOreRefinery> ADVANCED_ORE_REFINERY =
     new ContainerType<>((IContainerFactory<ContainerOreRefinery>)ContainerOreRefinery::new);

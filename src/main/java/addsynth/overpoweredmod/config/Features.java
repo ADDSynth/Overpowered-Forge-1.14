@@ -25,6 +25,7 @@ public final class Features {
   public static ForgeConfigSpec.BooleanValue magic_infuser;
   public static ForgeConfigSpec.BooleanValue identifier;
   public static ForgeConfigSpec.BooleanValue lasers;
+  public static ForgeConfigSpec.BooleanValue energy_suspension_bridge;
   public static ForgeConfigSpec.BooleanValue portal;
   public static ForgeConfigSpec.BooleanValue crystal_matter_generator;
   public static ForgeConfigSpec.BooleanValue advanced_ore_refinery;
@@ -82,6 +83,7 @@ public final class Features {
     gem_converter              = builder.define("Gem Converter",            true);
     magic_infuser              = builder.define("Magic Infuser",            true);
     identifier                 = builder.define("Identifier",               true);
+    energy_suspension_bridge   = builder.define("Energy Suspension Bridge", true);
     portal                     = builder.define("Portal",                   true);
     crystal_matter_generator   = builder.define("Crystal Matter Generator", true);
     advanced_ore_refinery      = builder.define("Advanced Ore Refinery",    true);

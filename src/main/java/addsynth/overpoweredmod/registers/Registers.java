@@ -61,6 +61,17 @@ public final class Registers {
     game.register(Machines.inverter);
     if(Features.magic_infuser.get()){ game.register(Machines.magic_infuser); }
     if(Features.identifier.get()){ game.register(Machines.identifier); }
+    if(Features.energy_suspension_bridge.get()){
+      game.register(Machines.energy_suspension_bridge);
+      game.register(Machines.white_energy_bridge);
+      game.register(Machines.red_energy_bridge);
+      game.register(Machines.orange_energy_bridge);
+      game.register(Machines.yellow_energy_bridge);
+      game.register(Machines.green_energy_bridge);
+      game.register(Machines.cyan_energy_bridge);
+      game.register(Machines.blue_energy_bridge);
+      game.register(Machines.magenta_energy_bridge);
+    }
     if(Features.portal.get()){
       game.register(Machines.portal_control_panel);
       game.register(Machines.portal_frame);
@@ -145,6 +156,7 @@ public final class Registers {
     game.register(OverpoweredMod.registry.getItemBlock(Machines.inverter));
     if(Features.magic_infuser.get()){    game.register(OverpoweredMod.registry.getItemBlock(Machines.magic_infuser)); }
     if(Features.identifier.get()){       game.register(OverpoweredMod.registry.getItemBlock(Machines.identifier)); }
+    if(Features.energy_suspension_bridge.get()){ game.register(OverpoweredMod.registry.getItemBlock(Machines.energy_suspension_bridge)); }
     if(Features.portal.get()){
       game.register(OverpoweredMod.registry.getItemBlock(Machines.portal_control_panel));
       game.register(OverpoweredMod.registry.getItemBlock(Machines.portal_frame));
@@ -218,6 +230,7 @@ public final class Registers {
     RegistryUtil.register(game, Tiles.INVERTER,                   Names.INVERTER);
     RegistryUtil.register(game, Tiles.MAGIC_INFUSER,              Names.MAGIC_INFUSER);
     RegistryUtil.register(game, Tiles.IDENTIFIER,                 Names.IDENTIFIER);
+    RegistryUtil.register(game, Tiles.ENERGY_SUSPENSION_BRIDGE,          Names.ENERGY_SUSPENSION_BRIDGE);
     RegistryUtil.register(game, Tiles.LASER_MACHINE,              Names.LASER_HOUSING);
     RegistryUtil.register(game, Tiles.LASER,                      Names.LASER_CANNON);
     RegistryUtil.register(game, Tiles.LASER_BEAM,                 Names.LASER_BEAM);
@@ -244,6 +257,7 @@ public final class Registers {
     RegistryUtil.register(game, Containers.INVERTER,                   Names.INVERTER);
     RegistryUtil.register(game, Containers.IDENTIFIER,                 Names.IDENTIFIER);
     RegistryUtil.register(game, Containers.MAGIC_INFUSER,              Names.MAGIC_INFUSER);
+    RegistryUtil.register(game, Containers.ENERGY_SUSPENSION_BRIDGE,   Names.ENERGY_SUSPENSION_BRIDGE);
     RegistryUtil.register(game, Containers.LASER_HOUSING,              Names.LASER_HOUSING);
     RegistryUtil.register(game, Containers.ADVANCED_ORE_REFINERY,      Names.ADVANCED_ORE_REFINERY);
     RegistryUtil.register(game, Containers.CRYSTAL_MATTER_GENERATOR,   Names.CRYSTAL_MATTER_GENERATOR);

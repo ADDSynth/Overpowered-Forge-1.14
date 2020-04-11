@@ -1,0 +1,6 @@
+{
+  "parent": "overpowered:block/energy_bridge_flat",
+   "textures": {
+    "color": "overpowered:blocks/machines/energy_suspension_bridge/orange"
+  }
+}

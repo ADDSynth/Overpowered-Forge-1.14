@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": {"model": "overpowered:block/red_energy_bridge_flat"},
+    "axis=z": {"model": "overpowered:block/red_energy_bridge_vertical"},
+    "axis=x": {"model": "overpowered:block/red_energy_bridge_vertical", "y": 90}
+  }
+}

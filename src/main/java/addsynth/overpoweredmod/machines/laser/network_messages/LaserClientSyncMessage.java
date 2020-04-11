@@ -30,7 +30,7 @@ public final class LaserClientSyncMessage {
     return new LaserClientSyncMessage(new BlockPos(buf.readInt(),buf.readInt(),buf.readInt()),buf.readInt());
   }
 
-  public static void handle(final LaserClientSyncMessage message, final Supplier<NetworkEvent.Context> context){
+  public static final void handle(final LaserClientSyncMessage message, final Supplier<NetworkEvent.Context> context){
     context.get().enqueueWork(() -> {
       final World world = Minecraft.getInstance().player.world;
       if(world.isAreaLoaded(message.position, 0)){

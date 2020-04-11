@@ -3,6 +3,7 @@ package addsynth.core.block_network;
 import java.util.ArrayList;
 import javax.annotation.Nonnull;
 import addsynth.core.ADDSynthCore;
+import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -24,8 +25,10 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
 
   /** Only code that searches for blocks on the server side needs to use the world variable. */
   protected final World world;
+  /** The block of the TileEntity using this Block Network. */
   protected final Block block_type;
-  protected final ArrayList<BlockPos> blocks = new ArrayList<>(100);
+  /** All the blocks that are in this block network. */
+  protected final ArrayList<BlockPos> blocks = new ArrayList<>(100); // TODO: upgrade to use Nodes? Because many block networks needs to get the TileEntity at that position and update all of them.
   /** The first TileEntity to create this network or the first to
    *  be discovered. Used when updating the entire Block Network.
    */
@@ -38,6 +41,10 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   public BlockNetwork(@Nonnull final World world, @Nonnull final Block block, @Nonnull final T tile){
     if(world == null || block == null){
       throw new IllegalArgumentException("arguments to BlockNetwork(World, BlockType) can't be null.");
+    }
+    if(world.isRemote){
+      ADDSynthCore.log.error("Block Networks have no business being created on the Client-Side! You can't and shouldn't do anything with them on the Client-side!");
+      Thread.dumpStack();
     }
     this.world = world instanceof ServerWorld ? world : null;
     this.block_type = block;
@@ -56,7 +63,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
         ((IBlockNetworkUser)tile).setBlockNetwork(this);
       }
       else{
-        throw new RuntimeException("The TileEntity that belongs to the "+block_type.getTranslationKey()+" Block does not implement the IBlockNetwork interface.");
+        throw new RuntimeException("The TileEntity that belongs to the "+StringUtil.getName(block_type)+" Block does not implement the IBlockNetwork interface.");
       }
     }
     else{
@@ -83,12 +90,15 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   public void updateNetwork(final BlockPos from){
     if(world != null){
       if(world.isRemote == false){
+        onBeforeUpdate();
+
         blocks.clear();
         clear_custom_data();
         final ArrayList<BlockPos> searched = new ArrayList<>(100);
         blocks.add(from);
         searched.add(from);
         search_algorithm(from, searched);
+
         onUpdateNetworkFinished(from);
         return;
       }
@@ -154,7 +164,26 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
     }
   }
 
+  protected final boolean is_redstone_powered(){
+    boolean powered = false;
+    for(BlockPos position : blocks){
+      if(world.isBlockPowered(position)){
+        powered = true;
+        break;
+      }
+    }
+    return powered;
+  }
+
+  public final int getCount(){
+    return blocks.size();
+  }
+
   protected abstract void clear_custom_data();
+
+  /** Called before updateNetwork() executes. */
+  protected void onBeforeUpdate(){ // UNUSED DELETE
+  }
 
   /**
    * Called when updateNetwork() function is completed.

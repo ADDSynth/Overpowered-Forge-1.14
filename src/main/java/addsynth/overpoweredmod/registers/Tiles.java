@@ -57,7 +57,8 @@ public final class Tiles {
   public static final TileEntityType<TileCrystalMatterReplicator> CRYSTAL_MATTER_REPLICATOR =
     TileEntityType.Builder.create(TileCrystalMatterReplicator::new, Machines.crystal_matter_generator).build(null);
 
-  public static final TileEntityType<TileSuspensionBridge> SUSPENSION_BRIDGE = null;
+  public static final TileEntityType<TileSuspensionBridge> ENERGY_SUSPENSION_BRIDGE =
+    TileEntityType.Builder.create(TileSuspensionBridge::new, Machines.energy_suspension_bridge).build(null);
 
   public static final TileEntityType<TileDataCable> DATA_CABLE =
     TileEntityType.Builder.create(TileDataCable::new, Wires.data_cable).build(null);

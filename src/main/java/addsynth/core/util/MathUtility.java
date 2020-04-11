@@ -165,36 +165,8 @@ public final class MathUtility {
    * @param list
    */
   public static final double[] getExactCenter(List<BlockPos> list){
-    if(list.size() > 0){
-      boolean first = true;
-      int min_x = 0;
-      int min_y = 0;
-      int min_z = 0;
-      int max_x = 0;
-      int max_y = 0;
-      int max_z = 0;
-      for(BlockPos position : list){
-        if(first){
-          min_x = position.getX();
-          min_y = position.getY();
-          min_z = position.getZ();
-          max_x = position.getX();
-          max_y = position.getY();
-          max_z = position.getZ();
-          first = false;
-        }
-        else{
-          if(position.getX() < min_x){ min_x = position.getX(); }
-          if(position.getX() > max_x){ max_x = position.getX(); }
-          if(position.getY() < min_y){ min_y = position.getY(); }
-          if(position.getY() > max_y){ max_y = position.getY(); }
-          if(position.getZ() < min_z){ min_z = position.getZ(); }
-          if(position.getZ() > max_z){ max_z = position.getZ(); }
-        }
-      }
-      return new double[] { (min_x + max_x) / 2, (min_y + max_y) / 2, (min_z + max_z) / 2 };
-    }
-    throw new IllegalArgumentException("Function getCenter(List<BlockPos>) requires a list that has at least one BlockPos element.");
+    final BlockPos[] pos = get_min_max_positions(list);
+    return new double[] { (pos[0].getX() + pos[1].getX()) / 2, (pos[0].getY() + pos[1].getY()) / 2, (pos[0].getZ() + pos[1].getZ()) / 2 };
   }
 
   public static final int RandomRange(final int minimum, final int maximum){ // TODO: randon.nextInt() input must be above 0, add code that can handle negative values.
@@ -222,6 +194,34 @@ public final class MathUtility {
   
   public static final int get_coordinate_in_chunk(final double coordinate){
     return (int)Math.floor(coordinate) % 16;
+  }
+
+  /** Returns an array of 2 Block Positions, the first being the minimum, the second being the maximum. */
+  public static final BlockPos[] get_min_max_positions(List<BlockPos> list){
+    return get_min_max_positions(list.toArray(new BlockPos[list.size()]));
+  }
+
+  /** Returns an array of 2 Block Positions, the first being the minimum, the second being the maximum. */
+  public static final BlockPos[] get_min_max_positions(BlockPos[] list){
+    if(list.length > 0){
+      int i;
+      int min_x = list[0].getX();
+      int min_y = list[0].getY();
+      int min_z = list[0].getZ();
+      int max_x = list[0].getX();
+      int max_y = list[0].getY();
+      int max_z = list[0].getZ();
+      for(i = 1; i < list.length; i++){
+        if(list[i].getX() < min_x){ min_x = list[i].getX(); }
+        if(list[i].getX() > max_x){ max_x = list[i].getX(); }
+        if(list[i].getY() < min_y){ min_y = list[i].getY(); }
+        if(list[i].getY() > max_y){ max_y = list[i].getY(); }
+        if(list[i].getZ() < min_z){ min_z = list[i].getZ(); }
+        if(list[i].getZ() > max_z){ max_z = list[i].getZ(); }
+      }
+      return new BlockPos[] {new BlockPos(min_x, min_y, min_z), new BlockPos(max_x, max_y, max_z)};
+    }
+    throw new IllegalArgumentException("Function "+MathUtility.class.getName()+".get_min_max_position() requires a list that has at least one BlockPos element.");
   }
 
 }

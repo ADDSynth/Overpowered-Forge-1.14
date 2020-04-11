@@ -8,6 +8,8 @@ import addsynth.overpoweredmod.machines.laser.network_messages.SetLaserDistanceM
 import addsynth.overpoweredmod.machines.laser.network_messages.ToggleLaserShutoffMessage;
 import addsynth.overpoweredmod.machines.portal.control_panel.GeneratePortalMessage;
 import addsynth.overpoweredmod.machines.portal.control_panel.SyncPortalDataMessage;
+import addsynth.overpoweredmod.machines.suspension_bridge.RotateBridgeMessage;
+import addsynth.overpoweredmod.machines.suspension_bridge.SyncClientBridgeMessage;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
@@ -61,6 +63,20 @@ public final class NetworkHandler {
       ToggleLaserShutoffMessage::encode,
       ToggleLaserShutoffMessage::decode,
       ToggleLaserShutoffMessage::handle
+    );
+
+    INSTANCE.registerMessage(6,
+      SyncClientBridgeMessage.class,
+      SyncClientBridgeMessage::encode,
+      SyncClientBridgeMessage::decode,
+      SyncClientBridgeMessage::handle
+    );
+
+    INSTANCE.registerMessage(7,
+      RotateBridgeMessage.class,
+      RotateBridgeMessage::encode,
+      RotateBridgeMessage::decode,
+      RotateBridgeMessage::handle
     );
 
     Debug.log_setup_info("Finished Registering Network Messages.");
