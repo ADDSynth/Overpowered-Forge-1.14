@@ -60,7 +60,7 @@ public abstract class TileMachine extends TileBase {
   public @Nonnull <T> LazyOptional<T> getCapability(final @Nonnull Capability<T> capability, final @Nullable Direction facing){
     if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
       if(facing == Direction.DOWN){
-        return (LazyOptional.of(()->output_inventory)).cast();
+        return (LazyOptional.of(()->output_inventory)).cast(); // PRIORITY FIX: This kind of code will crash if either input_inventory or output_inventory is null, only in 1.14 version.
       }
       return (LazyOptional.of(()->input_inventory)).cast();
     }

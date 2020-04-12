@@ -31,34 +31,27 @@ public final class TileIdentifier extends PassiveMachine implements INamedContai
   );
 
   public TileIdentifier(){
-    super(Tiles.IDENTIFIER,new SlotData[]{new SlotData(input_filter,1)},0,new CustomEnergyStorage(
-      MachineValues.identifier_required_energy.get()),MachineValues.identifier_work_time.get());
+    super(Tiles.IDENTIFIER, 1, input_filter, 1, new CustomEnergyStorage(
+      MachineValues.identifier_required_energy.get()), MachineValues.identifier_work_time.get());
   }
 
   @Override
-  protected final void test_condition(){ // The Identifier only has 1 Input slot and 0 Output slots. This must remain AS IS.
-    can_run = false;
-    final ItemStack input_stack = input_inventory.getStackInSlot(0);
-    if(input_stack.isEmpty() == false){
-      final Item input_item = input_stack.getItem();
-      for(Item item : input_filter){
-        if(input_item == item){
-          can_run = true;
-          break;
-        }
-      }
-    }
+  protected final void test_condition(){
+    final ItemStack input = input_inventory.getStackInSlot(0);
+    final ItemStack output = output_inventory.getStackInSlot(0);
+    can_run = input.isEmpty() == false && output.isEmpty();
   }
 
   @Override
   protected final void performWork(){
     final ItemStack input = input_inventory.getStackInSlot(0);
-    if(input != null){
+    if(input.isEmpty() == false){
       if(input.getItem() instanceof UnidentifiedItem){
         final UnidentifiedItem item = (UnidentifiedItem)(input.getItem());
         final ItemStack stack = new ItemStack(ItemUtility.get_armor(item.armor_material, item.equipment_type),1);
         ArmorEffects.enchant(stack);
-        input_inventory.setStackInSlot(0,stack);
+        input_inventory.decrease(0);
+        output_inventory.setStackInSlot(0, stack);
       }
     }
   }

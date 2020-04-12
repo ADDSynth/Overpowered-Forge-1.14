@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.machines.identifier;
 
 import addsynth.core.container.BaseContainer;
 import addsynth.core.container.slots.InputSlot;
+import addsynth.core.container.slots.OutputSlot;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
@@ -20,7 +21,8 @@ public final class ContainerIdentifier extends BaseContainer<TileIdentifier> {
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,85);
-    addSlot(new InputSlot(tile,0,TileIdentifier.input_filter, 1,80,40));
+    addSlot(new InputSlot( tile, 0, TileIdentifier.input_filter, 1, 48, 40));
+    addSlot(new OutputSlot(tile, 0, 104, 40));
   }
 
 }
