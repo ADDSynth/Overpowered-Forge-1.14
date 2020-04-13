@@ -56,6 +56,12 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
     super(Tiles.BLACK_HOLE);
   }
 
+  // NOTE: If you create a Debug World, by holding Shift as you cycle through the World types, this spawns all
+  //       blocks in Minecraft, in all possible block states. Since this also spawns a Black Hole, this starts
+  //       the black hole algorithm of erasing the world. However, in a Debug World blocks cannot be destroyed.
+  //       So the black hole algorithm fails to destroy any blocks, and when it finishes it will continuously
+  //       try to destroy itself, spawning hundreds of particle effects.
+
   @Override
   public final CompoundNBT write(final CompoundNBT compound){
     return super.write(compound);

@@ -38,11 +38,19 @@ public final class Weight {
   }
   */
   
+  /** This creates a linearly distributed bucket list, so that you have a higher chance of
+   *  getting a low value rather than a high value. For example, say you pass the number 5
+   *  as the argument, this function will then create the bucket list:<br />
+   *  <code>[0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4]</code><br />
+   *  The function will then randomly pick one of these numbers and return it. This means
+   *  You have a 33% chance of getting 0, a 27% chance of getting 1, a 20% of getting 2,
+   *  a 13% chance of getting 3, and a 7% chance of getting 4.
+   * @param highest_value
+   */
   public static final int getWeightedValue(final int highest_value){
     if(highest_value <= 0){
       throw new IllegalArgumentException("only values > 0 are allowed.");
     }
-    int i;
     int j = highest_value;
     int total_buckets = 0;
     while(j > 0){
@@ -50,7 +58,7 @@ public final class Weight {
       j -= 1;
     }
     final int[] bucket = new int[total_buckets];
-    i = 0;
+    int i = 0;
     j = highest_value;
     int k = 0;
     int z;

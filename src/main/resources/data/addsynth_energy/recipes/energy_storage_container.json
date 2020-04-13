@@ -13,7 +13,7 @@
       "item": "addsynth_energy:energy_wire"
     },
     "e": {
-      "item": "minecraft:redstone_block"
+      "tag": "forge:storage_blocks/redstone"
     }
   },
   "result": {

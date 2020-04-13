@@ -52,7 +52,10 @@ public final class TileFusionChamber extends TileMachine implements INamedContai
         for(i = 1; i < container_radius - 1; i++){
           position = pos.offset(side, i);
           if(state){
-            world.setBlockState(position, Machines.fusion_control_laser_beam.getDefaultState(), 3); // TEST why would we need block updates for this? Can this just be set to 2 for Client updates?
+            // TODO: DO NOT INSERT a Laser Effect block in the world! Replace this with some sort of
+            //       OpenGL special effects that doesn't touch the world and immune to player interference.
+            world.setBlockState(position, Machines.fusion_control_laser_beam.getDefaultState(), 3);
+            // TEST why would we need block updates for this? Can this just be set to 2 for Client updates?
           }
           else{
             world.removeBlock(position, false);

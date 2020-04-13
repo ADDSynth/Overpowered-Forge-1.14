@@ -40,7 +40,9 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
         }
         first_tick = false;
       }
-      network.update(this);
+      if(network != null){
+        network.update(this);
+      }
     }
     super.tick();
   }

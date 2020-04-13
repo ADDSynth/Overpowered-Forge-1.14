@@ -197,12 +197,12 @@ public final class MathUtility {
   }
 
   /** Returns an array of 2 Block Positions, the first being the minimum, the second being the maximum. */
-  public static final BlockPos[] get_min_max_positions(List<BlockPos> list){
+  public static final BlockPos[] get_min_max_positions(final List<BlockPos> list){
     return get_min_max_positions(list.toArray(new BlockPos[list.size()]));
   }
 
   /** Returns an array of 2 Block Positions, the first being the minimum, the second being the maximum. */
-  public static final BlockPos[] get_min_max_positions(BlockPos[] list){
+  public static final BlockPos[] get_min_max_positions(final BlockPos[] list){
     if(list.length > 0){
       int i;
       int min_x = list[0].getX();
@@ -222,6 +222,13 @@ public final class MathUtility {
       return new BlockPos[] {new BlockPos(min_x, min_y, min_z), new BlockPos(max_x, max_y, max_z)};
     }
     throw new IllegalArgumentException("Function "+MathUtility.class.getName()+".get_min_max_position() requires a list that has at least one BlockPos element.");
+  }
+
+  public static final int choose(final Random random, final int ... list){
+    if(list.length == 0){
+      throw new IllegalArgumentException("MathUtility.choose() requires a list of at least 1 integer!");
+    }
+    return list[random.nextInt(list.length)];
   }
 
 }

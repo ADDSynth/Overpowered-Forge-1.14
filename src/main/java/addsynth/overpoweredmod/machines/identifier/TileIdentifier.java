@@ -2,7 +2,6 @@ package addsynth.overpoweredmod.machines.identifier;
 
 import javax.annotation.Nullable;
 import addsynth.core.game.Compatability;
-import addsynth.core.inventory.SlotData;
 import addsynth.core.items.ItemUtility;
 import addsynth.core.util.JavaUtils;
 import addsynth.energy.CustomEnergyStorage;

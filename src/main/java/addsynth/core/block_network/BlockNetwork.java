@@ -2,6 +2,7 @@ package addsynth.core.block_network;
 
 import java.util.ArrayList;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
@@ -71,6 +72,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
     }
   }
 
+  @Nullable
   public static final BlockNetwork getNetwork(final World world, final BlockPos position){
     final TileEntity tile = world.getTileEntity(position);
     if(tile != null){
@@ -176,7 +178,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   }
 
   public final int getCount(){
-    return blocks.size();
+    return blocks == null ? 0 : blocks.size();
   }
 
   protected abstract void clear_custom_data();

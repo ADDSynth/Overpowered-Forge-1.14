@@ -42,14 +42,14 @@ public abstract class TileMachine extends TileBase {
   }
 
   @Override
-  public void read(CompoundNBT nbt){
+  public void read(final CompoundNBT nbt){
     super.read(nbt);
     if(input_inventory != null){ input_inventory.deserializeNBT(nbt.getCompound("InputInventory")); }
     if(output_inventory != null){ output_inventory.deserializeNBT(nbt.getCompound("OutputInventory")); }
   }
 
   @Override
-  public CompoundNBT write(CompoundNBT nbt){
+  public CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
     if(input_inventory != null){ nbt.put("InputInventory", input_inventory.serializeNBT()); }
     if(output_inventory != null){ nbt.put("OutputInventory", output_inventory.serializeNBT()); }

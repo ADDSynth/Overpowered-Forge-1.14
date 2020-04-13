@@ -23,7 +23,7 @@ public final class MinecraftUtility {
   public static final String getModID(){
     final String id = ModLoadingContext.get().getActiveNamespace();
     if(id.equals("minecraft")){
-      ADDSynthCore.log.warn("function addsynth.core.util.MinecraftUtil.getModID() returned 'minecraft'. This might not be what you expected. Did you call getModID() at a wrong time?");
+      ADDSynthCore.log.warn("Function "+MinecraftUtility.class.getName()+".getModID() returned 'minecraft'. This might not be what you expected. Did you call getModID() at a wrong time?");
     }
     return id;
   }

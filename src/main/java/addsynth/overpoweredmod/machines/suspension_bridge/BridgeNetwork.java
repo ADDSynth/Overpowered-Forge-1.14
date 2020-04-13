@@ -108,7 +108,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
       int z;
       final boolean[] obstructed = new boolean[6];
 
-      int index = Direction.DOWN.ordinal();
+      int index = Constants.DOWN;
       area[index] = new ArrayList<>(max_distance * 2);
       int start_x = min_x;
       int end_x   = max_x;
@@ -127,7 +127,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
         message[index] = BridgeMessage.NO_BRIDGE;
       }
 
-      index = Direction.UP.ordinal();
+      index = Constants.UP;
       area[index] = new ArrayList<>(max_distance * 2);
       start_x = min_x;
       end_x   = max_x;
@@ -149,7 +149,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
       // The rest of the directions are horizontal. Set y to the maximum height.
       y = max_y;
 
-      index = Direction.NORTH.ordinal();
+      index = Constants.NORTH;
       area[index] = new ArrayList<>(max_distance * 2);
       start_x = min_x;
       end_x   = max_x;
@@ -164,7 +164,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
         message[index] = BridgeMessage.NO_BRIDGE;
       }
 
-      index = Direction.SOUTH.ordinal();
+      index = Constants.SOUTH;
       area[index] = new ArrayList<>(max_distance * 2);
       start_x = min_x;
       end_x   = max_x;
@@ -179,7 +179,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
         message[index] = BridgeMessage.NO_BRIDGE;
       }
 
-      index = Direction.WEST.ordinal();
+      index = Constants.WEST;
       area[index] = new ArrayList<>(max_distance * 2);
       start_x = min_x - 1;
       end_x   = min_x - max_distance;
@@ -194,7 +194,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
         message[index] = BridgeMessage.NO_BRIDGE;
       }
 
-      index = Direction.EAST.ordinal();
+      index = Constants.EAST;
       area[index] = new ArrayList<>(max_distance * 2);
       start_x = max_x + 1;
       end_x   = max_x + max_distance;

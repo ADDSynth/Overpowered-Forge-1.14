@@ -66,8 +66,8 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalCo
 
     private final TilePortalControlPanel tile;
 
-    public GeneratePortalButton(int xIn, int yIn, TilePortalControlPanel tile){
-      super(xIn, yIn, button_width, button_height, "Generate Portal");
+    public GeneratePortalButton(final int x, final int y, final TilePortalControlPanel tile){
+      super(x, y, button_width, button_height, "Generate Portal");
       this.tile = tile;
     }
 

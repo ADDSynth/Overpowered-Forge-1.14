@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.NetworkTagCollection;
@@ -201,7 +200,7 @@ public final class MaterialsUtil {
         continue;
       }
       ADDSynthCore.log.error(new NullPointerException(
-        "ADDSynthCore.MaterialsUtil.getFilter() has detected a null Item Collection! Maybe one of the functions in MaterialsUtil "+
+        MaterialsUtil.class.getName()+".getFilter() has detected a null Item Collection! Maybe one of the functions in MaterialsUtil "+
         "that retrieves all the Items in an Item Tag didn't return anything because there ARE no Items registered to that Item Tag!"
       ));
     }
