@@ -63,9 +63,9 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity,
     }
   }
 
-  public final void set_note(final byte track, final byte frame, final byte pitch){
+  public final void set_note(final byte track, final byte frame, final byte pitch, final byte instrument){
     if(music_grid != null){
-      music_grid.set_note(track, frame, pitch);
+      music_grid.set_note(track, frame, pitch, instrument);
       update_data();
     }
   }

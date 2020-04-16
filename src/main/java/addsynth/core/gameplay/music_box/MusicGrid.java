@@ -22,7 +22,13 @@ public final class MusicGrid {
     SoundEvents.BLOCK_NOTE_BLOCK_CHIME,
     SoundEvents.BLOCK_NOTE_BLOCK_FLUTE,
     SoundEvents.BLOCK_NOTE_BLOCK_GUITAR,
-    SoundEvents.BLOCK_NOTE_BLOCK_XYLOPHONE
+    SoundEvents.BLOCK_NOTE_BLOCK_XYLOPHONE,
+    SoundEvents.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE,
+    SoundEvents.BLOCK_NOTE_BLOCK_COW_BELL,
+    SoundEvents.BLOCK_NOTE_BLOCK_DIDGERIDOO,
+    SoundEvents.BLOCK_NOTE_BLOCK_BIT,
+    SoundEvents.BLOCK_NOTE_BLOCK_BANJO,
+    SoundEvents.BLOCK_NOTE_BLOCK_PLING
   };
   
   public static final byte tracks = 8;
@@ -131,10 +137,11 @@ public final class MusicGrid {
     return getNote(track, frame).on;
   }
 
-  public final void set_note(final byte track, final byte frame, byte pitch){
+  public final void set_note(final byte track, final byte frame, byte pitch, byte instrument){
     this.track[track].note[frame].on = true;
     this.track[track].note[frame].pitch = pitch;
     this.track[track].note[frame].volume = 1.0f;
+    this.track[track].instrument = instrument;
   }
 
   public final void disable_note(final byte track, final byte frame){

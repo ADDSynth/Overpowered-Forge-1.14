@@ -65,7 +65,7 @@ public final class NoteMessage {
           final TileMusicBox tile = MinecraftUtility.getTileEntity(message.position,world,TileMusicBox.class);
           if(tile != null){
             if(message.on){
-              tile.set_note(message.track, message.frame, message.note);
+              tile.set_note(message.track, message.frame, message.note, message.instrument);
             }
             else{
               tile.disable_note(message.track, message.frame);

@@ -123,23 +123,22 @@ public final class MusicButtons {
     private static final ResourceLocation instruments_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/instruments.png");
     private static final int texture_width = 64;
     private static final int texture_height = 64;
-  
-    private final TileMusicBox tile;
-    private final byte track;
+    private static final int button_width = 16;
+    private static final int button_height = 16;
 
-    public InstrumentButton(final int x, final int y, final byte track, final TileMusicBox tile){
-      super(x, y, GuiMusicBox.instrument_button_width, GuiMusicBox.instrument_button_height, "");
-      this.tile = tile;
-      this.track = track;
+    private final int instrument;
+    private final int texture_x;
+    private final int texture_y;
+
+    public InstrumentButton(final int x, final int y, final int instrument){
+      super(x,y,button_width,button_height,"");
+      this.instrument = instrument;
+      texture_x = texture_width * (instrument % 4);
+      texture_y = texture_height * (instrument / 4);
     }
   
     @Override
-    public final void renderButton(final int mouseX, final int mouseY, final float partial_ticks){
-      // change texture coordinates based on instrument
-      final byte instrument = tile.get_track_instrument(track);
-      final int texture_x = texture_width * (instrument % 4);
-      final int texture_y = texture_height * (instrument / 4);
-
+    public final void renderButton(final int mouse_x, final int mouse_y, final float partial_ticks){
       Minecraft.getInstance().getTextureManager().bindTexture(instruments_texture);
       GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 
@@ -147,18 +146,17 @@ public final class MusicButtons {
       GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
       GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 
-      blit(x, y, GuiMusicBox.instrument_button_width, GuiMusicBox.instrument_button_height, texture_x, texture_y, texture_width, texture_height, 256, 256);
+      blit(x, y, button_width, button_height, texture_x, texture_y, texture_width, texture_height, 256, 256);
     }
   
     @Override
     public void onPress(){
-      NetworkHandler.INSTANCE.sendToServer(new MusicBoxMessage(tile.getPos(),TileMusicBox.Command.CHANGE_TRACK_INSTRUMENT,track));
+      GuiMusicBox.instrument_selected = (byte)instrument;
     }
 
     @Override
     public final void playDownSound(final SoundHandler p_playDownSound_1_){
     }
-  
   }
 
   public static final String[] note = new String[] {                                "F#3","G3","G#3","A3","A#3","B3",
@@ -229,7 +227,7 @@ public final class MusicButtons {
     }
 
     private final void set_note(){
-      NetworkHandler.INSTANCE.sendToServer(new NoteMessage(tile.getPos(),frame,track,(byte)0,GuiMusicBox.note_selected,1.0f));
+      NetworkHandler.INSTANCE.sendToServer(new NoteMessage(tile.getPos(),frame,track,GuiMusicBox.instrument_selected,GuiMusicBox.note_selected,1.0f));
     }
 
     private final void delete_note(){
