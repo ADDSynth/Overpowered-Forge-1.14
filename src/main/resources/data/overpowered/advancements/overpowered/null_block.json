@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:null_block"
+    },
+    "title": "Null Block",
+    "description": "Craft a Null Block."
+  },
+  "parent": "overpowered:overpowered/void_crystal",
+  "criteria": {
+    "void_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:null_block"
+          }
+        ]
+      }
+    }
+  }
+}

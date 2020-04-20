@@ -1,0 +1,37 @@
+{
+  "parent": "addsynthcore:root",
+  "criteria": {
+    "steel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/steel"
+          }
+        ]
+      }
+    },
+    "steel_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks/steel"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "steel",
+      "steel_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:steel",
+      "addsynthcore:steel_block"
+    ]
+  }
+}

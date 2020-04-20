@@ -1,0 +1,54 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/iron"
+          }
+        ]
+      }
+    },
+    "wooden_slab": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:wooden_slabs"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:trophy_base"
+      }
+    },
+    "has_trophy_base": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:trophy_base"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron",
+      "wooden_slab",
+      "has_recipe",
+      "has_trophy_base"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:trophy_base"
+    ]
+  }
+}

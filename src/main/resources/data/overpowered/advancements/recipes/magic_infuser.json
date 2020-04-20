@@ -1,0 +1,65 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "bookshelf": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:bookshelf"
+          }
+        ]
+      }
+    },
+    "void_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:void_crystal"
+          }
+        ]
+      }
+    },
+    "aluminum_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/aluminum"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:magic_infuser"
+      }
+    },
+    "has_magic_infuser": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:magic_infuser"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bookshelf",
+      "void_crystal",
+      "aluminum_plate",
+      "has_recipe",
+      "has_magic_infuser"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:magic_infuser"
+    ]
+  }
+}

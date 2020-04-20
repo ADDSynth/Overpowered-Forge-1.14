@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:silver_trophy"
+    },
+    "title": "Silver Trophy",
+    "description": "Get a Silver Trophy.",
+    "frame": "goal"
+  },
+  "parent": "overpowered:overpowered/bronze_trophy",
+  "criteria": {
+    "silver_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:silver_trophy"
+          }
+        ]
+      }
+    }
+  }
+}

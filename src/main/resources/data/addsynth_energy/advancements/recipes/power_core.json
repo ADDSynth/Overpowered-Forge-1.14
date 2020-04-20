@@ -1,0 +1,43 @@
+{
+  "parent": "addsynth_energy:recipes/root",
+  "criteria": {
+    "redstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+             "tag": "forge:dusts/redstone"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynth_energy:power_core"
+      }
+    },
+    "has_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:power_core"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "redstone",
+      "has_recipe",
+      "has_power_core"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynth_energy:power_core"
+    ]
+  }
+}

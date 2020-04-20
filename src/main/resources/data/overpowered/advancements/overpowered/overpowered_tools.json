@@ -1,0 +1,71 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:energy_sword"
+    },
+    "title": "Overpowered Tools",
+    "description": "Craft a Energy Tool."
+  },
+  "parent": "overpowered:overpowered/overpowered_gem",
+  "criteria": {
+    "overpowered_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_sword"
+          }
+        ]
+      }
+    },
+    "overpowered_shovel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_shovel"
+          }
+        ]
+      }
+    },
+    "overpowered_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_axe"
+          }
+        ]
+      }
+    },
+    "overpowered_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_pickaxe"
+          }
+        ]
+      }
+    },
+    "overpowered_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_hoe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "overpowered_sword",
+      "overpowered_shovel",
+      "overpowered_axe",
+      "overpowered_pickaxe",
+      "overpowered_hoe"
+    ]
+  ]
+}

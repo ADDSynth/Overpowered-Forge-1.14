@@ -1,0 +1,54 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "beam_emitter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:beam_emitter"
+          }
+        ]
+      }
+    },
+    "focus_lens": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:focus_lens"
+          }
+        ]
+      }
+    },
+    "laser_housing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:laser_housing"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "beam_emitter",
+      "focus_lens",
+      "laser_housing"
+    ]
+  ],
+  "rewards": {
+    "recipe": [
+      "overpowered:red_laser",
+      "overpowered:orange_laser",
+      "overpowered:yellow_laser",
+      "overpowered:green_laser",
+      "overpowered:cyan_laser",
+      "overpowered:blue_laser",
+      "overpowered:magenta_laser",
+      "overpowered:white_laser"
+    ]
+  }
+}

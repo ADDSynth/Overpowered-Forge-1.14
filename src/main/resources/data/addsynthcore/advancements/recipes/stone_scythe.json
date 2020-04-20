@@ -1,0 +1,43 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+         "items": [
+          {
+            "tag": "forge:cobblestone"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:stone_scythe"
+      }
+    },
+    "has_stone_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:stone_scythe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cobblestone",
+      "has_recipe",
+      "has_stone_scythe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:stone_scythe"
+    ]
+  }
+}

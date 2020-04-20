@@ -1,0 +1,16 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:portal"
+    },
+    "title": "Unknown Dimension",
+    "description": "Enter the Unknown Dimension.",
+    "frame": "goal"
+  },
+  "parent": "overpowered:overpowered/craft_portal",
+  "criteria": {
+    "portal": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

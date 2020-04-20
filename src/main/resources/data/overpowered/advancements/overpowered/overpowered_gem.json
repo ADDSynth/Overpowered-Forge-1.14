@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:energy_crystal"
+    },
+    "title": "Energy Crystal",
+    "description": "Craft an Energy Crystal."
+  },
+  "parent": "overpowered:overpowered/all_gems",
+  "criteria": {
+    "energy_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_crystal"
+          }
+        ]
+      }
+    }
+  }
+}

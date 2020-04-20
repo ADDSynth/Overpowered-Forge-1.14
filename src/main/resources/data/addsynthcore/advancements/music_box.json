@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynthcore:music_box"
+    },
+    "title": "Music Box",
+    "description": "Craft a Music Box"
+  },
+  "parent": "addsynthcore:root",
+  "criteria": {
+    "music_box": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:music_box"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:dimensional_anchor"
+    },
+    "title": "Dimensional Anchor",
+    "description": "Craft a Dimensional Anchor."
+  },
+  "parent": "overpowered:overpowered/unknown_technology",
+  "criteria": {
+    "gold_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:dimensional_anchor"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "has_void_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:void_crystal"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "overpowered:null_block",
+      "overpowered:void_sword",
+      "overpowered:void_shovel",
+      "overpowered:void_axe",
+      "overpowered:void_pickaxe",
+      "overpowered:void_hoe",
+      "overpowered:vacuum_container"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynth_energy:universal_energy_interface"
+    },
+    "title": "Universal Energy Interface",
+    "description": "Craft a Universal Energy Interface"
+  },
+  "parent": "addsynth_energy:root",
+  "criteria": {
+    "universal_energy_interface": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:universal_energy_interface"
+          }
+        ]
+      }
+    }
+  }
+}

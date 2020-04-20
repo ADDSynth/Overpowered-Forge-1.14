@@ -1,0 +1,43 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "unknown_technology": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:unknown_technology"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:advanced_ore_refinery"
+      }
+    },
+    "has_ore_refinery": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:advanced_ore_refinery"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "unknown_technology",
+      "has_recipe",
+      "has_ore_refinery"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:advanced_ore_refinery"
+    ]
+  }
+}

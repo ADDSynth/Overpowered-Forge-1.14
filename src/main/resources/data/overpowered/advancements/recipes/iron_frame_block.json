@@ -1,0 +1,43 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "obsidian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:obsidian"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:iron_frame_block"
+      }
+    },
+    "has_frame_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:iron_frame_block"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obsidian",
+      "has_recipe",
+      "has_frame_block"
+    ]
+  ],
+  "reward": {
+    "recipes": [
+      "overpowered:iron_frame_block"
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "iron_frame_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:iron_frame_block"
+          }
+        ]
+      }
+    },
+    "overpowered_gem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_crystal"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:gem_converter"
+      }
+    },
+    "has_gem_converter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:gem_converter"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron_frame_block",
+      "overpowered_gem",
+      "has_recipe",
+      "has_gem_converter"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:gem_converter"
+    ]
+  }
+}

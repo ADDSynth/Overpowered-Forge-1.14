@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:portal_control_panel"
+    },
+    "title": "Portal",
+    "description": "Craft a Portal Control Panel."
+  },
+  "parent": "overpowered:overpowered/void_crystal",
+  "criteria": {
+    "portal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:portal_control_panel"
+          }
+        ]
+      }
+    }
+  }
+}

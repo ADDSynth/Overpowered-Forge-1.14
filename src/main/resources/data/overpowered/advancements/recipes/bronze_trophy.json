@@ -1,0 +1,54 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "bronze_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/bronze"
+          }
+        ]
+      }
+    },
+    "trophy_base": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:trophy_base"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:bronze_trophy"
+      }
+    },
+    "has_bronze_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:bronze_trophy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bronze_plate",
+      "trophy_base",
+      "has_recipe",
+      "has_bronze_trophy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:bronze_trophy"
+    ]
+  }
+}

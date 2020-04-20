@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynth_energy:energy_storage"
+    },
+    "title": "Energy Storage",
+    "description": "Craft an Energy Storage Container"
+  },
+  "parent": "addsynth_energy:root",
+  "criteria": {
+    "energy_storage": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:energy_storage"
+          }
+        ]
+      }
+    }
+  }
+}

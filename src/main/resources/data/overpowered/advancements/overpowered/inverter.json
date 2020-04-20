@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:inverter"
+    },
+    "title": "Inverter",
+    "description": "Craft an Inverter"
+  },
+  "parent": "overpowered:overpowered/overpowered_gem",
+  "criteria": {
+    "inverter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:inverter"
+          }
+        ]
+      }
+    }
+  }
+}

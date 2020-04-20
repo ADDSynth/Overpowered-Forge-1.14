@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:unknown_technology"
+    },
+    "title": "Unknown Technology",
+    "description": "Find an Unknown Technology in the Unknown Dimension."
+  },
+  "parent": "overpowered:overpowered/portal",
+  "criteria": {
+    "unknown_technology": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:unknown_technology"
+          }
+        ]
+      }
+    }
+  }
+}

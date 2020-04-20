@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:laser_housing"
+    },
+    "title": "Laser",
+    "description": "Craft a Laser Housing"
+  },
+  "parent": "overpowered:overpowered/overpowered_gem",
+  "criteria": {
+    "laser": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:laser_housing"
+          }
+        ]
+      }
+    }
+  }
+}

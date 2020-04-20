@@ -1,0 +1,43 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "quartz": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/quartz"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:focus_lens"
+      }
+    },
+    "has_focus_lens": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:focus_lens"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "quartz",
+      "has_recipe",
+      "has_focus_lens"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:focus_lens"
+    ]
+  }
+}

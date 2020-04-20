@@ -1,0 +1,43 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+         "items": [
+          {
+            "tag": "minecraft:planks"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:wooden_scythe"
+      }
+    },
+    "has_wooden_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:wooden_scythe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "planks",
+      "has_recipe",
+      "has_wooden_scythe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:wooden_scythe"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+         "items": [
+          {
+            "tag": "forge:ingots/iron"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:iron_scythe"
+      }
+    },
+    "has_iron_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:iron_scythe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron",
+      "has_recipe",
+      "has_iron_scythe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:iron_scythe"
+    ]
+  }
+}

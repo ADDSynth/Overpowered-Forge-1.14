@@ -1,0 +1,54 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "tin_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "criteria": {
+        "items": [
+          {
+            "tag": "forge:tin_plate"
+          }
+        ]
+      }
+    },
+    "energized_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energized_power_core"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:laser_housing"
+      }
+    },
+    "has_laser_housing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:laser_housing"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tin_plate",
+      "energized_power_core",
+      "has_recipe",
+      "has_laser_housing"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:laser_housing"
+    ]
+  }
+}

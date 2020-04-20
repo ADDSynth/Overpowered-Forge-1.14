@@ -1,0 +1,76 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "silver_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/silver"
+          }
+        ]
+      }
+    },
+    "energy_grid": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_grid"
+          }
+        ]
+      }
+    },
+    "advanced_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:advanced_power_core"
+          }
+        ]
+      }
+    },
+    "energy_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_crystal"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:inverter"
+      }
+    },
+    "has_inverter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:inverter"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "silver_plate",
+      "energy_grid",
+      "advanced_power_core",
+      "energy_crystal",
+      "has_recipe",
+      "has_inverter"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:inverter"
+    ]
+  }
+}

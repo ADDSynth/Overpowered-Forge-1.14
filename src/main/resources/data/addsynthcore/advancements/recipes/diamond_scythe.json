@@ -1,0 +1,43 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+         "items": [
+          {
+            "tag": "forge:gems/diamond"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:diamond_scythe"
+      }
+    },
+    "has_diamond_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:diamond_scythe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "diamond",
+      "has_recipe",
+      "has_diamond_scythe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:diamond_scythe"
+    ]
+  }
+}

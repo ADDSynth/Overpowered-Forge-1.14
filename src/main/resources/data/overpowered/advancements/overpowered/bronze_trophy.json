@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:bronze_trophy"
+    },
+    "title": "Bronze Trophy",
+    "description": "Get a Bronze Trophy.",
+    "frame": "goal"
+  },
+  "parent": "overpowered:overpowered/root",
+  "criteria": {
+    "bronze_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:bronze_trophy"
+          }
+        ]
+      }
+    }
+  }
+}

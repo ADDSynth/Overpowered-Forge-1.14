@@ -1,0 +1,52 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:fusion_energy_converter"
+    },
+    "title": "Fusion Energy Construction",
+    "description": "Craft all the components needed to construct the Fusion Energy structure."
+  },
+  "parent": "overpowered:overpowered/unknown_technology",
+  "criteria": {
+    "fusion_energy_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:fusion_energy_converter"
+          }
+        ]
+      }
+    },
+    "fusion_energy_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:fusion_control_unit"
+          }
+        ]
+      }
+    },
+    "fusion_energy_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:fusion_control_laser"
+          }
+        ]
+      }
+    },
+    "fusion_energy_3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:fusion_chamber"
+          }
+        ]
+      }
+    }
+  }
+}

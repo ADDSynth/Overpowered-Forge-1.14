@@ -1,0 +1,71 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynthcore:diamond_scythe"
+    },
+    "title": "Scythe",
+    "description": "Craft a Scythe"
+  },
+  "parent": "addsynthcore:root",
+  "criteria": {
+    "wooden_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:wooden_scythe"
+          }
+        ]
+      }
+    },
+    "stone_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:stone_scythe"
+          }
+        ]
+      }
+    },
+    "iron_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:iron_scythe"
+          }
+        ]
+      }
+    },
+    "gold_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:gold_scythe"
+          }
+        ]
+      }
+    },
+    "diamond_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "addsynthcore:diamond_scythe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wooden_scythe",
+      "stone_scythe",
+      "iron_scythe",
+      "gold_scythe",
+      "diamond_scythe"
+    ]
+  ]
+}

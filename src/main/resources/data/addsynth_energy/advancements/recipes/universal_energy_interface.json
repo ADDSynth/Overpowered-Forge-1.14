@@ -1,0 +1,76 @@
+{
+  "parent": "addsynth_energy:recipes/root",
+  "criteria": {
+    "energy_wire": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:energy_wire"
+          }
+        ]
+      }
+    },
+    "quartz": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/quartz"
+          }
+        ]
+      }
+    },
+    "diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/diamond"
+          }
+        ]
+      }
+    },
+    "advanced_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:advanced_power_core"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynth_energy:universal_energy_interface"
+      }
+    },
+    "has_interface": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:universal_energy_interface"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "energy_wire",
+      "quartz",
+      "diamond",
+      "advanced_power_core",
+      "has_recipe",
+      "has_interface"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynth_energy:universal_energy_interface"
+    ]
+  }
+}

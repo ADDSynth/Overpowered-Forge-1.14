@@ -1,0 +1,43 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/iron"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:steel"
+      }
+    },
+    "has_steel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/steel"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron",
+      "has_recipe",
+      "has_steel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:steel_smelting"
+    ]
+  }
+}

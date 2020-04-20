@@ -1,0 +1,45 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "has_void_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:void_crystal"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:identifier"
+      }
+    },
+    "has_identifier": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:identifier"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_void_crystal",
+      "has_recipe",
+      "has_identifier"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "has_void_crystal",
+      "has_recipe",
+      "has_identifier"
+    ]
+  }
+}

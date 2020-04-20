@@ -1,0 +1,71 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:void_sword"
+    },
+    "title": "Void Tools",
+    "description": "Craft any Void Tool."
+  },
+  "parent": "overpowered:overpowered/void_crystal",
+  "criteria": {
+    "void_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:void_sword"
+          }
+        ]
+      }
+    },
+    "void_shovel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:void_shovel"
+          }
+        ]
+      }
+    },
+    "void_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:void_axe"
+          }
+        ]
+      }
+    },
+    "void_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:void_pickaxe"
+          }
+        ]
+      }
+    },
+    "void_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:void_hoe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "void_sword",
+      "void_shovel",
+      "void_axe",
+      "void_pickaxe",
+      "void_hoe"
+    ]
+  ]
+}

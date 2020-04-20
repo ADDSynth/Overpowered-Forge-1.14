@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynth_energy:electric_furnace"
+    },
+    "title": "Electric Furnace",
+    "description": "Craft an Electric Furnace"
+  },
+  "parent": "addsynth_energy:root",
+  "criteria": {
+    "electric_furnace": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:electric_furnace"
+          }
+        ]
+      }
+    }
+  }
+}

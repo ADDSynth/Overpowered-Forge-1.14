@@ -1,24 +1,21 @@
 {
-  "parent": "overpoweredmod:recipes/root",
-  "rewards": {
-    "recipes": [
-      "overpoweredmod:energy_crystal"
-    ]
+  "display": {
+    "icon": {
+      "item": "overpowered:energy_crystal"
+    },
+    "title": "Overpowered",
+    "description": "Overpowered Mod by ADDSynth",
+    "background": "overpowered:textures/gui/advancements/stone.png",
+    "show_toast": false,
+    "announce_to_chat": false
   },
   "criteria": {
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "overpoweredmod:energy_crystal"
-      }
-    },
     "ruby": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "type": "forge:ore_dict",
-			"ore": "gemRuby"
+            "tag": "forge:gems/ruby"
           }
         ]
       }
@@ -28,8 +25,7 @@
       "conditions": {
         "items": [
           {
-            "type": "forge:ore_dict",
-			"ore": "gemTopaz"
+            "tag": "forge:gems/topaz"
           }
         ]
       }
@@ -39,8 +35,7 @@
       "conditions": {
         "items": [
           {
-            "type": "forge:ore_dict",
-			"ore": "gemCitrine"
+            "tag": "forge:gems/citrine"
           }
         ]
       }
@@ -50,8 +45,7 @@
       "conditions": {
         "items": [
           {
-            "type": "forge:ore_dict",
-			"ore": "gemEmerald"
+            "tag": "forge:gems/emerald"
           }
         ]
       }
@@ -61,8 +55,7 @@
       "conditions": {
         "items": [
           {
-            "type": "forge:ore_dict",
-			"ore": "gemDiamond"
+            "tag": "forge:gems/diamond"
           }
         ]
       }
@@ -72,8 +65,7 @@
       "conditions": {
         "items": [
           {
-            "type": "forge:ore_dict",
-			"ore": "gemSapphire"
+            "tag": "forge:gems/sapphire"
           }
         ]
       }
@@ -83,8 +75,7 @@
       "conditions": {
         "items": [
           {
-            "type": "forge:ore_dict",
-			"ore": "gemAmethyst"
+            "tag": "forge:gems/amethyst"
           }
         ]
       }
@@ -94,8 +85,7 @@
       "conditions": {
         "items": [
           {
-            "type": "forge:ore_dict",
-			"ore": "gemQuartz"
+            "tag": "forge:gems/quartz"
           }
         ]
       }
@@ -103,15 +93,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
       "ruby",
-	  "topaz",
-	  "citrine",
-	  "emerald",
-	  "diamond",
-	  "sapphire",
-	  "amethyst",
-	  "quartz"
+      "topaz",
+      "citrine",
+      "emerald",
+      "diamond",
+      "sapphire",
+      "amethyst",
+      "quartz"
     ]
   ]
 }

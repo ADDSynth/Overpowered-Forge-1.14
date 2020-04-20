@@ -1,0 +1,73 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynthcore:caution_block"
+    },
+    "title": "ADDSynthCore",
+    "description": "ADDSynthCore",
+    "background": "addsynthcore:textures/gui/advancements/stone.png",
+    "show_toaste": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:planks"
+          }
+        ]
+      }
+    },
+    "wood": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:logs"
+          }
+        ]
+      }
+    },
+    "dirt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:dirt"
+          }
+        ]
+      }
+    },
+    "cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:cobblestone"
+          }
+        ]
+      }
+    },
+    "stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:stone"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "planks",
+      "wood",
+      "dirt",
+      "cobblestone",
+      "stone"
+    ]
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynth_energy:energy_wire"
+    },
+    "title": "ADDSynth Energy",
+    "description": "Energy Library for all of ADDSynth's mods.",
+    "background": "addsynth_energy:textures/gui/advancements/stone.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "copper": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/copper"
+          }
+        ]
+      }
+    }
+  }
+}

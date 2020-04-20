@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:void_crystal"
+    },
+    "title": "Void Crystal",
+    "description": "Use the Inverter to make a Void Crystal.",
+    "frame": "goal"
+  },
+  "parent": "overpowered:overpowered/inverter",
+  "criteria": {
+    "void_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:void_crystal"
+          }
+        ]
+      }
+    }
+  }
+}

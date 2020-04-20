@@ -1,0 +1,54 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "iron_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/iron"
+          }
+        ]
+      }
+    },
+    "power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:power_core"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:beam_emitter"
+      }
+    },
+    "has_beam_emitter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:beam_emitter"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron_plate",
+      "power_core",
+      "has_recipe",
+      "has_beam_emitter"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:beam_emitter"
+    ]
+  }
+}

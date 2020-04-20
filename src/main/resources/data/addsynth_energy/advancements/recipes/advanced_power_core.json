@@ -1,0 +1,54 @@
+{
+  "parent": "addsynth_energy:recipes/root",
+  "criteria": {
+    "power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:power_core"
+          }
+        ]
+      }
+    },
+    "lapis_lazuli": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/lapis"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynth_energy:advanced_power_core"
+      }
+    },
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:advanced_power_core"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "power_core",
+      "lapis_lazuli",
+      "has_recipe",
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynth_energy:advanced_power_core"
+    ]
+  }
+}

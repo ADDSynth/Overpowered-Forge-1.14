@@ -1,0 +1,43 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "gold": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+         "items": [
+          {
+            "tag": "forge:ingots/gold"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:gold_scythe"
+      }
+    },
+    "has_gold_scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:gold_scythe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "gold",
+      "has_recipe",
+      "has_gold_scythe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:gold_scythe"
+    ]
+  }
+}

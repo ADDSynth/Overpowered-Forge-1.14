@@ -1,0 +1,16 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:fusion_core"
+    },
+    "title": "Fusion Energy",
+    "description": "Activate a Fusion Energy Structure.",
+    "frame": "goal"
+  },
+  "parent": "overpowered:overpowered/fusion_structure",
+  "criteria": {
+    "gold_trophy": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

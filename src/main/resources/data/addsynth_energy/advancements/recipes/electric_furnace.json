@@ -1,0 +1,65 @@
+{
+  "parent": "addsynth_energy:recipes/root",
+  "criteria": {
+    "iron_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/iron"
+          }
+        ]
+      }
+    },
+    "power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:power_core"
+          }
+        ]
+      }
+    },
+    "furnace": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:furnace"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynth_energy:electric_furnace"
+      }
+    },
+    "has_electric_furnace": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:electric_furnace"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron_plate",
+      "power_core",
+      "furnace",
+      "has_recipe",
+      "has_electric_furnace"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynth_energy:electric_furnace"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:red_laser"
+    },
+    "title": "Fire Laser",
+    "description": "Activate a Laser."
+  },
+  "parent": "overpowered:overpowered/craft_laser",
+  "criteria": {
+    "fire_laser": {
+      "trigger": "minecraft:impossible"
+      }
+    }
+  }
+}

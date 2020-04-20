@@ -1,0 +1,43 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "unknown_technology": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:unknown_technology"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:fusion_core"
+      }
+    },
+    "has_fusion_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:fusion_core"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "unknown_technology",
+      "has_recipe",
+      "has_fusion_core"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:fusion_core"
+    ]
+  }
+}

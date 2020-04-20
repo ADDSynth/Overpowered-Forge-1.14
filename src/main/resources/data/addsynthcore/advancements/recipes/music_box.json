@@ -1,0 +1,43 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "note_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:note_block"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:music_box"
+      }
+    },
+    "has_music_box": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:music_box"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "note_block",
+      "has_recipe",
+      "has_music_box"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:music_box"
+    ]
+  }
+}

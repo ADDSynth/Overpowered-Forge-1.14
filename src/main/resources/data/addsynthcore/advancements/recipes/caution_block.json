@@ -1,0 +1,65 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:stone"
+          }
+        ]
+      }
+    },
+    "yellow_dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/yellow"
+          }
+        ]
+      }
+    },
+    "black_dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/black"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:caution_block"
+      }
+    },
+    "has_caution_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:caution_block"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "stone",
+      "yellow_dye",
+      "black_dye",
+      "has_recipe",
+      "has_caution_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:caution_block"
+    ]
+  }
+}

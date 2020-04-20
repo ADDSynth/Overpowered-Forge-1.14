@@ -1,0 +1,76 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "focus_lens": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:focus_lens"
+          }
+        ]
+      }
+    },
+    "energy_grid": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_grid"
+          }
+        ]
+      }
+    },
+    "data_cable": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:data_cable"
+          }
+        ]
+      }
+    },
+    "steel_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/steel"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:fusion_control_laser"
+      }
+    },
+    "has_control_laser": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:fusion_control_laser"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "focus_lens",
+      "energy_grid",
+      "data_cable",
+      "steel_plate",
+      "has_recipe",
+      "has_control_laser"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:fusion_control_laser"
+    ]
+  }
+}

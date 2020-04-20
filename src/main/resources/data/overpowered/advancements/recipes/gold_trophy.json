@@ -1,0 +1,54 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "gold_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/gold"
+          }
+        ]
+      }
+    },
+    "trophy_base": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:trophy_base"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:gold_trophy"
+      }
+    },
+    "has_gold_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:gold_trophy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "gold_plate",
+      "trophy_base",
+      "has_recipe",
+      "has_gold_trophy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:gold_trophy"
+    ]
+  }
+}

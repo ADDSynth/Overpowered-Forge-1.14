@@ -1,0 +1,65 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "nullified_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:nullified_power_core"
+          }
+        ]
+      }
+    },
+    "data_cable": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:data_cable"
+          }
+        ]
+      }
+    },
+    "aluminum_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/aluminum"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:portal_control_panel"
+      }
+    },
+    "has_portal_control_panel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:portal_control_panel"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "nullified_power_core",
+      "data_cable",
+      "aluminum_plate",
+      "has_recipe",
+      "has_portal_control_panel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:portal_control_panel"
+    ]
+  }
+}

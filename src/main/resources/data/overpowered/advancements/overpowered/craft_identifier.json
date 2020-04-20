@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:identifier"
+    },
+    "title": "Identifier",
+    "description": "Craft an Identifier."
+  },
+  "parent": "overpowered:overpowered/void_crystal",
+  "criteria": {
+    "identifier": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:identifier"
+          }
+        ]
+      }
+    }
+  }
+}

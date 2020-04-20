@@ -1,0 +1,43 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "energy_crystal_shards": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_crystal_shards"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:data_cable"
+      }
+    },
+    "has_data_cable": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:data_cable"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "energy_crystal_shards",
+      "has_recipe",
+      "has_data_cable"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:data_cable"
+    ]
+  }
+}

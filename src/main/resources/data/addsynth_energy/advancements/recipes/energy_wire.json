@@ -1,0 +1,54 @@
+{
+  "parent": "addsynth_energy:recipes/root",
+  "criteria": {
+    "wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:wool"
+          }
+        ]
+      }
+    },
+    "copper": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/copper"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynth_energy:energy_wire"
+      }
+    },
+    "has_energy_wire": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:energy_wire"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wool",
+      "copper",
+      "has_recipe",
+      "has_energy_wire"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynth_energy:energy_wire"
+    ]
+  }
+}

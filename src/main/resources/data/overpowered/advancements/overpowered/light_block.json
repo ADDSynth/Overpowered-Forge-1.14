@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:light_block"
+    },
+    "title": "Light Block",
+    "description": "Craft a Light Block"
+  },
+  "parent": "overpowered:overpowered/overpowered_gem",
+  "criteria": {
+    "light_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:light_block"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:fusion_control_laser"
+    },
+    "title": "Maximum Distance",
+    "description": "Fire a laser the maximum distance you can set.",
+    "frame": "challenge"
+  },
+  "parent": "overpowered:overpowered/fire_laser",
+  "criteria": {
+    "portal": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

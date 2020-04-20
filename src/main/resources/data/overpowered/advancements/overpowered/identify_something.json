@@ -1,0 +1,16 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:diamond_chestplate"
+    },
+    "title": "New Identity",
+    "description": "Use the Identifier to identify something."
+  },
+  "parent": "overpowered:overpowered/craft_identifier",
+  "criteria": {
+    "identify": {
+      "trigger": "minecraft:impossible"
+      }
+    }
+  }
+}

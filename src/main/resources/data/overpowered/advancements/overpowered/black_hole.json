@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:black_hole"
+    },
+    "title": "Black Hole",
+    "description": "Craft a Black Hole."
+  },
+  "parent": "overpowered:overpowered/unknown_technology",
+  "criteria": {
+    "gold_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:black_hole"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:platinum_trophy"
+    },
+    "title": "Platinum Trophy",
+    "description": "Get a Platinum Trophy.",
+    "frame": "challenge"
+  },
+  "parent": "overpowered:overpowered/gold_trophy",
+  "criteria": {
+    "platinum_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:platinum_trophy"
+          }
+        ]
+      }
+    }
+  }
+}
