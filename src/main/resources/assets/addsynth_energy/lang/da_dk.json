@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "Strømkabel",
 "block.addsynth_energy.generator": "Energidistributør",
+"block.addsynth_energy.compressor": "Kompressor",
 "block.addsynth_energy.energy_storage": "Energiladningsbeholder",
 "block.addsynth_energy.universal_energy_interface": "Energikonverter",
 "block.addsynth_energy.electric_furnace": "Elektrisk ovn"

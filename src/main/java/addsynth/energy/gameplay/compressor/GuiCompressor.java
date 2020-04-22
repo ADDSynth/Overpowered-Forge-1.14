@@ -1,8 +1,8 @@
 package addsynth.energy.gameplay.compressor;
 
 import addsynth.core.gui.objects.ProgressBar;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
-import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -36,7 +36,7 @@ public final class GuiCompressor extends GuiEnergyBase<ContainerCompressor> {
   private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
   
   public GuiCompressor(final ContainerCompressor container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/compressor.png"));
+    super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/compressor.png"));
     this.tile = container.getTileEntity();
     this.ySize = 182;
   }

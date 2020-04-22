@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "能源線",
 "block.addsynth_energy.generator": "能量分配器",
+"block.addsynth_energy.compressor": "壓縮機",
 "block.addsynth_energy.energy_storage": "儲能容器",
 "block.addsynth_energy.universal_energy_interface": "通用能量接口",
 "block.addsynth_energy.electric_furnace": "電爐"

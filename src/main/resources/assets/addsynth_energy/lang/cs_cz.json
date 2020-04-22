@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "Energetický vodič",
 "block.addsynth_energy.generator": "výkonový generátor",
+"block.addsynth_energy.compressor": "Kompresor",
 "block.addsynth_energy.energy_storage": "Kontejner pro skladování energie",
 "block.addsynth_energy.universal_energy_interface": "Univerzální energetické rozhraní",
 "block.addsynth_energy.electric_furnace": "Elektrické pece"

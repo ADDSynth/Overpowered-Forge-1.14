@@ -1,6 +1,5 @@
 package addsynth.overpoweredmod.game.core;
 
-import addsynth.energy.gameplay.compressor.Compressor;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.AdvancedOreRefinery;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.CrystalMatterGenerator;
@@ -28,7 +27,6 @@ public final class Machines {
 
   public static final Generator               generator                = new Generator("generator");
   
-  public static final Compressor              compressor               = new Compressor("compressor");
   public static final GemConverter            gem_converter            = new GemConverter("gem_converter");
   public static final Inverter                inverter                 = new Inverter("inverter");
   public static final MagicInfuser            magic_infuser            = new MagicInfuser("magic_infuser");

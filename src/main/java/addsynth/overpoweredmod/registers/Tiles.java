@@ -1,6 +1,5 @@
 package addsynth.overpoweredmod.registers;
 
-import addsynth.energy.gameplay.compressor.TileCompressor;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Laser;
@@ -35,9 +34,6 @@ public final class Tiles {
 
   public static final TileEntityType<TileEnergyGenerator> GENERATOR =
     TileEntityType.Builder.create(TileEnergyGenerator::new, Machines.generator).build(null);
-
-  public static final TileEntityType<TileCompressor> COMPRESSOR =
-    TileEntityType.Builder.create(TileCompressor::new, Machines.compressor).build(null);
 
   public static final TileEntityType<TileGemConverter> GEM_CONVERTER =
     TileEntityType.Builder.create(TileGemConverter::new, Machines.gem_converter).build(null);

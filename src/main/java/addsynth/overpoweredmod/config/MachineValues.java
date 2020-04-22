@@ -18,7 +18,6 @@ public final class MachineValues {
 
   public static ForgeConfigSpec.ConfigValue<Integer> fusion_energy_output_per_tick;
   
-  public static ForgeConfigSpec.ConfigValue<Integer> compressor_required_energy;
   public static ForgeConfigSpec.ConfigValue<Integer> gem_converter_required_energy;
   public static ForgeConfigSpec.ConfigValue<Integer> inverter_required_energy;
   public static ForgeConfigSpec.ConfigValue<Integer> magic_infuser_required_energy;
@@ -29,7 +28,6 @@ public final class MachineValues {
   public static ForgeConfigSpec.ConfigValue<Integer> crystal_matter_generator_required_energy;
   public static ForgeConfigSpec.ConfigValue<Integer> advanced_ore_refinery_required_energy;
 
-  public static ForgeConfigSpec.ConfigValue<Integer> compressor_work_time;
   public static ForgeConfigSpec.ConfigValue<Integer> gem_converter_work_time;
   public static ForgeConfigSpec.ConfigValue<Integer> inverter_work_time;
   public static ForgeConfigSpec.ConfigValue<Integer> magic_infuser_work_time;
@@ -49,7 +47,6 @@ public final class MachineValues {
 
   private static final int DEFAULT_FUSION_ENERGY_PER_TICK            =   100;
 
-  private static final int DEFAULT_COMPRESSOR_REQUIRED_ENERGY     =   4_000;
   private static final int DEFAULT_GEM_CONVERTER_REQUIRED_ENERGY  =  20_000;
   private static final int DEFAULT_INVERTER_REQUIRED_ENERGY       =  90_000;
   private static final int DEFAULT_MAGIC_INFUSER_REQUIRED_ENERGY  =  60_000;
@@ -60,7 +57,6 @@ public final class MachineValues {
   private static final int DEFAULT_GEM_REPLICATOR_REQUIRED_ENERGY = 500_000; // for 1 shard
   private static final int DEFAULT_ORE_REFINERY_REQUIRED_ENERGY   =  10_000;
 
-  private static final int DEFAULT_COMPRESSOR_WORK_TIME       =  200;
   private static final int DEFAULT_GEM_CONVERTER_WORK_TIME    =  600;
   private static final int DEFAULT_INVERTER_WORK_TIME         = 4000;
   private static final int DEFAULT_MAGIC_INFUSER_WORK_TIME    =  300;
@@ -83,11 +79,6 @@ public final class MachineValues {
                                           DEFAULT_LIGHT_BLOCK_ENERGY, 0, Integer.MAX_VALUE);
     light_block_max_extract           = builder.defineInRange("Light Block Extract Rate",
                                           DEFAULT_LIGHT_BLOCK_MAX_EXTRACT, 0, Integer.MAX_VALUE);
-    builder.pop();
-    
-    builder.push("Compressor");
-    compressor_required_energy = builder.defineInRange("Required Energy", DEFAULT_COMPRESSOR_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
-    compressor_work_time       = builder.defineInRange("Work Time",       DEFAULT_COMPRESSOR_WORK_TIME,       0, Integer.MAX_VALUE);
     builder.pop();
     
     builder.push("Gem Converter");

@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "overpowered:compressor"
+          "name": "addsynth_energy:compressor"
         }
       ],
       "conditions": [

@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "ऊर्जा तार",
 "block.addsynth_energy.generator": "ऊर्जा वितरक",
+"block.addsynth_energy.compressor": "कंप्रेसर",
 "block.addsynth_energy.energy_storage": "ऊर्जा भंडारण मशीन",
 "block.addsynth_energy.universal_energy_interface": "यूनिवर्सल एनर्जी इंटरफेस",
 "block.addsynth_energy.electric_furnace": "विद्युत भट्ठी"

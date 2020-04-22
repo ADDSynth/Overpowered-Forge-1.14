@@ -6,7 +6,7 @@
     "title": "ADDSynthCore",
     "description": "ADDSynthCore",
     "background": "addsynthcore:textures/gui/advancements/stone.png",
-    "show_toaste": false,
+    "show_toast": false,
     "announce_to_chat": false
   },
   "criteria": {

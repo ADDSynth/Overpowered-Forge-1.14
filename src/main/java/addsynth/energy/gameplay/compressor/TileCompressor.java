@@ -1,11 +1,11 @@
 package addsynth.energy.gameplay.compressor;
 
 import javax.annotation.Nullable;
+import addsynth.energy.Config;
 import addsynth.energy.CustomEnergyStorage;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
+import addsynth.energy.registers.Tiles;
 import addsynth.energy.tiles.machines.PassiveMachine;
-import addsynth.overpoweredmod.config.MachineValues;
-import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -21,7 +21,7 @@ public final class TileCompressor extends PassiveMachine implements INamedContai
   private ItemStack result;
 
   public TileCompressor(){
-    super(Tiles.COMPRESSOR,2,null,1,new CustomEnergyStorage(MachineValues.compressor_required_energy.get()),MachineValues.compressor_work_time.get());
+    super(Tiles.COMPRESSOR,2,null,1,new CustomEnergyStorage(Config.compressor_required_energy.get()),Config.compressor_work_time.get());
     // has a high work time to give the user a chance to change the recipe. (same as furnace cook time.)
   }
 

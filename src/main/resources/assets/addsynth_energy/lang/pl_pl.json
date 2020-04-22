@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "Przewód energetyczny",
 "block.addsynth_energy.generator": "Dystrybutor energii",
+"block.addsynth_energy.compressor": "Kompresor",
 "block.addsynth_energy.energy_storage": "Pojemnik do przechowywania energii",
 "block.addsynth_energy.universal_energy_interface": "Uniwersalny interfejs energetyczny",
 "block.addsynth_energy.electric_furnace": "Piec elektryczny"

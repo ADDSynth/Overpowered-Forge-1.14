@@ -16,6 +16,7 @@
     "recipes": [
       "overpowered:energy_crystal_shards",
       "overpowered:light_block",
+      "overpowered:energy_crystal_from_block",
       "overpowered:energy_sword",
       "overpowered:energy_pickaxe",
       "overpowered:energy_axe",

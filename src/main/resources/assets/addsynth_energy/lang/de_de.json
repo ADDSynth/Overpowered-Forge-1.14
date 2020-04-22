@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "Energiedraht",
 "block.addsynth_energy.generator": "Energieverteiler",
+"block.addsynth_energy.compressor": "Kompressor",
 "block.addsynth_energy.energy_storage": "Energiespeicherbehälter",
 "block.addsynth_energy.universal_energy_interface": "Energie Schnittstelle Maschine",
 "block.addsynth_energy.electric_furnace": "Elektroofen"

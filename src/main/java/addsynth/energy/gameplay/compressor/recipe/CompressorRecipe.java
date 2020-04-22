@@ -1,6 +1,6 @@
 package addsynth.energy.gameplay.compressor.recipe;
 
-import addsynth.overpoweredmod.game.core.Machines;
+import addsynth.energy.gameplay.EnergyBlocks;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -40,7 +40,7 @@ public final class CompressorRecipe implements IRecipe<IInventory> {
 
   @Override
   public ItemStack getIcon(){
-    return new ItemStack(Machines.compressor, 1);
+    return new ItemStack(EnergyBlocks.compressor, 1);
   }
 
   @Override

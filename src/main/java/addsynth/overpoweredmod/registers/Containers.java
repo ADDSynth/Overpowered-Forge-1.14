@@ -1,6 +1,5 @@
 package addsynth.overpoweredmod.registers;
 
-import addsynth.energy.gameplay.compressor.ContainerCompressor;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.ContainerOreRefinery;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.ContainerCrystalGenerator;
@@ -25,9 +24,6 @@ public final class Containers {
 
   public static final ContainerType<ContainerGenerator> GENERATOR =
     new ContainerType<>((IContainerFactory<ContainerGenerator>)ContainerGenerator::new);
-
-  public static final ContainerType<ContainerCompressor> COMPRESSOR =
-    new ContainerType<>((IContainerFactory<ContainerCompressor>)ContainerCompressor::new);
 
   public static final ContainerType<ContainerInverter> INVERTER =
     new ContainerType<>((IContainerFactory<ContainerInverter>)ContainerInverter::new);

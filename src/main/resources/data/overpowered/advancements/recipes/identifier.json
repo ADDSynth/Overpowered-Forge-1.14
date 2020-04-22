@@ -37,9 +37,7 @@
   ],
   "rewards": {
     "recipes": [
-      "has_void_crystal",
-      "has_recipe",
-      "has_identifier"
+      "overpowered:identifier"
     ]
   }
 }

@@ -3,7 +3,7 @@ package addsynth.energy.gameplay;
 import addsynth.energy.ADDSynthEnergy;
 import net.minecraft.item.Item;
 
-public final class Items {
+public final class EnergyItems {
 
   public static final Item            power_core               = new Item(new Item.Properties().group(ADDSynthEnergy.creative_tab));
   public static final Item            advanced_power_core      = new Item(new Item.Properties().group(ADDSynthEnergy.creative_tab));

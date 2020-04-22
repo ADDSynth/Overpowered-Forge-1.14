@@ -1,5 +1,5 @@
 {
-  "parent": "addsynthcore:root",
+  "parent": "addsynthcore:recipes/root",
   "criteria": {
     "tin": {
       "trigger": "minecraft:inventory_changed",

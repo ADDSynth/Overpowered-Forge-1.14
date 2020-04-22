@@ -3,7 +3,6 @@ package addsynth.overpoweredmod.registers;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.material.types.Gem;
 import addsynth.core.material.types.Metal;
-import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.Sounds;
@@ -14,7 +13,6 @@ import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.RegistryEvent;
@@ -56,7 +54,6 @@ public final class Registers {
     
     game.register(Wires.data_cable);
     game.register(Machines.generator);
-    if(Features.compressor.get()){ game.register(Machines.compressor); }
     if(Features.gem_converter.get()){ game.register(Machines.gem_converter); }
     game.register(Machines.inverter);
     if(Features.magic_infuser.get()){ game.register(Machines.magic_infuser); }
@@ -151,7 +148,6 @@ public final class Registers {
     
     game.register(OverpoweredMod.registry.getItemBlock(Wires.data_cable));
     game.register(OverpoweredMod.registry.getItemBlock(Machines.generator));
-    if(Features.compressor.get()){       game.register(OverpoweredMod.registry.getItemBlock(Machines.compressor)); }
     if(Features.gem_converter.get()){    game.register(OverpoweredMod.registry.getItemBlock(Machines.gem_converter)); }
     game.register(OverpoweredMod.registry.getItemBlock(Machines.inverter));
     if(Features.magic_infuser.get()){    game.register(OverpoweredMod.registry.getItemBlock(Machines.magic_infuser)); }
@@ -205,9 +201,7 @@ public final class Registers {
     for(Metal metal : Metals.values){ if(metal.custom){ game.register(metal.ingot); } }
     for(Metal metal : Metals.values){ if(metal.custom){ game.register(OverpoweredMod.registry.getItemBlock(metal.block)); } }
     for(Metal metal : Metals.values){ if(metal.custom){ if(metal.ore != null){ game.register(OverpoweredMod.registry.getItemBlock(metal.ore)); } } }
-    if(Features.compressor.get()){
-      for(Metal metal : Metals.values){ game.register(metal.plating); }
-    }
+    for(Metal metal : Metals.values){ game.register(metal.plating); }
     
     game.register(Portal.portal_image);
 
@@ -225,7 +219,6 @@ public final class Registers {
     final IForgeRegistry<TileEntityType<?>> game = event.getRegistry();
 
     RegistryUtil.register(game, Tiles.GENERATOR,                  Names.GENERATOR);
-    RegistryUtil.register(game, Tiles.COMPRESSOR,                 Names.COMPRESSOR);
     RegistryUtil.register(game, Tiles.GEM_CONVERTER,              Names.GEM_CONVERTER);
     RegistryUtil.register(game, Tiles.INVERTER,                   Names.INVERTER);
     RegistryUtil.register(game, Tiles.MAGIC_INFUSER,              Names.MAGIC_INFUSER);
@@ -252,7 +245,6 @@ public final class Registers {
     final IForgeRegistry<ContainerType<?>> game = event.getRegistry();
     
     RegistryUtil.register(game, Containers.GENERATOR,                  Names.GENERATOR);
-    RegistryUtil.register(game, Containers.COMPRESSOR,                 Names.COMPRESSOR);
     RegistryUtil.register(game, Containers.GEM_CONVERTER,              Names.GEM_CONVERTER);
     RegistryUtil.register(game, Containers.INVERTER,                   Names.INVERTER);
     RegistryUtil.register(game, Containers.IDENTIFIER,                 Names.IDENTIFIER);
@@ -264,12 +256,6 @@ public final class Registers {
     RegistryUtil.register(game, Containers.FUSION_CHAMBER,             Names.FUSION_CHAMBER);
     RegistryUtil.register(game, Containers.PORTAL_CONTROL_PANEL,       Names.PORTAL_CONTROL_PANEL);
     RegistryUtil.register(game, Containers.PORTAL_FRAME,               Names.PORTAL_FRAME);
-  }
-
-  @SubscribeEvent
-  public static final void registerRecipeSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event){
-    final IForgeRegistry<IRecipeSerializer<?>> game = event.getRegistry();
-    RegistryUtil.register(game, CompressorRecipes.serializer, Names.COMPRESSOR);
   }
 
   @SubscribeEvent

@@ -9,6 +9,9 @@ public final class Config {
   public static final Config INSTANCE = SPEC_PAIR.getLeft();
   public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
+  public static ForgeConfigSpec.ConfigValue<Integer> compressor_required_energy;
+  public static ForgeConfigSpec.ConfigValue<Integer> compressor_work_time;
+
   public static ForgeConfigSpec.BooleanValue energy_storage_container;
   public static ForgeConfigSpec.ConfigValue<Integer> energy_storage_container_capacity;
   public static ForgeConfigSpec.ConfigValue<Integer> energy_storage_container_extract_rate;
@@ -23,6 +26,9 @@ public final class Config {
   public static ForgeConfigSpec.ConfigValue<Integer> electric_furnace_required_energy;
   */
 
+  private static final int DEFAULT_COMPRESSOR_REQUIRED_ENERGY = 4_000;
+  private static final int DEFAULT_COMPRESSOR_WORK_TIME       =   200;
+
   private static final int DEFAULT_ENERGY_STORAGE_CAPACITY       = 1_000_000;
   private static final int DEFAULT_ENERGY_STORAGE_MAX_EXTRACT        =   500;
   private static final int DEFAULT_UNIVERSAL_ENERGY_INTERFACE_BUFFER = 1_000;
@@ -31,6 +37,11 @@ public final class Config {
 
   public Config(final ForgeConfigSpec.Builder builder){
   
+    builder.push("Compressor");
+    compressor_required_energy = builder.defineInRange("Required Energy", DEFAULT_COMPRESSOR_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
+    compressor_work_time       = builder.defineInRange("Work Time",       DEFAULT_COMPRESSOR_WORK_TIME,       0, Integer.MAX_VALUE);
+    builder.pop();
+    
     builder.push("Energy Storage Block");
     energy_storage_container   = builder.define("Enabled", true);
     energy_storage_container_capacity     = builder.defineInRange("Energy Storage Container Capacity",

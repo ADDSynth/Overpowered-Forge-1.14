@@ -53,7 +53,7 @@
       "conditions": {
         "items": [
           {
-            "items": "addsynthcore:diamond_scythe"
+            "item": "addsynthcore:diamond_scythe"
           }
         ]
       }

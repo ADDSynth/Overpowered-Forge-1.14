@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "Energický drôt",
 "block.addsynth_energy.generator": "Distribútor energie",
+"block.addsynth_energy.compressor": "kompresor",
 "block.addsynth_energy.energy_storage": "Modul na ukladanie energie",
 "block.addsynth_energy.universal_energy_interface": "Univerzálne energetické rozhranie",
 "block.addsynth_energy.electric_furnace": "Elektrická pec"

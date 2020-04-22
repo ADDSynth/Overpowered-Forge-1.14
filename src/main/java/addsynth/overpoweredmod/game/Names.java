@@ -41,7 +41,6 @@ public final class Names {
   public static final ResourceLocation MAGENTA_LENS          = new ResourceLocation(OverpoweredMod.MOD_ID, "magenta_lens");
 
   public static final ResourceLocation GENERATOR             = new ResourceLocation(OverpoweredMod.MOD_ID, "generator");
-  public static final ResourceLocation COMPRESSOR            = new ResourceLocation(OverpoweredMod.MOD_ID, "compressor");
 
   public static final ResourceLocation DATA_CABLE            = new ResourceLocation(OverpoweredMod.MOD_ID, "data_cable");
   public static final ResourceLocation GEM_CONVERTER         = new ResourceLocation(OverpoweredMod.MOD_ID, "gem_converter");

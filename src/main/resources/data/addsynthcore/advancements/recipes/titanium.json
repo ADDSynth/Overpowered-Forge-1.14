@@ -1,5 +1,5 @@
 {
-  "parent": "addsynthcore:root",
+  "parent": "addsynthcore:recipes/root",
   "criteria": {
     "titanium": {
       "trigger": "minecraft:inventory_changed",

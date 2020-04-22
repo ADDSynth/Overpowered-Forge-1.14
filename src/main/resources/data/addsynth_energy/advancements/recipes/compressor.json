@@ -1,22 +1,32 @@
 {
-  "parent": "overpowered:recipes/root",
+  "parent": "addsynth_energy:recipes/root",
   "criteria": {
-    "tin_plate": {
+    "steel": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:plates/tin"
+            "tag": "forge:ingots/steel"
           }
         ]
       }
     },
-    "energized_power_core": {
+    "anvil": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energized_power_core"
+            "item": "minecraft:anvil"
+          }
+        ]
+      }
+    },
+    "power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:power_core"
           }
         ]
       }
@@ -24,15 +34,15 @@
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "overpowered:laser_housing"
+        "recipe": "addsynth_energy:compressor"
       }
     },
-    "has_laser_housing": {
+    "has_compressor": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:laser_housing"
+            "item": "addsynth_energy:compressor"
           }
         ]
       }
@@ -40,15 +50,16 @@
   },
   "requirements": [
     [
-      "tin_plate",
-      "energized_power_core",
+      "steel",
+      "power_core",
+      "anvil",
       "has_recipe",
-      "has_laser_housing"
+      "has_compressor"
     ]
   ],
   "rewards": {
     "recipes": [
-      "overpowered:laser_housing"
+      "addsynth_energy:compressor"
     ]
   }
 }

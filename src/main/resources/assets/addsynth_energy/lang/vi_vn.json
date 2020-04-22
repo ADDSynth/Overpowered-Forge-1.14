@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "Dây năng lượng",
 "block.addsynth_energy.generator": "Nhà phân phối năng lượng",
+"block.addsynth_energy.compressor": "Máy nén",
 "block.addsynth_energy.energy_storage": "máy lưu trữ năng lượng",
 "block.addsynth_energy.universal_energy_interface": "Giao diện năng lượng toàn cầu",
 "block.addsynth_energy.electric_furnace": "Lò sưởi điện"

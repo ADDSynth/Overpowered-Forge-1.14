@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "Energiedraad",
 "block.addsynth_energy.generator": "Energiedistributeur",
+"block.addsynth_energy.compressor": "Compressor",
 "block.addsynth_energy.energy_storage": "Energie Opslag",
 "block.addsynth_energy.universal_energy_interface": "Universal Energy Interface",
 "block.addsynth_energy.electric_furnace": "Elektrische oven"

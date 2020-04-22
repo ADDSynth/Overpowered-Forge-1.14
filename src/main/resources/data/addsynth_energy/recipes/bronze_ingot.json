@@ -1,5 +1,5 @@
 {
-  "type": "overpowered:compressor",
+  "type": "addsynth_energy:compressor",
   "ingredients": [
     {"tag": "forge:ingots/tin"},
     {"tag": "forge:ingots/copper"}

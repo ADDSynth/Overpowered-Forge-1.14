@@ -8,8 +8,6 @@ import addsynth.core.material.Material;
 import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.RecipeUtil;
 import addsynth.core.worldgen.OreGenerator;
-import addsynth.energy.gameplay.compressor.GuiCompressor;
-// import addsynth.overpoweredmod.assets.Achievements;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -137,7 +135,6 @@ public class OverpoweredMod {
 
   private static final void register_guis(){
     ScreenManager.registerFactory(Containers.GENERATOR,                  GuiGenerator::new);
-    ScreenManager.registerFactory(Containers.COMPRESSOR,                 GuiCompressor::new);
     ScreenManager.registerFactory(Containers.GEM_CONVERTER,              GuiGemConverter::new);
     ScreenManager.registerFactory(Containers.INVERTER,                   GuiInverter::new);
     ScreenManager.registerFactory(Containers.MAGIC_INFUSER,              GuiMagicInfuser::new);

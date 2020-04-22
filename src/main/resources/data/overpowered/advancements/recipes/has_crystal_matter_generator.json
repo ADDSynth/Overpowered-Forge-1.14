@@ -1,0 +1,27 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "has_crystal_matter_generator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:crystal_matter_generator"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "addsynthcore:ruby_from_shards",
+      "addsynthcore:topaz_from_shards",
+      "addsynthcore:citrine_from_shards",
+      "addsynthcore:emerald_from_shards",
+      "addsynthcore:diamond_from_shards",
+      "addsynthcore:sapphire_from_shards",
+      "addsynthcore:amethyst_from_shards",
+      "addsynthcore:quartz_from_shards"
+    ]
+  }
+}

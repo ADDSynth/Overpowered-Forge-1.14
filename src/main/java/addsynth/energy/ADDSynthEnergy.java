@@ -4,7 +4,8 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import addsynth.core.game.RegistryUtil;
-import addsynth.energy.gameplay.Blocks;
+import addsynth.energy.gameplay.EnergyBlocks;
+import addsynth.energy.gameplay.compressor.GuiCompressor;
 import addsynth.energy.gameplay.electric_furnace.GuiElectricFurnace;
 import addsynth.energy.gameplay.energy_storage.GuiEnergyStorageContainer;
 import addsynth.energy.gameplay.universal_energy_interface.GuiUniversalEnergyInterface;
@@ -37,7 +38,7 @@ public class ADDSynthEnergy {
   public static final ItemGroup creative_tab = new ItemGroup("addsynth_energy"){
     @Override
     public final ItemStack createIcon(){
-      return new ItemStack(registry.getItemBlock(Blocks.wire));
+      return new ItemStack(registry.getItemBlock(EnergyBlocks.wire));
     }
   };
 
@@ -67,6 +68,7 @@ public class ADDSynthEnergy {
   }
 
   private static final void register_guis(){
+    ScreenManager.registerFactory(Containers.COMPRESSOR,                 GuiCompressor::new);
     ScreenManager.registerFactory(Containers.ENERGY_STORAGE_CONTAINER,   GuiEnergyStorageContainer::new);
     ScreenManager.registerFactory(Containers.UNIVERSAL_ENERGY_INTERFACE, GuiUniversalEnergyInterface::new);
     ScreenManager.registerFactory(Containers.ELECTRIC_FURNACE,           GuiElectricFurnace::new);

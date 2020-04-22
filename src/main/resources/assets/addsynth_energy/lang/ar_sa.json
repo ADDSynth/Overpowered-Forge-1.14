@@ -6,6 +6,7 @@
 
 "block.addsynth_energy.energy_wire": "سلك الطاقة",
 "block.addsynth_energy.generator": "موزع الطاقة",
+"block.addsynth_energy.compressor": "ضاغط",
 "block.addsynth_energy.energy_storage": "آلة تخزين الطاقة",
 "block.addsynth_energy.universal_energy_interface": "آلة واجهة الطاقة",
 "block.addsynth_energy.electric_furnace": "الفرن الكهربائي"
