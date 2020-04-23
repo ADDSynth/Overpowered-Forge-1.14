@@ -1,7 +1,6 @@
 package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.RecipeUtil;
 import addsynth.overpoweredmod.Debug;
@@ -13,7 +12,7 @@ public final class OreRefineryRecipes {
 
   private static final int output_multiplier = 2;
   private static Item[] valid_ores;
-  private static final HashMap<Item,ItemStack> recipes = new HashMap<>(200);
+  public static final ArrayList<OreRefineryRecipe> recipes = new ArrayList<>(200);
 
   // https://github.com/skyboy/MineFactoryReloaded/blob/master/src/main/java/powercrystals/minefactoryreloaded/modhelpers/vanilla/Minecraft.java
   
@@ -36,7 +35,7 @@ public final class OreRefineryRecipes {
             list.add(item);
             final ItemStack result = result_check.copy();
             result.setCount(result.getCount()*output_multiplier);
-            recipes.put(item, result);
+            recipes.add(new OreRefineryRecipe(item, result));
           }
         }
       }
@@ -74,20 +73,20 @@ public final class OreRefineryRecipes {
    */
   public static final ItemStack get_result(final Item input){
     try{
+      ItemStack result = null;
       if(recipes == null){
-        throw new NullPointerException("recipes HashMap is null");
+        throw new NullPointerException("recipes list is null");
       }
       if(input == null){
         throw new IllegalArgumentException("input is null.");
       }
-      if(recipes.containsKey(input)){
-        final ItemStack result = recipes.get(input);
-        if(result == null){
-          throw new NullPointerException("The value for HashMap key "+input.toString()+" returned a null value.");
+      for(OreRefineryRecipe recipe : recipes){
+        if(recipe.input == input){
+          result = recipe.output.copy();
+          break;
         }
-        return result.copy();
       }
-      return null; // normal exit if input is invalid.
+      return result;
     }
     catch(Throwable e){
       e.printStackTrace();

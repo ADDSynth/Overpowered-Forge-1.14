@@ -15,6 +15,7 @@ import addsynth.overpoweredmod.machines.advanced_ore_refinery.GuiAdvancedOreRefi
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.OreRefineryRecipes;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.GuiCrystalMatterGenerator;
 import addsynth.overpoweredmod.machines.fusion.chamber.GuiFusionChamber;
+import addsynth.overpoweredmod.machines.gem_converter.GemConverterRecipe;
 import addsynth.overpoweredmod.machines.gem_converter.GuiGemConverter;
 import addsynth.overpoweredmod.machines.generator.GuiGenerator;
 import addsynth.overpoweredmod.machines.identifier.GuiIdentifier;
@@ -97,9 +98,9 @@ public class OverpoweredMod {
     NetworkHandler.registerMessages();
     // WeirdDimension.register();
     // TODO: Railcraft doesn't exist for 1.14 yet, but still should find a way to disable the Iron to Steel smelting recipe.
-    // PRIORITY: Also must find a way to adjust recipes to use ingots if the Compressor is disabled!
     MaterialsUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
     RecipeUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
+    RecipeUtil.registerResponder(GemConverterRecipe::generate_recipes);
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());
     
     log.info("Finished Overpowered main setup.");

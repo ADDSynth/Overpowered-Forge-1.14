@@ -3,7 +3,7 @@ package addsynth.energy.gameplay.universal_energy_interface;
 import javax.annotation.Nullable;
 import addsynth.energy.Config;
 import addsynth.energy.CustomEnergyStorage;
-import addsynth.energy.compat.EnergyCompat;
+import addsynth.energy.compat.energy.EnergyCompat;
 import addsynth.energy.registers.Tiles;
 import addsynth.energy.tiles.TileEnergyBattery;
 import net.minecraft.entity.player.PlayerEntity;

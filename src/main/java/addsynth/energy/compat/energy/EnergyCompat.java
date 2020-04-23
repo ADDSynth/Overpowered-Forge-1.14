@@ -1,4 +1,4 @@
-package addsynth.energy.compat;
+package addsynth.energy.compat.energy;
 
 import java.util.ArrayList;
 import addsynth.core.game.Compatability;

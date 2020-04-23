@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.NetworkTagCollection;
 import net.minecraft.tags.NetworkTagManager;
@@ -52,135 +53,191 @@ public final class MaterialsUtil {
     ADDSynthCore.log.info("Done responding to Tag reload.");
   }
 
+// =======================================================================================
+
   public static final Collection<Item> getOres(){
     return Tags.Items.ORES.getAllElements();
   }
 
-  @Nullable
-  public static final Collection<Item> getTagCollection(final ResourceLocation tag_id){
-    final Tag<Item> item_tag = ItemTags.getCollection().get(tag_id);
-    return item_tag != null ? item_tag.getAllElements() : null;
+  public static final Tag<Item> getTag(final ResourceLocation tag_id){
+    return ItemTags.getCollection().get(tag_id);
   }
 
   @Nullable
+  public static final Collection<Item> getItemCollection(final ResourceLocation tag_id){
+    final Tag<Item> item_tag = getTag(tag_id);
+    return item_tag != null ? item_tag.getAllElements() : null;
+  }
+
+  public static final Ingredient getTagIngredient(final ResourceLocation tag_id){
+    return Ingredient.fromTag(getTag(tag_id));
+  }
+
+// =======================================================================================
+
+  // TODO: Move these functions in with the Material's class. Because they already have the material's id name on hand.
+
+  @Nullable
   public static final Collection<Item> getRubyBlocks(){
-    return getTagCollection(new ResourceLocation("forge:storage_blocks/ruby"));
+    return getItemCollection(new ResourceLocation("forge:storage_blocks/ruby"));
   }
 
   @Nullable
   public static final Collection<Item> getTopazBlocks(){
-    return getTagCollection(new ResourceLocation("forge:storage_blocks/topaz"));
+    return getItemCollection(new ResourceLocation("forge:storage_blocks/topaz"));
   }
 
   @Nullable
   public static final Collection<Item> getCitrineBlocks(){
-    return getTagCollection(new ResourceLocation("forge:storage_blocks/citrine"));
+    return getItemCollection(new ResourceLocation("forge:storage_blocks/citrine"));
   }
 
   @Nullable
   public static final Collection<Item> getEmeraldBlocks(){
-    return getTagCollection(new ResourceLocation("forge:storage_blocks/emerald"));
+    return getItemCollection(new ResourceLocation("forge:storage_blocks/emerald"));
   }
 
   @Nullable
   public static final Collection<Item> getDiamondBlocks(){
-    return getTagCollection(new ResourceLocation("forge:storage_blocks/diamond"));
+    return getItemCollection(new ResourceLocation("forge:storage_blocks/diamond"));
   }
 
   @Nullable
   public static final Collection<Item> getSapphireBlocks(){
-    return getTagCollection(new ResourceLocation("forge:storage_blocks/sapphire"));
+    return getItemCollection(new ResourceLocation("forge:storage_blocks/sapphire"));
   }
 
   @Nullable
   public static final Collection<Item> getAmethystBlocks(){
-    return getTagCollection(new ResourceLocation("forge:storage_blocks/amethyst"));
+    return getItemCollection(new ResourceLocation("forge:storage_blocks/amethyst"));
   }
 
   @Nullable
   public static final Collection<Item> getQuartzBlocks(){
-    return getTagCollection(new ResourceLocation("forge:storage_blocks/quartz"));
+    return getItemCollection(new ResourceLocation("forge:storage_blocks/quartz"));
   }
 
   @Nullable
   public static final Collection<Item> getRubies(){
-    return getTagCollection(new ResourceLocation("forge:gems/ruby"));
+    return getItemCollection(new ResourceLocation("forge:gems/ruby"));
   }
 
   @Nullable
   public static final Collection<Item> getTopaz(){
-    return getTagCollection(new ResourceLocation("forge:gems/topaz"));
+    return getItemCollection(new ResourceLocation("forge:gems/topaz"));
   }
 
   @Nullable
   public static final Collection<Item> getCitrine(){
-    return getTagCollection(new ResourceLocation("forge:gems/citrine"));
+    return getItemCollection(new ResourceLocation("forge:gems/citrine"));
   }
 
   @Nullable
   public static final Collection<Item> getEmeralds(){
-    return getTagCollection(new ResourceLocation("forge:gems/emerald"));
+    return getItemCollection(new ResourceLocation("forge:gems/emerald"));
   }
 
   @Nullable
   public static final Collection<Item> getDiamonds(){
-    return getTagCollection(new ResourceLocation("forge:gems/diamond"));
+    return getItemCollection(new ResourceLocation("forge:gems/diamond"));
   }
 
   @Nullable
   public static final Collection<Item> getSapphires(){
-    return getTagCollection(new ResourceLocation("forge:gems/sapphire"));
+    return getItemCollection(new ResourceLocation("forge:gems/sapphire"));
   }
 
   @Nullable
   public static final Collection<Item> getAmethysts(){
-    return getTagCollection(new ResourceLocation("forge:gems/amethyst"));
+    return getItemCollection(new ResourceLocation("forge:gems/amethyst"));
   }
 
   @Nullable
   public static final Collection<Item> getQuartz(){
-    return getTagCollection(new ResourceLocation("forge:gems/quartz"));
+    return getItemCollection(new ResourceLocation("forge:gems/quartz"));
+  }
+
+  @Nullable
+  public static final Ingredient getRubyIngredient(){
+    return getTagIngredient(new ResourceLocation("forge:gems/ruby"));
+  }
+
+  @Nullable
+  public static final Ingredient getTopazIngredient(){
+    return getTagIngredient(new ResourceLocation("forge:gems/topaz"));
+  }
+
+  @Nullable
+  public static final Ingredient getCitrineIngredient(){
+    return getTagIngredient(new ResourceLocation("forge:gems/citrine"));
+  }
+
+  @Nullable
+  public static final Ingredient getEmeraldIngredient(){
+    return getTagIngredient(new ResourceLocation("forge:gems/emerald"));
+  }
+
+  @Nullable
+  public static final Ingredient getDiamondIngredient(){
+    return getTagIngredient(new ResourceLocation("forge:gems/diamond"));
+  }
+
+  @Nullable
+  public static final Ingredient getSapphireIngredient(){
+    return getTagIngredient(new ResourceLocation("forge:gems/sapphire"));
+  }
+
+  @Nullable
+  public static final Ingredient getAmethystIngredient(){
+    return getTagIngredient(new ResourceLocation("forge:gems/amethyst"));
+  }
+
+  @Nullable
+  public static final Ingredient getQuartzIngredient(){
+    return getTagIngredient(new ResourceLocation("forge:gems/quartz"));
   }
 
   @Nullable
   public static final Collection<Item> getTinIngots(){
-    return getTagCollection(new ResourceLocation("forge:ingots/tin"));
+    return getItemCollection(new ResourceLocation("forge:ingots/tin"));
   }
 
   @Nullable
   public static final Collection<Item> getCopperIngots(){
-    return getTagCollection(new ResourceLocation("forge:ingots/copper"));
+    return getItemCollection(new ResourceLocation("forge:ingots/copper"));
   }
 
   @Nullable
   public static final Collection<Item> getAluminumIngots(){
-    return getTagCollection(new ResourceLocation("forge:ingots/aluminum"));
+    return getItemCollection(new ResourceLocation("forge:ingots/aluminum"));
   }
 
   @Nullable
   public static final Collection<Item> getSteelIngots(){
-    return getTagCollection(new ResourceLocation("forge:ingots/steel"));
+    return getItemCollection(new ResourceLocation("forge:ingots/steel"));
   }
 
   @Nullable
   public static final Collection<Item> getBronzeIngots(){
-    return getTagCollection(new ResourceLocation("forge:ingots/bronze"));
+    return getItemCollection(new ResourceLocation("forge:ingots/bronze"));
   }
 
   @Nullable
   public static final Collection<Item> getSilverIngots(){
-    return getTagCollection(new ResourceLocation("forge:ingots/silver"));
+    return getItemCollection(new ResourceLocation("forge:ingots/silver"));
   }
 
   @Nullable
   public static final Collection<Item> getPlatinumIngots(){
-    return getTagCollection(new ResourceLocation("forge:ingots/platinum"));
+    return getItemCollection(new ResourceLocation("forge:ingots/platinum"));
   }
 
   @Nullable
   public static final Collection<Item> getTitaniumIngots(){
-    return getTagCollection(new ResourceLocation("forge:ingots/titanium"));
+    return getItemCollection(new ResourceLocation("forge:ingots/titanium"));
   }
+
+// =======================================================================================
 
   public static final boolean match(final Item item, final Collection<Item> list){
     for(final Item check_item : list){

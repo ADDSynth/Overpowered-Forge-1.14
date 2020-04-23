@@ -1,7 +1,8 @@
-package addsynth.core.gameplay;
+package addsynth.core.gameplay.compat;
 
 import java.util.Set;
 import addsynth.core.game.Compatability;
+import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.ScytheTool;
 import net.minecraft.block.Block;
 import net.minecraft.item.ToolItem;

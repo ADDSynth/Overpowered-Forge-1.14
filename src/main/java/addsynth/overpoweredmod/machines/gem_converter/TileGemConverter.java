@@ -49,7 +49,7 @@ public final class TileGemConverter extends PassiveMachine implements INamedCont
         }
       }
       gem_selected = new ItemStack(Gems.index[selection].gem,1);
-      update_data(); // TEST: this may call readFromNBT and set the gem_item stack anyway.
+      update_data(); // PRIORITY TEST: this may call readFromNBT and set the gem_item stack anyway.
     }
   }
 

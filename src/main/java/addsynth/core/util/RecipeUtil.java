@@ -92,6 +92,11 @@ public final class RecipeUtil {
 
   private static final ArrayList<Runnable> responders = new ArrayList<>();
 
+  /** Register functions to call when Recipes are reloaded. Your functions are probably used to
+   *  generate internal recipes for your machines. These depend on Item Tags.
+   *  The Reload Recipes event ALWAYS occurrs after Tags are reloaed.
+   * @param executable
+   */
   public static final void registerResponder(final Runnable executable){
     if(responders.contains(executable)){
       ADDSynthCore.log.warn("That function is already registered as an event responder.");
