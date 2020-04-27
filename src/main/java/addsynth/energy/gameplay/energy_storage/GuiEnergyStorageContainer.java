@@ -2,9 +2,9 @@ package addsynth.energy.gameplay.energy_storage;
 
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.ADDSynthEnergy;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
+import addsynth.energy.energy_network.tiles.TileEnergyBattery;
 import addsynth.energy.gui.GuiEnergyBase;
-import addsynth.energy.tiles.TileEnergyBattery;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -12,7 +12,7 @@ import net.minecraft.util.text.ITextComponent;
 public final class GuiEnergyStorageContainer extends GuiEnergyBase<ContainerEnergyStorage> {
 
   private final TileEnergyBattery tile;
-  private CustomEnergyStorage tile_energy;
+  private Energy tile_energy;
 
   private float energy_float;
   private static final int draw_energy_text_y = 25;

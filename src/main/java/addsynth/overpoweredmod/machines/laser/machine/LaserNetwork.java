@@ -7,7 +7,7 @@ import addsynth.core.block_network.Node;
 import addsynth.core.util.MathUtility;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.core.util.NetworkUtil;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -15,6 +15,7 @@ import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
 import addsynth.overpoweredmod.machines.laser.cannon.TileLaser;
 import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
 import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -25,14 +26,14 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   private int number_of_lasers;
   private boolean activated;
   private int laser_distance;
-  public final CustomEnergyStorage energy = new CustomEnergyStorage(0,1000);
+  public final Energy energy = new Energy(0,1000);
   public boolean running;
   public boolean auto_shutoff;
 
   // https://stackoverflow.com/questions/4963300/which-notnull-java-annotation-should-i-use
   // https://blogs.oracle.com/java-platform-group/java-8s-new-type-annotations
-  public LaserNetwork(final World world, @Nonnull final TileLaserHousing laser_house){
-    super(world, laser_house.getBlockState().getBlock(), laser_house);
+  public LaserNetwork(final World world, final TileLaserHousing tile){
+    super(world, tile);
     this.energy.set_receive_only();
   }
 
@@ -51,17 +52,17 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   }
 
   @Override
-  protected final void customSearch(final Block block, final BlockPos new_position){
+  protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
     if(block instanceof LaserCannon){
       boolean exists = false;
       for(Node node : lasers){
-        if(node.position == new_position){
+        if(node.position == position){
           exists = true;
           break;
         }
       }
       if(exists == false){
-        lasers.add(new Node(new_position, world.getTileEntity(new_position)));
+        lasers.add(new Node(position, world.getTileEntity(position)));
       }
     }
   }
@@ -100,16 +101,14 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
 
   public final void updateLaserNetwork(){
     TileLaserHousing laser_housing;
-    for(BlockPos block_position : blocks){
-      if(block_position != null){
-        laser_housing = MinecraftUtility.getTileEntity(block_position, world, TileLaserHousing.class);
-        if(laser_housing != null){
-          laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff); // updates server
-          final LaserClientSyncMessage message = new LaserClientSyncMessage(block_position,number_of_lasers);
-          NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message); // updates client
-          // FIX: Laser Networks don't initialize properly and instead initializes to default values, which sets
-          //      everything to 0 or off. This will get fixed during the BlockNetwork rewrite in the next update.
-        }
+    for(final Node node : blocks){
+      if(node.isInvalid() == false){
+        laser_housing = (TileLaserHousing)node.getTile();
+        laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff); // updates server
+        final LaserClientSyncMessage message = new LaserClientSyncMessage(node.position,number_of_lasers);
+        NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message); // updates client
+        // FIX: Laser Networks don't initialize properly and instead initializes to default values, which sets
+        //      everything to 0 or off. This will get fixed during the BlockNetwork rewrite in the next update.
       }
     }
   }
@@ -141,7 +140,13 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   }
 
   private final void fire_lasers(){
-    final double[] center_position = MathUtility.getExactCenter(blocks);
+    final ArrayList<BlockPos> positions = new ArrayList<>(100);
+    for(final Node node : blocks){
+      if(node.isInvalid() == false){
+        positions.add(node.position);
+      }
+    }
+    final double[] center_position = MathUtility.getExactCenter(positions);
     remove_invalid_nodes(lasers);
     for(Node node : lasers){
       ((TileLaser)node.getTile()).activate(this.laser_distance);

@@ -19,44 +19,46 @@ import net.minecraft.world.server.ServerWorld;
  * you'd want a BlockNetwork is to hold additional information, so extend this class with your own.<br>
  * <b>Required:</b> Blocks in a Block Network all hold a reference to the SAME Block Network. This reference
  * variable must be in a TileEntity which implements the {@link IBlockNetworkUser} interface.<br>
- * @see addsynth.energy.EnergyNetwork EnergyNetwork
+ * @see addsynth.energy.energy_network.EnergyNetwork EnergyNetwork
+ * @see addsynth.overpoweredmod.machines.laser.machine.LaserNetwork
+ * @see addsynth.overpoweredmod.machines.data_cable.DataCableNetwork
+ * @see addsynth.overpoweredmod.machines.suspension_bridge.BridgeNetwork
  * @author ADDSynth
  */
 public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
 
   /** Only code that searches for blocks on the server side needs to use the world variable. */
   protected final World world;
-  /** The block of the TileEntity using this Block Network. */
-  protected final Block block_type;
+
+  @Nonnull
+  protected T first_tile;
+
+  protected final Class<T> class_type;
+
   /** All the blocks that are in this block network. */
-  protected final ArrayList<BlockPos> blocks = new ArrayList<>(100); // TODO: upgrade to use Nodes? Because many block networks needs to get the TileEntity at that position and update all of them.
-  /** The first TileEntity to create this network or the first to
-   *  be discovered. Used when updating the entire Block Network.
-   */
-  protected final T first_tile;
+  protected final NodeList blocks = new NodeList();
 
-  public BlockNetwork(@Nonnull final World world, @Nonnull final T first_tile){
-    this(world, first_tile.getBlockState().getBlock(), first_tile);
-  }
 
-  public BlockNetwork(@Nonnull final World world, @Nonnull final Block block, @Nonnull final T tile){
-    if(world == null || block == null){
-      throw new IllegalArgumentException("arguments to BlockNetwork(World, BlockType) can't be null.");
-    }
+
+  @SuppressWarnings("unchecked")
+  public BlockNetwork(@Nonnull final World world, @Nonnull final T tile){
     if(world.isRemote){
       ADDSynthCore.log.error("Block Networks have no business being created on the Client-Side! You can't and shouldn't do anything with them on the Client-side!");
       Thread.dumpStack();
     }
     this.world = world instanceof ServerWorld ? world : null;
-    this.block_type = block;
     this.first_tile = tile;
+    this.class_type = (Class<T>)tile.getClass();
   }
+
+
 
   // This works perfectly and very efficiently. Never change it!
   protected static final void remove_invalid_nodes(final ArrayList<? extends Node> node_list){
     node_list.removeIf((Node n) -> n == null ? true : n.isInvalid());
   }
 
+  @Deprecated // DELETE
   private final void setNetwork(final BlockPos position){
     final TileEntity tile = world.getTileEntity(position);
     if(tile != null){
@@ -64,7 +66,6 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
         ((IBlockNetworkUser)tile).setBlockNetwork(this);
       }
       else{
-        throw new RuntimeException("The TileEntity that belongs to the "+StringUtil.getName(block_type)+" Block does not implement the IBlockNetwork interface.");
       }
     }
     else{
@@ -85,11 +86,18 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
     return null;
   }
 
+  public void updateNetwork(final BlockPos from){
+    final TileEntity tile = world.getTileEntity(from);
+    if(is_valid_tile(tile)){
+      updateNetwork(from, (T)tile);
+    }
+  }
+
   /**
    * Must be called when splitting or joining BlockNetworks, and right after creating BlockNetworks during TileEnity load.
    * @param from
    */
-  public void updateNetwork(final BlockPos from){
+  public void updateNetwork(final BlockPos from, final T tile){
     if(world != null){
       if(world.isRemote == false){
         onBeforeUpdate();
@@ -97,7 +105,8 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
         blocks.clear();
         clear_custom_data();
         final ArrayList<BlockPos> searched = new ArrayList<>(100);
-        blocks.add(from);
+        first_tile = tile;
+        blocks.add(new Node(from, tile));
         searched.add(from);
         search_algorithm(from, searched);
 
@@ -112,23 +121,30 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   private final void search_algorithm(final BlockPos from, ArrayList<BlockPos> searched){
     Block block;
     BlockPos position;
+    TileEntity tile;
     for(Direction side: Direction.values()){
       position = from.offset(side);
       if(searched.contains(position) == false){
         searched.add(position);
         block = world.getBlockState(position).getBlock();
-        if(block != null){ // supposed to be TileEntity, which COULD be null
-          if(block == this.block_type){
-            blocks.add(position);
-            setNetwork(position);
-            search_algorithm(position, searched);
-          }
-          else{
-            customSearch(block, position);
-          }
+        tile  = world.getTileEntity(position);
+        if(is_valid_tile(tile)){
+          blocks.add(new Node(position, tile));
+          setNetwork(position);
+          search_algorithm(position, searched);
         }
+        customSearch(position, block, tile);
       }
     }
+  }
+
+  private final boolean is_valid_tile(final TileEntity tile){
+    if(tile != null){
+      if(tile.isRemoved() == false && class_type.isInstance(tile)){
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
@@ -168,8 +184,8 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
 
   protected final boolean is_redstone_powered(){
     boolean powered = false;
-    for(BlockPos position : blocks){
-      if(world.isBlockPowered(position)){
+    for(final Node node : blocks){
+      if(world.isBlockPowered(node.position)){
         powered = true;
         break;
       }
@@ -193,7 +209,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   protected void onUpdateNetworkFinished(final BlockPos origin_position){
   }
 
-  protected abstract void customSearch(final Block block, final BlockPos position);
+  protected abstract void customSearch(final BlockPos position, final Block block, final TileEntity tile);
 
   /**<p>
    *   <b>Required:</b> call this in the block's

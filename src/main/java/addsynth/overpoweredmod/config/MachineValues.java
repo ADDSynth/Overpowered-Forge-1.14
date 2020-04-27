@@ -1,6 +1,8 @@
 package addsynth.overpoweredmod.config;
 
 import org.apache.commons.lang3.tuple.Pair;
+import addsynth.energy.config.MachineDataConfig;
+import addsynth.energy.tiles.machines.MachineType;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class MachineValues {
@@ -16,24 +18,26 @@ public final class MachineValues {
   public static ForgeConfigSpec.ConfigValue<Integer> light_block_energy;
   public static ForgeConfigSpec.ConfigValue<Integer> light_block_max_extract;
 
-  public static ForgeConfigSpec.ConfigValue<Integer> fusion_energy_output_per_tick;
-  
-  public static ForgeConfigSpec.ConfigValue<Integer> gem_converter_required_energy;
-  public static ForgeConfigSpec.ConfigValue<Integer> inverter_required_energy;
-  public static ForgeConfigSpec.ConfigValue<Integer> magic_infuser_required_energy;
-  public static ForgeConfigSpec.ConfigValue<Integer> identifier_required_energy;
-  public static ForgeConfigSpec.ConfigValue<Integer> portal_control_panel_required_energy;
+  // Standard Machines
+  public static final MachineDataConfig gem_converter = new MachineDataConfig( 600,  35,   0.06 ,  60); // 21,000
+  public static final MachineDataConfig inverter      = new MachineDataConfig(4000,  22.5, 0.1  , 200); // 90,000
+  public static final MachineDataConfig magic_infuser = new MachineDataConfig(1200,  50,   0.075,  60); // 60,000
+  public static final MachineDataConfig identifier    = new MachineDataConfig( 500,  16,   0.05 ,  10); //  8,000
+
+  // Passive Machines
+  public static final MachineDataConfig crystal_matter_generator =
+    new MachineDataConfig(MachineType.PASSIVE, 16000,  31.25, 0,  600); // 500,000 energy for 1 shard every 13.3 minutes
+  public static final MachineDataConfig portal =
+    new MachineDataConfig(MachineType.PASSIVE,  6000, 100,    0, 1200); // 5 minutes to generate
+
+  // Always On Machines
+  public static final MachineDataConfig advanced_ore_refinery =
+    new MachineDataConfig(MachineType.ALWAYS_ON, 200, 25, 0.1, 0); // 5,000
+
   public static ForgeConfigSpec.ConfigValue<Integer> required_energy_per_laser;
   public static ForgeConfigSpec.ConfigValue<Integer> required_energy_per_laser_distance;
-  public static ForgeConfigSpec.ConfigValue<Integer> crystal_matter_generator_required_energy;
-  public static ForgeConfigSpec.ConfigValue<Integer> advanced_ore_refinery_required_energy;
 
-  public static ForgeConfigSpec.ConfigValue<Integer> gem_converter_work_time;
-  public static ForgeConfigSpec.ConfigValue<Integer> inverter_work_time;
-  public static ForgeConfigSpec.ConfigValue<Integer> magic_infuser_work_time;
-  public static ForgeConfigSpec.ConfigValue<Integer> identifier_work_time;
-  public static ForgeConfigSpec.ConfigValue<Integer> crystal_matter_generator_work_time;
-  public static ForgeConfigSpec.ConfigValue<Integer> advanced_ore_refinery_work_time;
+  public static ForgeConfigSpec.ConfigValue<Integer> fusion_energy_output_per_tick;
 
   //    20,000      25,000      30,000      40,000
   //   180,000     225,000     270,000     360,000
@@ -45,24 +49,10 @@ public final class MachineValues {
   private static final int DEFAULT_LIGHT_BLOCK_ENERGY                = DEFAULT_ENERGY_CRYSTAL_ENERGY * 9;
   private static final int DEFAULT_LIGHT_BLOCK_MAX_EXTRACT           = 500;
 
-  private static final int DEFAULT_FUSION_ENERGY_PER_TICK            =   100;
+  private static final int DEFAULT_FUSION_ENERGY_PER_TICK = 100;
 
-  private static final int DEFAULT_GEM_CONVERTER_REQUIRED_ENERGY  =  20_000;
-  private static final int DEFAULT_INVERTER_REQUIRED_ENERGY       =  90_000;
-  private static final int DEFAULT_MAGIC_INFUSER_REQUIRED_ENERGY  =  60_000;
-  private static final int DEFAULT_IDENTIFIER_REQUIRED_ENERGY     =   8_000;
-  private static final int DEFAULT_PORTAL_REQUIRED_ENERGY         = 600_000; // for 1 portal
-  private static final int DEFAULT_ENERGY_PER_LASER_CANNON        =   5_000;
-  private static final int DEFAULT_ENERGY_PER_LASER_DISTANCE      =     100;
-  private static final int DEFAULT_GEM_REPLICATOR_REQUIRED_ENERGY = 500_000; // for 1 shard
-  private static final int DEFAULT_ORE_REFINERY_REQUIRED_ENERGY   =  10_000;
-
-  private static final int DEFAULT_GEM_CONVERTER_WORK_TIME    =  600;
-  private static final int DEFAULT_INVERTER_WORK_TIME         = 4000;
-  private static final int DEFAULT_MAGIC_INFUSER_WORK_TIME    =  300;
-  private static final int DEFAULT_IDENTIFIER_WORK_TIME       =  100;
-  private static final int DEFAULT_CRYSTAL_MATTER_GENERATOR_WORK_TIME = 18000;
-  private static final int DEFAULT_ORE_REFINERY_WORK_TIME     =  200;
+  private static final int DEFAULT_ENERGY_PER_LASER_CANNON   = 5_000;
+  private static final int DEFAULT_ENERGY_PER_LASER_DISTANCE =   100;
 
   public MachineValues(final ForgeConfigSpec.Builder builder){
 
@@ -82,27 +72,23 @@ public final class MachineValues {
     builder.pop();
     
     builder.push("Gem Converter");
-    gem_converter_required_energy = builder.defineInRange("Required Energy", DEFAULT_GEM_CONVERTER_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
-    gem_converter_work_time       = builder.defineInRange("Work Time",       DEFAULT_GEM_CONVERTER_WORK_TIME,       0, Integer.MAX_VALUE);
+    gem_converter.build(builder);
     builder.pop();
     
     builder.push("Inverter");
-    inverter_required_energy = builder.defineInRange("Required Energy", DEFAULT_INVERTER_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
-    inverter_work_time       = builder.defineInRange("Work Time",       DEFAULT_INVERTER_WORK_TIME,       0, Integer.MAX_VALUE);
+    inverter.build(builder);
     builder.pop();
     
     builder.push("Magic Infuser");
-    magic_infuser_required_energy = builder.defineInRange("Required Energy", DEFAULT_MAGIC_INFUSER_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
-    magic_infuser_work_time       = builder.defineInRange("Work Time",       DEFAULT_MAGIC_INFUSER_WORK_TIME,       0, Integer.MAX_VALUE);
+    magic_infuser.build(builder);
     builder.pop();
     
     builder.push("Identifier");
-    identifier_required_energy = builder.defineInRange("Required Energy", DEFAULT_IDENTIFIER_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
-    identifier_work_time       = builder.defineInRange("Work Time",       DEFAULT_IDENTIFIER_WORK_TIME,       0, Integer.MAX_VALUE);
+    identifier.build(builder);
     builder.pop();
     
     builder.push("Portal Control Panel");
-    portal_control_panel_required_energy = builder.defineInRange("Required Energy", DEFAULT_PORTAL_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
+    portal.build(builder);
     builder.pop();
     
     builder.push("Laser");
@@ -113,17 +99,11 @@ public final class MachineValues {
     builder.pop();
     
     builder.push("Crystal Matter Generator");
-    crystal_matter_generator_required_energy = builder.defineInRange("Required Energy",
-                                              DEFAULT_GEM_REPLICATOR_REQUIRED_ENERGY,     0, Integer.MAX_VALUE);
-    crystal_matter_generator_work_time       = builder.defineInRange("Work Time",
-                                              DEFAULT_CRYSTAL_MATTER_GENERATOR_WORK_TIME, 0, Integer.MAX_VALUE);
+    crystal_matter_generator.build(builder);
     builder.pop();
     
     builder.push("Advanced Ore Refinery");
-    advanced_ore_refinery_required_energy = builder.defineInRange("Required Energy",
-                                              DEFAULT_ORE_REFINERY_REQUIRED_ENERGY, 0, Integer.MAX_VALUE);
-    advanced_ore_refinery_work_time       = builder.defineInRange("Work Time",
-                                              DEFAULT_ORE_REFINERY_WORK_TIME,       0, Integer.MAX_VALUE);
+    advanced_ore_refinery.build(builder);
     builder.pop();
 
     builder.push("Fusion Energy Converter");

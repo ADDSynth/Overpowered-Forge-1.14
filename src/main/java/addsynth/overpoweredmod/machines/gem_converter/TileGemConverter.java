@@ -2,8 +2,7 @@ package addsynth.overpoweredmod.machines.gem_converter;
 
 import javax.annotation.Nullable;
 import addsynth.core.material.MaterialsUtil;
-import addsynth.energy.CustomEnergyStorage;
-import addsynth.energy.tiles.machines.PassiveMachine;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -17,7 +16,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileGemConverter extends PassiveMachine implements INamedContainerProvider {
+public final class TileGemConverter extends TileWorkMachine implements INamedContainerProvider {
 	
   private byte selection;
   private ItemStack gem_selected;
@@ -30,8 +29,7 @@ public final class TileGemConverter extends PassiveMachine implements INamedCont
   }
   
   public TileGemConverter(){
-    super(Tiles.GEM_CONVERTER,1,getFilter(),1,new CustomEnergyStorage(
-      MachineValues.gem_converter_required_energy.get()),MachineValues.gem_converter_work_time.get());
+    super(Tiles.GEM_CONVERTER,1,getFilter(),1,MachineValues.gem_converter);
   }
 
   public final void cycle(final boolean direction){
@@ -72,26 +70,6 @@ public final class TileGemConverter extends PassiveMachine implements INamedCont
     can_run = input_inventory.getStackInSlot(0).isEmpty() ? false : output_inventory.can_add(0, gem_selected);
   }
 
-  /** This override for the Gem Converter adds an optimization that quickly transfers over
-   *  the gem to the output slot if it is the same gem type you're trying to convert to.
-   */
-  @Override
-  protected final void machine_tick(){
-    boolean transfer = false;
-    final ItemStack input_stack = input_inventory.getStackInSlot(0);
-    if(input_stack.isEmpty() == false){
-      transfer = match(input_stack.getItem(), selection);
-    }
-    if(transfer){
-      final ItemStack insert = input_inventory.extractItem(0, 1, false);
-      output_inventory.insertItem(0, insert, false);
-      update_data();
-    }
-    else{
-      super.machine_tick();
-    }
-  }
-
   private static final boolean match(final Item item, final byte id){
     if(id == 0){ return MaterialsUtil.match(item, MaterialsUtil.getRubies()); }
     if(id == 1){ return MaterialsUtil.match(item, MaterialsUtil.getTopaz()); }
@@ -105,7 +83,7 @@ public final class TileGemConverter extends PassiveMachine implements INamedCont
   }
 
   @Override
-  protected final void performWork(){
+  protected final void perform_work(){
     input_inventory.decrease(0);
     // always remember to pass A COPY of the stack your trying to insert! Do not reference
     // a stack you're keeping. Otherwise it will assign a direct reference!

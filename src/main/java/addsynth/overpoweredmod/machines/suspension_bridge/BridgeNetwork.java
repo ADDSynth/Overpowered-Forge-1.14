@@ -4,24 +4,26 @@ import java.util.ArrayList;
 import javax.annotation.Nonnull;
 import addsynth.core.Constants;
 import addsynth.core.block_network.BlockNetwork;
+import addsynth.core.block_network.Node;
 import addsynth.core.util.MathUtility;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.WorldUtil;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Lens;
 import addsynth.overpoweredmod.game.core.Machines;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
-  public final CustomEnergyStorage energy = new CustomEnergyStorage(0,1000);
+  public final Energy energy = new Energy(0,1000);
 
   private @Nonnull ItemStack lens = ItemStack.EMPTY;
   public int lens_index = -1;
@@ -46,7 +48,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   private Direction.Axis rotate_direction = Direction.Axis.X;
 
   public BridgeNetwork(final World world, final TileSuspensionBridge first_tile){
-    super(world, first_tile.getBlockState().getBlock(), first_tile);
+    super(world, first_tile);
     energy.set_receive_only();
   }
 
@@ -74,7 +76,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
   private final void check_shape(){ // TODO: consider moving this to MathUtility, if I ever need to check if a list of positions is in a rectangle shape again in the future.
     valid_shape = true;
-    final BlockPos[] positions = MathUtility.get_min_max_positions(blocks);
+    final BlockPos[] positions = MathUtility.get_min_max_positions(blocks.getPositions());
     int x;
     int y;
     int z;
@@ -87,7 +89,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     for(z = min_z; z <= max_z && valid_shape; z++){
       for(y = min_y; y <= max_y && valid_shape; y++){
         for(x = min_x; x <= max_x && valid_shape; x++){
-          if(world.getBlockState(new BlockPos(x,y,z)).getBlock() != block_type){
+          if(world.getBlockState(new BlockPos(x,y,z)).getBlock() != first_tile.getBlockState().getBlock()){
             valid_shape = false;
           }
         }
@@ -225,7 +227,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
       }
     }
     else{
-      final BridgeNetwork other_network = tile.getNetwork();
+      final BridgeNetwork other_network = tile.getBlockNetwork();
       if(other_network.check(index, min_x, max_x, min_z, max_z)){
         if(obstructed[index]){
           message[index] = BridgeMessage.OBSTRUCTED;
@@ -275,11 +277,11 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   /** This updates all TileEntities in the network whenever something changes that must be propogated to the rest of them. */
   private final void updateBridgeNetwork(){
     TileSuspensionBridge tile;
-    for(BlockPos position : blocks){
-      tile = MinecraftUtility.getTileEntity(position, world, TileSuspensionBridge.class);
-      if(tile != null){
+    for(final Node node : blocks){
+      if(node.isInvalid() == false){
+        tile = (TileSuspensionBridge)node.getTile();
         tile.getInputInventory().setStackInSlot(0, lens);
-        final SyncClientBridgeMessage network_message = new SyncClientBridgeMessage(position, this.message);
+        final SyncClientBridgeMessage network_message = new SyncClientBridgeMessage(node.position, this.message);
         NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, network_message);
       }
     }
@@ -357,7 +359,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
 
   @Override
-  protected final void customSearch(final Block block, final BlockPos position){
+  protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
   }
 
   @Override

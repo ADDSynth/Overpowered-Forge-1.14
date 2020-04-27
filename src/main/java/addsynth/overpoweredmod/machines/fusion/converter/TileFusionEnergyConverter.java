@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.fusion.converter;
 
 import java.util.ArrayList;
 import addsynth.core.util.MinecraftUtility;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
 import addsynth.energy.tiles.TileEnergyTransmitter;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.machines.data_cable.DataCableNetwork;
@@ -22,7 +22,7 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
   private boolean valid;
 
   public TileFusionEnergyConverter(){
-    super(Tiles.FUSION_ENERGY_CONVERTER, new CustomEnergyStorage(0,MachineValues.fusion_energy_output_per_tick.get()));
+    super(Tiles.FUSION_ENERGY_CONVERTER, new Energy(0,MachineValues.fusion_energy_output_per_tick.get()));
   }
 
   @Override
@@ -90,7 +90,7 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
       tile = world.getTileEntity(pos.offset(facing));
       if(tile != null){
         if(tile instanceof TileDataCable){
-          data_network = ((TileDataCable)tile).getNetwork();
+          data_network = ((TileDataCable)tile).getBlockNetwork();
           if(data_network != null){
             if(data_cable_networks.contains(data_network) == false){
               data_cable_networks.add(data_network);

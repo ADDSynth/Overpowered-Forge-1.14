@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.core.inventory.SlotData;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
 import addsynth.energy.tiles.TileEnergyReceiver;
 import addsynth.overpoweredmod.game.core.Lens;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -28,7 +28,7 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
   private BridgeMessage[] message = new BridgeMessage[6];
 
   public TileSuspensionBridge(){
-    super(Tiles.ENERGY_SUSPENSION_BRIDGE, new SlotData[] {new SlotData(filter, 1)}, 0, new CustomEnergyStorage());
+    super(Tiles.ENERGY_SUSPENSION_BRIDGE, new SlotData[] {new SlotData(filter, 1)}, 0, new Energy());
   }
 
   @Override
@@ -60,15 +60,7 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
   }
 
   @Override
-  public final BlockNetwork getBlockNetwork(){
-    return network;
-  }
-
-  @Override
-  public final BridgeNetwork getNetwork(){
-    if(network == null){
-      createBlockNetwork();
-    }
+  public final BridgeNetwork getBlockNetwork(){
     return network;
   }
 

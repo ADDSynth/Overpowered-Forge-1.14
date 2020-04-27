@@ -1,12 +1,13 @@
-package addsynth.energy;
+package addsynth.energy.energy_network;
 
 import addsynth.core.block_network.Node;
+import addsynth.energy.Energy;
 import addsynth.energy.tiles.TileEnergyWithStorage;
 import net.minecraft.util.math.BlockPos;
 
 public final class EnergyNode extends Node {
 
-  public final CustomEnergyStorage energy;
+  public final Energy energy;
 
   /** I jused saved all important data in the EnergyNetwork.receivers List, because the various
    *  machines work with different data.
@@ -23,7 +24,7 @@ public final class EnergyNode extends Node {
     this.energy = tileEntity.getEnergy();
   }
 
-  public EnergyNode(final BlockPos position, final TileEnergyWithStorage tileEntity, final CustomEnergyStorage energy){
+  public EnergyNode(final BlockPos position, final TileEnergyWithStorage tileEntity, final Energy energy){
     super(position, tileEntity);
     this.energy = energy;
   }

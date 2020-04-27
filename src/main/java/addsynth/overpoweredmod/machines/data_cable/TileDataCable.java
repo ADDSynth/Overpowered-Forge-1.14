@@ -2,7 +2,6 @@ package addsynth.overpoweredmod.machines.data_cable;
 
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
-import addsynth.overpoweredmod.game.core.Wires;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -38,18 +37,13 @@ public final class TileDataCable extends TileEntity implements IBlockNetworkUser
   }
 
   @Override
-  public final DataCableNetwork getNetwork(){
-    return cable_network;
-  }
-
-  @Override
-  public final BlockNetwork getBlockNetwork(){
+  public final DataCableNetwork getBlockNetwork(){
     return cable_network;
   }
 
   @Override
   public final void createBlockNetwork(){
-    cable_network = new DataCableNetwork(world, Wires.data_cable, this);
+    cable_network = new DataCableNetwork(world, this);
     if(world.isRemote == false){ // TODO: only run on server.
       cable_network.updateNetwork(pos);
     }

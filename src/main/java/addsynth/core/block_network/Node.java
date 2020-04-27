@@ -27,4 +27,9 @@ public class Node {
                 "Position: "+(position == null ? "null" : position.toString())+"}";
   }
 
+  @Override
+  public boolean equals(final Object obj){
+    return obj instanceof Node ? position.equals(((Node)obj).position) : false;
+  }
+
 }

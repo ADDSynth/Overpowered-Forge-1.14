@@ -4,6 +4,7 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import addsynth.core.game.RegistryUtil;
+import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.EnergyBlocks;
 import addsynth.energy.gameplay.compressor.GuiCompressor;
 import addsynth.energy.gameplay.electric_furnace.GuiElectricFurnace;

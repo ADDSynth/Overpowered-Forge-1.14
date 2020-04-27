@@ -3,8 +3,10 @@ package addsynth.overpoweredmod.machines.laser.machine;
 import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
-import addsynth.energy.CustomEnergyStorage;
-import addsynth.energy.tiles.TileEnergyReceiver;
+import addsynth.energy.Energy;
+import addsynth.energy.tiles.machines.MachineData;
+import addsynth.energy.tiles.machines.MachineType;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -17,7 +19,7 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileLaserHousing extends TileEnergyReceiver implements ITickableTileEntity, IBlockNetworkUser, INamedContainerProvider {
+public final class TileLaserHousing extends TileWorkMachine implements ITickableTileEntity, IBlockNetworkUser<LaserNetwork>, INamedContainerProvider {
 
   private LaserNetwork network;
   private boolean first_tick = true;
@@ -30,7 +32,7 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
   private boolean auto_shutoff = true;
 
   public TileLaserHousing(){
-    super(Tiles.LASER_MACHINE, 0, null, 0, new CustomEnergyStorage());
+    super(Tiles.LASER_MACHINE, 0, null, 0, new MachineData(MachineType.PASSIVE, 0, 0, 0, 0));
   }
 
   @Override
@@ -76,28 +78,28 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
   }
 
   @Override
-  public final CustomEnergyStorage getEnergy(){
+  public final Energy getEnergy(){
     if(world.isRemote){
       return energy; // only guis should use this.
     }
-    return getNetwork().energy;
+    return getBlockNetwork().energy;
   }
 
   // Only the gui calls these
   public final int getLaserDistance(){ return laser_distance; }
   public final boolean getAutoShutoff(){ return auto_shutoff; }
 
-  public final void setDataDirectlyFromNetwork(final CustomEnergyStorage energy, final int laser_distance, final boolean running, final boolean shutoff){
+  public final void setDataDirectlyFromNetwork(final Energy energy, final int laser_distance, final boolean running, final boolean shutoff){
     this.energy.set(energy);
     this.laser_distance = laser_distance;
-    this.running = running;
+    // this.running = running;
     this.auto_shutoff = shutoff;
     super.update_data();
   }
 
   @Override
-  public final void setBlockNetwork(final BlockNetwork network){
-    this.network = (LaserNetwork)network;
+  public final void setBlockNetwork(final LaserNetwork network){
+    this.network = network;
   }
 
   /**
@@ -108,15 +110,10 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
    * @return LaserNetwork
    */
   @Override
-  public final LaserNetwork getNetwork(){
+  public final LaserNetwork getBlockNetwork(){
     if(network == null){
       createBlockNetwork();
     }
-    return network;
-  }
-
-  @Override
-  public final BlockNetwork getBlockNetwork(){
     return this.network;
   }
 
@@ -128,7 +125,7 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
     network = new LaserNetwork(world, this);
     if(world.isRemote == false){
       network.updateNetwork(pos);
-      network.running = running;
+      // network.running = running;
       network.auto_shutoff = auto_shutoff;
     }
   }
@@ -161,6 +158,10 @@ public final class TileLaserHousing extends TileEnergyReceiver implements ITicka
   @Override
   public ITextComponent getDisplayName(){
     return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
+  }
+
+  @Override
+  protected void test_condition(){
   }
 
 }

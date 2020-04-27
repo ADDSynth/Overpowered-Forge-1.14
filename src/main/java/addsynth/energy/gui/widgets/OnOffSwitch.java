@@ -3,7 +3,7 @@ package addsynth.energy.gui.widgets;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import addsynth.energy.registers.NetworkHandler;
-import addsynth.energy.tiles.TileEnergyReceiver;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -16,7 +16,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public final class OnOffSwitch extends AbstractButton {
 
-  private final TileEnergyReceiver tile;
+  private final TileWorkMachine tile;
   private static final ResourceLocation gui_switch = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/gui_textures.png");
 
   /**
@@ -25,7 +25,7 @@ public final class OnOffSwitch extends AbstractButton {
    * @param y
    * @param tile
    */
-  public OnOffSwitch(final int x, final int y, final TileEnergyReceiver tile){
+  public OnOffSwitch(final int x, final int y, final TileWorkMachine tile){
     super(x, y, 34, 16, "");
     this.tile = tile;
   }
@@ -40,7 +40,7 @@ public final class OnOffSwitch extends AbstractButton {
     int texture_y = 0;
 
     if(tile != null){
-      if(tile.isRunning() == false){
+      if(tile.get_switch_state() == false){
         texture_y = 16;
       }
     }
@@ -60,7 +60,7 @@ public final class OnOffSwitch extends AbstractButton {
     final FontRenderer fontrenderer = minecraft.fontRenderer;
     final int text_color = 14737632;
     if(tile != null){
-      if(tile.isRunning()){
+      if(tile.get_switch_state()){
         setMessage("On");
         this.drawCenteredString(fontrenderer, "On", x + 20, y + 4, text_color);
         // TODO: detect state changes and call setMessage() to change what the narrator says when players mouse over this button.

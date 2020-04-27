@@ -38,7 +38,7 @@ public final class SetLaserDistanceMessage {
         if(world.isAreaLoaded(message.position, 0)){
           final TileLaserHousing tile = MinecraftUtility.getTileEntity(message.position, world, TileLaserHousing.class);
           if(tile != null){
-            tile.getNetwork().setLaserDistance(message.laser_distance);
+            tile.getBlockNetwork().setLaserDistance(message.laser_distance);
           }
         }
       });

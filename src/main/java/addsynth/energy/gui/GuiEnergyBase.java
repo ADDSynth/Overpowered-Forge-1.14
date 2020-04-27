@@ -2,7 +2,7 @@ package addsynth.energy.gui;
 
 import addsynth.core.gui.GuiBase;
 import addsynth.core.util.StringUtil;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.util.ResourceLocation;
@@ -18,15 +18,15 @@ public abstract class GuiEnergyBase<T extends Container> extends GuiBase<T> {
    * 
    * @param energy
    */
-  protected final void draw_energy(final CustomEnergyStorage energy){
+  protected final void draw_energy(final Energy energy){
     this.draw_energy(energy, 6, 17);
   }
 
-  protected final void draw_energy_after_switch(final CustomEnergyStorage energy){
+  protected final void draw_energy_after_switch(final Energy energy){
     this.draw_energy(energy, 44, 21);
   }
 
-  protected final void draw_energy(final CustomEnergyStorage energy, final int draw_x, final int draw_y){
+  protected final void draw_energy(final Energy energy, final int draw_x, final int draw_y){
     if(energy != null){
       draw_text_left("Energy:",draw_x,draw_y);
       draw_text_right(energy.getEnergy() + " / " + energy.getCapacity(),this.xSize - 6, draw_y);
@@ -49,7 +49,7 @@ public abstract class GuiEnergyBase<T extends Container> extends GuiBase<T> {
     draw_text_left("Time Left: "+StringUtil.print_time(time_left), 6, draw_y);
   }
 
-  protected final void draw_energy_difference(final int difference, final CustomEnergyStorage energy, final int draw_y){
+  protected final void draw_energy_difference(final int difference, final Energy energy, final int draw_y){
     switch((int)Math.signum(difference)){
     case 1:
       draw_text_left("Time to Full Charge: "+StringUtil.print_time((int)Math.ceil((double)energy.getEnergyNeeded() / difference)), 6, draw_y);

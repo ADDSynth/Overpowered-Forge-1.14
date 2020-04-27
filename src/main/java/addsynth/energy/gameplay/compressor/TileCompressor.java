@@ -1,11 +1,11 @@
 package addsynth.energy.gameplay.compressor;
 
 import javax.annotation.Nullable;
-import addsynth.energy.Config;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
+import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
 import addsynth.energy.registers.Tiles;
-import addsynth.energy.tiles.machines.PassiveMachine;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -16,13 +16,12 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileCompressor extends PassiveMachine implements INamedContainerProvider {
+public final class TileCompressor extends TileWorkMachine implements INamedContainerProvider {
 
   private ItemStack result;
 
   public TileCompressor(){
-    super(Tiles.COMPRESSOR,2,null,1,new CustomEnergyStorage(Config.compressor_required_energy.get()),Config.compressor_work_time.get());
-    // has a high work time to give the user a chance to change the recipe. (same as furnace cook time.)
+    super(Tiles.COMPRESSOR,2,null,1,Config.compressor_data);
   }
 
   @Override
@@ -33,7 +32,7 @@ public final class TileCompressor extends PassiveMachine implements INamedContai
   }
 
   @Override
-  protected final void performWork(){
+  protected final void perform_work(){
     world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.AMBIENT, 0.7f, 0.5f); // lowest pitch can be
     output_inventory.insertItem(0, result.copy(), false);
     input_inventory.decrease_input();

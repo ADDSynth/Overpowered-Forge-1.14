@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.generator;
 
 import javax.annotation.Nullable;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
 import addsynth.energy.tiles.TileEnergyTransmitter;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.MachineValues;
@@ -23,7 +23,7 @@ public final class TileEnergyGenerator extends TileEnergyTransmitter implements 
   };
 
   public TileEnergyGenerator(){
-    super(Tiles.GENERATOR, 1,input_filter,0,new CustomEnergyStorage());
+    super(Tiles.GENERATOR, 1,input_filter,0,new Energy());
   }
 
   private final void setGeneratorData(final Item item){

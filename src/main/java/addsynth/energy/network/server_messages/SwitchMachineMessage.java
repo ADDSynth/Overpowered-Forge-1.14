@@ -2,7 +2,7 @@ package addsynth.energy.network.server_messages;
 
 import java.util.function.Supplier;
 import addsynth.core.util.MinecraftUtility;
-import addsynth.energy.tiles.TileEnergyReceiver;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
@@ -33,7 +33,7 @@ public final class SwitchMachineMessage {
       final ServerWorld world = player.func_71121_q();
       context.get().enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
-          final TileEnergyReceiver tile = MinecraftUtility.getTileEntity(message.position, world, TileEnergyReceiver.class);
+          final TileWorkMachine tile = MinecraftUtility.getTileEntity(message.position, world, TileWorkMachine.class);
           if(tile != null){
             tile.toggleRun();
           }

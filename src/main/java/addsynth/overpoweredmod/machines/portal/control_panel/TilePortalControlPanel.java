@@ -5,8 +5,7 @@ import javax.annotation.Nullable;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.WorldUtil;
-import addsynth.energy.CustomEnergyStorage;
-import addsynth.energy.tiles.TileEnergyReceiver;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Init;
@@ -28,7 +27,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public final class TilePortalControlPanel extends TileEnergyReceiver implements INamedContainerProvider {
+public final class TilePortalControlPanel extends TileWorkMachine implements INamedContainerProvider {
 
   private static final int containers = 8;
   private boolean[] portal_items = new boolean[containers];
@@ -50,7 +49,7 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
   }
 
   public TilePortalControlPanel(){
-    super(Tiles.PORTAL_CONTROL_PANEL, 0, null, 0, new CustomEnergyStorage(MachineValues.portal_control_panel_required_energy.get()));
+    super(Tiles.PORTAL_CONTROL_PANEL, 0, null, 0, MachineValues.portal);
     int i;
     for(i = 0; i < containers; i++){
       portal_items[i] = false;
@@ -253,6 +252,9 @@ public final class TilePortalControlPanel extends TileEnergyReceiver implements 
   @Override
   public ITextComponent getDisplayName(){
     return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
+  }
+  @Override
+  protected void test_condition(){
   }
 
 }

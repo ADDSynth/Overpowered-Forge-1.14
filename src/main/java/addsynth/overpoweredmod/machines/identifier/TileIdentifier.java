@@ -4,8 +4,8 @@ import javax.annotation.Nullable;
 import addsynth.core.game.Compatability;
 import addsynth.core.items.ItemUtility;
 import addsynth.core.util.JavaUtils;
-import addsynth.energy.CustomEnergyStorage;
-import addsynth.energy.tiles.machines.PassiveMachine;
+import addsynth.energy.Energy;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Tools;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
@@ -19,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileIdentifier extends PassiveMachine implements INamedContainerProvider {
+public final class TileIdentifier extends TileWorkMachine implements INamedContainerProvider {
 
   public static final Item[] input_filter = JavaUtils.combine_arrays(
     Tools.unidentified_armor[0],
@@ -30,8 +30,7 @@ public final class TileIdentifier extends PassiveMachine implements INamedContai
   );
 
   public TileIdentifier(){
-    super(Tiles.IDENTIFIER, 1, input_filter, 1, new CustomEnergyStorage(
-      MachineValues.identifier_required_energy.get()), MachineValues.identifier_work_time.get());
+    super(Tiles.IDENTIFIER, 1, input_filter, 1, MachineValues.identifier);
   }
 
   @Override
@@ -42,7 +41,7 @@ public final class TileIdentifier extends PassiveMachine implements INamedContai
   }
 
   @Override
-  protected final void performWork(){
+  protected final void perform_work(){
     final ItemStack input = input_inventory.getStackInSlot(0);
     if(input.isEmpty() == false){
       if(input.getItem() instanceof UnidentifiedItem){

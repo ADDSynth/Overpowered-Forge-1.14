@@ -9,6 +9,7 @@ import addsynth.overpoweredmod.machines.fusion.converter.TileFusionEnergyConvert
 import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -34,8 +35,8 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
     }
   }
 
-  public DataCableNetwork(final World world, final Block block, final TileDataCable data_cable){
-    super(world, block, data_cable);
+  public DataCableNetwork(final World world, final TileDataCable tile){
+    super(world, tile);
   }
 
   @Override
@@ -45,7 +46,7 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
   }
 
   @Override
-  protected final void customSearch(final Block block, final BlockPos position){
+  protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
     if(block == Machines.fusion_control_unit){
       if(scanning_units.contains(position) == false){
         scanning_units.add(position);

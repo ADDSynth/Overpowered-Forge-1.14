@@ -1,20 +1,21 @@
 package addsynth.energy.gameplay.universal_energy_interface;
 
 import javax.annotation.Nullable;
-import addsynth.energy.Config;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
 import addsynth.energy.compat.energy.EnergyCompat;
+import addsynth.energy.energy_network.tiles.TileEnergyBattery;
+import addsynth.energy.gameplay.Config;
 import addsynth.energy.registers.Tiles;
-import addsynth.energy.tiles.TileEnergyBattery;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileUniversalEnergyTransfer extends TileEnergyBattery implements INamedContainerProvider {
+public final class TileUniversalEnergyTransfer extends TileEnergyBattery implements ITickableTileEntity, INamedContainerProvider {
 
   public enum TRANSFER_MODE {
     BI_DIRECTIONAL(true,  true,  true,  "Bi-Directional"),
@@ -40,7 +41,7 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery impleme
   private TRANSFER_MODE transfer_mode = TRANSFER_MODE.BI_DIRECTIONAL;
 
   public TileUniversalEnergyTransfer(){
-    super(Tiles.UNIVERSAL_ENERGY_INTERFACE, new CustomEnergyStorage(Config.universal_energy_interface_buffer.get()));
+    super(Tiles.UNIVERSAL_ENERGY_INTERFACE, new Energy(Config.universal_energy_interface_buffer.get()));
   }
 
   public final TRANSFER_MODE get_transfer_mode(){
@@ -70,29 +71,7 @@ public final class TileUniversalEnergyTransfer extends TileEnergyBattery impleme
   @Override
   public final void tick(){
     if(world.isRemote == false){
-      final int energy_snapshot = energy.getEnergy();
-      final EnergyCompat.CompatEnergyNode[] energy_nodes = EnergyCompat.getConnectedEnergy(pos, world);
-      if(energy_nodes.length > 0){
-        if(transfer_mode.canReceive){
-          EnergyCompat.acceptEnergy(energy_nodes, this.energy);
-        }
-        if(transfer_mode.canExtract){
-          EnergyCompat.transmitEnergy(energy_nodes, this.energy);
-        }
-      }
-      if(transfer_mode.integrate){
-        if(energy.hasEnergy()){
-          get_machines_that_need_energy();
-          if(machines.size() > 0){
-            give_machines_energy();
-          }
-        }
-      }
-      if(energy.getEnergy() != energy_snapshot){
-        update_data();
-      }
     }
-    energy.update();
   }
 
   @Override

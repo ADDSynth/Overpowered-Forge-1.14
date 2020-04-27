@@ -58,7 +58,7 @@ public final class LaserHousing extends MachineBlock {
   @SuppressWarnings("deprecation")
   public void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
     if(world.isRemote == false){
-      final BlockNetwork network = ((IBlockNetworkUser)(world.getTileEntity(pos))).getNetwork();
+      final BlockNetwork network = ((IBlockNetworkUser)(world.getTileEntity(pos))).getBlockNetwork();
       network.neighbor_was_changed(pos, neighbor);
     }
   }

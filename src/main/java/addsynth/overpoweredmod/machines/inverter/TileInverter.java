@@ -1,8 +1,7 @@
 package addsynth.overpoweredmod.machines.inverter;
 
 import javax.annotation.Nullable;
-import addsynth.energy.CustomEnergyStorage;
-import addsynth.energy.tiles.machines.PassiveMachine;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -15,14 +14,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileInverter extends PassiveMachine implements INamedContainerProvider {
+public final class TileInverter extends TileWorkMachine implements INamedContainerProvider {
 
   public static final Item[] input_filter = new Item[] {Init.energy_crystal, Init.void_crystal};
   private ItemStack result;
 
   public TileInverter(){
-    super(Tiles.INVERTER,1,input_filter,1,new CustomEnergyStorage(
-      MachineValues.inverter_required_energy.get()),MachineValues.inverter_work_time.get());
+    super(Tiles.INVERTER,1,input_filter,1,MachineValues.inverter);
   }
 
   @Override
@@ -40,7 +38,7 @@ public final class TileInverter extends PassiveMachine implements INamedContaine
   }
 
   @Override
-  public final void performWork(){
+  public final void perform_work(){
     input_inventory.extractItem(0,1,false);
     output_inventory.insertItem(0, result, false); // No need to copy this one because we replace the ItemStack every time.
   }

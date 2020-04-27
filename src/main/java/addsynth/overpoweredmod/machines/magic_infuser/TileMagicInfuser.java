@@ -6,8 +6,7 @@ import addsynth.core.inventory.SlotData;
 import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.JavaUtils;
 import addsynth.core.util.StringUtil;
-import addsynth.energy.CustomEnergyStorage;
-import addsynth.energy.tiles.machines.PassiveMachine;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
@@ -24,7 +23,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.item.ItemStack;
 
-public final class TileMagicInfuser extends PassiveMachine implements INamedContainerProvider {
+public final class TileMagicInfuser extends TileWorkMachine implements INamedContainerProvider {
 
   public static final Item[] getFilter(){
     return MaterialsUtil.getFilter(
@@ -36,12 +35,12 @@ public final class TileMagicInfuser extends PassiveMachine implements INamedCont
   public TileMagicInfuser(){
     super(
       Tiles.MAGIC_INFUSER,
-      new SlotData[]{ // now the SlotData needs to be constructed every time, because of the Item Tags in getFilter().
+      new SlotData[]{ // FUTURE now the SlotData needs to be constructed every time, because of the Item Tags in getFilter().
         new SlotData(Items.BOOK),
         new SlotData(JavaUtils.combine_arrays(getFilter(), new Item[]{Init.energy_crystal, Init.void_crystal}))
       },
       1,
-      new CustomEnergyStorage(MachineValues.magic_infuser_required_energy.get()),MachineValues.magic_infuser_work_time.get()
+      MachineValues.magic_infuser
     );
   }
 
@@ -53,7 +52,7 @@ public final class TileMagicInfuser extends PassiveMachine implements INamedCont
   }
 
   @Override
-  protected final void performWork(){
+  protected final void perform_work(){
     final Enchantment enchantment = get_enchantment();
     if(enchantment != null){
       final ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1);

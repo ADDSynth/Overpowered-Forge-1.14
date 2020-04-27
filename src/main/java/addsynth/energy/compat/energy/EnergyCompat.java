@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import addsynth.core.game.Compatability;
 import addsynth.core.util.JavaUtils;
 import addsynth.core.util.MathUtility;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
 /*
 import cofh.redstoneflux.api.IEnergyHandler;
 import cofh.redstoneflux.api.IEnergyProvider;
@@ -129,7 +129,7 @@ public final class EnergyCompat {
     return nodes.toArray(new CompatEnergyNode[nodes.size()]);
   }
 
-  public static final void acceptEnergy(final CompatEnergyNode[] nodes, final CustomEnergyStorage our_energy){
+  public static final void acceptEnergy(final CompatEnergyNode[] nodes, final Energy our_energy){
     final int energy_needed = our_energy.getEnergyNeeded();
     final int[] available_energy = new int[nodes.length];
     int i;
@@ -190,7 +190,7 @@ public final class EnergyCompat {
   }
 */
 
-  public static final void transmitEnergy(final CompatEnergyNode[] nodes, final CustomEnergyStorage our_energy){
+  public static final void transmitEnergy(final CompatEnergyNode[] nodes, final Energy our_energy){
     final int[] energy_available = MathUtility.divide_evenly(our_energy.getEnergy(), nodes.length);
     int actual_energy_extracted = 0;
     int i;

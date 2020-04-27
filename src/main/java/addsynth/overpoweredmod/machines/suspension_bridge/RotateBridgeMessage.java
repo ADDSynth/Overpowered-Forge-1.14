@@ -34,7 +34,7 @@ public final class RotateBridgeMessage {
         if(world.isAreaLoaded(message.position, 0)){
           final TileSuspensionBridge tile = MinecraftUtility.getTileEntity(message.position, world, TileSuspensionBridge.class);
           if(tile != null){
-            tile.getNetwork().rotate();
+            tile.getBlockNetwork().rotate();
           }
         }
       });

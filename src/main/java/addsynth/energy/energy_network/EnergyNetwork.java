@@ -1,11 +1,14 @@
-package addsynth.energy;
+package addsynth.energy.energy_network;
 
 import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.util.MinecraftUtility;
+import addsynth.energy.Energy;
+import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
 import addsynth.energy.gameplay.energy_wire.TileEnergyWire;
 import addsynth.energy.tiles.TileEnergyWithStorage;
 import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -14,12 +17,14 @@ import net.minecraft.world.World;
 
 /**
  *  EnergyWire type blocks should use this extended form of a BlockNetwork. This also keeps a list of all
- *  {@link TileEnergyWithStorage} Tile Entities that use a {@link CustomEnergyStorage} and can accept
+ *  {@link TileEnergyWithStorage} Tile Entities that use a {@link Energy} and can accept
  *  energy.
  */
-public final class EnergyNetwork extends BlockNetwork<TileEnergyWire> {
+public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
 
   public final ArrayList<EnergyNode> receivers = new ArrayList<>();
+  public final ArrayList<EnergyNode> batteries = new ArrayList<>();
+  public final ArrayList<EnergyNode> generators = new ArrayList<>();
 
   /* FUTURE Energy Future Notes: IMPORTANT!!!
      Machines that are not receivers or transmitters, they are batteries, MAKE THEM PASSTHROUGH!
@@ -43,8 +48,8 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyWire> {
        Once we detect that the energy from all sides is equal, reset all offset variables.
   */
 
-  public EnergyNetwork(final World world, final TileEnergyWire energy_wire){
-    super(world, energy_wire.getBlockState().getBlock(), energy_wire);
+  public EnergyNetwork(final World world, final TileEnergyNetwork energy_wire){
+    super(world, energy_wire);
   }
 
   @Override
@@ -53,7 +58,7 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyWire> {
   }
 
   /** Checks if we already have an EnergyNode for this TileEntity by checking to see if we've
-   *  already captured a reference to that TileEntity's {@link CustomEnergyStorage} object.
+   *  already captured a reference to that TileEntity's {@link Energy} object.
    * @param node
    */
   private final void add_energy_node(final EnergyNode node){
@@ -69,14 +74,19 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyWire> {
     }
   }
 
+  public final void update(final TileEntity tile){
+    if(tile == first_tile){
+    }
+  }
+
   @Override
-  protected final void customSearch(final Block block, final BlockPos new_position){
-    final TileEnergyWithStorage tile = MinecraftUtility.getTileEntity(new_position, world, TileEnergyWithStorage.class);
+  protected final void customSearch(final BlockPos position, final Block block, final TileEntity t){
+    final TileEnergyWithStorage tile = MinecraftUtility.getTileEntity(position, world, TileEnergyWithStorage.class);
     if(tile != null){
-      final CustomEnergyStorage energy = tile.getEnergy();
+      final Energy energy = tile.getEnergy();
       if(energy != null){
         if(energy.canReceive()){
-          add_energy_node(new EnergyNode(new_position, tile, energy));
+          add_energy_node(new EnergyNode(position, tile, energy));
         }
       }
     }

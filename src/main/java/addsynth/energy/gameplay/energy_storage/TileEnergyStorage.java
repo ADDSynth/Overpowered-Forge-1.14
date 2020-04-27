@@ -1,10 +1,10 @@
 package addsynth.energy.gameplay.energy_storage;
 
 import javax.annotation.Nullable;
-import addsynth.energy.Config;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
+import addsynth.energy.energy_network.tiles.TileEnergyBattery;
+import addsynth.energy.gameplay.Config;
 import addsynth.energy.registers.Tiles;
-import addsynth.energy.tiles.TileEnergyBattery;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -15,7 +15,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 public final class TileEnergyStorage extends TileEnergyBattery implements INamedContainerProvider {
 
   public TileEnergyStorage(){
-    super(Tiles.ENERGY_CONTAINER, new CustomEnergyStorage(Config.energy_storage_container_capacity.get(),Config.energy_storage_container_extract_rate.get()));
+    super(Tiles.ENERGY_CONTAINER, new Energy(Config.energy_storage_container_capacity.get(),Config.energy_storage_container_extract_rate.get()));
   }
 
   @Override

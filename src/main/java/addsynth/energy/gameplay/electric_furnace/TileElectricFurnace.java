@@ -2,9 +2,11 @@ package addsynth.energy.gameplay.electric_furnace;
 
 import javax.annotation.Nullable;
 import addsynth.core.util.RecipeUtil;
-import addsynth.energy.CustomEnergyStorage;
+import addsynth.energy.Energy;
 import addsynth.energy.registers.Tiles;
-import addsynth.energy.tiles.machines.PassiveMachine;
+import addsynth.energy.tiles.machines.MachineData;
+import addsynth.energy.tiles.machines.MachineType;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -14,13 +16,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileElectricFurnace extends PassiveMachine implements INamedContainerProvider {
+public final class TileElectricFurnace extends TileWorkMachine implements INamedContainerProvider {
 
   // public static Item[] furnace_input = get_filter();
   private ItemStack result;
 
   public TileElectricFurnace(){
-    super(Tiles.ELECTRIC_FURNACE, 1, get_filter(), 1, new CustomEnergyStorage(1000), 200);
+    super(Tiles.ELECTRIC_FURNACE, 1, get_filter(), 1, new MachineData(MachineType.ALWAYS_ON, 200, 5, 0, 0));
   }
 
   public static final Item[] get_filter(){
@@ -36,7 +38,7 @@ public final class TileElectricFurnace extends PassiveMachine implements INamedC
   }
 
   @Override
-  protected final void performWork(){
+  protected final void perform_work(){
     input_inventory.decrease(0);
     output_inventory.insertItem(0, result.copy(), false);
   }
