@@ -37,6 +37,10 @@ public final class StringUtil {
     return hours+"h "+(minutes % 60)+"m "+(seconds % 60)+"s";
   }
 
+  public static final String print_time(final double total_energy, final double rate){
+    return print_time((int)Math.ceil(total_energy / Math.abs(rate)));
+  }
+
   /** <p>Prints the Types of your array, such as <code>Class, Object, Integer, Short, Long,
    *  Float, Double, Boolean, String, </code>or <code> Character</code>.
    *  <p>Note: If you need to print a standard array, use {@link Arrays#deepToString(Object[])}.

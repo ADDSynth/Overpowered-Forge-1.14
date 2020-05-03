@@ -42,7 +42,7 @@ public final class GuiGenerator extends GuiEnergyBase<ContainerGenerator> {
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     draw_background_texture();
     
-    final float energy_float = tile.getEnergyPercentage();
+    final float energy_float = tile.getEnergy().getEnergyPercentage();
     energy_percentage = Math.round(energy_float*100);
     energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,energy_float,ProgressBar.Round.NEAREST);
   }

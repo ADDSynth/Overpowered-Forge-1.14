@@ -14,7 +14,7 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 
-public abstract class TileEnergyWithStorage extends TileMachine implements ITickableTileEntity {
+public abstract class TileEnergyWithStorage extends TileMachine implements ITickableTileEntity, IEnergyUser {
 
   // @Nullable
   protected final Energy energy;
@@ -44,6 +44,9 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   public void tick(){
     if(world.isRemote == false){
       get_energy_networks();
+      if(energy.update()){
+        update_data();
+      }
     }
   }
 
@@ -51,13 +54,15 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
     final ArrayList<EnergyNetwork> list = new ArrayList<>();
     BlockPos position;
     BlockNetwork network;
+    EnergyNetwork energy_network;
     for(final Direction direction : Direction.values()){
       position = pos.offset(direction);
       network = BlockNetwork.getNetwork(world, position);
       if(network != null){
         if(network instanceof EnergyNetwork){
-          if(list.contains(network) == false){
-            list.add((EnergyNetwork)network);
+          energy_network = (EnergyNetwork)network;
+          if(list.contains(energy_network) == false){
+            list.add(energy_network);
           }
         }
       }
@@ -94,21 +99,9 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
    * I suppose I can use this within my own code, like in guis and stuff, as long as I know that tile has
    * a Custom Energy Storage.
    */
+  @Override
   public Energy getEnergy(){
     return this.energy;
-  }
-
-  /**
-   * Uses current energy level and energy capacity and returns a percentage float.
-   * 
-   * @return energy level percentage AS A FLOAT!
-   */
-  public final float getEnergyPercentage(){
-    float return_value = 0.0f;
-    if(energy != null){
-      return_value = energy.getEnergyPercentage();
-    }
-    return return_value;
   }
 
   public final double getRequestedEnergy(){

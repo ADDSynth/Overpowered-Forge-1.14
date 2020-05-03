@@ -1,8 +1,8 @@
 package addsynth.energy;
 
 import javax.annotation.Nonnegative;
+import addsynth.core.util.DecimalNumber;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraftforge.energy.IEnergyStorage;
 
 // Original version from CJMinecraft: https://github.com/CJMinecraft01/
 
@@ -10,20 +10,20 @@ import net.minecraftforge.energy.IEnergyStorage;
  * ADDSynth's own implementation of an Energy Storage object.
  * @author ADDSynth
  */
-public class Energy { // NOTE: Convert to long if double becomes a problem
+public class Energy {
 
-    protected double energy;
+    protected DecimalNumber energy;
     @Nonnegative
-    protected double capacity;
+    protected DecimalNumber capacity;
     @Nonnegative
-    protected double maxReceive;
+    protected DecimalNumber maxReceive;
     @Nonnegative
-    protected double maxExtract;
+    protected DecimalNumber maxExtract;
 
-    private double previous_energy;
-    private double energy_in;
-    private double energy_out;
-    private double difference;
+    private DecimalNumber previous_energy;
+    private DecimalNumber energy_in;
+    private DecimalNumber energy_out;
+    private DecimalNumber difference;
 
 // ================================ CONSTRUCTORS ====================================
 
@@ -50,10 +50,10 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
      * @param maxExtract
      */
     public Energy(final double initial_energy, final double capacity, final double maxReceive, final double maxExtract){
-      this.capacity = capacity;
-      this.maxReceive = maxReceive;
-      this.maxExtract = maxExtract;
-      this.energy = initial_energy;
+      this.capacity.set(capacity);
+      this.maxReceive.set(maxReceive);
+      this.maxExtract.set(maxExtract);
+      this.energy.set(initial_energy);
     }
 
 // ================================= NBT READ / WRITE =================================
@@ -65,10 +65,14 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 	 */
 	public final void readFromNBT(final CompoundNBT nbt){
         CompoundNBT energy_tag = nbt.getCompound("EnergyStorage");
-		this.energy     = energy_tag.getDouble("Energy");
-		this.capacity   = energy_tag.getInt("Capacity");
-		this.maxReceive = energy_tag.getDouble("MaxReceive");
-		this.maxExtract = energy_tag.getDouble("MaxExtract");
+		this.energy.set(         energy_tag.getDouble("Energy")    );
+		this.capacity.set(       energy_tag.getDouble("Capacity")  );
+		this.maxReceive.set(     energy_tag.getDouble("MaxReceive"));
+		this.maxExtract.set(     energy_tag.getDouble("MaxExtract"));
+		this.previous_energy.set(energy_tag.getDouble("Previous"));
+		this.energy_in.set(      energy_tag.getDouble("Energy In"));
+		this.energy_out.set(     energy_tag.getDouble("Energy Out"));
+		this.difference.set(     energy_tag.getDouble("Difference"));
 	}
 
 	/**
@@ -78,10 +82,14 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 	 */
 	public final void writeToNBT(final CompoundNBT nbt){
 	    CompoundNBT energy_tag = new CompoundNBT();
-		energy_tag.putDouble("Energy",     this.energy);
-		energy_tag.putDouble("Capacity",   this.capacity);
-		energy_tag.putDouble("MaxReceive", this.maxReceive);
-		energy_tag.putDouble("MaxExtract", this.maxExtract);
+		energy_tag.putDouble("Energy",     this.energy.get());
+		energy_tag.putDouble("Capacity",   this.capacity.get());
+		energy_tag.putDouble("MaxReceive", this.maxReceive.get());
+		energy_tag.putDouble("MaxExtract", this.maxExtract.get());
+		energy_tag.putDouble("Previous",   this.previous_energy.get());
+		energy_tag.putDouble("Energy In",  this.energy_in.get());
+		energy_tag.putDouble("Energy Out", this.energy_out.get());
+		energy_tag.putDouble("Difference", this.difference.get());
 		nbt.put("EnergyStorage", energy_tag);
 	}
 
@@ -91,49 +99,49 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
    *  the actual energy it will receive when respecting its maxReceive variable. 
    */
   public final double simulateReceive(final double energy){
-    return Math.min(energy, getRequestedEnergy());
+    return Math.min(DecimalNumber.align_to_accuracy(energy), getRequestedEnergy());
   }
 
   /** You may want to extract a large amount of energy, but this is the actual
    *  amount of energy that will be extracted.
    */
   public final double simulateExtract(final double energy){
-    return Math.min(energy, getAvailableEnergy());
+    return Math.min(DecimalNumber.align_to_accuracy(energy), getAvailableEnergy());
   }
 
   /** Adds energy to this object. */
   public final void receiveEnergy(final double energy_to_add){
     final double actual_energy = simulateReceive(energy_to_add);
-    energy += actual_energy;
-    energy_in += actual_energy;
+    energy.add(actual_energy);
+    energy_in.add(actual_energy);
   }
 
   /** Extracts energy and returns the amount extracted. */
   public final double extractEnergy(final double energy_requested){
     final double actual_energy = simulateExtract(energy_requested);
-    energy -= actual_energy;
-    energy_out += actual_energy;
+    energy.subtract(actual_energy);
+    energy_out.add(actual_energy);
     return actual_energy;
   }
 
   /** Extracts the most amount of energy that can be extracted, respecting the maxExtract variable. */
   public final double extractAvailableEnergy(){
     final double actual_energy = getAvailableEnergy();
-    energy -= actual_energy;
-    energy_out += actual_energy;
+    energy.subtract(actual_energy);
+    energy_out.add(actual_energy);
     return actual_energy;
   }
 
   /** Returns maximum amount of energy we can extract, restricted by the maxExtract variable. */
   public final double getAvailableEnergy(){
-    return Math.min(Math.max(energy, 0), maxExtract);
+    return Math.min(Math.max(energy.get(), 0), maxExtract.get());
   }
 
   /** Returns the maximum energy it can receive (restricted by the maxReceive variable)
    *  or returns the last bit of energy needed to reach capacity.
    */
   public final double getRequestedEnergy(){
-    return Math.min(maxReceive, getEnergyNeeded());
+    return Math.min(maxReceive.get(), getEnergyNeeded());
   }
 
   /** Automatically extracts the most that we can from the supplied energy object,
@@ -163,7 +171,7 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 	 * @param energy The energy to set
 	 */
 	public final void setEnergy(final int energy){
-		this.energy = energy;
+		this.energy.set(energy);
 	}
 
     /**
@@ -171,8 +179,8 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
      * @param energy
      */
     public final void setEnergyLevel(final int energy){
-      this.energy = energy;
-      this.capacity = energy;
+      this.energy.set(energy);
+      this.capacity.set(energy);
     }
 
 	/**
@@ -180,7 +188,7 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 	 * @param capacity The capacity to set
 	 */
 	public final void setCapacity(final int capacity){
-		this.capacity = capacity;
+		this.capacity.set(capacity);
 	}
 
 	/**
@@ -188,8 +196,8 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 	 * @param transferRate The max transfer to set
 	 */
 	public final void setTransferRate(final int transferRate){
-		this.maxReceive = transferRate;
-		this.maxExtract = transferRate;
+		this.maxReceive.set(transferRate);
+		this.maxExtract.set(transferRate);
 	}
 
 	/**
@@ -197,7 +205,7 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 	 * @param maxReceive The max receive to set
 	 */
 	public final void setMaxReceive(final int maxReceive){
-		this.maxReceive = maxReceive;
+		this.maxReceive.set(maxReceive);
 	}
 
 	/**
@@ -205,24 +213,24 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 	 * @param maxExtract The max extract to set
 	 */
 	public final void setMaxExtract(final int maxExtract){
-		this.maxExtract = maxExtract;
+		this.maxExtract.set(maxExtract);
 	}
 
   public final void set(Energy energy){
-    this.energy     = energy.getEnergy();
-    this.capacity   = energy.getCapacity();
-    this.maxExtract = energy.getMaxExtract();
-    this.maxReceive = energy.getMaxReceive();
+    this.energy.set(     energy.getEnergy()     );
+    this.capacity.set(   energy.getCapacity()   );
+    this.maxExtract.set( energy.getMaxExtract() );
+    this.maxReceive.set( energy.getMaxReceive() );
   }
 
 // ================================== GETTERS =================================
 
     public final double getEnergy(){
-      return energy;
+      return energy.get();
     }
 
     public final double getCapacity(){
-      return capacity;
+      return capacity.get();
     }
 
 	/**
@@ -230,7 +238,7 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 	 * @return The maximum energy this can receive
 	 */
 	public final double getMaxReceive(){
-		return this.maxReceive;
+		return this.maxReceive.get();
 	}
 
 	/**
@@ -238,12 +246,26 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 	 * @return The maximum energy that can be extracted
 	 */
 	public final double getMaxExtract(){
-		return this.maxExtract;
+		return this.maxExtract.get();
 	}
 
   /** Returns the amount of energy needed to reach Capacity. */
   public final double getEnergyNeeded(){
+    final double energy   = this.energy.get();
+    final double capacity = this.capacity.get();
     return energy < capacity ? capacity - energy : 0;
+  }
+
+  public final double get_energy_in(){
+    return energy_in.get();
+  }
+
+  public final double get_energy_out(){
+    return energy_out.get();
+  }
+
+  public final double getDifference(){
+    return difference.get();
   }
 
   /**
@@ -252,8 +274,8 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
    */
   public final float getEnergyPercentage(){
     double return_value = 0.0;
-    if(capacity > 0){ // prevents divide by 0 errors.
-      return_value = energy / capacity;
+    if(capacity.get() > 0){ // prevents divide by 0 errors.
+      return_value = energy.get() / capacity.get();
     }
     return (float)return_value;
   }
@@ -261,19 +283,19 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
 // ==================================== COMMANDS ====================================
 
     public final void set_receive_only(){
-      this.maxExtract = 0;
+      this.maxExtract.set(0);
     }
 
     public final void set_extract_only(){
-      this.maxReceive = 0;
+      this.maxReceive.set(0);
     }
 
   public final void set_to_full(){
-    energy = capacity;
+    energy.set(capacity.get());
   }
 
   public final void setEmpty(){
-    energy = 0;
+    energy.set(0);
   }
 
   /** Subtracts capacity from current energy level.<br />
@@ -281,50 +303,52 @@ public class Energy { // NOTE: Convert to long if double becomes a problem
    *  this function will set <code>energy</code> to -80.
    */
   public final void extract_all_energy(){
-    energy -= capacity;
+    energy.subtract(capacity.get());
   }
 
 // =================================== QUERIES ======================================
 
   public boolean canExtract(){
-    return maxExtract > 0;
+    return maxExtract.get() > 0;
   }
 
   public boolean canReceive(){
-    return maxReceive > 0;
+    return maxReceive.get() > 0;
   }
 
   /** @return true if energy is equal or greater than max capacity. */
   public final boolean isFull(){
-    return energy >= capacity;
+    return energy.get() >= capacity.get();
   }
 
   public final boolean isEmpty(){
-    return energy <= 0;
+    return energy.get() <= 0;
   }
 
   public final boolean needsEnergy(){
-    return energy < capacity;
+    return energy.get() < capacity.get();
   }
 
   public final boolean hasEnergy(){
-    return energy > 0;
+    return energy.get() > 0;
   }
 
 // ======================================== MISC =======================================
 
-  /** This should be called in the TileEntity's update() function, as the last thing that executes in there.
-   *  This should be called in the server AND the client.
+  /** This should be called in the TileEntity's update() function.
    */
-  public final void update(){
-    difference = energy - previous_energy;
-    previous_energy = energy;
-    energy_in = 0;
-    energy_out = 0;
+  public final boolean update(){
+    final double diff = energy.get() - previous_energy.get();
+    // difference.set(diff);
+    difference.set(energy_in.get() - energy_out.get());
+    previous_energy.set(energy.get());
+    energy_in.set(0);
+    energy_out.set(0);
+    return diff != 0;
   }
 
   public final double getEnergyDifference(){
-    return difference;
+    return difference.get();
   }
 
   @Override

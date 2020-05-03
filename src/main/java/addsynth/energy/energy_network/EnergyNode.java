@@ -2,7 +2,8 @@ package addsynth.energy.energy_network;
 
 import addsynth.core.block_network.Node;
 import addsynth.energy.Energy;
-import addsynth.energy.tiles.TileEnergyWithStorage;
+import addsynth.energy.tiles.IEnergyUser;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 
 public final class EnergyNode extends Node {
@@ -19,12 +20,12 @@ public final class EnergyNode extends Node {
    * @param position
    * @param tileEntity
    */
-  public EnergyNode(final BlockPos position, final TileEnergyWithStorage tileEntity){
+  public <E extends TileEntity & IEnergyUser> EnergyNode(final BlockPos position, final E tileEntity){
     super(position, tileEntity);
     this.energy = tileEntity.getEnergy();
   }
 
-  public EnergyNode(final BlockPos position, final TileEnergyWithStorage tileEntity, final Energy energy){
+  public <E extends TileEntity & IEnergyUser> EnergyNode(final BlockPos position, final E tileEntity, final Energy energy){
     super(position, tileEntity);
     this.energy = energy;
   }
@@ -32,11 +33,6 @@ public final class EnergyNode extends Node {
   @Override
   public boolean isInvalid(){
     return (tile == null || position == null || energy == null) ? true : (tile.isRemoved() || !tile.getPos().equals(position));
-  }
-
-  @Override
-  public final TileEnergyWithStorage getTile(){
-    return (TileEnergyWithStorage)tile;
   }
 
   @Override

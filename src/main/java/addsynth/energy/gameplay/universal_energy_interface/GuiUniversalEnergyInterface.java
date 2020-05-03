@@ -56,7 +56,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUn
   @Override
   protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     draw_background_texture();
-    energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,tile.getEnergyPercentage(),ProgressBar.Round.NEAREST);
+    energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,tile.getEnergy().getEnergyPercentage(),ProgressBar.Round.NEAREST);
   }
 
   @Override

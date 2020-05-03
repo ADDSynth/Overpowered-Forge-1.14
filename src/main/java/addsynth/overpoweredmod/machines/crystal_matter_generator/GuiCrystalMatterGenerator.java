@@ -50,9 +50,9 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<ContainerCrys
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
     draw_background_texture();
-    final float energy_float = tile.getEnergyPercentage();
-    energy_percentage = Math.round(energy_float * 100);
-    energy_progress_bar.draw(this, guiLeft, guiTop, ProgressBar.Direction.BOTTOM_TO_TOP, energy_float, ProgressBar.Round.NEAREST);
+    // final float energy_float = tile.getEnergyPercentage();
+    // energy_percentage = Math.round(energy_float * 100);
+    // energy_progress_bar.draw(this, guiLeft, guiTop, ProgressBar.Direction.BOTTOM_TO_TOP, energy_float, ProgressBar.Round.NEAREST);
     
     final float work_float = tile.getWorkTimePercentage();
     work_percentage = (int)Math.floor(work_float * 100);
@@ -66,7 +66,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<ContainerCrys
     draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus(), 36); // this is the only call to the other draw_status() function that specifies the y level. Likely to be removed once we rewrite the energy system, because all machines will have a On/Off switch and will need to draw at THIS y level.
     draw_text_center(work_percentage + "%", work_percentage_text_y);
-    draw_time_left(tile.getTimeLeft(), 98);
+    draw_time_left(tile, 98);
   }
 
 }

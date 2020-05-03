@@ -37,8 +37,8 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<ContainerEner
     draw_background_texture();
     
     if(tile_energy != null){
-      energy_float = tile.getEnergyPercentage();
-      energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,energy_float,ProgressBar.Round.NEAREST);
+      // energy_float = tile.getEnergyPercentage();
+      // energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,energy_float,ProgressBar.Round.NEAREST);
     }
   }
 

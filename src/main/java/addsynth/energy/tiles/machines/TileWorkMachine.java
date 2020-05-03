@@ -1,9 +1,11 @@
 package addsynth.energy.tiles.machines;
 
 import addsynth.core.inventory.SlotData;
+import addsynth.core.util.StringUtil;
 import addsynth.energy.Energy;
 import addsynth.energy.tiles.TileEnergyReceiver;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -54,17 +56,20 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
 
   @Override
   public void tick(){
-    switch(state){
-    case OFF:
-      if(power_switch){
-        turn_on();
+    if(world.isRemote){
+      switch(state){
+      case OFF:
+        if(power_switch){
+          turn_on();
+        }
+        break;
+      case POWERING_ON:  powering_on();  break;
+      case POWERING_OFF: powering_off(); break;
+      case IDLE:         idle();         break;
+      case RUNNING:      do_work();      break;
       }
-      break;
-    case POWERING_ON:  powering_on();  break;
-    case POWERING_OFF: powering_off(); break;
-    case IDLE:         idle();         break;
-    case RUNNING:      do_work();      break;
     }
+    super.tick();
   }
 
   /** Prepare to Turn on. Switches machine to Powering On if it has power time. */
@@ -199,6 +204,36 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   public void toggleRun(){
     power_switch = !power_switch;
     update_data();
+  }
+
+  @SuppressWarnings("incomplete-switch")
+  public final float getWorkTimePercentage(){
+    float time = 0.0f;
+    switch(state){
+    case POWERING_ON: case POWERING_OFF:
+      if(max_power_time > 0){
+        time = (float)power_time / max_power_time;
+      }
+      break;
+    case RUNNING:
+      time = energy.getEnergyPercentage();
+      break;
+    }
+    return time;
+  }
+
+  public final String getTimeLeft(){
+    final double rate = energy.getDifference();
+    return StringUtil.print_time(energy.getCapacity(), rate);
+  }
+
+  public final String getTotalTimeLeft(){
+    final double rate = energy.getDifference();
+    final ItemStack stack = input_inventory.getStackInSlot(0);
+    if(stack.isEmpty() == false){
+      return StringUtil.print_time(stack.getCount() * energy.getCapacity(), rate);
+    }
+    return StringUtil.print_time(energy.getCapacity(), rate);
   }
 
 // ============================================================================

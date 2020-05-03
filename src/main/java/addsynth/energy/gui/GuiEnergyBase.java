@@ -3,6 +3,7 @@ package addsynth.energy.gui;
 import addsynth.core.gui.GuiBase;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.Energy;
+import addsynth.energy.tiles.machines.TileWorkMachine;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.util.ResourceLocation;
@@ -45,11 +46,11 @@ public abstract class GuiEnergyBase<T extends Container> extends GuiBase<T> {
     draw_text_left("Status: "+status, 6, draw_y);
   }
 
-  protected final void draw_time_left(final int time_left, final int draw_y){
-    draw_text_left("Time Left: "+StringUtil.print_time(time_left), 6, draw_y);
+  protected final void draw_time_left(final TileWorkMachine tile, final int draw_y){
+    draw_text_left("Time Left: "+tile.getTotalTimeLeft(), 6, draw_y);
   }
 
-  protected final void draw_energy_difference(final int difference, final Energy energy, final int draw_y){
+  protected final void draw_energy_difference(final double difference, final Energy energy, final int draw_y){
     switch((int)Math.signum(difference)){
     case 1:
       draw_text_left("Time to Full Charge: "+StringUtil.print_time((int)Math.ceil((double)energy.getEnergyNeeded() / difference)), 6, draw_y);

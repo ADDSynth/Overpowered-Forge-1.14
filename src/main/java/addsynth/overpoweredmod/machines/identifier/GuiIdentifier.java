@@ -42,9 +42,9 @@ public final class GuiIdentifier extends GuiEnergyBase<ContainerIdentifier> {
   @Override
   protected final void drawGuiContainerBackgroundLayer(final float partialTicks, final int mouseX, final int mouseY){
     draw_background_texture();
-    final float energy_float = tile.getEnergyPercentage();
-    energy_percentage = Math.round(energy_float*100);
-    energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
+    // final float energy_float = tile.getEnergyPercentage();
+    // energy_percentage = Math.round(energy_float*100);
+    // energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
     
     final float work_float = tile.getWorkTimePercentage();
     work_percentage = (int)Math.floor(work_float*100);

@@ -1,7 +1,6 @@
 package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 
 import javax.annotation.Nullable;
-import addsynth.energy.Energy;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.registers.Tiles;

@@ -43,9 +43,9 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<ContainerOreRefi
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
     draw_background_texture();
-    final float energy_float = tile.getEnergyPercentage();
-    energy_percentage = Math.round(energy_float*100);
-    energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
+    // final float energy_float = tile.getEnergyPercentage();
+    // energy_percentage = Math.round(energy_float*100);
+    // energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
     
     final float work_float = tile.getWorkTimePercentage();
     work_percentage = (int)Math.floor(work_float*100);
@@ -59,7 +59,7 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<ContainerOreRefi
     draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus());
     draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);
-    draw_time_left(tile.getTotalTimeLeft(), 92);
+    draw_time_left(tile, 92);
   }
 
 }

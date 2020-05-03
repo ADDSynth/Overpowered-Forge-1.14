@@ -3,9 +3,13 @@ package addsynth.energy.energy_network;
 import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.TimeUtil;
 import addsynth.energy.Energy;
+import addsynth.energy.EnergyUtil;
+import addsynth.energy.energy_network.tiles.TileEnergyBattery;
 import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
-import addsynth.energy.gameplay.energy_wire.TileEnergyWire;
+import addsynth.energy.tiles.TileEnergyReceiver;
+import addsynth.energy.tiles.TileEnergyTransmitter;
 import addsynth.energy.tiles.TileEnergyWithStorage;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
@@ -22,31 +26,11 @@ import net.minecraft.world.World;
  */
 public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
 
+  public long tick_time;
+
   public final ArrayList<EnergyNode> receivers = new ArrayList<>();
   public final ArrayList<EnergyNode> batteries = new ArrayList<>();
   public final ArrayList<EnergyNode> generators = new ArrayList<>();
-
-  /* FUTURE Energy Future Notes: IMPORTANT!!!
-     Machines that are not receivers or transmitters, they are batteries, MAKE THEM PASSTHROUGH!
-     Make batteries part of the network.
-     (will have to make Block Networks accept more than 1 type of block to use for the network.)
-     Any battery the network detects acts as the network's internal energy storage.
-     YES, make the network have an energy storage!
-     Change the above variable 'receivers' into just energy_machines, that hold both receivers
-     and transmitters.
-     It is an interesting relationship:
-     1 - Get as much energy as you possibly can from ALL Transmitters.
-     2 - Push the Transmitters's energy into all the Receivers (as much as you can(.
-     3 - If Receivers STILL need energy, try to get it from all Batteries.
-     4 - If any energy was left over from Step 1 and 2 (which only happens if we managed to filled
-         all the Receivers) push the Transmitter's remaining energy to the Batteries.
-     !! When we check Transmitters, ask how many networks they are connected to.
-     !! Receivers can receive as much energy as they want so we don't need to check them.
-         - No, there's something else I want to change during the energy system rewrite.
-     For Receivers: if we detect that we're not getting enough energy from one side, then add an
-       offset to certain sides that are offering energy. This only needs to happen in one tick.
-       Once we detect that the energy from all sides is equal, reset all offset variables.
-  */
 
   public EnergyNetwork(final World world, final TileEnergyNetwork energy_wire){
     super(world, energy_wire);
@@ -54,40 +38,65 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
 
   @Override
   protected void clear_custom_data(){
+    generators.clear();
     receivers.clear();
+    batteries.clear();
   }
 
   /** Checks if we already have an EnergyNode for this TileEntity by checking to see if we've
    *  already captured a reference to that TileEntity's {@link Energy} object.
    * @param node
    */
-  private final void add_energy_node(final EnergyNode node){
+  private static final void add_energy_node(final ArrayList<EnergyNode> list, final EnergyNode node){
     boolean exists = false;
-    for(EnergyNode existing_node : receivers){
+    for(EnergyNode existing_node : list){
       if(existing_node.energy == node.energy){
         exists = true;
         break;
       }
     }
     if(exists == false){
-      receivers.add(node);
+      list.add(node);
     }
   }
 
-  public final void update(final TileEntity tile){
+  public final void update(final TileEnergyNetwork tile){
     if(tile == first_tile){
+      final long start = TimeUtil.get_start_time();
+      
+      remove_invalid_nodes(batteries);
+      remove_invalid_nodes(receivers);
+      remove_invalid_nodes(generators);
+      
+      // Step 1: subtract as much energy as we can from the generators:
+      EnergyUtil.transfer_energy(generators, receivers);
+
+      // Step 2: if receivers still need energy, subtract it from batteries.
+      EnergyUtil.transfer_energy(batteries, receivers);
+
+      // Step 3: put remaining energy from Step 1 into batteries.
+      EnergyUtil.transfer_energy(generators, batteries);
+      
+      tick_time = TimeUtil.get_elapsed_time(start);
     }
   }
 
   @Override
-  protected final void customSearch(final BlockPos position, final Block block, final TileEntity t){
-    final TileEnergyWithStorage tile = MinecraftUtility.getTileEntity(position, world, TileEnergyWithStorage.class);
+  protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
     if(tile != null){
-      final Energy energy = tile.getEnergy();
-      if(energy != null){
-        if(energy.canReceive()){
-          add_energy_node(new EnergyNode(position, tile, energy));
-        }
+      if(tile instanceof TileEnergyBattery){
+        add_energy_node(batteries, new EnergyNode(position, (TileEnergyBattery)tile));
+      }
+      if(tile instanceof TileEnergyReceiver){
+        add_energy_node(receivers, new EnergyNode(position, (TileEnergyReceiver)tile));
+        return;
+      }
+      if(tile instanceof TileEnergyTransmitter){
+        add_energy_node(generators, new EnergyNode(position, (TileEnergyTransmitter)tile));
+        return;
+      }
+      if(tile instanceof TileEnergyWithStorage){
+        add_energy_node(batteries, new EnergyNode(position, (TileEnergyWithStorage)tile));
       }
     }
   }
@@ -99,11 +108,6 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
       return;
     }
     remove_invalid_nodes(receivers);
-  }
-
-  public void update(final TileEnergyWire tile){
-    if(tile == first_tile){
-    }
   }
 
 }
