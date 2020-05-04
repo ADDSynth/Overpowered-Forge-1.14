@@ -12,6 +12,15 @@ public final class DecimalNumber {
   private int number;
   private int sub_number;
   
+  public DecimalNumber(){
+  }
+
+  public DecimalNumber(final double init_value){
+    set(init_value);
+  }
+
+// ===================================================================================
+  
   public final void set(final double number){
     this.number = (int)number;
     this.sub_number = (int)Math.floor((number - this.number) * DECIMAL_ACCURACY);
@@ -43,6 +52,8 @@ public final class DecimalNumber {
     return sub_number;
   }
 
+// ===================================================================================
+  
   // No unsigned primitive values, no structs, and now,
   // 3rd problem with Java: No operator overload! >:(
 

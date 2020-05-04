@@ -1,6 +1,5 @@
 package addsynth.energy;
 
-import javax.annotation.Nonnegative;
 import addsynth.core.util.DecimalNumber;
 import net.minecraft.nbt.CompoundNBT;
 
@@ -12,86 +11,83 @@ import net.minecraft.nbt.CompoundNBT;
  */
 public class Energy {
 
-    protected DecimalNumber energy;
-    @Nonnegative
-    protected DecimalNumber capacity;
-    @Nonnegative
-    protected DecimalNumber maxReceive;
-    @Nonnegative
-    protected DecimalNumber maxExtract;
+  protected final DecimalNumber energy     = new DecimalNumber();
+  protected final DecimalNumber capacity   = new DecimalNumber();
+  protected final DecimalNumber maxReceive = new DecimalNumber();
+  protected final DecimalNumber maxExtract = new DecimalNumber();
 
-    private DecimalNumber previous_energy;
-    private DecimalNumber energy_in;
-    private DecimalNumber energy_out;
-    private DecimalNumber difference;
+  protected final DecimalNumber previous_energy = new DecimalNumber();
+  protected final DecimalNumber energy_in       = new DecimalNumber();
+  protected final DecimalNumber energy_out      = new DecimalNumber();
+  protected final DecimalNumber difference      = new DecimalNumber();
 
 // ================================ CONSTRUCTORS ====================================
 
-    public Energy(){
-      this(0,0,0,0);
-    }
+  public Energy(){
+    this(0,0,0,0);
+  }
 
-    public Energy(final double capacity){
-      this(0, capacity, capacity, capacity);
-    }
+  public Energy(final double capacity){
+    this(0, capacity, capacity, capacity);
+  }
 
-    public Energy(final double capacity, final double maxTransferRate){
-      this(0, capacity, maxTransferRate, maxTransferRate);
-    }
+  public Energy(final double capacity, final double maxTransferRate){
+    this(0, capacity, maxTransferRate, maxTransferRate);
+  }
 
-    public Energy(final double capacity, final double maxReceive, final double maxExtract){
-      this(0, capacity, maxReceive, maxExtract);
-    }
+  public Energy(final double capacity, final double maxReceive, final double maxExtract){
+    this(0, capacity, maxReceive, maxExtract);
+  }
 
-    /**
-     * @param initial_energy
-     * @param capacity
-     * @param maxReceive
-     * @param maxExtract
-     */
-    public Energy(final double initial_energy, final double capacity, final double maxReceive, final double maxExtract){
-      this.capacity.set(capacity);
-      this.maxReceive.set(maxReceive);
-      this.maxExtract.set(maxExtract);
-      this.energy.set(initial_energy);
-    }
+  /**
+   * @param initial_energy
+   * @param capacity
+   * @param maxReceive
+   * @param maxExtract
+   */
+  public Energy(final double initial_energy, final double capacity, final double maxReceive, final double maxExtract){
+    this.capacity.set(capacity);
+    this.maxReceive.set(maxReceive);
+    this.maxExtract.set(maxExtract);
+    this.energy.set(initial_energy);
+  }
 
 // ================================= NBT READ / WRITE =================================
 
-      /**
-	 * Read and set all values from the data inside the given {@link CompoundNBT}
-	 * 
-	 * @param nbt The {@link CompoundNBT} with all the data
-	 */
-	public final void readFromNBT(final CompoundNBT nbt){
-        CompoundNBT energy_tag = nbt.getCompound("EnergyStorage");
-		this.energy.set(         energy_tag.getDouble("Energy")    );
-		this.capacity.set(       energy_tag.getDouble("Capacity")  );
-		this.maxReceive.set(     energy_tag.getDouble("MaxReceive"));
-		this.maxExtract.set(     energy_tag.getDouble("MaxExtract"));
-		this.previous_energy.set(energy_tag.getDouble("Previous"));
-		this.energy_in.set(      energy_tag.getDouble("Energy In"));
-		this.energy_out.set(     energy_tag.getDouble("Energy Out"));
-		this.difference.set(     energy_tag.getDouble("Difference"));
-	}
+  /**
+   * Read and set all values from the data inside the given {@link CompoundNBT}
+   * 
+   * @param nbt The {@link CompoundNBT} with all the data
+   */
+  public final void readFromNBT(final CompoundNBT nbt){
+    final CompoundNBT energy_tag = nbt.getCompound("EnergyStorage");
+    this.energy.set(         energy_tag.getDouble("Energy")    );
+    this.capacity.set(       energy_tag.getDouble("Capacity")  );
+    this.maxReceive.set(     energy_tag.getDouble("MaxReceive"));
+    this.maxExtract.set(     energy_tag.getDouble("MaxExtract"));
+    this.previous_energy.set(energy_tag.getDouble("Previous Energy"));
+    this.energy_in.set(      energy_tag.getDouble("Energy In"));
+    this.energy_out.set(     energy_tag.getDouble("Energy Out"));
+    this.difference.set(     energy_tag.getDouble("Difference"));
+  }
 
-	/**
-	 * Write all of the data to the {@link CompoundNBT} provided
-	 * 
-	 * @param nbt The {@link CompoundNBT} to write to
-	 */
-	public final void writeToNBT(final CompoundNBT nbt){
-	    CompoundNBT energy_tag = new CompoundNBT();
-		energy_tag.putDouble("Energy",     this.energy.get());
-		energy_tag.putDouble("Capacity",   this.capacity.get());
-		energy_tag.putDouble("MaxReceive", this.maxReceive.get());
-		energy_tag.putDouble("MaxExtract", this.maxExtract.get());
-		energy_tag.putDouble("Previous",   this.previous_energy.get());
-		energy_tag.putDouble("Energy In",  this.energy_in.get());
-		energy_tag.putDouble("Energy Out", this.energy_out.get());
-		energy_tag.putDouble("Difference", this.difference.get());
-		nbt.put("EnergyStorage", energy_tag);
-	}
+  /**
+   * Write all of the data to the {@link CompoundNBT} provided
+   * 
+   * @param nbt The {@link CompoundNBT} to write to
+   */
+  public final void writeToNBT(final CompoundNBT nbt){
+    final CompoundNBT energy_tag = new CompoundNBT();
+	energy_tag.putDouble("Energy",     this.energy.get());
+	energy_tag.putDouble("Capacity",   this.capacity.get());
+	energy_tag.putDouble("MaxReceive", this.maxReceive.get());
+	energy_tag.putDouble("MaxExtract", this.maxExtract.get());
+	energy_tag.putDouble("Previous Energy", this.previous_energy.get());
+	energy_tag.putDouble("Energy In",  this.energy_in.get());
+	energy_tag.putDouble("Energy Out", this.energy_out.get());
+	energy_tag.putDouble("Difference", this.difference.get());
+	nbt.put("EnergyStorage", energy_tag);
+  }
 
 // =========================== TRANSMIT / RECEIVE ===================================
 
@@ -166,55 +162,55 @@ public class Energy {
 
 // ================================= SETTERS =====================================
 
-	/**
-	 * Sets the current energy
-	 * @param energy The energy to set
-	 */
-	public final void setEnergy(final int energy){
-		this.energy.set(energy);
-	}
+  /**
+   * Sets the current energy
+   * @param energy The energy to set
+   */
+  public final void setEnergy(final int energy){
+    this.energy.set(energy);
+  }
 
-    /**
-     * Sets the energy and capacity at once to the specified value.
-     * @param energy
-     */
-    public final void setEnergyLevel(final int energy){
-      this.energy.set(energy);
-      this.capacity.set(energy);
-    }
+  /**
+   * Sets the energy and capacity at once to the specified value.
+   * @param energy
+   */
+  public final void setEnergyLevel(final int energy){
+    this.energy.set(energy);
+    this.capacity.set(energy);
+  }
 
-	/**
-	 * Sets the total capacity.
-	 * @param capacity The capacity to set
-	 */
-	public final void setCapacity(final int capacity){
-		this.capacity.set(capacity);
-	}
+  /**
+   * Sets the total capacity.
+   * @param capacity The capacity to set
+   */
+  public final void setCapacity(final int capacity){
+    this.capacity.set(capacity);
+  }
 
-	/**
-	 * Sets the maximum transfer rate to and from this EnergyStorage.
-	 * @param transferRate The max transfer to set
-	 */
-	public final void setTransferRate(final int transferRate){
-		this.maxReceive.set(transferRate);
-		this.maxExtract.set(transferRate);
-	}
+  /**
+   * Sets the maximum transfer rate to and from this EnergyStorage.
+   * @param transferRate The max transfer to set
+   */
+  public final void setTransferRate(final int transferRate){
+    this.maxReceive.set(transferRate);
+    this.maxExtract.set(transferRate);
+  }
 
-	/**
-	 * Set the current max receive
-	 * @param maxReceive The max receive to set
-	 */
-	public final void setMaxReceive(final int maxReceive){
-		this.maxReceive.set(maxReceive);
-	}
+  /**
+   * Set the current max receive
+   * @param maxReceive The max receive to set
+   */
+  public final void setMaxReceive(final int maxReceive){
+    this.maxReceive.set(maxReceive);
+  }
 
-	/**
-	 * Set the current max extract
-	 * @param maxExtract The max extract to set
-	 */
-	public final void setMaxExtract(final int maxExtract){
-		this.maxExtract.set(maxExtract);
-	}
+  /**
+   * Set the current max extract
+   * @param maxExtract The max extract to set
+   */
+  public final void setMaxExtract(final int maxExtract){
+    this.maxExtract.set(maxExtract);
+  }
 
   public final void set(Energy energy){
     this.energy.set(     energy.getEnergy()     );
@@ -225,29 +221,29 @@ public class Energy {
 
 // ================================== GETTERS =================================
 
-    public final double getEnergy(){
-      return energy.get();
-    }
+  public final double getEnergy(){
+    return energy.get();
+  }
 
-    public final double getCapacity(){
-      return capacity.get();
-    }
+  public final double getCapacity(){
+    return capacity.get();
+  }
 
-	/**
-	 * Get the maximum energy this can receive
-	 * @return The maximum energy this can receive
-	 */
-	public final double getMaxReceive(){
-		return this.maxReceive.get();
-	}
+  /**
+   * Get the maximum energy this can receive
+   * @return The maximum energy this can receive
+   */
+  public final double getMaxReceive(){
+    return this.maxReceive.get();
+  }
 
-	/**
-	 * Get the maximum energy that can be extracted
-	 * @return The maximum energy that can be extracted
-	 */
-	public final double getMaxExtract(){
-		return this.maxExtract.get();
-	}
+  /**
+   * Get the maximum energy that can be extracted
+   * @return The maximum energy that can be extracted
+   */
+  public final double getMaxExtract(){
+    return this.maxExtract.get();
+  }
 
   /** Returns the amount of energy needed to reach Capacity. */
   public final double getEnergyNeeded(){
@@ -282,13 +278,13 @@ public class Energy {
 
 // ==================================== COMMANDS ====================================
 
-    public final void set_receive_only(){
-      this.maxExtract.set(0);
-    }
+  public final void set_receive_only(){
+    this.maxExtract.set(0);
+  }
 
-    public final void set_extract_only(){
-      this.maxReceive.set(0);
-    }
+  public final void set_extract_only(){
+    this.maxReceive.set(0);
+  }
 
   public final void set_to_full(){
     energy.set(capacity.get());
