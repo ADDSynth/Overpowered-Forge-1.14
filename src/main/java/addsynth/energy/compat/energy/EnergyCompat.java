@@ -2,16 +2,8 @@ package addsynth.energy.compat.energy;
 
 import java.util.ArrayList;
 import addsynth.core.game.Compatability;
-import addsynth.core.util.JavaUtils;
 import addsynth.core.util.MathUtility;
 import addsynth.energy.Energy;
-/*
-import cofh.redstoneflux.api.IEnergyHandler;
-import cofh.redstoneflux.api.IEnergyProvider;
-import cofh.redstoneflux.api.IEnergyReceiver;
-import net.darkhax.tesla.api.*;
-import net.darkhax.tesla.capability.TeslaCapabilities;
-*/
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -70,56 +62,17 @@ public final class EnergyCompat {
         
           // RF Energy
           if(EnergyType.RF.available){
-            /*
-            if(JavaUtils.classExists("cofh.redstoneflux.api.IEnergyHandler")){
-              if(tile instanceof IEnergyHandler){
-                nodes.add(new CompatEnergyNode(EnergyType.RF, tile, capability_side));
-                continue;
-              }
+            if(RedstoneFluxEnergy.check(tile)){
+              nodes.add(new CompatEnergyNode(EnergyType.RF, tile, capability_side));
+              continue;
             }
-            if(JavaUtils.classExists("cofh.redstoneflux.api.IEnergyReceiver")){
-              if(tile instanceof IEnergyReceiver){
-                nodes.add(new CompatEnergyNode(EnergyType.RF, tile, capability_side));
-                continue;
-              }
-            }
-            if(JavaUtils.classExists("cofh.redstoneflux.api.IEnergyProvider")){
-              if(tile instanceof IEnergyProvider){
-                nodes.add(new CompatEnergyNode(EnergyType.RF, tile, capability_side));
-                continue;
-              }
-            }
-            */
           }
           
           // Tesla Energy
           if(EnergyType.TESLA.available){
-            // MAYBE: And then I rediscovered the existance of Forge's CapabilityInjector annotation.
-            /*
-            if(JavaUtils.classExists("net.darkhax.tesla.capability.TeslaCapabilities")){
-              if(tile.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, capability_side)){
-                energy = tile.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, capability_side);
-                if(energy != null){
-                  nodes.add(new CompatEnergyNode(EnergyType.TESLA, energy, capability_side));
-                  continue;
-                }
-              }
-              if(tile.hasCapability(TeslaCapabilities.CAPABILITY_PRODUCER, capability_side)){
-                energy = tile.getCapability(TeslaCapabilities.CAPABILITY_PRODUCER, capability_side);
-                if(energy != null){
-                  nodes.add(new CompatEnergyNode(EnergyType.TESLA, energy, capability_side));
-                  continue;
-                }
-              }
-              if(tile.hasCapability(TeslaCapabilities.CAPABILITY_CONSUMER, capability_side)){
-                energy = tile.getCapability(TeslaCapabilities.CAPABILITY_CONSUMER, capability_side);
-                if(energy != null){
-                  nodes.add(new CompatEnergyNode(EnergyType.TESLA, energy, capability_side));
-                  continue;
-                }
-              }
+            if(TeslaEnergy.check(tile)){
+              continue;
             }
-            */
           }
         }
         catch(Exception e){
@@ -130,16 +83,16 @@ public final class EnergyCompat {
   }
 
   public static final void acceptEnergy(final CompatEnergyNode[] nodes, final Energy our_energy){
-    final int energy_needed = our_energy.getEnergyNeeded();
+    final int energy_needed = (int)our_energy.getEnergyNeeded();
     final int[] available_energy = new int[nodes.length];
     int i;
     // get available energy
     for(i = 0; i < nodes.length; i++){
       try{
         switch(nodes[i].type){
-        case FORGE: available_energy[i] = GetForgeEnergy(       nodes[i].energy, energy_needed, true);                break;
-        //case RF:    available_energy[i] = GetRedstoneFluxEnergy(nodes[i].energy, energy_needed, true, nodes[i].side); break;
-        //case TESLA: available_energy[i] = GetTeslaEnergy(       nodes[i].energy, energy_needed, true);                break;
+        case FORGE: available_energy[i] = ForgeEnergy.get(       nodes[i].energy, energy_needed, true);                break;
+        case RF:    available_energy[i] = RedstoneFluxEnergy.get(nodes[i].energy, energy_needed, true, nodes[i].side); break;
+        case TESLA: available_energy[i] = TeslaEnergy.get(       nodes[i].energy, energy_needed, true);                break;
         }
       }
       catch(Exception e){
@@ -152,9 +105,9 @@ public final class EnergyCompat {
     for(i = 0; i < nodes.length; i++){
       try{
         switch(nodes[i].type){
-        case FORGE: GetForgeEnergy(       nodes[i].energy, energy_to_extract[i], false);                break;
-        //case RF:    GetRedstoneFluxEnergy(nodes[i].energy, energy_to_extract[i], false, nodes[i].side); break;
-        //case TESLA: GetTeslaEnergy(       nodes[i].energy, energy_to_extract[i], false);                break;
+        case FORGE: ForgeEnergy.get(       nodes[i].energy, energy_to_extract[i], false);                break;
+        case RF:    RedstoneFluxEnergy.get(nodes[i].energy, energy_to_extract[i], false, nodes[i].side); break;
+        case TESLA: TeslaEnergy.get(       nodes[i].energy, energy_to_extract[i], false);                break;
         }
         our_energy.receiveEnergy(energy_to_extract[i]);
       }
@@ -164,44 +117,18 @@ public final class EnergyCompat {
     }
   }
 
-  private static final int GetForgeEnergy(final Object input, final int energy_requested, final boolean simulate){
-    final IEnergyStorage energy = (IEnergyStorage)input;
-    if(energy.canExtract()){
-      return energy.extractEnergy(energy_requested, simulate);
-    }
-    return 0;
-  }
-
-/*
-  private static final int GetRedstoneFluxEnergy(final Object input, final int energy_requested, final boolean simulate, final Direction side){
-    if(input instanceof IEnergyProvider){
-      final IEnergyProvider energy = (IEnergyProvider)input;
-      return energy.extractEnergy(side, energy_requested, simulate);
-    }
-    return 0;
-  }
-
-  private static final int GetTeslaEnergy(final Object input, final int energy_requested, final boolean simulate){
-    if(input instanceof ITeslaProducer){
-      final ITeslaProducer energy = (ITeslaProducer)input;
-      return JavaUtils.cast_to_int(energy.takePower(energy_requested, simulate));
-    }
-    return 0;
-  }
-*/
-
   public static final void transmitEnergy(final CompatEnergyNode[] nodes, final Energy our_energy){
-    final int[] energy_available = MathUtility.divide_evenly(our_energy.getEnergy(), nodes.length);
+    final int[] energy_available = MathUtility.divide_evenly((int)our_energy.getEnergy(), nodes.length);
     int actual_energy_extracted = 0;
     int i;
     for(i = 0; i < nodes.length; i++){
       try{
         switch(nodes[i].type){
-        case FORGE: actual_energy_extracted = SendForgeEnergy(       nodes[i].energy, energy_available[i]);                break;
-        //case RF:    actual_energy_extracted = SendRedstoneFluxEnergy(nodes[i].energy, energy_available[i], nodes[i].side); break;
-        //case TESLA: actual_energy_extracted = SendTeslaEnergy(       nodes[i].energy, energy_available[i]);                break;
+        case FORGE: actual_energy_extracted = ForgeEnergy.send(       nodes[i].energy, energy_available[i]);                break;
+        case RF:    actual_energy_extracted = RedstoneFluxEnergy.send(nodes[i].energy, energy_available[i], nodes[i].side); break;
+        case TESLA: actual_energy_extracted = TeslaEnergy.send(       nodes[i].energy, energy_available[i]);                break;
         }
-        our_energy.extractEnergy(actual_energy_extracted, false);
+        our_energy.extractEnergy(actual_energy_extracted);
       }
       catch(Exception e){
         nodes[i].type.setError(e);
@@ -209,30 +136,4 @@ public final class EnergyCompat {
     }
   }
   
-  private static final int SendForgeEnergy(final Object input, final int transmitted_energy){
-    final IEnergyStorage energy = (IEnergyStorage)input;
-    if(energy.canReceive()){
-      return energy.receiveEnergy(transmitted_energy, false);
-    }
-    return 0;
-  }
-  
-/*
-  private static final int SendRedstoneFluxEnergy(final Object input, final int transmitted_energy, final Direction side){
-    if(input instanceof IEnergyReceiver){
-      final IEnergyReceiver energy = (IEnergyReceiver)input;
-      return energy.receiveEnergy(side, transmitted_energy, false);
-    }
-    return 0;
-  }
-  
-  private static final int SendTeslaEnergy(final Object input, final int transmitted_energy){
-    if(input instanceof ITeslaConsumer){
-      final ITeslaConsumer energy = (ITeslaConsumer)input;
-      return JavaUtils.cast_to_int(energy.givePower(transmitted_energy, false));
-    }
-    return 0;
-  }
-*/
-
 }
