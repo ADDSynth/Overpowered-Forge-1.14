@@ -10,10 +10,6 @@ public final class Features {
     Debug.log_setup_info("Features class was loaded.");
   }
 
-  private static final Pair<Features, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Features::new);
-  public static final Features INSTANCE = SPEC_PAIR.getLeft();
-  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
-
   public static ForgeConfigSpec.BooleanValue energy_tools;
   public static ForgeConfigSpec.BooleanValue void_tools;
 
@@ -48,6 +44,10 @@ public final class Features {
   public static ForgeConfigSpec.BooleanValue silver_trophy;
   public static ForgeConfigSpec.BooleanValue gold_trophy;
   public static ForgeConfigSpec.BooleanValue platinum_trophy;
+
+  private static final Pair<Features, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Features::new);
+  public static final Features INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
   // https://github.com/micdoodle8/Galacticraft/blob/MC1.10/src/main/java/micdoodle8/mods/galacticraft/core/util/ConfigManagerCore.java
   // https://github.com/Railcraft/Railcraft/blob/mc-1.10.2/src/main/java/mods/railcraft/common/core/RailcraftConfig.java

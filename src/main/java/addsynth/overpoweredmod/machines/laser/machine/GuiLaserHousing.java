@@ -165,11 +165,11 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
   }
 
   private final void draw_energy_requirements(){
-    final String required_energy = Integer.toString(tile.getEnergy().getCapacity());
+    final String required_energy = Integer.toString((int)(tile.getEnergy().getCapacity()));
     final String word_1 = "Required Energy: "+required_energy;
     final int word_1_width = font.getStringWidth(word_1);
     
-    final String current_energy = Integer.toString(tile.getEnergy().getEnergy());
+    final String current_energy = Integer.toString((int)(tile.getEnergy().getEnergy()));
     final String word_2 = "Current Energy: "+current_energy;
     final int word_2_width = font.getStringWidth(word_2);
     

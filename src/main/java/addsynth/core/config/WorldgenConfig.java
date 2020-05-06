@@ -9,10 +9,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
  */
 public final class WorldgenConfig {
 
-  private static final Pair<WorldgenConfig, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(WorldgenConfig::new);
-  public static final WorldgenConfig INSTANCE = SPEC_PAIR.getLeft();
-  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
-
   private static final int DEFAULT_MIN_HEIGHT = 5;
   
   private static final int DEFAULT_GEM_MAX_HEIGHT = 40;
@@ -100,6 +96,10 @@ public final class WorldgenConfig {
   public static ForgeConfigSpec.IntValue titanium_max_height;
   public static ForgeConfigSpec.IntValue titanium_spawn_tries;
   public static ForgeConfigSpec.IntValue titanium_ore_size;
+
+  private static final Pair<WorldgenConfig, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(WorldgenConfig::new);
+  public static final WorldgenConfig INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
   public WorldgenConfig(final ForgeConfigSpec.Builder builder){
     builder.push("Worldgen");

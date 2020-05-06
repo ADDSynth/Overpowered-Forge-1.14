@@ -5,15 +5,15 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class Config {
 
-  private static final Pair<Config, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Config::new);
-  public static final Config INSTANCE = SPEC_PAIR.getLeft();
-  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
-
   public static ForgeConfigSpec.BooleanValue debug_mod_detection;
   public static ForgeConfigSpec.BooleanValue debug_materials_detection;
   public static ForgeConfigSpec.BooleanValue dump_map_colors;
 
   public static ForgeConfigSpec.BooleanValue show_advanced_config;
+
+  private static final Pair<Config, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Config::new);
+  public static final Config INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
   public Config(final ForgeConfigSpec.Builder builder){
 

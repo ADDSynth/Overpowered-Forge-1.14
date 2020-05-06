@@ -7,10 +7,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class MachineValues {
 
-  private static final Pair<MachineValues, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(MachineValues::new);
-  public static final MachineValues INSTANCE = SPEC_PAIR.getLeft();
-  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
-
   public static ForgeConfigSpec.ConfigValue<Integer> energy_crystal_energy;
   public static ForgeConfigSpec.ConfigValue<Integer> energy_crystal_max_extract;
   public static ForgeConfigSpec.ConfigValue<Integer> energy_crystal_shards_energy;
@@ -53,6 +49,10 @@ public final class MachineValues {
 
   private static final int DEFAULT_ENERGY_PER_LASER_CANNON   = 5_000;
   private static final int DEFAULT_ENERGY_PER_LASER_DISTANCE =   100;
+
+  private static final Pair<MachineValues, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(MachineValues::new);
+  public static final MachineValues INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
   public MachineValues(final ForgeConfigSpec.Builder builder){
 

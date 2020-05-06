@@ -13,10 +13,6 @@ public final class Config {
   // https://www.minecraftforge.net/forum/topic/72021-1142-how-does-config-work-in-forge-for-1142/
   // https://github.com/Cadiboo/Example-Mod/commit/43db50e176d758ade2338764d7e2fe1b63aae7dd#diff-cb1dc14ae764daf38ef877fabbe0d72aR37
 
-  private static final Pair<Config, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Config::new);
-  public static final Config INSTANCE = SPEC_PAIR.getLeft();
-  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
-
   public static ForgeConfigSpec.ConfigValue<Integer> unknown_dimension_id;
   public static ForgeConfigSpec.ConfigValue<Integer> weird_biome_id;
 
@@ -76,6 +72,10 @@ public final class Config {
   public static ForgeConfigSpec.BooleanValue drop_for_vindication_illager;
 
   public static ForgeConfigSpec.BooleanValue show_advanced_config;
+
+  private static final Pair<Config, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Config::new);
+  public static final Config INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
   public Config(final ForgeConfigSpec.Builder builder){
 

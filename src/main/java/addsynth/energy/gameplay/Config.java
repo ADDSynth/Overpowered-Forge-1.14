@@ -7,10 +7,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class Config {
 
-  private static final Pair<Config, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Config::new);
-  public static final Config INSTANCE = SPEC_PAIR.getLeft();
-  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
-
   public static final MachineDataConfig compressor_data = new MachineDataConfig(MachineType.ALWAYS_ON, 200, 10, 0, 0); // 2,000
 
   public static ForgeConfigSpec.BooleanValue electric_furnace;
@@ -25,6 +21,10 @@ public final class Config {
   private static final int DEFAULT_ENERGY_STORAGE_CAPACITY       = 1_000_000;
   private static final int DEFAULT_ENERGY_STORAGE_MAX_EXTRACT        =   500;
   private static final int DEFAULT_UNIVERSAL_ENERGY_INTERFACE_BUFFER = 1_000;
+
+  private static final Pair<Config, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Config::new);
+  public static final Config INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
   public Config(final ForgeConfigSpec.Builder builder){
   

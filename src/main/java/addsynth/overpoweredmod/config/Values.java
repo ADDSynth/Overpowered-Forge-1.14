@@ -5,13 +5,13 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class Values {
 
-  private static final Pair<Values, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Values::new);
-  public static final Values INSTANCE = SPEC_PAIR.getLeft();
-  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
-
   public static ForgeConfigSpec.DoubleValue unknown_dimension_tree_spawn_chance;
 
   private static final float DEFAULT_UNKNOWN_TREE_SPAWN_CHANCE = 0.002f; // 1 / 500
+
+  private static final Pair<Values, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Values::new);
+  public static final Values INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
   public Values(final ForgeConfigSpec.Builder builder){
 

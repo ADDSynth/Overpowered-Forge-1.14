@@ -3,9 +3,9 @@ package addsynth.energy.gameplay.universal_energy_interface;
 import javax.annotation.Nullable;
 import addsynth.energy.Energy;
 import addsynth.energy.compat.energy.EnergyCompat;
-import addsynth.energy.energy_network.tiles.TileEnergyBattery;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.registers.Tiles;
+import addsynth.energy.tiles.TileEnergyWithStorage;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -15,7 +15,7 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileUniversalEnergyTransfer extends TileEnergyBattery implements ITickableTileEntity, INamedContainerProvider {
+public final class TileUniversalEnergyTransfer extends TileEnergyWithStorage implements ITickableTileEntity, INamedContainerProvider {
 
   public enum TRANSFER_MODE {
     BI_DIRECTIONAL(true,  true,  true,  "Bi-Directional"),

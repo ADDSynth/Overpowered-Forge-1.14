@@ -5,14 +5,14 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class Features {
 
-  private static final Pair<Features, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Features::new);
-  public static final Features INSTANCE = SPEC_PAIR.getLeft();
-  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
-
   public static ForgeConfigSpec.BooleanValue caution_block;
   public static ForgeConfigSpec.BooleanValue music_box;
   public static ForgeConfigSpec.BooleanValue music_sheet;
   public static ForgeConfigSpec.BooleanValue scythes;
+
+  private static final Pair<Features, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Features::new);
+  public static final Features INSTANCE = SPEC_PAIR.getLeft();
+  public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
 
   public Features(final ForgeConfigSpec.Builder builder){
 
