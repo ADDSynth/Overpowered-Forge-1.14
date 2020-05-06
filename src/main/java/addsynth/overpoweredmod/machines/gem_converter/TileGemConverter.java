@@ -84,7 +84,7 @@ public final class TileGemConverter extends TileWorkMachine implements INamedCon
 
   @Override
   protected final void perform_work(){
-    input_inventory.decrease(0);
+    working_inventory.setEmpty();
     // always remember to pass A COPY of the stack your trying to insert! Do not reference
     // a stack you're keeping. Otherwise it will assign a direct reference!
     output_inventory.insertItem(0, gem_selected.copy(), false);

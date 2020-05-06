@@ -58,8 +58,7 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
       final ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1);
       enchant_book.addEnchantment(enchantment, enchantment == Enchantments.FORTUNE ? 2 : 1);
       output_inventory.setStackInSlot(0, enchant_book);
-      input_inventory.decrease(0);
-      input_inventory.decrease(1);
+      working_inventory.setEmpty();
     }
   }
 

@@ -182,6 +182,14 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
 
   /** Decrements input by 1, and transfers it to the center slot to begin working on it. */
   protected void begin_work(){
+    if(input_inventory != null){
+      int i;
+      ItemStack stack;
+      for(i = 0; i < input_inventory.getSlots(); i++){
+        stack = input_inventory.extractItem(i, 1, false);
+        working_inventory.setStackInSlot(i, stack);
+      }
+    }
   }
 
   /** Finishes working on the center ItemStack and increments the output. */

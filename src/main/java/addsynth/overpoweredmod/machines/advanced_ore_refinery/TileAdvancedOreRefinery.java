@@ -35,7 +35,7 @@ public final class TileAdvancedOreRefinery extends TileWorkMachine implements IN
   @Override
   protected final void perform_work(){
     output_inventory.insertItem(0, result.copy(), false);
-    input_inventory.extractItem(0, 1, false);
+    working_inventory.setEmpty();
   }
 
   @Override

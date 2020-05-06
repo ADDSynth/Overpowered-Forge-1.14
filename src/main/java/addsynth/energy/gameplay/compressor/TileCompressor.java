@@ -35,7 +35,7 @@ public final class TileCompressor extends TileWorkMachine implements INamedConta
   protected final void perform_work(){
     world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.AMBIENT, 0.7f, 0.5f); // lowest pitch can be
     output_inventory.insertItem(0, result.copy(), false);
-    input_inventory.decrease_input();
+    working_inventory.setEmpty();
   }
 
   @Override

@@ -42,13 +42,13 @@ public final class TileIdentifier extends TileWorkMachine implements INamedConta
 
   @Override
   protected final void perform_work(){
-    final ItemStack input = input_inventory.getStackInSlot(0);
+    final ItemStack input = working_inventory.getStackInSlot(0);
     if(input.isEmpty() == false){
       if(input.getItem() instanceof UnidentifiedItem){
         final UnidentifiedItem item = (UnidentifiedItem)(input.getItem());
         final ItemStack stack = new ItemStack(ItemUtility.get_armor(item.armor_material, item.equipment_type),1);
         ArmorEffects.enchant(stack);
-        input_inventory.decrease(0);
+        working_inventory.setEmpty();
         output_inventory.setStackInSlot(0, stack);
       }
     }

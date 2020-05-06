@@ -17,7 +17,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
  *  So it seems that the input inventory and output inventory had to be seperate ItemStackHandlers.
  *  </p>
  */
-public final class InputInventory extends CommonInventory {
+public final class InputInventory extends ReactiveInventory {
 
   private final SlotData[] slot_data;
   public boolean custom_stack_limit_is_vanilla_dependant = true;

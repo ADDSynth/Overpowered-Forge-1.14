@@ -39,7 +39,7 @@ public final class TileInverter extends TileWorkMachine implements INamedContain
 
   @Override
   public final void perform_work(){
-    input_inventory.extractItem(0,1,false);
+    working_inventory.setEmpty();
     output_inventory.insertItem(0, result, false); // No need to copy this one because we replace the ItemStack every time.
   }
 

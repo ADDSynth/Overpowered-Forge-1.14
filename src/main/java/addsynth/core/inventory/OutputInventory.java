@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 import addsynth.core.tiles.TileMachine;
 import net.minecraft.item.ItemStack;
 
-public final class OutputInventory extends CommonInventory {
+public final class OutputInventory extends ReactiveInventory {
 
   public OutputInventory(final TileMachine responder, final int output_slots){
     super(responder, output_slots);

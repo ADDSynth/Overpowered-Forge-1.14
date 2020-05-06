@@ -19,6 +19,7 @@ import net.minecraftforge.items.ItemStackHandler;
  * @author ADDSynth
  */
 // FEATURE: I can upgrade this later if I really need a storage inventory to restrict what items can be inserted.
+//    TODO: Make Fusion Chamber and Portal Frame override from this class instead of TileMachine.
 public abstract class TileWithStorage extends TileBase {
 
   protected final ItemStackHandler inventory;

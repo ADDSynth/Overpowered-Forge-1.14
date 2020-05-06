@@ -39,7 +39,7 @@ public final class TileElectricFurnace extends TileWorkMachine implements INamed
 
   @Override
   protected final void perform_work(){
-    input_inventory.decrease(0);
+    working_inventory.setEmpty();
     output_inventory.insertItem(0, result.copy(), false);
   }
 

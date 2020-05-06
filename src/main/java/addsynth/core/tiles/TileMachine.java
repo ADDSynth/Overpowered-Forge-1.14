@@ -2,12 +2,11 @@ package addsynth.core.tiles;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import addsynth.core.inventory.CommonInventory;
 import addsynth.core.inventory.InputInventory;
 import addsynth.core.inventory.OutputInventory;
 import addsynth.core.inventory.SlotData;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
@@ -27,17 +26,20 @@ import net.minecraftforge.items.CapabilityItemHandler;
 public abstract class TileMachine extends TileBase {
 
   protected final InputInventory input_inventory;
+  protected final CommonInventory working_inventory;
   protected final OutputInventory output_inventory;
 
   public TileMachine(final TileEntityType type, final SlotData[] slots, final int output_slots){
     super(type);
     this.input_inventory = slots != null ? (slots.length > 0 ? new InputInventory(this, slots) : null) : null;
+    this.working_inventory = slots != null ? (slots.length > 0 ? new CommonInventory(slots.length) : null) : null;
     this.output_inventory = output_slots > 0 ? new OutputInventory(this, output_slots) : null;
   }
 
   public TileMachine(final TileEntityType type, final int input_slots, final Item[] input_filter, final int output_slots){
     super(type);
     this.input_inventory = input_slots > 0 ? new InputInventory(this, input_slots, input_filter) : null;
+    this.working_inventory = input_slots > 0 ? new CommonInventory(input_slots) : null;
     this.output_inventory = output_slots > 0 ? new OutputInventory(this, output_slots) : null;
   }
 
@@ -45,6 +47,7 @@ public abstract class TileMachine extends TileBase {
   public void read(final CompoundNBT nbt){
     super.read(nbt);
     if(input_inventory != null){ input_inventory.deserializeNBT(nbt.getCompound("InputInventory")); }
+    if(working_inventory != null){ working_inventory.deserializeNBT(nbt.getCompound("WorkingInventory")); }
     if(output_inventory != null){ output_inventory.deserializeNBT(nbt.getCompound("OutputInventory")); }
   }
 
@@ -52,6 +55,7 @@ public abstract class TileMachine extends TileBase {
   public CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
     if(input_inventory != null){ nbt.put("InputInventory", input_inventory.serializeNBT()); }
+    if(working_inventory != null){ nbt.put("WorkingInventory", working_inventory.serializeNBT()); }
     if(output_inventory != null){ nbt.put("OutputInventory", output_inventory.serializeNBT()); }
     return nbt;
   }
@@ -71,6 +75,10 @@ public abstract class TileMachine extends TileBase {
     return input_inventory;
   }
   
+  public CommonInventory getWorkingInventory(){
+    return working_inventory;
+  }
+  
   public OutputInventory getOutputInventory(){
     return output_inventory;
   }
@@ -82,19 +90,14 @@ public abstract class TileMachine extends TileBase {
     final double x = (double)pos.getX();
     final double y = (double)pos.getY();
     final double z = (double)pos.getZ();
-    int i;
-    ItemStack stack;
     if(input_inventory != null){
-      for(i = 0; i < input_inventory.getSlots(); i++){
-        stack = input_inventory.getStackInSlot(i);
-        if(stack != ItemStack.EMPTY){ InventoryHelper.spawnItemStack(world, x, y, z, stack); }
-      }
+      input_inventory.drop_in_world(world, x, y, z);
+    }
+    if(working_inventory != null){
+      working_inventory.drop_in_world(world, x, y, z);
     }
     if(output_inventory != null){
-      for(i = 0; i < output_inventory.getSlots(); i++){
-        stack = output_inventory.getStackInSlot(i);
-        if(stack != ItemStack.EMPTY){ InventoryHelper.spawnItemStack(world, x, y, z, stack); }
-      }
+      output_inventory.drop_in_world(world, x, y, z);
     }
   }
 
