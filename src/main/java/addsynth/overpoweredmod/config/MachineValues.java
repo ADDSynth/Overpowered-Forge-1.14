@@ -23,8 +23,10 @@ public final class MachineValues {
   // Passive Machines
   public static final MachineDataConfig crystal_matter_generator =
     new MachineDataConfig(MachineType.PASSIVE, 16000,  31.25, 0,  600); // 500,000 energy for 1 shard every 13.3 minutes
+
+  // Manual Activation Machines
   public static final MachineDataConfig portal =
-    new MachineDataConfig(MachineType.PASSIVE,  6000, 100,    0, 1200); // 5 minutes to generate
+    new MachineDataConfig(MachineType.MANUAL_ACTIVATION,  6000, 100,    0, 1200); // 5 minutes to generate
 
   // Always On Machines
   public static final MachineDataConfig advanced_ore_refinery =

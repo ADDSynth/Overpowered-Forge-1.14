@@ -66,7 +66,13 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       case POWERING_ON:  powering_on();  break;
       case POWERING_OFF: powering_off(); break;
       case IDLE:         idle();         break;
-      case RUNNING:      do_work();      break;
+      case RUNNING:
+        switch(type){
+        case STANDARD:  standard_run();   break;
+        case PASSIVE:   passive_run();    break;
+        case ALWAYS_ON: always_running(); break;
+        case MANUAL_ACTIVATION: manual_activation_run(); break;
+        }
       }
     }
     super.tick();
@@ -109,7 +115,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
 
   /** When machine turns ON for real. Switches to either IDLE or RUNNING depending on Machine type. */
   private void switch_machine_state(){
-    if(type == MachineType.PASSIVE){
+    if(type.passive_work){
       state = MachineState.RUNNING;
     }
     else{
@@ -133,21 +139,59 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     }
   }
 
-  protected void do_work(){
+  /** This determines what a TileWorkMachine of type STANDARD does while the machine is in the RUNNING state. */
+  private final void standard_run(){
+    if(check_power_state()){
+      turn_off();
+      return;
+    }
+    if(can_run == false){
+      state = MachineState.IDLE;
+      return;
+    }
     if(energy.isFull()){
       perform_work();
       energy.setEmpty();
-      if(check_power_state()){ // always on, can't be turned off
-        turn_off();
+      test_condition();
+      if(can_run == false){
+        state = MachineState.IDLE;
       }
-      else{
-        if(type != MachineType.PASSIVE){ // passive machines never enter Idle state
-          test_condition();
-          if(can_run == false){
-            state = MachineState.IDLE;
-          }
-        }
+    }
+  }
+  
+  /** Passive Machines, have no idle state. They are either OFF or RUNNING. */
+  private final void passive_run(){
+    if(check_power_state()){
+      turn_off();
+    }
+    else{
+      if(energy.isFull()){
+        perform_work();
+        energy.setEmpty();
       }
+    }
+  }
+
+  /** Machines that are always running cannot be turned off, but they can switch to an Idle switch when they can't do work. */
+  private final void always_running(){
+    if(can_run == false){
+      state = MachineState.IDLE;
+      return;
+    }
+    if(energy.isFull()){
+      perform_work();
+      energy.setEmpty();
+      test_condition();
+      if(can_run == false){
+        state = MachineState.IDLE;
+      }
+    }
+  }
+
+  /** Manual Activation machines do not have an IDLE state, and they do not perform work themselves. */
+  private final void manual_activation_run(){
+    if(check_power_state()){
+      turn_off();
     }
   }
 
@@ -202,7 +246,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
         return idle_energy;
       }
       if(state == MachineState.RUNNING){
-        return energy.getRequestedEnergy();
+        return energy.getRequestedEnergy() + idle_energy;
       }
       return 0;
     }

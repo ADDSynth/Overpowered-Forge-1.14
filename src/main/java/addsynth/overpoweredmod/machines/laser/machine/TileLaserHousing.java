@@ -32,7 +32,7 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   private boolean auto_shutoff = true;
 
   public TileLaserHousing(){
-    super(Tiles.LASER_MACHINE, 0, null, 0, new MachineData(MachineType.PASSIVE, 0, 0, 0, 0));
+    super(Tiles.LASER_MACHINE, 0, null, 0, new MachineData(MachineType.MANUAL_ACTIVATION, 0, 0, 0, 0));
   }
 
   @Override
