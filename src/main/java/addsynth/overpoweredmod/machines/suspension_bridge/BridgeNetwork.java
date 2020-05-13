@@ -13,6 +13,7 @@ import addsynth.energy.Energy;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Lens;
 import addsynth.overpoweredmod.game.core.Machines;
+import addsynth.overpoweredmod.items.LensItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -61,7 +62,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   public final boolean is_active(){ return active; }
 
   @Override
-  protected void onUpdateNetworkFinished(BlockPos origin_position){
+  protected final void onUpdateNetworkFinished(){
     // turn off bridge if it's currently on.
     boolean current_state = active;
     set_active(false);
@@ -258,37 +259,37 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     return false;
   }
 
+  /** Called whenever a player inserts or removes a Lens to/from the TileEntity. */
   public final void update_lens(final ItemStack stack){
-    if(stack.isEmpty()){
-      lens_index = -1;
-    }
-    else{
-      for(Lens l : Lens.values()){
-        if(l.lens == stack.getItem()){
-          lens_index = l.ordinal();
-          break;
-        }
+    // THIS IS ESSENTIAL!!! Otherwise, when we update the TileEntities, and set their InputInventory stack,
+    //   that also triggers the onContentsChanged() function!
+    if(stack.isItemEqual(this.lens) == false){
+      this.lens = stack;
+      if(stack.isEmpty()){
+        lens_index = -1;
       }
+      else{
+        lens_index = ((LensItem)stack.getItem()).index;
+      }
+      updateBridgeNetwork();
     }
-    this.lens = stack;
-    updateBridgeNetwork();
   }
 
   /** This updates all TileEntities in the network whenever something changes that must be propogated to the rest of them. */
   private final void updateBridgeNetwork(){
     TileSuspensionBridge tile;
+    remove_invalid_nodes(blocks);
     for(final Node node : blocks){
-      if(node.isInvalid() == false){
-        tile = (TileSuspensionBridge)node.getTile();
-        tile.getInputInventory().setStackInSlot(0, lens);
-        final SyncClientBridgeMessage network_message = new SyncClientBridgeMessage(node.position, this.message);
-        NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, network_message);
-      }
+      tile = (TileSuspensionBridge)node.getTile();
+      tile.getInputInventory().setStackInSlot(0, lens);
+      final SyncClientBridgeMessage network_message = new SyncClientBridgeMessage(node.position, this.message);
+      NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, network_message);
     }
   }
 
   /** This is run every tick, by every Bridge Tile in the network. But we check that only first_tile executes code. */
-  public final void update(final TileSuspensionBridge tile){
+  @Override
+  public final void tick(final TileSuspensionBridge tile){
     if(tile == first_tile){
       check_shape();
       valid = valid_shape && lens_index >= 0;

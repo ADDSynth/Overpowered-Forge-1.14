@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.laser.machine;
 
 import javax.annotation.Nullable;
-import addsynth.core.block_network.BlockNetwork;
+import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.energy.Energy;
 import addsynth.energy.tiles.machines.MachineData;
@@ -41,23 +41,19 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
 
   @Override
   public final void tick(){
-    if(first_tick){
-      if(world.isRemote == false){
-        if(network == null){
-          createBlockNetwork();
-        }
+    if(world.isRemote == false){
+      if(first_tick){
+        BlockNetworkUtil.create_or_join(world, this, LaserNetwork::new);
+        first_tick = false;
       }
-      first_tick = false;
+      network.tick(this);
     }
-    if(world != null){
-      if(world.isRemote == false){
-        if(network != null){
-          // It's okay to call the update method so long as it's only on the server side.
-          network.update(this); // MAYBE: It may be possible to move the redstone detection to the Block class, check out how the TileNoteBlock does it.
-        }
-      }
-    }
-    energy.update();
+  }
+
+  @Override
+  public void remove(){
+    super.remove();
+    BlockNetworkUtil.tileentity_was_removed(this, LaserNetwork::new);
   }
 
   @Override
@@ -111,23 +107,12 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
    */
   @Override
   public final LaserNetwork getBlockNetwork(){
-    if(network == null){
-      createBlockNetwork();
-    }
     return this.network;
   }
 
   @Override
-  public final void createBlockNetwork(){ // TODO, PRIORITY: change the way networks operate, must create them when adding a new TileEntity, but first check for nearby networks and join them. Remove code in the neighbor_changed function. On block break: run the update network again, for THIS network, then check if any adjacent blocks are NOT part of the network, then they become new networks!
-    if(world == null){
-      throw new NullPointerException("World not loaded yet when creating LaserNetwork in TileLaserHousing.");
-    }
-    network = new LaserNetwork(world, this);
-    if(world.isRemote == false){
-      network.updateNetwork(pos);
-      // network.running = running;
-      network.auto_shutoff = auto_shutoff;
-    }
+  public final void load_block_network_data(){
+    network.auto_shutoff = auto_shutoff;
   }
 
   /**

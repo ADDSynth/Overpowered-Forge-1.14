@@ -6,11 +6,13 @@ import net.minecraft.util.text.TextFormatting;
 
 public final class LensItem extends OverpoweredItem {
 
+  public final int index;
   private final TextFormatting color_code;
   // https://minecraft.gamepedia.com/Formatting_codes
 
-  public LensItem(final String name, final TextFormatting format_code){
+  public LensItem(final int index, final String name, final TextFormatting format_code){
     super(name);
+    this.index = index;
     color_code = format_code;
   }
 

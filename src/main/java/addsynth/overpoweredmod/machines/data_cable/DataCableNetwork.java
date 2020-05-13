@@ -63,7 +63,7 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
   public final void neighbor_was_changed(final BlockPos current_position, final BlockPos position_of_neighbor){
     Block block = world.getBlockState(position_of_neighbor).getBlock();
     if(block == Machines.fusion_converter || block == Machines.fusion_control_unit){
-      updateNetwork(current_position);
+      updateBlockNetwork(current_position);
       return;
     }
     boolean update = false;
@@ -84,12 +84,12 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
       }
     }
     if(update){
-      updateNetwork(current_position); // run update outside of for loop to avoid ConcurrentModificationException's.
+      updateBlockNetwork(current_position); // run update outside of for loop to avoid ConcurrentModificationException's.
     }
   }
 
   @Override
-  protected final void onUpdateNetworkFinished(final BlockPos position){
+  protected final void onUpdateNetworkFinished(){
     // What we're doing here is, even if the player has a valid fusion chamber constructed properly,
     //   its energy output can be divided amongst multiple Fusion Energy Converter machines.
     // check_singularity_container();

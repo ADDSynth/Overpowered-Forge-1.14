@@ -63,14 +63,4 @@ public final class LaserHousing extends MachineBlock {
     }
   }
 
-  
-
-  @Override
-  public final void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving){
-    // TODO I should encorporate this into MachineBlockTileEntity as well?
-    final BlockNetwork network = BlockNetwork.getNetwork(world, pos);
-    super.onReplaced(state, world, pos, newState, isMoving);
-    BlockNetwork.block_was_broken(network, world, pos, state.getBlock());
-  }
-
 }

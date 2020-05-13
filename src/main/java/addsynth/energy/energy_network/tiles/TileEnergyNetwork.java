@@ -1,5 +1,6 @@
 package addsynth.energy.energy_network.tiles;
 
+import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.energy.energy_network.EnergyNetwork;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -19,12 +20,17 @@ public abstract class TileEnergyNetwork extends TileEntity implements ITickableT
   public void tick(){
     if(world.isRemote == false){
       if(first_tick){
-        if(network == null){
-          createBlockNetwork();
-        }
-        first_tick = true;
+        BlockNetworkUtil.create_or_join(world, this, EnergyNetwork::new);
+        first_tick = false;
       }
+      network.tick(this);
     }
+  }
+
+  @Override
+  public void remove(){
+    super.remove();
+    BlockNetworkUtil.tileentity_was_removed(this, EnergyNetwork::new);
   }
 
   @Override
@@ -35,13 +41,6 @@ public abstract class TileEnergyNetwork extends TileEntity implements ITickableT
   @Override
   public void setBlockNetwork(EnergyNetwork network){
     this.network = network;
-  }
-
-  @Override
-  public void createBlockNetwork(){
-    if(network == null){
-      network = new EnergyNetwork(world, this);
-    }
   }
 
 }

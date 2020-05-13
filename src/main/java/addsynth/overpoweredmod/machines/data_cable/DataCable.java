@@ -90,11 +90,4 @@ public final class DataCable extends Wire {
     }
   }
 
-  @Override
-  public final void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving){
-    final BlockNetwork network = BlockNetwork.getNetwork(world, pos);
-    super.onReplaced(state, world, pos, newState, isMoving);
-    BlockNetwork.block_was_broken(network, world, pos, this);
-  }
-
 }

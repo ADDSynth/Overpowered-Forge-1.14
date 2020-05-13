@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import javax.annotation.Nullable;
-import addsynth.core.block_network.BlockNetwork;
+import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.core.inventory.SlotData;
 import addsynth.energy.Energy;
@@ -17,7 +17,7 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileSuspensionBridge extends TileEnergyReceiver implements IBlockNetworkUser, ITickableTileEntity, INamedContainerProvider {
+public final class TileSuspensionBridge extends TileEnergyReceiver implements IBlockNetworkUser<BridgeNetwork>, ITickableTileEntity, INamedContainerProvider {
 
   public static final Item[] filter = Lens.index;
 
@@ -35,16 +35,25 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
   public final void tick(){
     if(world.isRemote == false){
       if(first_tick){
-        if(network == null){
-          createBlockNetwork();
-        }
+        BlockNetworkUtil.create_or_join(world, this, BridgeNetwork::new);
         first_tick = false;
       }
       if(network != null){
-        network.update(this);
+        network.tick(this);
       }
     }
     super.tick();
+  }
+
+  @Override
+  public void remove(){
+    super.remove();
+    BlockNetworkUtil.tileentity_was_removed(this, BridgeNetwork::new);
+  }
+
+  @Override
+  public void load_block_network_data(){
+    network.lens_index = Lens.get_index(input_inventory.getStackInSlot(0));
   }
 
   @Override
@@ -55,21 +64,13 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
   }
 
   @Override
-  public final void setBlockNetwork(BlockNetwork network){
-    this.network = (BridgeNetwork)network;
+  public final void setBlockNetwork(BridgeNetwork network){
+    this.network = network;
   }
 
   @Override
   public final BridgeNetwork getBlockNetwork(){
     return network;
-  }
-
-  @Override
-  public final void createBlockNetwork(){
-    if(world.isRemote == false){
-      network = new BridgeNetwork(world, this);
-      network.updateNetwork(pos);
-    }
   }
 
   public final void setMessages(final BridgeMessage[] messages){

@@ -66,11 +66,4 @@ public final class EnergyWire extends Wire {
     }
   }
 
-  @Override
-  public final void onReplaced(BlockState state, final World world, final BlockPos pos, final BlockState newstate, boolean isMoving){ // called on server side only
-    final BlockNetwork network = BlockNetwork.getNetwork(world, pos); // get network while block still exists
-    super.onReplaced(state, world, pos, newstate, isMoving);          // finish breaking the block
-    BlockNetwork.block_was_broken(network, world, pos, this);         // update network
-  }
-
 }

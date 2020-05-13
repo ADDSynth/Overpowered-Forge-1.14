@@ -19,10 +19,10 @@ import net.minecraft.world.World;
 // original code from canitzp:
 // https://github.com/canitzp/Metalworks/blob/master/src/main/java/de/canitzp/metalworks/block/cable/Network.java
 
-/**
- *  EnergyWire type blocks should use this extended form of a BlockNetwork. This also keeps a list of all
- *  {@link TileEnergyWithStorage} Tile Entities that use a {@link Energy} and can accept
- *  energy.
+/** The EnergyNetwork is responsible for transferring energy to and from machines. It only keeps a list
+ *  of receivers, batteries, and generators, and no other data. Certain Batteries acts as part of the
+ *  network, so when it performs an Update search, it passes through the batteries, and works on all
+ *  batteries at the same time, preventing energy waterfall effects.
  */
 public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
 
@@ -60,7 +60,8 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
     }
   }
 
-  public final void update(final TileEnergyNetwork tile){
+  @Override
+  public final void tick(final TileEnergyNetwork tile){
     if(tile == first_tile){
       final long start = TimeUtil.get_start_time();
       
@@ -103,11 +104,12 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
 
   @Override
   public void neighbor_was_changed(final BlockPos current_position, final BlockPos position_of_neighbor){
-    if(MinecraftUtility.getTileEntity(position_of_neighbor, world, TileEnergyWithStorage.class) != null){
-      updateNetwork(current_position);
-      return;
+    final TileEntity tile = world.getTileEntity(position_of_neighbor);
+    if(tile != null){
+      if(tile instanceof TileEnergyWithStorage || tile instanceof TileEnergyBattery){
+        updateBlockNetwork(current_position);
+      }
     }
-    remove_invalid_nodes(receivers);
   }
 
 }

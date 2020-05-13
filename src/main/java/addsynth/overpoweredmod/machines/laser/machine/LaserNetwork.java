@@ -1,9 +1,9 @@
 package addsynth.overpoweredmod.machines.laser.machine;
 
 import java.util.ArrayList;
-import javax.annotation.Nonnull;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.Node;
+import addsynth.core.block_network.NodeList;
 import addsynth.core.util.MathUtility;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.core.util.NetworkUtil;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 
 public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
 
-  private final ArrayList<Node> lasers = new ArrayList<>(9);
+  private final NodeList lasers = new NodeList(27);
   private int number_of_lasers;
   private boolean activated;
   private int laser_distance;
@@ -43,7 +43,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   }
 
   @Override
-  protected final void onUpdateNetworkFinished(final BlockPos position){
+  protected final void onUpdateNetworkFinished(){
     if(lasers.size() != number_of_lasers){
       number_of_lasers = lasers.size();
       update_energy_requirements();
@@ -54,26 +54,22 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   @Override
   protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
     if(block instanceof LaserCannon){
-      boolean exists = false;
-      for(Node node : lasers){
-        if(node.position == position){
-          exists = true;
-          break;
-        }
-      }
-      if(exists == false){
-        lasers.add(new Node(position, world.getTileEntity(position)));
+      if(lasers.contains(position) == false){
+        lasers.add(new Node(position, tile));
       }
     }
   }
 
   @Override
   public void neighbor_was_changed(final BlockPos current_position, final BlockPos position_of_neighbor){
-    if(MinecraftUtility.getTileEntity(position_of_neighbor, world, TileLaser.class) != null){
-      updateNetwork(current_position);
-      return;
+    final TileLaser laser = MinecraftUtility.getTileEntity(position_of_neighbor, world, TileLaser.class);
+    if(laser != null){
+      if(lasers.contains(laser) == false){
+        lasers.add(new Node(position_of_neighbor, laser));
+      }
     }
     remove_invalid_nodes(lasers);
+    onUpdateNetworkFinished();
   }
 
   public final int getLaserDistance(){
@@ -101,40 +97,39 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
 
   public final void updateLaserNetwork(){
     TileLaserHousing laser_housing;
+    remove_invalid_nodes(blocks);
     for(final Node node : blocks){
-      if(node.isInvalid() == false){
-        laser_housing = (TileLaserHousing)node.getTile();
-        laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff); // updates server
-        final LaserClientSyncMessage message = new LaserClientSyncMessage(node.position,number_of_lasers);
-        NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message); // updates client
-        // FIX: Laser Networks don't initialize properly and instead initializes to default values, which sets
-        //      everything to 0 or off. This will get fixed during the BlockNetwork rewrite in the next update.
-      }
+      laser_housing = (TileLaserHousing)node.getTile();
+      laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff); // updates server
+      final LaserClientSyncMessage message = new LaserClientSyncMessage(node.position,number_of_lasers);
+      NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message); // updates client
+      // OPTIMIZE: Send 1 client Network message, containing the data, and all the Block Positions
+      //           of the tiles we need to update. DO NOT send individual message for each TileEntity!
+      //           Also do this to BridgeNetwork.
     }
   }
 
   /**
-   * Only the first Laser Machine in this <code>LaserNetwork</code> calls the update function,
-   * and basically it checks if any LaserHouse is powered with redstone and calls the
+   * Only the first Laser Machine in this <code>LaserNetwork</code> calls the tick function,
+   * and basically it checks if any {@link TileLaserHousing} is powered with redstone and calls the
    * {@link #fire_lasers()} function, if certain conditions are met.
    * @param tile
    */
-  public final void update(final TileLaserHousing tile){
+  @Override
+  public final void tick(final TileLaserHousing tile){
     if(tile == first_tile){
-      if(tile.getWorld().isRemote == false){
-        if(is_redstone_powered()){
-          if(activated == false){
-            if(lasers.size() > 0 && laser_distance > 0){
-              if(energy.isFull()){
-                fire_lasers();
-              }
+      if(is_redstone_powered()){
+        if(activated == false){
+          if(lasers.size() > 0 && laser_distance > 0){
+            if(energy.isFull()){
+              fire_lasers();
             }
           }
-          activated = true;
         }
-        else{
-          activated = false;
-        }
+        activated = true;
+      }
+      else{
+        activated = false;
       }
     }
   }

@@ -13,9 +13,9 @@ import net.minecraft.tileentity.TileEntityType;
 public abstract class TileWorkMachine extends TileEnergyReceiver implements ITickableTileEntity {
 
   protected final MachineType type;
-  protected MachineState state;
+  protected MachineState state = MachineState.IDLE;
 
-  protected boolean power_switch;
+  protected boolean power_switch = true;
   protected boolean can_run;
 
   protected final double idle_energy;
@@ -26,9 +26,8 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   public TileWorkMachine(final TileEntityType type, final SlotData[] slots, final int output_slots, final MachineData data){
     super(type, slots, output_slots, new Energy(data.total_energy_needed, data.get_max_receive()));
     this.type = data.type;
-    if(data.type == MachineType.ALWAYS_ON){
-      state = MachineState.IDLE;
-      power_switch = true;
+    if(data.type.passive_work){
+      state = MachineState.RUNNING;
     }
     idle_energy = data.get_idle_energy();
     max_power_time = data.get_power_time();
@@ -37,9 +36,8 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   public TileWorkMachine(final TileEntityType type, final int input_slots, final Item[] filter, final int output_slots, final MachineData data){
     super(type, input_slots, filter, output_slots,  new Energy(data.total_energy_needed, data.get_max_receive()));
     this.type = data.type;
-    if(data.type == MachineType.ALWAYS_ON){
-      state = MachineState.IDLE;
-      power_switch = true;
+    if(data.type.passive_work){
+      state = MachineState.RUNNING;
     }
     idle_energy = data.get_idle_energy();
     max_power_time = data.get_power_time();
