@@ -12,8 +12,8 @@ import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.WorldUtil;
 import addsynth.energy.Energy;
 import addsynth.overpoweredmod.game.NetworkHandler;
+import addsynth.overpoweredmod.game.core.Lens;
 import addsynth.overpoweredmod.game.core.Machines;
-import addsynth.overpoweredmod.items.LensItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -26,7 +26,6 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
   public final Energy energy = new Energy(0,1000);
 
-  private @Nonnull ItemStack lens = ItemStack.EMPTY;
   public int lens_index = -1;
 
   /** Whether this Energy Suspension Bridge COULD be active. */
@@ -265,16 +264,9 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
   /** Called whenever a player inserts or removes a Lens to/from the TileEntity. */
   public final void update_lens(final ItemStack stack){
-    // THIS IS ESSENTIAL!!! Otherwise, when we update the TileEntities, and set their InputInventory stack,
-    //   that also triggers the onContentsChanged() function!
-    if(stack.isItemEqual(this.lens) == false){
-      this.lens = stack;
-      if(stack.isEmpty()){
-        lens_index = -1;
-      }
-      else{
-        lens_index = ((LensItem)stack.getItem()).index;
-      }
+    final int index = Lens.get_index(stack);
+    if(index != lens_index){
+      this.lens_index = index;
       updateBridgeNetwork();
     }
   }
@@ -285,7 +277,8 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     remove_invalid_nodes(blocks);
     for(final Node node : blocks){
       tile = (TileSuspensionBridge)node.getTile();
-      tile.getInputInventory().setStackInSlot(0, lens);
+      tile.getInputInventory().setStackInSlot(0, lens_index < 0 ? ItemStack.EMPTY : new ItemStack(Lens.index[lens_index]));
+      tile.update_data();
       final SyncClientBridgeMessage network_message = new SyncClientBridgeMessage(node.position, this.message);
       NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, network_message);
     }
