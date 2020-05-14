@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "overpowered:platinum_ore"
+  },
+  "result": "overpowered:platinum_ingot",
+  "experience": 1.0,
+  "cookingtime": 100
+}
