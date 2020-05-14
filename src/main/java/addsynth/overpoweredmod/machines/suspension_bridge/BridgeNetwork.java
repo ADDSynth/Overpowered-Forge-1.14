@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.annotation.Nonnull;
 import addsynth.core.Constants;
 import addsynth.core.block_network.BlockNetwork;
+import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.Node;
 import addsynth.core.util.MathUtility;
 import addsynth.core.util.MinecraftUtility;
@@ -11,7 +12,6 @@ import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.WorldUtil;
 import addsynth.energy.Energy;
 import addsynth.overpoweredmod.game.NetworkHandler;
-import addsynth.overpoweredmod.game.core.Lens;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.items.LensItem;
 import net.minecraft.block.Block;
@@ -216,6 +216,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     updateBridgeNetwork();
   }
 
+  @SuppressWarnings("null")
   private final void check_position(final int index, final boolean[] obstructed, final BlockPos position){
     final TileSuspensionBridge tile = MinecraftUtility.getTileEntity(position, world, TileSuspensionBridge.class);
     if(tile == null){
@@ -228,6 +229,9 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
       }
     }
     else{
+      if(tile.getBlockNetwork() == null){
+        BlockNetworkUtil.createBlockNetwork(world, tile, BridgeNetwork::new);
+      }
       final BridgeNetwork other_network = tile.getBlockNetwork();
       if(other_network.check(index, min_x, max_x, min_z, max_z)){
         if(obstructed[index]){

@@ -1,5 +1,6 @@
 package addsynth.overpoweredmod.machines.data_cable;
 
+import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -41,6 +42,7 @@ public final class TileDataCable extends TileEntity implements IBlockNetworkUser
   }
 
   @Override
+  @Nullable
   public final DataCableNetwork getBlockNetwork(){
     return cable_network;
   }

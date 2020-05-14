@@ -69,6 +69,7 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
   }
 
   @Override
+  @Nullable
   public final BridgeNetwork getBlockNetwork(){
     return network;
   }

@@ -1,5 +1,6 @@
 package addsynth.energy.energy_network.tiles;
 
+import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.energy.energy_network.EnergyNetwork;
@@ -34,6 +35,7 @@ public abstract class TileEnergyNetwork extends TileEntity implements ITickableT
   }
 
   @Override
+  @Nullable
   public EnergyNetwork getBlockNetwork(){
     return network;
   }

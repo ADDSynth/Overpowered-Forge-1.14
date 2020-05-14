@@ -24,20 +24,33 @@ public final class BlockNetworkUtil {
     }
     if(world.isRemote == false){
       B network = tile.getBlockNetwork();
-      if(network == null){
+      if(network == null){ // block network doesn't already exist
         network = find_existing_network(world, tile);
         if(network == null){
           // new BlockNetwork
-          network = constructor.apply(world, tile);
-          tile.setBlockNetwork(network);
-          tile.load_block_network_data();
+          createBlockNetwork(world, tile, constructor);
         }
         else{
           tile.setBlockNetwork(network);
+          network.updateBlockNetwork(tile.getPos(), tile);
+          // first existing Network that we find becomes the current Network, and overwrites all other networks.
         }
-        network.updateBlockNetwork(tile.getPos(), tile);
-        // first existing Network that we find becomes the current Network, and overwrites all other networks.
       }
+    }
+  }
+
+  /** Only call this if a BlockNetwork requires data from another BlockNetwork during their update event.
+   *  All normal BlockNetwork initializing should use the create_or_join() function!
+   * @param world
+   * @param tile
+   * @param constructor
+   */
+  public static final <B extends BlockNetwork<T>, T extends TileEntity & IBlockNetworkUser<B>> void createBlockNetwork(final World world, final T tile, final BiFunction<World, T, B> constructor){
+    if(world.isRemote == false){
+      final B network = constructor.apply(world, tile);
+      tile.setBlockNetwork(network);
+      tile.load_block_network_data();
+      network.updateBlockNetwork(tile.getPos(), tile);
     }
   }
 

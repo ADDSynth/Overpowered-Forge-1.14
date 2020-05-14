@@ -102,9 +102,17 @@ import net.minecraft.world.server.ServerWorld;
  * block, and all Bridge blocks share the same network, so the player can access the Lens from any other block.
  * <p>The function for updating all the TileEntities in the {@link BlockNetwork#blocks} list doesn't exist,
  * so you'll have to make your own, and call it whenever your BlockNetwork's data changes. Also, when the
- * world loads, it does create new BlockNetworks, but you also want it to load saved data. for this reason
+ * world loads, it does create new BlockNetworks, but you also want it to load saved data. For this reason
  * {@link BlockNetworkUtil#create_or_join} automatically
  * calls your TileEntity's {@link IBlockNetworkUser#load_block_network_data()} function.
+ *
+ * <p><b>9.</b> One last bit of advice. Sometimes a BlockNetwork wants information on another BlockNetwork,
+ * so it calls that TileEntity's {@link IBlockNetworkUser#getBlockNetwork()} function. But the return
+ * value of that function MIGHT be null. This only happens during World load, when one BlockNetwork starts
+ * loading and updating before the other. Because of the way {@link BlockNetworkUtil#create_or_join} is
+ * set up right now, you can't put anything in the {@link IBlockNetworkUser#getBlockNetwork()} that will
+ * initialize a BlockNetwork because that would cause an infinite loop. Instead, if you depend on
+ * another BlockNetwork during a BlockNetwork update, check if it is null and initialize it yourself.
  *
  * @see EnergyNetwork
  * @see LaserNetwork

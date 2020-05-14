@@ -74,9 +74,13 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   }
 
   @Override
+  @SuppressWarnings("null")
   public final Energy getEnergy(){
     if(world.isRemote){
       return energy; // only guis should use this.
+    }
+    if(network == null){
+      BlockNetworkUtil.createBlockNetwork(world, this, LaserNetwork::new);
     }
     return getBlockNetwork().energy;
   }
@@ -106,6 +110,7 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
    * @return LaserNetwork
    */
   @Override
+  @Nullable
   public final LaserNetwork getBlockNetwork(){
     return this.network;
   }

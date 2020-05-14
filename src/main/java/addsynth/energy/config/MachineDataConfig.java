@@ -42,12 +42,12 @@ public final class MachineDataConfig extends MachineData {
   
   @Override
   public final double get_idle_energy(){
-    return idle_energy_config.get();
+    return idle_energy_config != null ? idle_energy_config.get() : 0;
   }
   
   @Override
   public final int get_power_time(){
-    return power_on_time_config.get();
+    return power_on_time_config != null ? power_on_time_config.get() : 0;
   }
 
 }
