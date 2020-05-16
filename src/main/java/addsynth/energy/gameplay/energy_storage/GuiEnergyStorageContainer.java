@@ -12,7 +12,7 @@ import net.minecraft.util.text.ITextComponent;
 public final class GuiEnergyStorageContainer extends GuiEnergyBase<ContainerEnergyStorage> {
 
   private final TileEnergyBattery tile;
-  private Energy tile_energy;
+  private final Energy tile_energy;
 
   private float energy_float;
   private static final int draw_energy_text_y = 25;
@@ -22,14 +22,9 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<ContainerEner
   public GuiEnergyStorageContainer(final ContainerEnergyStorage container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/energy_storage.png"));
     this.tile = container.getTileEntity();
+    this.tile_energy = tile.getEnergy();
     this.xSize = 190;
     this.ySize = 83;
-  }
-
-  @Override
-  public final void init(){
-    super.init();
-    tile_energy = tile.getEnergy(); // FUTURE OPTIMIZE
   }
 
   @Override
@@ -37,8 +32,8 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<ContainerEner
     draw_background_texture();
     
     if(tile_energy != null){
-      // energy_float = tile.getEnergyPercentage();
-      // energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,energy_float,ProgressBar.Round.NEAREST);
+      energy_float = tile_energy.getEnergyPercentage();
+      energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,energy_float,ProgressBar.Round.NEAREST);
     }
   }
 

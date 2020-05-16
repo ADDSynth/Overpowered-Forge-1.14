@@ -3,6 +3,8 @@ package addsynth.energy.gameplay.energy_wire;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.blocks.Wire;
+import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
+import addsynth.energy.tiles.TileEnergyWithStorage;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -13,8 +15,6 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.IEnergyStorage;
 
 public final class EnergyWire extends Wire {
 
@@ -26,17 +26,11 @@ public final class EnergyWire extends Wire {
   @Override
   protected final boolean[] get_valid_sides(final IBlockReader world, final BlockPos pos){
     final boolean[] valid_sides = new boolean[6];
-    boolean can_use_energy;
     for(Direction side : Direction.values()){
       valid_sides[side.ordinal()] = false;
-      can_use_energy = false;
       final TileEntity tile = world.getTileEntity(pos.offset(side));
       if(tile != null){
-        final IEnergyStorage energy = tile.getCapability(CapabilityEnergy.ENERGY, side.getOpposite()).orElse(null);
-        if(energy != null){
-          can_use_energy = true;
-        }
-        if(tile instanceof TileEnergyWire || can_use_energy){
+        if(tile instanceof TileEnergyNetwork || tile instanceof TileEnergyWithStorage){
           valid_sides[side.ordinal()] = true;
         }
       }

@@ -71,7 +71,7 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   }
 
   @Override
-  public void read(CompoundNBT nbt){
+  public void read(final CompoundNBT nbt){
     super.read(nbt);
     if(energy != null){
       energy.readFromNBT(nbt);
@@ -79,7 +79,7 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   }
 
   @Override
-  public CompoundNBT write(CompoundNBT nbt){
+  public CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
     if(energy != null){
       energy.writeToNBT(nbt);
