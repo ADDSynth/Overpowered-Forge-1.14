@@ -13,9 +13,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> {
-
-  private final TileLaserHousing tile;
+public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, ContainerLaserHousing> {
 
   private TextFieldWidget text_box;
 
@@ -48,7 +46,6 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
 
   public GuiLaserHousing(final ContainerLaserHousing container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/laser_machine.png"));
-    this.tile = container.getTileEntity();
     this.ySize = 104;
   }
 
@@ -161,15 +158,15 @@ public final class GuiLaserHousing extends GuiEnergyBase<ContainerLaserHousing> 
     draw_text_left("Lasers: "+tile.number_of_lasers,6,line_1);
     draw_text_left("Distance: ",6,line_2);
     draw_energy_requirements();
-    draw_energy_difference(tile.getEnergy().getEnergyDifference(), tile.getEnergy(), line_5);
+    draw_energy_difference(line_5);
   }
 
   private final void draw_energy_requirements(){
-    final String required_energy = Integer.toString((int)(tile.getEnergy().getCapacity()));
+    final String required_energy = Integer.toString((int)(energy.getCapacity()));
     final String word_1 = "Required Energy: "+required_energy;
     final int word_1_width = font.getStringWidth(word_1);
     
-    final String current_energy = Integer.toString((int)(tile.getEnergy().getEnergy()));
+    final String current_energy = Integer.toString((int)(energy.getEnergy()));
     final String word_2 = "Current Energy: "+current_energy;
     final int word_2_width = font.getStringWidth(word_2);
     

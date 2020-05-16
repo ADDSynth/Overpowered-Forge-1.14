@@ -13,9 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalControlPanel> {
-
-  private final TilePortalControlPanel tile;
+public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControlPanel, ContainerPortalControlPanel> {
 
   /**
    * It's efficient to create each ItemStack only ONCE when the gui is constructed then pass it as a reference when drawing the ItemStack.
@@ -57,7 +55,6 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalCo
 
   public GuiPortalControlPanel(final ContainerPortalControlPanel container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_control_panel.png"));
-    this.tile = container.getTileEntity();
     this.xSize = 192;
     this.ySize = 124;
   }
@@ -101,8 +98,8 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<ContainerPortalCo
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
-    super.draw_energy_after_switch(tile.getEnergy());
-    draw_energy_difference(tile.getEnergy().getEnergyDifference(), tile.getEnergy(), 36);
+    super.draw_energy_after_switch();
+    draw_energy_difference(36);
     draw_text_center(tile.getMessage(),status_message_y);
   }
   

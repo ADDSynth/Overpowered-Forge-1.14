@@ -7,9 +7,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiElectricFurnace extends GuiEnergyBase<ContainerElectricFurnace> {
-
-  private final TileElectricFurnace tile;
+public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace, ContainerElectricFurnace> {
 
   private int energy_percentage;
   private int work_percentage;
@@ -37,7 +35,6 @@ public final class GuiElectricFurnace extends GuiEnergyBase<ContainerElectricFur
 
   public GuiElectricFurnace(final ContainerElectricFurnace container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/electric_furnace.png"));
-    this.tile = container.getTileEntity();
     this.ySize = 172;
   }
 
@@ -56,7 +53,7 @@ public final class GuiElectricFurnace extends GuiEnergyBase<ContainerElectricFur
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
-    super.draw_energy(tile.getEnergy());
+    super.draw_energy();
     draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus());
     draw_text_center(work_percentage + "%",(this.xSize / 2)-10,work_percentage_text_y);

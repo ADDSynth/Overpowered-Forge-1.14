@@ -7,9 +7,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiMagicInfuser extends GuiEnergyBase<ContainerMagicInfuser> {
-
-  private final TileMagicInfuser tile;
+public final class GuiMagicInfuser extends GuiEnergyBase<TileMagicInfuser, ContainerMagicInfuser> {
 
   private int energy_percentage;
   private int work_percentage;
@@ -36,7 +34,6 @@ public final class GuiMagicInfuser extends GuiEnergyBase<ContainerMagicInfuser> 
   
   public GuiMagicInfuser(final ContainerMagicInfuser container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/magic_infuser.png"));
-    this.tile = container.getTileEntity();
     this.ySize = 187;
   }
 
@@ -55,7 +52,7 @@ public final class GuiMagicInfuser extends GuiEnergyBase<ContainerMagicInfuser> 
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     draw_title();
-    draw_energy(tile.getEnergy());
+    draw_energy();
     draw_status(tile.getStatus());
     draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);
     draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);

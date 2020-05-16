@@ -7,9 +7,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiIdentifier extends GuiEnergyBase<ContainerIdentifier> {
-
-  private final TileIdentifier tile;
+public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, ContainerIdentifier> {
 
   private int work_percentage;
   private int energy_percentage;
@@ -36,7 +34,6 @@ public final class GuiIdentifier extends GuiEnergyBase<ContainerIdentifier> {
 
   public GuiIdentifier(final ContainerIdentifier container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/identifier.png"));
-    this.tile = container.getTileEntity();
   }
 
   @Override
@@ -54,7 +51,7 @@ public final class GuiIdentifier extends GuiEnergyBase<ContainerIdentifier> {
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     super.draw_title();
-    super.draw_energy(tile.getEnergy());
+    super.draw_energy();
     draw_status(tile.getStatus());
     draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_y);
     draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);

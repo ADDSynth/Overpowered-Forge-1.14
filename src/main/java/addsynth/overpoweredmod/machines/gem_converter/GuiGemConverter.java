@@ -9,9 +9,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiGemConverter extends GuiEnergyBase<ContainerGemConverter> {
-
-  private final TileGemConverter tile;
+public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, ContainerGemConverter> {
 
   private int work_percentage;
   private int energy_percentage;
@@ -47,7 +45,6 @@ public final class GuiGemConverter extends GuiEnergyBase<ContainerGemConverter> 
   
   public GuiGemConverter(final ContainerGemConverter container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gem_converter.png"));
-    this.tile = container.getTileEntity();
     this.ySize = 194;
   }
 
@@ -94,7 +91,7 @@ public final class GuiGemConverter extends GuiEnergyBase<ContainerGemConverter> 
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     super.draw_title();
     draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
-    draw_energy(tile.getEnergy());
+    draw_energy();
     draw_status(tile.getStatus());
     draw_text_center(work_percentage + "%",work_percentage_x,work_percentage_y);
     draw_time_left(tile, time_left_y);

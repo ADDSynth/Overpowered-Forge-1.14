@@ -7,9 +7,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiGenerator extends GuiEnergyBase<ContainerGenerator> {
-
-  private final TileEnergyGenerator tile;
+public final class GuiGenerator extends GuiEnergyBase<TileEnergyGenerator, ContainerGenerator> {
 
   private int energy_percentage;
 
@@ -34,7 +32,6 @@ public final class GuiGenerator extends GuiEnergyBase<ContainerGenerator> {
 
   public GuiGenerator(final ContainerGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/generator.png"));
-    this.tile = container.getTileEntity();
     this.ySize = 176;
   }
 
@@ -42,7 +39,7 @@ public final class GuiGenerator extends GuiEnergyBase<ContainerGenerator> {
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     draw_background_texture();
     
-    final float energy_float = tile.getEnergy().getEnergyPercentage();
+    final float energy_float = energy.getEnergyPercentage();
     energy_percentage = Math.round(energy_float*100);
     energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,energy_float,ProgressBar.Round.NEAREST);
   }
@@ -52,12 +49,12 @@ public final class GuiGenerator extends GuiEnergyBase<ContainerGenerator> {
     super.draw_title();
     draw_text_right("Input:",input_text_x,input_text_y);
     
-    draw_text_left("Max Extract: " + tile.getEnergy().getMaxExtract(),extract_text_x,extract_text_line_1);
+    draw_text_left("Max Extract: " + energy.getMaxExtract(),extract_text_x,extract_text_line_1);
     // draw_text_left("Energy Draw: "+energy_draw,extract_text_x,extract_text_line_2);
     
-    draw_energy(tile.getEnergy(), 6, energy_text_line_1);
+    draw_energy(6, energy_text_line_1);
     draw_text_center(energy_percentage + "%",energy_text_x,energy_text_line_2);
-    draw_energy_difference(tile.getEnergy().getEnergyDifference(), tile.getEnergy(), 82);
+    draw_energy_difference(82);
   }
 
 }

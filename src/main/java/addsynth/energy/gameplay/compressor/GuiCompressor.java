@@ -7,9 +7,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiCompressor extends GuiEnergyBase<ContainerCompressor> {
-
-  private final TileCompressor tile;
+public final class GuiCompressor extends GuiEnergyBase<TileCompressor, ContainerCompressor> {
 
   private int energy_percentage;
   private int work_percentage;
@@ -37,7 +35,6 @@ public final class GuiCompressor extends GuiEnergyBase<ContainerCompressor> {
   
   public GuiCompressor(final ContainerCompressor container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/compressor.png"));
-    this.tile = container.getTileEntity();
     this.ySize = 182;
   }
 
@@ -56,7 +53,7 @@ public final class GuiCompressor extends GuiEnergyBase<ContainerCompressor> {
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
-    draw_energy(tile.getEnergy());
+    draw_energy();
     draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus());
     draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);

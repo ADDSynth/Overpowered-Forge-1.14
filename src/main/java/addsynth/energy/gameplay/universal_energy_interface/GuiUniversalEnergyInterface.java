@@ -9,10 +9,9 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUniversalInterface> {
+public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUniversalEnergyTransfer, ContainerUniversalInterface> {
 
   private static final int button_width = 90;
-  private final TileUniversalEnergyTransfer tile;
   private final ProgressBar energy_bar = new ProgressBar(156,18,12,34,206, 28);
   
   private static final int line_1 = 21;
@@ -20,7 +19,6 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUn
 
   public GuiUniversalEnergyInterface(final ContainerUniversalInterface container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/universal_energy_interface.png"));
-    this.tile = container.getTileEntity();
     this.ySize = 60;
   }
 
@@ -64,7 +62,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<ContainerUn
     draw_title();
     draw_text_left("Mode:", 6, line_1);
     draw_text_left("Energy:", 6, line_2);
-    draw_text_right(tile.getEnergy().getEnergy() + " / "+tile.getEnergy().getCapacity(), 130, line_2);
+    draw_text_right(energy.getEnergy() + " / "+energy.getCapacity(), 130, line_2);
   }
 
 }

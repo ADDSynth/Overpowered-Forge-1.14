@@ -8,9 +8,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiCrystalMatterGenerator extends GuiEnergyBase<ContainerCrystalGenerator> {
-
-  private final TileCrystalMatterReplicator tile;
+public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMatterReplicator, ContainerCrystalGenerator> {
 
   private int energy_percentage;
   private int work_percentage;
@@ -37,7 +35,6 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<ContainerCrys
 
   public GuiCrystalMatterGenerator(final ContainerCrystalGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/crystal_matter_generator.png"));
-    this.tile = container.getTileEntity();
     this.ySize = 194;
   }
 
@@ -62,7 +59,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<ContainerCrys
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     draw_title();
-    draw_energy_after_switch(tile.getEnergy());
+    draw_energy_after_switch();
     draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus(), 36); // this is the only call to the other draw_status() function that specifies the y level. Likely to be removed once we rewrite the energy system, because all machines will have a On/Off switch and will need to draw at THIS y level.
     draw_text_center(work_percentage + "%", work_percentage_text_y);
