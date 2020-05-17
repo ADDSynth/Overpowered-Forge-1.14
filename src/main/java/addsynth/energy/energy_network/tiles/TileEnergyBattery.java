@@ -19,10 +19,10 @@ public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEn
   }
 
   @Override
-    public void tick(){
-      super.tick(); // handles blocknetwork stuff
-      energy.update(world);
-    }
+  public void tick(){
+    super.tick(); // handles blocknetwork stuff
+    energy.update(world);
+  }
 
   @Override
   public void read(final CompoundNBT nbt){

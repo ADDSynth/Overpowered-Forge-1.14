@@ -31,8 +31,8 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
   public final ArrayList<EnergyNode> batteries = new ArrayList<>();
   public final ArrayList<EnergyNode> generators = new ArrayList<>();
 
-  public EnergyNetwork(final World world, final TileEnergyNetwork energy_wire){
-    super(world, energy_wire);
+  public EnergyNetwork(final World world, final TileEnergyNetwork energy_network_tile){
+    super(world, energy_network_tile);
     class_type = TileEnergyNetwork.class;
   }
 

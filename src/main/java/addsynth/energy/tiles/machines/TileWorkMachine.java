@@ -56,7 +56,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
 
   @Override
   public void tick(){
-    if(world.isRemote){
+    if(world.isRemote == false){
       // TODO: Okay, new system in v1.5 or v1.6 or whatever. By then I should have additional machines.
       //       This class hierarchy system is just crazy! Its a wonder I even got THIS system working.
       //       TileEntities will be so varied in their abilities, and very innefficient to have Energy

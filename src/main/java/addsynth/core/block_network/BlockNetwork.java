@@ -126,6 +126,9 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   /** Only code that searches for blocks on the server side needs to use the world variable. */
   protected final World world;
 
+  /** The first TileEntity to create this BlockNetwork or the first to be discovered.
+   *  Used in this BlockNetwork's update function to ensure it only executes once per tick.
+   */
   @Nonnull
   protected T first_tile;
 

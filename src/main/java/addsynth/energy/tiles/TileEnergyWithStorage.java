@@ -46,8 +46,10 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   @Override
   public void tick(){
     if(world.isRemote == false){
-      get_energy_networks();
-      energy.update(world);
+      if(energy != null){
+        get_energy_networks();
+        energy.update(world);
+      }
     }
   }
 
@@ -113,7 +115,7 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
     update_data();
   }
 
-  public final double getRequestedEnergy(){
+  public final double getRequestedEnergy(){ // DELETE
     if(energy != null){
       if(number_of_energy_networks > 0){
         return energy.getRequestedEnergy() * number_of_energy_networks;
