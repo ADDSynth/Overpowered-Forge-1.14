@@ -8,7 +8,6 @@ import addsynth.energy.tiles.machines.MachineData;
 import addsynth.energy.tiles.machines.MachineType;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.Config;
-import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -59,7 +58,6 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   @Override
   public final void read(final CompoundNBT nbt){
     super.read(nbt);
-    energy.readFromNBT(nbt);
     laser_distance = nbt.getInt("Laser Distance");
     auto_shutoff = nbt.getBoolean("Auto Shutoff");
   }
@@ -67,7 +65,6 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   @Override
   public final CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
-    energy.writeToNBT(nbt);
     nbt.putInt("Laser Distance", laser_distance);
     nbt.putBoolean("Auto Shutoff", auto_shutoff);
     return nbt;
@@ -94,7 +91,11 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
     this.laser_distance = laser_distance;
     // this.running = running;
     this.auto_shutoff = shutoff;
-    super.update_data();
+    super.update_data(); // explicitly calls super method, because THIS class overrides it!
+  }
+
+  @Override
+  public void onEnergyChanged(){ // do nothing, because we already track changes whenever the network's Energy changes!
   }
 
   @Override
@@ -102,13 +103,6 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
     this.network = network;
   }
 
-  /**
-   * Keep this private to the TileLaserHousing. External code will have to call the getEnergy() and
-   * getLaserDistance() functions to get those variables.<br>
-   * This is public because {@link LaserClientSyncMessage} needs to get the {@link LaserNetwork} on the client side to
-   *   set the laser count. and the nbt data sets the laser distance and energy on client side too.
-   * @return LaserNetwork
-   */
   @Override
   @Nullable
   public final LaserNetwork getBlockNetwork(){

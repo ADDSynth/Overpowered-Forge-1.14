@@ -51,7 +51,7 @@ public final class EnergyWire extends Wire {
    */
   @Override
   @SuppressWarnings("deprecation")
-  public void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
+  public final void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
     if(world.isRemote == false){
       final BlockNetwork network = BlockNetwork.getNetwork(world, pos);
       if(network != null){

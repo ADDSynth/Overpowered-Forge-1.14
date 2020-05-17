@@ -28,28 +28,32 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   public TileEnergyWithStorage(final TileEntityType type, final Energy energy){
     super(type, 0, null, 0);
     this.energy = energy;
+    this.energy.setResponder(this);
   }
 
   public TileEnergyWithStorage(final TileEntityType type, final SlotData[] slots, final int output_slots, final Energy energy){
     super(type, slots, output_slots);
     this.energy = energy;
+    this.energy.setResponder(this);
   }
 
   public TileEnergyWithStorage(final TileEntityType type, final int input_slots, final Item[] filter, final int output_slots, final Energy energy){
     super(type, input_slots, filter, output_slots);
     this.energy = energy;
+    this.energy.setResponder(this);
   }
 
   @Override
   public void tick(){
     if(world.isRemote == false){
       get_energy_networks();
-      if(energy.update()){
-        update_data();
-      }
+      energy.update(world);
     }
   }
 
+  // TODO: machines that TRANSMIT energy should determine how many EnergyNetworks they are connected to,
+  //       and split their energy equally among all networks. But this applies to ALL machines that can
+  //       transmit Energy, including Batteries, and TileEnergyWithStorage.
   private final void get_energy_networks(){ // Temporary solution, maybe
     final ArrayList<EnergyNetwork> list = new ArrayList<>();
     BlockPos position;
@@ -102,6 +106,11 @@ public abstract class TileEnergyWithStorage extends TileMachine implements ITick
   @Override
   public Energy getEnergy(){
     return this.energy;
+  }
+
+  @Override
+  public void onEnergyChanged(){
+    update_data();
   }
 
   public final double getRequestedEnergy(){

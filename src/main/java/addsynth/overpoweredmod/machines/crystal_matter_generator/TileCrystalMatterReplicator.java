@@ -2,7 +2,6 @@ package addsynth.overpoweredmod.machines.crystal_matter_generator;
 
 import java.util.Random;
 import javax.annotation.Nullable;
-import addsynth.energy.Energy;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Gems;
@@ -30,6 +29,7 @@ public final class TileCrystalMatterReplicator extends TileWorkMachine implement
 
   @Override
   protected void test_condition(){
+    can_run = true;
   }
 
   @Override

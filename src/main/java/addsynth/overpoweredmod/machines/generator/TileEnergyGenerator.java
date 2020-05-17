@@ -52,10 +52,7 @@ public final class TileEnergyGenerator extends TileEnergyTransmitter implements 
             update_data();
           }
         }
-        super.tick(); // Dispatch energy to the energy grid.
-      }
-      else{
-        energy.update();
+        energy.update(world);
       }
     }
   }

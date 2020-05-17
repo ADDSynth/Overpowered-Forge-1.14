@@ -3,12 +3,12 @@ package addsynth.energy.energy_network.tiles;
 import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
+import addsynth.core.tiles.TileBase;
 import addsynth.energy.energy_network.EnergyNetwork;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 
-public abstract class TileEnergyNetwork extends TileEntity implements ITickableTileEntity, IBlockNetworkUser<EnergyNetwork> {
+public abstract class TileEnergyNetwork extends TileBase implements ITickableTileEntity, IBlockNetworkUser<EnergyNetwork> {
 
   private EnergyNetwork network;
   private boolean first_tick = true;

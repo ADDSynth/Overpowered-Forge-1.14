@@ -1,15 +1,25 @@
 package addsynth.energy;
 
 import addsynth.core.util.DecimalNumber;
+import addsynth.energy.tiles.IEnergyUser;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.world.World;
 
-// Original version from CJMinecraft: https://github.com/CJMinecraft01/
+// Original inspiration from CJMinecraft: https://github.com/CJMinecraft01/
 
 /**
- * ADDSynth's own implementation of an Energy Storage object.
+ * <p>ADDSynth's own implementation of an Energy Storage object.
+ * <p>Automatically updates your TileEntity if you set it as a responder, and you call the 
+ * {@link Energy#update(World world) update} method every tick!
  * @author ADDSynth
  */
 public class Energy {
+
+  private IEnergyUser responder;
+  /** Is set to true whenever one of the 4 main variables changes. The other variables
+   *  can be calculated at runtime.
+   */
+  private boolean changed;
 
   protected final DecimalNumber energy     = new DecimalNumber();
   protected final DecimalNumber capacity   = new DecimalNumber();
@@ -19,6 +29,8 @@ public class Energy {
   protected final DecimalNumber previous_energy = new DecimalNumber();
   protected final DecimalNumber energy_in       = new DecimalNumber();
   protected final DecimalNumber energy_out      = new DecimalNumber();
+  /** This represents REAL transfer of energy, by using the {@link Energy#energy_in energy_in} and
+   *  {@link Energy#energy_out energy_out} variables, which only change when REAL energy is transferred. **/
   protected final DecimalNumber difference      = new DecimalNumber();
 
 // ================================ CONSTRUCTORS ====================================
@@ -50,6 +62,10 @@ public class Energy {
     this.maxReceive.set(maxReceive);
     this.maxExtract.set(maxExtract);
     this.energy.set(initial_energy);
+  }
+
+  public final void setResponder(final IEnergyUser responder){
+    this.responder = responder;
   }
 
 // ================================= NBT READ / WRITE =================================
@@ -110,6 +126,7 @@ public class Energy {
     final double actual_energy = simulateReceive(energy_to_add);
     energy.add(actual_energy);
     energy_in.add(actual_energy);
+    changed = true;
   }
 
   /** Extracts energy and returns the amount extracted. */
@@ -117,6 +134,7 @@ public class Energy {
     final double actual_energy = simulateExtract(energy_requested);
     energy.subtract(actual_energy);
     energy_out.add(actual_energy);
+    changed = true;
     return actual_energy;
   }
 
@@ -125,6 +143,7 @@ public class Energy {
     final double actual_energy = getAvailableEnergy();
     energy.subtract(actual_energy);
     energy_out.add(actual_energy);
+    changed = true;
     return actual_energy;
   }
 
@@ -168,6 +187,7 @@ public class Energy {
    */
   public final void setEnergy(final int energy){
     this.energy.set(energy);
+    changed = true;
   }
 
   /**
@@ -177,6 +197,7 @@ public class Energy {
   public final void setEnergyLevel(final int energy){
     this.energy.set(energy);
     this.capacity.set(energy);
+    changed = true;
   }
 
   /**
@@ -185,6 +206,7 @@ public class Energy {
    */
   public final void setCapacity(final int capacity){
     this.capacity.set(capacity);
+    changed = true;
   }
 
   /**
@@ -194,6 +216,7 @@ public class Energy {
   public final void setTransferRate(final int transferRate){
     this.maxReceive.set(transferRate);
     this.maxExtract.set(transferRate);
+    changed = true;
   }
 
   /**
@@ -202,6 +225,7 @@ public class Energy {
    */
   public final void setMaxReceive(final int maxReceive){
     this.maxReceive.set(maxReceive);
+    changed = true;
   }
 
   /**
@@ -210,6 +234,7 @@ public class Energy {
    */
   public final void setMaxExtract(final int maxExtract){
     this.maxExtract.set(maxExtract);
+    changed = true;
   }
 
   public final void set(Energy energy){
@@ -217,6 +242,7 @@ public class Energy {
     this.capacity.set(   energy.getCapacity()   );
     this.maxExtract.set( energy.getMaxExtract() );
     this.maxReceive.set( energy.getMaxReceive() );
+    changed = true;
   }
 
 // ================================== GETTERS =================================
@@ -280,18 +306,22 @@ public class Energy {
 
   public final void set_receive_only(){
     this.maxExtract.set(0);
+    changed = true;
   }
 
   public final void set_extract_only(){
     this.maxReceive.set(0);
+    changed = true;
   }
 
   public final void set_to_full(){
     energy.set(capacity.get());
+    changed = true;
   }
 
   public final void setEmpty(){
     energy.set(0);
+    changed = true;
   }
 
   /** Subtracts capacity from current energy level.<br />
@@ -300,6 +330,7 @@ public class Energy {
    */
   public final void extract_all_energy(){
     energy.subtract(capacity.get());
+    changed = true;
   }
 
 // =================================== QUERIES ======================================
@@ -331,20 +362,24 @@ public class Energy {
 
 // ======================================== MISC =======================================
 
-  /** This should be called in the TileEntity's update() function.
-   */
-  public final boolean update(){
-    final double diff = energy.get() - previous_energy.get();
-    // difference.set(diff);
-    difference.set(energy_in.get() - energy_out.get());
-    previous_energy.set(energy.get());
-    energy_in.set(0);
-    energy_out.set(0);
-    return diff != 0;
-  }
-
-  public final double getEnergyDifference(){
-    return difference.get();
+  /** <p>This should be called in the TileEntity's update() or tick() function,
+   *     at the end of the function! */
+  public final void update(final World world){
+    if(world.isRemote == false){
+      if(changed){
+        difference.set(energy_in.get() - energy_out.get()); // record real energy difference
+        if(responder != null){
+          responder.onEnergyChanged(); // send update BEFORE resetting energy_in and energy_out.
+        }
+        changed = false;
+      }
+      if(energy.get() != previous_energy.get()){
+        previous_energy.set(energy.get());
+        energy_in.set(0);
+        energy_out.set(0);
+        changed = true; // Update next frame to reset everything to 0.
+      }
+    }
   }
 
   @Override

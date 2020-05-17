@@ -1,7 +1,6 @@
 package addsynth.energy.gameplay.compressor;
 
 import javax.annotation.Nullable;
-import addsynth.energy.Energy;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
 import addsynth.energy.registers.Tiles;

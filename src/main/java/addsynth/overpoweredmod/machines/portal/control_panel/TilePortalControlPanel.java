@@ -253,6 +253,7 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
   public ITextComponent getDisplayName(){
     return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
+
   @Override
   protected void test_condition(){
   }

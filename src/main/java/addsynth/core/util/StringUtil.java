@@ -37,6 +37,7 @@ public final class StringUtil {
     return hours+"h "+(minutes % 60)+"m "+(seconds % 60)+"s";
   }
 
+  @Deprecated
   public static final String print_time(final double total_energy, final double rate){
     return print_time((int)Math.ceil(total_energy / Math.abs(rate)));
   }

@@ -23,7 +23,7 @@ public final class DecimalNumber {
   
   public final void set(final double number){
     this.number = (int)number;
-    this.sub_number = (int)Math.floor((number - this.number) * DECIMAL_ACCURACY);
+    this.sub_number = (int)Math.round(number * DECIMAL_ACCURACY) - (this.number * DECIMAL_ACCURACY);
   }
 
   public final void set(final int number){

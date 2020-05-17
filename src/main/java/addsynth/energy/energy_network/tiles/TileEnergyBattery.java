@@ -15,7 +15,14 @@ public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEn
   public TileEnergyBattery(final TileEntityType type, final Energy energy){
     super(type);
     this.energy = energy;
+    this.energy.setResponder(this);
   }
+
+  @Override
+    public void tick(){
+      super.tick(); // handles blocknetwork stuff
+      energy.update(world);
+    }
 
   @Override
   public void read(final CompoundNBT nbt){
@@ -37,6 +44,11 @@ public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEn
   @Override
   public final Energy getEnergy(){
     return energy;
+  }
+
+  @Override
+  public void onEnergyChanged(){
+    update_data();
   }
 
 }

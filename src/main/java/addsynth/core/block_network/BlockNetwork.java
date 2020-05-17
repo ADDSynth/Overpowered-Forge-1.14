@@ -129,7 +129,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   @Nonnull
   protected T first_tile;
 
-  protected final Class<T> class_type;
+  protected Class<T> class_type;
 
   /** All the blocks that are in this block network. */
   protected final NodeList blocks = new NodeList();
@@ -190,6 +190,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
         blocks.add(new Node(from, tile));
         searched.add(from);
         search_algorithm(from, searched);
+        customSearch(from, tile.getBlockState().getBlock(), tile);
 
         // Changes first_tile less often, only when necessary
         if(blocks.contains(first_tile) == false){

@@ -15,6 +15,8 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   protected final MachineType type;
   protected MachineState state = MachineState.IDLE;
 
+  private boolean changed;
+
   protected boolean power_switch = true;
   protected boolean can_run;
 
@@ -55,6 +57,15 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   @Override
   public void tick(){
     if(world.isRemote){
+      // TODO: Okay, new system in v1.5 or v1.6 or whatever. By then I should have additional machines.
+      //       This class hierarchy system is just crazy! Its a wonder I even got THIS system working.
+      //       TileEntities will be so varied in their abilities, and very innefficient to have Energy
+      //       machines to have inventories when they don't need them.
+      //       So instead, derive from a Base TileEntity class, but include 'system' fields.
+      //       For instance, have a class for SimpleInventory, InputAndOutputInventory, EnergyMachine,
+      //       Generator (which just ensures not energy is received), and WorkMachine (a class for each
+      //       type of machine, all extend from the EnergyReceiver system.)
+      //       Each individual TileEntity should define their own systems, instead of extending from classes.
       switch(state){
       case OFF:
         if(power_switch){
@@ -72,14 +83,19 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
         case MANUAL_ACTIVATION: manual_activation_run(); break;
         }
       }
+      if(changed){
+        update_data();
+        changed = false;
+      }
+      energy.update(world);
     }
-    super.tick();
   }
 
   /** Prepare to Turn on. Switches machine to Powering On if it has power time. */
   private void turn_on(){
     if(max_power_time > 0){
       state = MachineState.POWERING_ON;
+      changed = true;
     }
     else{
       switch_machine_state();
@@ -93,6 +109,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     else{
       state = MachineState.OFF;
     }
+    changed = true;
   }
 
   private void powering_on(){
@@ -101,6 +118,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       switch_machine_state();
       power_time = 0;
     }
+    changed = true;
   }
 
   private void powering_off(){
@@ -109,6 +127,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       state = MachineState.OFF;
       power_time = 0;
     }
+    changed = true;
   }
 
   /** When machine turns ON for real. Switches to either IDLE or RUNNING depending on Machine type. */
@@ -119,6 +138,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     else{
       state = MachineState.IDLE;
     }
+    changed = true;
   }
 
   private final boolean check_power_state(){
@@ -133,6 +153,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       if(can_run){
         begin_work();
         state = MachineState.RUNNING;
+        changed = true;
       }
     }
   }
@@ -145,6 +166,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     }
     if(can_run == false){
       state = MachineState.IDLE;
+      changed = true;
       return;
     }
     if(energy.isFull()){
@@ -154,6 +176,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       if(can_run == false){
         state = MachineState.IDLE;
       }
+      changed = true;
     }
   }
   
@@ -174,6 +197,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   private final void always_running(){
     if(can_run == false){
       state = MachineState.IDLE;
+      changed = true;
       return;
     }
     if(energy.isFull()){
@@ -183,6 +207,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       if(can_run == false){
         state = MachineState.IDLE;
       }
+      changed = true;
     }
   }
 
@@ -232,6 +257,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
         working_inventory.setStackInSlot(i, stack);
       }
     }
+    changed = true;
   }
 
   /** Finishes working on the center ItemStack and increments the output. */
@@ -253,7 +279,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
 
   public void toggleRun(){
     power_switch = !power_switch;
-    update_data();
+    changed = true;
   }
 
   @SuppressWarnings("incomplete-switch")
@@ -278,6 +304,11 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   }
 
   public final String getTotalTimeLeft(){
+    // TODO: to calculate total time left, update a jobs array every time the inventories change!
+    //       a Job is a list of ItemStacks. Keep the Jobs in a Queue List.
+    //       When input inventory changes, copy the inventory, then check which job can be performed,
+    //       add the Job to the job array and remove the job from the copy.
+    //       This way we determine what jobs to perform ahead of time, and it works with more than 1 ItemStack.
     final double rate = energy.getDifference();
     final ItemStack stack = input_inventory.getStackInSlot(0);
     if(stack.isEmpty() == false){

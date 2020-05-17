@@ -2,7 +2,6 @@ package addsynth.energy.energy_network;
 
 import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
-import addsynth.core.util.MinecraftUtility;
 import addsynth.core.util.TimeUtil;
 import addsynth.energy.Energy;
 import addsynth.energy.EnergyUtil;
@@ -16,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-// original code from canitzp:
+// original inspiration from canitzp:
 // https://github.com/canitzp/Metalworks/blob/master/src/main/java/de/canitzp/metalworks/block/cable/Network.java
 
 /** The EnergyNetwork is responsible for transferring energy to and from machines. It only keeps a list
@@ -34,6 +33,7 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
 
   public EnergyNetwork(final World world, final TileEnergyNetwork energy_wire){
     super(world, energy_wire);
+    class_type = TileEnergyNetwork.class;
   }
 
   @Override

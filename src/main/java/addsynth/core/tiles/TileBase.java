@@ -7,6 +7,9 @@ import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 
+/** YES! ALL of ADDSynth's TileEntities should override THIS class, because this
+ *  simplifies updating the TileEntity!
+ */
 public abstract class TileBase extends TileEntity {
 
   public TileBase(final TileEntityType type){

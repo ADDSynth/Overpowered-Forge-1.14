@@ -8,6 +8,7 @@ import addsynth.core.util.MathUtility;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.core.util.NetworkUtil;
 import addsynth.energy.Energy;
+import addsynth.energy.tiles.IEnergyUser;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -20,7 +21,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
+public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implements IEnergyUser {
 
   private final NodeList lasers = new NodeList(27);
   private int number_of_lasers;
@@ -35,6 +36,17 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   public LaserNetwork(final World world, final TileLaserHousing tile){
     super(world, tile);
     this.energy.set_receive_only();
+    this.energy.setResponder(this);
+  }
+
+  @Override
+  public final Energy getEnergy(){
+    return energy;
+  }
+  
+  @Override
+  public final void onEnergyChanged(){
+    updateLaserNetwork();
   }
 
   @Override
@@ -131,6 +143,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
       else{
         activated = false;
       }
+      energy.update(world);
     }
   }
 

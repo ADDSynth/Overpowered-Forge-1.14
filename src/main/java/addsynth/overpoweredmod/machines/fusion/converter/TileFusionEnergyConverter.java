@@ -15,7 +15,7 @@ import net.minecraft.util.math.BlockPos;
 
 public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
 
-  private static final int sync_timer = 4; // TODO: remove sync timer in version 1.3
+  private static final int sync_timer = 4; // TODO: remove sync timer in version 1.4
   private final ArrayList<DataCableNetwork> data_cable_networks = new ArrayList<>(1);
   private TileFusionChamber fusion_chamber;
   private boolean activated;
@@ -53,11 +53,8 @@ public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
       // every tick
       if(activated && valid){
         energy.set_to_full();
-        super.tick();
       }
-    }
-    else{
-      energy.update();
+      energy.update(world);
     }
   }
 
