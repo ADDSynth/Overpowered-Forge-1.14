@@ -8,12 +8,12 @@ import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.TileAdvancedOreRefinery;
 import addsynth.overpoweredmod.machines.black_hole.TileBlackHole;
-import addsynth.overpoweredmod.machines.crystal_matter_generator.TileCrystalMatterReplicator;
+import addsynth.overpoweredmod.machines.crystal_matter_generator.TileCrystalMatterGenerator;
 import addsynth.overpoweredmod.machines.data_cable.TileDataCable;
 import addsynth.overpoweredmod.machines.fusion.chamber.TileFusionChamber;
 import addsynth.overpoweredmod.machines.fusion.converter.TileFusionEnergyConverter;
 import addsynth.overpoweredmod.machines.gem_converter.TileGemConverter;
-import addsynth.overpoweredmod.machines.generator.TileEnergyGenerator;
+import addsynth.overpoweredmod.machines.generator.TileCrystalEnergyGenerator;
 import addsynth.overpoweredmod.machines.identifier.TileIdentifier;
 import addsynth.overpoweredmod.machines.inverter.TileInverter;
 import addsynth.overpoweredmod.machines.laser.beam.TileLaserBeam;
@@ -32,8 +32,8 @@ public final class Tiles {
     Debug.log_setup_info(Tiles.class.getName()+" class was loaded...");
   }
 
-  public static final TileEntityType<TileEnergyGenerator> GENERATOR =
-    TileEntityType.Builder.create(TileEnergyGenerator::new, Machines.generator).build(null);
+  public static final TileEntityType<TileCrystalEnergyGenerator> GENERATOR =
+    TileEntityType.Builder.create(TileCrystalEnergyGenerator::new, Machines.generator).build(null);
 
   public static final TileEntityType<TileGemConverter> GEM_CONVERTER =
     TileEntityType.Builder.create(TileGemConverter::new, Machines.gem_converter).build(null);
@@ -50,8 +50,8 @@ public final class Tiles {
   public static final TileEntityType<TileAdvancedOreRefinery> ADVANCED_ORE_REFINERY =
     TileEntityType.Builder.create(TileAdvancedOreRefinery::new, Machines.advanced_ore_refinery).build(null);
 
-  public static final TileEntityType<TileCrystalMatterReplicator> CRYSTAL_MATTER_REPLICATOR =
-    TileEntityType.Builder.create(TileCrystalMatterReplicator::new, Machines.crystal_matter_generator).build(null);
+  public static final TileEntityType<TileCrystalMatterGenerator> CRYSTAL_MATTER_REPLICATOR =
+    TileEntityType.Builder.create(TileCrystalMatterGenerator::new, Machines.crystal_matter_generator).build(null);
 
   public static final TileEntityType<TileSuspensionBridge> ENERGY_SUSPENSION_BRIDGE =
     TileEntityType.Builder.create(TileSuspensionBridge::new, Machines.energy_suspension_bridge).build(null);

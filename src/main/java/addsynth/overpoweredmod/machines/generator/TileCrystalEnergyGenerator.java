@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.generator;
 
 import javax.annotation.Nullable;
 import addsynth.energy.Energy;
-import addsynth.energy.tiles.TileEnergyTransmitter;
+import addsynth.energy.tiles.TileEnergyGenerator;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
@@ -16,13 +16,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileEnergyGenerator extends TileEnergyTransmitter implements INamedContainerProvider {
+public final class TileCrystalEnergyGenerator extends TileEnergyGenerator implements INamedContainerProvider {
 
   public static final Item[] input_filter = new Item[] {
     Init.energy_crystal_shards, Init.energy_crystal, Item.BLOCK_TO_ITEM.get(Init.light_block)
   };
 
-  public TileEnergyGenerator(){
+  public TileCrystalEnergyGenerator(){
     super(Tiles.GENERATOR, 1,input_filter,0,new Energy());
   }
 

@@ -7,7 +7,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiGenerator extends GuiEnergyBase<TileEnergyGenerator, ContainerGenerator> {
+public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator, ContainerGenerator> {
 
   private int energy_percentage;
 

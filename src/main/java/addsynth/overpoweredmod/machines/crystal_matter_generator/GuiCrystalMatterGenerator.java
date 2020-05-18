@@ -8,7 +8,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMatterReplicator, ContainerCrystalGenerator> {
+public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMatterGenerator, ContainerCrystalGenerator> {
 
   private int energy_percentage;
   private int work_percentage;

@@ -8,7 +8,7 @@ import addsynth.energy.EnergyUtil;
 import addsynth.energy.energy_network.tiles.TileEnergyBattery;
 import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
 import addsynth.energy.tiles.TileEnergyReceiver;
-import addsynth.energy.tiles.TileEnergyTransmitter;
+import addsynth.energy.tiles.TileEnergyGenerator;
 import addsynth.energy.tiles.TileEnergyWithStorage;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
@@ -92,8 +92,8 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
         add_energy_node(receivers, new EnergyNode(position, (TileEnergyReceiver)tile));
         return;
       }
-      if(tile instanceof TileEnergyTransmitter){
-        add_energy_node(generators, new EnergyNode(position, (TileEnergyTransmitter)tile));
+      if(tile instanceof TileEnergyGenerator){
+        add_energy_node(generators, new EnergyNode(position, (TileEnergyGenerator)tile));
         return;
       }
       if(tile instanceof TileEnergyWithStorage){

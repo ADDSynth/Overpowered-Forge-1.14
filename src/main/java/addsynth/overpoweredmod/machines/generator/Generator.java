@@ -36,7 +36,7 @@ public final class Generator extends MachineBlock {
 
   @Override
   public final TileEntity createNewTileEntity(IBlockReader worldIn){
-    return new TileEnergyGenerator();
+    return new TileCrystalEnergyGenerator();
   }
 
   /** @deprecated Call via {@link BlockState#onBlockActivated(World, PlayerEntity, Hand, BlockRayTraceResult)} whenever possible.
@@ -45,7 +45,7 @@ public final class Generator extends MachineBlock {
   @Override
   public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final TileEnergyGenerator tile = MinecraftUtility.getTileEntity(pos, world, TileEnergyGenerator.class);
+      final TileCrystalEnergyGenerator tile = MinecraftUtility.getTileEntity(pos, world, TileCrystalEnergyGenerator.class);
       if(tile != null){
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }

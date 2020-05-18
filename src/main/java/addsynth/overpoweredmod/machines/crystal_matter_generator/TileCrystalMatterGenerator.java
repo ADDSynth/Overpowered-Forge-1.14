@@ -14,9 +14,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileCrystalMatterReplicator extends TileWorkMachine implements INamedContainerProvider {
+public final class TileCrystalMatterGenerator extends TileWorkMachine implements INamedContainerProvider {
 
-  public TileCrystalMatterReplicator(){
+  public TileCrystalMatterGenerator(){
     super(Tiles.CRYSTAL_MATTER_REPLICATOR, 0, null, 8, MachineValues.crystal_matter_generator);
   }
 

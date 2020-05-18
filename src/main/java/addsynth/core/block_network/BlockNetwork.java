@@ -87,7 +87,7 @@ import net.minecraft.world.server.ServerWorld;
  * <p><b>7.</b> Oh dang. There's actually one more scenario I forgot about. Some block networks have extra
  * data, sure, but let's say you want to keep a list of TileEntities this BlockNetwork connects to,
  * Tiles that AREN'T part of the Block Network. For example, the {@link EnergyNetwork}
- * keeps track of {@link addsynth.energy.tiles.TileEnergyTransmitter TileEnergyGenerators} and
+ * keeps track of {@link addsynth.energy.tiles.TileEnergyGenerator TileEnergyGenerators} and
  * {@link addsynth.energy.tiles.TileEnergyReceiver TileEnergyReceivers} that the network connects to.
  * In this case, you want to update the Block Network (or at least the BlockNetwork's data) whenever
  * you detect the block next to a TileEntity that belongs to this Block Network was CHANGED, because

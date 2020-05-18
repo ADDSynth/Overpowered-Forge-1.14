@@ -6,9 +6,9 @@ import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerCrystalGenerator extends BaseContainer<TileCrystalMatterReplicator> {
+public final class ContainerCrystalGenerator extends BaseContainer<TileCrystalMatterGenerator> {
 
-  public ContainerCrystalGenerator(final int id, final PlayerInventory player_inventory, final TileCrystalMatterReplicator tile){
+  public ContainerCrystalGenerator(final int id, final PlayerInventory player_inventory, final TileCrystalMatterGenerator tile){
     super(Containers.CRYSTAL_MATTER_GENERATOR, id, player_inventory, tile);
     common_setup(player_inventory);
   }

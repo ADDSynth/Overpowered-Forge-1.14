@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.fusion.converter;
 import java.util.ArrayList;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.energy.Energy;
-import addsynth.energy.tiles.TileEnergyTransmitter;
+import addsynth.energy.tiles.TileEnergyGenerator;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.machines.data_cable.DataCableNetwork;
 import addsynth.overpoweredmod.machines.data_cable.TileDataCable;
@@ -13,7 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 
-public final class TileFusionEnergyConverter extends TileEnergyTransmitter {
+public final class TileFusionEnergyConverter extends TileEnergyGenerator {
 
   private static final int sync_timer = 4; // TODO: remove sync timer in version 1.4
   private final ArrayList<DataCableNetwork> data_cable_networks = new ArrayList<>(1);

@@ -36,14 +36,14 @@ public final class CrystalMatterGenerator extends MachineBlock {
 
   @Override
   public final TileEntity createNewTileEntity(IBlockReader worldIn){
-    return new TileCrystalMatterReplicator();
+    return new TileCrystalMatterGenerator();
   }
 
   @Override
   @SuppressWarnings("deprecation")
   public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final TileCrystalMatterReplicator tile = MinecraftUtility.getTileEntity(pos, world, TileCrystalMatterReplicator.class);
+      final TileCrystalMatterGenerator tile = MinecraftUtility.getTileEntity(pos, world, TileCrystalMatterGenerator.class);
       if(tile != null){
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }

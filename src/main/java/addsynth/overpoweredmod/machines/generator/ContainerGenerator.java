@@ -6,9 +6,9 @@ import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerGenerator extends BaseContainer<TileEnergyGenerator> {
+public final class ContainerGenerator extends BaseContainer<TileCrystalEnergyGenerator> {
 
-  public ContainerGenerator(final int id, final PlayerInventory player_inventory, final TileEnergyGenerator tile){
+  public ContainerGenerator(final int id, final PlayerInventory player_inventory, final TileCrystalEnergyGenerator tile){
     super(Containers.GENERATOR, id, player_inventory, tile);
     common_setup(player_inventory);
   }
@@ -20,7 +20,7 @@ public final class ContainerGenerator extends BaseContainer<TileEnergyGenerator>
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,94);
-    addSlot(new InputSlot(tile,0,TileEnergyGenerator.input_filter,53,20));
+    addSlot(new InputSlot(tile,0,TileCrystalEnergyGenerator.input_filter,53,20));
   }
 
 }
