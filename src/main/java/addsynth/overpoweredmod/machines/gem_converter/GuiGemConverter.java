@@ -90,9 +90,10 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     super.draw_title();
-    draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
-    draw_energy();
+    // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
+    draw_energy_usage();
     draw_status(tile.getStatus());
+    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 45);
     draw_text_center(work_percentage + "%",work_percentage_x,work_percentage_y);
     draw_time_left(tile, time_left_y);
   }

@@ -21,8 +21,8 @@ public final class ContainerOreRefinery extends BaseContainer<TileAdvancedOreRef
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,104);
-    addSlot(new InputSlot(tile, 0, OreRefineryRecipes.get_input_filter(), 39, 43));
-    addSlot(new OutputSlot(tile, 0, 94,43));
+    addSlot(new InputSlot(tile, 0, OreRefineryRecipes.get_input_filter(), 28, 43));
+    addSlot(new OutputSlot(tile, 0, 124, 43));
   }
 
 }

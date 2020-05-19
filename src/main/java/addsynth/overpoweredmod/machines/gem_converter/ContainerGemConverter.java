@@ -21,8 +21,8 @@ public final class ContainerGemConverter extends BaseContainer<TileGemConverter>
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,112);
-    addSlot(new InputSlot(tile, 0, TileGemConverter.getFilter(),48,45));
-    addSlot(new OutputSlot(tile,0,104,45));
+    addSlot(new InputSlot(tile, 0, TileGemConverter.getFilter(),28,45));
+    addSlot(new OutputSlot(tile,0,124,45));
   }
 
 }

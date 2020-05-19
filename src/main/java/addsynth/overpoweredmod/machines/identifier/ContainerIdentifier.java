@@ -20,9 +20,9 @@ public final class ContainerIdentifier extends BaseContainer<TileIdentifier> {
   }
 
   private final void common_setup(final PlayerInventory player_inventory){
-    make_player_inventory(player_inventory,8,85);
-    addSlot(new InputSlot( tile, 0, TileIdentifier.input_filter, 1, 48, 40));
-    addSlot(new OutputSlot(tile, 0, 104, 40));
+    make_player_inventory(player_inventory,8,87);
+    addSlot(new InputSlot( tile, 0, TileIdentifier.input_filter, 1, 28, 42));
+    addSlot(new OutputSlot(tile, 0, 124, 42));
   }
 
 }

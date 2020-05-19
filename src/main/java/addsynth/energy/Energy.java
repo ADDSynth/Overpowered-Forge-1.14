@@ -1,5 +1,6 @@
 package addsynth.energy;
 
+import javax.annotation.Nonnegative;
 import addsynth.core.util.DecimalNumber;
 import addsynth.energy.tiles.IEnergyUser;
 import net.minecraft.nbt.CompoundNBT;
@@ -16,18 +17,21 @@ import net.minecraft.world.World;
 public class Energy {
 
   private IEnergyUser responder;
-  /** Is set to true whenever one of the 4 main variables changes. The other variables
-   *  can be calculated at runtime.
+
+  /** Is set to true whenever any variable changes to signal that various things
+   *  need to be updated in the {@link Energy#update(World)} event.
    */
-  private boolean changed;
+  protected boolean changed;
 
   protected final DecimalNumber energy     = new DecimalNumber();
   protected final DecimalNumber capacity   = new DecimalNumber();
   protected final DecimalNumber maxReceive = new DecimalNumber();
   protected final DecimalNumber maxExtract = new DecimalNumber();
 
-  protected final DecimalNumber previous_energy = new DecimalNumber();
+  // protected final DecimalNumber previous_energy = new DecimalNumber();
+  /** Diagnostic variable that is recalculated every tick. Mainly used on Client side. */
   protected final DecimalNumber energy_in       = new DecimalNumber();
+  /** Diagnostic variable that is recalculated every tick. Mainly used on Client side. */
   protected final DecimalNumber energy_out      = new DecimalNumber();
   /** This represents REAL transfer of energy, by using the {@link Energy#energy_in energy_in} and
    *  {@link Energy#energy_out energy_out} variables, which only change when REAL energy is transferred. **/
@@ -81,7 +85,7 @@ public class Energy {
     this.capacity.set(       energy_tag.getDouble("Capacity")  );
     this.maxReceive.set(     energy_tag.getDouble("MaxReceive"));
     this.maxExtract.set(     energy_tag.getDouble("MaxExtract"));
-    this.previous_energy.set(energy_tag.getDouble("Previous Energy"));
+    // this.previous_energy.set(energy_tag.getDouble("Previous Energy"));
     this.energy_in.set(      energy_tag.getDouble("Energy In"));
     this.energy_out.set(     energy_tag.getDouble("Energy Out"));
     this.difference.set(     energy_tag.getDouble("Difference"));
@@ -93,16 +97,25 @@ public class Energy {
    * @param nbt The {@link CompoundNBT} to write to
    */
   public final void writeToNBT(final CompoundNBT nbt){
+    difference.set(energy_in.get() - energy_out.get()); // record real energy difference
+
     final CompoundNBT energy_tag = new CompoundNBT();
 	energy_tag.putDouble("Energy",     this.energy.get());
 	energy_tag.putDouble("Capacity",   this.capacity.get());
 	energy_tag.putDouble("MaxReceive", this.maxReceive.get());
 	energy_tag.putDouble("MaxExtract", this.maxExtract.get());
-	energy_tag.putDouble("Previous Energy", this.previous_energy.get());
+	// energy_tag.putDouble("Previous Energy", this.previous_energy.get());
 	energy_tag.putDouble("Energy In",  this.energy_in.get());
 	energy_tag.putDouble("Energy Out", this.energy_out.get());
 	energy_tag.putDouble("Difference", this.difference.get());
 	nbt.put("EnergyStorage", energy_tag);
+	
+    if(energy_in.get() != 0 || energy_out.get() != 0){
+      // previous_energy.set(energy.get());
+      energy_in.set(0);
+      energy_out.set(0);
+      changed = true; // Update next frame to reset everything to 0.
+    }
   }
 
 // =========================== TRANSMIT / RECEIVE ===================================
@@ -237,11 +250,31 @@ public class Energy {
     changed = true;
   }
 
-  public final void set(Energy energy){
+  public final void set(final Energy energy){
     this.energy.set(     energy.getEnergy()     );
     this.capacity.set(   energy.getCapacity()   );
     this.maxExtract.set( energy.getMaxExtract() );
     this.maxReceive.set( energy.getMaxReceive() );
+    changed = true;
+  }
+
+  /** Use this to manually set the energy_in variable, which is just an indicator
+   *  of how much energy was inserted into this object. It is reset to 0 every tick.
+   *  It is recommended you don't use this and use the receiveEnergy() methods instead.
+   * @param energy_in
+   */
+  public final void setEnergyIn(final @Nonnegative double energy_in){
+    this.energy_in.set(energy_in);
+    changed = true;
+  }
+  
+  /** Use this to manually set the energy_out variable, which is just an indicator
+   *  of how much energy this Energy object received. It is reset to 0 every tick.
+   *  It is recommended you don't use this and use the extractEnergy() methods instead.
+   * @param energy_out
+   */
+  public final void setEnergyOut(final @Nonnegative double energy_out){
+    this.energy_out.set(energy_out);
     changed = true;
   }
 
@@ -352,6 +385,7 @@ public class Energy {
     return energy.get() <= 0;
   }
 
+  /** Returns whether this Energy object has NOT reached capacity. */
   public final boolean needsEnergy(){
     return energy.get() < capacity.get();
   }
@@ -362,22 +396,14 @@ public class Energy {
 
 // ======================================== MISC =======================================
 
-  /** <p>This should be called in the TileEntity's update() or tick() function,
-   *     at the end of the function! */
+  /** This should be called in the TileEntity's update() or tick() function. */
   public final void update(final World world){
     if(world.isRemote == false){
       if(changed){
-        difference.set(energy_in.get() - energy_out.get()); // record real energy difference
         if(responder != null){
-          responder.onEnergyChanged(); // send update BEFORE resetting energy_in and energy_out.
+          responder.onEnergyChanged();
         }
         changed = false;
-      }
-      if(energy.get() != previous_energy.get()){
-        previous_energy.set(energy.get());
-        energy_in.set(0);
-        energy_out.set(0);
-        changed = true; // Update next frame to reset everything to 0.
       }
     }
   }

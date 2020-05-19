@@ -52,10 +52,11 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     draw_title();
-    draw_energy();
+    draw_energy_usage();
     draw_status(tile.getStatus());
+    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 77, 44);
     draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);
-    draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
+    // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_time_left(tile, 93);
   }
 

@@ -18,7 +18,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   private boolean changed;
 
   protected boolean power_switch = true;
-  protected boolean can_run;
+  protected boolean can_run; // OPTIMIZE: can_run is only used in TileWorkMachine and is always checked immediately after calling test_condition()! Remove can_run and just check the boolean return value of test_condition()!
 
   protected final double idle_energy;
 
@@ -150,6 +150,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       turn_off();
     }
     else{
+      test_condition();
       if(can_run){
         begin_work();
         state = MachineState.RUNNING;
@@ -160,54 +161,57 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
 
   /** This determines what a TileWorkMachine of type STANDARD does while the machine is in the RUNNING state. */
   private final void standard_run(){
+    boolean did_work = false;
+
+    if(energy.isFull()){
+      perform_work();
+      energy.setEmpty();
+      did_work = true;
+      changed = true;
+    }
+
     if(check_power_state()){
       turn_off();
       return;
     }
-    if(can_run == false){
-      state = MachineState.IDLE;
-      changed = true;
-      return;
-    }
-    if(energy.isFull()){
-      perform_work();
-      energy.setEmpty();
+
+    if(did_work){
       test_condition();
-      if(can_run == false){
-        state = MachineState.IDLE;
+      if(can_run){
+        begin_work();
       }
-      changed = true;
+      else{
+        state = MachineState.IDLE;
+        changed = true;
+      }
     }
   }
   
   /** Passive Machines, have no idle state. They are either OFF or RUNNING. */
   private final void passive_run(){
+    if(energy.isFull()){
+      perform_work();
+      energy.setEmpty();
+      changed = true;
+    }
     if(check_power_state()){
       turn_off();
-    }
-    else{
-      if(energy.isFull()){
-        perform_work();
-        energy.setEmpty();
-      }
     }
   }
 
   /** Machines that are always running cannot be turned off, but they can switch to an Idle switch when they can't do work. */
   private final void always_running(){
-    if(can_run == false){
-      state = MachineState.IDLE;
-      changed = true;
-      return;
-    }
     if(energy.isFull()){
       perform_work();
       energy.setEmpty();
+      changed = true;
       test_condition();
-      if(can_run == false){
+      if(can_run){
+        begin_work();
+      }
+      else{
         state = MachineState.IDLE;
       }
-      changed = true;
     }
   }
 
@@ -241,7 +245,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
 
   @Override
   public void onInventoryChanged(){
-    test_condition();
+    // test_condition();
   }
 
   /** This function must test the input and output item slots and set the can_run variable. */
@@ -264,22 +268,32 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   protected void perform_work(){
   }
 
+  public void toggleRun(){
+    power_switch = !power_switch;
+    changed = true;
+  }
+
   public double getNeededEnergy(){
     if(energy != null){
-      if(state == MachineState.POWERING_OFF || state == MachineState.IDLE){
-        return idle_energy;
-      }
+      // if(state == MachineState.POWERING_OFF || state == MachineState.IDLE){
+      //   return idle_energy;
+      // }
+      // FUTURE: I decided to forego the concept of Idle Energy for now, until v1.5 when I implement WorkSystems.
       if(state == MachineState.RUNNING){
-        return energy.getRequestedEnergy() + idle_energy;
+        return energy.getRequestedEnergy(); // + idle_energy;
       }
       return 0;
     }
     return 0;
   }
 
-  public void toggleRun(){
-    power_switch = !power_switch;
-    changed = true;
+  public final void receiveEnergy(final double add_energy){
+    energy.receiveEnergy(add_energy);
+    if(idle_energy > 0){
+      // if(energy.needsEnergy()){
+      //  energy.extractEnergy(idle_energy);
+      // }
+    }
   }
 
   @SuppressWarnings("incomplete-switch")
@@ -300,7 +314,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
 
   public final String getTimeLeft(){
     final double rate = energy.getDifference();
-    return StringUtil.print_time(energy.getCapacity(), rate);
+    return StringUtil.print_time(energy.getEnergyNeeded(), rate);
   }
 
   public final String getTotalTimeLeft(){
@@ -310,22 +324,17 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     //       add the Job to the job array and remove the job from the copy.
     //       This way we determine what jobs to perform ahead of time, and it works with more than 1 ItemStack.
     final double rate = energy.getDifference();
-    final ItemStack stack = input_inventory.getStackInSlot(0);
-    if(stack.isEmpty() == false){
-      return StringUtil.print_time(stack.getCount() * energy.getCapacity(), rate);
+    if(input_inventory != null){
+      final ItemStack stack = input_inventory.getStackInSlot(0);
+      return StringUtil.print_time((stack.getCount() * energy.getCapacity()) + energy.getEnergyNeeded(), rate);
     }
-    return StringUtil.print_time(energy.getCapacity(), rate);
+    return StringUtil.print_time(energy.getEnergyNeeded(), rate);
   }
 
 // ============================================================================
 
   public final boolean get_switch_state(){
     return power_switch;
-  }
-
-  @Deprecated
-  public final boolean isOn(){
-    return state != MachineState.OFF && state != MachineState.POWERING_ON;
   }
 
   public final String getStatus(){

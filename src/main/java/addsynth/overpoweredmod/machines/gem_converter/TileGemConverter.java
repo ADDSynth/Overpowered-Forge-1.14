@@ -19,7 +19,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 public final class TileGemConverter extends TileWorkMachine implements INamedContainerProvider {
 	
   private byte selection;
-  private ItemStack gem_selected;
+  private ItemStack gem_selected = new ItemStack(Gems.ruby, 1);
   
   public static final Item[] getFilter(){
     return MaterialsUtil.getFilter(

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import addsynth.core.util.DecimalNumber;
 import addsynth.core.util.MathUtility;
 import addsynth.energy.energy_network.EnergyNode;
+import addsynth.energy.tiles.machines.TileWorkMachine;
+import net.minecraft.tileentity.TileEntity;
 
 public final class EnergyUtil {
 
@@ -11,6 +13,7 @@ public final class EnergyUtil {
 
     int i;
     EnergyNode node;
+    TileEntity tile;
     long energy;
 
     final int from_size = from.size();
@@ -31,7 +34,13 @@ public final class EnergyUtil {
     long total_energy_requested = 0;
     for(i = 0; i < to_size; i++){
       node = to.get(i);
-      energy = (long)(node.energy.getRequestedEnergy() * DecimalNumber.DECIMAL_ACCURACY);
+      tile = node.getTile();
+      if(tile instanceof TileWorkMachine){
+        energy = (long)(((TileWorkMachine)tile).getNeededEnergy() * DecimalNumber.DECIMAL_ACCURACY);
+      }
+      else{
+        energy = (long)(node.energy.getRequestedEnergy() * DecimalNumber.DECIMAL_ACCURACY);
+      }
       receivers[i] = energy;
       total_energy_requested += energy;
     }
@@ -41,22 +50,25 @@ public final class EnergyUtil {
     if(energy_to_transfer == 0){
       return;
     }
-    final double ratio = energy_to_transfer < total_energy_available ? (double)energy_to_transfer / total_energy_available : 1.0;    
+    final long[] energy_to_extract = MathUtility.divide_evenly(energy_to_transfer, generators);
+    final long[] energy_to_insert = MathUtility.divide_evenly(energy_to_transfer, receivers);
 
     // Extract Energy
-    double total_energy = 0;
     for(i = 0; i < from_size; i++){
-      energy = (long)((double)generators[i] * ratio); // long, multiplied by ratio, then truncated.
       node = from.get(i);
-      total_energy += node.energy.extractEnergy((double)energy / DecimalNumber.DECIMAL_ACCURACY);
+      node.energy.extractEnergy(((double)energy_to_extract[i]) / DecimalNumber.DECIMAL_ACCURACY);
     }
 
     // Insert as evenly as possible into all the Receiving machines
-    total_energy_available = (long)(total_energy * DecimalNumber.DECIMAL_ACCURACY);
-    long[] energy_to_insert = MathUtility.divide_evenly(total_energy_available, receivers);
     for(i = 0; i < to_size; i++){
       node = to.get(i);
-      node.energy.receiveEnergy(((double)energy_to_insert[i]) / DecimalNumber.DECIMAL_ACCURACY);
+      tile = node.getTile();
+      if(tile instanceof TileWorkMachine){
+        ((TileWorkMachine)tile).receiveEnergy(((double)energy_to_insert[i]) / DecimalNumber.DECIMAL_ACCURACY);
+      }
+      else{
+        node.energy.receiveEnergy(((double)energy_to_insert[i]) / DecimalNumber.DECIMAL_ACCURACY);
+      }
     }
   }
 

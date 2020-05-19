@@ -36,6 +36,7 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
     super(
       Tiles.MAGIC_INFUSER,
       new SlotData[]{ // FUTURE now the SlotData needs to be constructed every time, because of the Item Tags in getFilter().
+        // Have slots automatically rebuild their filter by calling a build filter function? Make a Filter its own class object?
         new SlotData(Items.BOOK),
         new SlotData(JavaUtils.combine_arrays(getFilter(), new Item[]{Init.energy_crystal, Init.void_crystal}))
       },
@@ -58,20 +59,21 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
       final ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1);
       enchant_book.addEnchantment(enchantment, enchantment == Enchantments.FORTUNE ? 2 : 1);
       output_inventory.setStackInSlot(0, enchant_book);
-      working_inventory.setEmpty();
     }
+    working_inventory.setEmpty();
   }
 
   private final Enchantment get_enchantment(){
     // https://minecraft.gamepedia.com/Enchanting#Summary_of_enchantments
     Enchantment enchantment = null;
-    final Item item = input_inventory.getStackInSlot(1).getItem();
+    final Item item = working_inventory.getStackInSlot(1).getItem();
     final Random random = new Random();
     // 1 in 50 chance you get either Curse of Binding or Curse of Vanishing
     if(MaterialsUtil.match(item, MaterialsUtil.getRubies())){
       switch(random.nextInt(2)){
       case 0: enchantment = Enchantments.POWER; break;
       case 1: enchantment = Enchantments.PUNCH; break;
+      // TODO: DO NOT use a switch statement for this, instead, move enchantments in an array (pass in T[] array), and call a Utility function that will automatically return a random object from the array.
       }
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getTopaz())){
@@ -139,7 +141,7 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
       }
     }
     if(enchantment == null){
-      OverpoweredMod.log.error("function get_enchantment() in TileMagicUnlocker returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
+      OverpoweredMod.log.error("function get_enchantment() in "+TileMagicInfuser.class.getSimpleName()+" returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
       Thread.dumpStack();
     }
     return enchantment;

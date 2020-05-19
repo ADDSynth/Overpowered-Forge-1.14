@@ -12,12 +12,12 @@ public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, Container
   private int work_percentage;
   private int energy_percentage;
 
-  private static final int work_percentage_y = 61;
+  private static final int work_percentage_y = 63;
   private static final int energy_percentage_text_x = 156;
   private static final int energy_percentage_text_y = 28;
 
   private static final int work_bar_x = 8;
-  private static final int work_bar_y = 73;
+  private static final int work_bar_y = 75;
   private static final int work_bar_width = 160;
   private static final int work_bar_height = 5;
   private static final int draw_work_bar_x = 11;
@@ -34,6 +34,7 @@ public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, Container
 
   public GuiIdentifier(final ContainerIdentifier container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/identifier.png"));
+    this.ySize = 168;
   }
 
   @Override
@@ -51,10 +52,11 @@ public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, Container
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     super.draw_title();
-    super.draw_energy();
+    draw_energy_usage();
     draw_status(tile.getStatus());
+    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 41);
     draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_y);
-    draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
+    // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
   }
 
 }

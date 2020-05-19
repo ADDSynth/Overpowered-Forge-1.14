@@ -3,6 +3,7 @@ package addsynth.energy.gameplay.electric_furnace;
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -20,7 +21,7 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
   private static final int draw_energy_y = 28;
   private final ProgressBar energy_progress_bar = new ProgressBar(energy_bar_x, energy_bar_y, energy_bar_width, energy_bar_height, draw_energy_x, draw_energy_y);
 
-  private static final int work_bar_x = 40;
+  private static final int work_bar_x = 80;
   private static final int work_bar_y = 60;
   private static final int work_bar_width = 14;
   private static final int work_bar_height = 14;
@@ -53,10 +54,12 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
-    super.draw_energy();
-    draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
+    draw_energy_usage();
+    // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus());
-    draw_text_center(work_percentage + "%",(this.xSize / 2)-10,work_percentage_text_y);
+    RenderHelper.enableGUIStandardItemLighting();
+    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 80, 40);
+    draw_text_center(work_percentage + "%",(this.xSize / 2)+21,work_percentage_text_y);
     draw_time_left(tile, time_left_y);
   }
 

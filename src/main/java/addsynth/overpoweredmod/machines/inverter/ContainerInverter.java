@@ -21,8 +21,8 @@ public final class ContainerInverter extends BaseContainer<TileInverter> {
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,105);
-    addSlot(new InputSlot(tile,0,TileInverter.input_filter,50,44));
-    addSlot(new OutputSlot(tile,0,105,44));
+    addSlot(new InputSlot(tile,0,TileInverter.input_filter,29,44));
+    addSlot(new OutputSlot(tile,0,125,44));
   }
 
 }

@@ -6,6 +6,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -103,6 +104,17 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
 
   protected final void draw_text_right(final String text, final int x, final int y){
     font.drawString(text, x - font.getStringWidth(text), y, text_color);
+  }
+
+  /** If the rendered Item isn't lighted correctly, call:<br />
+   *  <code>RenderHelper.enableGUIStandardItemLighting();</code><br />
+   *  before calling this function!
+   * @param stack
+   * @param x
+   * @param y
+   */
+  protected final void drawItemStack(final ItemStack stack, final int x, final int y){
+    this.itemRenderer.renderItemIntoGUI(stack, x, y);
   }
 
 }

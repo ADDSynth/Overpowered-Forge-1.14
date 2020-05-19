@@ -52,9 +52,10 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreR
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
-    super.draw_energy();
-    draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
+    draw_energy_usage();
+    // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus());
+    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 43);
     draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);
     draw_time_left(tile, 92);
   }

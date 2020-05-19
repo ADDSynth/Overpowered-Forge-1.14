@@ -121,7 +121,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
         index = (j*4) + i;
         x = this.guiLeft + image_x + (i * space_x);
         y = this.guiTop + image_y + (j * space_y);
-        this.itemRenderer.renderItemIntoGUI(gem_block[index], x, y);
+        drawItemStack(gem_block[index], x, y);
       }
     }
     minecraft.getTextureManager().bindTexture(gui_icons);

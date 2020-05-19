@@ -53,9 +53,11 @@ public final class GuiCompressor extends GuiEnergyBase<TileCompressor, Container
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
-    draw_energy();
-    draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
+    draw_energy_usage();
+    // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus());
+    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 79, 41);
+    drawItemStack(tile.getWorkingInventory().getStackInSlot(1), 96, 41);
     draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);
     draw_time_left(tile, time_left_y);
   }

@@ -39,10 +39,28 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   protected final void draw_energy(final int draw_x, final int draw_y){
     if(energy != null){
       draw_text_left("Energy:",draw_x,draw_y);
-      draw_text_right(energy.getEnergy() + " / " + energy.getCapacity(),this.xSize - 6, draw_y);
+      draw_text_right(String.format("%.2f",energy.getEnergy()) + " / " + energy.getCapacity(),this.xSize - 6, draw_y);
     }
     else{
       draw_text_center("[Error: null EnergyStorage reference]",(draw_x + this.xSize - 6) / 2, draw_y);
+    }
+  }
+
+  protected final void draw_energy_usage(){
+    this.draw_energy_usage(6, 17);
+  }
+  
+  protected final void draw_energy_usage_after_switch(){
+    this.draw_energy_usage(44, 21);
+  }
+  
+  protected final void draw_energy_usage(final int draw_x, final int draw_y){
+    if(energy != null){
+      draw_text_left("Energy Usage:", draw_x, draw_y);
+      draw_text_right(String.format("%.2f", energy.get_energy_in()) + " /tick", this.xSize - 6, draw_y);
+    }
+    else{
+      draw_text_left("[Error: null Energy reference]", draw_x, draw_y);
     }
   }
 

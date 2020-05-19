@@ -16,12 +16,12 @@ import net.minecraft.util.ResourceLocation;
 public final class GemConverterCategory implements IRecipeCategory<GemConverterRecipe> {
 
   public static final ResourceLocation id = new ResourceLocation(OverpoweredMod.MOD_ID, "gem_converter");
-  private final ResourceLocation gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/gem_converter.png");
+  private final ResourceLocation gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/gui_textures.png");
   private final IDrawable background;
   private final IDrawable icon;
 
   public GemConverterCategory(final IGuiHelper gui_helper){
-    background = gui_helper.createDrawable(gui_texture, 47, 44, 74, 18);
+    background = gui_helper.createDrawable(gui_texture, 0, 16, 74, 18);
     icon = gui_helper.createDrawableIngredient(new ItemStack(Machines.gem_converter));
   }
 

@@ -16,12 +16,12 @@ import net.minecraft.util.ResourceLocation;
 public final class AdvancedOreRefineryCategory  implements IRecipeCategory<OreRefineryRecipe> {
 
   public static final ResourceLocation id = new ResourceLocation(OverpoweredMod.MOD_ID, "advanced_ore_refinery");
-  private final ResourceLocation gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/advanced_ore_refinery.png");
+  private final ResourceLocation gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/gui_textures.png");
   private final IDrawable background;
   private final IDrawable icon;
 
   public AdvancedOreRefineryCategory(final IGuiHelper gui_helper){
-    background = gui_helper.createDrawable(gui_texture, 38, 42, 73, 18);
+    background = gui_helper.createDrawable(gui_texture, 0, 16, 74, 18);
     icon = gui_helper.createDrawableIngredient(new ItemStack(Machines.advanced_ore_refinery));
   }
 
@@ -60,7 +60,7 @@ public final class AdvancedOreRefineryCategory  implements IRecipeCategory<OreRe
   public void setRecipe(IRecipeLayout recipeLayout, OreRefineryRecipe recipe, IIngredients ingredients){
     final IGuiItemStackGroup gui_item_stacks =  recipeLayout.getItemStacks();
     gui_item_stacks.init(0, true,   0, 0);
-    gui_item_stacks.init(1, false, 55, 0);
+    gui_item_stacks.init(1, false, 56, 0);
     gui_item_stacks.set(ingredients);
   }
 
