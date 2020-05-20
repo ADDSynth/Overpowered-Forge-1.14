@@ -13,25 +13,26 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
 
   private static final int energy_x = 8;
   private static final int energy_y = 68;
-  private static final int energy_width = 160;
+  private static final int energy_width = 168;
   private static final int energy_height = 20;
   private static final int draw_energy_x = 8;
   private static final int draw_energy_y = 182;
   private final ProgressBar energy_progress_bar = new ProgressBar(energy_x,energy_y,energy_width,energy_height,draw_energy_x,draw_energy_y);
 
-  private static final int input_text_x = 48;
+  private static final int input_text_x = 52;
   private static final int input_text_y = 24;
 
-  private static final int extract_text_x = 74;
+  private static final int extract_text_x = 78;
   private static final int extract_text_line_1 = 24; // was 19 to accomodate line 2.
   // private static final int extract_text_line_2 = 31;
 
-  private static final int energy_text_x = 88;
+  private static final int energy_text_x = 91; // OPTIMIZE: replace with center_x
   private static final int energy_text_line_1 = 44;
   private static final int energy_text_line_2 = 56;
 
   public GuiGenerator(final ContainerGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/generator.png"));
+    this.xSize = 182;
     this.ySize = 176;
   }
 

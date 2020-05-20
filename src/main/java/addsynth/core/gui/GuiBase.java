@@ -98,6 +98,7 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
     font.drawString(text, x - (font.getStringWidth(text) / 2), y, text_color);
   }
 
+  /** Draws along the right-edge of the gui. */
   protected final void draw_text_right(final String text, final int y){
     font.drawString(text, this.xSize - 6 - font.getStringWidth(text), y, text_color);
   }

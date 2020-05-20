@@ -34,7 +34,7 @@ public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, Container
 
   public GuiIdentifier(final ContainerIdentifier container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/identifier.png"));
-    this.ySize = 168;
+    this.ySize = 169;
   }
 
   @Override

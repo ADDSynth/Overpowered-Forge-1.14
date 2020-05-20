@@ -19,8 +19,8 @@ public final class ContainerGenerator extends BaseContainer<TileCrystalEnergyGen
   }
 
   private final void common_setup(final PlayerInventory player_inventory){
-    make_player_inventory(player_inventory,8,94);
-    addSlot(new InputSlot(tile,0,TileCrystalEnergyGenerator.input_filter,53,20));
+    make_player_inventory(player_inventory,12,94);
+    addSlot(new InputSlot(tile,0,TileCrystalEnergyGenerator.input_filter,57,20));
   }
 
 }

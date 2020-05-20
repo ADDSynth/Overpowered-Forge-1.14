@@ -69,8 +69,8 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
     draw_text_left("Status: "+status, 6, 28);
   }
 
-  protected final void draw_status(final String status, final int draw_y){
-    draw_text_left("Status: "+status, 6, draw_y);
+  protected final void draw_status_below_switch(final String status){
+    draw_text_left("Status: "+status, 6, 37);
   }
 
   protected final void draw_time_left(final TileWorkMachine tile, final int draw_y){

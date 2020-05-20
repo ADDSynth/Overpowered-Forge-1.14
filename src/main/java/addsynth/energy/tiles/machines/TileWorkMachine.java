@@ -337,6 +337,10 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     return power_switch;
   }
 
+  public final MachineState getState(){
+    return state;
+  }
+
   public final String getStatus(){
     return state.getStatus();
   }

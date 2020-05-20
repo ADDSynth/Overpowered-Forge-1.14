@@ -29,22 +29,25 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
     new ItemStack(Gems.QUARTZ.block_item,1)
   };
 
-  private static final int energy_bar_x = 167;
-  private static final int energy_bar_y = 34;
+  private static final int energy_percentage_y = 37;
+  private static final int energy_change_y = 48;
+
+  private static final int energy_bar_x = 177;
+  private static final int energy_bar_y = 48;
   private static final int energy_bar_width = 17;
-  private static final int energy_bar_height = 46;
-  private static final int energy_bar_draw_x = 206;
+  private static final int energy_bar_height = 63;
+  private static final int energy_bar_draw_x = 211;
   private static final int energy_bar_draw_y = 24;
   private final ProgressBar energy_bar = new ProgressBar(energy_bar_x,energy_bar_y,energy_bar_width,energy_bar_height,energy_bar_draw_x,energy_bar_draw_y);
 
   private static final ResourceLocation gui_icons = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gui_textures.png");
-  private static final int image_x = 15;
-  private static final int image_y = 47;
+  private static final int image_x = 20;
+  private static final int image_y = 59;
   private static final int space_x = 36;
   private static final int space_y = 18;
 
-  private static final int button_x = 17;
-  private static final int button_y = 84;
+  private static final int button_x = 22;
+  private static final int button_y = 96;
   private static final int button_width = 136;
   private static final int button_height = 16;
   
@@ -55,8 +58,8 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
 
   public GuiPortalControlPanel(final ContainerPortalControlPanel container, final PlayerInventory player_inventory, final ITextComponent title){
     super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_control_panel.png"));
-    this.xSize = 192;
-    this.ySize = 124;
+    this.xSize = 202;
+    this.ySize = 136;
   }
 
   private static final class GeneratePortalButton extends AdjustableButton {
@@ -84,22 +87,24 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   @Override
   public final void init(){
     super.init();
-    addButton(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile));
+    addButton(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile)); // OPTIMIZE: On/Off switch position should be standardized.
     addButton(new GeneratePortalButton(this.guiLeft + button_x, this.guiTop + button_y, tile));
   }
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     draw_background_texture();
-    // energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,tile.getEnergyPercentage(),ProgressBar.Round.NEAREST);
+    energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy.getEnergyPercentage(),ProgressBar.Round.NEAREST);
     draw_portal_items();
   }
 
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
-    super.draw_title();
-    super.draw_energy_after_switch();
-    draw_energy_difference(36);
+    draw_title();
+    draw_energy_after_switch();
+    draw_status_below_switch(tile.getStatus());
+    draw_text_right(Math.round(tile.getWorkTimePercentage() * 100) + "%", energy_percentage_y);
+    draw_energy_difference(energy_change_y);
     draw_text_center(tile.getMessage(),status_message_y);
   }
   

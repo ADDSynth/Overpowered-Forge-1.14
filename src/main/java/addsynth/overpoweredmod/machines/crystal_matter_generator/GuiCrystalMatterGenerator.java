@@ -61,7 +61,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
     draw_title();
     draw_energy_usage_after_switch();
     // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
-    draw_status(tile.getStatus(), 36); // this is the only call to the other draw_status() function that specifies the y level. Likely to be removed once we rewrite the energy system, because all machines will have a On/Off switch and will need to draw at THIS y level.
+    draw_status_below_switch(tile.getStatus());
     draw_text_center(work_percentage + "%", work_percentage_text_y);
     draw_time_left(tile, 98);
   }
