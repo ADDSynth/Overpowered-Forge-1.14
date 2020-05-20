@@ -9,6 +9,8 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInverter> {
 
+  private static final ResourceLocation inverter_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/inverter.png");
+
   private int work_percentage;
   private int energy_percentage;
 
@@ -33,8 +35,7 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
   private static final int energy_percentage_text_y = 28;
 
   public GuiInverter(final ContainerInverter container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/inverter.png"));
-    this.ySize = 187;
+    super(-1, 187, container, player_inventory, title, inverter_gui_texture);
   }
 
   @Override
@@ -55,7 +56,7 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
     draw_energy_usage();
     draw_status(tile.getStatus());
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 77, 44);
-    draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);
+    draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
     // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_time_left(tile, 93);
   }

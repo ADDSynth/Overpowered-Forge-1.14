@@ -10,6 +10,9 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMatterGenerator, ContainerCrystalGenerator> {
 
+  private static final ResourceLocation crystal_matter_generator_gui_texture =
+    new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/crystal_matter_generator.png");
+
   private int energy_percentage;
   private int work_percentage;
 
@@ -34,8 +37,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
   private static final int work_percentage_text_y = 77;
 
   public GuiCrystalMatterGenerator(final ContainerCrystalGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/crystal_matter_generator.png"));
-    this.ySize = 194;
+    super(-1, 194, container, player_inventory, title, crystal_matter_generator_gui_texture);
   }
 
   @Override

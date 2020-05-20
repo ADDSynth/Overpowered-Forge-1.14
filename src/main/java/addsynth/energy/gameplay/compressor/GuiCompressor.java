@@ -9,6 +9,8 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiCompressor extends GuiEnergyBase<TileCompressor, ContainerCompressor> {
 
+  private static final ResourceLocation compressor_gui_texture = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/compressor.png");
+
   private int energy_percentage;
   private int work_percentage;
 
@@ -34,8 +36,7 @@ public final class GuiCompressor extends GuiEnergyBase<TileCompressor, Container
   private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
   
   public GuiCompressor(final ContainerCompressor container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/compressor.png"));
-    this.ySize = 182;
+    super(-1, 182, container, player_inventory, title, compressor_gui_texture);
   }
 
   @Override
@@ -58,7 +59,7 @@ public final class GuiCompressor extends GuiEnergyBase<TileCompressor, Container
     draw_status(tile.getStatus());
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 79, 41);
     drawItemStack(tile.getWorkingInventory().getStackInSlot(1), 96, 41);
-    draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);
+    draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
     draw_time_left(tile, time_left_y);
   }
 

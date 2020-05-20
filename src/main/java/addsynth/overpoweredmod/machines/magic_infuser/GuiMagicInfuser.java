@@ -9,6 +9,9 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiMagicInfuser extends GuiEnergyBase<TileMagicInfuser, ContainerMagicInfuser> {
 
+  private static final ResourceLocation magic_infuser_gui_texture =
+    new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/magic_infuser.png");
+
   private int energy_percentage;
   private int work_percentage;
 
@@ -33,8 +36,7 @@ public final class GuiMagicInfuser extends GuiEnergyBase<TileMagicInfuser, Conta
   private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
   
   public GuiMagicInfuser(final ContainerMagicInfuser container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/magic_infuser.png"));
-    this.ySize = 187;
+    super(-1, 187, container, player_inventory, title, magic_infuser_gui_texture);
   }
 
   @Override
@@ -56,7 +58,7 @@ public final class GuiMagicInfuser extends GuiEnergyBase<TileMagicInfuser, Conta
     draw_status(tile.getStatus());
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 78, 44);
     drawItemStack(tile.getWorkingInventory().getStackInSlot(1), 95, 44);
-    draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);
+    draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
     // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_time_left(tile, 93);
   }

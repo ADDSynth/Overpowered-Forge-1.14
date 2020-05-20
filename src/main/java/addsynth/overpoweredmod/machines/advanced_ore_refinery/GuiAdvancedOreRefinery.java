@@ -9,6 +9,9 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreRefinery, ContainerOreRefinery> {
 
+  private static final ResourceLocation advanced_ore_refinery_gui_texture =
+    new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/advanced_ore_refinery.png");
+
   private int energy_percentage;
   private int work_percentage;
 
@@ -33,8 +36,7 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreR
   private static final int energy_percentage_text_y = 28;
 
   public GuiAdvancedOreRefinery(final ContainerOreRefinery container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/advanced_ore_refinery.png"));
-    this.ySize = 186;
+    super(-1, 186, container, player_inventory, title, advanced_ore_refinery_gui_texture);
   }
 
   @Override
@@ -56,7 +58,7 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreR
     // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus());
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 43);
-    draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_text_y);
+    draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
     draw_time_left(tile, 92);
   }
 

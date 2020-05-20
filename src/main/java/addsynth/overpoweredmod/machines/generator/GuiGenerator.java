@@ -9,6 +9,8 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator, ContainerGenerator> {
 
+  private static final ResourceLocation generator_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/generator.png");
+
   private int energy_percentage;
 
   private static final int energy_x = 8;
@@ -26,14 +28,11 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
   private static final int extract_text_line_1 = 24; // was 19 to accomodate line 2.
   // private static final int extract_text_line_2 = 31;
 
-  private static final int energy_text_x = 91; // OPTIMIZE: replace with center_x
   private static final int energy_text_line_1 = 44;
   private static final int energy_text_line_2 = 56;
 
   public GuiGenerator(final ContainerGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/generator.png"));
-    this.xSize = 182;
-    this.ySize = 176;
+    super(182, 176, container, player_inventory, title, generator_gui_texture);
   }
 
   @Override
@@ -54,7 +53,7 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
     // draw_text_left("Energy Draw: "+energy_draw,extract_text_x,extract_text_line_2);
     
     draw_energy(6, energy_text_line_1);
-    draw_text_center(energy_percentage + "%",energy_text_x,energy_text_line_2);
+    draw_text_center(energy_percentage + "%", center_x, energy_text_line_2);
     draw_energy_difference(82);
   }
 

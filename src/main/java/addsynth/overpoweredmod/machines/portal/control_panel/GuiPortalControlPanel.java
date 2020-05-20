@@ -15,9 +15,10 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControlPanel, ContainerPortalControlPanel> {
 
-  /**
-   * It's efficient to create each ItemStack only ONCE when the gui is constructed then pass it as a reference when drawing the ItemStack.
-   */
+  private static final ResourceLocation portal_control_panel_gui_texture =
+    new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_control_panel.png");
+
+  // It's efficient to create each ItemStack only ONCE when the gui is constructed then pass it as a reference when drawing the ItemStack.
   private static final ItemStack[] gem_block = new ItemStack[] {
     new ItemStack(Gems.RUBY.block_item,1),
     new ItemStack(Gems.TOPAZ.block_item,1),
@@ -57,9 +58,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   //          activate the portal.
 
   public GuiPortalControlPanel(final ContainerPortalControlPanel container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_control_panel.png"));
-    this.xSize = 202;
-    this.ySize = 136;
+    super(202, 136, container, player_inventory, title, portal_control_panel_gui_texture);
   }
 
   private static final class GeneratePortalButton extends AdjustableButton {

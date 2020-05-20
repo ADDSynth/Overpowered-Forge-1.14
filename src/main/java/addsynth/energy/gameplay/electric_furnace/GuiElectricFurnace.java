@@ -10,6 +10,8 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace, ContainerElectricFurnace> {
 
+  private static final ResourceLocation electric_furnace_gui = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/electric_furnace.png");
+
   private int energy_percentage;
   private int work_percentage;
 
@@ -35,8 +37,7 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
   private static final int time_left_y = 78;
 
   public GuiElectricFurnace(final ContainerElectricFurnace container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/electric_furnace.png"));
-    this.ySize = 172;
+    super(-1, 172, container, player_inventory, title, electric_furnace_gui);
   }
 
   @Override
@@ -59,7 +60,7 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
     draw_status(tile.getStatus());
     RenderHelper.enableGUIStandardItemLighting();
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 80, 40);
-    draw_text_center(work_percentage + "%",(this.xSize / 2)+21,work_percentage_text_y);
+    draw_text_center(work_percentage + "%", center_x + 21, work_percentage_text_y);
     draw_time_left(tile, time_left_y);
   }
 

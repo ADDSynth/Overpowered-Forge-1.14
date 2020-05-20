@@ -11,12 +11,17 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensionBridge, ContainerSuspensionBridge> {
 
+  private static final ResourceLocation energy_suspension_bridge_gui_texture =
+    new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/energy_suspension_bridge.png");
+
+  private static final int gui_width = 200;
+
   private static final int lens_text_y = 23;
   private static final int[] text_x = {6, 38, 100, 132};
   private static final int[] text_y = {lens_text_y + 17, lens_text_y + 28, lens_text_y + 39};
 
   private static final int button_width = 50;
-  private static final int button_x = 200 - 6 - button_width;
+  private static final int button_x = gui_width - 6 - button_width;
   private static final int button_y = 17;
 
   private static final class RotateButton extends AdjustableButton {
@@ -35,8 +40,7 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
   }
 
   public GuiEnergySuspensionBridge(final ContainerSuspensionBridge container, final PlayerInventory inventory, final ITextComponent title){
-    super(container, inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/energy_suspension_bridge.png"));
-    this.xSize = 200;
+    super(gui_width, -1, container, inventory, title, energy_suspension_bridge_gui_texture);
   }
 
   @Override

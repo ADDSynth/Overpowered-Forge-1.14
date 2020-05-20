@@ -11,15 +11,16 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUniversalEnergyTransfer, ContainerUniversalInterface> {
 
+  private static final ResourceLocation universal_interface_gui = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/universal_energy_interface.png");
+
   private static final int button_width = 90;
-  private final ProgressBar energy_bar = new ProgressBar(156,18,12,34,206, 28);
+  private final ProgressBar energy_bar = new ProgressBar(156, 18, 12, 34, 206, 28);
   
   private static final int line_1 = 21;
   private static final int line_2 = 41;
 
   public GuiUniversalEnergyInterface(final ContainerUniversalInterface container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/universal_energy_interface.png"));
-    this.ySize = 60;
+    super(-1, 60, container, player_inventory, title, universal_interface_gui);
   }
 
   private static final class CycleTransferModeButton extends AdjustableButton {
@@ -47,7 +48,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
   @Override
   public final void init(){
     super.init();
-    final int button_x = guiLeft + (this.xSize / 2) - (button_width / 2) + 4;
+    final int button_x = guiLeft + center_x - (button_width / 2) + 4;
     addButton(new CycleTransferModeButton(button_x, guiTop + 17, tile));
   }
 

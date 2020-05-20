@@ -1,8 +1,6 @@
 package addsynth.core.gui;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -10,15 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-/**
- *  <b>Note:</b>
- *  the {@link Screen#drawScreen(int, int, float)} function (where background, forground, and
- *  buttons is being drawed in) is called in the
- *  {@link net.minecraft.client.renderer.EntityRenderer#updateCameraAndRender} function which
- *  is called every frame in the {@link Minecraft#runGameLoop()} function.<br>
- *  The {@link Screen#updateScreen()} function is called in
- *  {@link Minecraft#runTick()} function, which is called 20 times a second.
- */
 public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
 
   protected static final int text_color = 4210752;
@@ -26,22 +15,24 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
   private final ResourceLocation GUI_TEXTURE;
   
   /** This variable can't be used when drawing text, but CAN be used when drawing textures or buttons. */
-  protected int guiRight;
+  protected final int guiRight;
+  /** center of gui. Used for drawing text. */
+  protected final int center_x;
+  /** equivalent to xSize - 6. Use for drawing text. */
+  protected final int right_edge;
 
-  public GuiBase(final T container, final PlayerInventory player_inventory, final ITextComponent title, final ResourceLocation gui_texture_location){
-    super(container, player_inventory, title);
-    GUI_TEXTURE = gui_texture_location;
+  public GuiBase(final T container, final PlayerInventory player_inventory, final ITextComponent title, final ResourceLocation gui_texture){
+    this(-1, -1, container, player_inventory, title, gui_texture);
   }
 
-  // protected final void set_texture_location(final ResourceLocation texture_location){
-  //   GUI_TEXTURE = texture_location;
-  // }
-
-  @Override
-  public void init(){
-    super.init();
-    guiRight = guiLeft + xSize; // the guiLeft variable isn't set up until we call super.initGui().
-    // OPTIMIZE: add a center variable that is automatically calculated as this.xSize / 2;
+  public GuiBase(int width, int height, T container, PlayerInventory player_inventory, ITextComponent title, ResourceLocation gui_texture){
+    super(container, player_inventory, title);
+    GUI_TEXTURE = gui_texture;
+    if(width  > 0){ this.xSize = width; }
+    if(height > 0){ this.ySize = height; }
+    guiRight = guiLeft + xSize;
+    center_x = xSize / 2;
+    right_edge = xSize - 6;
   }
 
   @Override
@@ -77,15 +68,16 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
   }
 
   protected final void draw_title(){
-    draw_text_center(title.getString(), this.xSize / 2, 6);
+    draw_text_center(title.getString(), center_x, 6);
   }
 
   protected final void draw_text_left(final String text, final int x, final int y){
     font.drawString(text, x, y, text_color);
   }
 
+  /** Draws center-aligned text at the center of the gui. */
   protected final void draw_text_center(final String text, final int y){
-    font.drawString(text, (this.xSize / 2) - (font.getStringWidth(text) / 2), y, text_color);
+    font.drawString(text, center_x - (font.getStringWidth(text) / 2), y, text_color);
   }
 
   /** Vanilla has their own method but mine assumes a few arguments to make it easier.
@@ -100,7 +92,7 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
 
   /** Draws along the right-edge of the gui. */
   protected final void draw_text_right(final String text, final int y){
-    font.drawString(text, this.xSize - 6 - font.getStringWidth(text), y, text_color);
+    font.drawString(text, right_edge - font.getStringWidth(text), y, text_color);
   }
 
   protected final void draw_text_right(final String text, final int x, final int y){

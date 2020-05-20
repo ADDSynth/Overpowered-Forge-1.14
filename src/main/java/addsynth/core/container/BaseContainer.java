@@ -64,7 +64,7 @@ public abstract class BaseContainer<T extends TileEntity> extends Container {
 
   /*
   protected final ItemStack default_transfer(final int index, final int number_of_input_slots){
-    FUTURE: Added Shift-click support is just too complicated right now, so I'm moving it to the December 2019 release.
+    FUTURE: Adding Shift-click support is just too complicated right now, so I'm moving it to the December 2020 release.
 
     final int player_inventory_max = 36;
     ItemStack stack = ItemStack.EMPTY;

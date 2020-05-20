@@ -11,6 +11,8 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, ContainerGemConverter> {
 
+  private static final ResourceLocation gem_converter_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gem_converter.png");
+
   private int work_percentage;
   private int energy_percentage;
 
@@ -44,8 +46,7 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
   private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
   
   public GuiGemConverter(final ContainerGemConverter container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gem_converter.png"));
-    this.ySize = 194;
+    super(-1, 194, container, player_inventory, title, gem_converter_gui_texture);
   }
 
   private static final class CycleGemButton extends AdjustableButton {

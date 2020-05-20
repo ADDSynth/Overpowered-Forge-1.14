@@ -9,6 +9,8 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, ContainerIdentifier> {
 
+  private static final ResourceLocation identifier_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/identifier.png");
+
   private int work_percentage;
   private int energy_percentage;
 
@@ -33,8 +35,7 @@ public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, Container
   private final ProgressBar energy_progress_bar = new ProgressBar(energy_bar_x,energy_bar_y,energy_bar_width,energy_bar_height,draw_energy_x,draw_energy_y);
 
   public GuiIdentifier(final ContainerIdentifier container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/identifier.png"));
-    this.ySize = 169;
+    super(-1, 169, container, player_inventory, title, identifier_gui_texture);
   }
 
   @Override
@@ -55,7 +56,7 @@ public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, Container
     draw_energy_usage();
     draw_status(tile.getStatus());
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 41);
-    draw_text_center(work_percentage + "%",this.xSize / 2,work_percentage_y);
+    draw_text_center(work_percentage + "%", center_x, work_percentage_y);
     // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
   }
 

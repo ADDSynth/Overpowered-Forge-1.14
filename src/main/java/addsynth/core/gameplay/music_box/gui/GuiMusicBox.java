@@ -12,6 +12,8 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
 
+  private static final ResourceLocation music_box_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/music_box.png");
+
   private final TileMusicBox tile;
 
   private static final int gui_width = 263;
@@ -72,13 +74,9 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   private static final int instrument_button_x = instrument_cursor_x + 2;
   private static final int instrument_button_y = instrument_cursor_y + 2;
 
-  private static final int center_x = (gui_width / 2) - 10;
-
   public GuiMusicBox(final ContainerMusicBox container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/music_box.png"));
+    super(gui_width, gui_height, container, player_inventory, title, music_box_texture);
     this.tile = container.getTileEntity();
-    this.xSize = gui_width;
-    this.ySize = gui_height;
   }
 
   @Override
@@ -86,7 +84,7 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
     super.init();
 
     // controls list
-    int x = this.guiLeft + (xSize / 2) - (play_button_width / 2);
+    int x = this.guiLeft + center_x - (play_button_width / 2);
     addButton(new MusicButtons.PlayButton(x, this.guiTop + 17, play_button_width, tile));
     addButton(new MusicButtons.TempoButton(this.guiLeft + 6, this.guiTop + tempo_button_y, tempo_button_width, tempo_button_height, true, tile));
     x = this.guiLeft + 6 + tempo_button_width + tempo_text_width; // OPTIMIZE calculation of guiTop + tempo_button_y for Tempo buttons.
@@ -203,10 +201,10 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
     draw_text_center(ticks + " ticks",tempo_text_x_center, 17);
     draw_text_center(bpm + " bpm",tempo_text_x_center, 27);
     
-    draw_text_center("Next:", this.xSize - 6 - Math.round(next_direction_button_width / 2), 6);
+    draw_text_center("Next:", right_edge - (next_direction_button_width / 2), 6);
     
     draw_text_left("Current Note: "+MusicButtons.note[note_selected],6,info_text_y);
-    draw_text_left("Instrument: "+instrument[instrument_selected], center_x, info_text_y);
+    draw_text_left("Instrument: "+instrument[instrument_selected], center_x - 10, info_text_y);
   }
 
   /**

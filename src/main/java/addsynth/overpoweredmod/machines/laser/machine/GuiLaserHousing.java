@@ -15,6 +15,9 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, ContainerLaserHousing> {
 
+  private static final ResourceLocation laser_machine_gui_texture =
+    new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/laser_machine.png");
+
   private TextFieldWidget text_box;
 
   private static final int space = 4;
@@ -45,8 +48,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   */
 
   public GuiLaserHousing(final ContainerLaserHousing container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(container, player_inventory, title, new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/laser_machine.png"));
-    this.ySize = 104;
+    super(-1, 104, container, player_inventory, title, laser_machine_gui_texture);
   }
 
   private static final class ToggleAutoShutoff extends CheckBox {
@@ -82,7 +84,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
       setEnableBackgroundDrawing(true);
       setVisible(true);
       setTextColor(16777215);
-      setResponder((String text)-> text_field_changed()); // can be static or instance method, don't want to bother figuring out which one is better right now.
+      setResponder((String text)-> text_field_changed()); // TODO: can be static or instance method, don't want to bother figuring out which one is better right now.
     }
 
     private final void text_field_changed(){

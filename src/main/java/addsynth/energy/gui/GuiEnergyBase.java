@@ -18,9 +18,16 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
 
   @SuppressWarnings("unchecked")
   public GuiEnergyBase(final C container, final PlayerInventory player_inventory, final ITextComponent title, final ResourceLocation gui_texture_location){
-    super(container, player_inventory, title, gui_texture_location);
+    super(-1, -1, container, player_inventory, title, gui_texture_location);
     this.tile = (T)container.getTileEntity();
     // this.energy = tile instanceof IEnergyUser ? ((IEnergyUser)tile).getEnergy() : null;
+    this.energy = tile.getEnergy();
+  }
+
+  @SuppressWarnings("unchecked")
+  public GuiEnergyBase(int width, int height, C container, PlayerInventory player_inventory, ITextComponent title, ResourceLocation gui_texture_location){
+    super(width, height, container, player_inventory, title, gui_texture_location);
+    this.tile = (T)container.getTileEntity();
     this.energy = tile.getEnergy();
   }
 
@@ -39,10 +46,10 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   protected final void draw_energy(final int draw_x, final int draw_y){
     if(energy != null){
       draw_text_left("Energy:",draw_x,draw_y);
-      draw_text_right(String.format("%.2f",energy.getEnergy()) + " / " + energy.getCapacity(),this.xSize - 6, draw_y);
+      draw_text_right(String.format("%.2f",energy.getEnergy()) + " / " + energy.getCapacity(), right_edge, draw_y);
     }
     else{
-      draw_text_center("[Error: null EnergyStorage reference]",(draw_x + this.xSize - 6) / 2, draw_y);
+      draw_text_center("[Error: null EnergyStorage reference]",(draw_x + right_edge) / 2, draw_y);
     }
   }
 
@@ -57,7 +64,7 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   protected final void draw_energy_usage(final int draw_x, final int draw_y){
     if(energy != null){
       draw_text_left("Energy Usage:", draw_x, draw_y);
-      draw_text_right(String.format("%.2f", energy.get_energy_in()) + " /tick", this.xSize - 6, draw_y);
+      draw_text_right(String.format("%.2f", energy.get_energy_in()) + " /tick", right_edge, draw_y);
     }
     else{
       draw_text_left("[Error: null Energy reference]", draw_x, draw_y);
@@ -85,10 +92,10 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
     final double difference = energy.getDifference();
     switch((int)Math.signum(difference)){
     case 1:
-      draw_text_left("Time to Full Charge: "+StringUtil.print_time((int)Math.ceil((double)energy.getEnergyNeeded() / difference)), 6, draw_y);
+      draw_text_left("Time to Full Charge: "+StringUtil.print_time((int)Math.ceil(energy.getEnergyNeeded() / difference)), 6, draw_y);
       break;
     case -1:
-      draw_text_left("Charge Time Remaining: "+StringUtil.print_time((int)Math.ceil((double)energy.getEnergy() / (-difference))), 6, draw_y);
+      draw_text_left("Charge Time Remaining: "+StringUtil.print_time((int)Math.ceil(energy.getEnergy() / (-difference))), 6, draw_y);
       break;
     case 0:
       draw_text_left("No Energy Change.", 6, draw_y);
