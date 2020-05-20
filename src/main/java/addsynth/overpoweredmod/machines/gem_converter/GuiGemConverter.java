@@ -95,7 +95,7 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
     draw_energy_usage();
     draw_status(tile.getStatus());
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 45);
-    draw_text_center(work_percentage + "%",work_percentage_x,work_percentage_y);
+    draw_text_center(work_percentage + "%", work_percentage_x, work_percentage_y);
     draw_time_left(tile, time_left_y);
   }
 

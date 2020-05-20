@@ -12,7 +12,7 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
 
-  private static final ResourceLocation music_box_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/music_box.png");
+  private static final ResourceLocation music_box_gui_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/music_box.png");
 
   private final TileMusicBox tile;
 
@@ -75,7 +75,7 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   private static final int instrument_button_y = instrument_cursor_y + 2;
 
   public GuiMusicBox(final ContainerMusicBox container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(gui_width, gui_height, container, player_inventory, title, music_box_texture);
+    super(gui_width, gui_height, container, player_inventory, title, music_box_gui_texture);
     this.tile = container.getTileEntity();
   }
 

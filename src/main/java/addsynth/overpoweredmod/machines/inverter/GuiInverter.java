@@ -39,7 +39,7 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
   }
 
   @Override
-  protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+  protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     draw_background_texture();
     // final float energy_float = tile.getEnergyPercentage();
     // energy_percentage = (Math.round(energy_float*100));

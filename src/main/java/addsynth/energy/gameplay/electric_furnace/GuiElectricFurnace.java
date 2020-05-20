@@ -10,7 +10,8 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace, ContainerElectricFurnace> {
 
-  private static final ResourceLocation electric_furnace_gui = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/electric_furnace.png");
+  private static final ResourceLocation electric_furnace_gui_texture =
+    new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/electric_furnace.png");
 
   private int energy_percentage;
   private int work_percentage;
@@ -37,7 +38,7 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
   private static final int time_left_y = 78;
 
   public GuiElectricFurnace(final ContainerElectricFurnace container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 172, container, player_inventory, title, electric_furnace_gui);
+    super(-1, 172, container, player_inventory, title, electric_furnace_gui_texture);
   }
 
   @Override

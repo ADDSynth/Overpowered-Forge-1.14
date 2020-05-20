@@ -9,7 +9,8 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiEnergyStorageContainer extends GuiEnergyBase<TileEnergyStorage, ContainerEnergyStorage> {
 
-  private static final ResourceLocation energy_container_gui = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/energy_storage.png");
+  private static final ResourceLocation energy_storage_gui_texture =
+    new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/energy_storage.png");
 
   private float energy_float;
   private static final int draw_energy_text_y  = 25;
@@ -20,7 +21,7 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<TileEnergySto
   private final ProgressBar energy_bar = new ProgressBar(9, 59, 174, 17, 9, 106);
 
   public GuiEnergyStorageContainer(final ContainerEnergyStorage container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(190, 94, container, player_inventory, title, energy_container_gui);
+    super(190, 94, container, player_inventory, title, energy_storage_gui_texture);
   }
 
   @Override

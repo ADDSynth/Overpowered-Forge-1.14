@@ -15,7 +15,7 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
   private final ResourceLocation GUI_TEXTURE;
   
   /** This variable can't be used when drawing text, but CAN be used when drawing textures or buttons. */
-  protected final int guiRight;
+  protected int guiRight;
   /** center of gui. Used for drawing text. */
   protected final int center_x;
   /** equivalent to xSize - 6. Use for drawing text. */
@@ -30,9 +30,14 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
     GUI_TEXTURE = gui_texture;
     if(width  > 0){ this.xSize = width; }
     if(height > 0){ this.ySize = height; }
-    guiRight = guiLeft + xSize;
     center_x = xSize / 2;
     right_edge = xSize - 6;
+  }
+
+  @Override
+  public void init(){
+    super.init();
+    guiRight = guiLeft + xSize; // the guiLeft variable isn't set up until we call super.init()!
   }
 
   @Override
