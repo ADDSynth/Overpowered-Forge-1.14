@@ -26,9 +26,12 @@ import net.minecraft.item.ItemStack;
 public final class TileMagicInfuser extends TileWorkMachine implements INamedContainerProvider {
 
   public static final Item[] getFilter(){
-    return MaterialsUtil.getFilter(
-      MaterialsUtil.getRubies(), MaterialsUtil.getTopaz(), MaterialsUtil.getCitrine(), MaterialsUtil.getEmeralds(),
-      MaterialsUtil.getDiamonds(), MaterialsUtil.getSapphires(), MaterialsUtil.getAmethysts(), MaterialsUtil.getQuartz()
+    return JavaUtils.combine_arrays(
+      MaterialsUtil.getFilter(
+        MaterialsUtil.getRubies(), MaterialsUtil.getTopaz(), MaterialsUtil.getCitrine(), MaterialsUtil.getEmeralds(),
+        MaterialsUtil.getDiamonds(), MaterialsUtil.getSapphires(), MaterialsUtil.getAmethysts(), MaterialsUtil.getQuartz()
+      ),
+      new Item[]{Init.energy_crystal, Init.void_crystal}
     );
   }
 
@@ -38,7 +41,7 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
       new SlotData[]{ // FUTURE now the SlotData needs to be constructed every time, because of the Item Tags in getFilter().
         // Have slots automatically rebuild their filter by calling a build filter function? Make a Filter its own class object?
         new SlotData(Items.BOOK),
-        new SlotData(JavaUtils.combine_arrays(getFilter(), new Item[]{Init.energy_crystal, Init.void_crystal}))
+        new SlotData(getFilter())
       },
       1,
       MachineValues.magic_infuser
