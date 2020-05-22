@@ -390,7 +390,14 @@ public final class MathUtility {
 
   public static final int choose(final Random random, final int ... list){
     if(list.length == 0){
-      throw new IllegalArgumentException("MathUtility.choose() requires a list of at least 1 integer!");
+      throw new IllegalArgumentException(MathUtility.class.getSimpleName()+".choose() requires a list of at least 1 integer!");
+    }
+    return list[random.nextInt(list.length)];
+  }
+
+  public static final <T> T choose(final Random random, final T[] list){
+    if(list.length == 0){
+      throw new IllegalArgumentException(MathUtility.class.getSimpleName()+".choose() requires a list of 1 or more objects!");
     }
     return list[random.nextInt(list.length)];
   }

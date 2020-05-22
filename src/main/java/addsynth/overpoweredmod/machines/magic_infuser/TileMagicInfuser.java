@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.JavaUtils;
+import addsynth.core.util.MathUtility;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -24,6 +25,64 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.item.ItemStack;
 
 public final class TileMagicInfuser extends TileWorkMachine implements INamedContainerProvider {
+
+  private static final Enchantment[] ruby_enchantments = new Enchantment[]{
+    Enchantments.POWER,
+    Enchantments.PUNCH
+  };
+  private static final Enchantment[] topaz_enchantments = new Enchantment[]{
+    Enchantments.BLAST_PROTECTION,
+    Enchantments.FIRE_ASPECT,
+    Enchantments.FIRE_PROTECTION,
+    Enchantments.FLAME
+  };
+  private static final Enchantment[] citrine_enchantments = new Enchantment[]{
+    Enchantments.SHARPNESS,
+    Enchantments.BANE_OF_ARTHROPODS,
+    Enchantments.SMITE,
+    Enchantments.QUICK_CHARGE,
+    Enchantments.PIERCING
+  };
+  private static final Enchantment[] emerald_enchantments = new Enchantment[]{
+    Enchantments.FEATHER_FALLING,
+    Enchantments.RESPIRATION,
+    Enchantments.LOYALTY,
+    Enchantments.CHANNELING
+  };
+  private static final Enchantment[] diamond_enchantments = new Enchantment[]{
+    Enchantments.PROJECTILE_PROTECTION,
+    Enchantments.PROTECTION,
+    Enchantments.THORNS
+  };
+  private static final Enchantment[] sapphire_enchantments = new Enchantment[]{
+    Enchantments.DEPTH_STRIDER,
+    Enchantments.AQUA_AFFINITY,
+    Enchantments.FROST_WALKER,
+    Enchantments.LUCK_OF_THE_SEA,
+    Enchantments.LURE,
+    Enchantments.RIPTIDE,
+    Enchantments.IMPALING
+  };
+  private static final Enchantment[] amethyst_enchantments = new Enchantment[]{
+    Enchantments.LOOTING,
+    Enchantments.KNOCKBACK,
+    Enchantments.SWEEPING,
+    Enchantments.MULTISHOT
+  };
+  private static final Enchantment[] quartz_enchantments = new Enchantment[]{
+    Enchantments.EFFICIENCY,
+    Enchantments.UNBREAKING
+  };
+  private static final Enchantment[] energy_crystal_enchantments = new Enchantment[]{
+    Enchantments.FORTUNE,
+    Enchantments.INFINITY,
+    Enchantments.SILK_TOUCH,
+    Enchantments.MENDING
+  };
+  private static final Enchantment[] void_crystal_enchantments = new Enchantment[]{
+    Enchantments.BINDING_CURSE,
+    Enchantments.VANISHING_CURSE
+  };
 
   public static final Item[] getFilter(){
     return JavaUtils.combine_arrays(
@@ -68,86 +127,41 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
 
   private final Enchantment get_enchantment(){
     // https://minecraft.gamepedia.com/Enchanting#Summary_of_enchantments
-    Enchantment enchantment = null;
     final Item item = working_inventory.getStackInSlot(1).getItem();
     final Random random = new Random();
-    // 1 in 50 chance you get either Curse of Binding or Curse of Vanishing
     if(MaterialsUtil.match(item, MaterialsUtil.getRubies())){
-      switch(random.nextInt(2)){
-      case 0: enchantment = Enchantments.POWER; break;
-      case 1: enchantment = Enchantments.PUNCH; break;
-      // TODO: DO NOT use a switch statement for this, instead, move enchantments in an array (pass in T[] array), and call a Utility function that will automatically return a random object from the array.
-      }
+      return MathUtility.choose(random, ruby_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getTopaz())){
-      switch(random.nextInt(4)){
-      case 0: enchantment = Enchantments.BLAST_PROTECTION; break;
-      case 1: enchantment = Enchantments.FIRE_ASPECT; break;
-      case 2: enchantment = Enchantments.FIRE_PROTECTION; break;
-      case 3: enchantment = Enchantments.FLAME; break;
-      }
+      return MathUtility.choose(random, topaz_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getCitrine())){
-      switch(random.nextInt(3)){
-      case 0: enchantment = Enchantments.SHARPNESS; break;
-      case 1: enchantment = Enchantments.BANE_OF_ARTHROPODS; break;
-      case 2: enchantment = Enchantments.SMITE; break;
-      }
+      return MathUtility.choose(random, citrine_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getEmeralds())){
-      switch(random.nextInt(2)){
-      case 0: enchantment = Enchantments.FEATHER_FALLING; break;
-      case 1: enchantment = Enchantments.RESPIRATION; break;
-      }
+      return MathUtility.choose(random, emerald_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getDiamonds())){
-      switch(random.nextInt(3)){
-      case 0: enchantment = Enchantments.PROJECTILE_PROTECTION; break;
-      case 1: enchantment = Enchantments.PROTECTION; break;
-      case 2: enchantment = Enchantments.THORNS; break;
-      }
+      return MathUtility.choose(random, diamond_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getSapphires())){
-      switch(random.nextInt(5)){
-      case 0: enchantment = Enchantments.DEPTH_STRIDER; break;
-      case 1: enchantment = Enchantments.AQUA_AFFINITY; break;
-      case 2: enchantment = Enchantments.FROST_WALKER; break;
-      case 3: enchantment = Enchantments.LUCK_OF_THE_SEA; break;
-      case 4: enchantment = Enchantments.LURE; break;
-      }
+      return MathUtility.choose(random, sapphire_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getAmethysts())){
-      switch(random.nextInt(3)){
-      case 0: enchantment = Enchantments.LOOTING; break;
-      case 1: enchantment = Enchantments.KNOCKBACK; break;
-      case 2: enchantment = Enchantments.SWEEPING; break;
-      }
+      return MathUtility.choose(random, amethyst_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getQuartz())){
-      switch(random.nextInt(2)){
-      case 0: enchantment = Enchantments.EFFICIENCY; break;
-      case 1: enchantment = Enchantments.UNBREAKING; break;
-      }
+      return MathUtility.choose(random, quartz_enchantments);
     }
     if(item == Init.energy_crystal){
-      switch(random.nextInt(4)){
-      case 0: enchantment = Enchantments.FORTUNE; break;
-      case 1: enchantment = Enchantments.INFINITY; break;
-      case 2: enchantment = Enchantments.SILK_TOUCH; break;
-      case 3: enchantment = Enchantments.MENDING; break;
-      }
+      return MathUtility.choose(random, energy_crystal_enchantments);
     }
     if(item == Init.void_crystal){
-      switch(random.nextInt(2)){
-      case 0: enchantment = Enchantments.BINDING_CURSE; break;
-      case 1: enchantment = Enchantments.VANISHING_CURSE; break;
-      }
+      return MathUtility.choose(random, void_crystal_enchantments);
     }
-    if(enchantment == null){
-      OverpoweredMod.log.error("function get_enchantment() in "+TileMagicInfuser.class.getSimpleName()+" returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
-      Thread.dumpStack();
-    }
-    return enchantment;
+    OverpoweredMod.log.error("function get_enchantment() in "+TileMagicInfuser.class.getSimpleName()+" returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
+    Thread.dumpStack();
+    return null;
   }
 
   @Override
