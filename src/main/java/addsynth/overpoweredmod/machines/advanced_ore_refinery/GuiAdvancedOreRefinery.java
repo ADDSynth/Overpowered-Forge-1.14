@@ -15,21 +15,9 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreR
   private int energy_percentage;
   private int work_percentage;
 
-  private static final int energy_bar_x = 148;
-  private static final int energy_bar_y = 39;
-  private static final int energy_bar_width = 17;
-  private static final int energy_bar_height = 35;
-  private static final int draw_energy_x = 204;
-  private static final int draw_energy_y = 28;
-  private final ProgressBar energy_progress_bar = new ProgressBar(energy_bar_x, energy_bar_y, energy_bar_width, energy_bar_height, draw_energy_x, draw_energy_y);
+  private final ProgressBar energy_progress_bar = new ProgressBar(148, 39, 17, 35, 204, 28);
 
-  private static final int work_bar_x = 8;
-  private static final int work_bar_y = 83;
-  private static final int work_bar_width = 160;
-  private static final int work_bar_height = 5;
-  private static final int draw_work_bar_x = 8;
-  private static final int draw_work_bar_y = 194;
-  private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
+  private final ProgressBar work_progress_bar = new ProgressBar(8, 83, 160, 5, 8, 194);
   
   private static final int work_percentage_text_y = 69;
   private static final int energy_percentage_text_x = 156;

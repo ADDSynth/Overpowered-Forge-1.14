@@ -13,13 +13,7 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
 
   private int energy_percentage;
 
-  private static final int energy_x = 8;
-  private static final int energy_y = 68;
-  private static final int energy_width = 168;
-  private static final int energy_height = 20;
-  private static final int draw_energy_x = 8;
-  private static final int draw_energy_y = 182;
-  private final ProgressBar energy_progress_bar = new ProgressBar(energy_x,energy_y,energy_width,energy_height,draw_energy_x,draw_energy_y);
+  private final ProgressBar energy_progress_bar = new ProgressBar(8, 68, 168, 20, 8, 182);
 
   private static final int input_text_x = 52;
   private static final int input_text_y = 24;

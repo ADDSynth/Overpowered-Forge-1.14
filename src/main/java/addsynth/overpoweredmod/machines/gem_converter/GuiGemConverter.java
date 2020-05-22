@@ -29,21 +29,9 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
   private static final int right_button_x = left_button_x + cycle_button_width + 16 + (cycle_button_buffer*2);
   private static final int cycle_button_height = 16;
   
-  private static final int energy_bar_x = 148;
-  private static final int energy_bar_y = 39;
-  private static final int energy_bar_width = 17;
-  private static final int energy_bar_height = 42;
-  private static final int draw_energy_x = 204;
-  private static final int draw_energy_y = 21;
-  private final ProgressBar energy_progress_bar = new ProgressBar(energy_bar_x, energy_bar_y, energy_bar_width, energy_bar_height, draw_energy_x, draw_energy_y);
+  private final ProgressBar energy_progress_bar = new ProgressBar(148, 39, 17, 42, 204, 21);
 
-  private static final int work_bar_x = 43;
-  private static final int work_bar_y = 89;
-  private static final int work_bar_width = 122;
-  private static final int work_bar_height = 5;
-  private static final int draw_work_bar_x = 40;
-  private static final int draw_work_bar_y = 199;
-  private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
+  private final ProgressBar work_progress_bar = new ProgressBar(43, 89, 122, 5, 40, 199);
   
   public GuiGemConverter(final ContainerGemConverter container, final PlayerInventory player_inventory, final ITextComponent title){
     super(-1, 194, container, player_inventory, title, gem_converter_gui_texture);

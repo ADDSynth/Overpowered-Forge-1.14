@@ -18,21 +18,9 @@ public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, Container
   private static final int energy_percentage_text_x = 156;
   private static final int energy_percentage_text_y = 28;
 
-  private static final int work_bar_x = 8;
-  private static final int work_bar_y = 75;
-  private static final int work_bar_width = 160;
-  private static final int work_bar_height = 5;
-  private static final int draw_work_bar_x = 11;
-  private static final int draw_work_bar_y = 184;
-  private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
+  private final ProgressBar work_progress_bar = new ProgressBar(8, 75, 160, 5, 11, 184);
 
-  private static final int energy_bar_x = 151;
-  private static final int energy_bar_y = 39;
-  private static final int energy_bar_width = 17;
-  private static final int energy_bar_height = 28;
-  private static final int draw_energy_x = 206;
-  private static final int draw_energy_y = 24;
-  private final ProgressBar energy_progress_bar = new ProgressBar(energy_bar_x,energy_bar_y,energy_bar_width,energy_bar_height,draw_energy_x,draw_energy_y);
+  private final ProgressBar energy_progress_bar = new ProgressBar(151, 39, 17, 28, 206, 24);
 
   public GuiIdentifier(final ContainerIdentifier container, final PlayerInventory player_inventory, final ITextComponent title){
     super(-1, 169, container, player_inventory, title, identifier_gui_texture);

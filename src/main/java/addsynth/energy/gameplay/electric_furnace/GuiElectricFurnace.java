@@ -16,21 +16,9 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
   private int energy_percentage;
   private int work_percentage;
 
-  private static final int energy_bar_x = 148;
-  private static final int energy_bar_y = 39;
-  private static final int energy_bar_width = 17;
-  private static final int energy_bar_height = 45;
-  private static final int draw_energy_x = 204;
-  private static final int draw_energy_y = 28;
-  private final ProgressBar energy_progress_bar = new ProgressBar(energy_bar_x, energy_bar_y, energy_bar_width, energy_bar_height, draw_energy_x, draw_energy_y);
+  private final ProgressBar energy_progress_bar = new ProgressBar(148, 39, 17, 45, 204, 28);
 
-  private static final int work_bar_x = 80;
-  private static final int work_bar_y = 60;
-  private static final int work_bar_width = 14;
-  private static final int work_bar_height = 14;
-  private static final int draw_work_bar_x = 200;
-  private static final int draw_work_bar_y = 2;
-  private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
+  private final ProgressBar work_progress_bar = new ProgressBar(80, 60, 14, 14, 200, 2);
   
   private static final int energy_percentage_text_x = 156;
   private static final int energy_percentage_text_y = 28;

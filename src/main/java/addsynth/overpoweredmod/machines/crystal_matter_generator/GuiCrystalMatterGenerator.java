@@ -16,21 +16,9 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
   private int energy_percentage;
   private int work_percentage;
 
-  private static final int energy_bar_x = 155;
-  private static final int energy_bar_y = 45;
-  private static final int energy_bar_width = 13;
-  private static final int energy_bar_height = 38;
-  private static final int draw_energy_x = 206;
-  private static final int draw_energy_y = 24;
-  private final ProgressBar energy_progress_bar = new ProgressBar(energy_bar_x, energy_bar_y, energy_bar_width, energy_bar_height, draw_energy_x, draw_energy_y);
+  private final ProgressBar energy_progress_bar = new ProgressBar(155, 45, 13, 38, 206, 24);
 
-  private static final int work_bar_x = 8;
-  private static final int work_bar_y = 89;
-  private static final int work_bar_width = 160;
-  private static final int work_bar_height = 5;
-  private static final int draw_work_bar_x = 11;
-  private static final int draw_work_bar_y = 194;
-  private final ProgressBar work_progress_bar = new ProgressBar(work_bar_x, work_bar_y, work_bar_width, work_bar_height, draw_work_bar_x, draw_work_bar_y);
+  private final ProgressBar work_progress_bar = new ProgressBar(8, 89, 160, 5, 11, 194);
   
   private static final int energy_percentage_text_x = 158;
   private static final int energy_percentage_text_y = 33;

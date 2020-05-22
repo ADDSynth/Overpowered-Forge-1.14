@@ -33,13 +33,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   private static final int energy_percentage_y = 37;
   private static final int energy_change_y = 48;
 
-  private static final int energy_bar_x = 177;
-  private static final int energy_bar_y = 48;
-  private static final int energy_bar_width = 17;
-  private static final int energy_bar_height = 63;
-  private static final int energy_bar_draw_x = 211;
-  private static final int energy_bar_draw_y = 24;
-  private final ProgressBar energy_bar = new ProgressBar(energy_bar_x,energy_bar_y,energy_bar_width,energy_bar_height,energy_bar_draw_x,energy_bar_draw_y);
+  private final ProgressBar energy_bar = new ProgressBar(177, 48, 17, 63, 211, 24);
 
   private static final ResourceLocation gui_icons = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gui_textures.png");
   private static final int image_x = 14;
