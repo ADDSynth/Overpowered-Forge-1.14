@@ -1,7 +1,7 @@
 package addsynth.core.util;
 
 import java.lang.Math;
-import java.util.List;
+import java.util.Collection;
 import java.util.Random;
 import javax.annotation.Nonnegative;
 import net.minecraft.util.math.BlockPos;
@@ -257,7 +257,7 @@ public final class MathUtility {
     return get_distance(center,position) <= radius;
   }
 
-  public static final BlockPos getCenter(List<BlockPos> list){
+  public static final BlockPos getCenter(final Collection<BlockPos> list){
     if(list.size() > 0){
       final double[] center = getExactCenter(list);
       return new BlockPos( Math.floor(center[0]), Math.floor(center[1]), Math.floor(center[2]));
@@ -274,7 +274,7 @@ public final class MathUtility {
    * Returns a double type array with 3 indexes (x, y, and z) indicating the center position of the list of Block Positions.
    * @param list
    */
-  public static final double[] getExactCenter(List<BlockPos> list){
+  public static final double[] getExactCenter(final Collection<BlockPos> list){
     final BlockPos[] pos = get_min_max_positions(list);
     return new double[] { (pos[0].getX() + pos[1].getX()) / 2, (pos[0].getY() + pos[1].getY()) / 2, (pos[0].getZ() + pos[1].getZ()) / 2 };
   }
@@ -306,12 +306,66 @@ public final class MathUtility {
     return (int)Math.floor(coordinate) % 16;
   }
 
-  /** Returns an array of 2 Block Positions, the first being the minimum, the second being the maximum. */
-  public static final BlockPos[] get_min_max_positions(final List<BlockPos> list){
+  /** Returns the minimum position in the list of BlockPositions.
+   *  <p>This does not return a BlockPos in the list! It returns the lowest possible position!<br />
+   *  For instance, in the following situation:<br />
+   *  <code><pre>
+   *    X  
+   *    X  
+   *     XX</pre></code>
+   *  This would return the bottom-left space!
+   */
+  public static final BlockPos get_minimum_position(final Collection<BlockPos> list){
+    return get_minimum_position(list.toArray(new BlockPos[list.size()]));
+  }
+
+  /** Returns the minimum position in the list of BlockPositions.
+   *  <p>This does not return a BlockPos in the list! It returns the lowest possible position!<br />
+   *  For instance, in the following situation:<br />
+   *  <code><pre>
+   *    X  
+   *    X  
+   *     XX</pre></code>
+   *  This would return the bottom-left space!
+   */
+  public static final BlockPos get_minimum_position(final BlockPos[] list){
+    if(list.length > 0){
+      int i;
+      int min_x = list[0].getX();
+      int min_y = list[0].getY();
+      int min_z = list[0].getZ();
+      for(i = 1; i < list.length; i++){
+        if(list[i].getX() < min_x){ min_x = list[i].getX(); }
+        if(list[i].getY() < min_y){ min_y = list[i].getY(); }
+        if(list[i].getZ() < min_z){ min_z = list[i].getZ(); }
+      }
+      return new BlockPos(min_x, min_y, min_z);
+    }
+    throw new IllegalArgumentException("Function "+MathUtility.class.getName()+".get_minimum_position() requires a list that has at least 1 BlockPosition.");
+  }
+
+  /** Returns an array of 2 Block Positions, the first being the minimum, the second being the maximum.
+   *  <p>This does not return a BlockPos in the list! It returns the lowest and highest possible position!<br />
+   *  For instance, in the following situation:<br />
+   *  <code><pre>
+   *    X  
+   *    X  
+   *     XX</pre></code>
+   *  This would return the bottom-left space!
+   */
+  public static final BlockPos[] get_min_max_positions(final Collection<BlockPos> list){
     return get_min_max_positions(list.toArray(new BlockPos[list.size()]));
   }
 
-  /** Returns an array of 2 Block Positions, the first being the minimum, the second being the maximum. */
+  /** <p>Returns an array of 2 Block Positions, the first being the minimum, the second being the maximum.
+   *  <p>This does not return a BlockPos in the list! It returns the lowest and highest possible position!<br />
+   *  For instance, in the following situation:<br />
+   *  <code><pre>
+   *    X  
+   *    X  
+   *     XX</pre></code>
+   *  This would return the bottom-left space!
+   */
   public static final BlockPos[] get_min_max_positions(final BlockPos[] list){
     if(list.length > 0){
       int i;

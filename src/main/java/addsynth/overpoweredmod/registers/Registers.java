@@ -73,8 +73,10 @@ public final class Registers {
       game.register(Machines.portal_control_panel);
       game.register(Machines.portal_frame);
       game.register(Portal.portal);
-      game.register(Portal.unknown_wood);
-      game.register(Portal.unknown_leaves);
+      if(Features.unknown_dimension.get()){
+        game.register(Portal.unknown_wood);
+        game.register(Portal.unknown_leaves);
+      }
     }
     if(Features.crystal_matter_generator.get()){ game.register(Machines.crystal_matter_generator); }
     if(Features.advanced_ore_refinery.get()){ game.register(Machines.advanced_ore_refinery); }

@@ -42,9 +42,9 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   private final ProgressBar energy_bar = new ProgressBar(energy_bar_x,energy_bar_y,energy_bar_width,energy_bar_height,energy_bar_draw_x,energy_bar_draw_y);
 
   private static final ResourceLocation gui_icons = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gui_textures.png");
-  private static final int image_x = 20;
+  private static final int image_x = 14;
   private static final int image_y = 59;
-  private static final int space_x = 36;
+  private static final int space_x = 40;
   private static final int space_y = 18;
 
   private static final int button_x = 22;
@@ -104,7 +104,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
     draw_status_below_switch(tile.getStatus());
     draw_text_right(Math.round(tile.getWorkTimePercentage() * 100) + "%", energy_percentage_y);
     draw_energy_difference(energy_change_y);
-    draw_text_center(tile.getMessage(),status_message_y);
+    draw_text_center(tile.getMessage(), status_message_y);
   }
   
   /**

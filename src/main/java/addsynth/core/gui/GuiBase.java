@@ -76,16 +76,22 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
     draw_text_center(title.getString(), center_x, 6);
   }
 
+  /** This will render the string in a different color if you prefix the string with
+   *  <code>TextFormatting.COLOR.toString()</code>. */
   protected final void draw_text_left(final String text, final int x, final int y){
     font.drawString(text, x, y, text_color);
   }
 
-  /** Draws center-aligned text at the center of the gui. */
+  /** Draws center-aligned text at the center of the gui.<br />
+   *  This will render the string in a different color if you prefix the string with
+   *  <code>TextFormatting.COLOR.toString()</code>. */
   protected final void draw_text_center(final String text, final int y){
     font.drawString(text, center_x - (font.getStringWidth(text) / 2), y, text_color);
   }
 
-  /** Vanilla has their own method but mine assumes a few arguments to make it easier.
+  /** Vanilla has their own method but mine assumes a few arguments to make it easier.<br />
+   *  This will render the string in a different color if you prefix the string with
+   *  <code>TextFormatting.COLOR.toString()</code>.
    * @see net.minecraft.client.gui.Gui#drawCenteredString
    * @param text
    * @param x
@@ -95,11 +101,15 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
     font.drawString(text, x - (font.getStringWidth(text) / 2), y, text_color);
   }
 
-  /** Draws along the right-edge of the gui. */
+  /** Draws along the right-edge of the gui.<br />
+   *  This will render the string in a different color if you prefix the string with
+   *  <code>TextFormatting.COLOR.toString()</code>. */
   protected final void draw_text_right(final String text, final int y){
     font.drawString(text, right_edge - font.getStringWidth(text), y, text_color);
   }
 
+  /** This will render the string in a different color if you prefix the string with
+   *  <code>TextFormatting.COLOR.toString()</code>. */
   protected final void draw_text_right(final String text, final int x, final int y){
     font.drawString(text, x - font.getStringWidth(text), y, text_color);
   }

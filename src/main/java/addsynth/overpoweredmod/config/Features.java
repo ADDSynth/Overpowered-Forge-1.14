@@ -45,6 +45,8 @@ public final class Features {
   public static ForgeConfigSpec.BooleanValue gold_trophy;
   public static ForgeConfigSpec.BooleanValue platinum_trophy;
 
+  public static ForgeConfigSpec.BooleanValue unknown_dimension;
+
   private static final Pair<Features, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Features::new);
   public static final Features INSTANCE = SPEC_PAIR.getLeft();
   public static final ForgeConfigSpec CONFIG_SPEC = SPEC_PAIR.getRight();
@@ -112,6 +114,11 @@ public final class Features {
     Features.gold_trophy     = builder.define("Gold Trophy",     true);
     Features.platinum_trophy = builder.define("Platinum Trophy", true);
     builder.pop();
+    
+    Features.unknown_dimension = builder.comment(
+      "If this is disabled, Portals will not transport you to the Unknown Dimension.\n"+
+      "Instead the Portal will just spawn Unknown Technology items inside the Portal frame.")
+                                        .define("Unknown Dimension", true);
     
     builder.pop();
   }
