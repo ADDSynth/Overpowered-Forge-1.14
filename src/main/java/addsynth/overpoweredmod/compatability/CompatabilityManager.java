@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.compatability;
 import addsynth.core.game.Compatability;
 import addsynth.overpoweredmod.Debug;
 
+@Deprecated
 public final class CompatabilityManager {
 
   /**

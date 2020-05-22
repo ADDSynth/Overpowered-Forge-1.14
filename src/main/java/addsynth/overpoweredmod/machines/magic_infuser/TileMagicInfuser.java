@@ -160,7 +160,6 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
       return MathUtility.choose(random, void_crystal_enchantments);
     }
     OverpoweredMod.log.error("function get_enchantment() in "+TileMagicInfuser.class.getSimpleName()+" returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
-    Thread.dumpStack();
     return null;
   }
 

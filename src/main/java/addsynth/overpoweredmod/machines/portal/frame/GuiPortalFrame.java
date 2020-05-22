@@ -16,7 +16,7 @@ public final class GuiPortalFrame extends GuiBase<ContainerPortalFrame> {
   }
 
   @Override
-  protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
+  protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     super.draw_title();
   }
 

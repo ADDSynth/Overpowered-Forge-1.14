@@ -6,6 +6,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.common.util.Constants;
 
 /** YES! ALL of ADDSynth's TileEntities should override THIS class, because this
  *  simplifies updating the TileEntity!
@@ -57,7 +58,7 @@ public abstract class TileBase extends TileEntity {
     if(world != null){
       markDirty();
       final BlockState blockstate = world.getBlockState(pos);
-      world.notifyBlockUpdate(pos, blockstate, blockstate, 3); // TEST, is this necessary?
+      world.notifyBlockUpdate(pos, blockstate, blockstate, Constants.BlockFlags.DEFAULT);
     }
   }
 

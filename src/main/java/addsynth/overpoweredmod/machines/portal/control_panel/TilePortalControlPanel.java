@@ -266,7 +266,7 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
             world.setBlockState(new BlockPos(x,y,z),Portal.portal.getDefaultState()); // .withProperty(PortalEnergyBlock.AXIS, EnumFacing.Axis.X));
           }
         }
-        if(Features.unknown_dimension.get()){
+        if(Features.unknown_dimension.get() == false){
         }
         WorldUtil.spawnItemStack(world, center, start_y, start_z, new ItemStack(ModItems.unknown_technology, 2), false);
         break;
@@ -281,7 +281,7 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
             world.setBlockState(new BlockPos(x,y,z),Portal.portal.getDefaultState()); // .withProperty(PortalEnergyBlock.AXIS, EnumFacing.Axis.Z));
           }
         }
-        if(Features.unknown_dimension.get()){
+        if(Features.unknown_dimension.get() == false){
         }
         WorldUtil.spawnItemStack(world, start_x, start_y, center, new ItemStack(ModItems.unknown_technology, 2), false);
         break;

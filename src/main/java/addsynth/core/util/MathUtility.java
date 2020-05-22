@@ -279,7 +279,7 @@ public final class MathUtility {
     return new double[] { (pos[0].getX() + pos[1].getX()) / 2, (pos[0].getY() + pos[1].getY()) / 2, (pos[0].getZ() + pos[1].getZ()) / 2 };
   }
 
-  public static final int RandomRange(final int minimum, final int maximum){ // TODO: randon.nextInt() input must be above 0, add code that can handle negative values.
+  public static final int RandomRange(final int minimum, final int maximum){ // TODO: random.nextInt() input must be above 0, add code that can handle negative values.
     final Random random = new Random();
     if(minimum < maximum){ return minimum + random.nextInt(maximum - minimum + 1); }
     if(minimum > maximum){ return maximum + random.nextInt(minimum - maximum + 1); }

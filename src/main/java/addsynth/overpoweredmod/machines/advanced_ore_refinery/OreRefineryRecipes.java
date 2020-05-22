@@ -1,9 +1,9 @@
 package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 
 import java.util.ArrayList;
+import javax.annotation.Nullable;
 import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.RecipeUtil;
-import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,7 +24,6 @@ public final class OreRefineryRecipes {
    */
   public static final void refresh_ore_refinery_recipes(){
     if(RecipeUtil.check_furnace_recipes()){
-      // Debug.log_setup_info("Begin registering Advanced Ore Refinery recipes..."); DELETE
       recipes.clear();
       final ArrayList<Item> list = new ArrayList<Item>(100);
       ItemStack result_check;
@@ -41,8 +40,6 @@ public final class OreRefineryRecipes {
       }
       
       valid_ores = list.toArray(new Item[list.size()]);
-      
-      // Debug.log_setup_info("Finished registering Advanced Ore Refinery recipes.");
     }
   }
 
@@ -71,7 +68,7 @@ public final class OreRefineryRecipes {
    * @param input Item
    * @return a copy of the result ItemStack
    */
-  public static final ItemStack get_result(final Item input){
+  public static final @Nullable ItemStack get_result(final Item input){
     try{
       ItemStack result = null;
       if(recipes == null){

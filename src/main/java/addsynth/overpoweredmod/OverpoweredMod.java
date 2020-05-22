@@ -94,11 +94,9 @@ public class OverpoweredMod {
     
     log.info("Overpowered Mod by ADDSynth, version "+VERSION+", built on "+VERSION_DATE+".");
     
-    // Achievements.registerAchievements();
     NetworkHandler.registerMessages();
     // WeirdDimension.register();
     // TODO: Railcraft doesn't exist for 1.14 yet, but still should find a way to disable the Iron to Steel smelting recipe.
-    MaterialsUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
     RecipeUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
     RecipeUtil.registerResponder(GemConverterRecipe::generate_recipes);
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());

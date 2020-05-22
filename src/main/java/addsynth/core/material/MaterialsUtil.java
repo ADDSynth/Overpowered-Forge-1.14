@@ -248,6 +248,7 @@ public final class MaterialsUtil {
     return false;
   }
 
+  /** Returns an Item array. To get back a list, use <code>Arrays.asList(Item[] input)</code>.*/
   @SafeVarargs
   public static final Item[] getFilter(final Collection<Item> ... lists){
     int count = 0;
