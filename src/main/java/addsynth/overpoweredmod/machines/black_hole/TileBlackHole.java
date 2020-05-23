@@ -10,7 +10,6 @@ import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
@@ -23,6 +22,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 
 public final class TileBlackHole extends TileEntity implements ITickableTileEntity {
 
@@ -41,6 +41,9 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
   private int radius;
   private AxisAlignedBB entity_area;
 
+  private double center_x;
+  private double center_y;
+  private double center_z;
   private int x;
   private int y;
   private int z;
@@ -56,12 +59,6 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
     super(Tiles.BLACK_HOLE);
   }
 
-  // NOTE: If you create a Debug World, by holding Shift as you cycle through the World types, this spawns all
-  //       blocks in Minecraft, in all possible block states. Since this also spawns a Black Hole, this starts
-  //       the black hole algorithm of erasing the world. However, in a Debug World blocks cannot be destroyed.
-  //       So the black hole algorithm fails to destroy any blocks, and when it finishes it will continuously
-  //       try to destroy itself, spawning hundreds of particle effects.
-
   @Override
   public final CompoundNBT write(final CompoundNBT compound){
     return super.write(compound);
@@ -73,16 +70,12 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
   }
 
   @Override
+  @SuppressWarnings("null")
   public void tick(){
     if(world.isRemote == false){
       begin_tick_time = TimeUtil.get_start_time();
       if(first_tick){
         first_tick();
-        if(server == null){
-          OverpoweredMod.log.error("Black Hole at coordinates "+pos+" could not get a reference to the Minecraft Server! And thus, cannot check server tick processing time!");
-          remove();
-          erase_world = false;
-        }
       }
       if(erase_world){
         delete_entities();
@@ -95,7 +88,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
   }
 
   private final void first_tick(){
-    if(is_black_hole_allowed(world.getDimension().getType().getId())){
+    if(is_black_hole_allowed(world)){
       erase_world = true;
       radius = get_black_hole_radius(world);
       min_x = pos.getX() - radius;
@@ -106,11 +99,11 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
       max_x = pos.getX() + radius;
       max_y = pos.getY() - radius;
       max_z = pos.getZ() + radius;
-      final double center_x = pos.getX() + 0.5;
-      final double center_y = pos.getY() + 0.5;
-      final double center_z = pos.getZ() + 0.5;
-      entity_area = new AxisAlignedBB(center_x, center_y, center_z, center_x, center_y, center_z);
-      entity_area.grow(radius);
+      center_x = pos.getX() + 0.5;
+      center_y = pos.getY() + 0.5;
+      center_z = pos.getZ() + 0.5;
+      entity_area = new AxisAlignedBB(center_x - radius, center_y - radius, center_z - radius,
+                                      center_x + radius, center_y + radius, center_z + radius);
       // MAYBE: play sound?
       if(Config.alert_players_of_black_hole.get()){
         ServerUtils.send_message_to_all_players_in_world(new StringTextComponent(
@@ -122,15 +115,26 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
     first_tick = false;
   }
 
-  private static final boolean is_black_hole_allowed(final int dimension_id){
-    boolean pass = true;
+  public static final boolean is_black_hole_allowed(final World world){
+    if(world == null){
+      OverpoweredMod.log.error(new NullPointerException("World not loaded yet."));
+      return false;
+    }
+    if(world.getWorldType() == WorldType.DEBUG_ALL_BLOCK_STATES){
+      // NOTE: If you create a Debug World, by holding Shift as you cycle through the World types, this spawns all
+      //       blocks in Minecraft, in all possible block states. Since this also spawns a Black Hole, this starts
+      //       the black hole algorithm of erasing the world. However, in a Debug World blocks cannot be destroyed.
+      //       So the black hole algorithm fails to destroy any blocks, and when it finishes it will continuously
+      //       try to destroy itself, spawning hundreds of particle effects.
+      return false;
+    }
+    final int dimension_id = world.getDimension().getType().getId();
     for(int id_check : Config.black_hole_dimension_blacklist.get()){
       if(dimension_id == id_check){
-        pass = false;
-        break;
+        return false;
       }
     }
-    return pass;
+    return true;
   }
 
   private static final int get_black_hole_radius(final World world){
@@ -158,25 +162,24 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
     return radius;
   }
 
-  private final void delete_entities(){ // FIX: This is not deleting entities for some reason!
-    for(Entity entity : world.getEntitiesWithinAABB(Entity.class, entity_area, null)){
-      if(entity instanceof PlayerEntity){
-        final PlayerEntity player = (PlayerEntity)entity;
-        if(player.isCreative() == false && player.isSpectator() == false){
-          player.setHealth(0.0f);
-          continue;
+  @SuppressWarnings("null")
+  private final void delete_entities(){
+    for(final Entity entity : world.getEntitiesWithinAABB(Entity.class, entity_area, null)){
+      if(MathUtility.get_distance(center_x, center_y, center_z, entity.posX, entity.posY, entity.posZ) <= radius){
+        if(entity instanceof PlayerEntity){ // server players
+          final PlayerEntity player = (PlayerEntity)entity;
+          if(player.isCreative() == false && player.isSpectator() == false){
+            player.setHealth(0.0f); // DO NOT REMOVE PLAYERS! You must DAMAGE them!
+          }
+        }
+        else{
+          entity.remove();
         }
       }
-      if(entity instanceof LivingEntity){
-        // entity.attackEntityFrom(source, amount);
-        // entity.setDead(); // possibly use .remove()
-        entity.remove();
-        continue;
-      }
-      entity.remove();
     }
   }
 
+  @SuppressWarnings("null")
   private final void delete_blocks(){
     BlockPos position;
     boolean check_1;
