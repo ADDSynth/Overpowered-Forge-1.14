@@ -77,14 +77,14 @@ public final class LootTables {
   private static final boolean debug_loot_tables = false;
   
   @SubscribeEvent
-  public static void inject_loot(LootTableLoadEvent event){ // TODO: add final to this ALL VERSIONS.
+  public static final void inject_loot(final LootTableLoadEvent event){
     if(Features.identifier.get()){
       final String prefix = "minecraft:entities/";
       final String name = event.getName().toString();
-      if(debug_loot_tables){
-        OverpoweredMod.log.info("Loading Loot Table: "+name);
-      }
       if(name.startsWith(prefix)){
+        if(debug_loot_tables){
+          OverpoweredMod.log.info("Loading Loot Table: "+name);
+        }
         final String mob = name.substring(prefix.length());
         boolean add_rings = false;
         if(mob.equals("zombie")            && Config.drop_for_zombie.get()){            add_rings = true; }
@@ -106,9 +106,14 @@ public final class LootTables {
         if(mob.equals("magma_cube")        && Config.drop_for_magma_cube.get()){        add_rings = true; }
         if(mob.equals("shulker")           && Config.drop_for_shulker.get()){           add_rings = true; }
         if(mob.equals("vex")               && Config.drop_for_vex.get()){               add_rings = true; }
-        if(mob.equals("evocation_illager") && Config.drop_for_evocation_illager.get()){ add_rings = true; }
-        if(mob.equals("vindication_illager") && Config.drop_for_vindication_illager.get()){ add_rings = true; }
-        // FUTURE: New Illusioner mob in 1.12, but they don't have a Loot Table or Loot Table Load Event until 1.14, and they don't naturally spawn anywhere.
+        if(mob.equals("evoker")            && Config.drop_for_evoker.get()){            add_rings = true; }
+        if(mob.equals("vindicator")        && Config.drop_for_vindicator.get()){        add_rings = true; }
+        if(mob.equals("illusioner")        && Config.drop_for_illusioner.get()){        add_rings = true; }
+        if(mob.equals("drowned")           && Config.drop_for_drowned.get()){           add_rings = true; }
+        if(mob.equals("phantom")           && Config.drop_for_phantom.get()){           add_rings = true; }
+        if(mob.equals("skeleton_horse")    && Config.drop_for_skeleton_horse.get()){    add_rings = true; }
+        if(mob.equals("pillager")          && Config.drop_for_pillager.get()){          add_rings = true; }
+        if(mob.equals("ravager")           && Config.drop_for_ravager.get()){           add_rings = true; }
 
         if(add_rings){
           event.getTable().addPool(custom_loot_pool);
