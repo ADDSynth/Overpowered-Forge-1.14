@@ -17,8 +17,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-// Remember: The order an item shows up in the creative tab depends on the ID, which is determined
-//             when you register that item, so you want to register Items in a certain order.
+// Remember: The order an item shows up in the creative tab depends on
+//             the order you register Items in the Item Registry Event.
 // https://www.google.com/search?q=mod+development+how+can+you+make+things+show+up+in+creative+tab+in+certain+order
 
 public final class RegistryUtil { // cannot be named GameRegistry because it conflicts with net.minecraftforge.fml.common.registry.GameRegistry;
@@ -32,17 +32,17 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     RegistryUtil registry;
     ResourceLocation location1;
     ResourceLocation location2;
-    for(Entry<String, RegistryUtil> entry : registryutil_global_cache.entrySet()){
+    for(final Entry<String, RegistryUtil> entry : registryutil_global_cache.entrySet()){
       registry = entry.getValue();
       // Blocks
-      for(Block block : registry.blocks){
+      for(final Block block : registry.blocks){
         location1 = block.getRegistryName();
         if(location1 == null){
           ADDSynthCore.log.fatal(new NullPointerException("WHY IS THERE A NULL BLOCK IN THE BLOCK LIST???? HOW DOES THAT EVEN HAPPEN?"));
           continue;
         }
-        for(Entry<String, RegistryUtil> entry2 : registryutil_global_cache.entrySet()){
-          for(Block block2 : entry2.getValue().blocks){
+        for(final Entry<String, RegistryUtil> entry2 : registryutil_global_cache.entrySet()){
+          for(final Block block2 : entry2.getValue().blocks){
             if(block != block2){
               location2 = block2.getRegistryName();
               if(location2 != null){
@@ -55,14 +55,14 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
         }
       }
       // Items
-      for(Item item : registry.items){
+      for(final Item item : registry.items){
         location1 = item.getRegistryName();
         if(location1 == null){
           ADDSynthCore.log.fatal(new NullPointerException("WHY IS THERE A NULL ITEM IN THE ITEM LIST???? HOW IN THE HECK DID THAT HAPPEN???"));
           continue;
         }
-        for(Entry<String, RegistryUtil> entry2 : registryutil_global_cache.entrySet()){
-          for(Item item2 : entry2.getValue().items){
+        for(final Entry<String, RegistryUtil> entry2 : registryutil_global_cache.entrySet()){
+          for(final Item item2 : entry2.getValue().items){
             if(item != item2){
               location2 = item2.getRegistryName();
               if(location2 != null){
@@ -158,7 +158,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
   }
 
   private static @Nullable final BlockItem getModdedItemBlock(@Nonnull final Block block, @Nonnull final HashSet<Item> item_set){
-    for(Item item : item_set){
+    for(final Item item : item_set){
       if(item instanceof BlockItem){
         if(((BlockItem)item).getBlock() == block){
           return (BlockItem)item;
@@ -168,8 +168,8 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     return null;
   }
 
-  /** Generic implementation of the RegistryUtil.getItemBlock() method. Searches through all
-   *  registered Lists of items for your ItemBlock.
+  /** Generic implementation of the {@link #getItemBlock(Block)} method.
+   *  Searches through all registered Lists of items for your ItemBlock.
    */
   public static final BlockItem getRegisteredItemBlock(final Block block){
     BlockItem item_block = null;
@@ -179,7 +179,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
       }
       item_block = getVanillaItemBlock(block);
       if(item_block == null){ // search global item store
-        for(Entry<String, RegistryUtil> entry : registryutil_global_cache.entrySet()){
+        for(final Entry<String, RegistryUtil> entry : registryutil_global_cache.entrySet()){
           item_block = getModdedItemBlock(block, entry.getValue().items); // created but not yet registered
           if(item_block != null){
             break;
@@ -187,7 +187,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
         }
         if(item_block == null){
           throw new NullPointerException(
-            "No ItemBlock exists for "+block.toString()+"! The generic version of RegistryUtil.getItemBlock()"+
+            "No ItemBlock exists for "+StringUtil.getName(block)+"! The generic version of RegistryUtil.getItemBlock()"+
             "wasn't able to find an ItemBlock and can't create one for you! You must call your mod's own instance"+
             "of the RegistryUtil class to get and/or create ItemBlocks for that block!"
           );
@@ -213,20 +213,15 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     registryutil_global_cache.put(mod_id, this);
   }
 
-  /** <p>Why use this? Because it checks for a few simple things. First it checks the value you're
+  /** <p>Why use this? Because it checks for a few basic things. First it checks the value you're
    *  passing is not null, which could happen if you try to register your block before it's
    *  initialized. It checks if you've already added that block's registery name just like
    *  Forge does, and it adds the block to a list, just in case you want to register all blocks
    *  by calling {@link #block_registry_event(IForgeRegistry)}. And it automatically adds
    *  the correct translation key by prefixing the block's name with your mod's ID.
    *  Finally, if there WERE an error, it just reports it instead of crashing!
-   *  <p>Hmm. I <i>could</i> register ItemBlocks as soon as modders register a block (by passing a
-   *  boolean value to this function), but I don't for two reasons. We make modders register
-   *  ItemBlocks themselves either through {@link #getItemBlock} or by explicitly registering
-   *  ItemBlocks by calling {@link #register_ItemBlock(Block, Item.Properties)},
-   *  both return a reference to the ItemBlock in case they need it. The second reason is so that
-   *  modders can register ItemBlocks using a custom ItemBlock class which they can use to register
-   *  ItemBlocks by calling {@link #getItemBlock(Block, Class, Item.Properties)}.
+   *  <p>Register ItemBlocks by calling either {@link #register_ItemBlock(Block, Item.Properties)}
+   *  or {@link #register_ItemBlock(BlockItem)}.
    * @param block The block you want to register.
    * @param name The block id name you want to register this block as.
    */
@@ -245,11 +240,22 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     ADDSynthCore.log.error("Tried to register "+name+" Block after one is already registered!");
   }
 
+  /** This registers your block, and also creates a vanilla ItemBlock using
+   *  the Item Properties that you specify.
+   * @param block
+   * @param name
+   * @param properties
+   */
   public final void register_block(@Nonnull final Block block, final String name, final Item.Properties properties){
     register_block(block, name);
     register_ItemBlock(block, properties);
   }
 
+  /** <p>Use this to register Items.
+   *  <p>Create a new base class that overrides the {@link Item} class, then call this in the constructor.
+   * @param item
+   * @param name
+   */
   public final void register_item(final Item item, final String name){
     if(item == null){
       ADDSynthCore.log.error(new NullPointerException("Stupid developer. You tried to register a null item reference."));
@@ -265,17 +271,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     ADDSynthCore.log.error("Tried to register "+name+" Item after one was already registered!");
   }
 
-  /** <p>There are now 2 ways to register ItemBlocks. The first is by calling {@link #getItemBlock(Block)}, which
-   *  automatically creates an ItemBlock if one doesn't already exist. We prefer you use this way because you never
-   *  know which <code>getItemBlock()</code> will be called first, and each call always returns the same reference.
-   *  Even if your block has a custom ItemBlock, you can pass it as a class and it will make an ItemBlock using the
-   *  class you specified.
-   *
-   *  <p>The second way is by keeping a seperate itemBlock variable reference and calling this <code>register_ItemBlock()</code>
-   *  function to register and return a new ItemBlock for your block. We only recommend using this method if you
-   *  reference the ItemBlock form of the block many times, because referring to a dedicated reference is much faster
-   *  than searching through a list of Items for the one already registered.
-   *
+  /** Use this to register vanilla ItemBlocks.
    *  @param block The block you want to register an ItemBlock for. Cannot be null!
    */
   public final BlockItem register_ItemBlock(final Block block, final Item.Properties properties){
@@ -285,21 +281,10 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     return register_ItemBlock(new BlockItem(block, properties), block);
   }
 
-  /** <p>There are now 2 ways to register ItemBlocks. The first is by calling {@link #getItemBlock(Block)}, which
-   *  automatically creates an ItemBlock if one doesn't already exist. We prefer you use this way because you never
-   *  know which <code>getItemBlock()</code> will be called first, and each call always returns the same reference.
-   *  Even if your block has a custom ItemBlock, you can pass it as a class and it will make an ItemBlock using the
-   *  class you specified.
-   *
-   *  <p>The second way is by keeping a seperate itemBlock variable reference in your Init class, and call this
-   *  <code>register_ItemBlock()</code> function in your custom ItemBlock constructor. We only recommend using this
-   *  method if (1) you're using a custom ItemBlock and (2) you reference the ItemBlock form of the block many times,
-   *  because refering to a dedicated reference is much faster than searching through a list of Items for the one we
-   *  already registered.
-   *
+  /** <p>Use this to register custom ItemBlocks.
+   *  <p>Call this in your block's constructor, AFTER registering the block.
    * @param itemblock
    */
-  @Deprecated
   public final void register_ItemBlock(@Nonnull final BlockItem itemblock){
     register_ItemBlock(itemblock, itemblock.getBlock());
   }
@@ -307,65 +292,34 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
   /**
    * @param itemblock
    * @param block
-   * @return Returns the passed in ItemBlock if we successfully registered it, returns null otherwise. We do this because this
-   *   function is primarily called by the {@link #getItemBlock(Block, Class, Object...)} function to create new ItemBlocks.
+   * @return Returns the passed in ItemBlock if we successfully registered it, returns null otherwise.
    */
-  @Deprecated
   private final BlockItem register_ItemBlock(@Nonnull final BlockItem itemblock, @Nonnull final Block block){
-    if(block.getRegistryName() == null){
+    final ResourceLocation registry_name = block.getRegistryName();
+    if(registry_name == null){
       ADDSynthCore.log.error(new RuntimeException("Unable to create new ItemBlock because the input block does not have its registry name set. Please call the setRegistryName() function!"));
       Thread.dumpStack();
       return null;
     }
     if(itemblock.getRegistryName() == null){
-      itemblock.setRegistryName(block.getRegistryName());
+      itemblock.setRegistryName(registry_name);
       items.add(itemblock);
-      print_debug(mod_id, "Registered ItemBlock for block: "+block.getRegistryName());
+      print_debug(mod_id, "Registered ItemBlock for block: "+registry_name);
       return itemblock;
     }
-    ADDSynthCore.log.error("Tried to register an ItemBlock for "+block+" after one was already registered!");
+    ADDSynthCore.log.error("Tried to register an ItemBlock for "+StringUtil.getName(block)+" after one was already registered!");
     return itemblock;
   }
 
   /**
-   * This is an advanced form of {@link Item#getItemFromBlock(Block)} that returns the ItemBlock
-   * if it exists, and returns a new ItemBlock if it doesn't.
-   * USE THIS INSTEAD OF <code>Item.getItemFromBlock()</code>! Especially if you're trying
-   * to get the ItemBlock of a Mod item!
-   *
-   * Vanilla ItemBlocks already exist, so all new ItemBlocks must be from a mod.
-   * Therefore, we add the Items to an internal list as soon as they're created
-   * in order to avoid creating multiple ItemBlocks of the same block.
-   *
+   * <p>This is our version of {@link Item#getItemFromBlock(Block)}. This function returns the ItemBlock
+   *    for the block you specify, if it exists.
+   * <p>We prefer you use this because the vanilla method returns Blocks.AIR, if it can't find the ItemBlock
+   *    for your block, and doesn't warn you.
    * @param block
-   * @return a new ItemBlock, or the existing one if one already exists.
+   * @return the existing one or null.
    */
   public final BlockItem getItemBlock(final Block block){
-    return getItemBlock(block, BlockItem.class);
-  }
-
-  // OPTIMIZE remove the deprecated function below, and redo all this JavaDoc.
-
-  /**
-   * This is an advanced form of {@link Item#getItemFromBlock(Block)} that returns the ItemBlock
-   * if it exists, and returns a new ItemBlock if it doesn't.
-   * USE THIS INSTEAD OF <code>Item.getItemFromBlock()</code>! Especially if you're trying
-   * to get the ItemBlock of a Mod item!
-   *
-   * Vanilla ItemBlocks already exist, so all new ItemBlocks must be from a mod.
-   * Therefore, we add the Items to an internal list as soon as they're created
-   * in order to avoid creating multiple ItemBlocks of the same block.
-   *
-   * @param block
-   * @param itemBlock_class if this block uses a custom ItemBlock then pass its class type to
-   *          use if an ItmeBlock for this block doesn't already exist.
-   * @param args These are optional arguments that will be used to call your custom ItemBlock
-   *          Class, in addition to the required Block input argument which will always be
-   *          the first argument, so structure your ItemBlock constructors accordingly.
-   * @return a new ItemBlock, or the existing one if one already exists.
-   */
-  @Deprecated
-  private final BlockItem getItemBlock(final Block block, @Nonnull final Class<? extends BlockItem> itemBlock_class /*, final Object ... args*/){
     BlockItem item_block = null;
     try{
       // safety check
@@ -376,7 +330,10 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
       if(item_block == null){
         item_block = getModdedItemBlock(block, items); // check 2 (created but not registered?)
         if(item_block == null){
-          ADDSynthCore.log.fatal("No ItemBlock exists for "+block.toString()+". ItemBlocks should've been registered when you called RegistryUtil.register_block() or register_ItemBlock() with your preferred Item.Properties!");
+          ADDSynthCore.log.fatal(
+            "No ItemBlock exists for "+StringUtil.getName(block)+". ItemBlocks should've been registered when you"+
+            "called RegistryUtil.register_block() or register_ItemBlock() with your preferred Item.Properties!"
+          );
         }
       }
     }
@@ -385,39 +342,6 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
     }
     return item_block;
   }
-
-/* MAYBE: restore functionality of calling custom ItemBlocks with a custom Constructor, ONLY if absolutely necessary.
-  /** <p>Normally, I would use the new {@link JavaUtils#InvokeConstructor(Class, Object...)} function for
-   *  a job such as this, but the {@link Class#getConstructor(Class...)} function explicitdly searches
-   *  for a constructor that matches the types it is given. So let's say the input block is of type
-   *  MusicBox. Even though MusicBox is a subtype of the base class Block, the <code>getConstructor()</code>
-   *  method will look for a constructor that takes in a MusicBox as one of the parameters, instead of
-   *  a Block type. That is why for the list of types we explicitly provide the Block class as the first
-   *  argument. And nope, we can't even cast MusicBox to the Block class either, it would still return
-   *  MusicBox as its type.
-   *  <p>Note: Okay, I've just added some extra information to the {@link JavaUtils#InvokeConstructor(Class, Object...)}
-   *  for when it can't find a constructor for the arguments that you specify. This should be VERY helpful
-   *  when debugging this function. I could add an extra feature that detects there's only 1 constructor
-   *  and attempt to use that constructor with the given arguments anyway. But I dediced that was too much
-   *  work to do for now and wasn't worth the effort so I left it for another time.
-   * @param clazz
-   * @param block
-   * @param args
-   *
-  private final static BlockItem InvokeCustomItemBlock(final Class<? extends BlockItem> clazz, final Block block, final Object ... args){
-    // return JavaUtils.InvokeConstructor(clazz, JavaUtils.combine_arrays(new Object[] {(Block)block}, args));
-    BlockItem item = null;
-    final Class[] arg_types = JavaUtils.combine_arrays(new Class[] {Block.class}, JavaUtils.getTypes(args));
-    final Object[] final_args = JavaUtils.combine_arrays(new Object[] {block}, args);
-    try{
-      item = clazz.getConstructor(arg_types).newInstance(final_args);
-    }
-    catch(Exception e){
-      e.printStackTrace();
-    }
-    return item;
-  }
-*/
 
   // FEATURE: some blocks are registered just to be present in the game, not for the player to use,
   //  therefore they wouldn't have ItemBlocks. So to effectively use this I'd need to seperate the
