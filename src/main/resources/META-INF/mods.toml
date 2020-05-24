@@ -8,7 +8,7 @@
 modLoader="javafml" #mandatory
 
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[28.1.0,)" #mandatory
+loaderVersion="[28.2.0,)" #mandatory
 
 # A URL to refer people to when problems occur with this mod
 #issueTrackerURL="http://my.issue.tracker/" #optional
@@ -57,7 +57,7 @@ description='''
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[28.1.56,)" #mandatory
+    versionRange="[28.2.0,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
@@ -81,7 +81,7 @@ description="Library by ADDSynth, for ADDSynth's mods. Adds Energy Wire, a Gener
 [[dependencies.overpowered]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[28.1.56,)" #mandatory
+    versionRange="[28.2.0,)" #mandatory
     ordering="NONE"
     side="BOTH"
 [[dependencies.overpowered]]
@@ -100,7 +100,7 @@ description="Library by ADDSynth, for ADDSynth's mods. Adds Energy Wire, a Gener
 
 [[mods]]
 modId="overpowered" #mandatory
-version="1.2.2" #mandatory
+version="1.3" #mandatory
 displayName="Overpowered" #mandatory
 updateJSONURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/update.json" #optional
 displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/index.html" #optional
@@ -114,7 +114,7 @@ description='''
 [[dependencies.overpowered]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[28.1.56,)" #mandatory
+    versionRange="[28.2.0,)" #mandatory
     ordering="NONE"
     side="BOTH"
 [[dependencies.overpowered]]

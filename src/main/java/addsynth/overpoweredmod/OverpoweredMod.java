@@ -46,8 +46,8 @@ public class OverpoweredMod {
 
   public static final String MOD_ID = "overpowered";
   public static final String MOD_NAME = "Overpowered";
-  public static final String VERSION = "1.2.2";
-  public static final String VERSION_DATE = "January 28, 2020";
+  public static final String VERSION = "1.3";
+  public static final String VERSION_DATE = "May 24, 2020";
     
   public static final Logger log = LogManager.getLogger(MOD_NAME);
 
@@ -92,7 +92,7 @@ public class OverpoweredMod {
   private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin Overpowered main setup...");
     
-    log.info("Overpowered Mod by ADDSynth, version "+VERSION+", built on "+VERSION_DATE+".");
+    log.info("Overpowered Mod by ADDSynth, version "+VERSION+"-BETA, built on "+VERSION_DATE+".");
     
     NetworkHandler.registerMessages();
     // WeirdDimension.register();
