@@ -41,11 +41,11 @@ public final class Compatability {
   public static final class ADDSYNTH_ENERGY {
     public static final String name = "ADDSynth Energy";
     public static final String modid = "addsynth_energy";
-    public static final boolean loded = ModList.get().isLoaded(modid);
+    public static final boolean loaded = ModList.get().isLoaded(modid);
   }
 
   public static final class APPLIED_ENERGISTICS {
-    public static final String name  = "Applied Energistics";
+    public static final String name  = "Applied Energistics 2";
     public static final String modid = "appliedenergistics2";
     public static final boolean loaded = ModList.get().isLoaded(modid);
   }
@@ -245,21 +245,46 @@ public final class Compatability {
   public static final void debug(){
     ADDSynthCore.log.info("Begin printing ADDSynthCore mod detection results:");
     final TreeMap<String, Boolean> modlist = new TreeMap<>();
+    String mod_name;
+    int max_string = 0;
     try{
-      for(Class clazz : Compatability.class.getClasses()){
-        modlist.put((String)(clazz.getField("name").get(null)), (boolean)(clazz.getField("loaded").get(null)));
+      for(final Class clazz : Compatability.class.getClasses()){
+        mod_name = (String)(clazz.getField("name").get(null));
+        modlist.put(mod_name, (boolean)(clazz.getField("loaded").get(null)));
+        if(mod_name.length() > max_string){
+          max_string = mod_name.length();
+        }
       }
     }
     catch(NoSuchFieldException e){
-      ADDSynthCore.log.error("Error while iterating through the mods in the "+Compatability.class.getName()+" class file. The class fields are not correctly named 'name', 'modid', and 'loaded'! A spelling error is the #1 mistake and the bane of all programmers!");
+      ADDSynthCore.log.error(
+        "Error while iterating through the mods in the "+Compatability.class.getName()+" class file. The class fields are "+
+        "not correctly named 'name', 'modid', and 'loaded'! A spelling error is the #1 mistake and the bane of all programmers!"
+      );
     }
     catch(Exception e){
       e.printStackTrace();
     }
-    for(Map.Entry<String,Boolean> mod : modlist.entrySet()){
-      ADDSynthCore.log.info(mod.getKey() + ": "+(mod.getValue() ? "loaded" : "not detected"));
+    for(final Map.Entry<String, Boolean> mod : modlist.entrySet()){
+      mod_name = adjust_mod_name(mod.getKey(), max_string);
+      ADDSynthCore.log.info(mod_name + ": "+(mod.getValue() ? "loaded" : "not detected"));
     }
     ADDSynthCore.log.info("Done checking. ADDSynthCore does not check for any mods that are not listed here.");
+  }
+
+  private static final String adjust_mod_name(final String mod_name, final int length){
+    boolean first = true;
+    final StringBuilder str = new StringBuilder(mod_name);
+    while(str.length() < length){
+      if(first){
+        str.append(' ');
+        first = false;
+      }
+      else{
+        str.append('-');
+      }
+    }
+    return str.toString();
   }
 
 }
