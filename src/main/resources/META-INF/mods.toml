@@ -38,7 +38,7 @@ displayName="ADDSynthCore" #mandatory
 displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/minecraft_mods.html" #optional
 
 # A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="examplemod.png" #optional
+logoFile="addsynth_core_logo.png" #optional
 
 # A text field displayed in the mod UI
 credits="Mojang, and the Forge Development Team" #optional
@@ -47,9 +47,8 @@ credits="Mojang, and the Forge Development Team" #optional
 authors="ADDSynth" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-"Core mod required by all of ADDSynth's mods. Also adds a few basic things by itself."
-'''
+description="Core mod required by all of ADDSynth's mods. Also adds a few basic things by itself."
+
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.overpowered]] #optional
     # the modid of the dependency
@@ -75,6 +74,7 @@ modId="addsynth_energy"
 version="1.0"
 displayName="ADDSynth Energy"
 displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/minecraft_mods.html"
+logoFile="addsynth_energy_logo.png"
 credits="Mojang, and the Forge Development Team"
 authors="ADDSynth"
 description="Library by ADDSynth, for ADDSynth's mods. Adds Energy Wire, a Generator, an Electric Furnace, and the Universal Energy Interface."
@@ -104,12 +104,11 @@ version="1.3" #mandatory
 displayName="Overpowered" #mandatory
 updateJSONURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/update.json" #optional
 displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/index.html" #optional
-#logoFile="examplemod.png" #optional
+logoFile="overpowered_logo.png" #optional
 credits="Mojang, and the Forge Development Team" #optional
 authors="ADDSynth" #optional
-description='''
-"This mod adds a bunch of really cool science and tech stuff."
-'''
+description="This mod adds a bunch of really cool science and tech stuff."
+
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.overpowered]] #optional
     modId="forge" #mandatory
