@@ -5,6 +5,7 @@ import addsynth.core.material.MaterialsUtil;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Gems;
+import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -21,15 +22,8 @@ public final class TileGemConverter extends TileWorkMachine implements INamedCon
   private byte selection;
   private ItemStack gem_selected = new ItemStack(Gems.ruby, 1);
   
-  public static final Item[] getFilter(){
-    return MaterialsUtil.getFilter(
-      MaterialsUtil.getRubies(), MaterialsUtil.getTopaz(), MaterialsUtil.getCitrine(), MaterialsUtil.getEmeralds(),
-      MaterialsUtil.getDiamonds(), MaterialsUtil.getSapphires(), MaterialsUtil.getAmethysts(), MaterialsUtil.getQuartz()
-    );
-  }
-  
   public TileGemConverter(){
-    super(Tiles.GEM_CONVERTER,1,getFilter(),1,MachineValues.gem_converter);
+    super(Tiles.GEM_CONVERTER,1,Filters.gem_converter,1,MachineValues.gem_converter);
   }
 
   public final void cycle(final boolean direction){

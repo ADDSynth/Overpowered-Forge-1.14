@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.machines.magic_infuser;
 import addsynth.core.container.BaseContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.core.container.slots.OutputSlot;
+import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
@@ -24,7 +25,7 @@ public final class ContainerMagicInfuser extends BaseContainer<TileMagicInfuser>
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,105);
     addSlot(new InputSlot(tile,0,new Item[]{Items.BOOK},12,44));
-    addSlot(new InputSlot(tile,1,TileMagicInfuser.getFilter(),30,44));
+    addSlot(new InputSlot(tile,1,Filters.magic_infuser,30,44));
     addSlot(new OutputSlot(tile, 0, 143, 44));
   }
 

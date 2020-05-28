@@ -4,13 +4,13 @@ import java.util.Random;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.material.MaterialsUtil;
-import addsynth.core.util.JavaUtils;
 import addsynth.core.util.MathUtility;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
+import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -84,23 +84,12 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
     Enchantments.VANISHING_CURSE
   };
 
-  public static final Item[] getFilter(){
-    return JavaUtils.combine_arrays(
-      MaterialsUtil.getFilter(
-        MaterialsUtil.getRubies(), MaterialsUtil.getTopaz(), MaterialsUtil.getCitrine(), MaterialsUtil.getEmeralds(),
-        MaterialsUtil.getDiamonds(), MaterialsUtil.getSapphires(), MaterialsUtil.getAmethysts(), MaterialsUtil.getQuartz()
-      ),
-      new Item[]{Init.energy_crystal, Init.void_crystal}
-    );
-  }
-
   public TileMagicInfuser(){
     super(
       Tiles.MAGIC_INFUSER,
-      new SlotData[]{ // FUTURE now the SlotData needs to be constructed every time, because of the Item Tags in getFilter().
-        // Have slots automatically rebuild their filter by calling a build filter function? Make a Filter its own class object?
+      new SlotData[]{
         new SlotData(Items.BOOK),
-        new SlotData(getFilter())
+        new SlotData(Filters.magic_infuser)
       },
       1,
       MachineValues.magic_infuser

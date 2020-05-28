@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.machines.gem_converter;
 
 import java.util.ArrayList;
 import addsynth.overpoweredmod.game.core.Gems;
+import addsynth.overpoweredmod.machines.Filters;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
@@ -35,7 +36,7 @@ public final class GemConverterRecipe {
 
   private static final void generate_all_gems(){
     all_gems.clear();
-    all_gems.add(Ingredient.fromItems(TileGemConverter.getFilter()));
+    all_gems.add(Ingredient.fromItems(Filters.gem_converter));
   }
 
 }
