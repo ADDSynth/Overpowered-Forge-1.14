@@ -162,7 +162,7 @@ public class Energy {
 
   /** Returns maximum amount of energy we can extract, restricted by the maxExtract variable. */
   public final double getAvailableEnergy(){
-    return Math.min(Math.max(energy.get(), 0), maxExtract.get());
+    return Math.min( Math.max( energy.get(), 0) , maxExtract.get() );
   }
 
   /** Returns the maximum energy it can receive (restricted by the maxReceive variable)

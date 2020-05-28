@@ -18,13 +18,13 @@ public final class EnergyCompat {
     RF(Compatability.REDSTONE_FLUX.loaded),
     TESLA(Compatability.TESLA.loaded);
     
-    public final boolean available;
+    public final boolean exists;
     
     public final void setError(final Exception e){
     }
     
     private EnergyType(final boolean loaded){
-      this.available = loaded;
+      this.exists = loaded;
     }
   }
   
@@ -61,7 +61,7 @@ public final class EnergyCompat {
         try{
         
           // RF Energy
-          if(EnergyType.RF.available){
+          if(EnergyType.RF.exists){
             if(RedstoneFluxEnergy.check(tile)){
               nodes.add(new CompatEnergyNode(EnergyType.RF, tile, capability_side));
               continue;
@@ -69,7 +69,7 @@ public final class EnergyCompat {
           }
           
           // Tesla Energy
-          if(EnergyType.TESLA.available){
+          if(EnergyType.TESLA.exists){
             if(TeslaEnergy.check(tile)){
               continue;
             }
@@ -83,31 +83,35 @@ public final class EnergyCompat {
   }
 
   public static final void acceptEnergy(final CompatEnergyNode[] nodes, final Energy our_energy){
+    // get needed energy
     final int energy_needed = (int)our_energy.getEnergyNeeded();
     final int[] available_energy = new int[nodes.length];
     int i;
+
     // get available energy
     for(i = 0; i < nodes.length; i++){
       try{
         switch(nodes[i].type){
-        case FORGE: available_energy[i] = ForgeEnergy.get(       nodes[i].energy, energy_needed, true);                break;
+        case FORGE: available_energy[i] = ForgeEnergy       .get(nodes[i].energy, energy_needed, true);                break;
         case RF:    available_energy[i] = RedstoneFluxEnergy.get(nodes[i].energy, energy_needed, true, nodes[i].side); break;
-        case TESLA: available_energy[i] = TeslaEnergy.get(       nodes[i].energy, energy_needed, true);                break;
+        case TESLA: available_energy[i] = TeslaEnergy       .get(nodes[i].energy, energy_needed, true);                break;
         }
       }
       catch(Exception e){
         nodes[i].type.setError(e);
       }
     }
+
     // set requested amount for each energy source
     final int[] energy_to_extract = MathUtility.divide_evenly(energy_needed, available_energy);
+
     // extract energy
     for(i = 0; i < nodes.length; i++){
       try{
         switch(nodes[i].type){
-        case FORGE: ForgeEnergy.get(       nodes[i].energy, energy_to_extract[i], false);                break;
+        case FORGE: ForgeEnergy       .get(nodes[i].energy, energy_to_extract[i], false);                break;
         case RF:    RedstoneFluxEnergy.get(nodes[i].energy, energy_to_extract[i], false, nodes[i].side); break;
-        case TESLA: TeslaEnergy.get(       nodes[i].energy, energy_to_extract[i], false);                break;
+        case TESLA: TeslaEnergy       .get(nodes[i].energy, energy_to_extract[i], false);                break;
         }
         our_energy.receiveEnergy(energy_to_extract[i]);
       }
@@ -118,9 +122,11 @@ public final class EnergyCompat {
   }
 
   public static final void transmitEnergy(final CompatEnergyNode[] nodes, final Energy our_energy){
+    // get available energy, divide evenly amongst the number of external machines.
     final int[] energy_available = MathUtility.divide_evenly((int)our_energy.getEnergy(), nodes.length);
     int actual_energy_extracted = 0;
     int i;
+    // attempt to insert energy into external machines, record energy that was really transferred.
     for(i = 0; i < nodes.length; i++){
       try{
         switch(nodes[i].type){
@@ -128,6 +134,7 @@ public final class EnergyCompat {
         case RF:    actual_energy_extracted = RedstoneFluxEnergy.send(nodes[i].energy, energy_available[i], nodes[i].side); break;
         case TESLA: actual_energy_extracted = TeslaEnergy.send(       nodes[i].energy, energy_available[i]);                break;
         }
+        // decrease internal energy by the amount that was actually transferred.
         our_energy.extractEnergy(actual_energy_extracted);
       }
       catch(Exception e){

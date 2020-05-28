@@ -48,6 +48,10 @@ public final class TileUniversalEnergyTransfer extends TileEnergyWithStorage imp
     return transfer_mode;
   }
   
+  public final boolean can_integreate(){
+    return transfer_mode.integrate;
+  }
+  
   public final void set_next_transfer_mode(){
     final int mode = (transfer_mode.ordinal() + 1) % TRANSFER_MODE.values().length;
     transfer_mode = TRANSFER_MODE.values()[mode];
@@ -71,6 +75,16 @@ public final class TileUniversalEnergyTransfer extends TileEnergyWithStorage imp
   @Override
   public final void tick(){
     if(world.isRemote == false){
+      final EnergyCompat.CompatEnergyNode[] energy_nodes = EnergyCompat.getConnectedEnergy(pos, world);
+      if(energy_nodes.length > 0){
+        if(transfer_mode.canReceive){
+          EnergyCompat.acceptEnergy(energy_nodes, this.energy);
+        }
+        if(transfer_mode.canExtract){
+          EnergyCompat.transmitEnergy(energy_nodes, this.energy);
+        }
+      }
+      energy.update(world);
     }
   }
 
