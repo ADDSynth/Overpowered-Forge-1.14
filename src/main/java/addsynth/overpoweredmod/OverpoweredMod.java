@@ -15,7 +15,6 @@ import addsynth.overpoweredmod.machines.advanced_ore_refinery.GuiAdvancedOreRefi
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.OreRefineryRecipes;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.GuiCrystalMatterGenerator;
 import addsynth.overpoweredmod.machines.fusion.chamber.GuiFusionChamber;
-import addsynth.overpoweredmod.machines.gem_converter.GemConverterRecipe;
 import addsynth.overpoweredmod.machines.gem_converter.GuiGemConverter;
 import addsynth.overpoweredmod.machines.generator.GuiGenerator;
 import addsynth.overpoweredmod.machines.identifier.GuiIdentifier;

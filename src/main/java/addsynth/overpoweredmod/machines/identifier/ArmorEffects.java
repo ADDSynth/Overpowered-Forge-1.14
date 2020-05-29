@@ -21,17 +21,19 @@ public final class ArmorEffects {
   @SuppressWarnings("incomplete-switch")
   public static final void enchant(final ItemStack stack){
     if(stack != null){
-      final Item item = stack.getItem();
-      if(item instanceof ArmorItem){
-        switch(((ArmorItem)item).getEquipmentSlot()){
-        case HEAD: enchant_helmet(stack); break;
-        case CHEST: enchant_armor(stack); break;
-        case LEGS:  enchant_armor(stack); break;
-        case FEET:  enchant_boots(stack); break;
+      if(stack.isEmpty() == false){
+        final Item item = stack.getItem();
+        if(item instanceof ArmorItem){
+          switch(((ArmorItem)item).getEquipmentSlot()){
+          case HEAD: enchant_helmet(stack); break;
+          case CHEST: enchant_armor(stack); break;
+          case LEGS:  enchant_armor(stack); break;
+          case FEET:  enchant_boots(stack); break;
+          }
+          return;
         }
-        return;
       }
-      OverpoweredMod.log.error("ItemStack used for Identifier -> Enchant Armor is not an armor Item.");
+      OverpoweredMod.log.error("ItemStack used as input for "+ArmorEffects.class.getName()+".enchant() is not an armor Item.");
     }
   }
 

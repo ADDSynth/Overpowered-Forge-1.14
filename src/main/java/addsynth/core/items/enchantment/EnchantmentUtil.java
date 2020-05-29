@@ -17,6 +17,7 @@ import net.minecraft.item.ShearsItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.ListNBT;
+import net.minecraft.util.ResourceLocation;
 
 public final class EnchantmentUtil {
 
@@ -67,17 +68,19 @@ public final class EnchantmentUtil {
   }
 
   /** @see ItemStack#addEnchantment(Enchantment, int) */
-  public static final boolean does_item_have_enchantment(final ItemStack stack, final Enchantment[] enchantments){
+  public static final boolean does_item_have_enchantment(final ItemStack stack, final Enchantment ... enchantments){
     if(stack.isEnchanted()){
       final ListNBT enchantment_tag_list = stack.getEnchantmentTagList();
+      final int list_size = enchantment_tag_list.size();
       int i;
       String id;
-      for(i = 0; i < enchantment_tag_list.size(); i++){
+      ResourceLocation id2;
+      for(i = 0; i < list_size; i++){
         id = enchantment_tag_list.getCompound(i).getString("id");
-        for(Enchantment enchantment : enchantments){
-          // FIX
-          if(enchantment.getRegistryName() != null){
-            if(id.equals(enchantment.getRegistryName().getPath())){
+        for(final Enchantment enchantment : enchantments){
+          id2 = enchantment.getRegistryName();
+          if(id2 != null){
+            if(id.equals(id2.toString())){
               return true;
             }
           }
@@ -87,15 +90,11 @@ public final class EnchantmentUtil {
     return false;
   }
 
-  public static final boolean does_item_have_enchantment(final ItemStack stack, final Enchantment enchantment){
-    return does_item_have_enchantment(stack, new Enchantment[] {enchantment});
-  }
-
   /** This will check an ItemStack if it already has an enchantment that conflicts with the one you're
    *  trying to apply. Certain Enchantments are deemed "mutually exclusive" by Mojang.
    * @param enchantment
    * @param stack
-   * @return
+   * @return false if there is no conflict.
    */
   public static final boolean check_conflicts(final Enchantment enchantment, final ItemStack stack){
     if(enchantment == Enchantments.FROST_WALKER){
@@ -105,16 +104,16 @@ public final class EnchantmentUtil {
       return does_item_have_enchantment(stack, Enchantments.FROST_WALKER);
     }
     if(enchantment == Enchantments.PROTECTION){
-      return does_item_have_enchantment(stack, new Enchantment[] {Enchantments.BLAST_PROTECTION, Enchantments.PROJECTILE_PROTECTION, Enchantments.FIRE_PROTECTION});
+      return does_item_have_enchantment(stack, Enchantments.BLAST_PROTECTION, Enchantments.PROJECTILE_PROTECTION, Enchantments.FIRE_PROTECTION);
     }
     if(enchantment == Enchantments.PROJECTILE_PROTECTION){
-      return does_item_have_enchantment(stack, new Enchantment[] {Enchantments.PROTECTION, Enchantments.BLAST_PROTECTION, Enchantments.FIRE_PROTECTION});
+      return does_item_have_enchantment(stack, Enchantments.PROTECTION, Enchantments.BLAST_PROTECTION, Enchantments.FIRE_PROTECTION);
     }
     if(enchantment == Enchantments.BLAST_PROTECTION){
-      return does_item_have_enchantment(stack, new Enchantment[] {Enchantments.PROTECTION, Enchantments.PROJECTILE_PROTECTION, Enchantments.FIRE_PROTECTION});
+      return does_item_have_enchantment(stack, Enchantments.PROTECTION, Enchantments.PROJECTILE_PROTECTION, Enchantments.FIRE_PROTECTION);
     }
     if(enchantment == Enchantments.FIRE_PROTECTION){
-      return does_item_have_enchantment(stack, new Enchantment[] {Enchantments.PROTECTION, Enchantments.PROJECTILE_PROTECTION, Enchantments.BLAST_PROTECTION});
+      return does_item_have_enchantment(stack, Enchantments.PROTECTION, Enchantments.PROJECTILE_PROTECTION, Enchantments.BLAST_PROTECTION);
     }
     if(enchantment == Enchantments.MENDING){
       return does_item_have_enchantment(stack, Enchantments.INFINITY);
@@ -129,13 +128,30 @@ public final class EnchantmentUtil {
       return does_item_have_enchantment(stack, Enchantments.FORTUNE);
     }
     if(enchantment == Enchantments.SHARPNESS){
-      return does_item_have_enchantment(stack, new Enchantment[] {Enchantments.SMITE, Enchantments.BANE_OF_ARTHROPODS});
+      return does_item_have_enchantment(stack, Enchantments.SMITE, Enchantments.BANE_OF_ARTHROPODS);
     }
     if(enchantment == Enchantments.SMITE){
-      return does_item_have_enchantment(stack, new Enchantment[] {Enchantments.SHARPNESS, Enchantments.BANE_OF_ARTHROPODS});
+      return does_item_have_enchantment(stack, Enchantments.SHARPNESS, Enchantments.BANE_OF_ARTHROPODS);
     }
     if(enchantment == Enchantments.BANE_OF_ARTHROPODS){
-      return does_item_have_enchantment(stack, new Enchantment[] {Enchantments.SHARPNESS, Enchantments.SMITE});
+      return does_item_have_enchantment(stack, Enchantments.SHARPNESS, Enchantments.SMITE);
+    }
+    // Trident enchantments
+    if(enchantment == Enchantments.CHANNELING){
+      return does_item_have_enchantment(stack, Enchantments.RIPTIDE);
+    }
+    if(enchantment == Enchantments.LOYALTY){
+      return does_item_have_enchantment(stack, Enchantments.RIPTIDE);
+    }
+    if(enchantment == Enchantments.RIPTIDE){
+      return does_item_have_enchantment(stack, Enchantments.CHANNELING, Enchantments.LOYALTY);
+    }
+    // Crossbow enchantments
+    if(enchantment == Enchantments.MULTISHOT){
+      return does_item_have_enchantment(stack, Enchantments.PIERCING);
+    }
+    if(enchantment == Enchantments.PIERCING){
+      return does_item_have_enchantment(stack, Enchantments.MULTISHOT);
     }
     return false;
   }
