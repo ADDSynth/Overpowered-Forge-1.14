@@ -24,18 +24,16 @@ public final class TileInverter extends TileWorkMachine implements INamedContain
   }
 
   @Override
-  protected final void test_condition(){
+  protected final boolean test_condition(){
     final ItemStack input_stack = input_inventory.getStackInSlot(0);
     if(input_stack.isEmpty()){
-      can_run = false;
+      return false;
     }
-    else{
-      try{
-        can_run = output_inventory.can_add(0, getInverted(input_stack));
-      }
-      catch(Exception e){
-        can_run = false;
-      }
+    try{
+      return output_inventory.can_add(0, getInverted(input_stack));
+    }
+    catch(Exception e){
+      return false;
     }
   }
 

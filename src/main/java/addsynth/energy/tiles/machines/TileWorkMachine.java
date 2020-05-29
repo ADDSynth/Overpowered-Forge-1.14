@@ -18,7 +18,6 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   private boolean changed;
 
   protected boolean power_switch = true;
-  protected boolean can_run; // OPTIMIZE: can_run is only used in TileWorkMachine and is always checked immediately after calling test_condition()! Remove can_run and just check the boolean return value of test_condition()!
 
   protected final double idle_energy;
 
@@ -150,8 +149,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       turn_off();
     }
     else{
-      test_condition();
-      if(can_run){
+      if(test_condition()){
         begin_work();
         state = MachineState.RUNNING;
         changed = true;
@@ -176,8 +174,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     }
 
     if(did_work){
-      test_condition();
-      if(can_run){
+      if(test_condition()){
         begin_work();
       }
       else{
@@ -205,8 +202,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       perform_work();
       energy.setEmpty();
       changed = true;
-      test_condition();
-      if(can_run){
+      if(test_condition()){
         begin_work();
       }
       else{
@@ -249,7 +245,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   }
 
   /** This function must test the input and output item slots and set the can_run variable. */
-  protected abstract void test_condition();
+  protected abstract boolean test_condition();
 
   /** Decrements input by 1, and transfers it to the center slot to begin working on it. */
   protected void begin_work(){

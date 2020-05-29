@@ -33,10 +33,10 @@ public final class TileIdentifier extends TileWorkMachine implements INamedConta
   }
 
   @Override
-  protected final void test_condition(){
+  protected final boolean test_condition(){
     final ItemStack input = input_inventory.getStackInSlot(0);
     final ItemStack output = output_inventory.getStackInSlot(0);
-    can_run = input.isEmpty() == false && output.isEmpty();
+    return input.isEmpty() == false && output.isEmpty();
   }
 
   @Override

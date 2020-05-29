@@ -28,8 +28,8 @@ public final class TileCrystalMatterGenerator extends TileWorkMachine implements
   }
 
   @Override
-  protected void test_condition(){
-    can_run = true;
+  protected final boolean test_condition(){
+    return true;
   }
 
   @Override

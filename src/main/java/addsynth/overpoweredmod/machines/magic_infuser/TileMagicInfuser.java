@@ -97,10 +97,10 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
   }
 
   @Override
-  protected final void test_condition(){
-    can_run = !input_inventory.getStackInSlot(0).isEmpty() &&
-              !input_inventory.getStackInSlot(1).isEmpty() &&
-               output_inventory.getStackInSlot(0).isEmpty();
+  protected final boolean test_condition(){
+    return !input_inventory.getStackInSlot(0).isEmpty() &&
+           !input_inventory.getStackInSlot(1).isEmpty() &&
+            output_inventory.getStackInSlot(0).isEmpty();
   }
 
   @Override

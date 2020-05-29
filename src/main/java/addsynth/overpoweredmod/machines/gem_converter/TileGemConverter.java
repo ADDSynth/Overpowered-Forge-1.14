@@ -60,8 +60,8 @@ public final class TileGemConverter extends TileWorkMachine implements INamedCon
   }
 
   @Override
-  protected final void test_condition(){
-    can_run = input_inventory.getStackInSlot(0).isEmpty() ? false : output_inventory.can_add(0, gem_selected);
+  protected final boolean test_condition(){
+    return input_inventory.getStackInSlot(0).isEmpty() ? false : output_inventory.can_add(0, gem_selected);
   }
 
   private static final boolean match(final Item item, final byte id){

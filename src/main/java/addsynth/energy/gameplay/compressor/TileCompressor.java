@@ -24,10 +24,10 @@ public final class TileCompressor extends TileWorkMachine implements INamedConta
   }
 
   @Override
-  protected final void test_condition(){
+  protected final boolean test_condition(){
     final ItemStack[] input = {input_inventory.getStackInSlot(0), input_inventory.getStackInSlot(1)};
     result = CompressorRecipes.getResult(input, world);
-    can_run = output_inventory.can_add(0, result);
+    return output_inventory.can_add(0, result);
   }
 
   @Override

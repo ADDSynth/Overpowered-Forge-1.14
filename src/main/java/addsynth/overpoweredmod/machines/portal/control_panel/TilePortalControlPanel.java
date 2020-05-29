@@ -316,7 +316,8 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
   }
 
   @Override
-  protected void test_condition(){
+  protected final boolean test_condition(){
+    return true;
   }
 
 }

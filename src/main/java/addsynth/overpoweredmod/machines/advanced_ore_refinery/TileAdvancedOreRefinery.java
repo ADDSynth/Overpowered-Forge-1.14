@@ -27,9 +27,9 @@ public final class TileAdvancedOreRefinery extends TileWorkMachine implements IN
   }
 
   @Override
-  protected final void test_condition(){
+  protected final boolean test_condition(){
     result = OreRefineryRecipes.get_result(input_inventory.getStackInSlot(0).getItem());
-    can_run = output_inventory.can_add(0, result);
+    return output_inventory.can_add(0, result);
   }
 
   @Override

@@ -124,7 +124,7 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
 
   @Override
   public final void toggleRun(){
-    network.running = !network.running;
+    network.running = !network.running; // FIX Can't shutoff lasers!
     network.updateLaserNetwork();
   }
 
@@ -145,7 +145,8 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   }
 
   @Override
-  protected void test_condition(){
+  protected final boolean test_condition(){
+    return true;
   }
 
 }

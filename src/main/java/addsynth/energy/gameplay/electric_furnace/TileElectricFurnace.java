@@ -2,7 +2,6 @@ package addsynth.energy.gameplay.electric_furnace;
 
 import javax.annotation.Nullable;
 import addsynth.core.util.RecipeUtil;
-import addsynth.energy.Energy;
 import addsynth.energy.registers.Tiles;
 import addsynth.energy.tiles.machines.MachineData;
 import addsynth.energy.tiles.machines.MachineType;
@@ -18,7 +17,6 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileElectricFurnace extends TileWorkMachine implements INamedContainerProvider {
 
-  // public static Item[] furnace_input = get_filter();
   private ItemStack result;
 
   public TileElectricFurnace(){
@@ -30,11 +28,11 @@ public final class TileElectricFurnace extends TileWorkMachine implements INamed
   }
 
   @Override
-  protected final void test_condition(){
+  protected final boolean test_condition(){
     final ItemStack input = input_inventory.getStackInSlot(0);
     final ItemStack output = output_inventory.getStackInSlot(0);
     result = input.isEmpty() ? null : RecipeUtil.getFurnaceResult(input);
-    can_run = (input != ItemStack.EMPTY && input.getCount() > 0) && (output == ItemStack.EMPTY || output_inventory.can_add(0, result));
+    return (input != ItemStack.EMPTY && input.getCount() > 0) && (output == ItemStack.EMPTY || output_inventory.can_add(0, result));
   }
 
   @Override
