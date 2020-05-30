@@ -1,4 +1,4 @@
-package addsynth.core.util;
+package addsynth.core.util.color;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -23,6 +23,8 @@ import net.minecraftforge.registries.ForgeRegistries;
  *  <p>ADDSynthCore will automatically call {@link #dump_map_colors()} if it is enabled
  *     in the config.
  * @author ADDSynth
+ * @see Color
+ * @see MinecraftColor
  * @since October 23, 2019
  */
 public final class ColorUtil {
@@ -82,46 +84,6 @@ public final class ColorUtil {
     .put(MaterialColor.YELLOW_TERRACOTTA,     "MaterialColor.YELLOW_TERRACOTTA")
     .build();
 
-  // Some of these colors values were obtained from looking them up on Wikipedia.
-  public static final Color WHITE     = new Color("White",     0xFFFFFF, MaterialColor.SNOW, MaterialColor.QUARTZ);
-  public static final Color SILVER    = new Color("Silver",    0xC0C0C0, MaterialColor.WOOL, MaterialColor.IRON, MaterialColor.CLAY);
-  public static final Color GRAY      = new Color("Gray",      0x808080, MaterialColor.STONE, MaterialColor.LIGHT_GRAY);
-  public static final Color DARK_GRAY = new Color("Dark Gray", 0x404040, MaterialColor.GRAY);
-  public static final Color BLACK     = new Color("Black",     0x000000, MaterialColor.AIR, MaterialColor.BLACK);
-  public static final Color RED       = new Color("Red",       0xFF0000, MaterialColor.TNT, MaterialColor.RED, MaterialColor.NETHERRACK);
-  public static final Color ORANGE    = new Color("Orange",    0xFF8000, MaterialColor.ADOBE);
-  public static final Color YELLOW    = new Color("Yellow",    0xFFFF00, MaterialColor.YELLOW, MaterialColor.GOLD);
-  public static final Color GREEN     = new Color("Green",     0X00FF00, MaterialColor.GRASS, MaterialColor.LIME, MaterialColor.FOLIAGE, MaterialColor.GREEN, MaterialColor.EMERALD);
-  public static final Color CYAN      = new Color("Cyan",      0x00FFFF, MaterialColor.CYAN, MaterialColor.DIAMOND);
-  public static final Color BLUE      = new Color("Blue",      0x0000FF, MaterialColor.BLUE, MaterialColor.LIGHT_BLUE, MaterialColor.WATER, MaterialColor.ICE, MaterialColor.LAPIS);
-  public static final Color MAGENTA   = new Color("Magenta",   0xFF00FF, MaterialColor.MAGENTA);
-  public static final Color PURPLE    = new Color("Purple",    0x800080, MaterialColor.PURPLE);
-  public static final Color PINK      = new Color("Pink",      0xFFC0CB, MaterialColor.PINK);
-  public static final Color PEACH     = new Color("Peach",     0xFFE5B4, MaterialColor.SAND);
-  public static final Color BROWN     = new Color("Brown",     0x964B00, MaterialColor.BROWN, MaterialColor.DIRT, MaterialColor.WOOD, MaterialColor.OBSIDIAN);
-
-  public static final class Color {
-    public String name;
-    public int value;
-    public MaterialColor[] colors;
-    
-    public Color(final String name, final int value, final MaterialColor ... overrides){
-      this.name = name;
-      this.value = value;
-      this.colors = overrides;
-    }
-
-    @Override
-    public final String toString(){
-      return name+": "+value;
-    }
-  }
-
-  public static final Color[] color_list = {
-    WHITE, SILVER, GRAY, DARK_GRAY, BLACK, RED, ORANGE, YELLOW,
-    GREEN, CYAN, BLUE, MAGENTA, PURPLE, PINK, PEACH, BROWN
-  };
-
   private static final class ColorSet implements Comparable<ColorSet> {
     public MaterialColor mapcolor;
     public int difference;
@@ -160,9 +122,12 @@ public final class ColorUtil {
         writer.write("ADDSynthCore: debug Minecraft Map Colors:\n\n\n");
   
         int i;
+        final MinecraftColor[] color_values = MinecraftColor.values();
+        final int length = color_values.length;
         final ColorSet[][] set = build_color_list();
-        for(i = 0; i < color_list.length; i++){
-          writer.write(color_list[i].name+" colors: "+printColor(color_list[i].value)+"\n");
+
+        for(i = 0; i < length; i++){
+          writer.write(color_values[i].name+" colors: "+printColor(color_values[i].value)+"\n");
           for(ColorSet color : set[i]){
             writer.write("   "+map_color_names.get(color.mapcolor)+" "+printColor(color.mapcolor.colorValue)+"\n");
             for(Block block : color.blocks){
@@ -201,7 +166,8 @@ public final class ColorUtil {
     }
 
     // Part 2: create difference list. get the difference for each MaterialColor aggainst each color we're testing.
-    final int length = color_list.length;
+    final MinecraftColor[] color_values = MinecraftColor.values();
+    final int length = color_values.length;
     final int[][] difference = new int[number_of_colors][length];
     int j;
     int k;
@@ -214,10 +180,10 @@ public final class ColorUtil {
     for(j = 0; j < number_of_colors; j++){
       for(k = 0; k < length; k++){
         map_color = map_colors[j].colorValue;
-        color     = color_list[k].value;
-        red   = Math.abs(getRed(map_color) - getRed(color));
-        green = Math.abs(getGreen(map_color) - getGreen(color));
-        blue  = Math.abs(getBlue(map_color) - getBlue(color));
+        color     = color_values[k].value;
+        red   = Math.abs(Color.getRed(map_color) - Color.getRed(color));
+        green = Math.abs(Color.getGreen(map_color) - Color.getGreen(color));
+        blue  = Math.abs(Color.getBlue(map_color) - Color.getBlue(color));
         difference[j][k] = red + green + blue;
       }
     }
@@ -237,7 +203,7 @@ public final class ColorUtil {
 
         // Part 3a: look for override
         for(k = 0; k < length && !found_override; k++){
-          for(MaterialColor mp : color_list[k].colors){
+          for(MaterialColor mp : color_values[k].colors){
             if(map_colors[j] == mp){
               found_override = true;
               if(k == i){
@@ -271,14 +237,6 @@ public final class ColorUtil {
     return list;
   }
 
-  public static final int getRed(final int color){ return color >> 16; }
-  public static final int getGreen(final int color){ return (color >> 8) % 256; }
-  public static final int getBlue(final int color){ return color % 256; }
-
-  public static final int make_color(final int red, final int green, final int blue){
-    return (red & 255) << 16 | (green & 255) << 8 | (blue & 255);
-  }
-
   public static final Block[] get_blocks_that_match_color(final MaterialColor test_color){
     final ArrayList<Block> blocks = new ArrayList<>(200);
     try{
@@ -296,7 +254,7 @@ public final class ColorUtil {
   }
 
   public static final String printColor(final int color){
-    return "( "+getRed(color)+" , "+getGreen(color)+" , "+getBlue(color)+" )";
+    return "( "+Color.getRed(color)+" , "+Color.getGreen(color)+" , "+Color.getBlue(color)+" )";
   }
 
 }

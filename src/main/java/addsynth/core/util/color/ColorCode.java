@@ -1,4 +1,4 @@
-package addsynth.core.util;
+package addsynth.core.util.color;
 
 import net.minecraft.util.text.TextFormatting;
 

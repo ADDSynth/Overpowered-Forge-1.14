@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.portal.control_panel;
 
-import addsynth.core.util.ColorCode;
+import addsynth.core.util.color.ColorCode;
 import net.minecraft.util.text.TextFormatting;
 
 public enum PortalMessage {

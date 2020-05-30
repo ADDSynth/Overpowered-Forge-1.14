@@ -4,7 +4,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.config.Config;
 import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
-import addsynth.core.util.ColorUtil;
+import addsynth.core.util.color.ColorUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
