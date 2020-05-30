@@ -7,6 +7,7 @@ public final class Constants {
 
 public static final int world_height = 256;
 public static final int sea_level = 63;
+public static final int chunk_size = 16;
 
 public static final int ticks_per_second = 20;
 public static final int ticks_per_minute = ticks_per_second * 60;

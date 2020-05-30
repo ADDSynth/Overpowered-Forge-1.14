@@ -5,8 +5,40 @@ import java.util.Collection;
 import java.util.Random;
 import javax.annotation.Nonnegative;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 
 public final class MathUtility {
+
+  public static final short clamp(final short number, final short minimum, final short maximum){
+    if(number < minimum){
+      return minimum;
+    }
+    return number > maximum ? maximum : number;
+  }
+  
+  // these clamp functions are here so I can find them, but they're also deprecated
+  // so I know to replace them with Vanilla's methods. Please leave them as they are!
+  @Deprecated
+  public static final int clamp(final int number, final int minimum, final int maximum){
+    return MathHelper.clamp(number, minimum, maximum);
+  }
+
+  public static final long clamp(final long number, final long minimum, final long maximum){
+    if(number < minimum){
+      return minimum;
+    }
+    return number > maximum ? maximum : number;
+  }
+
+  @Deprecated
+  public static final float clamp(final float number, final float minimum, final float maximum){
+    return MathHelper.clamp(number, minimum, maximum);
+  }
+  
+  @Deprecated
+  public static final double clamp(final double number, final double minimum, final float maximum){
+    return MathHelper.clamp(number, minimum, maximum);
+  }
 
   public static final int get_smallest_index(final short[] array){
     int smallest_index = 0;
@@ -279,31 +311,44 @@ public final class MathUtility {
     return new double[] { (pos[0].getX() + pos[1].getX()) / 2, (pos[0].getY() + pos[1].getY()) / 2, (pos[0].getZ() + pos[1].getZ()) / 2 };
   }
 
-  public static final int RandomRange(final int minimum, final int maximum){ // TODO: random.nextInt() input must be above 0, add code that can handle negative values.
+  /** Returns a random integer between <code>minimum</code> (inclusive) and <code>maximum</code>
+   *  (inclusive). This function won't error if you get the minimum and maximum mixed up,
+   *  or if they're the same value.
+   * @param minimum
+   * @param maximum
+   */
+  public static final int RandomRange(final int minimum, final int maximum){
+    final int min = Math.min(minimum, maximum);
+    final int max = Math.max(minimum, maximum);
+    final int diff = Math.abs(max - min);
+    if(diff == 0){ return min; }
     final Random random = new Random();
-    if(minimum < maximum){ return minimum + random.nextInt(maximum - minimum + 1); }
-    if(minimum > maximum){ return maximum + random.nextInt(minimum - maximum + 1); }
-    return minimum;
+    return min + random.nextInt(diff + 1);
   }
 
+  /** Returns the chunk id. */
   public static final int get_chunk_index(final int coordinate){
-    return (int)Math.floor(coordinate / 16); // >> 4 shifting bits is computationally faster.
+    return coordinate >> 4;
   }
 
+  /** Returns the chunk id. */
   public static final int get_chunk_index(final double coordinate){
-    return (int)Math.floor(coordinate / 16);
+    return (int)Math.floor(coordinate) >> 4;
   }
 
+  /** Returns the coordinate in the chunk, 0-15. */
   public static final int get_coordinate_in_chunk(final int coordinate){
-    return coordinate % 16; // & 15 would be computationally faster.
+    return coordinate & 15;
   }
   
+  /** Returns the coordinate in the chunk, 0-15. */
   public static final int get_coordinate_in_chunk(final float coordinate){
-    return (int)Math.floor(coordinate) % 16;
+    return (int)Math.floor(coordinate) & 15;
   }
   
+  /** Returns the coordinate in the chunk, 0-15. */
   public static final int get_coordinate_in_chunk(final double coordinate){
-    return (int)Math.floor(coordinate) % 16;
+    return (int)Math.floor(coordinate) & 15;
   }
 
   /** Returns the minimum position in the list of BlockPositions.
