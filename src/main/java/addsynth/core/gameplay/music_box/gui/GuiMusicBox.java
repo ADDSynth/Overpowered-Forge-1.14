@@ -148,7 +148,7 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   private final void draw_playhead(){
     if(tile != null){
       if(tile.is_playing()){
-        this.minecraft.getTextureManager().bindTexture(widget_texture);
+        this.textureManager.bindTexture(widget_texture);
         blit(this.guiLeft + playhead_x + (tile.playhead * track_width), this.guiTop + playhead_y,
                               playhead_texture_x, playhead_texture_y, 16, 8);
       }
@@ -165,7 +165,7 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
 
   private final void draw_instruments(){
     final ResourceLocation instruments_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/instruments.png");
-    this.minecraft.getTextureManager().bindTexture(instruments_texture);
+    this.textureManager.bindTexture(instruments_texture);
     final int texture_width = 64;
     final int texture_height = 64;
     byte i;
@@ -184,7 +184,7 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   }
 
   private final void draw_instrument_selected(){
-    this.minecraft.getTextureManager().bindTexture(widget_texture);
+    this.textureManager.bindTexture(widget_texture);
     final int texture_x = 112;
     final int texture_y = 32;
     final int texture_size = 40;

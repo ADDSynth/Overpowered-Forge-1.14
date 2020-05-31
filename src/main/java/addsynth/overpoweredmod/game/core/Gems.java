@@ -1,9 +1,11 @@
 package addsynth.overpoweredmod.game.core;
 
 import addsynth.core.material.Material;
+import addsynth.core.material.MaterialsUtil;
 import addsynth.core.material.types.Gem;
 import addsynth.overpoweredmod.Debug;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public final class Gems {
 
@@ -31,6 +33,22 @@ public final class Gems {
 
   public static final Gem[] index = new Gem[] {RUBY, TOPAZ, CITRINE, EMERALD, DIAMOND, SAPPHIRE, AMETHYST, QUARTZ};
   public static final int max_index = index.length;
+
+  public static final ItemStack getItemStack(final int gem_id){
+    return new ItemStack(index[gem_id].gem);
+  }
+
+  public static final int getID(final Item gem){
+    if(MaterialsUtil.match(gem, MaterialsUtil.getRubies())){    return 0; }
+    if(MaterialsUtil.match(gem, MaterialsUtil.getTopaz())){     return 1; }
+    if(MaterialsUtil.match(gem, MaterialsUtil.getCitrine())){   return 2; }
+    if(MaterialsUtil.match(gem, MaterialsUtil.getEmeralds())){  return 3; }
+    if(MaterialsUtil.match(gem, MaterialsUtil.getDiamonds())){  return 4; }
+    if(MaterialsUtil.match(gem, MaterialsUtil.getSapphires())){ return 5; }
+    if(MaterialsUtil.match(gem, MaterialsUtil.getAmethysts())){ return 6; }
+    if(MaterialsUtil.match(gem, MaterialsUtil.getQuartz())){    return 7; }
+    return -1;
+  }
 
   static {
     Debug.log_setup_info("Finished loading Gems class.");

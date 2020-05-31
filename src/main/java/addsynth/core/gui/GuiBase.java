@@ -2,6 +2,7 @@ package addsynth.core.gui;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,7 @@ import net.minecraft.util.text.ITextComponent;
 public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
 
   protected static final int text_color = 4210752;
+  protected TextureManager textureManager;
 
   private final ResourceLocation GUI_TEXTURE;
   
@@ -35,8 +37,10 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
   }
 
   @Override
+  @SuppressWarnings("null")
   public void init(){
     super.init();
+    textureManager = this.minecraft.getTextureManager();
     guiRight = guiLeft + xSize; // the guiLeft variable isn't set up until we call super.init()!
   }
 
@@ -47,6 +51,8 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
     this.renderHoveredToolTip(mouseX, mouseY);
   }
 
+// ========================================================================================================
+
   /**
    * Well, this must be here because this extends the GuiContainer class, which marks this method as abstract.
    */
@@ -55,22 +61,54 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
     draw_background_texture();
   }
 
+  /** Draws entire gui texture. (at default texture width and height of 256x256.) */
   protected void draw_background_texture(){
     GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-    this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
+    textureManager.bindTexture(GUI_TEXTURE);
     this.blit(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
   }
 
-  /**
-   * Draws background texture at z level = 0, which is what it normally draws at anyway.
+  /** <p>Draws the background texture with custom width and height. Use this if you have a
+   *     background texture that is not the default size of 256x256.
+   *  <p>Draws texture at z level = 0, which is what it normally draws at anyway.
    * @param texture_width
    * @param texture_height
    */
   protected void draw_custom_background_texture(final int texture_width, int texture_height){
-    GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-    this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
-    blit(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize, texture_width, texture_height);
+    draw(0, 0, 0, 0, this.xSize, this.ySize, texture_width, texture_height);
   }
+
+  /** Draws another part of the gui texture at the coordinates you specify. */
+  protected void draw(final int x, final int y, final int u, final int v, final int width, final int height){
+    draw(x, y, u, v, width, height, width, height);
+  }
+
+  /** Draws another part of the gui texture at the coordinates you specify. */
+  protected void draw(int x, int y, int u, int v, int width, int height, int texture_width, int texture_height){
+    GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
+    textureManager.bindTexture(GUI_TEXTURE);
+    blit(x, y, width, height, u, v, texture_width, texture_height, 256, 256);
+  }
+
+  /** Draws another part of the gui texture at the coordinates you specify.
+   *  @deprecated This doesn't work right! Transparency fluctuates as you mouse over other itmes and create Tooltip popups!
+   */
+  @Deprecated
+  protected void draw_transparent(int x, int y, int u, int v, int width, int height, float opacity){
+    draw_transparent(x, y, u, v, width, height, width, height, opacity);
+  }
+
+  /** Draws another part of the gui texture at the coordinates you specify.
+   *  @deprecated This doesn't work right! Transparency fluctuates as you mouse over other itmes and create Tooltip popups!
+   */
+  @Deprecated
+  protected void draw_transparent(int x, int y, int u, int v, int width, int height, int texture_width, int texture_height, float opacity){
+    GlStateManager.color4f(1.0f, 1.0f, 1.0f, opacity);
+    textureManager.bindTexture(GUI_TEXTURE);
+    blit(x, y, width, height, u, v, texture_width, texture_height, 256, 256);
+  }
+
+// ========================================================================================================
 
   protected final void draw_title(){
     draw_text_center(title.getString(), center_x, 6);
@@ -114,6 +152,8 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
     font.drawString(text, x - font.getStringWidth(text), y, text_color);
   }
 
+// ========================================================================================================
+
   /** If the rendered Item isn't lighted correctly, call:<br />
    *  <code>RenderHelper.enableGUIStandardItemLighting();</code><br />
    *  before calling this function!
@@ -123,6 +163,18 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
    */
   protected final void drawItemStack(final ItemStack stack, final int x, final int y){
     this.itemRenderer.renderItemIntoGUI(stack, x, y);
+  }
+
+  /** If the rendered Item isn't lighted correctly, call:<br />
+   *  <code>RenderHelper.enableGUIStandardItemLighting();</code><br />
+   *  before calling this function!
+   * @param stack
+   * @param x
+   * @param y
+   * @param opacity
+   */
+  protected final void drawItemStack(final ItemStack stack, final int x, final int y, final float opacity){
+    RenderUtil.drawItemStack(this.itemRenderer, this.textureManager, stack, x, y, opacity);
   }
 
 }

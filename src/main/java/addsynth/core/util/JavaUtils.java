@@ -1,10 +1,13 @@
 package addsynth.core.util;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 public final class JavaUtils {
 
@@ -44,6 +47,27 @@ public final class JavaUtils {
     if(value > 0){ return value > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int)value; }
     if(value < 0){ return value < Integer.MIN_VALUE ? Integer.MIN_VALUE : (int)value; }
     return 0;
+  }
+
+  /**
+   * <p>Use this to attempt to use Reflection to gain access to a private or protected method in another class.
+   * <p><b>Note:</b> for performance reasons, only call this ONCE and cache the result.
+   * <p><b>Remember:</b> If the obfuscated name you supply doesn't find the method, it may be under a different codename!
+   * @param clazz the class that contains the method you want to access.
+   * @param srg_name  the Searge obfsucated name of the method.
+   * @param parameterTypes list of parameter types of the method.
+   * @return the method, or null if an error occured.
+   */
+  @Nullable
+  public static final Method getMethod(Class<?> clazz, String srg_name, Class<?> ... parameterTypes){
+    Method m = null;
+    try{
+      m = ObfuscationReflectionHelper.findMethod(clazz, srg_name, parameterTypes);
+    }
+    catch(Exception e){
+      e.printStackTrace();
+    }
+    return m;
   }
 
   public static final boolean classExists(final String clazz){

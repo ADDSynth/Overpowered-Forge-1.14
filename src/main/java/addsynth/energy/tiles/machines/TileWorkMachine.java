@@ -15,7 +15,10 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   protected final MachineType type;
   protected MachineState state = MachineState.IDLE;
 
-  private boolean changed;
+  /** Set this to true whenever important data changes. Your TileEntity's update function will
+   *  automatically check this and call the {@link TileWorkMachine#update_data()} function.
+   */
+  protected boolean changed;
 
   protected boolean power_switch = true;
 
@@ -62,7 +65,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
       //       machines to have inventories when they don't need them.
       //       So instead, derive from a Base TileEntity class, but include 'system' fields.
       //       For instance, have a class for SimpleInventory, InputAndOutputInventory, EnergyMachine,
-      //       Generator (which just ensures not energy is received), and WorkMachine (a class for each
+      //       Generator (which just ensures no energy is received), and WorkMachine (a class for each
       //       type of machine, all extend from the EnergyReceiver system.)
       //       Each individual TileEntity should define their own systems, instead of extending from classes.
       switch(state){
@@ -91,7 +94,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   }
 
   /** Prepare to Turn on. Switches machine to Powering On if it has power time. */
-  private void turn_on(){
+  private final void turn_on(){
     if(max_power_time > 0){
       state = MachineState.POWERING_ON;
       changed = true;
@@ -101,7 +104,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     }
   }
 
-  private void turn_off(){
+  private final void turn_off(){
     if(max_power_time > 0){
       state = MachineState.POWERING_OFF;
     }
@@ -111,7 +114,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     changed = true;
   }
 
-  private void powering_on(){
+  private final void powering_on(){
     power_time += 1;
     if(power_time >= max_power_time){
       switch_machine_state();
@@ -120,7 +123,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     changed = true;
   }
 
-  private void powering_off(){
+  private final void powering_off(){
     power_time += 1;
     if(power_time >= max_power_time){
       state = MachineState.OFF;
@@ -130,7 +133,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   }
 
   /** When machine turns ON for real. Switches to either IDLE or RUNNING depending on Machine type. */
-  private void switch_machine_state(){
+  private final void switch_machine_state(){
     if(type.passive_work){
       state = MachineState.RUNNING;
     }
@@ -144,7 +147,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     return power_switch == false && type != MachineType.ALWAYS_ON;
   }
 
-  private void idle(){
+  private final void idle(){
     if(check_power_state()){
       turn_off();
     }
@@ -247,7 +250,9 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
   /** This function must test the input and output item slots and set the can_run variable. */
   protected abstract boolean test_condition();
 
-  /** Decrements input by 1, and transfers it to the center slot to begin working on it. */
+  /** Decrements all inputs by 1 and transfers them to the {@link TileMachine.working_inventory working inventory}
+   *  to begin working on it.<br />
+   *  <b>Note:</b> It is STRONGLY recommended you DO NOT Override this! */
   protected void begin_work(){
     if(input_inventory != null){
       int i;

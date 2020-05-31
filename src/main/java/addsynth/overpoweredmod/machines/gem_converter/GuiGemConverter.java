@@ -3,9 +3,12 @@ package addsynth.overpoweredmod.machines.gem_converter;
 import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
+import addsynth.energy.tiles.machines.MachineState;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.NetworkHandler;
+import addsynth.overpoweredmod.game.core.Gems;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -13,6 +16,18 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
 
   private static final ResourceLocation gem_converter_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gem_converter.png");
 
+  private static final ItemStack[] gem = new ItemStack[] {
+    new ItemStack(Gems.ruby, 1),
+    new ItemStack(Gems.topaz, 1),
+    new ItemStack(Gems.citrine, 1),
+    new ItemStack(Gems.emerald, 1),
+    new ItemStack(Gems.diamond, 1),
+    new ItemStack(Gems.sapphire, 1),
+    new ItemStack(Gems.amethyst, 1),
+    new ItemStack(Gems.quartz, 1)
+  };
+
+  private float work_float;
   private int work_percentage;
   private int energy_percentage;
 
@@ -28,6 +43,12 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
   private static final int cycle_button_buffer = 2;
   private static final int right_button_x = left_button_x + cycle_button_width + 16 + (cycle_button_buffer*2);
   private static final int cycle_button_height = 16;
+  
+  // private static final int gem_texture_y = 224; DELETE
+  // private static final int gem_texture_size = 32;
+  private static final int gem_draw_x = 76;
+  private static final int gem_draw_y = 45;
+  // private static final int gem_draw_size = 16;
   
   private final ProgressBar energy_progress_bar = new ProgressBar(148, 39, 17, 42, 204, 21);
 
@@ -69,11 +90,11 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
     // energy_percentage = Math.round(energy_float*100);
     /// energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
     
-    final float work_float = tile.getWorkTimePercentage();
+    work_float = tile.getWorkTimePercentage();
     work_percentage = (int)Math.floor(work_float*100);
     work_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,work_float,ProgressBar.Round.FLOOR);
     
-    this.itemRenderer.renderItemIntoGUI(tile.get_gem_selected(), this.guiLeft + left_button_x + 12, this.guiTop + cycle_button_y);
+    drawItemStack(gem[tile.get_gem_selected()], this.guiLeft + left_button_x + 12, this.guiTop + cycle_button_y);
   }
 
   @Override
@@ -82,7 +103,10 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
     // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_energy_usage();
     draw_status(tile.getStatus());
-    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 45);
+    if(tile.getState() == MachineState.RUNNING){
+      drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 45, 1.0f - work_float);
+      drawItemStack(gem[tile.getConvertingStack()],               76, 45,        work_float);
+    }
     draw_text_center(work_percentage + "%", work_percentage_x, work_percentage_y);
     draw_time_left(tile, time_left_y);
   }
