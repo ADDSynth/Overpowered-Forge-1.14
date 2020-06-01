@@ -1,4 +1,4 @@
-package addsynth.core.util;
+package addsynth.core.util.math;
 
 import addsynth.core.ADDSynthCore;
 import net.minecraft.block.BlockState;

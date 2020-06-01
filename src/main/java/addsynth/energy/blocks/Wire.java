@@ -3,7 +3,7 @@ package addsynth.energy.blocks;
 import javax.annotation.Nullable;
 import addsynth.core.Constants;
 import addsynth.core.blocks.BlockTile;
-import addsynth.core.util.BlockUtil;
+import addsynth.core.util.math.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;

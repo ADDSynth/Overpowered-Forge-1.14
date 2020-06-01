@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.data_cable;
 
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
-import addsynth.core.util.BlockUtil;
+import addsynth.core.util.math.BlockUtil;
 import addsynth.energy.blocks.Wire;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;

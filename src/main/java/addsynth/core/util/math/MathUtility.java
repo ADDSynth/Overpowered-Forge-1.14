@@ -1,4 +1,4 @@
-package addsynth.core.util;
+package addsynth.core.util.math;
 
 import java.lang.Math;
 import java.util.Collection;

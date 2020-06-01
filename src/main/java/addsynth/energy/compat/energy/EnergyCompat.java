@@ -2,7 +2,7 @@ package addsynth.energy.compat.energy;
 
 import java.util.ArrayList;
 import addsynth.core.game.Compatability;
-import addsynth.core.util.MathUtility;
+import addsynth.core.util.math.MathUtility;
 import addsynth.energy.Energy;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;

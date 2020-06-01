@@ -1,7 +1,7 @@
 package addsynth.energy;
 
 import javax.annotation.Nonnegative;
-import addsynth.core.util.DecimalNumber;
+import addsynth.core.util.math.DecimalNumber;
 import addsynth.energy.tiles.IEnergyUser;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.World;
