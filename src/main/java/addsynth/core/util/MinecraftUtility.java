@@ -12,21 +12,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.ModLoadingContext;
 
 public final class MinecraftUtility {
-
-  /**
-   * Taken from {@link net.minecraftforge.registries.GameData#checkPrefix(String)}.
-   * @return String modID
-   */
-  public static final String getModID(){
-    final String id = ModLoadingContext.get().getActiveNamespace();
-    if(id.equals("minecraft")){
-      ADDSynthCore.log.warn("Function "+MinecraftUtility.class.getName()+".getModID() returned 'minecraft'. This might not be what you expected. Did you call getModID() at a wrong time?");
-    }
-    return id;
-  }
 
   public static final boolean isVanilla(final ItemStack stack){
     return isVanilla(stack.getItem());
