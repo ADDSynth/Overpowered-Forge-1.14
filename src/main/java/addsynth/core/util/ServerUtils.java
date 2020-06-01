@@ -17,18 +17,32 @@ import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 public final class ServerUtils {
 
+  /** @deprecated Use {@link ServerUtils#getServer(World)} whenever possible. */
   @Nullable
   public static final MinecraftServer getServer(){
     final MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
     if(server == null){
-      ADDSynthCore.log.fatal(new NullPointerException("ServerUtils.getServer() was unable to retrieve the current running server! Maybe there is no server running?"));
+      ADDSynthCore.log.fatal(new NullPointerException(ServerUtils.class.getName()+".getServer() was unable to retrieve the current running server! Maybe there is no server running?"));
+    }
+    return server;
+  }
+
+  /** This is a more stable way to get the MinecraftServer in my opinion, but it only works if the
+   *  World used is a Server World. Falls back to the other getServer() method if this doesn't work.
+   * @param world
+   */
+  @Nullable
+  public static final MinecraftServer getServer(final World world){
+    final MinecraftServer server = world.getServer();
+    if(server == null){
+      return getServer();
     }
     return server;
   }
 
   public static ArrayList<ServerPlayerEntity> get_players_in_world(final World world){
     final ArrayList<ServerPlayerEntity> player_list = new ArrayList<>(20);
-    final MinecraftServer server = getServer();
+    final MinecraftServer server = getServer(world);
     if(server != null){
       for(ServerPlayerEntity player : server.getPlayerList().getPlayers()){
         if(player.world == world){
@@ -39,7 +53,7 @@ public final class ServerUtils {
     return player_list;
   }
 
-  public static void send_message_to_all_players(final ITextComponent text_component) {
+  public static void send_message_to_all_players(final ITextComponent text_component){
     final MinecraftServer server = getServer();
     if(server != null){
       PlayerList player_list = server.getPlayerList();
@@ -50,7 +64,7 @@ public final class ServerUtils {
   }
 
   public static void send_message_to_all_players_in_world(final ITextComponent text_component, final World world){
-    final MinecraftServer server = getServer();
+    final MinecraftServer server = getServer(world);
     if(server != null){
       for(ServerPlayerEntity player : server.getPlayerList().getPlayers()){
         if(player.world == world){

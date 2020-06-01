@@ -110,7 +110,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
           TextFormatting.DARK_PURPLE + "Singularity Event Detected at Coordinates: "+pos.getX()+" , "+pos.getY()+" , "+pos.getZ()
         ), world);
       }
-      server = ServerUtils.getServer();
+      server = ServerUtils.getServer(world);
     }
     first_tick = false;
   }
