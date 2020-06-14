@@ -2,6 +2,7 @@ package addsynth.energy.gameplay.universal_energy_interface;
 
 import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.util.StringUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.registers.NetworkHandler;
@@ -13,6 +14,9 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
 
   private static final ResourceLocation universal_interface_gui_texture =
     new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/universal_energy_interface.png");
+
+  private final String mode_text   = StringUtil.translate("gui.addsynth_energy.common.mode");
+  private final String energy_text = StringUtil.translate("gui.addsynth_energy.common.energy");
 
   private static final int button_width = 90;
   private final ProgressBar energy_bar = new ProgressBar(156, 18, 12, 34, 206, 28);
@@ -29,13 +33,13 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
     private final TileUniversalEnergyTransfer tile;
 
     public CycleTransferModeButton(int xIn, int yIn, TileUniversalEnergyTransfer tile){
-      super(xIn, yIn, button_width, 16, tile.get_transfer_mode().text);
+      super(xIn, yIn, button_width, 16, tile.get_transfer_mode().toString());
       this.tile = tile;
     }
 
     @Override
     public final void renderButton(int p_renderButton_1_, int p_renderButton_2_, float p_renderButton_3_){
-      setMessage(tile.get_transfer_mode().text);
+      setMessage(tile.get_transfer_mode().toString());
       super.renderButton(p_renderButton_1_, p_renderButton_2_, p_renderButton_3_);
     }
 
@@ -62,8 +66,8 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
   @Override
   protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     draw_title();
-    draw_text_left("Mode:", 6, line_1);
-    draw_text_left("Energy:", 6, line_2);
+    draw_text_left(mode_text+":", 6, line_1);
+    draw_text_left(energy_text+":", 6, line_2);
     draw_text_right(energy.getEnergy() + " / "+energy.getCapacity(), 130, line_2);
   }
 

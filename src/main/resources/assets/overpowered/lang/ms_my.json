@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "Plat Gangsa",
 "item.overpowered.silver_plate": "penyaduran perak",
 "item.overpowered.platinum_plate": "Platinum Plating",
-"item.overpowered.titanium_plate": "Titanium Plating"
+"item.overpowered.titanium_plate": "Titanium Plating",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "Lubang Hitam tidak dibenarkan dalam dimensi ini.",
+"gui.overpowered.black_hole.notify_players": "§5Acara Singularity§r dikesan pada koordinat: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "Bentuk Tidak Sah",
+"gui.overpowered.bridge_message.okay": "Biasa",
+"gui.overpowered.bridge_message.obstructed": "Terhalang",
+"gui.overpowered.bridge_message.no_bridge": "Tiada Jambatan",
+"gui.overpowered.bridge_message.invalid": "Tidak Sah",
+"gui.overpowered.bridge_message.no_lens": "Tanpa Lensa",
+"gui.overpowered.bridge_message.active": "Diaktifkan",
+"gui.overpowered.crystal_energy_generator.input": "Masukan",
+"gui.overpowered.crystal_energy_generator.max_extract": "Ekstrak Maksimum",
+"gui.overpowered.jei_description.overpowered_tools": "Alat yang terlalu kuat mempunyai ketahanan 3 kali ganda dari alat berlian. Mereka juga melombong sedikit lebih pantas.",
+"gui.overpowered.jei_description.void_tools": "Alat gelap masih diusahakan.",
+"gui.overpowered.jei_description.generator": "Generator adalah mesin yang menghasilkan tenaga. Anda boleh memasukkan kristal tenaga, pecahan kristal tenaga, atau blok cahaya. Masing-masing menghasilkan tenaga dengan kadar yang berbeza.",
+"gui.overpowered.jei_description.data_cable": "Kabel Data digunakan dalam pembinaan portal, dan struktur tenaga pelakuran. Ia juga digunakan dalam beberapa resipi membuat.",
+"gui.overpowered.jei_description.gem_converter": "Mesin ini dapat menukar satu jenis permata ke yang lain.",
+"gui.overpowered.jei_description.inverter": "Mesin ini mengubah kristal tenaga menjadi kristal kosong, dan berfungsi secara terbalik juga.",
+"gui.overpowered.jei_description.magic_infuser": "Masukkan buku dan permata dan anda akan mendapat buku terpikat bergantung pada jenis permata yang anda gunakan.",
+"gui.overpowered.jei_description.identifier": "Monster sekali-sekala akan menjatuhkan barang yang tidak dikenali. Gunakan mesin ini untuk mengenal pasti mereka.",
+"gui.overpowered.jei_description.portal_control_panel": "Panel kawalan portal adalah mesin yang menghasilkan portal. Ia mesti disambungkan ke bingkai portal utama dengan menggunakan kabel data.",
+"gui.overpowered.jei_description.portal_frame": "Rangka portal utama terdiri daripada gelang blok, lebar 5 blok dan tinggi 5 blok. Sudut dan sisi mestilah bingkai portal tetapi blok lain di antaranya boleh menjadi kabel data atau blok kerangka besi.",
+"gui.overpowered.jei_description.laser_housing": "Ini adalah mesin yang mengawal bagaimana laser beroperasi. Anda mesti memasang laser yang menunjuk ke arah yang anda mahu tembak. Pertama tetapkan jarak kemudian masukkan tenaga yang diperlukan. Aktifkan dengan isyarat wayar merah.",
+"gui.overpowered.jei_description.laser": "Ini adalah laser yang melekat pada mesin laser.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "Apabila dibekalkan dengan tenaga yang cukup, dan diaktifkan dengan isyarat redstone, ini akan membuat jambatan tenaga dari sini ke blok mesin jambatan yang lain. Anda mesti memasukkan lensa warna yang anda mahukan, dan ruang di antara dua blok mesin jambatan mestilah bebas dari halangan.",
+"gui.overpowered.jei_description.unknown_technology": "Ini adalah alat misteri yang tidak diketahui asal usulnya. Ia digunakan untuk membuat mesin yang paling berkuasa.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "Masukkan bijih ke dalam mesin ini dan ia akan menghasilkan dua kali ganda output, tetapi hanya berfungsi dengan bijih.",
+"gui.overpowered.jei_description.crystal_matter_generator": "Setelah berjalan sebentar, mesin ini akan menghasilkan pecahan permata. Gabungkan 9 keping jenis yang sama untuk mendapatkan satu permata penuh.",
+"gui.overpowered.jei_description.dimensional_anchor": "Pada masa ini, ini tidak mempunyai tujuan.",
+"gui.overpowered.jei_description.black_hole": "Berhati-hati dengan ini! Sekiranya anda meletakkannya, ini akan menghilangkan sebahagian besar dunia anda!",
+"gui.overpowered.jei_description.fusion_chamber": "Sebahagian daripada struktur tenaga pelakuran. Ini adalah blok di tengah. Ia mesti mengandungi inti peleburan agar dapat dianggap sah.",
+"gui.overpowered.jei_description.fusion_control_unit": "Sebahagian daripada struktur tenaga pelakuran. Anda perlu meletakkan 6 dari 5 blok ini dari pusat ke setiap arah. Anda mesti menggunakan kabel data untuk menyambungkan unit kawalan fusi ke penukar tenaga pelakuran.",
+"gui.overpowered.jei_description.fusion_control_laser": "Sebahagian daripada struktur tenaga pelakuran. Anda mesti membuat 6 daripadanya dan meletakkan satu di setiap unit kawalan fusi yang menunjuk ke ruang fusi di tengah.",
+"gui.overpowered.jei_description.fusion_converter": "Sebahagian daripada struktur tenaga pelakuran. Cukup tetapkannya di mana sahaja, maka anda mesti menyambungkannya ke setiap unit kawalan fusion menggunakan kabel data. Setelah struktur lengkap selesai, aktifkan mesin ini dengan wayar merah untuk menghidupkannya. Semasa berjalan, mesin ini akan menghasilkan tenaga.",
+"gui.overpowered.laser_housing.auto_shutoff": "Penutupan automatik",
+"gui.overpowered.laser_housing.lasers": "Lasers",
+"gui.overpowered.laser_housing.distance": "jarak",
+"gui.overpowered.laser_housing.current_energy": "tenaga semasa",
+"gui.overpowered.laser_housing.required_energy": "tenaga yang diperlukan",
+"gui.overpowered.portal_message.no_data_cable": "Tidak ada kabel data yang disambungkan.",
+"gui.overpowered.portal_message.need_portal_frames": "8 bingkai portal diperlukan.",
+"gui.overpowered.portal_message.too_many_portal_frames": "Terlalu banyak bingkai portal.",
+"gui.overpowered.portal_message.invalid_construction": "Pembinaan portal tidak sah.",
+"gui.overpowered.portal_message.obstructed": "Halangan dikesan di dalam bingkai.",
+"gui.overpowered.portal_message.off": "Panel kawalan portal dimatikan.",
+"gui.overpowered.portal_message.incorrect_items": "Item yang tidak betul dalam bingkai portal.",
+"gui.overpowered.portal_message.needs_energy": "Tidak cukup tenaga.",
+"gui.overpowered.portal_message.creative_mode": "Pemain berada dalam mod kreatif.",
+"gui.overpowered.portal_message.ready": "Portal sudah siap.",
+"gui.overpowered.portal_warning_message": "§cHati-hati§r: Masih terdapat beberapa masalah dengan dimensi yang tidak diketahui. Sekiranya anda pergi ke sana, ada kemungkinan anda muncul di udara dan jatuh ke kematian anda. Kami mengesyorkan memasukkan portal dalam mod kreatif atau mematikan portal dalam fail konfigurasi. Kami minta maaf mengenai perkara ini dan kami harap dapat memperbaikinya dalam kemas kini kemudian.",
+"gui.overpowered.ring_effect.strength": "Kekuatan",
+"gui.overpowered.ring_effect.speed": "Kepantasan",
+"gui.overpowered.ring_effect.haste": "Kelajuan perlombongan",
+"gui.overpowered.ring_effect.luck": "Nasib baik",
+"gui.overpowered.ring_effect.extra_health": "Kesihatan tambahan",
+"gui.overpowered.ring_effect.jump": "Kemahiran melompat",
+"gui.overpowered.ring_effect.fire_immune": "Kekebalan api",
+"gui.overpowered.ring_effect.water_breathing": "Bernafas di bawah air",
+"gui.overpowered.ring_effect.night_vision": "Penglihatan malam",
+"gui.overpowered.ring_effect.invisiblity": "Ketidaklihatan",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "Kumpulkan Permata",
+"advancements.overpowered.all_gems.description": "Kumpulkan semua jenis permata yang diperlukan untuk membuat permata yang terlalu kuat.",
+
+"advancements.overpowered.overpowered_gem.title": "Energy Crystal",
+"advancements.overpowered.overpowered_gem.description": "Craft an Energy Crystal",
+"advancements.overpowered.overpowered_tools.title": "Alat Tenaga",
+"advancements.overpowered.overpowered_tools.description": "Buat mana-mana Alat Tenaga",
+"advancements.overpowered.light_block.title": "Blok Cahaya",
+"advancements.overpowered.light_block.description": "Buat Blok Cahaya",
+
+"advancements.overpowered.void_crystal.title": "kristal gelap",
+"advancements.overpowered.void_crystal.description": "Gunakan penyongsang untuk membuat kristal gelap",
+"advancements.overpowered.void_tools.title": "pedang pemusnah",
+"advancements.overpowered.void_tools.description": "Buat pedang gelap",
+"advancements.overpowered.null_block.title": "Blok Null",
+"advancements.overpowered.null_block.description": "Buat Blok Null",
+
+"advancements.overpowered.laser.title": "Laser",
+"advancements.overpowered.laser.description": "Membuat mesin laser.",
+"advancements.overpowered.fire_laser.title": "Aktiviti laser",
+"advancements.overpowered.fire_laser.description": "Aktifkan laser.",
+"advancements.overpowered.fire_maximum_laser.title": "Jarak maksimum",
+"advancements.overpowered.fire_maximum_laser.description": "Api laser jarak maksimum.",
+
+"advancements.overpowered.inverter.title": "Penyongsang",
+"advancements.overpowered.inverter.description": "Buat penyongsang",
+"advancements.overpowered.craft_identifier.title": "Pengenal",
+"advancements.overpowered.craft_identifier.description": "Buat pengecam.",
+"advancements.overpowered.identify_something.title": "Identiti Baru",
+"advancements.overpowered.identify_something.description": "Gunakan mesin pengecam untuk mengenal pasti sesuatu.",
+
+"advancements.overpowered.craft_portal.title": "Portal",
+"advancements.overpowered.craft_portal.description": "Buat panel kawalan portal.",
+"advancements.overpowered.portal.title": "Dimensi Tidak Diketahui",
+"advancements.overpowered.portal.description": "Masukkan dimensi yang tidak diketahui.",
+"advancements.overpowered.unknown_technology.title": "Teknologi Tidak Diketahui",
+"advancements.overpowered.unknown_technology.description": "Cari teknologi yang tidak diketahui.",
+
+"advancements.overpowered.fusion_structure.title": "Struktur tenaga pelakuran",
+"advancements.overpowered.fusion_structure.description": "Buat semua komponen yang diperlukan untuk membina struktur tenaga pelakuran.",
+"advancements.overpowered.fusion_energy.title": "Tenaga pelakuran",
+"advancements.overpowered.fusion_energy.description": "Aktifkan struktur tenaga pelakuran yang sah.",
+
+"advancements.overpowered.black_hole.title": "Lubang hitam",
+"advancements.overpowered.black_hole.description": "Buat lubang hitam.",
+"advancements.overpowered.dimensional_anchor.title": "Sauh dimensi",
+"advancements.overpowered.dimensional_anchor.description": "Buat jangkar dimensi.",
+"advancements.overpowered.world_destroyer.title": "Pemusnah dunia",
+"advancements.overpowered.world_destroyer.description": "Gunakan lubang hitam untuk memusnahkan bahagian dunia.",
+
+"advancements.overpowered.bronze_trophy.title": "Trofi gangsa",
+"advancements.overpowered.bronze_trophy.description": "Dapatkan Piala Gangsa",
+"advancements.overpowered.silver_trophy.title": "Trofi Perak",
+"advancements.overpowered.silver_trophy.description": "Dapatkan Piala Perak",
+"advancements.overpowered.gold_trophy.title": "Trofi Emas",
+"advancements.overpowered.gold_trophy.description": "Dapatkan Piala Emas",
+"advancements.overpowered.platinum_trophy.title": "Trofi Platinum",
+"advancements.overpowered.platinum_trophy.description": "dapatkan trofi platinum"
 }

@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "Brązowa płyta",
 "item.overpowered.silver_plate": "Posrebrzane",
 "item.overpowered.platinum_plate": "Platynowy talerz",
-"item.overpowered.titanium_plate": "Płyta tytanowa"
+"item.overpowered.titanium_plate": "Płyta tytanowa",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "Czarne dziury nie są dozwolone w tym wymiarze.",
+"gui.overpowered.black_hole.notify_players": "§5Wydarzenie osobliwości§r zostało wykryte przy współrzędnych: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "Nieprawidłowy kształt",
+"gui.overpowered.bridge_message.okay": "Normalna",
+"gui.overpowered.bridge_message.obstructed": "Zatkany",
+"gui.overpowered.bridge_message.no_bridge": "Bez mostu",
+"gui.overpowered.bridge_message.invalid": "Nieważny",
+"gui.overpowered.bridge_message.no_lens": "Bez obiektywu",
+"gui.overpowered.bridge_message.active": "Aktywowany",
+"gui.overpowered.crystal_energy_generator.input": "Wejście",
+"gui.overpowered.crystal_energy_generator.max_extract": "Maksymalny ekstrakt",
+"gui.overpowered.jei_description.overpowered_tools": "Obezwładnione narzędzia mają 3-krotnie większą trwałość niż narzędzia diamentowe. Wydobywają też trochę szybciej.",
+"gui.overpowered.jei_description.void_tools": "Nadal pracują ciemne narzędzia.",
+"gui.overpowered.jei_description.generator": "Generator to maszyna, która wytwarza energię. Możesz wstawiać kryształy energii, odłamki kryształów energii lub blok świetlny. Każdy z nich wytwarza energię w różnym tempie.",
+"gui.overpowered.jei_description.data_cable": "Kabel danych służy do budowy portalu i struktury energii syntezy jądrowej. Jest również używany w niektórych przepisach rzemieślniczych.",
+"gui.overpowered.jei_description.gem_converter": "Ta maszyna może konwertować jeden rodzaj klejnotu na inny.",
+"gui.overpowered.jei_description.inverter": "Ta maszyna przekształca kryształy energii w kryształy pustki i działa również w odwrotnej kolejności.",
+"gui.overpowered.jei_description.magic_infuser": "Włóż książkę i klejnot, a otrzymasz zaczarowaną książkę w zależności od rodzaju użytego klejnotu.",
+"gui.overpowered.jei_description.identifier": "Potwory czasami upuszczają niezidentyfikowane przedmioty. Użyj tego urządzenia, aby je zidentyfikować.",
+"gui.overpowered.jei_description.portal_control_panel": "Panel sterowania portalu to maszyna, która generuje portal. Musi być podłączony do głównej ramy portalu za pomocą kabla do transmisji danych.",
+"gui.overpowered.jei_description.portal_frame": "Główna rama portalu składa się z pierścienia bloków, 5 bloków szerokości i 5 bloków wysokości. Narożniki i boki muszą być ramami portalowymi, ale pozostałe bloki pomiędzy nimi mogą być blokami kabla danych lub żelaznymi ramami.",
+"gui.overpowered.jei_description.laser_housing": "Jest to maszyna kontrolująca działanie laserów. Musisz dołączyć lasery w kierunku, w którym chcesz strzelać. Najpierw ustaw odległość, a następnie włóż wymaganą energię. Aktywuj za pomocą sygnału czerwonego drutu.",
+"gui.overpowered.jei_description.laser": "Są to lasery, które przyczepiają się do maszyn laserowych.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "Dostarczony z wystarczającą ilością energii i aktywowany sygnałem czerwonego kamienia stworzy stąd most energetyczny do kolejnego bloku maszyny mostu. Musisz włożyć soczewkę o żądanym kolorze, a przestrzeń między dwoma blokami maszyny mostu musi być wolna od przeszkód.",
+"gui.overpowered.jei_description.unknown_technology": "To tajemnicze urządzenie o nieznanym pochodzeniu. Służy do tworzenia najbardziej wydajnych maszyn.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "Włóż rudy do tego urządzenia, aby uzyskać podwójną wydajność, ale działa tylko z rudami.",
+"gui.overpowered.jei_description.crystal_matter_generator": "Po dłuższym uruchomieniu maszyna wygeneruje odłamek klejnotu. Połącz 9 odłamków tego samego typu, aby uzyskać jeden pełny klejnot.",
+"gui.overpowered.jei_description.dimensional_anchor": "Obecnie nie ma to celu.",
+"gui.overpowered.jei_description.black_hole": "Uważaj na to! Jeśli to odłożysz, usunie to dużą część twojego świata!",
+"gui.overpowered.jei_description.fusion_chamber": "Część struktury energii syntezy jądrowej. To jest blok w centrum. Musi zawierać rdzeń fuzyjny, aby można go było uznać za ważny.",
+"gui.overpowered.jei_description.fusion_control_unit": "Część struktury energii syntezy jądrowej. Musisz umieścić 6 z tych 5 bloków z dala od centrum w każdym kierunku. Musisz użyć kabla do transmisji danych, aby połączyć jednostki sterujące syntezą termojądrową z konwerterem energii syntezy jądrowej.",
+"gui.overpowered.jei_description.fusion_control_laser": "Część struktury energii syntezy jądrowej. Musisz wykonać 6 z nich i położyć jeden na każdej jednostce sterującej zgrzewaniem, kierując ją w stronę komory zgrzewania pośrodku.",
+"gui.overpowered.jei_description.fusion_converter": "Część struktury energii syntezy jądrowej. Po prostu ustaw to w dowolnym miejscu, a następnie musisz podłączyć to do każdej jednostki sterowania syntezą za pomocą kabla do transmisji danych. Po zakończeniu pełnej struktury aktywuj urządzenie czerwonym przewodem, aby je włączyć. Podczas pracy ta maszyna będzie generować energię.",
+"gui.overpowered.laser_housing.auto_shutoff": "Automatyczne wyłączenie",
+"gui.overpowered.laser_housing.lasers": "lasery",
+"gui.overpowered.laser_housing.distance": "dystans",
+"gui.overpowered.laser_housing.current_energy": "aktualna energia",
+"gui.overpowered.laser_housing.required_energy": "wymagana energia",
+"gui.overpowered.portal_message.no_data_cable": "Nie podłączono kabla danych.",
+"gui.overpowered.portal_message.need_portal_frames": "Wymaganych jest 8 ram portalowych.",
+"gui.overpowered.portal_message.too_many_portal_frames": "Za dużo ramek portalu.",
+"gui.overpowered.portal_message.invalid_construction": "Nieprawidłowa konstrukcja portalu.",
+"gui.overpowered.portal_message.obstructed": "Wewnątrz ramki wykryto przeszkodę.",
+"gui.overpowered.portal_message.off": "Panel sterowania portalu jest wyłączony.",
+"gui.overpowered.portal_message.incorrect_items": "Niepoprawne elementy w ramach portalu.",
+"gui.overpowered.portal_message.needs_energy": "Niewystarczająco energii.",
+"gui.overpowered.portal_message.creative_mode": "Odtwarzacz jest w trybie kreatywnym.",
+"gui.overpowered.portal_message.ready": "Portal jest gotowy.",
+"gui.overpowered.portal_warning_message": "§cStrzec się§r: Nadal występują problemy z nieznanym wymiarem. Jeśli tam pojedziesz, może pojawić się w powietrzu i spaść na śmierć. Zalecamy wejście do portalu w trybie kreatywnym lub wyłączenie portalu w pliku konfiguracyjnym. Przykro nam z tego powodu i mamy nadzieję to naprawić w późniejszej aktualizacji.",
+"gui.overpowered.ring_effect.strength": "siła",
+"gui.overpowered.ring_effect.speed": "Prędkość",
+"gui.overpowered.ring_effect.haste": "Szybkość wydobycia",
+"gui.overpowered.ring_effect.luck": "Szczęście",
+"gui.overpowered.ring_effect.extra_health": "Dodatkowe zdrowie",
+"gui.overpowered.ring_effect.jump": "Umiejętność skakania",
+"gui.overpowered.ring_effect.fire_immune": "Odporność na ogień",
+"gui.overpowered.ring_effect.water_breathing": "Oddychać pod wodą",
+"gui.overpowered.ring_effect.night_vision": "Nocna wizja",
+"gui.overpowered.ring_effect.invisiblity": "Niewidzialność",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "Zbierz klejnoty",
+"advancements.overpowered.all_gems.description": "Zbierz wszystkie rodzaje klejnotów potrzebnych do stworzenia obezwładnionego klejnotu.",
+
+"advancements.overpowered.overpowered_gem.title": "Kryształ energetyczny",
+"advancements.overpowered.overpowered_gem.description": "Zrób kryształ energii",
+"advancements.overpowered.overpowered_tools.title": "Narzędzia energetyczne",
+"advancements.overpowered.overpowered_tools.description": "Stwórz dowolne narzędzie energetyczne",
+"advancements.overpowered.light_block.title": "Blok świetlny",
+"advancements.overpowered.light_block.description": "Zrób blok światła",
+
+"advancements.overpowered.void_crystal.title": "pusty kryształ",
+"advancements.overpowered.void_crystal.description": "Użyj falownika, aby stworzyć kryształ pustki",
+"advancements.overpowered.void_tools.title": "Ostrze zagłady",
+"advancements.overpowered.void_tools.description": "Zrób ciemny miecz",
+"advancements.overpowered.null_block.title": "blok zerowy",
+"advancements.overpowered.null_block.description": "Zrób blok zerowy",
+
+"advancements.overpowered.laser.title": "Laser",
+"advancements.overpowered.laser.description": "Stwórz maszynę laserową.",
+"advancements.overpowered.fire_laser.title": "Aktywność lasera",
+"advancements.overpowered.fire_laser.description": "Aktywuj laser.",
+"advancements.overpowered.fire_maximum_laser.title": "Maksymalna odległość",
+"advancements.overpowered.fire_maximum_laser.description": "Wystrzel laser na maksymalną odległość.",
+
+"advancements.overpowered.inverter.title": "Falownik",
+"advancements.overpowered.inverter.description": "Stwórz falownik",
+"advancements.overpowered.craft_identifier.title": "Identyfikator",
+"advancements.overpowered.craft_identifier.description": "Zrób maszynę do identyfikacji.",
+"advancements.overpowered.identify_something.title": "Nowa tożsamość",
+"advancements.overpowered.identify_something.description": "Użyj maszyny identyfikującej, aby zidentyfikować coś.",
+
+"advancements.overpowered.craft_portal.title": "Portal",
+"advancements.overpowered.craft_portal.description": "Utwórz panel sterowania portalu.",
+"advancements.overpowered.portal.title": "Nieznany wymiar",
+"advancements.overpowered.portal.description": "Wprowadź nieznany wymiar.",
+"advancements.overpowered.unknown_technology.title": "Nieznana technologia",
+"advancements.overpowered.unknown_technology.description": "Znajdź nieznaną technologię.",
+
+"advancements.overpowered.fusion_structure.title": "Struktura energii syntezy jądrowej",
+"advancements.overpowered.fusion_structure.description": "Wytwórz wszystkie elementy potrzebne do zbudowania struktury energii syntezy jądrowej.",
+"advancements.overpowered.fusion_energy.title": "Energia syntezy jądrowej",
+"advancements.overpowered.fusion_energy.description": "Aktywuj prawidłową strukturę energii syntezy jądrowej.",
+
+"advancements.overpowered.black_hole.title": "Czarna dziura",
+"advancements.overpowered.black_hole.description": "Stwórz czarną dziurę.",
+"advancements.overpowered.dimensional_anchor.title": "Kotwica wymiarowa",
+"advancements.overpowered.dimensional_anchor.description": "Stwórz wymiarową kotwicę.",
+"advancements.overpowered.world_destroyer.title": "Światowy niszczyciel",
+"advancements.overpowered.world_destroyer.description": "Użyj czarnej dziury, aby zniszczyć część świata.",
+
+"advancements.overpowered.bronze_trophy.title": "Brązowe trofeum",
+"advancements.overpowered.bronze_trophy.description": "Zdobądź Brązowe Trofeum",
+"advancements.overpowered.silver_trophy.title": "Srebrne trofeum",
+"advancements.overpowered.silver_trophy.description": "Zdobądź Srebrne Trofeum",
+"advancements.overpowered.gold_trophy.title": "Złote trofeum",
+"advancements.overpowered.gold_trophy.description": "Zdobądź złote trofeum",
+"advancements.overpowered.platinum_trophy.title": "Platynowe trofeum",
+"advancements.overpowered.platinum_trophy.description": "Zdobądź Platynową Trofeum"
 }

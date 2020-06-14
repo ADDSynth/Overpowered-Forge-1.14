@@ -3,8 +3,12 @@
     "icon": {
       "item": "minecraft:nether_star"
     },
-    "title": "World Destroyer",
-    "description": "Use a Black Hole to destroy part of the world.",
+    "title": {
+      "translate": "advancements.overpowered.world_destroyer.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.world_destroyer.description"
+    },
     "frame": "challenge"
   },
   "parent": "overpowered:overpowered/black_hole",

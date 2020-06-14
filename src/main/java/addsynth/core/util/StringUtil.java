@@ -5,6 +5,7 @@ import java.util.Collection;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.Constants;
 import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -28,6 +29,14 @@ public final class StringUtil {
   // https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toLowerCase-java.util.Locale-
   public static final String Capitalize(final String input_string){
     return Character.toUpperCase(input_string.charAt(0)) + input_string.substring(1);
+  }
+
+  /** <p>Most of the time you're going to want to use {@link MessageUtil#send_to_player} instead.
+   *  <p><b>Note:</b> This should ONLY be called from the client-side!
+   * @param translation_key
+   */
+  public static final String translate(final String translation_key){
+    return I18n.format(translation_key);
   }
 
   public static final String print_time(final int ticks){

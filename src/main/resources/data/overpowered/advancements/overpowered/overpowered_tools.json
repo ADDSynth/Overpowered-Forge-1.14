@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:energy_sword"
     },
-    "title": "Overpowered Tools",
-    "description": "Craft a Energy Tool."
+    "title": {
+      "translate": "advancements.overpowered.overpowered_tools.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.overpowered_tools.description"
+    }
   },
   "parent": "overpowered:overpowered/overpowered_gem",
   "criteria": {

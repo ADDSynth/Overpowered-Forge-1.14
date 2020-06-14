@@ -3,8 +3,12 @@
     "icon": {
       "item": "addsynthcore:caution_block"
     },
-    "title": "Caution Block",
-    "description": "Craft a Caution Block"
+    "title": {
+      "translate": "advancements.addsynthcore.caution_block.title"
+    },
+    "description": {
+      "translate": "advancements.addsynthcore.caution_block.description"
+    }
   },
   "parent": "addsynthcore:root",
   "criteria": {

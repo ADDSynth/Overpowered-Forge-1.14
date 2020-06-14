@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:platinum_trophy"
     },
-    "title": "Platinum Trophy",
-    "description": "Get a Platinum Trophy.",
+    "title": {
+      "translate": "advancements.overpowered.platinum_trophy.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.platinum_trophy.description"
+    },
     "frame": "challenge"
   },
   "parent": "overpowered:overpowered/gold_trophy",

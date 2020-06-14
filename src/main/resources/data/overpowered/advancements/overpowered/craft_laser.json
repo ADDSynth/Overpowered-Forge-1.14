@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:laser_housing"
     },
-    "title": "Laser",
-    "description": "Craft a Laser Housing"
+    "title": {
+      "translate": "advancements.overpowered.craft_laser.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.craft_laser.description"
+    }
   },
   "parent": "overpowered:overpowered/overpowered_gem",
   "criteria": {

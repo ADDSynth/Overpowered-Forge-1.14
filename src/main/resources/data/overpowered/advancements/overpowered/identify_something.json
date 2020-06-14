@@ -3,8 +3,12 @@
     "icon": {
       "item": "minecraft:diamond_chestplate"
     },
-    "title": "New Identity",
-    "description": "Use the Identifier to identify something."
+    "title": {
+      "translate": "advancements.overpowered.identify_something.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.identify_something.description"
+    }
   },
   "parent": "overpowered:overpowered/craft_identifier",
   "criteria": {

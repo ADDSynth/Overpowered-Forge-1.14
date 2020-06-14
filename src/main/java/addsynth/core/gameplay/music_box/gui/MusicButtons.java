@@ -7,6 +7,7 @@ import addsynth.core.gameplay.music_box.TileMusicBox;
 import addsynth.core.gameplay.music_box.network_messages.MusicBoxMessage;
 import addsynth.core.gameplay.music_box.network_messages.NoteMessage;
 import addsynth.core.gui.objects.AdjustableButton;
+import addsynth.core.util.StringUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.widget.Widget;
@@ -20,7 +21,7 @@ public final class MusicButtons {
     private final TileMusicBox tile;
 
     public PlayButton(int x, int y, int width, TileMusicBox tile){
-      super(x, y, width, 14, "Play");
+      super(x, y, width, 14, StringUtil.translate("gui.addsynthcore.music_box.play"));
       this.tile = tile;
     }
 
@@ -55,8 +56,15 @@ public final class MusicButtons {
   public static final class NextDirectionButton extends AdjustableButton {
 
     private final TileMusicBox tile;
-    private static final String[] face = new String[] {"Down", "Up", "North", "South", "West", "East"};
-
+    private static final String[] face = new String[] {
+      StringUtil.translate("gui.addsynthcore.direction.down"),
+      StringUtil.translate("gui.addsynthcore.direction.up"),
+      StringUtil.translate("gui.addsynthcore.direction.north"),
+      StringUtil.translate("gui.addsynthcore.direction.south"),
+      StringUtil.translate("gui.addsynthcore.direction.west"),
+      StringUtil.translate("gui.addsynthcore.direction.east")
+    };
+  
     public NextDirectionButton(int xIn, int yIn, int widthIn, TileMusicBox tile){
       super(xIn, yIn, widthIn, 14, "");
       this.tile = tile;
@@ -64,7 +72,7 @@ public final class MusicButtons {
 
     @Override
     public void renderButton(int p_renderButton_1_, int p_renderButton_2_, float p_renderButton_3_){
-      setMessage(face[tile.get_next_direction()]);
+      setMessage(face[tile.get_next_direction()]); // stays up-to-date
       super.renderButton(p_renderButton_1_, p_renderButton_2_, p_renderButton_3_);
     }
 

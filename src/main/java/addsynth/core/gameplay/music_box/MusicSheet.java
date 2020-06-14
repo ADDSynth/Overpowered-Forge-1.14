@@ -4,6 +4,7 @@ import addsynth.core.items.ItemUtility;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.CoreItem;
+import addsynth.core.util.MessageUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceContext.FluidMode;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 
 /**
@@ -48,7 +48,7 @@ public final class MusicSheet extends CoreItem {
       if(result == null){
         if(player.isSneaking()){
           stack.setTag(null);
-          player.sendMessage(new StringTextComponent("Music Sheet cleared."));
+          MessageUtil.send_to_player(player, "gui.addsynthcore.music_sheet.clear");
           result = new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
         }
       }
@@ -73,7 +73,7 @@ public final class MusicSheet extends CoreItem {
           if(nbt != null){
             tile.getMusicGrid().load_from_nbt(nbt);
             tile.update_data();
-            player.sendMessage(new StringTextComponent("Music Sheet pasted to Music Box."));
+            MessageUtil.send_to_player(player, "gui.addsynthcore.music_sheet.paste");
             return ActionResultType.SUCCESS;
           }
         }
@@ -97,7 +97,7 @@ public final class MusicSheet extends CoreItem {
       ItemUtility.add_to_player_inventory(player, music_sheet);
     }
       
-    player.sendMessage(new StringTextComponent("Music data copied to Music Sheet."));
+    MessageUtil.send_to_player(player, "gui.addsynthcore.music_sheet.copy");
     return ActionResultType.SUCCESS;
   }
 

@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:black_hole"
     },
-    "title": "Black Hole",
-    "description": "Craft a Black Hole."
+    "title": {
+      "translate": "advancements.overpowered.black_hole.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.black_hole.description"
+    }
   },
   "parent": "overpowered:overpowered/unknown_technology",
   "criteria": {

@@ -1,31 +1,32 @@
 package addsynth.overpoweredmod.machines.portal.control_panel;
 
+import addsynth.core.util.StringUtil;
 import addsynth.core.util.color.ColorCode;
 import net.minecraft.util.text.TextFormatting;
 
 public enum PortalMessage {
 
-  NO_DATA_CABLE         (ColorCode.ERROR, "No Data Cable connected."),
-  REQUIRE_PORTAL_FRAMES (ColorCode.ERROR, "Portal requires 8 Portal Frame Blocks."),
-  TOO_MANY_PORTAL_FRAMES(ColorCode.ERROR, "Too many Portal Frame Blocks."),
-  PORTAL_NOT_CONSTRUCTED(ColorCode.ERROR, "Portal is not constructed correctly."),
-  OBSTRUCTED            (ColorCode.ERROR, "Obstruction detected in portal frame."),
-  OFF                   (null,            "Portal Control Panel is Off."),
-  INCORRECT_ITEMS       (ColorCode.ERROR, "Incorrect items in Portal Frames."),
-  NEEDS_ENERGY          (ColorCode.ERROR, "Needs Energy."),
-  CREATIVE_MODE         (null,            "Player is in Creative Mode."),
-  PORTAL_READY          (ColorCode.GOOD,  "Portal is Ready.");
+  NO_DATA_CABLE         (ColorCode.ERROR, "gui.overpowered.portal_message.no_data_cable"),
+  REQUIRE_PORTAL_FRAMES (ColorCode.ERROR, "gui.overpowered.portal_message.need_portal_frames"),
+  TOO_MANY_PORTAL_FRAMES(ColorCode.ERROR, "gui.overpowered.portal_message.too_many_portal_frames"),
+  PORTAL_NOT_CONSTRUCTED(ColorCode.ERROR, "gui.overpowered.portal_message.invalid_construction"),
+  OBSTRUCTED            (ColorCode.ERROR, "gui.overpowered.portal_message.obstructed"),
+  OFF                   (null,            "gui.overpowered.portal_message.off"),
+  INCORRECT_ITEMS       (ColorCode.ERROR, "gui.overpowered.portal_message.incorrect_items"),
+  NEEDS_ENERGY          (ColorCode.ERROR, "gui.overpowered.portal_message.needs_energy"),
+  CREATIVE_MODE         (null,            "gui.overpowered.portal_message.creative_mode"),
+  PORTAL_READY          (ColorCode.GOOD,  "gui.overpowered.portal_message.ready");
 
-  private final String message;
+  private final String translation_key;
   private final String formatting_code;
 
-  private PortalMessage(final TextFormatting code, final String message){
-    this.message = message;
+  private PortalMessage(final TextFormatting code, final String translation_key){
+    this.translation_key = translation_key;
     this.formatting_code = code != null ? code.toString() : "";
   }
 
-  public final String getMessage(){ // TODO: pass language key and return translated string instead, in version 1.3.
-    return formatting_code + message;
+  public final String getMessage(){
+    return formatting_code + StringUtil.translate(translation_key);
   }
 
 }

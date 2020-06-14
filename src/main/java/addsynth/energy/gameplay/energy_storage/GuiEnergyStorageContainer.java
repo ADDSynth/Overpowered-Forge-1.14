@@ -1,6 +1,7 @@
 package addsynth.energy.gameplay.energy_storage;
 
 import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.util.StringUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
 import net.minecraft.entity.player.PlayerInventory;
@@ -11,6 +12,8 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<TileEnergySto
 
   private static final ResourceLocation energy_storage_gui_texture =
     new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/energy_storage.png");
+
+  private final String energy_stored_text = StringUtil.translate("gui.addsynth_energy.common.energy_stored");
 
   private float energy_float;
   private static final int draw_energy_text_y  = 25;
@@ -37,7 +40,7 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<TileEnergySto
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     super.draw_title();
-    draw_text_center("Energy Stored:", center_x, draw_energy_text_y);
+    draw_text_center(energy_stored_text+":", center_x, draw_energy_text_y);
     draw_text_right(String.format("%.2f", energy.getEnergy()), draw_energy_x, draw_energy_level_y);
     draw_text_left("/ "+energy.getCapacity(), draw_capacity_x, draw_energy_level_y);
     draw_text_center(Math.round(energy_float*100) + "%", center_x, draw_energy_percentage_y);

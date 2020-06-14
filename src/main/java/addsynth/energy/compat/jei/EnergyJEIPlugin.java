@@ -1,5 +1,6 @@
 package addsynth.energy.compat.jei;
 
+import addsynth.core.util.StringUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gameplay.EnergyBlocks;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
@@ -41,11 +42,11 @@ public final class EnergyJEIPlugin implements IModPlugin {
   }
 
   private static void add_information(IRecipeRegistration registry){
-    registry.addIngredientInfo(new ItemStack(EnergyBlocks.wire),             VanillaTypes.ITEM, "Use Energy Wire to connect all your machines together to transfer energy.");
-    registry.addIngredientInfo(new ItemStack(EnergyBlocks.energy_storage),   VanillaTypes.ITEM, "This will store any excess energy that you generate, up to 1 million units of Energy.");
-    registry.addIngredientInfo(new ItemStack(EnergyBlocks.electric_furnace), VanillaTypes.ITEM, "This machine works just like a regular Furnace except it runs off of electricity. 1,000 Energy will perform 1 smelting operation.");
-    registry.addIngredientInfo(new ItemStack(EnergyBlocks.compressor),       VanillaTypes.ITEM, "The Compressor is used to compress metal ingots into metal plates.");
-    registry.addIngredientInfo(new ItemStack(EnergyBlocks.universal_energy_machine), VanillaTypes.ITEM, "This machine can interface with other Energy APIs in order to transfer energy to/from other mods.");
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.wire),             VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.wire"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.energy_storage),   VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.energy_storage"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.electric_furnace), VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.electric_furnace"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.compressor),       VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.compressor"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.universal_energy_machine), VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.universal_energy_interface"));
   }
 
   @Override

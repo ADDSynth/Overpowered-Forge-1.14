@@ -6,12 +6,10 @@ import addsynth.core.ADDSynthCore;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.management.PlayerList;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
@@ -53,27 +51,6 @@ public final class ServerUtils {
     return player_list;
   }
 
-  public static void send_message_to_all_players(final ITextComponent text_component){
-    final MinecraftServer server = getServer();
-    if(server != null){
-      PlayerList player_list = server.getPlayerList();
-      if(player_list != null){
-        player_list.sendMessage(text_component);
-      }
-    }
-  }
-
-  public static void send_message_to_all_players_in_world(final ITextComponent text_component, final World world){
-    final MinecraftServer server = getServer(world);
-    if(server != null){
-      for(ServerPlayerEntity player : server.getPlayerList().getPlayers()){
-        if(player.world == world){
-          player.sendMessage(text_component);
-        }
-      }
-    }
-  }
-
   /** Allows any Entity and not EntityLiving? */
   public static void teleport_to_dimension(final Entity entity, final int dimension_id){
     // entity.changeDimension(dimension_id);
@@ -89,7 +66,7 @@ public final class ServerUtils {
     // getServer().getPlayerList().transferPlayerToDimension(player, dimension_id, teleporter);
   }
 
-  /*
+  /* DELETE
   JUST USE: NetworkHandler.INSTANCE.sendToDimension(new Message(), world.provider.getDimension()));
   public static void send_network_message_to_clients_in_world(SimpleNetworkWrapper network, World world, IMessage message){
     final ArrayList<EntityPlayerMP> players_in_world = get_players_in_world(world);

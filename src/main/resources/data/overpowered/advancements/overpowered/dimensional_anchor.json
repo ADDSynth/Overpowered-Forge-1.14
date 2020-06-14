@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:dimensional_anchor"
     },
-    "title": "Dimensional Anchor",
-    "description": "Craft a Dimensional Anchor."
+    "title": {
+      "translate": "advancements.overpowered.dimensional_anchor.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.dimensional_anchor.description"
+    }
   },
   "parent": "overpowered:overpowered/unknown_technology",
   "criteria": {

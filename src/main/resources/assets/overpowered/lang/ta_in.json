@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "வெண்கலம் தட்டு",
 "item.overpowered.silver_plate": "வெள்ளி தட்டு",
 "item.overpowered.platinum_plate": "பிளாட்டினம் தட்டு",
-"item.overpowered.titanium_plate": "டைட்டானியம் தட்டு"
+"item.overpowered.titanium_plate": "டைட்டானியம் தட்டு",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "இந்த பரிமாணத்தில் கருப்பு துளைகள் அனுமதிக்கப்படவில்லை.",
+"gui.overpowered.black_hole.notify_players": "§5ஒருமை நிகழ்வு§r ஆயக்கட்டுகளில் கண்டறியப்பட்டது: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "தவறான வடிவம்",
+"gui.overpowered.bridge_message.okay": "இயல்பானது",
+"gui.overpowered.bridge_message.obstructed": "தடைபட்டது",
+"gui.overpowered.bridge_message.no_bridge": "பாலம் இல்லை",
+"gui.overpowered.bridge_message.invalid": "தவறானது",
+"gui.overpowered.bridge_message.no_lens": "லென்ஸ் இல்லை",
+"gui.overpowered.bridge_message.active": "செயல்படுத்தப்பட்டது",
+"gui.overpowered.crystal_energy_generator.input": "உள்ளீடு",
+"gui.overpowered.crystal_energy_generator.max_extract": "பிரித்தெடுக்கும் வீதம்",
+"gui.overpowered.jei_description.overpowered_tools": "அதிகப்படியான கருவிகள் வைர கருவிகளின் ஆயுள் 3 மடங்கு. அவையும் கொஞ்சம் வேகமாக என்னுடையது.",
+"gui.overpowered.jei_description.void_tools": "இருண்ட கருவிகள் இன்னும் வேலை செய்யப்படுகின்றன.",
+"gui.overpowered.jei_description.generator": "ஜெனரேட்டர் என்பது ஆற்றலை உருவாக்கும் இயந்திரம். நீங்கள் ஆற்றல் படிகங்கள், ஆற்றல் படிகத் துண்டுகள் அல்லது ஒரு ஒளித் தொகுதியைச் செருகலாம். ஒவ்வொன்றும் வெவ்வேறு விகிதங்களில் ஆற்றலை உருவாக்குகின்றன.",
+"gui.overpowered.jei_description.data_cable": "டேட்டா கேபிள் போர்ட்டலின் கட்டுமானத்திலும், இணைவு ஆற்றல் கட்டமைப்பிலும் பயன்படுத்தப்படுகிறது. இது சில கைவினை சமையல் குறிப்புகளிலும் பயன்படுத்தப்படுகிறது.",
+"gui.overpowered.jei_description.gem_converter": "இந்த இயந்திரம் ஒரு ரத்தின வகையை மற்றொன்றுக்கு மாற்ற முடியும்.",
+"gui.overpowered.jei_description.inverter": "இந்த இயந்திரம் ஆற்றல் படிகங்களை வெற்றிட படிகங்களாக மாற்றுகிறது, மேலும் தலைகீழாகவும் செயல்படுகிறது.",
+"gui.overpowered.jei_description.magic_infuser": "ஒரு புத்தகம் மற்றும் ஒரு ரத்தினத்தை செருகவும், நீங்கள் பயன்படுத்திய ரத்தின வகையைப் பொறுத்து ஒரு மந்திரித்த புத்தகம் கிடைக்கும்.",
+"gui.overpowered.jei_description.identifier": "அரக்கர்கள் எப்போதாவது அடையாளம் காணப்படாத பொருட்களை கைவிடுவார்கள். அவற்றை அடையாளம் காண இந்த இயந்திரத்தைப் பயன்படுத்தவும்.",
+"gui.overpowered.jei_description.portal_control_panel": "போர்டல் கண்ட்ரோல் பேனல் என்பது போர்ட்டலை உருவாக்கும் இயந்திரமாகும். தரவு கேபிளைப் பயன்படுத்தி முக்கிய போர்டல் சட்டத்துடன் இணைக்கப்பட வேண்டும்.",
+"gui.overpowered.jei_description.portal_frame": "பிரதான போர்டல் சட்டகம் தொகுதிகள், 5 தொகுதிகள் அகலம் மற்றும் 5 தொகுதிகள் உயரம் கொண்டது. மூலைகளும் பக்கங்களும் போர்டல் பிரேம்களாக இருக்க வேண்டும், ஆனால் இடையில் உள்ள மற்ற தொகுதிகள் தரவு கேபிள் அல்லது இரும்பு பிரேம் தொகுதிகளாக இருக்கலாம்.",
+"gui.overpowered.jei_description.laser_housing": "ஒளிக்கதிர்கள் எவ்வாறு இயங்குகின்றன என்பதைக் கட்டுப்படுத்தும் இயந்திரம் இது. நீங்கள் சுட விரும்பும் திசையில் சுட்டிக்காட்டும் ஒளிக்கதிர்களை இணைக்க வேண்டும். முதலில் தூரத்தை அமைத்து தேவையான ஆற்றலைச் செருகவும். சிவப்பு கம்பி சமிக்ஞையுடன் செயல்படுத்தவும்.",
+"gui.overpowered.jei_description.laser": "லேசர் இயந்திரங்களுடன் இணைக்கும் ஒளிக்கதிர்கள் இவை.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "போதுமான ஆற்றலுடன் வழங்கப்பட்டு, ரெட்ஸ்டோன் சிக்னலுடன் செயல்படுத்தப்படும் போது, ​​இது இங்கிருந்து மற்றொரு பாலம் இயந்திரத் தொகுதிக்கு ஒரு ஆற்றல் பாலத்தை உருவாக்கும். நீங்கள் விரும்பும் வண்ணத்தின் லென்ஸை நீங்கள் செருக வேண்டும், மேலும் இரண்டு பாலம் இயந்திரத் தொகுதிகளுக்கு இடையில் இடைவெளி தடைகள் இல்லாமல் இருக்க வேண்டும்.",
+"gui.overpowered.jei_description.unknown_technology": "இது அறியப்படாத தோற்றம் கொண்ட ஒரு மர்மமான சாதனம். இது மிகவும் சக்திவாய்ந்த இயந்திரங்களை உருவாக்க பயன்படுகிறது.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "இந்த இயந்திரத்தில் தாதுக்களைச் செருகவும், அது வெளியீட்டை இரட்டிப்பாக்கும், ஆனால் இது தாதுக்களுடன் மட்டுமே செயல்படும்.",
+"gui.overpowered.jei_description.crystal_matter_generator": "சிறிது நேரம் ஓடிய பிறகு, இந்த இயந்திரம் ஒரு ரத்தினத் துண்டை உருவாக்கும். ஒரு முழு ரத்தினத்தைப் பெற ஒரே மாதிரியான 9 துண்டுகளை இணைக்கவும்.",
+"gui.overpowered.jei_description.dimensional_anchor": "தற்போது இதற்கு எந்த நோக்கமும் இல்லை.",
+"gui.overpowered.jei_description.black_hole": "இதில் கவனமாக இருங்கள்! இதை நீங்கள் கீழே வைத்தால், இது உங்கள் உலகின் பெரும் பகுதியை அகற்றும்!",
+"gui.overpowered.jei_description.fusion_chamber": "இணைவு ஆற்றல் கட்டமைப்பின் ஒரு பகுதி. இது மையத்தில் உள்ள தொகுதி. செல்லுபடியாகும் என்று கருதப்படுவதற்கு இது ஒரு இணைவு மையத்தைக் கொண்டிருக்க வேண்டும்.",
+"gui.overpowered.jei_description.fusion_control_unit": "இணைவு ஆற்றல் கட்டமைப்பின் ஒரு பகுதி. இந்த 5 தொகுதிகளில் 6 ஐ ஒவ்வொரு திசையிலும் மையத்திலிருந்து வைக்க வேண்டும். இணைவு கட்டுப்பாட்டு அலகுகளை இணைவு ஆற்றல் மாற்றிக்கு இணைக்க நீங்கள் தரவு கேபிளைப் பயன்படுத்த வேண்டும்.",
+"gui.overpowered.jei_description.fusion_control_laser": "இணைவு ஆற்றல் கட்டமைப்பின் ஒரு பகுதி. இவற்றில் 6 ஐ நீங்கள் உருவாக்க வேண்டும் மற்றும் ஒவ்வொரு இணைவு கட்டுப்பாட்டு அலகுக்கும் ஒன்றை மையத்தில் உள்ள இணைவு அறையை நோக்கி வைக்க வேண்டும்.",
+"gui.overpowered.jei_description.fusion_converter": "இணைவு ஆற்றல் கட்டமைப்பின் ஒரு பகுதி. இதை எங்கும் அமைக்கவும், பின்னர் தரவு கேபிளைப் பயன்படுத்தி ஒவ்வொரு இணைவு கட்டுப்பாட்டு அலகுகளுடனும் இதை இணைக்க வேண்டும். முழு கட்டமைப்பு முடிந்ததும், இந்த இயந்திரத்தை இயக்க சிவப்பு கம்பி மூலம் செயல்படுத்தவும். இயங்கும் போது, ​​இந்த இயந்திரம் ஆற்றலை உருவாக்கும்.",
+"gui.overpowered.laser_housing.auto_shutoff": "ஆட்டோ பணிநிறுத்தம்",
+"gui.overpowered.laser_housing.lasers": "ஒளிக்கதிர்கள்",
+"gui.overpowered.laser_housing.distance": "தூரம்",
+"gui.overpowered.laser_housing.current_energy": "தற்போதைய ஆற்றல்",
+"gui.overpowered.laser_housing.required_energy": "தேவையான ஆற்றல்",
+"gui.overpowered.portal_message.no_data_cable": "தரவு கேபிள் இணைக்கப்படவில்லை.",
+"gui.overpowered.portal_message.need_portal_frames": "8 போர்டல் பிரேம்கள் தேவை.",
+"gui.overpowered.portal_message.too_many_portal_frames": "பல போர்டல் பிரேம்கள்.",
+"gui.overpowered.portal_message.invalid_construction": "தவறான போர்டல் கட்டுமானம்.",
+"gui.overpowered.portal_message.obstructed": "சட்டகத்திற்குள் தடை கண்டறியப்பட்டது.",
+"gui.overpowered.portal_message.off": "போர்டல் கட்டுப்பாட்டு குழு முடக்கப்பட்டுள்ளது.",
+"gui.overpowered.portal_message.incorrect_items": "போர்டல் பிரேம்களில் தவறான உருப்படிகள்.",
+"gui.overpowered.portal_message.needs_energy": "போதுமான ஆற்றல் இல்லை.",
+"gui.overpowered.portal_message.creative_mode": "பிளேயர் கிரியேட்டிவ் பயன்முறையில் உள்ளது.",
+"gui.overpowered.portal_message.ready": "போர்டல் தயாராக உள்ளது.",
+"gui.overpowered.portal_warning_message": "§cஜாக்கிரதை§r: அறியப்படாத பரிமாணத்தில் இன்னும் சில சிக்கல்கள் உள்ளன. நீங்கள் அங்கு சென்றால், நீங்கள் காற்றில் தோன்றி உங்கள் மரணத்திற்கு விழ வாய்ப்பு உள்ளது. கிரியேட்டிவ் பயன்முறையில் போர்ட்டலை உள்ளிட அல்லது உள்ளமைவு கோப்பில் போர்ட்டலை முடக்க பரிந்துரைக்கிறோம். இதைப் பற்றி வருந்துகிறோம், பின்னர் புதுப்பித்தலில் இதை சரிசெய்ய நம்புகிறோம்.",
+"gui.overpowered.ring_effect.strength": "வலிமை",
+"gui.overpowered.ring_effect.speed": "வேகம்",
+"gui.overpowered.ring_effect.haste": "சுரங்க வேகம்",
+"gui.overpowered.ring_effect.luck": "அதிர்ஷ்டம்",
+"gui.overpowered.ring_effect.extra_health": "கூடுதல் ஆரோக்கியம்",
+"gui.overpowered.ring_effect.jump": "குதிக்கும் திறன்",
+"gui.overpowered.ring_effect.fire_immune": "தீ நோய் எதிர்ப்பு சக்தி",
+"gui.overpowered.ring_effect.water_breathing": "நீருக்கடியில் சுவாசிக்கவும்",
+"gui.overpowered.ring_effect.night_vision": "இரவு பார்வை",
+"gui.overpowered.ring_effect.invisiblity": "கண்ணுக்குத் தெரியாதது",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "ரத்தினங்களை சேகரிக்கவும்",
+"advancements.overpowered.all_gems.description": "அதிகப்படியான ரத்தினத்தை உருவாக்க தேவையான அனைத்து வகையான ரத்தினங்களையும் சேகரிக்கவும்.",
+
+"advancements.overpowered.overpowered_gem.title": "ஆற்றல் படிக",
+"advancements.overpowered.overpowered_gem.description": "எரிசக்தி படிகத்தை உருவாக்குங்கள்",
+"advancements.overpowered.overpowered_tools.title": "ஆற்றல் கருவிகள்",
+"advancements.overpowered.overpowered_tools.description": "எரிசக்தி கருவியை உருவாக்கவும்",
+"advancements.overpowered.light_block.title": "லைட் பிளாக்",
+"advancements.overpowered.light_block.description": "ஒளி ஒரு பிளாக் செய்ய",
+
+"advancements.overpowered.void_crystal.title": "இருண்ட படிக",
+"advancements.overpowered.void_crystal.description": "ஒரு இருண்ட படிக செய்ய இன்வெர்ட்டர் பயன்படுத்தவும்",
+"advancements.overpowered.void_tools.title": "நிர்மூலமாக்கும் பிளேடு",
+"advancements.overpowered.void_tools.description": "ஒரு இருண்ட வாள் செய்யுங்கள்",
+"advancements.overpowered.null_block.title": "பூஜ்ய பிளாக்",
+"advancements.overpowered.null_block.description": "ஒரு பூஜ்ய பிளாக் செய்யுங்கள்",
+
+"advancements.overpowered.laser.title": "லேசர்",
+"advancements.overpowered.laser.description": "லேசர் இயந்திரத்தை உருவாக்குங்கள்.",
+"advancements.overpowered.fire_laser.title": "லேசர் தீ",
+"advancements.overpowered.fire_laser.description": "லேசரை இயக்கவும்.",
+"advancements.overpowered.fire_maximum_laser.title": "அதிகபட்ச தூரம்",
+"advancements.overpowered.fire_maximum_laser.description": "ஒரு லேசரை அதிகபட்ச தூரத்திற்கு சுடவும்.",
+
+"advancements.overpowered.inverter.title": "இன்வெர்ட்டர்",
+"advancements.overpowered.inverter.description": "ஒரு இன்வெர்ட்டர் கைவினை",
+"advancements.overpowered.craft_identifier.title": "அடையாளங்காட்டி",
+"advancements.overpowered.craft_identifier.description": "ஒரு அடையாளங்காட்டி இயந்திரத்தை உருவாக்கவும்.",
+"advancements.overpowered.identify_something.title": "புதிய அடையாளம்",
+"advancements.overpowered.identify_something.description": "எதையாவது அடையாளம் காண அடையாளங்காட்டி இயந்திரத்தைப் பயன்படுத்தவும்.",
+
+"advancements.overpowered.craft_portal.title": "இணைய முகப்பு",
+"advancements.overpowered.craft_portal.description": "போர்டல் கட்டுப்பாட்டுப் பலகத்தை வடிவமைக்கவும்.",
+"advancements.overpowered.portal.title": "தெரியாத பரிமாணம்",
+"advancements.overpowered.portal.description": "அறியப்படாத பரிமாணத்தை உள்ளிடவும்.",
+"advancements.overpowered.unknown_technology.title": "தெரியாத தொழில்நுட்பம்",
+"advancements.overpowered.unknown_technology.description": "அறியப்படாத தொழில்நுட்பத்தைக் கண்டறியவும்.",
+
+"advancements.overpowered.fusion_structure.title": "இணைவு ஆற்றல் அமைப்பு",
+"advancements.overpowered.fusion_structure.description": "இணைவு ஆற்றல் கட்டமைப்பை உருவாக்க தேவையான அனைத்து கூறுகளையும் கைவினை.",
+"advancements.overpowered.fusion_energy.title": "இணைவு ஆற்றல்",
+"advancements.overpowered.fusion_energy.description": "செல்லுபடியாகும் இணைவு ஆற்றல் கட்டமைப்பை செயல்படுத்தவும்.",
+
+"advancements.overpowered.black_hole.title": "கருப்பு துளை",
+"advancements.overpowered.black_hole.description": "ஒரு கருந்துளை கைவினை.",
+"advancements.overpowered.dimensional_anchor.title": "பரிமாண நங்கூரம்",
+"advancements.overpowered.dimensional_anchor.description": "ஒரு பரிமாண நங்கூரத்தை வடிவமைக்கவும்.",
+"advancements.overpowered.world_destroyer.title": "உலக அழிப்பான்",
+"advancements.overpowered.world_destroyer.description": "உலகின் ஒரு பகுதியை அழிக்க கருந்துளையைப் பயன்படுத்துங்கள்.",
+
+"advancements.overpowered.bronze_trophy.title": "வெண்கலம் டிராபி",
+"advancements.overpowered.bronze_trophy.description": "ஒரு வெண்கலம் டிராபி கிடைக்கும்",
+"advancements.overpowered.silver_trophy.title": "வெள்ளி டிராபி",
+"advancements.overpowered.silver_trophy.description": "ஒரு வெள்ளி டிராபி கிடைக்கும்",
+"advancements.overpowered.gold_trophy.title": "கோல்ட் டிராபி",
+"advancements.overpowered.gold_trophy.description": "ஒரு கோல்ட் டிராபி கிடைக்கும்",
+"advancements.overpowered.platinum_trophy.title": "பிளாட்டினம் டிராபி",
+"advancements.overpowered.platinum_trophy.description": "ஒரு பிளாட்டினம் டிராபி கிடைக்கும்"
 }

@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:unknown_technology"
     },
-    "title": "Unknown Technology",
-    "description": "Find an Unknown Technology in the Unknown Dimension."
+    "title": {
+      "translate": "advancements.overpowered.unknown_technology.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.unknown_technology.description"
+    },
   },
   "parent": "overpowered:overpowered/portal",
   "criteria": {

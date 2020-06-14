@@ -3,8 +3,12 @@
     "icon": {
       "item": "addsynthcore:caution_block"
     },
-    "title": "ADDSynthCore",
-    "description": "ADDSynthCore",
+    "title": {
+      "translate": "advancements.addsynthcore.root.title"
+    },
+    "description": {
+      "translate": "advancements.addsynthcore.root.description"
+    },
     "background": "addsynthcore:textures/gui/advancements/stone.png",
     "show_toast": false,
     "announce_to_chat": false

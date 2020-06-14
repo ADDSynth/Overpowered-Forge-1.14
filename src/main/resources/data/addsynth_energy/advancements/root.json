@@ -3,8 +3,12 @@
     "icon": {
       "item": "addsynth_energy:energy_wire"
     },
-    "title": "ADDSynth Energy",
-    "description": "Energy Library for all of ADDSynth's mods.",
+    "title": {
+      "translate": "advancements.addsynth_energy.root.title"
+    },
+    "description": {
+      "translate": "advancements.addsynth_energy.root.description"
+    },
     "background": "addsynth_energy:textures/gui/advancements/stone.png",
     "show_toast": false,
     "announce_to_chat": false

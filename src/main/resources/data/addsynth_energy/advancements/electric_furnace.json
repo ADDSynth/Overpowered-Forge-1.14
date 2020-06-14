@@ -3,8 +3,12 @@
     "icon": {
       "item": "addsynth_energy:electric_furnace"
     },
-    "title": "Electric Furnace",
-    "description": "Craft an Electric Furnace"
+    "title": {
+      "translate": "advancements.addsynth_energy.electric_furnace.title"
+    },
+    "description": {
+      "translate": "advancements.addsynth_energy.electric_furnace.description"
+    }
   },
   "parent": "addsynth_energy:root",
   "criteria": {

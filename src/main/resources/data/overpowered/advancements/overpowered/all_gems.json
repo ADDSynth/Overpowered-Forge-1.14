@@ -3,8 +3,12 @@
     "icon": {
       "item": "minecraft:emerald"
     },
-    "title": "Collect Gems",
-    "description": "Collect all 8 types of gems needed to craft the Overpowered Gem.",
+    "title": {
+      "translate": "advancements.overpowered.all_gems.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.all_gems.description"
+    },
     "frame": "goal"
   },
   "parent": "overpowered:overpowered/root",

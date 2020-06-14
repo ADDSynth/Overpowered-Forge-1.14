@@ -1,5 +1,6 @@
 package addsynth.energy.gui.widgets;
 
+import addsynth.core.util.StringUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import addsynth.energy.registers.NetworkHandler;
@@ -18,6 +19,9 @@ public final class OnOffSwitch extends AbstractButton {
 
   private final TileWorkMachine tile;
   private static final ResourceLocation gui_switch = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/gui_textures.png");
+
+  private final String on_text  = StringUtil.translate("gui.addsynth_energy.switch.on");
+  private final String off_text = StringUtil.translate("gui.addsynth_energy.switch.off");
 
   /**
    * Call with guiLeft + standard x = 6 and guiTop + standard y = 17.
@@ -61,13 +65,13 @@ public final class OnOffSwitch extends AbstractButton {
     final int text_color = 14737632;
     if(tile != null){
       if(tile.get_switch_state()){
-        setMessage("On");
-        this.drawCenteredString(fontrenderer, "On", x + 20, y + 4, text_color);
+        setMessage(on_text);
+        this.drawCenteredString(fontrenderer, on_text, x + 20, y + 4, text_color);
         // TODO: detect state changes and call setMessage() to change what the narrator says when players mouse over this button.
       }
       else{
-        setMessage("Off");
-        this.drawCenteredString(fontrenderer, "Off", x + 14, y + 4, text_color);
+        setMessage(off_text);
+        this.drawCenteredString(fontrenderer, off_text, x + 14, y + 4, text_color);
       }
     }
     else{

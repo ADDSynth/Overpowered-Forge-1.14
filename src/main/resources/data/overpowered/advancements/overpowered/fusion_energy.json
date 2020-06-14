@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:fusion_core"
     },
-    "title": "Fusion Energy",
-    "description": "Activate a Fusion Energy Structure.",
+    "title": {
+      "translate": "advancements.overpowered.fusion_energy.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.fusion_energy.description"
+    },
     "frame": "goal"
   },
   "parent": "overpowered:overpowered/fusion_structure",

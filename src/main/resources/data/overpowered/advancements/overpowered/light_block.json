@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:light_block"
     },
-    "title": "Light Block",
-    "description": "Craft a Light Block"
+    "title": {
+      "translate": "advancements.overpowered.light_block.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.light_block.description"
+    }
   },
   "parent": "overpowered:overpowered/overpowered_gem",
   "criteria": {

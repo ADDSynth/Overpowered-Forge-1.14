@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:identifier"
     },
-    "title": "Identifier",
-    "description": "Craft an Identifier."
+    "title": {
+      "translate": "advancements.overpowered.craft_identifier.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.craft_identifier.description"
+    }
   },
   "parent": "overpowered:overpowered/void_crystal",
   "criteria": {

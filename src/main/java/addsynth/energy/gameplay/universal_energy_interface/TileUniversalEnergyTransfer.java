@@ -17,27 +17,6 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileUniversalEnergyTransfer extends TileEnergyWithStorage implements ITickableTileEntity, INamedContainerProvider {
 
-  public enum TRANSFER_MODE {
-    BI_DIRECTIONAL(true,  true,  true,  "Bi-Directional"),
-    RECEIVE(       true,  false, true,  "Receive Only"),
-    EXTRACT(       false, true,  true,  "Extract Only"),
-    EXTERNAL(      true,  true,  false, "External Only"),
-    INTERNAL(      false, false, true,  "Internal Only"),
-    NO_TRANSFER(   false, false, false, "No Transfer");
-
-    private final boolean canReceive;
-    private final boolean canExtract;
-    private final boolean integrate;
-    public final String text;
-
-    private TRANSFER_MODE(final boolean receive, final boolean extract, final boolean integrate, final String text){
-      this.canReceive = receive;
-      this.canExtract = extract;
-      this.integrate = integrate;
-      this.text = text;
-    }
-  }
-
   private TRANSFER_MODE transfer_mode = TRANSFER_MODE.BI_DIRECTIONAL;
 
   public TileUniversalEnergyTransfer(){

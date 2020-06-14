@@ -1,5 +1,6 @@
 package addsynth.overpoweredmod.machines.black_hole;
 
+import addsynth.core.util.MessageUtil;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
@@ -8,7 +9,6 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.ActionResultType;
-import net.minecraft.util.text.StringTextComponent;
 
 public final class BlackHoleItem extends BlockItem {
 
@@ -23,7 +23,7 @@ public final class BlackHoleItem extends BlockItem {
     }
     final PlayerEntity player = context.getPlayer();
     if(player != null){
-      player.sendMessage(new StringTextComponent("Black Holes are not allowed in this Dimension."));
+      MessageUtil.send_to_player(player, "gui.overpowered.black_hole.not_allowed_in_this_dimension");
     }
     return ActionResultType.FAIL;
   }

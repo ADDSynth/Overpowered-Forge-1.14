@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.machines.generator;
 
 import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
@@ -10,6 +11,9 @@ import net.minecraft.util.text.ITextComponent;
 public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator, ContainerGenerator> {
 
   private static final ResourceLocation generator_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/generator.png");
+
+  private final String input_text   = StringUtil.translate("gui.overpowered.crystal_energy_generator.input");
+  private final String extract_text = StringUtil.translate("gui.overpowered.crystal_energy_generator.max_extract");
 
   private int energy_percentage;
 
@@ -41,9 +45,9 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     super.draw_title();
-    draw_text_right("Input:",input_text_x,input_text_y);
+    draw_text_right(input_text+":",input_text_x,input_text_y);
     
-    draw_text_left("Max Extract: " + energy.getMaxExtract(),extract_text_x,extract_text_line_1);
+    draw_text_left(extract_text+": " + energy.getMaxExtract(),extract_text_x,extract_text_line_1);
     // draw_text_left("Energy Draw: "+energy_draw,extract_text_x,extract_text_line_2);
     
     draw_energy(6, energy_text_line_1);

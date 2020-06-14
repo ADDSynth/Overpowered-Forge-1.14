@@ -3,8 +3,12 @@
     "icon": {
       "item": "addsynthcore:diamond_scythe"
     },
-    "title": "Scythe",
-    "description": "Craft a Scythe"
+    "title": {
+      "translate": "advancements.addsynthcore.scythe.title"
+    },
+    "description": {
+      "translate": "advancements.addsynthcore.scythe.description"
+    }
   },
   "parent": "addsynthcore:root",
   "criteria": {

@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "Bronzová deska",
 "item.overpowered.silver_plate": "Stříbrné pokovování",
 "item.overpowered.platinum_plate": "Platinové pokovování",
-"item.overpowered.titanium_plate": "Titanové pokovování"
+"item.overpowered.titanium_plate": "Titanové pokovování",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "V této dimenzi nejsou černé díry povoleny.",
+"gui.overpowered.black_hole.notify_players": "§5Událost singularita§r byla detekována na souřadnicích: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "Neplatný tvar",
+"gui.overpowered.bridge_message.okay": "Normální",
+"gui.overpowered.bridge_message.obstructed": "Zablokováno",
+"gui.overpowered.bridge_message.no_bridge": "Žádný most",
+"gui.overpowered.bridge_message.invalid": "Neplatný",
+"gui.overpowered.bridge_message.no_lens": "Žádné objektivy",
+"gui.overpowered.bridge_message.active": "Aktivováno",
+"gui.overpowered.crystal_energy_generator.input": "Vstup",
+"gui.overpowered.crystal_energy_generator.max_extract": "Míra extrakce",
+"gui.overpowered.jei_description.overpowered_tools": "Přepnuté nástroje mají trojnásobnou životnost než diamantové nástroje. Také těží trochu rychleji.",
+"gui.overpowered.jei_description.void_tools": "Na tmavých nástrojích se stále pracuje.",
+"gui.overpowered.jei_description.generator": "Generátor je stroj, který vyrábí energii. Můžete vložit energetické krystaly, střepy energetických krystalů nebo světelný blok. Každý generuje energii různou rychlostí.",
+"gui.overpowered.jei_description.data_cable": "Datový kabel se používá při konstrukci portálu a struktury fúzní energie. Používá se také v některých řemeslných receptech.",
+"gui.overpowered.jei_description.gem_converter": "Tento stroj dokáže převést jeden typ drahokamů na jiný.",
+"gui.overpowered.jei_description.inverter": "Tento stroj přeměňuje energetické krystaly na prázdné krystaly a pracuje také obráceně.",
+"gui.overpowered.jei_description.magic_infuser": "Vložte knihu a klenot a dostanete okouzlenou knihu v závislosti na typu použitého klenotu.",
+"gui.overpowered.jei_description.identifier": "Monstra občas upustí neidentifikované předměty. Pomocí tohoto stroje je můžete identifikovat.",
+"gui.overpowered.jei_description.portal_control_panel": "Ovládací panel portálu je stroj, který generuje portál. Musí být připojen k hlavnímu portálu pomocí datového kabelu.",
+"gui.overpowered.jei_description.portal_frame": "Hlavní rám portálu se skládá z prstence bloků, 5 bloků širokých a 5 bloků vysokých. Rohy a boky musí být rámy portálu, ale ostatní bloky mezi nimi mohou být buď datový kabel nebo bloky železných rámů.",
+"gui.overpowered.jei_description.laser_housing": "Toto je stroj, který řídí fungování laserů. Musíte připojit lasery směřující ve směru, který chcete vystřelit. Nejprve nastavte vzdálenost a poté vložte potřebnou energii. Aktivujte pomocí červeného drátu.",
+"gui.overpowered.jei_description.laser": "To jsou lasery, které se připojují k laserovým strojům.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "Pokud je dodáván dostatek energie a aktivován signálem redstone, vytvoří se tím energetický most odtud do dalšího bloku strojního můstku. Musíte vložit objektiv požadované barvy a prostor mezi dvěma bloky strojního můstku musí být bez překážek.",
+"gui.overpowered.jei_description.unknown_technology": "Toto je záhadné zařízení neznámého původu. Používá se k výrobě nejvýkonnějších strojů.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "Vložte rudy do tohoto stroje a bude mít dvojnásobný výkon, ale pracuje pouze s rudami.",
+"gui.overpowered.jei_description.crystal_matter_generator": "Po chvíli běhu, bude tento stroj produkovat drahokam střep. Kombinujte 9 střepů stejného typu a získejte jeden plný klenot.",
+"gui.overpowered.jei_description.dimensional_anchor": "V současné době to nemá žádný účel.",
+"gui.overpowered.jei_description.black_hole": "Buďte opatrní! Pokud to umístíte dolů, vymažete tím svůj svět!",
+"gui.overpowered.jei_description.fusion_chamber": "Část struktury jaderné syntézy. Toto je blok ve středu. Aby mohl být považován za platný, musí obsahovat jádro fúze.",
+"gui.overpowered.jei_description.fusion_control_unit": "Část struktury jaderné syntézy. Musíte umístit 6 z těchto 5 bloků od středu v každém směru. Pro připojení fúzních řídících jednotek k převodníku fúzní energie musíte použít datový kabel.",
+"gui.overpowered.jei_description.fusion_control_laser": "Část struktury jaderné syntézy. Musíte udělat 6 z nich a dát jednu na každou fúzní řídicí jednotku směřující k fúzní komoře ve středu.",
+"gui.overpowered.jei_description.fusion_converter": "Část struktury jaderné syntézy. Stačí to nastavit kdekoli, pak je třeba toto připojit ke každé řídicí jednotce fúze pomocí datového kabelu. Jakmile je úplná struktura dokončena, zapněte jej pomocí červeného drátu. Během provozu bude tento stroj generovat energii.",
+"gui.overpowered.laser_housing.auto_shutoff": "Automatické vypnutí",
+"gui.overpowered.laser_housing.lasers": "lasery",
+"gui.overpowered.laser_housing.distance": "vzdálenost",
+"gui.overpowered.laser_housing.current_energy": "aktuální energie",
+"gui.overpowered.laser_housing.required_energy": "potřebná energie",
+"gui.overpowered.portal_message.no_data_cable": "Není připojen žádný datový kabel.",
+"gui.overpowered.portal_message.need_portal_frames": "Je vyžadováno 8 rámců portálu.",
+"gui.overpowered.portal_message.too_many_portal_frames": "Příliš mnoho rámců portálu.",
+"gui.overpowered.portal_message.invalid_construction": "Neplatná konstrukce portálu.",
+"gui.overpowered.portal_message.obstructed": "Zjištěna překážka uvnitř rámu.",
+"gui.overpowered.portal_message.off": "Ovládací panel portálu je vypnutý.",
+"gui.overpowered.portal_message.incorrect_items": "Nesprávné položky v rámcích portálu.",
+"gui.overpowered.portal_message.needs_energy": "Nedostatek energie.",
+"gui.overpowered.portal_message.creative_mode": "Hráč je v kreativním režimu.",
+"gui.overpowered.portal_message.ready": "Portál je připraven.",
+"gui.overpowered.portal_warning_message": "§cPozor§r: S neznámou dimenzí stále existují problémy. Pokud tam půjdete, je tu šance, že se budete objevovat ve vzduchu a padnete do své smrti. Doporučujeme vstupovat do portálu v kreativním režimu nebo deaktivovat portál v konfiguračním souboru. Je nám to líto a doufáme, že to vyřešíme v pozdější aktualizaci.",
+"gui.overpowered.ring_effect.strength": "Síla",
+"gui.overpowered.ring_effect.speed": "Rychlost",
+"gui.overpowered.ring_effect.haste": "Rychlost těžby",
+"gui.overpowered.ring_effect.luck": "štěstí",
+"gui.overpowered.ring_effect.extra_health": "Extra zdraví",
+"gui.overpowered.ring_effect.jump": "Skákací dovednosti",
+"gui.overpowered.ring_effect.fire_immune": "Odolnost proti ohni",
+"gui.overpowered.ring_effect.water_breathing": "Dýchat pod vodou",
+"gui.overpowered.ring_effect.night_vision": "Noční vidění",
+"gui.overpowered.ring_effect.invisiblity": "Neviditelnost",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "Sbírejte drahokamy",
+"advancements.overpowered.all_gems.description": "Shromažďujte všechny typy drahokamů potřebné k vytvoření přemoženého drahokamu.",
+
+"advancements.overpowered.overpowered_gem.title": "Energetický krystal",
+"advancements.overpowered.overpowered_gem.description": "Vytvořte energetický krystal",
+"advancements.overpowered.overpowered_tools.title": "Energetické nástroje",
+"advancements.overpowered.overpowered_tools.description": "Vytvořte nějaký nástroj pro energii",
+"advancements.overpowered.light_block.title": "Světlý blok",
+"advancements.overpowered.light_block.description": "Vytvořte blok světla",
+
+"advancements.overpowered.void_crystal.title": "Prázdný křišťál",
+"advancements.overpowered.void_crystal.description": "Použijte střídač k vytvoření prázdného krystalu",
+"advancements.overpowered.void_tools.title": "Anihilační čepel",
+"advancements.overpowered.void_tools.description": "Vytvořte prázdný meč",
+"advancements.overpowered.null_block.title": "Nulový blok",
+"advancements.overpowered.null_block.description": "vytvořte nulový blok",
+
+"advancements.overpowered.laser.title": "Laser",
+"advancements.overpowered.laser.description": "Vytvořte laserový stroj.",
+"advancements.overpowered.fire_laser.title": "Laserová aktivita",
+"advancements.overpowered.fire_laser.description": "Aktivujte laser.",
+"advancements.overpowered.fire_maximum_laser.title": "Maximální vzdálenost",
+"advancements.overpowered.fire_maximum_laser.description": "Vystřelte laser na maximální vzdálenost.",
+
+"advancements.overpowered.inverter.title": "Střídač",
+"advancements.overpowered.inverter.description": "Vytvořte střídač",
+"advancements.overpowered.craft_identifier.title": "Identifikátor",
+"advancements.overpowered.craft_identifier.description": "Vytvořte identifikátor.",
+"advancements.overpowered.identify_something.title": "Nová identita.",
+"advancements.overpowered.identify_something.description": "K identifikaci použijte identifikátor.",
+
+"advancements.overpowered.craft_portal.title": "Portál",
+"advancements.overpowered.craft_portal.description": "Vytvořte ovládací panel portálu.",
+"advancements.overpowered.portal.title": "Neznámá dimenze",
+"advancements.overpowered.portal.description": "Zadejte neznámou dimenzi.",
+"advancements.overpowered.unknown_technology.title": "Neznámá technologie",
+"advancements.overpowered.unknown_technology.description": "Najděte neznámou technologii.",
+
+"advancements.overpowered.fusion_structure.title": "Struktura fúzní energie",
+"advancements.overpowered.fusion_structure.description": "Vytvořte všechny komponenty potřebné k vytvoření struktury fúzní energie.",
+"advancements.overpowered.fusion_energy.title": "Fúzní energie",
+"advancements.overpowered.fusion_energy.description": "Aktivujte platnou strukturu fúzní energie.",
+
+"advancements.overpowered.black_hole.title": "Černá díra",
+"advancements.overpowered.black_hole.description": "Vytvořte černou díru.",
+"advancements.overpowered.dimensional_anchor.title": "Dimenzionální kotva",
+"advancements.overpowered.dimensional_anchor.description": "Vytvořte položku Dimensional Kotva",
+"advancements.overpowered.world_destroyer.title": "Světový torpédoborec",
+"advancements.overpowered.world_destroyer.description": "Pomocí černé díry zničte část světa.",
+
+"advancements.overpowered.bronze_trophy.title": "Bronzová trofej",
+"advancements.overpowered.bronze_trophy.description": "Získejte bronzovou trofej",
+"advancements.overpowered.silver_trophy.title": "Stříbrná trofej",
+"advancements.overpowered.silver_trophy.description": "Získejte stříbrnou trofej",
+"advancements.overpowered.gold_trophy.title": "Zlatá trofej",
+"advancements.overpowered.gold_trophy.description": "Získejte zlatou trofej",
+"advancements.overpowered.platinum_trophy.title": "Platinová trofej",
+"advancements.overpowered.platinum_trophy.description": "Získejte platinovou trofej"
 }

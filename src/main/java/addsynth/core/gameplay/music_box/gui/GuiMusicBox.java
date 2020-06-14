@@ -5,6 +5,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.music_box.MusicGrid;
 import addsynth.core.gameplay.music_box.TileMusicBox;
 import addsynth.core.gui.GuiBase;
+import addsynth.core.util.StringUtil;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.util.ResourceLocation;
@@ -19,9 +20,30 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   private static final int gui_width = 263;
   private static final int gui_height = 210;
   
-  public static final String[] instrument = new String[] {
-    "Harp", "Bass", "Bass Drum", "Snare Drum", "Click", "Bell", "Chime", "Flute",
-    "Guitar", "Xylophone", "Iron Xylophone", "Cow Bell", "Didgeridoo", "Square", "Banjo", "Electric Piano"
+  // gui translation strings
+  private final String next_text         = StringUtil.translate("gui.addsynthcore.music_box.next");
+  private final String tempo_text        = StringUtil.translate("gui.addsynthcore.music_box.tempo");
+  private final String ticks_text        = StringUtil.translate("gui.addsynthcore.music_box.ticks");
+  private final String bpm_text          = StringUtil.translate("gui.addsynthcore.music_box.bpm");
+  private final String current_note_text = StringUtil.translate("gui.addsynthcore.music_box.current_note");
+  private final String instrument_text   = StringUtil.translate("gui.addsynthcore.music_box.instrument");
+  private final String[] instrument = new String[] {
+    StringUtil.translate("gui.addsynthcore.instrument.harp"),
+    StringUtil.translate("gui.addsynthcore.instrument.bass"),
+    StringUtil.translate("gui.addsynthcore.instrument.bass_drum"),
+    StringUtil.translate("gui.addsynthcore.instrument.snare_drum"),
+    StringUtil.translate("gui.addsynthcore.instrument.click"),
+    StringUtil.translate("gui.addsynthcore.instrument.bell"),
+    StringUtil.translate("gui.addsynthcore.instrument.chime"),
+    StringUtil.translate("gui.addsynthcore.instrument.flute"),
+    StringUtil.translate("gui.addsynthcore.instrument.guitar"),
+    StringUtil.translate("gui.addsynthcore.instrument.xylophone"),
+    StringUtil.translate("gui.addsynthcore.instrument.iron_xylophone"),
+    StringUtil.translate("gui.addsynthcore.instrument.cow_bell"),
+    StringUtil.translate("gui.addsynthcore.instrument.didgeridoo"),
+    StringUtil.translate("gui.addsynthcore.instrument.square"),
+    StringUtil.translate("gui.addsynthcore.instrument.banjo"),
+    StringUtil.translate("gui.addsynthcore.instrument.pling")
   };
 
   // variables
@@ -197,14 +219,14 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     draw_title();
     // draw tempo:
-    draw_text_center("Speed:", tempo_text_x_center, 6);
-    draw_text_center(ticks + " ticks",tempo_text_x_center, 17);
-    draw_text_center(bpm + " bpm",tempo_text_x_center, 27);
+    draw_text_center(tempo_text+":", tempo_text_x_center, 6);
+    draw_text_center(ticks + " "+ticks_text,tempo_text_x_center, 17);
+    draw_text_center(bpm + " "+bpm_text,tempo_text_x_center, 27);
     
-    draw_text_center("Next:", right_edge - (next_direction_button_width / 2), 6);
+    draw_text_center(next_text+":", right_edge - (next_direction_button_width / 2), 6);
     
-    draw_text_left("Current Note: "+MusicButtons.note[note_selected],6,info_text_y);
-    draw_text_left("Instrument: "+instrument[instrument_selected], center_x - 10, info_text_y);
+    draw_text_left(current_note_text+": "+MusicButtons.note[note_selected],6,info_text_y);
+    draw_text_left(instrument_text+": "+instrument[instrument_selected], center_x - 10, info_text_y);
   }
 
   /**

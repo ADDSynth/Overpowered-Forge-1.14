@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:gold_trophy"
     },
-    "title": "Gold Trophy",
-    "description": "Get a Gold Trophy.",
+    "title": {
+      "translate": "advancements.overpowered.gold_trophy.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.gold_trophy.description"
+    },
     "frame": "goal"
   },
   "parent": "overpowered:overpowered/silver_trophy",

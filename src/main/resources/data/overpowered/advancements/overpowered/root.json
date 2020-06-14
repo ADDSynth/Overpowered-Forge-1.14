@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:energy_crystal"
     },
-    "title": "Overpowered",
-    "description": "Overpowered Mod by ADDSynth",
+    "title": {
+      "translate": "advancements.overpowered.root.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.root.description"
+    },
     "background": "overpowered:textures/gui/advancements/stone.png",
     "show_toast": false,
     "announce_to_chat": false

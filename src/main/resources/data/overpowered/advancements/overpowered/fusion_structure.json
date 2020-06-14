@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:fusion_energy_converter"
     },
-    "title": "Fusion Energy Construction",
-    "description": "Craft all the components needed to construct the Fusion Energy structure."
+    "title": {
+      "translate": "advancements.overpowered.fusion_structure.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.fusion_structure.description"
+    }
   },
   "parent": "overpowered:overpowered/unknown_technology",
   "criteria": {

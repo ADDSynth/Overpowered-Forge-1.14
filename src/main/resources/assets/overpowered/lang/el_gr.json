@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "Μπρούτζινη πλάκα",
 "item.overpowered.silver_plate": "Ασημένια επίστρωση",
 "item.overpowered.platinum_plate": "Επίστρωση πλατίνας",
-"item.overpowered.titanium_plate": "Επιμετάλλωση με τιτάνιο"
+"item.overpowered.titanium_plate": "Επιμετάλλωση με τιτάνιο",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "Δεν επιτρέπονται μαύρες τρύπες σε αυτήν την ιδιότητα.",
+"gui.overpowered.black_hole.notify_players": "§5Εκδήλωση μοναδικότητας§r εντοπίστηκε στις συντεταγμένες: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "Μη έγκυρο σχήμα",
+"gui.overpowered.bridge_message.okay": "Κανονικός",
+"gui.overpowered.bridge_message.obstructed": "Εμποδίζεται",
+"gui.overpowered.bridge_message.no_bridge": "Χωρίς γέφυρα",
+"gui.overpowered.bridge_message.invalid": "Μη έγκυρο",
+"gui.overpowered.bridge_message.no_lens": "Χωρίς φακό",
+"gui.overpowered.bridge_message.active": "Ενεργοποιήθηκε",
+"gui.overpowered.crystal_energy_generator.input": "Εισαγωγή",
+"gui.overpowered.crystal_energy_generator.max_extract": "Ποσοστό εξαγωγής",
+"gui.overpowered.jei_description.overpowered_tools": "Τα υπερδύναμα εργαλεία έχουν 3 φορές την αντοχή των εργαλείων διαμαντιών. Επίσης, ορυχείο λίγο πιο γρήγορα.",
+"gui.overpowered.jei_description.void_tools": "Τα σκοτεινά εργαλεία συνεχίζονται.",
+"gui.overpowered.jei_description.generator": "Η Γεννήτρια είναι η μηχανή που παράγει ενέργεια. Μπορείτε να εισαγάγετε ενεργειακούς κρυστάλλους, θραύσματα ενεργειακών κρυστάλλων ή ένα μπλοκ φωτός. Κάθε παράγει ενέργεια σε διαφορετικούς ρυθμούς.",
+"gui.overpowered.jei_description.data_cable": "Το καλώδιο δεδομένων χρησιμοποιείται για την κατασκευή της πύλης και τη δομή ενέργειας σύντηξης. Χρησιμοποιείται επίσης σε μερικές συνταγές χειροτεχνίας.",
+"gui.overpowered.jei_description.gem_converter": "Αυτό το μηχάνημα μπορεί να μετατρέψει έναν τύπο πολύτιμων λίθων σε έναν άλλο.",
+"gui.overpowered.jei_description.inverter": "Αυτό το μηχάνημα μετατρέπει ενεργειακούς κρυστάλλους σε κενούς κρυστάλλους, και λειτουργεί και αντίστροφα.",
+"gui.overpowered.jei_description.magic_infuser": "Εισαγάγετε ένα βιβλίο και ένα στολίδι και θα λάβετε ένα μαγεμένο βιβλίο ανάλογα με τον τύπο των πολύτιμων λίθων που χρησιμοποιήσατε.",
+"gui.overpowered.jei_description.identifier": "Τα τέρατα θα ρίχνουν περιστασιακά άγνωστα αντικείμενα. Χρησιμοποιήστε αυτό το μηχάνημα για να τα αναγνωρίσετε.",
+"gui.overpowered.jei_description.portal_control_panel": "Ο πίνακας ελέγχου πύλης είναι το μηχάνημα που δημιουργεί την πύλη. Πρέπει να συνδεθεί στο κύριο πλαίσιο της πύλης χρησιμοποιώντας καλώδιο δεδομένων.",
+"gui.overpowered.jei_description.portal_frame": "Τα τέρατα θα ρίχνουν περιστασιακά άγνωστα αντικείμενα. Χρησιμοποιήστε αυτό το μηχάνημα για να τα αναγνωρίσετε. Ο πίνακας ελέγχου πύλης είναι το μηχάνημα που δημιουργεί την πύλη. Πρέπει να συνδεθεί στο κύριο πλαίσιο της πύλης χρησιμοποιώντας καλώδιο δεδομένων. Το κύριο πλαίσιο της πύλης αποτελείται από ένα δακτύλιο μπλοκ, πλάτους 5 τετραγώνων και ύψους 5 τετραγώνων. Οι γωνίες και οι πλευρές πρέπει να είναι πλαίσια πύλης, αλλά τα άλλα μπλοκ μεταξύ τους μπορεί να είναι μπλοκ καλωδίων δεδομένων ή σιδήρου.",
+"gui.overpowered.jei_description.laser_housing": "Αυτό είναι το μηχάνημα που ελέγχει τον τρόπο λειτουργίας των λέιζερ. Πρέπει να στερεώσετε τα λέιζερ προς την κατεύθυνση που θέλετε να πυροβολήσετε. Αρχικά ρυθμίστε την απόσταση και μετά εισαγάγετε την απαιτούμενη ενέργεια. Ενεργοποιήστε με ένα κόκκινο σήμα.",
+"gui.overpowered.jei_description.laser": "Αυτά είναι τα λέιζερ που συνδέονται με μηχανές λέιζερ.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "Όταν παρέχεται αρκετή ενέργεια και ενεργοποιείται με σήμα redstone, αυτό θα δημιουργήσει μια ενεργειακή γέφυρα από εδώ σε ένα άλλο μπλοκ μηχανών γέφυρας. Πρέπει να εισαγάγετε έναν φακό του χρώματος που θέλετε και ο χώρος μεταξύ των δύο μπλοκ μηχανών γέφυρας πρέπει να είναι απαλλαγμένος από εμπόδια.",
+"gui.overpowered.jei_description.unknown_technology": "Πρόκειται για μια μυστηριώδη συσκευή άγνωστης προέλευσης. Χρησιμοποιείται για την κατασκευή των πιο ισχυρών μηχανημάτων.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "Εισαγάγετε μεταλλεύματα σε αυτό το μηχάνημα και θα παράγει διπλάσια έξοδο, αλλά λειτουργεί μόνο με μεταλλεύματα.",
+"gui.overpowered.jei_description.crystal_matter_generator": "Αφού τρέξει για λίγο, αυτό το μηχάνημα θα παράγει θραύσμα πολύτιμων λίθων. Συνδυάστε 9 θραύσματα του ίδιου τύπου για να πάρετε ένα γεμάτο στολίδι.",
+"gui.overpowered.jei_description.dimensional_anchor": "Προς το παρόν αυτό δεν έχει σκοπό.",
+"gui.overpowered.jei_description.black_hole": "Προσέξτε με αυτό! Εάν το τοποθετήσετε κάτω, αυτό θα αφαιρέσει μεγάλο μέρος του κόσμου σας!",
+"gui.overpowered.jei_description.fusion_chamber": "Μέρος της δομής της ενέργειας σύντηξης. Αυτό είναι το μπλοκ στο κέντρο. Πρέπει να περιέχει πυρήνα σύντηξης για να θεωρηθεί έγκυρη.",
+"gui.overpowered.jei_description.fusion_control_unit": "Μέρος της δομής της ενέργειας σύντηξης. Πρέπει να τοποθετήσετε 6 από αυτά τα 5 τετράγωνα μακριά από το κέντρο σε κάθε κατεύθυνση. Πρέπει να χρησιμοποιήσετε καλώδιο δεδομένων για να συνδέσετε τις μονάδες ελέγχου σύντηξης στον μετατροπέα ενέργειας σύντηξης.",
+"gui.overpowered.jei_description.fusion_control_laser": "Μέρος της δομής της ενέργειας σύντηξης. Πρέπει να φτιάξετε 6 από αυτά και να τοποθετήσετε ένα σε κάθε μονάδα ελέγχου σύντηξης στραμμένη προς τον θάλαμο σύντηξης στο κέντρο.",
+"gui.overpowered.jei_description.fusion_converter": "Μέρος της δομής της ενέργειας σύντηξης. Απλώς ορίστε το οπουδήποτε, τότε πρέπει να το συνδέσετε σε καθεμία από τις μονάδες ελέγχου σύντηξης χρησιμοποιώντας καλώδιο δεδομένων. Μόλις ολοκληρωθεί η πλήρης δομή, ενεργοποιήστε αυτό το μηχάνημα με ένα κόκκινο καλώδιο για να το ενεργοποιήσετε. Κατά τη λειτουργία, αυτό το μηχάνημα θα παράγει ενέργεια.",
+"gui.overpowered.laser_housing.auto_shutoff": "Αυτόματη απενεργοποίηση",
+"gui.overpowered.laser_housing.lasers": "λέιζερ",
+"gui.overpowered.laser_housing.distance": "απόσταση",
+"gui.overpowered.laser_housing.current_energy": "τρέχουσα ενέργεια",
+"gui.overpowered.laser_housing.required_energy": "απαιτούμενη ενέργεια",
+"gui.overpowered.portal_message.no_data_cable": "Δεν έχει συνδεθεί καλώδιο δεδομένων.",
+"gui.overpowered.portal_message.need_portal_frames": "Απαιτούνται 8 πλαίσια πύλης.",
+"gui.overpowered.portal_message.too_many_portal_frames": "Πάρα πολλά πλαίσια πύλης.",
+"gui.overpowered.portal_message.invalid_construction": "Μη έγκυρη κατασκευή πύλης.",
+"gui.overpowered.portal_message.obstructed": "Εντοπίστηκε απόφραξη μέσα στο πλαίσιο.",
+"gui.overpowered.portal_message.off": "Ο πίνακας ελέγχου πύλης είναι απενεργοποιημένος.",
+"gui.overpowered.portal_message.incorrect_items": "Εσφαλμένα στοιχεία σε πλαίσια πύλης.",
+"gui.overpowered.portal_message.needs_energy": "Δεν υπάρχει αρκετή ενέργεια.",
+"gui.overpowered.portal_message.creative_mode": "Το πρόγραμμα αναπαραγωγής βρίσκεται σε λειτουργία δημιουργικού.",
+"gui.overpowered.portal_message.ready": "Η πύλη είναι έτοιμη.",
+"gui.overpowered.portal_warning_message": "§cΠροσοχή§r: Υπάρχουν ακόμα ορισμένα προβλήματα με την άγνωστη διάσταση. Αν πάτε εκεί, υπάρχει πιθανότητα να εμφανιστεί στον αέρα και να πέσει στο θάνατό σας. Σας συνιστούμε να εισαγάγετε την πύλη σε λειτουργία δημιουργικού ή να απενεργοποιήσετε την πύλη στο αρχείο διαμόρφωσης. Λυπούμαστε για αυτό και ελπίζουμε να το διορθώσουμε σε μια μεταγενέστερη ενημέρωση.",
+"gui.overpowered.ring_effect.strength": "Δύναμη",
+"gui.overpowered.ring_effect.speed": "Ταχύτητα",
+"gui.overpowered.ring_effect.haste": "Ταχύτητα εξόρυξης",
+"gui.overpowered.ring_effect.luck": "Τυχη",
+"gui.overpowered.ring_effect.extra_health": "Επιπλέον υγεία",
+"gui.overpowered.ring_effect.jump": "Ικανότητα άλματος",
+"gui.overpowered.ring_effect.fire_immune": "Ανοσία στη φωτιά",
+"gui.overpowered.ring_effect.water_breathing": "Αναπνεω κατω απο το ΝΕΡΟ",
+"gui.overpowered.ring_effect.night_vision": "Νυχτερινή όραση",
+"gui.overpowered.ring_effect.invisiblity": "Αόρατο",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "Συλλέξτε τους πολύτιμους λίθους",
+"advancements.overpowered.all_gems.description": "Συλλέξτε όλους τους τύπους πολύτιμων λίθων που απαιτούνται για να δημιουργήσετε το πολύτιμο στολίδι.",
+
+"advancements.overpowered.overpowered_gem.title": "Ενεργειακό κρύσταλλο",
+"advancements.overpowered.overpowered_gem.description": "Κάνετε ένα ενεργειακό κρύσταλλο",
+"advancements.overpowered.overpowered_tools.title": "Ενεργειακά εργαλεία",
+"advancements.overpowered.overpowered_tools.description": "Κάνετε οποιοδήποτε εργαλείο ενέργειας",
+"advancements.overpowered.light_block.title": "Φως μπλοκ",
+"advancements.overpowered.light_block.description": "Κάνετε ένα μπλοκ φωτός",
+
+"advancements.overpowered.void_crystal.title": "Άκυρο κρύσταλλο",
+"advancements.overpowered.void_crystal.description": "Χρησιμοποιήστε το μετατροπέα για να δημιουργήσετε ένα κενό κρύσταλλο",
+"advancements.overpowered.void_tools.title": "καταστροφική λεπίδα",
+"advancements.overpowered.void_tools.description": "Κάντε ένα κενό σπαθί",
+"advancements.overpowered.null_block.title": "μηδενικό μπλοκ",
+"advancements.overpowered.null_block.description": "κάντε ένα μηδενικό μπλοκ",
+
+"advancements.overpowered.laser.title": "Λέιζερ",
+"advancements.overpowered.laser.description": "Δημιουργήστε μια μηχανή λέιζερ.",
+"advancements.overpowered.fire_laser.title": "Δραστηριότητα λέιζερ",
+"advancements.overpowered.fire_laser.description": "Ενεργοποιήστε ένα λέιζερ.",
+"advancements.overpowered.fire_maximum_laser.title": "Μέγιστη απόσταση",
+"advancements.overpowered.fire_maximum_laser.description": "Φωτίστε ένα λέιζερ τη μέγιστη απόσταση.",
+
+"advancements.overpowered.inverter.title": "Αντιστροφέας",
+"advancements.overpowered.inverter.description": "Δημιουργήστε έναν μετατροπέα",
+"advancements.overpowered.craft_identifier.title": "Αναγνωριστικό",
+"advancements.overpowered.craft_identifier.description": "Δημιουργήστε μια μηχανή αναγνώρισης.",
+"advancements.overpowered.identify_something.title": "Νέα ταυτότητα",
+"advancements.overpowered.identify_something.description": "Χρησιμοποιήστε τη μηχανή αναγνώρισης για να προσδιορίσετε κάτι.",
+
+"advancements.overpowered.craft_portal.title": "Πύλη",
+"advancements.overpowered.craft_portal.description": "Δημιουργήστε τον πίνακα ελέγχου της πύλης.",
+"advancements.overpowered.portal.title": "Άγνωστη διάσταση",
+"advancements.overpowered.portal.description": "Εισαγάγετε την άγνωστη ιδιότητα.",
+"advancements.overpowered.unknown_technology.title": "Άγνωστη τεχνολογία",
+"advancements.overpowered.unknown_technology.description": "Βρείτε την άγνωστη τεχνολογία.",
+
+"advancements.overpowered.fusion_structure.title": "Δομή ενέργειας σύντηξης",
+"advancements.overpowered.fusion_structure.description": "Κατασκευάστε όλα τα εξαρτήματα που απαιτούνται για την κατασκευή της δομής της ενέργειας σύντηξης.",
+"advancements.overpowered.fusion_energy.title": "Ενέργεια σύντηξης",
+"advancements.overpowered.fusion_energy.description": "Ενεργοποιήστε μια έγκυρη δομή ενέργειας σύντηξης.",
+
+"advancements.overpowered.black_hole.title": "Μαύρη τρύπα",
+"advancements.overpowered.black_hole.description": "Δημιουργήστε μια μαύρη τρύπα.",
+"advancements.overpowered.dimensional_anchor.title": "Διαστατική άγκυρα",
+"advancements.overpowered.dimensional_anchor.description": "Δημιουργήστε μια διαστατική άγκυρα.",
+"advancements.overpowered.world_destroyer.title": "Παγκόσμιος καταστροφέας",
+"advancements.overpowered.world_destroyer.description": "Χρησιμοποιήστε μια μαύρη τρύπα για να καταστρέψετε μέρος του κόσμου.",
+
+"advancements.overpowered.bronze_trophy.title": "Χάλκινο τρόπαιο",
+"advancements.overpowered.bronze_trophy.description": "Πάρτε ένα χάλκινο τρόπαιο",
+"advancements.overpowered.silver_trophy.title": "ασημένιο τρόπαιο",
+"advancements.overpowered.silver_trophy.description": "Πάρτε ένα ασημένιο τρόπαιο",
+"advancements.overpowered.gold_trophy.title": "Χρυσό τρόπαιο",
+"advancements.overpowered.gold_trophy.description": "Αποκτήστε ένα χρυσό τρόπαιο",
+"advancements.overpowered.platinum_trophy.title": "Πλατινένιο τρόπαιο",
+"advancements.overpowered.platinum_trophy.description": "Πάρτε ένα Πλατινένιο Τρόπαιο"
 }

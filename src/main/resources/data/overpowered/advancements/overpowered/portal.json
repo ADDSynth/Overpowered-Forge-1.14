@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:portal"
     },
-    "title": "Unknown Dimension",
-    "description": "Enter the Unknown Dimension.",
+    "title": {
+      "translate": "advancements.overpowered.portal.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.portal.description"
+    },
     "frame": "goal"
   },
   "parent": "overpowered:overpowered/craft_portal",

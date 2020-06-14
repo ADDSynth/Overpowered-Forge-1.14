@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "لوحة من البرونز",
 "item.overpowered.silver_plate": "طبق من فضة",
 "item.overpowered.platinum_plate": "طلاء البلاتين",
-"item.overpowered.titanium_plate": "لوحة التيتانيوم"
+"item.overpowered.titanium_plate": "لوحة التيتانيوم",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "لا يُسمح بالثقوب السوداء في هذا البعد.",
+"gui.overpowered.black_hole.notify_players": "تم الكشف عن حدث التفرد في الإحداثيات: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "شكل غير صالح",
+"gui.overpowered.bridge_message.okay": "عادي",
+"gui.overpowered.bridge_message.obstructed": "معاق",
+"gui.overpowered.bridge_message.no_bridge": "لا يوجد جسر",
+"gui.overpowered.bridge_message.invalid": "غير صالحة",
+"gui.overpowered.bridge_message.no_lens": "لا عدسة",
+"gui.overpowered.bridge_message.active": "مفعل",
+"gui.overpowered.crystal_energy_generator.input": "إدخال",
+"gui.overpowered.crystal_energy_generator.max_extract": "استخراج ماكس",
+"gui.overpowered.jei_description.overpowered_tools": "الأدوات ذات القوة المفرطة لديها ثلاثة أضعاف متانة أدوات الماس. هم أيضا يقومون بالتعدين بشكل أسرع قليلاً.",
+"gui.overpowered.jei_description.void_tools": "أدوات الظلام لا تزال قيد العمل.",
+"gui.overpowered.jei_description.generator": "المولد هو الجهاز الذي يولد الطاقة. يمكنك إدخال بلورات الطاقة ، أو شظايا الطاقة البلورية ، أو كتلة خفيفة. كل منها يولد الطاقة بمعدلات مختلفة.",
+"gui.overpowered.jei_description.data_cable": "يتم استخدام كبل البيانات في بناء البوابة وهيكل طاقة الانصهار. كما أنها تستخدم في بعض وصفات صياغة.",
+"gui.overpowered.jei_description.gem_converter": "يمكن لهذا الجهاز تحويل نوع جوهرة إلى آخر.",
+"gui.overpowered.jei_description.inverter": "تعمل هذه الآلة على تحويل بلورات الطاقة إلى بلورات فارغة ، وتعمل في الاتجاه المعاكس أيضًا.",
+"gui.overpowered.jei_description.magic_infuser": "قم بإدخال كتاب وجوهرة وسوف تحصل على كتاب مسحور حسب نوع الجوهرة التي استخدمتها.",
+"gui.overpowered.jei_description.identifier": "تقوم الوحوش أحيانًا بإسقاط عناصر غير معروفة. استخدم هذا الجهاز للتعرف عليهم.",
+"gui.overpowered.jei_description.portal_control_panel": "لوحة تحكم البوابة هي الآلة التي تولد البوابة. يجب توصيله بإطار المدخل الرئيسي.",
+"gui.overpowered.jei_description.portal_frame": "يتكون إطار البوابة الرئيسية من حلقة من الكتل بعرض 5 كتل و 5 كتل من الطول. يجب أن تكون الزوايا والجوانب إطارات بوابة ولكن يمكن أن تكون الكتل الأخرى بينهما إما كبل بيانات أو كتل إطار حديدية.",
+"gui.overpowered.jei_description.laser_housing": "هذه هي الآلة التي تتحكم في كيفية عمل الليزر. يجب إرفاق أشعة الليزر التي تشير إلى الاتجاه الذي تريد إطلاقه. قم أولاً بتعيين المسافة ثم أدخل الطاقة المطلوبة.",
+"gui.overpowered.jei_description.laser": "هذه هي الليزر التي تعلق على آلات الليزر.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "عند تزويده بطاقة كافية وتنشيطه بإشارة ريدستون ، سيؤدي ذلك إلى إنشاء جسر طاقة من هنا إلى كتلة آلة جسر أخرى. يجب إدخال عدسة اللون الذي تريده ، ويجب أن تكون المسافة بين كتلتين من آلات الجسر خالية من العوائق.",
+"gui.overpowered.jei_description.unknown_technology": "هذا جهاز غامض من أصول غير معروفة. يتم استخدامه لصنع أقوى الآلات.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "أدخل الخامات في هذا الجهاز وسوف ينتج ضعف الناتج ، ولكنه يعمل فقط مع الخامات.",
+"gui.overpowered.jei_description.crystal_matter_generator": "بعد التشغيل لفترة من الوقت ، ستنتج هذه الآلة قطعة من الأحجار الكريمة. اجمع 9 قطع من نفس النوع لتحصل على جوهرة كاملة.",
+"gui.overpowered.jei_description.dimensional_anchor": "حاليا هذا ليس له غرض.",
+"gui.overpowered.jei_description.black_hole": "كن حذرا مع هذا! إذا قمت بوضع هذا ، فسيؤدي ذلك إلى محو عالمك!",
+"gui.overpowered.jei_description.fusion_chamber": "جزء من هيكل طاقة الانصهار. هذا هو الكتلة في المركز. يجب أن تحتوي على نواة صهر لكي تعتبر صالحة.",
+"gui.overpowered.jei_description.fusion_control_unit": "جزء من هيكل طاقة الانصهار. تحتاج إلى وضع 6 من هذه القطع الخمسة بعيدًا عن المركز في كل اتجاه. يجب عليك استخدام كبل البيانات لتوصيل وحدات التحكم في الاندماج بمحول طاقة الانصهار.",
+"gui.overpowered.jei_description.fusion_control_laser": "جزء من هيكل طاقة الانصهار. يجب أن تصنع 6 من هذه العناصر وتضع واحدة على كل وحدة تحكم في الاندماج تشير إلى غرفة الانصهار في المركز.",
+"gui.overpowered.jei_description.fusion_converter": "جزء من هيكل طاقة الانصهار. ما عليك سوى ضبط هذا في أي مكان ، ثم يجب عليك توصيل هذا بكل من وحدات التحكم في الاندماج باستخدام كابل البيانات. بمجرد اكتمال الهيكل الكامل ، قم بتنشيط هذا الجهاز بسلك أحمر لتشغيله. أثناء التشغيل ، ستولد هذه الآلة طاقة.",
+"gui.overpowered.laser_housing.auto_shutoff": "التعطيل التلقائي",
+"gui.overpowered.laser_housing.lasers": "الليزر",
+"gui.overpowered.laser_housing.distance": "مسافة",
+"gui.overpowered.laser_housing.current_energy": "الطاقة الحالية",
+"gui.overpowered.laser_housing.required_energy": "الطاقة المطلوبة",
+"gui.overpowered.portal_message.no_data_cable": "لا يوجد كابل بيانات متصل.",
+"gui.overpowered.portal_message.need_portal_frames": "مطلوب 8 إطارات بوابة.",
+"gui.overpowered.portal_message.too_many_portal_frames": "إطارات بوابة كثيرة جداً.",
+"gui.overpowered.portal_message.invalid_construction": "إنشاء بوابة غير صالح.",
+"gui.overpowered.portal_message.obstructed": "تم اكتشاف عائق داخل الإطار.",
+"gui.overpowered.portal_message.off": "لوحة تحكم البوابة متوقفة.",
+"gui.overpowered.portal_message.incorrect_items": "عناصر غير صحيحة في إطارات المدخل.",
+"gui.overpowered.portal_message.needs_energy": "ليست طاقة كافية.",
+"gui.overpowered.portal_message.creative_mode": "المشغل في الوضع الإبداعي.",
+"gui.overpowered.portal_message.ready": "البوابة جاهزة.",
+"gui.overpowered.portal_warning_message": "§cاحذر§r: لا تزال هناك بعض المشاكل مع البعد غير المعروف. إذا ذهبت إلى هناك ، فهناك احتمال أن تظهر في الهواء وتسقط حتى وفاتك. نوصي بدخول البوابة في الوضع الإبداعي أو تعطيل البوابة في ملف التكوين. نأسف لذلك ونأمل في إصلاح ذلك في تحديث لاحق.",
+"gui.overpowered.ring_effect.strength": "قوة",
+"gui.overpowered.ring_effect.speed": "سرعة",
+"gui.overpowered.ring_effect.haste": "سرعة التعدين",
+"gui.overpowered.ring_effect.luck": "حظ",
+"gui.overpowered.ring_effect.extra_health": "صحة اضافية",
+"gui.overpowered.ring_effect.jump": "مهارة القفز",
+"gui.overpowered.ring_effect.fire_immune": "مناعة ضد الحريق",
+"gui.overpowered.ring_effect.water_breathing": "تنفس تحت الماء",
+"gui.overpowered.ring_effect.night_vision": "الرؤية الليلية",
+"gui.overpowered.ring_effect.invisiblity": "الخفاء",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "اجمع الأحجار الكريمة",
+"advancements.overpowered.all_gems.description": "جمع كل أنواع الأحجار الكريمة اللازمة لإنشاء الأحجار الكريمة.",
+
+"advancements.overpowered.overpowered_gem.title": "الطاقة كريستال",
+"advancements.overpowered.overpowered_gem.description": "جعل الطاقة كريستال",
+"advancements.overpowered.overpowered_tools.title": "أدوات الطاقة",
+"advancements.overpowered.overpowered_tools.description": "جعل أي أداة للطاقة",
+"advancements.overpowered.light_block.title": "كتلة الضوء",
+"advancements.overpowered.light_block.description": "جعل كتلة الضوء",
+
+"advancements.overpowered.void_crystal.title": "الكريستال سلبي",
+"advancements.overpowered.void_crystal.description": "استخدام العاكس لجعل الكريستال باطل",
+"advancements.overpowered.void_tools.title": "شفرة مدمرة",
+"advancements.overpowered.void_tools.description": "جعل سيف باطل",
+"advancements.overpowered.null_block.title": "بلوك الظلام",
+"advancements.overpowered.null_block.description": "جعل كتلة فارغة",
+
+"advancements.overpowered.laser.title": "الليزر",
+"advancements.overpowered.laser.description": "اصنع جهاز ليزر.",
+"advancements.overpowered.fire_laser.title": "نشاط الليزر",
+"advancements.overpowered.fire_laser.description": "تنشيط الليزر.",
+"advancements.overpowered.fire_maximum_laser.title": "المسافة القصوى",
+"advancements.overpowered.fire_maximum_laser.description": "إطلاق ليزر أقصى مسافة.",
+
+"advancements.overpowered.inverter.title": "العاكس",
+"advancements.overpowered.inverter.description": "اصنع عاكس",
+"advancements.overpowered.craft_identifier.title": "المعرف",
+"advancements.overpowered.craft_identifier.description": "المعرف",
+"advancements.overpowered.identify_something.title": "هوية جديدة.",
+"advancements.overpowered.identify_something.description": "استخدم آلة التعريف لتحديد شيء ما.",
+
+"advancements.overpowered.craft_portal.title": "بوابة",
+"advancements.overpowered.craft_portal.description": "قم بصياغة لوحة تحكم المدخل.",
+"advancements.overpowered.portal.title": "البعد غير معروف",
+"advancements.overpowered.portal.description": "أدخل البعد غير المعروف.",
+"advancements.overpowered.unknown_technology.title": "تقنية غير معروفة",
+"advancements.overpowered.unknown_technology.description": "ابحث عن التقنية المجهولة.",
+
+"advancements.overpowered.fusion_structure.title": "هيكل طاقة الانصهار",
+"advancements.overpowered.fusion_structure.description": "اصنع جميع المكونات اللازمة لبناء هيكل طاقة الانصهار.",
+"advancements.overpowered.fusion_energy.title": "طاقة الاندماج",
+"advancements.overpowered.fusion_energy.description": "تنشيط هيكل طاقة الانصهار صالحة.",
+
+"advancements.overpowered.black_hole.title": "الثقب الأسود",
+"advancements.overpowered.black_hole.description": "اصنع ثقبًا أسود.",
+"advancements.overpowered.dimensional_anchor.title": "مرساة الأبعاد",
+"advancements.overpowered.dimensional_anchor.description": "اصنع مرساة الأبعاد.",
+"advancements.overpowered.world_destroyer.title": "مدمر العالم",
+"advancements.overpowered.world_destroyer.description": "استخدم ثقبًا أسود لتدمير جزء من العالم.",
+
+"advancements.overpowered.bronze_trophy.title": "الكأس البرونزي",
+"advancements.overpowered.bronze_trophy.description": "الحصول على الكأس البرونزي",
+"advancements.overpowered.silver_trophy.title": "الكأس الفضي",
+"advancements.overpowered.silver_trophy.description": "الحصول على الكأس الفضية",
+"advancements.overpowered.gold_trophy.title": "الكأس الذهبية",
+"advancements.overpowered.gold_trophy.description": "الحصول على الكأس الذهبية",
+"advancements.overpowered.platinum_trophy.title": "البلاتين الكأس",
+"advancements.overpowered.platinum_trophy.description": "الحصول على الكأس البلاتين"
 }

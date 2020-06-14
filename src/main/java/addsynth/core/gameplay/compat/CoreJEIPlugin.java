@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.game.Compatability;
 import addsynth.core.gameplay.Core;
+import addsynth.core.util.StringUtil;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
@@ -36,9 +37,9 @@ public final class CoreJEIPlugin  implements IModPlugin {
     if(Compatability.OVERPOWERED.loaded){
       list.add(new ItemStack(addsynth.overpoweredmod.game.core.Tools.energy_scythe));
     }
-    registry.addIngredientInfo(list, VanillaTypes.ITEM, "Scythes are used to cut leaves off of trees very quickly. They are mined as though you mined them by hand.");
-    registry.addIngredientInfo(new ItemStack(Core.music_box), VanillaTypes.ITEM, "Press keys on your keyboard to change notes. Arrange notes on the grid, and press PLAY to hear the current Music Box. Activate a Music Box with a redstone signal. When one Music Box is done playing, it will search in the NEXT direction for another Music Box and play that one.");
-    registry.addIngredientInfo(new ItemStack(Core.music_sheet), VanillaTypes.ITEM, "The Music Sheet can be used to copy Music Box data to other Music Boxes. Right-click a Music Box to copy data. When the Music Sheet has data, right-click Music Boxes to paste. Right-clicking without looking at a Music Box will clear the data.");
+    registry.addIngredientInfo(list, VanillaTypes.ITEM, StringUtil.translate("gui.addsynthcore.jei_description.scythes"));
+    registry.addIngredientInfo(new ItemStack(Core.music_box), VanillaTypes.ITEM, StringUtil.translate("gui.addsynthcore.jei_description.music_box"));
+    registry.addIngredientInfo(new ItemStack(Core.music_sheet), VanillaTypes.ITEM, StringUtil.translate("gui.addsynthcore.jei_description.music_sheet"));
   }
 
 }

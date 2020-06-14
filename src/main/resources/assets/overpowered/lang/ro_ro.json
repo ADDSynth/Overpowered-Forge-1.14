@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "Placă de bronz",
 "item.overpowered.silver_plate": "Placare cu argint",
 "item.overpowered.platinum_plate": "Placarea cu platină",
-"item.overpowered.titanium_plate": "Placă de titan"
+"item.overpowered.titanium_plate": "Placă de titan",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "Găurile negre nu sunt permise în această dimensiune.",
+"gui.overpowered.black_hole.notify_players": "§5Eveniment de singularitate§r a fost detectat la coordonate: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "Forma nevalidă",
+"gui.overpowered.bridge_message.okay": "Normal",
+"gui.overpowered.bridge_message.obstructed": "obstrucționat",
+"gui.overpowered.bridge_message.no_bridge": "Fără pod",
+"gui.overpowered.bridge_message.invalid": "Invalid",
+"gui.overpowered.bridge_message.no_lens": "Fără obiectiv",
+"gui.overpowered.bridge_message.active": "activat",
+"gui.overpowered.crystal_energy_generator.input": "Intrare",
+"gui.overpowered.crystal_energy_generator.max_extract": "Rata de extracție",
+"gui.overpowered.jei_description.overpowered_tools": "Uneltele supraalimentate au de 3 ori durabilitatea uneltelor cu diamante. De asemenea, sunt ale mele ceva mai repede.",
+"gui.overpowered.jei_description.void_tools": "Instrumentele întunecate sunt încă lucrate.",
+"gui.overpowered.jei_description.generator": "Generatorul este mașina care generează energie. Puteți introduce cristale de energie, cioburi de cristal de energie sau un bloc de lumină. Fiecare generează energie la viteze diferite.",
+"gui.overpowered.jei_description.data_cable": "Cablul de date este utilizat la construcția portalului și la structura energetică de fuziune. Este folosit și în unele rețete de meșteșug.",
+"gui.overpowered.jei_description.gem_converter": "Această mașină poate converti un tip de bijuterie în altul.",
+"gui.overpowered.jei_description.inverter": "Această mașină transformă cristalele de energie în cristale goale și funcționează și invers.",
+"gui.overpowered.jei_description.magic_infuser": "Introduceți o carte și o bijuterie și veți obține o carte fermecată în funcție de tipul de bijuterie pe care l-ați folosit.",
+"gui.overpowered.jei_description.identifier": "Monștrii vor arunca ocazional obiecte neidentificate. Utilizați această mașină pentru a le identifica.",
+"gui.overpowered.jei_description.portal_control_panel": "Panoul de control al portalului este mașina care generează portalul. Trebuie să fie conectat la cadrul portalului principal prin intermediul cablului de date.",
+"gui.overpowered.jei_description.portal_frame": "Cadrul principal al portalului este format dintr-un inel de blocuri, cu 5 blocuri lățime și 5 blocuri înălțime. Colțurile și laturile trebuie să fie cadre portale, dar celelalte blocuri între ele pot fi fie cabluri de date, fie blocuri de cadru de fier.",
+"gui.overpowered.jei_description.laser_housing": "Aceasta este mașina care controlează modul în care funcționează laserele. Trebuie să atașați lasere orientate în direcția în care doriți să trageți. Mai întâi setați distanța, apoi introduceți energia necesară. Activați cu un semnal cu fir roșu.",
+"gui.overpowered.jei_description.laser": "Acestea sunt laserele care se atașează la mașinile cu laser.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "Când este furnizat cu suficientă energie și este activat cu un semnal roșu, acesta va crea o punte de energie de aici către un alt bloc de mașini. Trebuie să introduceți un obiectiv cu culoarea dorită, iar spațiul dintre cele două blocuri de mașini pod să fie lipsit de obstacole.",
+"gui.overpowered.jei_description.unknown_technology": "Acesta este un dispozitiv misterios cu origini necunoscute. Este folosit pentru fabricarea celor mai puternice mașini.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "Introduceți minereuri în această mașină și va produce dublul producției, dar funcționează doar cu minereuri.",
+"gui.overpowered.jei_description.crystal_matter_generator": "După ce a rulat o perioadă, această mașină va produce un fragment de bijuterie. Combinați 9 cioburi de același tip pentru a obține o bijuterie completă.",
+"gui.overpowered.jei_description.dimensional_anchor": "În prezent acest lucru nu are niciun scop.",
+"gui.overpowered.jei_description.black_hole": "Fii atent cu asta! Dacă așezați acest lucru jos, acest lucru va elimina o mare parte din lumea voastră!",
+"gui.overpowered.jei_description.fusion_chamber": "Parte a structurii energiei de fuziune. Acesta este blocul din centru. Acesta trebuie să conțină un miez de fuziune pentru a fi considerat valabil.",
+"gui.overpowered.jei_description.fusion_control_unit": "Parte a structurii energiei de fuziune. Trebuie să așezați 6 din aceste 5 blocuri distanță de centru în fiecare direcție. Trebuie să utilizați cablul de date pentru a conecta unitățile de control al fuziunii la convertorul de energie de fuziune.",
+"gui.overpowered.jei_description.fusion_control_laser": "Parte a structurii energiei de fuziune. Trebuie să faceți 6 dintre acestea și să puneți câte una pe fiecare unitate de control de fuziune îndreptată spre camera de fuziune din centru.",
+"gui.overpowered.jei_description.fusion_converter": "Parte a structurii energiei de fuziune. Setați acest lucru oriunde, apoi trebuie să conectați acest lucru la fiecare unitate de control de fuziune folosind cablul de date. După ce structura completă este completă, activați această mașină cu un fir roșu pentru a o porni. În timpul funcționării, această mașină va genera energie.",
+"gui.overpowered.laser_housing.auto_shutoff": "Oprire automată",
+"gui.overpowered.laser_housing.lasers": "lasere",
+"gui.overpowered.laser_housing.distance": "distanţă",
+"gui.overpowered.laser_housing.current_energy": "energia curentă",
+"gui.overpowered.laser_housing.required_energy": "energia necesară",
+"gui.overpowered.portal_message.no_data_cable": "Nu este conectat niciun cablu de date.",
+"gui.overpowered.portal_message.need_portal_frames": "8 cadre de portal sunt necesare.",
+"gui.overpowered.portal_message.too_many_portal_frames": "Prea multe cadre de portal.",
+"gui.overpowered.portal_message.invalid_construction": "Construcție de portal nevalidă.",
+"gui.overpowered.portal_message.obstructed": "Obstrucție detectată în cadru.",
+"gui.overpowered.portal_message.off": "Panoul de control al portalului este dezactivat.",
+"gui.overpowered.portal_message.incorrect_items": "Articole incorecte din cadrele portalului.",
+"gui.overpowered.portal_message.needs_energy": "Nu este suficientă energie.",
+"gui.overpowered.portal_message.creative_mode": "Jucătorul este în modul creativ.",
+"gui.overpowered.portal_message.ready": "Portalul este gata.",
+"gui.overpowered.portal_warning_message": "§cAi grijă§r: Există încă unele probleme cu dimensiunea necunoscută. Dacă te duci acolo, ai șansa să apari în aer și să cadă la moarte. Vă recomandăm să introduceți portalul în modul creativ sau să dezactivați portalul în fișierul de configurare. Ne pare rău pentru acest lucru și sperăm să remediem acest lucru într-o actualizare ulterioară.",
+"gui.overpowered.ring_effect.strength": "Putere",
+"gui.overpowered.ring_effect.speed": "Viteză",
+"gui.overpowered.ring_effect.haste": "Viteza de exploatare",
+"gui.overpowered.ring_effect.luck": "Noroc",
+"gui.overpowered.ring_effect.extra_health": "Sănătate în plus",
+"gui.overpowered.ring_effect.jump": "Abilitate de sărituri",
+"gui.overpowered.ring_effect.fire_immune": "Imunitate la foc",
+"gui.overpowered.ring_effect.water_breathing": "Respira sub apa",
+"gui.overpowered.ring_effect.night_vision": "Vedere nocturnă",
+"gui.overpowered.ring_effect.invisiblity": "Invizibilitate",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "Colecta Pietrele nestemate",
+"advancements.overpowered.all_gems.description": "Colectați toate tipurile de nestemate necesare pentru a crea bijuteria depășită.",
+
+"advancements.overpowered.overpowered_gem.title": "Energie Cristal",
+"advancements.overpowered.overpowered_gem.description": "Faceți un cristal de energie",
+"advancements.overpowered.overpowered_tools.title": "Instrumente de energie",
+"advancements.overpowered.overpowered_tools.description": "Faceți orice instrument energetic",
+"advancements.overpowered.light_block.title": "Bloc de Lumină",
+"advancements.overpowered.light_block.description": "Faceți un blocaj de lumină",
+
+"advancements.overpowered.void_crystal.title": "cristal negativ",
+"advancements.overpowered.void_crystal.description": "Utilizați invertorul pentru a crea un cristal întunecat",
+"advancements.overpowered.void_tools.title": "sabia de anihilare",
+"advancements.overpowered.void_tools.description": "Faceți o sabie întunecată",
+"advancements.overpowered.null_block.title": "bloc null",
+"advancements.overpowered.null_block.description": "Faceți un bloc Null",
+
+"advancements.overpowered.laser.title": "Laser",
+"advancements.overpowered.laser.description": "Artizanat o mașină laser.",
+"advancements.overpowered.fire_laser.title": "Activitatea cu laser",
+"advancements.overpowered.fire_laser.description": "Activați un laser.",
+"advancements.overpowered.fire_maximum_laser.title": "Distanța maximă",
+"advancements.overpowered.fire_maximum_laser.description": "Aprindeți un laser distanța maximă.",
+
+"advancements.overpowered.inverter.title": "invertor",
+"advancements.overpowered.inverter.description": "Creează un invertor",
+"advancements.overpowered.craft_identifier.title": "Identificator",
+"advancements.overpowered.craft_identifier.description": "Creați un identificator.",
+"advancements.overpowered.identify_something.title": "Identitate nouă",
+"advancements.overpowered.identify_something.description": "Utilizați mașina de identificare pentru a identifica ceva.",
+
+"advancements.overpowered.craft_portal.title": "Portal",
+"advancements.overpowered.craft_portal.description": "Creați panoul de control al portalului.",
+"advancements.overpowered.portal.title": "Dimensiune necunoscută",
+"advancements.overpowered.portal.description": "Introduceți dimensiunea necunoscută.",
+"advancements.overpowered.unknown_technology.title": "Tehnologie necunoscută",
+"advancements.overpowered.unknown_technology.description": "Găsiți tehnologia necunoscută.",
+
+"advancements.overpowered.fusion_structure.title": "Structura energiei de fuziune",
+"advancements.overpowered.fusion_structure.description": "Creați toate componentele necesare pentru construirea structurii energiei de fuziune.",
+"advancements.overpowered.fusion_energy.title": "Energia de fuziune",
+"advancements.overpowered.fusion_energy.description": "Activați o structură valabilă a energiei de fuziune.",
+
+"advancements.overpowered.black_hole.title": "Gaură neagră",
+"advancements.overpowered.black_hole.description": "Meșteșugă o gaură neagră.",
+"advancements.overpowered.dimensional_anchor.title": "Ancoră dimensională",
+"advancements.overpowered.dimensional_anchor.description": "Creează o ancoră dimensională.",
+"advancements.overpowered.world_destroyer.title": "Distrugător mondial",
+"advancements.overpowered.world_destroyer.description": "Folosiți o gaură neagră pentru a distruge o parte a lumii.",
+
+"advancements.overpowered.bronze_trophy.title": "bronz trofeu",
+"advancements.overpowered.bronze_trophy.description": "Obțineți un Trofeu de bronz",
+"advancements.overpowered.silver_trophy.title": "Trofeul de argint",
+"advancements.overpowered.silver_trophy.description": "Obțineți un trofeu de argint",
+"advancements.overpowered.gold_trophy.title": "Trofeul de aur",
+"advancements.overpowered.gold_trophy.description": "Obțineți un trofeu de aur",
+"advancements.overpowered.platinum_trophy.title": "platina trofeu",
+"advancements.overpowered.platinum_trophy.description": "Obțineți un trofeu Platinum"
 }

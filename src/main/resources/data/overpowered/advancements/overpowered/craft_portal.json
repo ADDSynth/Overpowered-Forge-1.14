@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:portal_control_panel"
     },
-    "title": "Portal",
-    "description": "Craft a Portal Control Panel."
+    "title": {
+      "translate": "advancements.overpowered.craft_portal.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.craft_portal.description"
+    }
   },
   "parent": "overpowered:overpowered/void_crystal",
   "criteria": {

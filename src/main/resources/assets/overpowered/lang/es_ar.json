@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "Placa de bronce",
 "item.overpowered.silver_plate": "Galjanoplastia de plata",
 "item.overpowered.platinum_plate": "revestimiento de platino",
-"item.overpowered.titanium_plate": "Placa de titanio"
+"item.overpowered.titanium_plate": "Placa de titanio",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "Los agujeros negros no están permitidos en esta dimensión.",
+"gui.overpowered.black_hole.notify_players": "§5Evento de singularidad§r detectado en las coordenadas: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "Forma inválida",
+"gui.overpowered.bridge_message.okay": "Normal",
+"gui.overpowered.bridge_message.obstructed": "Obstruido",
+"gui.overpowered.bridge_message.no_bridge": "Sin puente",
+"gui.overpowered.bridge_message.invalid": "Inválido",
+"gui.overpowered.bridge_message.no_lens": "Sin lente",
+"gui.overpowered.bridge_message.active": "Activado",
+"gui.overpowered.crystal_energy_generator.input": "Entrada",
+"gui.overpowered.crystal_energy_generator.max_extract": "Extracto máximo",
+"gui.overpowered.jei_description.overpowered_tools": "Las herramientas con exceso de potencia tienen 3 veces más durabilidad que las herramientas de diamante. También minan un poco más rápido.",
+"gui.overpowered.jei_description.void_tools": "Todavía se están trabajando en herramientas oscuras.",
+"gui.overpowered.jei_description.generator": "El generador es la máquina que genera energía. Puede insertar cristales de energía, fragmentos de cristal de energía o un bloque de luz. Cada uno genera energía a diferentes velocidades.",
+"gui.overpowered.jei_description.data_cable": "El cable de datos se utiliza en la construcción del portal y la estructura de energía de fusión. También se usa en algunas recetas de elaboración.",
+"gui.overpowered.jei_description.gem_converter": "Esta máquina puede convertir un tipo de gema a otro.",
+"gui.overpowered.jei_description.inverter": "Esta máquina transforma los cristales de energía en cristales vacíos y también funciona a la inversa.",
+"gui.overpowered.jei_description.magic_infuser": "Inserta un libro y una gema y obtendrás un libro encantado dependiendo del tipo de gema que utilizaste.",
+"gui.overpowered.jei_description.identifier": "Los monstruos ocasionalmente dejarán caer objetos no identificados. Use esta máquina para identificarlos.",
+"gui.overpowered.jei_description.portal_control_panel": "El panel de control del portal es la máquina que genera el portal. Debe estar conectado al marco del portal principal utilizando un cable de datos.",
+"gui.overpowered.jei_description.portal_frame": "El marco del portal principal consiste en un anillo de bloques, 5 bloques de ancho y 5 bloques de alto. Las esquinas y los lados deben ser marcos de portal, pero los otros bloques intermedios pueden ser cables de datos o bloques de marco de hierro.",
+"gui.overpowered.jei_description.laser_housing": "Esta es la máquina que controla cómo funcionan los láseres. Debe colocar láseres apuntando en la dirección que desea disparar. Primero establezca la distancia, luego inserte la energía requerida. Activar con una señal de cable rojo.",
+"gui.overpowered.jei_description.laser": "Estos son los láseres que se unen a las máquinas láser.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "Cuando se le suministra suficiente energía y se activa con una señal de redstone, esto creará un puente de energía desde aquí a otro bloque de máquina de puente. Debe insertar una lente del color que desee, y el espacio entre los dos bloques de la máquina del puente debe estar libre de obstáculos.",
+"gui.overpowered.jei_description.unknown_technology": "Este es un misterioso dispositivo de orígenes desconocidos. Se utiliza para fabricar las máquinas más potentes.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "Inserte minerales en esta máquina y producirá el doble de salida, pero solo funciona con minerales.",
+"gui.overpowered.jei_description.crystal_matter_generator": "Después de funcionar durante un tiempo, esta máquina producirá un fragmento de gema. Combina 9 fragmentos del mismo tipo para obtener una gema completa.",
+"gui.overpowered.jei_description.dimensional_anchor": "Actualmente esto no tiene ningún propósito.",
+"gui.overpowered.jei_description.black_hole": "¡Ten cuidado con esto! ¡Si coloca esto hacia abajo, esto eliminará una gran parte de su mundo!",
+"gui.overpowered.jei_description.fusion_chamber": "Parte de la estructura de energía de fusión. Este es el bloque en el centro. Debe contener un núcleo de fusión para ser considerado válido.",
+"gui.overpowered.jei_description.fusion_control_unit": "Parte de la estructura de energía de fusión. Debe colocar 6 de estos 5 bloques lejos del centro en cada dirección. Debe usar un cable de datos para conectar las unidades de control de fusión al convertidor de energía de fusión.",
+"gui.overpowered.jei_description.fusion_control_laser": "Parte de la estructura de energía de fusión. Debe hacer 6 de estos y poner uno en cada unidad de control de fusión apuntando hacia la cámara de fusión en el centro.",
+"gui.overpowered.jei_description.fusion_converter": "Parte de la estructura de energía de fusión. Simplemente establezca esto en cualquier lugar, luego debe conectarlo a cada una de las unidades de control de fusión con un cable de datos. Una vez que se complete la estructura completa, active esta máquina con un cable rojo para encenderla. Mientras está en funcionamiento, esta máquina generará energía.",
+"gui.overpowered.laser_housing.auto_shutoff": "Apagado automatico",
+"gui.overpowered.laser_housing.lasers": "láseres",
+"gui.overpowered.laser_housing.distance": "distancia",
+"gui.overpowered.laser_housing.current_energy": "energía actual",
+"gui.overpowered.laser_housing.required_energy": "energía requerida",
+"gui.overpowered.portal_message.no_data_cable": "No hay cable de datos conectado.",
+"gui.overpowered.portal_message.need_portal_frames": "Se requieren 8 marcos de portal.",
+"gui.overpowered.portal_message.too_many_portal_frames": "Demasiados marcos de portal.",
+"gui.overpowered.portal_message.invalid_construction": "Construcción de portal inválida.",
+"gui.overpowered.portal_message.obstructed": "Obstrucción detectada dentro del marco.",
+"gui.overpowered.portal_message.off": "El panel de control del portal está apagado.",
+"gui.overpowered.portal_message.incorrect_items": "Elementos incorrectos en marcos de portal.",
+"gui.overpowered.portal_message.needs_energy": "No suficiente energía.",
+"gui.overpowered.portal_message.creative_mode": "El jugador está en modo creativo.",
+"gui.overpowered.portal_message.ready": "El portal esta listo.",
+"gui.overpowered.portal_warning_message": "§cTener cuidado§r: Todavía hay algunos problemas con la dimensión desconocida. Si vas allí, existe la posibilidad de que aparezcas en el aire y caigas a la muerte. Recomendamos ingresar al portal en modo creativo o deshabilitar el portal en el archivo de configuración. Lo sentimos y esperamos solucionarlo en una actualización posterior.",
+"gui.overpowered.ring_effect.strength": "Fuerza",
+"gui.overpowered.ring_effect.speed": "Velocidad",
+"gui.overpowered.ring_effect.haste": "Velocidad de minería",
+"gui.overpowered.ring_effect.luck": "Suerte",
+"gui.overpowered.ring_effect.extra_health": "Salud extra",
+"gui.overpowered.ring_effect.jump": "Habilidad de salto",
+"gui.overpowered.ring_effect.fire_immune": "Inmunidad al fuego",
+"gui.overpowered.ring_effect.water_breathing": "Respira bajo el agua",
+"gui.overpowered.ring_effect.night_vision": "Vision nocturna",
+"gui.overpowered.ring_effect.invisiblity": "Invisibilidad",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "Recoge las gemas",
+"advancements.overpowered.all_gems.description": "Recoge todos los tipos de gemas necesarias para crear la gema dominada.",
+
+"advancements.overpowered.overpowered_gem.title": "Energía cristal",
+"advancements.overpowered.overpowered_gem.description": "Hacer un cristal de energía",
+"advancements.overpowered.overpowered_tools.title": "Herramientas energéticas",
+"advancements.overpowered.overpowered_tools.description": "Hacer cualquier herramienta de energía",
+"advancements.overpowered.light_block.title": "Bloque de luz",
+"advancements.overpowered.light_block.description": "Hacer un bloque de luz",
+
+"advancements.overpowered.void_crystal.title": "Cristal de Vacío",
+"advancements.overpowered.void_crystal.description": "Usa el inversor para hacer un cristal vacío.",
+"advancements.overpowered.void_tools.title": "cuchilla de aniquilacion",
+"advancements.overpowered.void_tools.description": "Craft a Void Sword",
+"advancements.overpowered.null_block.title": "Bloque nulo",
+"advancements.overpowered.null_block.description": "Hacer un bloque nulo",
+
+"advancements.overpowered.laser.title": "Láser",
+"advancements.overpowered.laser.description": "Crea una máquina láser.",
+"advancements.overpowered.fire_laser.title": "Actividad láser",
+"advancements.overpowered.fire_laser.description": "Activa un láser.",
+"advancements.overpowered.fire_maximum_laser.title": "Distancia máxima",
+"advancements.overpowered.fire_maximum_laser.description": "Dispara un láser a la distancia máxima.",
+
+"advancements.overpowered.inverter.title": "Inversor",
+"advancements.overpowered.inverter.description": "Crea un inversor",
+"advancements.overpowered.craft_identifier.title": "Identificador",
+"advancements.overpowered.craft_identifier.description": "Crea un identificador.",
+"advancements.overpowered.identify_something.title": "Nueva identidad",
+"advancements.overpowered.identify_something.description": "Use la máquina de identificación para identificar algo.",
+
+"advancements.overpowered.craft_portal.title": "Portal",
+"advancements.overpowered.craft_portal.description": "Crea el panel de control del portal.",
+"advancements.overpowered.portal.title": "Dimensión desconocida",
+"advancements.overpowered.portal.description": "Entra en la dimensión desconocida.",
+"advancements.overpowered.unknown_technology.title": "Tecnología desconocida",
+"advancements.overpowered.unknown_technology.description": "Encuentra la tecnología desconocida.",
+
+"advancements.overpowered.fusion_structure.title": "Estructura de energía de fusión",
+"advancements.overpowered.fusion_structure.description": "Crea todos los componentes necesarios para construir la estructura de energía de fusión.",
+"advancements.overpowered.fusion_energy.title": "Energía de fusión",
+"advancements.overpowered.fusion_energy.description": "Activar una estructura de energía de fusión válida.",
+
+"advancements.overpowered.black_hole.title": "Agujero negro",
+"advancements.overpowered.black_hole.description": "Hacer un agujero negro",
+"advancements.overpowered.dimensional_anchor.title": "Ancla dimensional",
+"advancements.overpowered.dimensional_anchor.description": "Crea un ancla dimensional.",
+"advancements.overpowered.world_destroyer.title": "Destructor del mundo",
+"advancements.overpowered.world_destroyer.description": "Usa un agujero negro para destruir parte del mundo.",
+
+"advancements.overpowered.bronze_trophy.title": "Trofeo de bronce",
+"advancements.overpowered.bronze_trophy.description": "Consigue un trofeo de bronce",
+"advancements.overpowered.silver_trophy.title": "Trofeo de plata",
+"advancements.overpowered.silver_trophy.description": "Consigue un trofeo de plata",
+"advancements.overpowered.gold_trophy.title": "Trofeo de oro",
+"advancements.overpowered.gold_trophy.description": "Consigue un trofeo de oro",
+"advancements.overpowered.platinum_trophy.title": "Trofeo de platino",
+"advancements.overpowered.platinum_trophy.description": "Consigue un trofeo de platino"
 }

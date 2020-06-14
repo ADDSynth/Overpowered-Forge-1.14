@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "Placage de bronze",
 "item.overpowered.silver_plate": "Placage d'argent",
 "item.overpowered.platinum_plate": "Placage de platine",
-"item.overpowered.titanium_plate": "Titane placage"
+"item.overpowered.titanium_plate": "Titane placage",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "Les trous noirs ne sont pas autorisés dans cette dimension.",
+"gui.overpowered.black_hole.notify_players": "§5Événement de singularité§r été détecté aux coordonnées: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "Forme invalide",
+"gui.overpowered.bridge_message.okay": "Ordinaire",
+"gui.overpowered.bridge_message.obstructed": "Obstrué",
+"gui.overpowered.bridge_message.no_bridge": "Pas de pont",
+"gui.overpowered.bridge_message.invalid": "Invalide",
+"gui.overpowered.bridge_message.no_lens": "Pas de lentille",
+"gui.overpowered.bridge_message.active": "Activé",
+"gui.overpowered.crystal_energy_generator.input": "Contribution",
+"gui.overpowered.crystal_energy_generator.max_extract": "Taux d'extraction",
+"gui.overpowered.jei_description.overpowered_tools": "Les outils surpuissants ont 3 fois la durabilité des outils diamantés. Ils extraient aussi un peu plus vite.",
+"gui.overpowered.jei_description.void_tools": "Des outils sombres sont toujours en cours d'élaboration.",
+"gui.overpowered.jei_description.generator": "Le générateur est la machine qui génère de l'énergie. Vous pouvez insérer des cristaux d'énergie, des éclats de cristal d'énergie ou un bloc de lumière. Chacun génère de l'énergie à des rythmes différents.",
+"gui.overpowered.jei_description.data_cable": "Le câble de données est utilisé dans la construction du portail et la structure de l'énergie de fusion. Il est également utilisé dans certaines recettes d'artisanat.",
+"gui.overpowered.jei_description.gem_converter": "Cette machine peut convertir un type de gemme en un autre.",
+"gui.overpowered.jei_description.inverter": "Cette machine transforme les cristaux d'énergie en cristaux vides et fonctionne également en sens inverse.",
+"gui.overpowered.jei_description.magic_infuser": "Insérez un livre et une gemme et vous obtiendrez un livre enchanté selon le type de gemme que vous avez utilisé.",
+"gui.overpowered.jei_description.identifier": "Les monstres déposent parfois des objets non identifiés. Utilisez cette machine pour les identifier.",
+"gui.overpowered.jei_description.portal_control_panel": "Le panneau de commande du portail est la machine qui génère le portail. Il doit être connecté au châssis principal du portail à l'aide d'un câble de données.",
+"gui.overpowered.jei_description.portal_frame": "Le cadre principal du portail se compose d'un anneau de blocs, de 5 blocs de large et de 5 blocs de haut. Les coins et les côtés doivent être des portiques, mais les autres blocs intermédiaires peuvent être des câbles de données ou des blocs de cadres en fer.",
+"gui.overpowered.jei_description.laser_housing": "Il s'agit de la machine qui contrôle le fonctionnement des lasers. Vous devez attacher des lasers pointant dans la direction où vous souhaitez tirer. Réglez d'abord la distance puis insérez l'énergie requise. Activez avec un signal de fil rouge.",
+"gui.overpowered.jei_description.laser": "Ce sont les lasers qui se fixent aux machines laser.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "Lorsqu'il est alimenté avec suffisamment d'énergie et activé avec un signal redstone, cela créera un pont d'énergie d'ici à un autre bloc de machine de pont. Vous devez insérer une lentille de la couleur que vous souhaitez et l'espace entre les deux blocs de la machine à pont doit être libre d'obstacles.",
+"gui.overpowered.jei_description.unknown_technology": "Il s'agit d'un mystérieux appareil d'origine inconnue. Il est utilisé pour fabriquer les machines les plus puissantes.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "Insérez des minerais dans cette machine et cela produira le double de la sortie, mais cela ne fonctionne qu'avec des minerais.",
+"gui.overpowered.jei_description.crystal_matter_generator": "Après avoir fonctionné pendant un certain temps, cette machine produira un éclat de gemme. Combinez 9 éclats du même type pour obtenir une gemme complète.",
+"gui.overpowered.jei_description.dimensional_anchor": "Actuellement, cela n'a aucun but.",
+"gui.overpowered.jei_description.black_hole": "Soyez prudent avec ça! Si vous placez cela, cela supprimera une grande partie de votre monde!",
+"gui.overpowered.jei_description.fusion_chamber": "Une partie de la structure de l'énergie de fusion. Ceci est le bloc au centre. Il doit contenir un noyau de fusion pour être considéré comme valide.",
+"gui.overpowered.jei_description.fusion_control_unit": "Une partie de la structure de l'énergie de fusion. Vous devez placer 6 de ces 5 blocs loin du centre dans chaque direction. Vous devez utiliser un câble de données pour connecter les unités de contrôle de fusion au convertisseur d'énergie de fusion.",
+"gui.overpowered.jei_description.fusion_control_laser": "Une partie de la structure de l'énergie de fusion. Vous devez en faire 6 et en mettre un sur chaque unité de contrôle de fusion pointant vers la chambre de fusion au centre.",
+"gui.overpowered.jei_description.fusion_converter": "Une partie de la structure de l'énergie de fusion. Il suffit de le fixer n'importe où, puis de le connecter à chacune des unités de contrôle de fusion à l'aide d'un câble de données. Une fois la structure complète terminée, activez cette machine avec un fil rouge pour l'allumer. En cours de fonctionnement, cette machine produira de l'énergie.",
+"gui.overpowered.laser_housing.auto_shutoff": "Arrêt automatique",
+"gui.overpowered.laser_housing.lasers": "Lasers",
+"gui.overpowered.laser_housing.distance": "Distance",
+"gui.overpowered.laser_housing.current_energy": "énergie actuelle",
+"gui.overpowered.laser_housing.required_energy": "énergie requise",
+"gui.overpowered.portal_message.no_data_cable": "Aucun câble de données connecté.",
+"gui.overpowered.portal_message.need_portal_frames": "8 portiques sont nécessaires.",
+"gui.overpowered.portal_message.too_many_portal_frames": "Trop de portiques.",
+"gui.overpowered.portal_message.invalid_construction": "Construction de portail non valide.",
+"gui.overpowered.portal_message.obstructed": "Obstruction détectée à l'intérieur du cadre.",
+"gui.overpowered.portal_message.off": "Le panneau de commande du portail est éteint.",
+"gui.overpowered.portal_message.incorrect_items": "Éléments incorrects dans les cadres du portail.",
+"gui.overpowered.portal_message.needs_energy": "Pas assez d'énergie.",
+"gui.overpowered.portal_message.creative_mode": "Le joueur est en mode créatif.",
+"gui.overpowered.portal_message.ready": "Le portail est prêt.",
+"gui.overpowered.portal_warning_message": "§cIl faut se méfier§r: Il y a encore quelques problèmes avec la dimension inconnue. Si vous y allez, il y a une chance que vous apparaissiez dans les airs et tombiez à mort. Nous vous recommandons d'accéder au portail en mode créatif ou de désactiver le portail dans le fichier de configuration. Nous en sommes désolés et nous espérons y remédier dans une mise à jour ultérieure.",
+"gui.overpowered.ring_effect.strength": "Force",
+"gui.overpowered.ring_effect.speed": "La vitesse",
+"gui.overpowered.ring_effect.haste": "vitesse d'extraction",
+"gui.overpowered.ring_effect.luck": "La chance",
+"gui.overpowered.ring_effect.extra_health": "Santé supplémentaire",
+"gui.overpowered.ring_effect.jump": "Compétence de saut",
+"gui.overpowered.ring_effect.fire_immune": "Immunité au feu",
+"gui.overpowered.ring_effect.water_breathing": "Respire sous l'eau",
+"gui.overpowered.ring_effect.night_vision": "Vision nocturne",
+"gui.overpowered.ring_effect.invisiblity": "Invisibilité",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "Récupérez les gemmes",
+"advancements.overpowered.all_gems.description": "Collectez tous les types de gemmes nécessaires pour créer la gemme surpuissante.",
+
+"advancements.overpowered.overpowered_gem.title": "Cristal d'énergie",
+"advancements.overpowered.overpowered_gem.description": "Faire un cristal d'énergie",
+"advancements.overpowered.overpowered_tools.title": "Outils d'énergie",
+"advancements.overpowered.overpowered_tools.description": "Faire n'importe quel outil d'énergie",
+"advancements.overpowered.light_block.title": "Bloc de lumière",
+"advancements.overpowered.light_block.description": "Faire un bloc de lumière",
+
+"advancements.overpowered.void_crystal.title": "Cristal vide",
+"advancements.overpowered.void_crystal.description": "Utiliser l'inverseur pour créer un cristal vide",
+"advancements.overpowered.void_tools.title": "Lame d'annihilation",
+"advancements.overpowered.void_tools.description": "Faire une épée vide",
+"advancements.overpowered.null_block.title": "Bloc nul",
+"advancements.overpowered.null_block.description": "Faire un bloc nul",
+
+"advancements.overpowered.laser.title": "Laser",
+"advancements.overpowered.laser.description": "Fabriquez une machine laser.",
+"advancements.overpowered.fire_laser.title": "Activité laser",
+"advancements.overpowered.fire_laser.description": "Activez un laser.",
+"advancements.overpowered.fire_maximum_laser.title": "Distance maximale",
+"advancements.overpowered.fire_maximum_laser.description": "Tire un laser à la distance maximale.",
+
+"advancements.overpowered.inverter.title": "Onduleur",
+"advancements.overpowered.inverter.description": "Fabriquer un onduleur",
+"advancements.overpowered.craft_identifier.title": "Identifiant",
+"advancements.overpowered.craft_identifier.description": "Créez un identifiant.",
+"advancements.overpowered.identify_something.title": "Nouvelle identité",
+"advancements.overpowered.identify_something.description": "Utilisez la machine d'identification pour identifier quelque chose.",
+
+"advancements.overpowered.craft_portal.title": "Portail",
+"advancements.overpowered.craft_portal.description": "Fabriquez le panneau de contrôle du portail.",
+"advancements.overpowered.portal.title": "Dimension inconnue",
+"advancements.overpowered.portal.description": "Entrez la dimension inconnue.",
+"advancements.overpowered.unknown_technology.title": "Technologie inconnue",
+"advancements.overpowered.unknown_technology.description": "Trouvez la technologie inconnue.",
+
+"advancements.overpowered.fusion_structure.title": "Structure d'énergie de fusion",
+"advancements.overpowered.fusion_structure.description": "Fabriquez tous les composants nécessaires pour construire la structure d'énergie de fusion.",
+"advancements.overpowered.fusion_energy.title": "Énergie de fusion",
+"advancements.overpowered.fusion_energy.description": "Activez une structure d'énergie de fusion valide.",
+
+"advancements.overpowered.black_hole.title": "Trou noir",
+"advancements.overpowered.black_hole.description": "Fabriquez un trou noir.",
+"advancements.overpowered.dimensional_anchor.title": "Ancrage dimensionnel",
+"advancements.overpowered.dimensional_anchor.description": "Fabriquez une ancre dimensionnelle.",
+"advancements.overpowered.world_destroyer.title": "Destructeur mondial",
+"advancements.overpowered.world_destroyer.description": "Utilisez un trou noir pour détruire une partie du monde.",
+
+"advancements.overpowered.bronze_trophy.title": "Trophée de bronze",
+"advancements.overpowered.bronze_trophy.description": "Obtenir un trophée de bronze",
+"advancements.overpowered.silver_trophy.title": "Trophée d'Argent",
+"advancements.overpowered.silver_trophy.description": "Obtenir un trophée d'argent",
+"advancements.overpowered.gold_trophy.title": "Trophée d'Or",
+"advancements.overpowered.gold_trophy.description": "Obtenir un trophée d'or",
+"advancements.overpowered.platinum_trophy.title": "Trophée platine",
+"advancements.overpowered.platinum_trophy.description": "Obtenir un trophée de platine"
 }

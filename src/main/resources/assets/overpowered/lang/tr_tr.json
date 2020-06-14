@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "Bronz Tabak",
 "item.overpowered.silver_plate": "Gümüş tabak",
 "item.overpowered.platinum_plate": "Platin Tabak",
-"item.overpowered.titanium_plate": "Titanyum Levha"
+"item.overpowered.titanium_plate": "Titanyum Levha",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "Bu boyutta Kara Deliklere izin verilmez.",
+"gui.overpowered.black_hole.notify_players": "§5tekillik olayı§r koordinatlarda tespit edildi: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "Geçersiz Şekil",
+"gui.overpowered.bridge_message.okay": "Normal",
+"gui.overpowered.bridge_message.obstructed": "Tıkayıcı",
+"gui.overpowered.bridge_message.no_bridge": "Köprü Yok",
+"gui.overpowered.bridge_message.invalid": "Geçersiz",
+"gui.overpowered.bridge_message.no_lens": "Lens Yok",
+"gui.overpowered.bridge_message.active": "Aktif",
+"gui.overpowered.crystal_energy_generator.input": "Giriş",
+"gui.overpowered.crystal_energy_generator.max_extract": "Maksimum Ekstrakt",
+"gui.overpowered.jei_description.overpowered_tools": "Aşırı güçlü aletler elmas aletlerin 3 kat dayanıklılığına sahiptir. Onlar da biraz daha hızlı benim.",
+"gui.overpowered.jei_description.void_tools": "Karanlık araçlar hala üzerinde çalışılıyor.",
+"gui.overpowered.jei_description.generator": "Jeneratör, enerji üreten makinedir. Enerji kristalleri, enerji kristal parçaları veya bir ışık bloğu ekleyebilirsiniz. Her biri farklı oranlarda enerji üretir.",
+"gui.overpowered.jei_description.data_cable": "Veri Kablosu portalın yapımında ve füzyon enerji yapısında kullanılır. Bazı işçilik tariflerinde de kullanılır.",
+"gui.overpowered.jei_description.gem_converter": "Bu makine bir mücevher türünü diğerine dönüştürebilir.",
+"gui.overpowered.jei_description.inverter": "Bu makine enerji kristallerini geçersiz kristallere dönüştürür ve tersi yönde de çalışır.",
+"gui.overpowered.jei_description.magic_infuser": "Bir kitap ve bir mücevher ekleyin ve kullandığınız mücevher türüne bağlı olarak büyülü bir kitap alacaksınız.",
+"gui.overpowered.jei_description.identifier": "Canavarlar zaman zaman tanımlanamayan eşyaları düşürür. Tanımlamak için bu makineyi kullanın.",
+"gui.overpowered.jei_description.portal_control_panel": "Portal kontrol paneli, portalı oluşturan makinedir. Veri kablosu kullanılarak ana portal çerçevesine bağlanmalıdır.",
+"gui.overpowered.jei_description.portal_frame": "Ana portal çerçevesi, 5 blok genişliğinde ve 5 blok yüksekliğinde bir blok halkasından oluşur. Köşeler ve yanlar portal çerçeveler olmalıdır, ancak aralarındaki diğer bloklar veri kablosu veya demir çerçeve blokları olabilir.",
+"gui.overpowered.jei_description.laser_housing": "Bu, lazerlerin nasıl çalışacağını kontrol eden makinedir. Ateş etmek istediğiniz yöne işaret eden lazerler takmalısınız. Önce mesafeyi ayarlayın, sonra gerekli enerjiyi girin. Kırmızı kablo sinyali ile etkinleştirin.",
+"gui.overpowered.jei_description.laser": "Bunlar lazer makinelerine bağlanan lazerlerdir.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "Yeterli enerji sağlandığında ve bir redstone sinyali ile etkinleştirildiğinde, burası başka bir köprü makine bloğuna bir enerji köprüsü oluşturur. İstediğiniz rengin bir merceğini yerleştirmelisiniz ve iki köprü makine bloğu arasındaki boşlukta engel bulunmamalıdır.",
+"gui.overpowered.jei_description.unknown_technology": "Bu, bilinmeyen kökenleri olan gizemli bir cihazdır. En güçlü makineleri yapmak için kullanılır.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "Bu makineye cevherleri yerleştirin ve çıktıyı iki katına çıkarır, ancak yalnızca cevherlerle çalışır.",
+"gui.overpowered.jei_description.crystal_matter_generator": "Bir süre koştuktan sonra, bu makine bir mücevher parçası üretecek. Bir dolu taş elde etmek için aynı türden 9 parça birleştirin.",
+"gui.overpowered.jei_description.dimensional_anchor": "Şu anda bunun bir amacı yok.",
+"gui.overpowered.jei_description.black_hole": "Buna dikkat et! Eğer bunu koyarsanız, bu dünyanızın büyük bir bölümünü kaldıracaktır!",
+"gui.overpowered.jei_description.fusion_chamber": "Füzyon enerji yapısının bir parçası. Bu merkezdeki blok. Geçerli kabul edilebilmesi için bir füzyon çekirdeği içermelidir.",
+"gui.overpowered.jei_description.fusion_control_unit": "Füzyon enerji yapısının bir parçası. Bu 5 bloğun 6'sını her yönden merkezden uzağa yerleştirmeniz gerekir. Füzyon kontrol ünitelerini füzyon enerjisi dönüştürücüsüne bağlamak için veri kablosu kullanmalısınız.",
+"gui.overpowered.jei_description.fusion_control_laser": "Füzyon enerji yapısının bir parçası. Bunlardan 6'sını yapmalı ve her bir füzyon kontrol ünitesine merkezdeki füzyon odasına dönük bir tane koymalısınız.",
+"gui.overpowered.jei_description.fusion_converter": "Füzyon enerji yapısının bir parçası. Bunu herhangi bir yere koyun, ardından veri kablosunu kullanarak bunu her bir füzyon kontrol ünitesine bağlamanız gerekir. Tüm yapı tamamlandıktan sonra, açmak için bu makineyi kırmızı bir tel ile etkinleştirin. Çalışırken, bu makine enerji üretecektir.",
+"gui.overpowered.laser_housing.auto_shutoff": "Otomatik kapanma",
+"gui.overpowered.laser_housing.lasers": "lazerler",
+"gui.overpowered.laser_housing.distance": "mesafe",
+"gui.overpowered.laser_housing.current_energy": "mevcut enerji",
+"gui.overpowered.laser_housing.required_energy": "gerekli enerji",
+"gui.overpowered.portal_message.no_data_cable": "Veri kablosu bağlı değil.",
+"gui.overpowered.portal_message.need_portal_frames": "8 portal çerçevesi gereklidir.",
+"gui.overpowered.portal_message.too_many_portal_frames": "Çok fazla portal çerçevesi var.",
+"gui.overpowered.portal_message.invalid_construction": "Geçersiz portal yapısı.",
+"gui.overpowered.portal_message.obstructed": "Çerçevenin içinde bir engel tespit edildi.",
+"gui.overpowered.portal_message.off": "Portal kontrol paneli kapalı.",
+"gui.overpowered.portal_message.incorrect_items": "Portal çerçevelerindeki yanlış öğeler.",
+"gui.overpowered.portal_message.needs_energy": "Yeterli enerji yok.",
+"gui.overpowered.portal_message.creative_mode": "Oynatıcı yaratıcı modda.",
+"gui.overpowered.portal_message.ready": "Portal hazır.",
+"gui.overpowered.portal_warning_message": "§cDikkat§r: Bilinmeyen boyutla ilgili hala bazı sorunlar var. Oraya giderseniz, havada görünme ve ölümünüze düşme şansınız vardır. Portalı yaratıcı moda girmenizi veya yapılandırma dosyasında portalı devre dışı bırakmanızı öneririz. Bunun için üzgünüz ve bunu daha sonraki bir güncellemede düzeltmeyi umuyoruz.",
+"gui.overpowered.ring_effect.strength": "kuvvet",
+"gui.overpowered.ring_effect.speed": "hız",
+"gui.overpowered.ring_effect.haste": "Madencilik hızı",
+"gui.overpowered.ring_effect.luck": "Şans",
+"gui.overpowered.ring_effect.extra_health": "Ekstra sağlık",
+"gui.overpowered.ring_effect.jump": "Zıplama yeteneği",
+"gui.overpowered.ring_effect.fire_immune": "Yangın bağışıklığı",
+"gui.overpowered.ring_effect.water_breathing": "Su altında nefes almak",
+"gui.overpowered.ring_effect.night_vision": "Gece görüşü",
+"gui.overpowered.ring_effect.invisiblity": "Görünmezlik",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "Taşları Topla",
+"advancements.overpowered.all_gems.description": "Aşırı güçlü mücevher oluşturmak için gerekli her türlü mücevherleri toplayın.",
+
+"advancements.overpowered.overpowered_gem.title": "Enerji Kristali",
+"advancements.overpowered.overpowered_gem.description": "Enerji Kristali Yap",
+"advancements.overpowered.overpowered_tools.title": "Enerji Araçları",
+"advancements.overpowered.overpowered_tools.description": "Herhangi bir Enerji Aracı Yap",
+"advancements.overpowered.light_block.title": "Işık bloğu",
+"advancements.overpowered.light_block.description": "Hafif Bir Blok Yap",
+
+"advancements.overpowered.void_crystal.title": "geçersiz kristal",
+"advancements.overpowered.void_crystal.description": "Geçersiz Kristal yapmak için İnvertörü kullanın",
+"advancements.overpowered.void_tools.title": "imha kılıcı",
+"advancements.overpowered.void_tools.description": "Karanlık bir kılıç yap",
+"advancements.overpowered.null_block.title": "Boş blok",
+"advancements.overpowered.null_block.description": "boş blok yapmak",
+
+"advancements.overpowered.laser.title": "Lazer",
+"advancements.overpowered.laser.description": "Bir lazer makinesi hazırlayın.",
+"advancements.overpowered.fire_laser.title": "Lazer Ateşi",
+"advancements.overpowered.fire_laser.description": "Bir lazeri etkinleştirin.",
+"advancements.overpowered.fire_maximum_laser.title": "Maksimum mesafe",
+"advancements.overpowered.fire_maximum_laser.description": "Bir lazer maksimum mesafe ateş.",
+
+"advancements.overpowered.inverter.title": "Çevirici",
+"advancements.overpowered.inverter.description": "İnvertör üretin",
+"advancements.overpowered.craft_identifier.title": "tanıtıcı",
+"advancements.overpowered.craft_identifier.description": "Bir tanımlayıcı makine yapın.",
+"advancements.overpowered.identify_something.title": "Yeni Kimlik",
+"advancements.overpowered.identify_something.description": "Bir şeyi tanımlamak için tanımlayıcı makineyi kullanın.",
+
+"advancements.overpowered.craft_portal.title": "kapı",
+"advancements.overpowered.craft_portal.description": "Portal kontrol panelini oluşturun.",
+"advancements.overpowered.portal.title": "Bilinmeyen Boyut",
+"advancements.overpowered.portal.description": "Bilinmeyen boyutu girin.",
+"advancements.overpowered.unknown_technology.title": "Bilinmeyen Teknoloji",
+"advancements.overpowered.unknown_technology.description": "Bilinmeyen teknolojiyi bulun.",
+
+"advancements.overpowered.fusion_structure.title": "Füzyon enerji yapısı",
+"advancements.overpowered.fusion_structure.description": "Füzyon enerji yapısını oluşturmak için gerekli tüm bileşenleri üretin.",
+"advancements.overpowered.fusion_energy.title": "Füzyon enerjisi",
+"advancements.overpowered.fusion_energy.description": "Geçerli bir füzyon enerjisi yapısını aktive edin.",
+
+"advancements.overpowered.black_hole.title": "Kara delik",
+"advancements.overpowered.black_hole.description": "Bir kara delik açın.",
+"advancements.overpowered.dimensional_anchor.title": "Boyutlu çapa",
+"advancements.overpowered.dimensional_anchor.description": "Boyutlu bir çapa hazırlayın.",
+"advancements.overpowered.world_destroyer.title": "Dünya muhripleri",
+"advancements.overpowered.world_destroyer.description": "Dünyanın bir bölümünü yok etmek için bir kara delik kullanın.",
+
+"advancements.overpowered.bronze_trophy.title": "Bronz Kupa",
+"advancements.overpowered.bronze_trophy.description": "bronz bir kupa almak",
+"advancements.overpowered.silver_trophy.title": "Gümüş Kupa",
+"advancements.overpowered.silver_trophy.description": "gümüş bir kupa almak",
+"advancements.overpowered.gold_trophy.title": "Altın Kupa",
+"advancements.overpowered.gold_trophy.description": "Altın Kupa Alın",
+"advancements.overpowered.platinum_trophy.title": "Platin Kupa",
+"advancements.overpowered.platinum_trophy.description": "Platin Kupa Alın"
 }

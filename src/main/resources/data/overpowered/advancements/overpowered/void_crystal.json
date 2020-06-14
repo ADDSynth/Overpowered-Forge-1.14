@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:void_crystal"
     },
-    "title": "Void Crystal",
-    "description": "Use the Inverter to make a Void Crystal.",
+    "title": {
+      "translate": "advancements.overpowered.void_crystal.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.void_crystla.description"
+    },
     "frame": "goal"
   },
   "parent": "overpowered:overpowered/inverter",

@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:void_sword"
     },
-    "title": "Void Tools",
-    "description": "Craft any Void Tool."
+    "title": {
+      "translate": "advancements.overpowered.void_tools.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.void_tools.description"
+    }
   },
   "parent": "overpowered:overpowered/void_crystal",
   "criteria": {

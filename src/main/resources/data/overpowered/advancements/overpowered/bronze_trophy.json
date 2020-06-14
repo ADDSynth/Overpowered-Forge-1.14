@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:bronze_trophy"
     },
-    "title": "Bronze Trophy",
-    "description": "Get a Bronze Trophy.",
+    "title": {
+      "translate": "advancements.overpowered.bronze_trophy.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.bronze_trophy.description"
+    },
     "frame": "goal"
   },
   "parent": "overpowered:overpowered/root",

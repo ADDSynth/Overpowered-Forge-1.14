@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:fusion_control_laser"
     },
-    "title": "Maximum Distance",
-    "description": "Fire a laser the maximum distance you can set.",
+    "title": {
+      "translate": "advancements.overpowered.fire_maximum_laser.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.fire_maximum_laser.description"
+    },
     "frame": "challenge"
   },
   "parent": "overpowered:overpowered/fire_laser",

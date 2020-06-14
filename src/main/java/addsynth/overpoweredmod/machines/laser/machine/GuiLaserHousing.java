@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.machines.laser.machine;
 
 import addsynth.core.gui.objects.CheckBox;
+import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -17,6 +18,12 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
 
   private static final ResourceLocation laser_machine_gui_texture =
     new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/laser_machine.png");
+
+  private final String required_energy_text = StringUtil.translate("gui.overpowered.laser_housing.required_energy");
+  private final String current_energy_text  = StringUtil.translate("gui.overpowered.laser_housing.current_energy");
+  private final String lasers_text          = StringUtil.translate("gui.overpowered.laser_housing.lasers");
+  private final String distance_text        = StringUtil.translate("gui.overpowered.laser_housing.distance");
+  private final String auto_shutoff_text    = StringUtil.translate("gui.overpowered.laser_housing.auto_shutoff");
 
   private TextFieldWidget text_box;
 
@@ -156,29 +163,29 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
-    draw_text_left("Auto Shutoff", check_box_x + 12 + space, check_box_y + 2);
-    draw_text_left("Lasers: "+tile.number_of_lasers,6,line_1);
-    draw_text_left("Distance: ",6,line_2);
+    draw_text_left(auto_shutoff_text, check_box_x + 12 + space, check_box_y + 2);
+    draw_text_left(lasers_text+": "+tile.number_of_lasers,6,line_1);
+    draw_text_left(distance_text+": ",6,line_2);
     draw_energy_requirements();
     draw_energy_difference(line_5);
   }
 
   private final void draw_energy_requirements(){
     final String required_energy = Integer.toString((int)(energy.getCapacity()));
-    final String word_1 = "Required Energy: "+required_energy;
+    final String word_1 = required_energy_text+": "+required_energy;
     final int word_1_width = font.getStringWidth(word_1);
     
     final String current_energy = Integer.toString((int)(energy.getEnergy()));
-    final String word_2 = "Current Energy: "+current_energy;
+    final String word_2 = current_energy_text+": "+current_energy;
     final int word_2_width = font.getStringWidth(word_2);
     
     if(Math.max(word_1_width, word_2_width) == word_1_width){
       draw_text_left(word_1, 6, line_3);
-      draw_text_left("Current Energy:", 6, line_4);
+      draw_text_left(current_energy_text+":", 6, line_4);
       draw_text_right(current_energy, 6 + word_1_width, line_4);
     }
     else{
-      draw_text_left("Required Energy:", 6, line_3);
+      draw_text_left(required_energy_text+":", 6, line_3);
       draw_text_right(required_energy, 6 + word_2_width, line_3);
       draw_text_left(word_2, 6, line_4);
     }

@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:energy_crystal"
     },
-    "title": "Energy Crystal",
-    "description": "Craft an Energy Crystal."
+    "title": {
+      "translate": "advancements.overpowered.overpowered_gem.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.overpowered_gem.description"
+    }
   },
   "parent": "overpowered:overpowered/all_gems",
   "criteria": {

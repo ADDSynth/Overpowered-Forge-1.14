@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.machines.black_hole;
 
 import addsynth.core.Constants;
+import addsynth.core.util.MessageUtil;
 import addsynth.core.util.ServerUtils;
 import addsynth.core.util.TimeUtil;
 import addsynth.core.util.WorldUtil;
@@ -18,8 +19,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
@@ -106,9 +105,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
                                       center_x + radius, center_y + radius, center_z + radius);
       // MAYBE: play sound?
       if(Config.alert_players_of_black_hole.get()){
-        ServerUtils.send_message_to_all_players_in_world(new StringTextComponent(
-          TextFormatting.DARK_PURPLE + "Singularity Event Detected at Coordinates: "+pos.getX()+" , "+pos.getY()+" , "+pos.getZ()
-        ), world);
+        MessageUtil.send_to_all_players_in_world(world, "gui.overpowered.black_hole.notify_players", pos.getX(), pos.getY(), pos.getZ());
       }
       server = ServerUtils.getServer(world);
     }

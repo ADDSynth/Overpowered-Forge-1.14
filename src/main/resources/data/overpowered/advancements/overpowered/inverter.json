@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:inverter"
     },
-    "title": "Inverter",
-    "description": "Craft an Inverter"
+    "title": {
+      "translate": "advancements.overpowered.inverter.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.inverter.description"
+    }
   },
   "parent": "overpowered:overpowered/overpowered_gem",
   "criteria": {

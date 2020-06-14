@@ -3,8 +3,12 @@
     "icon": {
       "item": "addsynth_energy:energy_storage"
     },
-    "title": "Energy Storage",
-    "description": "Craft an Energy Storage Container"
+    "title": {
+      "translate": "advancements.addsynth_energy.energy_storage.title"
+    },
+    "description": {
+      "translate": "advancements.addsynth_energy.energy_storage.description"
+    }
   },
   "parent": "addsynth_energy:root",
   "criteria": {

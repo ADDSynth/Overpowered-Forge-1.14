@@ -172,5 +172,142 @@
 "item.overpowered.bronze_plate": "Brons platta",
 "item.overpowered.silver_plate": "Silver Platta",
 "item.overpowered.platinum_plate": "Platina platta",
-"item.overpowered.titanium_plate": "Titan platta"
+"item.overpowered.titanium_plate": "Titan platta",
+
+
+
+
+
+
+
+
+"gui.overpowered.black_hole.not_allowed_in_this_dimension": "Svarta hål är inte tillåtna i denna dimension.",
+"gui.overpowered.black_hole.notify_players": "§5Singularitets händelse§r detekteras vid koordinater: %s , %1$s , %2$s",
+"gui.overpowered.bridge_message.checking": "Ogiltig form",
+"gui.overpowered.bridge_message.okay": "Vanligt",
+"gui.overpowered.bridge_message.obstructed": "hindras",
+"gui.overpowered.bridge_message.no_bridge": "Ingen bro",
+"gui.overpowered.bridge_message.invalid": "Ogiltig",
+"gui.overpowered.bridge_message.no_lens": "Inga objektiv",
+"gui.overpowered.bridge_message.active": "aktiverad",
+"gui.overpowered.crystal_energy_generator.input": "Inmatning",
+"gui.overpowered.crystal_energy_generator.max_extract": "Extraktionshastighet",
+"gui.overpowered.jei_description.overpowered_tools": "Överväldigade verktyg har 3 gånger hållbarheten för diamantverktyg. De bryter också lite snabbare.",
+"gui.overpowered.jei_description.void_tools": "Mörka verktyg arbetar fortfarande med.",
+"gui.overpowered.jei_description.generator": "Generatorn är maskinen som genererar energi. Du kan sätta in energikristaller, energikristallskärvor eller ett ljusblock. Varje genererar energi i olika hastigheter.",
+"gui.overpowered.jei_description.data_cable": "Datakabel används vid byggandet av portalen och fusionsenergistrukturen. Det används också i vissa hantverkrecept.",
+"gui.overpowered.jei_description.gem_converter": "Den här maskinen kan konvertera en pärlstyp till en annan.",
+"gui.overpowered.jei_description.inverter": "Den här maskinen omvandlar energikristaller till ogiltiga kristaller och fungerar även i omvänd riktning.",
+"gui.overpowered.jei_description.magic_infuser": "Sätt i en bok och en pärla så får du en förtrollad bok beroende på vilken typ av pärla du använde.",
+"gui.overpowered.jei_description.identifier": "Monsters släpper ibland oidentifierade föremål. Använd den här maskinen för att identifiera dem.",
+"gui.overpowered.jei_description.portal_control_panel": "Portalkontrollpanelen är maskinen som genererar portalen. Den måste anslutas till huvudportalramen med datakabel.",
+"gui.overpowered.jei_description.portal_frame": "Huvudportalramen består av en ring med block, 5 kvarter breda och 5 kvarter höga. Hörnen och sidorna måste vara portalramar men de andra blocken emellan kan antingen vara datakabel eller järnramblock.",
+"gui.overpowered.jei_description.laser_housing": "Detta är maskinen som styr hur lasrar fungerar. Du måste fästa lasrar som pekar i den riktning du vill avfyra. Ställ först avståndet och sätt sedan in den erforderliga energin. Aktivera med en röd tråd signal.",
+"gui.overpowered.jei_description.laser": "Dessa är lasrarna som ansluts till lasermaskiner.",
+"gui.overpowered.jei_description.energy_suspension_bridge": "När den levereras med tillräckligt med energi och aktiveras med en redstone-signal skapar detta en energibro härifrån till ett annat bryggmaskinblock. Du måste sätta in en lins med den färg du vill ha, och utrymmet mellan de två bromaskinblocken måste vara fritt från hinder.",
+"gui.overpowered.jei_description.unknown_technology": "Detta är en mystisk enhet med okänt ursprung. Det används för att göra de mest kraftfulla maskinerna.",
+"gui.overpowered.jei_description.advanced_ore_refinery": "Sätt i malmer i maskinen så att den ger dubbla uteffekten, men den fungerar bara med malmer.",
+"gui.overpowered.jei_description.crystal_matter_generator": "Efter att ha kört ett tag kommer denna maskin att producera en pärlsskärm. Kombinera 9 skär av samma typ för att få en hel pärla.",
+"gui.overpowered.jei_description.dimensional_anchor": "För närvarande har detta inget syfte.",
+"gui.overpowered.jei_description.black_hole": "Var försiktig med detta! Om du lägger ner detta kommer det att ta bort en stor del av din värld!",
+"gui.overpowered.jei_description.fusion_chamber": "Del av fusionsenergistrukturen. Detta är blocket i mitten. Den måste innehålla en fusionskärna för att kunna anses vara giltig.",
+"gui.overpowered.jei_description.fusion_control_unit": "Del av fusionsenergistrukturen. Du måste placera 6 av dessa 5 kvarter från centrum i varje riktning. Du måste använda datakabel för att ansluta fusionsstyrenheterna till fusionsenergikonverteraren.",
+"gui.overpowered.jei_description.fusion_control_laser": "Del av fusionsenergistrukturen. Du måste göra 6 av dessa och lägga en på varje fusionsstyrenhet som pekar mot fusionskammaren i mitten.",
+"gui.overpowered.jei_description.fusion_converter": "Del av fusionsenergistrukturen. Sätt bara ned detta var som helst, då måste du ansluta detta till var och en av fusionsstyrenheterna med datakabel. När hela strukturen är klar aktiverar du den här maskinen med en röd tråd för att slå på den. När maskinen körs kommer den att generera energi.",
+"gui.overpowered.laser_housing.auto_shutoff": "Automatisk inaktivering",
+"gui.overpowered.laser_housing.lasers": "lasrar",
+"gui.overpowered.laser_housing.distance": "distans",
+"gui.overpowered.laser_housing.current_energy": "nuvarande energi",
+"gui.overpowered.laser_housing.required_energy": "krävs energi",
+"gui.overpowered.portal_message.no_data_cable": "Ingen datakabel ansluten.",
+"gui.overpowered.portal_message.need_portal_frames": "8 portalramar krävs.",
+"gui.overpowered.portal_message.too_many_portal_frames": "För många portalramar.",
+"gui.overpowered.portal_message.invalid_construction": "Ogiltig portalkonstruktion.",
+"gui.overpowered.portal_message.obstructed": "Hindring upptäckt inuti ramen.",
+"gui.overpowered.portal_message.off": "Portalens kontrollpanel är avstängd.",
+"gui.overpowered.portal_message.incorrect_items": "Felaktiga objekt i portalramar.",
+"gui.overpowered.portal_message.needs_energy": "Inte tillräckligt med energi.",
+"gui.overpowered.portal_message.creative_mode": "Spelaren är i kreativt läge.",
+"gui.overpowered.portal_message.ready": "Portalen är klar.",
+"gui.overpowered.portal_warning_message": "§cAkta sig§r: Det finns fortfarande några problem med den okända dimensionen. Om du åker dit, finns det en chans att du kan dyka upp i luften och falla till din död. Vi rekommenderar att du går in i portalen i kreativt läge eller inaktiverar portalen i konfigurationsfilen. Vi är ledsna för detta och vi hoppas kunna fixa det i en senare uppdatering.",
+"gui.overpowered.ring_effect.strength": "Styrka",
+"gui.overpowered.ring_effect.speed": "Fart",
+"gui.overpowered.ring_effect.haste": "Gruvhastighet",
+"gui.overpowered.ring_effect.luck": "Tur",
+"gui.overpowered.ring_effect.extra_health": "Extra hälsa",
+"gui.overpowered.ring_effect.jump": "Hoppfärdighet",
+"gui.overpowered.ring_effect.fire_immune": "Brandimmunitet",
+"gui.overpowered.ring_effect.water_breathing": "Andas under vatten",
+"gui.overpowered.ring_effect.night_vision": "Nattseende",
+"gui.overpowered.ring_effect.invisiblity": "Osynlighet",
+"gui.overpowered.ring_effect.tier": "Lv",
+
+
+
+
+
+
+
+
+
+"advancements.overpowered.root.title": "Overpowered",
+"advancements.overpowered.root.description": "Overpowered Mod by ADDSynth",
+"advancements.overpowered.all_gems.title": "Samla ädelstenarna",
+"advancements.overpowered.all_gems.description": "Samla alla typer av ädelstenar som behövs för att skapa den överdrivna pärla.",
+
+"advancements.overpowered.overpowered_gem.title": "Energi kristall",
+"advancements.overpowered.overpowered_gem.description": "Gör ett energi kristall",
+"advancements.overpowered.overpowered_tools.title": "Energi Verktyg",
+"advancements.overpowered.overpowered_tools.description": "Gör något energibesparande verktyg",
+"advancements.overpowered.light_block.title": "Ljusblock",
+"advancements.overpowered.light_block.description": "Gör ett ljusblock",
+
+"advancements.overpowered.void_crystal.title": "mörk kristall",
+"advancements.overpowered.void_crystal.description": "Använd inverteraren för att göra en mörk kristall",
+"advancements.overpowered.void_tools.title": "destruktiva svärd",
+"advancements.overpowered.void_tools.description": "Gör ett nollsvärd",
+"advancements.overpowered.null_block.title": "Null Block",
+"advancements.overpowered.null_block.description": "Gör ett nollblock",
+
+"advancements.overpowered.laser.title": "Laser",
+"advancements.overpowered.laser.description": "Skapa en lasermaskin.",
+"advancements.overpowered.fire_laser.title": "Laseraktivitet",
+"advancements.overpowered.fire_laser.description": "Aktivera en laser.",
+"advancements.overpowered.fire_maximum_laser.title": "Maximalt avstånd",
+"advancements.overpowered.fire_maximum_laser.description": "Avfyra en laser det maximala avståndet.",
+
+"advancements.overpowered.inverter.title": "Inverter",
+"advancements.overpowered.inverter.description": "Skapa en inverterare",
+"advancements.overpowered.craft_identifier.title": "Identifierare",
+"advancements.overpowered.craft_identifier.description": "Skapa en identifierare.",
+"advancements.overpowered.identify_something.title": "Ny identitet",
+"advancements.overpowered.identify_something.description": "Använd identifieringsmaskinen för att identifiera något.",
+
+"advancements.overpowered.craft_portal.title": "Portal",
+"advancements.overpowered.craft_portal.description": "Skapa portalens kontrollpanel.",
+"advancements.overpowered.portal.title": "Okänd dimension",
+"advancements.overpowered.portal.description": "Ange den okända dimensionen.",
+"advancements.overpowered.unknown_technology.title": "Okänd teknik",
+"advancements.overpowered.unknown_technology.description": "Hitta den okända tekniken.",
+
+"advancements.overpowered.fusion_structure.title": "Fusionsenergi struktur",
+"advancements.overpowered.fusion_structure.description": "Skapa alla komponenter som behövs för att konstruera fusionsenergistrukturen.",
+"advancements.overpowered.fusion_energy.title": "Fusionsenergi",
+"advancements.overpowered.fusion_energy.description": "Aktivera en giltig fusionsenergistruktur.",
+
+"advancements.overpowered.black_hole.title": "Svart hål",
+"advancements.overpowered.black_hole.description": "Skapa ett svart hål.",
+"advancements.overpowered.dimensional_anchor.title": "Dimensionellt ankare",
+"advancements.overpowered.dimensional_anchor.description": "Skapa ett dimensionellt ankare.",
+"advancements.overpowered.world_destroyer.title": "Världsdödare",
+"advancements.overpowered.world_destroyer.description": "Använd ett svart hål för att förstöra en del av världen.",
+
+"advancements.overpowered.bronze_trophy.title": "Brons trofé",
+"advancements.overpowered.bronze_trophy.description": "få en brons trofé",
+"advancements.overpowered.silver_trophy.title": "Silver Trofé",
+"advancements.overpowered.silver_trophy.description": "få en silver trofé",
+"advancements.overpowered.gold_trophy.title": "guld trofé",
+"advancements.overpowered.gold_trophy.description": "Få en guld trofé",
+"advancements.overpowered.platinum_trophy.title": "Platina Trofé",
+"advancements.overpowered.platinum_trophy.description": "få en Platina Trofé"
 }

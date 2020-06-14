@@ -3,8 +3,12 @@
     "icon": {
       "item": "addsynth_energy:universal_energy_interface"
     },
-    "title": "Universal Energy Interface",
-    "description": "Craft a Universal Energy Interface"
+    "title": {
+      "translate": "advancements.addsynth_energy.universal_energy_interface.title"
+    },
+    "description": {
+      "translate": "advancements.addsynth_energy.universal_energy_interface.description"
+    }
   },
   "parent": "addsynth_energy:root",
   "criteria": {

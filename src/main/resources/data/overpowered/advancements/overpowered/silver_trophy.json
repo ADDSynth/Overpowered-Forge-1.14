@@ -3,8 +3,12 @@
     "icon": {
       "item": "overpowered:silver_trophy"
     },
-    "title": "Silver Trophy",
-    "description": "Get a Silver Trophy.",
+    "title": {
+      "translate": "advancements.overpowered.silver_trophy.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.silver_trophy.description"
+    },
     "frame": "goal"
   },
   "parent": "overpowered:overpowered/bronze_trophy",
