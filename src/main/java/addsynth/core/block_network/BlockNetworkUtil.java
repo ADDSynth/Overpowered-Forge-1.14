@@ -105,8 +105,10 @@ public final class BlockNetworkUtil {
 
           if(blocks == null){
             final B first_network = destroyed_tile.getBlockNetwork();
-            first_network.updateBlockNetwork(offset, (T)tile);
-            blocks = first_network.getTileEntityList();
+            if(first_network != null){ // PRIORITY: This caused an error, figure out why this is being called during world load in a Single-player world in regards to the Laser Housings.
+              first_network.updateBlockNetwork(offset, (T)tile);
+              blocks = first_network.getTileEntityList();
+            }
           }
           else{ // first adjacent TileEntity should've already updated its BlockNetwork by now.
             if(blocks.contains(offset) == false){

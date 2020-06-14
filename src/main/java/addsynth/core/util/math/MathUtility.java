@@ -320,7 +320,7 @@ public final class MathUtility {
   public static final int RandomRange(final int minimum, final int maximum){
     final int min = Math.min(minimum, maximum);
     final int max = Math.max(minimum, maximum);
-    final int diff = Math.abs(max - min);
+    final int diff = max - min;
     if(diff == 0){ return min; }
     final Random random = new Random();
     return min + random.nextInt(diff + 1);

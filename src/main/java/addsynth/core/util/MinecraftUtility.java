@@ -31,7 +31,7 @@ public final class MinecraftUtility {
     if(registry_name != null){
       return registry_name.getNamespace().equals("minecraft");
     }
-    ADDSynthCore.log.error(new NullPointerException("The item '"+item+"' doesn't have its registry name set!"));
+    ADDSynthCore.log.error(new NullPointerException("The item '"+StringUtil.getName(item)+"' doesn't have its registry name set!"));
     return false;
   }
 
@@ -40,7 +40,7 @@ public final class MinecraftUtility {
     if(registry_name != null){
       return registry_name.getNamespace().equals("minecraft");
     }
-    ADDSynthCore.log.error(new NullPointerException("The block '"+block+"' doesn't have its registry name set!"));
+    ADDSynthCore.log.error(new NullPointerException("The block '"+StringUtil.getName(block)+"' doesn't have its registry name set!"));
     return false;
   }
 

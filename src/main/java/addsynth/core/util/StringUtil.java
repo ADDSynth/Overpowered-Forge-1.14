@@ -125,6 +125,9 @@ public final class StringUtil {
     return output.toString();
   }
 
+  /** Starting in Minecraft 1.14, the {@link Item} class has its own {@link Item#toString toString()}
+   *  method. However, I still believe this to be superior.
+   */
   public static final String getName(final Item item){
     if(item != null){
       final ResourceLocation registry_name = item.getRegistryName();
@@ -140,6 +143,9 @@ public final class StringUtil {
     return "null";
   }
 
+  /** Starting in Minecraft 1.14, the {@link Block} class has its own {@link Block#toString toString()}
+   *  method. However, I still believe this to be superior.
+   */
   public static final String getName(final Block block){
     if(block != null){
       final ResourceLocation registry_name = block.getRegistryName();

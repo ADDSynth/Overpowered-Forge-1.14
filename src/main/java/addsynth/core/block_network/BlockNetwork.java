@@ -5,7 +5,6 @@ import java.util.Collection;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.util.StringUtil;
 import addsynth.energy.energy_network.EnergyNetwork;
 import addsynth.overpoweredmod.machines.laser.machine.LaserNetwork;
 import addsynth.overpoweredmod.machines.data_cable.DataCableNetwork;

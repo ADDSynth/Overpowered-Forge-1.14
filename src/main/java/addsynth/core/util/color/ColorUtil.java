@@ -253,7 +253,7 @@ public final class ColorUtil {
     return blocks.toArray(new Block[blocks.size()]);
   }
 
-  public static final String printColor(final int color){
+  public static final String printColor(final int color){ // MAYBE: move this to StringUtil?
     return "( "+Color.getRed(color)+" , "+Color.getGreen(color)+" , "+Color.getBlue(color)+" )";
   }
 
