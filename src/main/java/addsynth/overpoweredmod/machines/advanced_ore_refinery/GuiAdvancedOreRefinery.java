@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -45,6 +46,7 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreR
     draw_energy_usage();
     // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_status(tile.getStatus());
+    RenderHelper.enableGUIStandardItemLighting();
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 43);
     draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
     draw_time_left(tile, 92);
