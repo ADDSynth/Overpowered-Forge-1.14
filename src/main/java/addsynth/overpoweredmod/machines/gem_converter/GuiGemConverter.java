@@ -104,8 +104,9 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
     draw_energy_usage();
     draw_status(tile.getStatus());
     if(tile.getState() == MachineState.RUNNING){
-      drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 45, 1.0f - work_float);
-      drawItemStack(gem[tile.getConvertingStack()],               76, 45,        work_float);
+      final ItemStack s1 = tile.getWorkingInventory().getStackInSlot(0);
+      final ItemStack s2 = gem[tile.getConvertingStack()];
+      blendItemStacks(s1, s2, 76, 45, work_float);
     }
     draw_text_center(work_percentage + "%", work_percentage_x, work_percentage_y);
     draw_time_left(tile, time_left_y);

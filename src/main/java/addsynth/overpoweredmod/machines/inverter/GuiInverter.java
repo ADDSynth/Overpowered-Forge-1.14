@@ -2,8 +2,10 @@ package addsynth.overpoweredmod.machines.inverter;
 
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
+import addsynth.energy.tiles.machines.MachineState;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -11,6 +13,7 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
 
   private static final ResourceLocation inverter_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/inverter.png");
 
+  private float work_float;
   private int work_percentage;
   private int energy_percentage;
 
@@ -33,7 +36,7 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
     // energy_percentage = (Math.round(energy_float*100));
     // energy_progress_bar.draw(this,guiLeft,guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
     
-    final float work_float = tile.getWorkTimePercentage();
+    work_float = tile.getWorkTimePercentage();
     work_percentage = (int)(Math.floor(work_float*100));
     work_progress_bar.draw(this,guiLeft,guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,work_float,ProgressBar.Round.FLOOR);
   }
@@ -43,7 +46,11 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
     draw_title();
     draw_energy_usage();
     draw_status(tile.getStatus());
-    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 77, 44);
+    if(tile.getState() == MachineState.RUNNING){
+      final ItemStack s1 = tile.getWorkingInventory().getStackInSlot(0);
+      final ItemStack s2 = TileInverter.getInverted(s1);
+      blendItemStacks(s1, s2, 77, 44, work_float);
+    }
     draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
     // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_time_left(tile, 93);

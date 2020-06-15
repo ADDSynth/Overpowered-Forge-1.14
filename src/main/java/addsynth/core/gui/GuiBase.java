@@ -177,4 +177,20 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
     RenderUtil.drawItemStack(this.itemRenderer, this.textureManager, stack, x, y, opacity);
   }
 
+  /** <p>Use this to draw 2 ItemStacks but at a linear opacity between the two.
+   *  <p>This function draws the first ItemStack first, then the second. With a
+   *     <code>blend_factor</code> of <code>0.0f</code>, the first stack is at 100% opacity,
+   *     while the second stack is invisible. With the <code>blend_factor</code> at
+   *     <code>1.0f</code>, the first stack is invisible and the second stack is fully drawn.
+   * @param first_stack
+   * @param second_stack
+   * @param x
+   * @param y
+   * @param blend_factor
+   */
+  protected final void blendItemStacks(ItemStack first_stack, ItemStack second_stack, int x, int y, float blend_factor){
+    drawItemStack( first_stack, x, y, 1.0f - blend_factor);
+    drawItemStack(second_stack, x, y,        blend_factor);
+  }
+
 }

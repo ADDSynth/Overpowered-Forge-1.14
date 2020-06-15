@@ -37,7 +37,7 @@ public final class TileInverter extends TileWorkMachine implements INamedContain
     }
   }
 
-  private static final ItemStack getInverted(final ItemStack input_stack) throws IllegalArgumentException {
+  public static final ItemStack getInverted(final ItemStack input_stack) throws IllegalArgumentException {
     final Item item = input_stack.getItem();
     if(item == Init.energy_crystal){ return new ItemStack(Init.void_crystal,1); }
     if(item == Init.void_crystal){   return new ItemStack(Init.energy_crystal,1); }
