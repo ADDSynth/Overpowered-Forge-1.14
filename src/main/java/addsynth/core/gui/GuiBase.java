@@ -87,7 +87,7 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
   protected void draw(int x, int y, int u, int v, int width, int height, int texture_width, int texture_height){
     GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
     textureManager.bindTexture(GUI_TEXTURE);
-    blit(x, y, width, height, u, v, texture_width, texture_height, 256, 256);
+    blit(this.guiLeft + x, this.guiTop + y, width, height, u, v, width, height, texture_width, texture_height);
   }
 
   /** Draws another part of the gui texture at the coordinates you specify.
