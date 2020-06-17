@@ -104,7 +104,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     }
   }
 
-  private final void turn_off(){
+  protected final void turn_off(){
     if(max_power_time > 0){
       state = MachineState.POWERING_OFF;
     }
