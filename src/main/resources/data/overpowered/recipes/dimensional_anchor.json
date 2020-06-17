@@ -9,7 +9,7 @@
     {"tag": "forge:ender_pearls"},
     {"tag": "forge:ender_pearls"},
     {"tag": "forge:ender_pearls"},
-    {"item": "overpowered:unknown_technology"}
+    {"item": "overpowered:fusion_core"}
   ],
   "result": {
     "item": "overpowered:dimensional_anchor"

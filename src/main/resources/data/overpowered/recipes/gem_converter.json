@@ -1,37 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "rqa",
-    "tis",
-    "ced"
+    "aca",
+    "cpc",
+    "aca"
   ],
   "key": {
-    "r": {
-      "tag": "forge:gems/ruby"
-    },
-    "t": {
-      "tag": "forge:gems/topaz"
+    "a": {
+      "tag": "forge:plates/aluminum"
     },
     "c": {
-      "tag": "forge:gems/citrine"
+      "item": "overpowered:energy_crystal_shards"
     },
-    "e": {
-      "tag": "forge:gems/emerald"
-    },
-    "d": {
-      "tag": "forge:gems/diamond"
-    },
-    "s": {
-      "tag": "forge:gems/sapphire"
-    },
-    "a": {
-      "tag": "forge:gems/amethyst"
-    },
-    "q": {
-      "tag": "forge:gems/quartz"
-    },
-    "i": {
-      "item": "overpowered:iron_frame_block"
+    "p": {
+      "item": "addsynth_energy:advanced_power_core"
     }
   },
   "result": {
