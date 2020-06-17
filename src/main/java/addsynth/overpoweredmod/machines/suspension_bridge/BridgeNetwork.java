@@ -28,12 +28,16 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
   public int lens_index = -1;
 
-  /** Whether this Energy Suspension Bridge COULD be active. */
-  private boolean valid;
+  private boolean valid_shape;
+  /* Whether this Energy Suspension Bridge COULD be active.
+   *  Requires a valid shape and a lens.
+   *  This is used when checking for obstructions. There will be an Energy bridge between THIS network, and
+   *  another network, and would normally indicate an obstruction if the OTHER network was active.*/
+  //private boolean valid;
+  private boolean powered;
   /** Whether this Energy Suspension Bridge is active. */
   private boolean active;
 
-  private boolean valid_shape;
   private int min_x;
   private int min_y;
   private int min_z;
@@ -43,6 +47,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
   private final int max_distance = 300;
   private final BridgeMessage[] message = new BridgeMessage[6];
+  private final BridgeNetwork[] other_bridge = new BridgeNetwork[6];
   @SuppressWarnings("unchecked")
   private ArrayList<BlockPos>[] area = new ArrayList[6];
   private Direction.Axis rotate_direction = Direction.Axis.X;
@@ -62,19 +67,21 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
   @Override
   protected final void onUpdateNetworkFinished(){
-    // turn off bridge if it's currently on.
-    boolean current_state = active;
+    // most likely the shape changed, which invalidates the bridge, so turn off
+    // the CURRENT area of blocks first, then reevaluate.
     set_active(false);
-
-    // determine if we are a rectangle shape!
-    check_shape();
-    
-    // check all directions for EMPTY SPACE and DESTINATION ENERGY BRIDGE
-    check_directions();
-    set_active(current_state);
+    check();
   }
 
-  private final void check_shape(){ // TODO: consider moving this to MathUtility, if I ever need to check if a list of positions is in a rectangle shape again in the future.
+  public final void check(){
+    check_shape();
+    check_directions();
+    updateBridgeNetwork();
+    update_active_state();
+  }
+
+  /** Sets the <code>valid_shape</code> variable. */
+  private final void check_shape(){ // FEATURE: copy this into the MathUtility class, so I can check if a list of positions is in a rectangle shape.
     valid_shape = true;
     final BlockPos[] positions = MathUtility.get_min_max_positions(blocks.getPositions());
     int x;
@@ -104,6 +111,12 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     message[3] = BridgeMessage.PENDING;
     message[4] = BridgeMessage.PENDING;
     message[5] = BridgeMessage.PENDING;
+    other_bridge[0] = null;
+    other_bridge[1] = null;
+    other_bridge[2] = null;
+    other_bridge[3] = null;
+    other_bridge[4] = null;
+    other_bridge[5] = null;
     if(valid_shape){
       int x;
       int y;
@@ -211,8 +224,6 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
         message[index] = BridgeMessage.NO_BRIDGE;
       }
     }
-
-    updateBridgeNetwork();
   }
 
   @SuppressWarnings("null")
@@ -220,7 +231,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     final TileSuspensionBridge tile = MinecraftUtility.getTileEntity(position, world, TileSuspensionBridge.class);
     if(tile == null){
       final Block block = world.getBlockState(position).getBlock();
-      if(block == Blocks.AIR || (valid && block instanceof EnergyBridge)){
+      if(block == Blocks.AIR || block instanceof EnergyBridge){
         area[index].add(position);
       }
       else{
@@ -246,7 +257,8 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     }
   }
 
-  public final boolean check(final int direction, final int min_x, final int max_x, final int min_z, final int max_z){
+  /** This is an internal method. Only OTHER Bridge Networks should be calling this. */
+  private final boolean check(final int direction, final int min_x, final int max_x, final int min_z, final int max_z){
     if(valid_shape == false){ return false; }
     final boolean length = this.min_z == min_z && this.max_z == max_z;
     final boolean width  = this.min_x == min_x && this.max_x == max_x;
@@ -267,7 +279,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     final int index = Lens.get_index(stack);
     if(index != lens_index){
       this.lens_index = index;
-      updateBridgeNetwork();
+      check();
     }
   }
 
@@ -288,55 +300,85 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   @Override
   public final void tick(final TileSuspensionBridge tile){
     if(tile == first_tile){
-      check_shape();
-      valid = valid_shape && lens_index >= 0;
-      final boolean powered = valid && is_redstone_powered();
-      if(powered != active){
-        check_directions();
-        set_active(powered);
+      final boolean power_check = is_redstone_powered();
+      if(power_check != powered){
+        powered = power_check;
+        if(powered){
+          check();
+        }
+        else{
+          set_active(false);
+        }
       }
     }
   }
 
+  private final void update_active_state(){
+    final boolean valid = valid_shape && lens_index >= 0;
+    set_active(valid && powered);
+  }
+
   public final void set_active(final boolean active){
-    this.active = active;
-    int index;
-    for(Direction direction : Direction.values()){
-      index = direction.ordinal();
-      if(active){
-        if(this.message[index] == BridgeMessage.OKAY){
-          for(BlockPos position : area[index]){
-            if(direction.getAxis() == Direction.Axis.Y){
-              switch(lens_index){
-              case 0: world.setBlockState(position, Machines.white_energy_bridge.getRotated(rotate_direction));   break;
-              case 1: world.setBlockState(position, Machines.red_energy_bridge.getRotated(rotate_direction));     break;
-              case 2: world.setBlockState(position, Machines.orange_energy_bridge.getRotated(rotate_direction));  break;
-              case 3: world.setBlockState(position, Machines.yellow_energy_bridge.getRotated(rotate_direction));  break;
-              case 4: world.setBlockState(position, Machines.green_energy_bridge.getRotated(rotate_direction));   break;
-              case 5: world.setBlockState(position, Machines.cyan_energy_bridge.getRotated(rotate_direction));    break;
-              case 6: world.setBlockState(position, Machines.blue_energy_bridge.getRotated(rotate_direction));    break;
-              case 7: world.setBlockState(position, Machines.magenta_energy_bridge.getRotated(rotate_direction)); break;
-              }
+    if(this.active != active){
+      this.active = active;
+      int index;
+      for(Direction direction : Direction.values()){
+        index = direction.ordinal();
+        if(message[index] == BridgeMessage.OKAY){
+          if(active){
+            for(BlockPos position : area[index]){
+              set_energy_block(direction, position);
             }
-            else{
-              switch(lens_index){
-              case 0: world.setBlockState(position, Machines.white_energy_bridge.getDefaultState());   break;
-              case 1: world.setBlockState(position, Machines.red_energy_bridge.getDefaultState());     break;
-              case 2: world.setBlockState(position, Machines.orange_energy_bridge.getDefaultState());  break;
-              case 3: world.setBlockState(position, Machines.yellow_energy_bridge.getDefaultState());  break;
-              case 4: world.setBlockState(position, Machines.green_energy_bridge.getDefaultState());   break;
-              case 5: world.setBlockState(position, Machines.cyan_energy_bridge.getDefaultState());    break;
-              case 6: world.setBlockState(position, Machines.blue_energy_bridge.getDefaultState());    break;
-              case 7: world.setBlockState(position, Machines.magenta_energy_bridge.getDefaultState()); break;
+          }
+          else{
+            if(area[index] != null){
+              for(BlockPos position : area[index]){
+                WorldUtil.delete_block(world, position);
               }
             }
           }
         }
       }
-      else{
-        if(area[index] != null && message[index] == BridgeMessage.OKAY){
-          for(BlockPos position : area[index]){
-            WorldUtil.delete_block(world, position);
+    }
+  }
+
+  private final void set_energy_block(final Direction direction, final BlockPos position){
+    if(direction.getAxis() == Direction.Axis.Y){
+      switch(lens_index){
+      case 0: world.setBlockState(position, Machines.white_energy_bridge.getRotated(rotate_direction));   break;
+      case 1: world.setBlockState(position, Machines.red_energy_bridge.getRotated(rotate_direction));     break;
+      case 2: world.setBlockState(position, Machines.orange_energy_bridge.getRotated(rotate_direction));  break;
+      case 3: world.setBlockState(position, Machines.yellow_energy_bridge.getRotated(rotate_direction));  break;
+      case 4: world.setBlockState(position, Machines.green_energy_bridge.getRotated(rotate_direction));   break;
+      case 5: world.setBlockState(position, Machines.cyan_energy_bridge.getRotated(rotate_direction));    break;
+      case 6: world.setBlockState(position, Machines.blue_energy_bridge.getRotated(rotate_direction));    break;
+      case 7: world.setBlockState(position, Machines.magenta_energy_bridge.getRotated(rotate_direction)); break;
+      }
+    }
+    else{
+      switch(lens_index){
+      case 0: world.setBlockState(position, Machines.white_energy_bridge.getDefaultState());   break;
+      case 1: world.setBlockState(position, Machines.red_energy_bridge.getDefaultState());     break;
+      case 2: world.setBlockState(position, Machines.orange_energy_bridge.getDefaultState());  break;
+      case 3: world.setBlockState(position, Machines.yellow_energy_bridge.getDefaultState());  break;
+      case 4: world.setBlockState(position, Machines.green_energy_bridge.getDefaultState());   break;
+      case 5: world.setBlockState(position, Machines.cyan_energy_bridge.getDefaultState());    break;
+      case 6: world.setBlockState(position, Machines.blue_energy_bridge.getDefaultState());    break;
+      case 7: world.setBlockState(position, Machines.magenta_energy_bridge.getDefaultState()); break;
+      }
+    }
+  }
+
+  private final void maintain_bridge(){
+    int index;
+    Block block;
+    for(final Direction direction : Direction.values()){
+      index = direction.ordinal();
+      if(area[index] != null){
+        for(final BlockPos position : area[index]){
+          block = world.getBlockState(position).getBlock();
+          if(block instanceof EnergyBridge == false){
+            set_energy_block(direction,position);
           }
         }
       }
