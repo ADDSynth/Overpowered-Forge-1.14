@@ -255,6 +255,8 @@ public class Energy {
     this.capacity.set(   energy.getCapacity()   );
     this.maxExtract.set( energy.getMaxExtract() );
     this.maxReceive.set( energy.getMaxReceive() );
+    this.energy_in.set(  energy.get_energy_in() );
+    this.energy_out.set( energy.get_energy_out());
     changed = true;
   }
 

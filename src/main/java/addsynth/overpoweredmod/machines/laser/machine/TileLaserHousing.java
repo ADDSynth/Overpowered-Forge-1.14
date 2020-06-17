@@ -82,6 +82,19 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
     return getBlockNetwork().energy;
   }
 
+  @Override
+  public final double getNeededEnergy(){
+    return power_switch ? energy.getRequestedEnergy() : 0;
+  }
+
+  @Override
+  public final void receiveEnergy(double add_energy){
+    if(network == null){
+      BlockNetworkUtil.createBlockNetwork(world, this, LaserNetwork::new);
+    }
+    network.energy.receiveEnergy(add_energy);
+  }
+
   // Only the gui calls these
   public final int getLaserDistance(){ return laser_distance; }
   public final boolean getAutoShutoff(){ return auto_shutoff; }
@@ -89,7 +102,7 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   public final void setDataDirectlyFromNetwork(final Energy energy, final int laser_distance, final boolean running, final boolean shutoff){
     this.energy.set(energy);
     this.laser_distance = laser_distance;
-    // this.running = running;
+    this.power_switch = running;
     this.auto_shutoff = shutoff;
     super.update_data(); // explicitly calls super method, because THIS class overrides it!
   }
@@ -112,6 +125,7 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   @Override
   public final void load_block_network_data(){
     network.auto_shutoff = auto_shutoff;
+    network.setLaserDistance(laser_distance);
   }
 
   /**
@@ -124,7 +138,7 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
 
   @Override
   public final void toggleRun(){
-    network.running = !network.running; // FIX Can't shutoff lasers!
+    network.running = !network.running;
     network.updateLaserNetwork();
   }
 

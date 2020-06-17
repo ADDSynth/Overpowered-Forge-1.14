@@ -144,6 +144,8 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
         activated = false;
       }
       energy.update(world);
+      energy.setEnergyIn(0);
+      energy.setEnergyOut(0);
     }
   }
 

@@ -288,7 +288,7 @@ public abstract class TileWorkMachine extends TileEnergyReceiver implements ITic
     return 0;
   }
 
-  public final void receiveEnergy(final double add_energy){
+  public void receiveEnergy(final double add_energy){
     energy.receiveEnergy(add_energy);
     if(idle_energy > 0){
       // if(energy.needsEnergy()){
