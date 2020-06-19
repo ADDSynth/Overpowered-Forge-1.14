@@ -114,30 +114,61 @@ public final class JavaUtils {
     return obj;
   }
 
+  public static final String print_parameters(final Class[] parameters){
+    if(parameters.length == 0){
+      return "";
+    }
+    int i;
+    final StringBuilder s = new StringBuilder();
+    Class c;
+    for(i = 0; i < parameters.length; i++){
+      c = parameters[i];
+      s.append(c.getSimpleName());
+      if(i + 1 < parameters.length){
+        s.append(", ");
+      }
+    }
+    return s.toString();
+  }
+
   public static final String print_constructor_list(final Constructor[] constructors){
     int i;
-    int j;
     final String name = constructors[0].getDeclaringClass().getSimpleName();
     final StringBuilder constructor_list = new StringBuilder();
-    Class[] parameters;
     for(i = 0; i < constructors.length; i++){
       constructor_list.append(Modifier.toString(constructors[i].getModifiers()));
       constructor_list.append(" ");
       constructor_list.append(name);
       constructor_list.append("(");
-      parameters = constructors[i].getParameterTypes();
-      for(j = 0; j < parameters.length; j++){
-        constructor_list.append(parameters[j].getSimpleName());
-        if(j + 1 < parameters.length){
-          constructor_list.append(", ");
-        }
-      }
+      constructor_list.append(print_parameters(constructors[i].getParameterTypes()));
       constructor_list.append(")");
       if(i + 1 < constructors.length){
         constructor_list.append(", ");
       }
     }
     return constructor_list.toString();
+  }
+
+  /** Prints to the ADDSynthCore log all methods in a class, one method per line.
+   *  This is useful when I had to use an SRG name of a method, but the class had multiple
+   *  methods with the name, so I had to print them all out and select the one that matched
+   *  the one I was looking for.
+   * @param clazz
+   */
+  public static final void print_class_methods(final Class clazz){
+    ADDSynthCore.log.info("Debug: Begin printing all methods for class "+clazz.getSimpleName()+".");
+    StringBuilder method_string;
+    final Method[] methods = clazz.getDeclaredMethods();
+    for(final Method method : methods){
+      method_string = new StringBuilder();
+      method_string.append(Modifier.toString(method.getModifiers()));
+      method_string.append(" ");
+      method_string.append(method.getName());
+      method_string.append("(");
+      method_string.append(print_parameters(method.getParameterTypes()));
+      method_string.append(")");
+      ADDSynthCore.log.info(method_string.toString());
+    }
   }
 
 }
