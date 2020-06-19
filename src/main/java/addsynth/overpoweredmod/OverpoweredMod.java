@@ -5,6 +5,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.material.Material;
+import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.RecipeUtil;
 import addsynth.core.worldgen.OreGenerator;
 import addsynth.overpoweredmod.compatability.*;
@@ -98,6 +99,8 @@ public class OverpoweredMod {
     // TODO: Railcraft doesn't exist for 1.14 yet, but still should find a way to disable the Iron to Steel smelting recipe.
     RecipeUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
     RecipeUtil.registerResponder(Filters::regenerate_machine_filters);
+    MaterialsUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
+    MaterialsUtil.registerResponder(Filters::regenerate_machine_filters);
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());
     
     log.info("Finished Overpowered main setup.");

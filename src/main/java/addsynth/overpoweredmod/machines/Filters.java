@@ -8,6 +8,13 @@ import net.minecraft.item.Item;
 
 public final class Filters {
 
+  // In Minecraft versions 1.14+, We now use the Tag system, which is also part of the Data Pack system.
+  // Machine filters need to be regenerated whenever Tags are reloaded, and possibly when Recipes are
+  // reloaded as well. These events occur when joining worlds, and when players do the Reload Resource
+  // Packs command. But what about on a dedicated server? Both server and client sides use these filters.
+  // We need to ensure these filters are generated on both the client and server side, otherwise there
+  // will be a desync issue, where one side accepts items into the machine while the other does not.
+
   public static Item[] gem_converter;
 
   public static Item[] portal_frame;
