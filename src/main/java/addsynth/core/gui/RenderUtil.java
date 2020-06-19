@@ -23,7 +23,7 @@ public final class RenderUtil {
     JavaUtils.getMethod(ItemRenderer.class, "func_180452_a", int.class, int.class, boolean.class);
 
   private static final Method render_model_method =
-    JavaUtils.getMethod(ItemRenderer.class, "func_191961_a", IBakedModel.class, int.class, ItemStack.class);
+    JavaUtils.getMethod(ItemRenderer.class, "func_191967_a", IBakedModel.class, int.class, ItemStack.class);
 
 
   /** <p>NOTE: This is an exact copy of {@link ItemRenderer#renderItemModelIntoGUI(ItemStack, int, int, IBakedModel)}.
