@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "널 블록",
 "advancements.overpowered.null_block.description": "널 블럭 만들기",
 
-"advancements.overpowered.laser.title": "레이저",
-"advancements.overpowered.laser.description": "레이저 기계를 만드십시오.",
+"advancements.overpowered.craft_laser.title": "레이저",
+"advancements.overpowered.craft_laser.description": "레이저 기계를 만드십시오.",
 "advancements.overpowered.fire_laser.title": "레이저 활동",
 "advancements.overpowered.fire_laser.description": "레이저를 활성화하십시오.",
 "advancements.overpowered.fire_maximum_laser.title": "최대 거리",

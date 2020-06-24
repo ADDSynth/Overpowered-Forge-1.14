@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "بلوک صفر",
 "advancements.overpowered.null_block.description": "یک بلوک خالی ایجاد کنید",
 
-"advancements.overpowered.laser.title": "لیزر",
-"advancements.overpowered.laser.description": "ساخت دستگاه لیزر.",
+"advancements.overpowered.craft_laser.title": "لیزر",
+"advancements.overpowered.craft_laser.description": "ساخت دستگاه لیزر.",
 "advancements.overpowered.fire_laser.title": "آتش لیزر",
 "advancements.overpowered.fire_laser.description": "لیزر را فعال کنید.",
 "advancements.overpowered.fire_maximum_laser.title": "حداکثر فاصله",

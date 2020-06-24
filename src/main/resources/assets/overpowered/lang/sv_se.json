@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "Null Block",
 "advancements.overpowered.null_block.description": "Gör ett nollblock",
 
-"advancements.overpowered.laser.title": "Laser",
-"advancements.overpowered.laser.description": "Skapa en lasermaskin.",
+"advancements.overpowered.craft_laser.title": "Laser",
+"advancements.overpowered.craft_laser.description": "Skapa en lasermaskin.",
 "advancements.overpowered.fire_laser.title": "Laseraktivitet",
 "advancements.overpowered.fire_laser.description": "Aktivera en laser.",
 "advancements.overpowered.fire_maximum_laser.title": "Maximalt avstånd",

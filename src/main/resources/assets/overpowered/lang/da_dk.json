@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "Blok af Mørke",
 "advancements.overpowered.null_block.description": "Lav en nulblok",
 
-"advancements.overpowered.laser.title": "Laser",
-"advancements.overpowered.laser.description": "Lav en lasermaskine.",
+"advancements.overpowered.craft_laser.title": "Laser",
+"advancements.overpowered.craft_laser.description": "Lav en lasermaskine.",
 "advancements.overpowered.fire_laser.title": "Skyd en laser",
 "advancements.overpowered.fire_laser.description": "Aktivér en laser.",
 "advancements.overpowered.fire_maximum_laser.title": "Maksimal afstand",

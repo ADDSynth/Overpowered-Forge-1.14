@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "Boş blok",
 "advancements.overpowered.null_block.description": "boş blok yapmak",
 
-"advancements.overpowered.laser.title": "Lazer",
-"advancements.overpowered.laser.description": "Bir lazer makinesi hazırlayın.",
+"advancements.overpowered.craft_laser.title": "Lazer",
+"advancements.overpowered.craft_laser.description": "Bir lazer makinesi hazırlayın.",
 "advancements.overpowered.fire_laser.title": "Lazer Ateşi",
 "advancements.overpowered.fire_laser.description": "Bir lazeri etkinleştirin.",
 "advancements.overpowered.fire_maximum_laser.title": "Maksimum mesafe",

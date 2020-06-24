@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "blok zerowy",
 "advancements.overpowered.null_block.description": "Zrób blok zerowy",
 
-"advancements.overpowered.laser.title": "Laser",
-"advancements.overpowered.laser.description": "Stwórz maszynę laserową.",
+"advancements.overpowered.craft_laser.title": "Laser",
+"advancements.overpowered.craft_laser.description": "Stwórz maszynę laserową.",
 "advancements.overpowered.fire_laser.title": "Aktywność lasera",
 "advancements.overpowered.fire_laser.description": "Aktywuj laser.",
 "advancements.overpowered.fire_maximum_laser.title": "Maksymalna odległość",

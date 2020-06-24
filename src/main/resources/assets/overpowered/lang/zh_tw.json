@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "空塊",
 "advancements.overpowered.null_block.description": "製作一個空塊",
 
-"advancements.overpowered.laser.title": "激光",
-"advancements.overpowered.laser.description": "製作激光機。",
+"advancements.overpowered.craft_laser.title": "激光",
+"advancements.overpowered.craft_laser.description": "製作激光機。",
 "advancements.overpowered.fire_laser.title": "激光火",
 "advancements.overpowered.fire_laser.description": "激活激光。",
 "advancements.overpowered.fire_maximum_laser.title": "最大距離",

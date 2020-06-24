@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "nulla blokk",
 "advancements.overpowered.null_block.description": "csinálj egy nulla blokkot",
 
-"advancements.overpowered.laser.title": "Lézer",
-"advancements.overpowered.laser.description": "Készítsen egy lézergépet.",
+"advancements.overpowered.craft_laser.title": "Lézer",
+"advancements.overpowered.craft_laser.description": "Készítsen egy lézergépet.",
 "advancements.overpowered.fire_laser.title": "Lézeres aktivitás",
 "advancements.overpowered.fire_laser.description": "Aktiválja a lézert.",
 "advancements.overpowered.fire_maximum_laser.title": "Maximális távolság",

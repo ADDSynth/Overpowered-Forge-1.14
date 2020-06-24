@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "Nulový blok",
 "advancements.overpowered.null_block.description": "vytvořte nulový blok",
 
-"advancements.overpowered.laser.title": "Laser",
-"advancements.overpowered.laser.description": "Vytvořte laserový stroj.",
+"advancements.overpowered.craft_laser.title": "Laser",
+"advancements.overpowered.craft_laser.description": "Vytvořte laserový stroj.",
 "advancements.overpowered.fire_laser.title": "Laserová aktivita",
 "advancements.overpowered.fire_laser.description": "Aktivujte laser.",
 "advancements.overpowered.fire_maximum_laser.title": "Maximální vzdálenost",

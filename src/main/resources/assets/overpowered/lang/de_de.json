@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "Nullblock",
 "advancements.overpowered.null_block.description": "Machen Sie einen Nullblock",
 
-"advancements.overpowered.laser.title": "Laser",
-"advancements.overpowered.laser.description": "Stellen Sie eine Lasermaschine her.",
+"advancements.overpowered.craft_laser.title": "Laser",
+"advancements.overpowered.craft_laser.description": "Stellen Sie eine Lasermaschine her.",
 "advancements.overpowered.fire_laser.title": "Laseraktivität",
 "advancements.overpowered.fire_laser.description": "Aktivieren Sie einen Laser.",
 "advancements.overpowered.fire_maximum_laser.title": "Maximale Entfernung",

@@ -269,8 +269,8 @@
 "advancements.overpowered.null_block.title": "ヌルブロック",
 "advancements.overpowered.null_block.description": "ヌルをブロックする",
 
-"advancements.overpowered.laser.title": "レーザ",
-"advancements.overpowered.laser.description": "レーザー加工機を作ります。",
+"advancements.overpowered.craft_laser.title": "レーザ",
+"advancements.overpowered.craft_laser.description": "レーザー加工機を作ります。",
 "advancements.overpowered.fire_laser.title": "レーザー活動",
 "advancements.overpowered.fire_laser.description": "レーザーをアクティブにします。",
 "advancements.overpowered.fire_maximum_laser.title": "最大距離",
