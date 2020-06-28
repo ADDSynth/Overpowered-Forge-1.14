@@ -1,5 +1,6 @@
 package addsynth.core;
 
+import addsynth.core.util.color.ColorCode;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Direction;
 
@@ -24,6 +25,9 @@ public static final int NORTH = Direction.NORTH.ordinal();
 public static final int SOUTH = Direction.SOUTH.ordinal();
 public static final int WEST  = Direction.WEST.ordinal();
 public static final int EAST  = Direction.EAST.ordinal();
+
+/** Default error string to show, if attempting to get a status message from TileEntities. */
+public static final String null_error = ColorCode.ERROR.toString() + "[Null Error]";
 
 @SuppressWarnings("deprecation")
 public static final float block_resistance = Blocks.STONE.getExplosionResistance(); //6.0f; // same as Stone

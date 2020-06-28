@@ -1,7 +1,6 @@
 package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import java.util.ArrayList;
-import javax.annotation.Nonnull;
 import addsynth.core.Constants;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.BlockNetworkUtil;
@@ -11,6 +10,7 @@ import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.WorldUtil;
 import addsynth.core.util.math.MathUtility;
 import addsynth.energy.Energy;
+import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Lens;
 import addsynth.overpoweredmod.game.core.Machines;
@@ -45,7 +45,8 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   private int max_y;
   private int max_z;
 
-  private final int max_distance = 300;
+  private final int max_distance = Config.energy_bridge_max_distance.get();
+  private BridgeMessage bridge_message;
   private final BridgeMessage[] message = new BridgeMessage[6];
   private final BridgeNetwork[] other_bridge = new BridgeNetwork[6];
   @SuppressWarnings("unchecked")
@@ -74,8 +75,22 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
 
   public final void check(){
+    bridge_message = BridgeMessage.PENDING;
     check_shape();
     check_directions();
+    if(bridge_message == BridgeMessage.PENDING){
+      if(lens_index == -1){
+        bridge_message = BridgeMessage.NO_LENS;
+      }
+      else{
+        if(active){
+          bridge_message = BridgeMessage.ACTIVE;
+        }
+        else{
+          bridge_message = BridgeMessage.OFF;
+        }
+      }
+    }
     updateBridgeNetwork();
     update_active_state();
   }
@@ -98,6 +113,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
         for(x = min_x; x <= max_x && valid_shape; x++){
           if(world.getBlockState(new BlockPos(x,y,z)).getBlock() != first_tile.getBlockState().getBlock()){
             valid_shape = false;
+            bridge_message = BridgeMessage.INVALID_SHAPE;
           }
         }
       }
@@ -123,142 +139,143 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
       int z;
       final boolean[] obstructed = new boolean[6];
 
-      int index = Constants.DOWN;
-      area[index] = new ArrayList<>(max_distance * 2);
+      int direction = Constants.DOWN;
+      area[direction] = new ArrayList<>(max_distance * 2);
       int start_x = min_x;
       int end_x   = max_x;
       int start_y = min_y - 1;
       int end_y   = Math.max(min_y - max_distance, 0);
       int start_z = min_z;
       int end_z   = max_z;
-      for(y = start_y; y >= end_y && message[index] == BridgeMessage.PENDING; y--){
-        for(z = start_z; z <= end_z && message[index] == BridgeMessage.PENDING; z++){
-          for(x = start_x; x <= end_x && message[index] == BridgeMessage.PENDING; x++){
-            check_position(index, obstructed, new BlockPos(x,y,z));
+      for(y = start_y; y >= end_y && message[direction] == BridgeMessage.PENDING; y--){
+        for(z = start_z; z <= end_z && message[direction] == BridgeMessage.PENDING; z++){
+          for(x = start_x; x <= end_x && message[direction] == BridgeMessage.PENDING; x++){
+            check_position(direction, obstructed, new BlockPos(x,y,z));
           }
         }
       }
-      if(message[index] == BridgeMessage.PENDING){
-        message[index] = BridgeMessage.NO_BRIDGE;
+      if(message[direction] == BridgeMessage.PENDING){
+        message[direction] = BridgeMessage.NO_BRIDGE;
       }
 
-      index = Constants.UP;
-      area[index] = new ArrayList<>(max_distance * 2);
+      direction = Constants.UP;
+      area[direction] = new ArrayList<>(max_distance * 2);
       start_x = min_x;
       end_x   = max_x;
       start_y = max_y + 1;
       end_y   = Math.min(max_y + max_distance, Constants.world_height - 1);
       start_z = min_z;
       end_z   = max_z;
-      for(y = start_y; y <= end_y && message[index] == BridgeMessage.PENDING; y++){
-        for(z = start_z; z <= end_z && message[index] == BridgeMessage.PENDING; z++){
-          for(x = start_x; x <= end_x && message[index] == BridgeMessage.PENDING; x++){
-            check_position(index, obstructed, new BlockPos(x,y,z));
+      for(y = start_y; y <= end_y && message[direction] == BridgeMessage.PENDING; y++){
+        for(z = start_z; z <= end_z && message[direction] == BridgeMessage.PENDING; z++){
+          for(x = start_x; x <= end_x && message[direction] == BridgeMessage.PENDING; x++){
+            check_position(direction, obstructed, new BlockPos(x,y,z));
           }
         }
       }
-      if(message[index] == BridgeMessage.PENDING){
-        message[index] = BridgeMessage.NO_BRIDGE;
+      if(message[direction] == BridgeMessage.PENDING){
+        message[direction] = BridgeMessage.NO_BRIDGE;
       }
 
       // The rest of the directions are horizontal. Set y to the maximum height.
       y = max_y;
 
-      index = Constants.NORTH;
-      area[index] = new ArrayList<>(max_distance * 2);
+      direction = Constants.NORTH;
+      area[direction] = new ArrayList<>(max_distance * 2);
       start_x = min_x;
       end_x   = max_x;
       start_z = min_z - 1;
       end_z   = min_z - max_distance;
-      for(z = start_z; z >= end_z && message[index] == BridgeMessage.PENDING; z--){
-        for(x = start_x; x <= end_x && message[index] == BridgeMessage.PENDING; x++){
-          check_position(index, obstructed, new BlockPos(x,y,z));
+      for(z = start_z; z >= end_z && message[direction] == BridgeMessage.PENDING; z--){
+        for(x = start_x; x <= end_x && message[direction] == BridgeMessage.PENDING; x++){
+          check_position(direction, obstructed, new BlockPos(x,y,z));
         }
       }
-      if(message[index] == BridgeMessage.PENDING){
-        message[index] = BridgeMessage.NO_BRIDGE;
+      if(message[direction] == BridgeMessage.PENDING){
+        message[direction] = BridgeMessage.NO_BRIDGE;
       }
 
-      index = Constants.SOUTH;
-      area[index] = new ArrayList<>(max_distance * 2);
+      direction = Constants.SOUTH;
+      area[direction] = new ArrayList<>(max_distance * 2);
       start_x = min_x;
       end_x   = max_x;
       start_z = max_z + 1;
       end_z   = max_z + max_distance;
-      for(z = start_z; z <= end_z && message[index] == BridgeMessage.PENDING; z++){
-        for(x = start_x; x <= end_x && message[index] == BridgeMessage.PENDING; x++){
-          check_position(index, obstructed, new BlockPos(x,y,z));
+      for(z = start_z; z <= end_z && message[direction] == BridgeMessage.PENDING; z++){
+        for(x = start_x; x <= end_x && message[direction] == BridgeMessage.PENDING; x++){
+          check_position(direction, obstructed, new BlockPos(x,y,z));
         }
       }
-      if(message[index] == BridgeMessage.PENDING){
-        message[index] = BridgeMessage.NO_BRIDGE;
+      if(message[direction] == BridgeMessage.PENDING){
+        message[direction] = BridgeMessage.NO_BRIDGE;
       }
 
-      index = Constants.WEST;
-      area[index] = new ArrayList<>(max_distance * 2);
+      direction = Constants.WEST;
+      area[direction] = new ArrayList<>(max_distance * 2);
       start_x = min_x - 1;
       end_x   = min_x - max_distance;
       start_z = min_z;
       end_z   = max_z;
-      for(x = start_x; x >= end_x && message[index] == BridgeMessage.PENDING; x--){
-        for(z = start_z; z <= end_z && message[index] == BridgeMessage.PENDING; z++){
-          check_position(index, obstructed, new BlockPos(x,y,z));
+      for(x = start_x; x >= end_x && message[direction] == BridgeMessage.PENDING; x--){
+        for(z = start_z; z <= end_z && message[direction] == BridgeMessage.PENDING; z++){
+          check_position(direction, obstructed, new BlockPos(x,y,z));
         }
       }
-      if(message[index] == BridgeMessage.PENDING){
-        message[index] = BridgeMessage.NO_BRIDGE;
+      if(message[direction] == BridgeMessage.PENDING){
+        message[direction] = BridgeMessage.NO_BRIDGE;
       }
 
-      index = Constants.EAST;
-      area[index] = new ArrayList<>(max_distance * 2);
+      direction = Constants.EAST;
+      area[direction] = new ArrayList<>(max_distance * 2);
       start_x = max_x + 1;
       end_x   = max_x + max_distance;
       start_z = min_z;
       end_z   = max_z;
-      for(x = start_x; x <= end_x && message[index] == BridgeMessage.PENDING; x++){
-        for(z = start_z; z <= end_z && message[index] == BridgeMessage.PENDING; z++){
-          check_position(index, obstructed, new BlockPos(x,y,z));
+      for(x = start_x; x <= end_x && message[direction] == BridgeMessage.PENDING; x++){
+        for(z = start_z; z <= end_z && message[direction] == BridgeMessage.PENDING; z++){
+          check_position(direction, obstructed, new BlockPos(x,y,z));
         }
       }
-      if(message[index] == BridgeMessage.PENDING){
-        message[index] = BridgeMessage.NO_BRIDGE;
+      if(message[direction] == BridgeMessage.PENDING){
+        message[direction] = BridgeMessage.NO_BRIDGE;
       }
     }
   }
 
-  @SuppressWarnings("null")
-  private final void check_position(final int index, final boolean[] obstructed, final BlockPos position){
+  private final void check_position(final int direction, final boolean[] obstructed, final BlockPos position){
     final TileSuspensionBridge tile = MinecraftUtility.getTileEntity(position, world, TileSuspensionBridge.class);
     if(tile == null){
+      other_bridge[direction] = null;
       final Block block = world.getBlockState(position).getBlock();
       if(block == Blocks.AIR || block instanceof EnergyBridge){
-        area[index].add(position);
+        area[direction].add(position);
       }
       else{
-        obstructed[index] = true;
+        obstructed[direction] = true;
       }
     }
     else{
       if(tile.getBlockNetwork() == null){
         BlockNetworkUtil.createBlockNetwork(world, tile, BridgeNetwork::new);
       }
-      final BridgeNetwork other_network = tile.getBlockNetwork();
-      if(other_network.check(index, min_x, max_x, min_z, max_z)){
-        if(obstructed[index]){
-          message[index] = BridgeMessage.OBSTRUCTED;
+      other_bridge[direction] = tile.getBlockNetwork();
+      if(other_bridge[direction].check(direction, min_x, max_x, min_z, max_z)){
+        if(obstructed[direction]){
+          message[direction] = BridgeMessage.OBSTRUCTED;
         }
         else{
-          message[index] = BridgeMessage.OKAY;
+          message[direction] = BridgeMessage.OKAY;
         }
       }
       else{
-        message[index] = BridgeMessage.INVALID_BRIDGE;
+        message[direction] = BridgeMessage.INVALID_BRIDGE;
       }
     }
   }
 
   /** This is an internal method. Only OTHER Bridge Networks should be calling this. */
   private final boolean check(final int direction, final int min_x, final int max_x, final int min_z, final int max_z){
+    check_shape();
     if(valid_shape == false){ return false; }
     final boolean length = this.min_z == min_z && this.max_z == max_z;
     final boolean width  = this.min_x == min_x && this.max_x == max_x;
@@ -291,7 +308,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
       tile = (TileSuspensionBridge)node.getTile();
       tile.getInputInventory().setStackInSlot(0, lens_index < 0 ? ItemStack.EMPTY : new ItemStack(Lens.index[lens_index]));
       tile.update_data();
-      final SyncClientBridgeMessage network_message = new SyncClientBridgeMessage(node.position, this.message);
+      final SyncClientBridgeMessage network_message = new SyncClientBridgeMessage(node.position, this.bridge_message, this.message);
       NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, network_message);
     }
   }
@@ -310,6 +327,9 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
           set_active(false);
         }
       }
+      if(active){
+        maintain_bridge(); // for every tick the bridge is powered and active, enure NOTHING erases the bridge.
+      }
     }
   }
 
@@ -321,29 +341,36 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   public final void set_active(final boolean active){
     if(this.active != active){
       this.active = active;
-      int index;
-      for(Direction direction : Direction.values()){
-        index = direction.ordinal();
-        if(message[index] == BridgeMessage.OKAY){
-          if(active){
-            for(BlockPos position : area[index]){
-              set_energy_block(direction, position);
-            }
-          }
-          else{
-            if(area[index] != null){
-              for(BlockPos position : area[index]){
-                WorldUtil.delete_block(world, position);
-              }
-            }
+      update_area(0);
+      update_area(1);
+      update_area(2);
+      update_area(3);
+      update_area(4);
+      update_area(5);
+    }
+  }
+
+  private final void update_area(final int direction){
+    if(message[direction] == BridgeMessage.OKAY){
+    // a message of OKAY means we already know WE'RE valid, and valid in that direction,
+    // so we're free to manipulate blocks in that area.
+      if(active){
+        for(BlockPos position : area[direction]){
+          set_energy_block(direction, position);
+        }
+      }
+      else{
+        if(area[direction] != null){
+          for(BlockPos position : area[direction]){
+            WorldUtil.delete_block(world, position);
           }
         }
       }
     }
   }
 
-  private final void set_energy_block(final Direction direction, final BlockPos position){
-    if(direction.getAxis() == Direction.Axis.Y){
+  private final void set_energy_block(final int direction, final BlockPos position){
+    if(direction == Constants.DOWN || direction == Constants.UP){
       switch(lens_index){
       case 0: world.setBlockState(position, Machines.white_energy_bridge.getRotated(rotate_direction));   break;
       case 1: world.setBlockState(position, Machines.red_energy_bridge.getRotated(rotate_direction));     break;
@@ -370,15 +397,14 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
 
   private final void maintain_bridge(){
-    int index;
+    int direction;
     Block block;
-    for(final Direction direction : Direction.values()){
-      index = direction.ordinal();
-      if(area[index] != null){
-        for(final BlockPos position : area[index]){
+    for(direction = 0; direction < 6; direction++){
+      if(message[direction] == BridgeMessage.OKAY){
+        for(final BlockPos position : area[direction]){
           block = world.getBlockState(position).getBlock();
           if(block instanceof EnergyBridge == false){
-            set_energy_block(direction,position);
+            set_energy_block(direction, position);
           }
         }
       }
@@ -391,7 +417,8 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     case X: rotate_direction = Direction.Axis.Z; break;
     case Z: rotate_direction = Direction.Axis.X; break;
     }
-    set_active(active);
+    update_area(Constants.DOWN);
+    update_area(Constants.UP);
   }
 
   @Override

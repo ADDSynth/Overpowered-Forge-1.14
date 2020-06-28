@@ -8,6 +8,8 @@ import net.minecraft.network.PacketBuffer;
 
 public final class ContainerSuspensionBridge extends BaseContainer<TileSuspensionBridge> {
 
+  public static final int lens_slot_x = 53;
+
   public ContainerSuspensionBridge(final int id, final PlayerInventory player_inventory, final TileSuspensionBridge tile){
     super(Containers.ENERGY_SUSPENSION_BRIDGE, id, player_inventory, tile);
     common_setup(player_inventory);
@@ -19,8 +21,8 @@ public final class ContainerSuspensionBridge extends BaseContainer<TileSuspensio
   }
 
   private final void common_setup(final PlayerInventory player_inventory){
-    make_player_inventory(player_inventory, 20, 84);
-    addSlot(new InputSlot(tile, 0, TileSuspensionBridge.filter, 1, 50, 20));
+    make_player_inventory(player_inventory, 23, 85);
+    addSlot(new InputSlot(tile, 0, TileSuspensionBridge.filter, 1, lens_slot_x, 20));
   }
 
 }

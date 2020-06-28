@@ -14,11 +14,12 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
   private static final ResourceLocation energy_suspension_bridge_gui_texture =
     new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/energy_suspension_bridge.png");
 
-  private static final int gui_width = 200;
+  private static final int gui_width = 206;
 
-  private static final int lens_text_y = 23;
-  private static final int[] text_x = {6, 38, 100, 132};
-  private static final int[] text_y = {lens_text_y + 17, lens_text_y + 28, lens_text_y + 39};
+  private static final int lens_text_x = (6 + ContainerSuspensionBridge.lens_slot_x) / 2;
+  private static final int lens_text_y = 24;
+  private static final int[] text_x = {6, 38, gui_width / 2, 132};
+  private static final int[] text_y = {lens_text_y + 16, lens_text_y + 27, lens_text_y + 38};
 
   private static final int button_width = 50;
   private static final int button_x = gui_width - 6 - button_width;
@@ -40,7 +41,7 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
   }
 
   public GuiEnergySuspensionBridge(final ContainerSuspensionBridge container, final PlayerInventory inventory, final ITextComponent title){
-    super(gui_width, -1, container, inventory, title, energy_suspension_bridge_gui_texture);
+    super(gui_width, 167, container, inventory, title, energy_suspension_bridge_gui_texture);
   }
 
   @Override
@@ -52,7 +53,7 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
-    draw_text_left("Lens:", 6, lens_text_y);
+    draw_text_center("Lens:", lens_text_x, lens_text_y);
     draw_text_left("North:", text_x[0], text_y[0]);
     draw_text_left("South:", text_x[0], text_y[1]);
     draw_text_left("West: ", text_x[0], text_y[2]);
@@ -65,6 +66,7 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
     draw_text_left(tile.getMessage(Constants.UP),    text_x[3], text_y[0]);
     draw_text_left(tile.getMessage(Constants.DOWN),  text_x[3], text_y[1]);
     draw_text_left(tile.getMessage(Constants.EAST),  text_x[3], text_y[2]);
+    draw_text_center(tile.getBridgeMessage(), 73);
   }
 
 }

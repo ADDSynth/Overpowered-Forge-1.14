@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import javax.annotation.Nullable;
+import addsynth.core.Constants;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.core.inventory.SlotData;
@@ -25,6 +26,7 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
 
   private BridgeNetwork network;
 
+  private BridgeMessage bridge_message;
   private BridgeMessage[] message = new BridgeMessage[6];
 
   public TileSuspensionBridge(){
@@ -74,13 +76,19 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
     return network;
   }
 
-  public final void setMessages(final BridgeMessage[] messages){
+  public final void setMessages(final BridgeMessage bridge_message, final BridgeMessage[] messages){
+    this.bridge_message = bridge_message;
     this.message = messages;
   }
 
+  public final String getBridgeMessage(){
+    if(bridge_message == null){ return Constants.null_error; }
+    return bridge_message.getMessage();
+  }
+
   public final String getMessage(final int index){
-    if(message        == null){ return "Null Error"; }
-    if(message[index] == null){ return "Null Error"; }
+    if(message        == null){ return Constants.null_error; }
+    if(message[index] == null){ return Constants.null_error; }
     return message[index].getMessage();
   }
 

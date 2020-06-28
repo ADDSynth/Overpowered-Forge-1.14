@@ -49,6 +49,9 @@ public final class Config {
   public static ForgeConfigSpec.ConfigValue<List<Integer>> black_hole_dimension_blacklist;
   public static ForgeConfigSpec.DoubleValue black_hole_max_tick_time;
 
+  private static final int DEFAULT_ENERGY_BRIDGE_DISTANCE = 250;
+  public static ForgeConfigSpec.ConfigValue<Integer> energy_bridge_max_distance;
+
   // Undead
   public static ForgeConfigSpec.BooleanValue drop_for_zombie;
   public static ForgeConfigSpec.BooleanValue drop_for_zombie_villager;
@@ -159,6 +162,13 @@ public final class Config {
       "self balancing, meaning it will slow down if it detects the algorithm is taking too long to process in\n"+
       "a single tick. One block per tick will always be deleted, no matter how low you specify this value.")
       .defineInRange("Black Hole Max Tick Time", 0.5, (double)1 / Constants.tick_time_in_nanoseconds, 1.0);
+    builder.pop();
+
+    builder.push("Energy Suspension Bridge");
+    energy_bridge_max_distance = builder.comment(
+      "This determines the maximum distance Energy Suspension Bridges can reach. Energy Suspension Bridges only\n"+
+      "connect to other Energy Suspension Bridges if they are within range. Increasing this may increase load on\n"+
+      "your computer's processor.").defineInRange("Maximum Distance", DEFAULT_ENERGY_BRIDGE_DISTANCE, 20, 500);
     builder.pop();
 
     builder.push("Unidentified Mob Drops");
