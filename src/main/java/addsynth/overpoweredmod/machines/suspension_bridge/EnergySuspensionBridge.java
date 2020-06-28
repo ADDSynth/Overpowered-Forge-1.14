@@ -49,7 +49,7 @@ public final class EnergySuspensionBridge extends MachineBlock {
     if(world.isRemote == false){
       final TileSuspensionBridge tile = MinecraftUtility.getTileEntity(pos, world, TileSuspensionBridge.class);
       if(tile != null){
-        tile.getBlockNetwork().check();
+        tile.getBlockNetwork().check_and_update();
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }
     }
