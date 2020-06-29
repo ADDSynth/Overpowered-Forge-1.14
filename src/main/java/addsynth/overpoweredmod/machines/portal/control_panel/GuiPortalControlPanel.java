@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.machines.portal.control_panel;
 
 import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -60,7 +61,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
     private final TilePortalControlPanel tile;
 
     public GeneratePortalButton(final int x, final int y, final TilePortalControlPanel tile){
-      super(x, y, button_width, button_height, "Generate Portal");
+      super(x, y, button_width, button_height, StringUtil.translate("gui.overpowered.portal_control_panel.generate_portal"));
       this.tile = tile;
     }
 

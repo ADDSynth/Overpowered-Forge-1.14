@@ -9,6 +9,34 @@ import net.minecraft.util.math.MathHelper;
 
 public final class MathUtility {
 
+  public static final int getMin(final int ... input){
+    if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMin() input was null!"); }
+    if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMin() requires at least one integer as input."); }
+    int min = input[0];
+    if(input.length > 1){
+      for(final int value : input){
+        if(value < min){
+          min = value;
+        }
+      }
+    }
+    return min;
+  }
+
+  public static final int getMax(final int ... input){
+    if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMax() input was null!"); }
+    if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMax() requires at least one integer as input."); }
+    int max = input[0];
+    if(input.length > 1){
+      for(final int value : input){
+        if(value > max){
+          max = value;
+        }
+      }
+    }
+    return max;
+  }
+
   public static final short clamp(final short number, final short minimum, final short maximum){
     if(number < minimum){
       return minimum;

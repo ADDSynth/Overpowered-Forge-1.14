@@ -1,6 +1,8 @@
 package addsynth.core.gui;
 
 import com.mojang.blaze3d.platform.GlStateManager;
+import addsynth.core.util.math.MathUtility;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.PlayerInventory;
@@ -29,6 +31,9 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
 
   public GuiBase(int width, int height, T container, PlayerInventory player_inventory, ITextComponent title, ResourceLocation gui_texture){
     super(container, player_inventory, title);
+    if(font == null){
+      font = Minecraft.getInstance().fontRenderer;
+    }
     GUI_TEXTURE = gui_texture;
     if(width  > 0){ this.xSize = width; }
     if(height > 0){ this.ySize = height; }
@@ -109,6 +114,18 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
   }
 
 // ========================================================================================================
+
+  protected final int getMaxStringWidth(final String ... text){ // MAYBE, this can be static, if we specify the fontRenderer as first argument.
+    if(font == null){
+      font = Minecraft.getInstance().fontRenderer;
+    }
+    final int[] width = new int[text.length];
+    int i;
+    for(i = 0; i < text.length; i++){
+      width[i] = font.getStringWidth(text[i]);
+    }
+    return MathUtility.getMax(width);
+  }
 
   protected final void draw_title(){
     draw_text_center(title.getString(), center_x, 6);

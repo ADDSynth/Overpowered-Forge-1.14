@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import addsynth.core.Constants;
 import addsynth.core.gui.objects.AdjustableButton;
+import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -14,11 +15,23 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
   private static final ResourceLocation energy_suspension_bridge_gui_texture =
     new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/energy_suspension_bridge.png");
 
+  // translation strings
+  private final String lens_string = StringUtil.translate("gui.overpowered.energy_suspension_bridge.lens");
+  private final String down  = StringUtil.translate("gui.addsynthcore.direction.down");
+  private final String up    = StringUtil.translate("gui.addsynthcore.direction.up");
+  private final String north = StringUtil.translate("gui.addsynthcore.direction.north");
+  private final String south = StringUtil.translate("gui.addsynthcore.direction.south");
+  private final String west  = StringUtil.translate("gui.addsynthcore.direction.west");
+  private final String east  = StringUtil.translate("gui.addsynthcore.direction.east");
+
   private static final int gui_width = 206;
 
   private static final int lens_text_x = (6 + ContainerSuspensionBridge.lens_slot_x) / 2;
   private static final int lens_text_y = 24;
-  private static final int[] text_x = {6, 38, gui_width / 2, 132};
+  private final int[] text_x = {
+           6,        6 + getMaxStringWidth(north+": ", south+": ", west+": "),
+    center_x, center_x + getMaxStringWidth(up+": ", down+": ", east+": ")
+  };
   private static final int[] text_y = {lens_text_y + 16, lens_text_y + 27, lens_text_y + 38};
 
   private static final int button_width = 50;
@@ -30,7 +43,7 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
     private final TileSuspensionBridge tile;
 
     public RotateButton(int x, int y, TileSuspensionBridge tile){
-      super(x, y, button_width, 28, "Rotate");
+      super(x, y, button_width, 28, StringUtil.translate("gui.overpowered.energy_suspension_bridge.rotate"));
       this.tile = tile;
     }
 
@@ -53,16 +66,16 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     super.draw_title();
-    draw_text_center("Lens:", lens_text_x, lens_text_y);
-    draw_text_left("North:", text_x[0], text_y[0]);
-    draw_text_left("South:", text_x[0], text_y[1]);
-    draw_text_left("West: ", text_x[0], text_y[2]);
+    draw_text_center(lens_string+":", lens_text_x, lens_text_y);
+    draw_text_left(north+":", text_x[0], text_y[0]);
+    draw_text_left(south+":", text_x[0], text_y[1]);
+    draw_text_left(west+":",  text_x[0], text_y[2]);
     draw_text_left(tile.getMessage(Constants.NORTH), text_x[1], text_y[0]);
     draw_text_left(tile.getMessage(Constants.SOUTH), text_x[1], text_y[1]);
     draw_text_left(tile.getMessage(Constants.WEST),  text_x[1], text_y[2]);
-    draw_text_left("Up:   ", text_x[2], text_y[0]);
-    draw_text_left("Down: ", text_x[2], text_y[1]);
-    draw_text_left("East: ", text_x[2], text_y[2]);
+    draw_text_left(up+":",   text_x[2], text_y[0]);
+    draw_text_left(down+":", text_x[2], text_y[1]);
+    draw_text_left(east+":", text_x[2], text_y[2]);
     draw_text_left(tile.getMessage(Constants.UP),    text_x[3], text_y[0]);
     draw_text_left(tile.getMessage(Constants.DOWN),  text_x[3], text_y[1]);
     draw_text_left(tile.getMessage(Constants.EAST),  text_x[3], text_y[2]);
