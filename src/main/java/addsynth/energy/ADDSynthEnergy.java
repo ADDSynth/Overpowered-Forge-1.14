@@ -30,7 +30,7 @@ public class ADDSynthEnergy {
   public static final String MOD_ID = "addsynth_energy";
   public static final String MOD_NAME = "ADDSynth Energy";
   public static final String VERSION = "1.0";
-  public static final String VERSION_DATE = "May 24, 2020";
+  public static final String VERSION_DATE = "June 30, 2020";
     
   public static final Logger log = LogManager.getLogger(MOD_NAME);
 
