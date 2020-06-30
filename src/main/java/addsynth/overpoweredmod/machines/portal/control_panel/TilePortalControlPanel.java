@@ -297,6 +297,8 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
       portal_items[7] = false;
       message = PortalMessage.OBSTRUCTED;
       valid_portal = false;
+
+      power_switch = false;
       turn_off();
       
       final SyncPortalDataMessage message = new SyncPortalDataMessage(pos, portal_items, this.message, valid_portal);
