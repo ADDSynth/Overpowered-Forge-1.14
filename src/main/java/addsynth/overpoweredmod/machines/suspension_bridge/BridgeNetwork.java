@@ -417,21 +417,23 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
       if(active){
         bridge_active[direction] = true;
         other_bridge[direction].bridge_active[opposite] = true;
-        for(BlockPos position : area[direction]){
+        for(final BlockPos position : area[direction]){
           set_energy_block(direction, position);
         }
       }
       else{
         bridge_active[direction] = false;
         other_bridge[direction].bridge_active[opposite] = false;
-        for(BlockPos position : area[direction]){
-          WorldUtil.delete_block(world, position);
+        for(final BlockPos position : area[direction]){
+          if(world.getBlockState(position).getBlock() instanceof EnergyBridge){
+            WorldUtil.delete_block(world, position);
+          }
         }
       }
     }
     else{
       if(bridge_active[direction]){ // if we suddenly become invalid, but the bridge is on.
-        for(BlockPos position : area[direction]){
+        for(final BlockPos position : area[direction]){
           WorldUtil.delete_block(world, position);
         }
         bridge_active[direction] = false;
