@@ -15,7 +15,7 @@ public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEn
   public TileEnergyBattery(final TileEntityType type, final Energy energy){
     super(type);
     this.energy = energy;
-    this.energy.setResponder(this);
+    this.energy.addResponder(this);
   }
 
   @Override

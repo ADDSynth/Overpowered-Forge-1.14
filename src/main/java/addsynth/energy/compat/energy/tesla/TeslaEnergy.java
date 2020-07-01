@@ -1,4 +1,4 @@
-package addsynth.energy.compat.energy;
+package addsynth.energy.compat.energy.tesla;
 
 import addsynth.core.util.JavaUtils;
 // import net.darkhax.tesla.api.*;

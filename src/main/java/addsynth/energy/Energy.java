@@ -1,5 +1,6 @@
 package addsynth.energy;
 
+import java.util.ArrayList;
 import javax.annotation.Nonnegative;
 import addsynth.core.util.math.DecimalNumber;
 import addsynth.energy.tiles.IEnergyUser;
@@ -16,7 +17,7 @@ import net.minecraft.world.World;
  */
 public class Energy {
 
-  private IEnergyUser responder;
+  private final ArrayList<IEnergyUser> responders = new ArrayList<IEnergyUser>();
 
   /** Is set to true whenever any variable changes to signal that various things
    *  need to be updated in the {@link Energy#update(World)} event.
@@ -68,8 +69,16 @@ public class Energy {
     this.energy.set(initial_energy);
   }
 
-  public final void setResponder(final IEnergyUser responder){
-    this.responder = responder;
+  public final void addResponder(final IEnergyUser responder){
+    if(responders.contains(responder) == false){
+      responders.add(responder);
+    }
+  }
+
+  public final void removeResponder(final IEnergyUser responder){
+    if(responders.contains(responder)){
+      responders.remove(responder);
+    }
   }
 
 // ================================= NBT READ / WRITE =================================
@@ -402,7 +411,8 @@ public class Energy {
   public final void update(final World world){
     if(world.isRemote == false){
       if(changed){
-        if(responder != null){
+        responders.removeIf((IEnergyUser n) -> n == null);
+        for(final IEnergyUser responder : responders){
           responder.onEnergyChanged();
         }
         changed = false;

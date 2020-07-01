@@ -1,4 +1,4 @@
-package addsynth.energy.compat.energy;
+package addsynth.energy.compat.energy.forge;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;

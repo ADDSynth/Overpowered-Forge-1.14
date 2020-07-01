@@ -36,7 +36,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
   public LaserNetwork(final World world, final TileLaserHousing tile){
     super(world, tile);
     this.energy.set_receive_only();
-    this.energy.setResponder(this);
+    this.energy.addResponder(this);
   }
 
   @Override

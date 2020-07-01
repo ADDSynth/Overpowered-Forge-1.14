@@ -47,7 +47,7 @@ public class OverpoweredMod {
   public static final String MOD_ID = "overpowered";
   public static final String MOD_NAME = "Overpowered";
   public static final String VERSION = "1.3";
-  public static final String VERSION_DATE = "June 30, 2020";
+  public static final String VERSION_DATE = "July 1, 2020";
     
   public static final Logger log = LogManager.getLogger(MOD_NAME);
 
