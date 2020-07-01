@@ -107,7 +107,7 @@ public final class RegistryUtil { // cannot be named GameRegistry because it con
           writer.write(debug_message+"\n");
           int i;
           final int skip = 2;
-          StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+          final StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
           for(i = skip; (max_stacktrace >= 0 ? i < max_stacktrace + skip : true) && i < stacktrace.length; i++){
             writer.write("  "+stacktrace[i].toString()+"\n");
           }
