@@ -2,13 +2,10 @@ package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import java.util.List;
 import javax.annotation.Nullable;
-import addsynth.core.block_network.BlockNetwork;
-import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.core.util.MinecraftUtility;
 import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
@@ -49,13 +46,20 @@ public final class EnergySuspensionBridge extends MachineBlock {
     if(world.isRemote == false){
       final TileSuspensionBridge tile = MinecraftUtility.getTileEntity(pos, world, TileSuspensionBridge.class);
       if(tile != null){
-        tile.getBlockNetwork().check_and_update();
-        NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
+        final BridgeNetwork network = tile.getBlockNetwork();
+        if(network != null){
+          network.check_and_update();
+          NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
+        }
+        else{
+          OverpoweredMod.log.error(new NullPointerException("Energy Suspension Bridge at "+pos.toString()+" has no BridgeNetwork!"));
+        }
       }
     }
     return true;
   }
 
+/* DELETE: Energy Suspension Bridges don't need to update when the adjacent block changes.
   @Override
   @SuppressWarnings("deprecation")
   public void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
@@ -64,5 +68,6 @@ public final class EnergySuspensionBridge extends MachineBlock {
       network.neighbor_was_changed(pos, neighbor);
     }
   }
+*/
 
 }

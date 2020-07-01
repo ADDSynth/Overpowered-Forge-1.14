@@ -10,6 +10,7 @@ import addsynth.overpoweredmod.machines.laser.machine.LaserNetwork;
 import addsynth.overpoweredmod.machines.data_cable.DataCableNetwork;
 import addsynth.overpoweredmod.machines.suspension_bridge.BridgeNetwork;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -90,7 +91,9 @@ import net.minecraft.world.server.ServerWorld;
  * {@link addsynth.energy.tiles.TileEnergyReceiver TileEnergyReceivers} that the network connects to.
  * In this case, you want to update the Block Network (or at least the BlockNetwork's data) whenever
  * you detect the block next to a TileEntity that belongs to this Block Network was CHANGED, because
- * a block could've been added or removed, and you need to update the data accordingly.
+ * a block could've been added or removed, and you need to update the data accordingly. So, we use
+ * {@link Block#neighborChanged(BlockState, World, BlockPos, Block, BlockPos, boolean)}
+ * to detect the block beside us has changed and then call our BlockNetwork's update event.
  *
  * <p><b>8.</b> So now let's talk about BlockNetwork data. Out of the 4 BlockNetwork examples that exist in
  * ADDSynth's mods as of writing this, {@link EnergyNetwork} and {@link DataCableNetwork} only store positions
@@ -113,12 +116,24 @@ import net.minecraft.world.server.ServerWorld;
  * initialize a BlockNetwork because that would cause an infinite loop. Instead, if you depend on
  * another BlockNetwork during a BlockNetwork update, check if it is null and initialize it yourself.
  *
+ * <p><b>10.</b> Continuing from #7, This scenerio involves when during the BlockNetwork update, it changes
+ * a block in the world, such as by calling {@link World#setBlockState(BlockPos, BlockState, int)}.
+ * This will then call {@link Block#neighborChanged(BlockState, World, BlockPos, Block, BlockPos, boolean)}
+ * Which can cause some Block Networks to begin updating again, while during the first update, which may
+ * trigger a Null Pointer Exception. Argh, I'm not explaining this very well. You must either check
+ * if the Block Network is null, or check what kind of BlockNetwork it is and create a new one yourself,
+ * which in turn calls that BlockNetwork's update method anyway.
+ * <p>Currently, all of our neighbor detections assumes this only occurs during normal gameplay, and NOT
+ * DURING WORLD LOAD! So there are no null checks. Luckily it seems that only the Energy Suspension Bridge
+ * changes the world during its Block Network update, and it doesn't need to detect when blocks next to it
+ * has changed.
+ *
  * @see EnergyNetwork
  * @see LaserNetwork
  * @see DataCableNetwork
  * @see BridgeNetwork
  * @author ADDSynth
- * @since May 12, 2020
+ * @since July 1, 2020
  */
 public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
 
@@ -170,6 +185,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
     return null;
   }
 
+  @SuppressWarnings("unchecked")
   public void updateBlockNetwork(final BlockPos from){ // TODO: Must find a better way to merge this into the other updateBlockNetwork function.
     final TileEntity tile = world.getTileEntity(from);
     if(is_valid_tile(tile)){
@@ -280,11 +296,12 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
 
   /**<p>
    *   <b>Required:</b> call this in the block's
-   *   {@link Block#neighborChanged(IBlockState, World, BlockPos, Block, BlockPos)} method.<br>
-   *   <b>Do not use</b> the {@link Block#onNeighborChange(IBlockAccess, BlockPos, BlockPos)} method!
+   *   {@link Block#neighborChanged(BlockState, World, BlockPos, Block, BlockPos, boolean)} method.<br>
+   *   <b>Do not use</b> the {@link Block#onNeighborChange(BlockState, net.minecraft.world.IWorldReader, BlockPos, BlockPos)} method!
    *   Starting in Minecraft 1.11 the {@link World#updateComparatorOutputLevel(BlockPos, Block)} method
    *   is no longer called at the end of the {@link World#setTileEntity(BlockPos, TileEntity)} function,
    *   so it doesn't update Block Networks at all.
+   * <p>NOTE: We're in Minecraft 1.14 now, and I have no idea how any of this works! Disregard previous paragraph.
    * <p>
    *   If the neighboring block is a block that holds this type of BlockNetwork (such as a wire), then that
    *   block also has a TileEntity which automatically adds itself to the existing network when its
