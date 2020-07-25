@@ -2,6 +2,7 @@ package addsynth.core.items.enchantment;
 
 import java.util.Arrays;
 import java.util.List;
+import addsynth.core.items.ItemUtil;
 import addsynth.core.util.JavaUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -45,7 +46,7 @@ public final class EnchantmentUtil {
   @SuppressWarnings("incomplete-switch")
   public static final List<Enchantment> get_enchantments_for_item(final ItemStack stack){
     Enchantment[] enchantment_list = new Enchantment[0];
-    if(stack != null){
+    if(ItemUtil.itemStackExists(stack)){
       final Item item = stack.getItem();
       if(item instanceof ArmorItem){
         switch(((ArmorItem)item).getEquipmentSlot()){

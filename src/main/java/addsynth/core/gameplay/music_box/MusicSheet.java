@@ -3,7 +3,7 @@ package addsynth.core.gameplay.music_box;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.CoreItem;
-import addsynth.core.items.ItemUtility;
+import addsynth.core.items.ItemUtil;
 import addsynth.core.util.game.MessageUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -94,7 +94,7 @@ public final class MusicSheet extends CoreItem {
       stack.shrink(1);
       final ItemStack music_sheet = new ItemStack(Core.music_sheet,1);
       music_sheet.setTag(nbt);
-      ItemUtility.add_to_player_inventory(player, music_sheet);
+      ItemUtil.add_to_player_inventory(player, music_sheet);
     }
       
     MessageUtil.send_to_player(player, "gui.addsynthcore.music_sheet.copy");

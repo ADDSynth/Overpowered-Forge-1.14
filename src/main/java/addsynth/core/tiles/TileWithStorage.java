@@ -2,6 +2,7 @@ package addsynth.core.tiles;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import addsynth.core.items.ItemUtil;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -75,10 +76,8 @@ public abstract class TileWithStorage extends TileBase {
       ItemStack stack;
       for(i = 0; i < inventory.getSlots(); i++){
         stack = inventory.getStackInSlot(i);
-        if(stack != null){
-          if(stack != ItemStack.EMPTY){
-            InventoryHelper.spawnItemStack(world, x, y, z, stack);
-          }
+        if(ItemUtil.itemStackExists(stack)){
+          InventoryHelper.spawnItemStack(world, x, y, z, stack);
         }
       }
     }

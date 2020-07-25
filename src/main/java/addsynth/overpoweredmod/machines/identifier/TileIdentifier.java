@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.identifier;
 
 import javax.annotation.Nullable;
 import addsynth.core.game.Compatability;
-import addsynth.core.items.ItemUtility;
+import addsynth.core.items.ItemUtil;
 import addsynth.core.util.JavaUtils;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
@@ -45,7 +45,7 @@ public final class TileIdentifier extends TileWorkMachine implements INamedConta
     if(input.isEmpty() == false){
       if(input.getItem() instanceof UnidentifiedItem){
         final UnidentifiedItem item = (UnidentifiedItem)(input.getItem());
-        final ItemStack stack = new ItemStack(ItemUtility.get_armor(item.armor_material, item.equipment_type),1);
+        final ItemStack stack = new ItemStack(ItemUtil.get_armor(item.armor_material, item.equipment_type),1);
         ArmorEffects.enchant(stack);
         working_inventory.setEmpty();
         output_inventory.setStackInSlot(0, stack);

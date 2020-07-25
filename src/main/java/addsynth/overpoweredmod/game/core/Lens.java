@@ -1,5 +1,6 @@
 package addsynth.overpoweredmod.game.core;
 
+import addsynth.core.items.ItemUtil;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.items.LensItem;
 import net.minecraft.block.material.MaterialColor;
@@ -42,10 +43,8 @@ public enum Lens {
   public static final Item[] index = { focus_lens, red, orange, yellow, green, cyan, blue, magenta};
   
   public static final int get_index(final ItemStack stack){
-    if(stack != null){
-      if(stack.isEmpty() == false){
-        return get_index(stack.getItem());
-      }
+    if(ItemUtil.itemStackExists(stack)){
+      return get_index(stack.getItem());
     }
     return -1;
   }

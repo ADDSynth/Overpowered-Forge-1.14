@@ -6,7 +6,17 @@ import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 
-public final class ItemUtility {
+public final class ItemUtil {
+
+  public static final boolean itemStackExists(final ItemStack stack){
+    if(stack == null){   return false; }
+    if(stack.isEmpty()){ return false; }
+    return true;
+  }
+
+  public static final boolean isItemStackEmpty(final ItemStack stack){
+    return stack == null ? true : stack.isEmpty();
+  }
 
   /**
    * Used in Items to get the {@link CompoundNBT} of ItemStacks.

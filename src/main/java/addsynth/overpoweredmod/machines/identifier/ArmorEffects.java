@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import addsynth.core.items.enchantment.EnchantmentUtil;
+import addsynth.core.items.ItemUtil;
 import addsynth.core.items.enchantment.EnchantPair;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.enchantment.Enchantments;
@@ -20,18 +21,16 @@ public final class ArmorEffects {
   
   @SuppressWarnings("incomplete-switch")
   public static final void enchant(final ItemStack stack){
-    if(stack != null){
-      if(stack.isEmpty() == false){
-        final Item item = stack.getItem();
-        if(item instanceof ArmorItem){
-          switch(((ArmorItem)item).getEquipmentSlot()){
-          case HEAD: enchant_helmet(stack); break;
-          case CHEST: enchant_armor(stack); break;
-          case LEGS:  enchant_armor(stack); break;
-          case FEET:  enchant_boots(stack); break;
-          }
-          return;
+    if(ItemUtil.itemStackExists(stack)){
+      final Item item = stack.getItem();
+      if(item instanceof ArmorItem){
+        switch(((ArmorItem)item).getEquipmentSlot()){
+        case HEAD: enchant_helmet(stack); break;
+        case CHEST: enchant_armor(stack); break;
+        case LEGS:  enchant_armor(stack); break;
+        case FEET:  enchant_boots(stack); break;
         }
+        return;
       }
       OverpoweredMod.log.error("ItemStack used as input for "+ArmorEffects.class.getName()+".enchant() is not an armor Item.");
     }

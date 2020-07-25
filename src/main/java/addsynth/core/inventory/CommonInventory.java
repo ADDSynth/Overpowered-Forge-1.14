@@ -64,7 +64,7 @@ public class CommonInventory extends ItemStackHandler {
 
   public final void drop_in_world(final World world, final double x, final double y, final double z){
     for(final ItemStack stack : stacks){
-      if(stack != ItemStack.EMPTY){
+      if(stack.isEmpty() == false){
         InventoryHelper.spawnItemStack(world, x, y, z, stack);
       }
     }
