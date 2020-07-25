@@ -1,7 +1,7 @@
 package addsynth.core.block_network;
 
 import java.util.function.BiFunction;
-import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.game.MinecraftUtility;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;

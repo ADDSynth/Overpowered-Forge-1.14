@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.black_hole;
 
-import addsynth.core.util.MessageUtil;
+import addsynth.core.util.game.MessageUtil;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;

@@ -1,7 +1,7 @@
 package addsynth.energy.network.server_messages;
 
 import java.util.function.Supplier;
-import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;

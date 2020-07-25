@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.blocks.dimension.tree;
 
 import java.util.ArrayList;
-import addsynth.core.util.WorldUtil;
+import addsynth.core.util.game.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.ModItems;
 import addsynth.overpoweredmod.game.core.Portal;

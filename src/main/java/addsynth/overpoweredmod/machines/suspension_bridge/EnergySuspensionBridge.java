@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import java.util.List;
 import javax.annotation.Nullable;
-import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;

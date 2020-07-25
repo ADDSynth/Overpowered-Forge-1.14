@@ -1,7 +1,7 @@
 package addsynth.energy.gameplay.electric_furnace;
 
 import javax.annotation.Nullable;
-import addsynth.core.util.RecipeUtil;
+import addsynth.core.util.game.RecipeUtil;
 import addsynth.energy.registers.Tiles;
 import addsynth.energy.tiles.machines.MachineData;
 import addsynth.energy.tiles.machines.MachineType;

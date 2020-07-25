@@ -2,7 +2,7 @@ package addsynth.core.gameplay.music_box.network_messages;
 
 import java.util.function.Supplier;
 import addsynth.core.gameplay.music_box.TileMusicBox;
-import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.game.MinecraftUtility;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;

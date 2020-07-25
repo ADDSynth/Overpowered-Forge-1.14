@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.game;
 
-import addsynth.core.util.MessageUtil;
+import addsynth.core.util.game.MessageUtil;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.Machines;

@@ -1,4 +1,4 @@
-package addsynth.core.util;
+package addsynth.core.util.game;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;

@@ -1,10 +1,10 @@
 package addsynth.core.gameplay.music_box;
 
-import addsynth.core.items.ItemUtility;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.CoreItem;
-import addsynth.core.util.MessageUtil;
+import addsynth.core.items.ItemUtility;
+import addsynth.core.util.game.MessageUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

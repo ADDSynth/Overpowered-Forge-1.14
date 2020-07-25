@@ -6,7 +6,7 @@ import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.material.Material;
 import addsynth.core.material.MaterialsUtil;
-import addsynth.core.util.RecipeUtil;
+import addsynth.core.util.game.RecipeUtil;
 import addsynth.core.worldgen.OreGenerator;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;

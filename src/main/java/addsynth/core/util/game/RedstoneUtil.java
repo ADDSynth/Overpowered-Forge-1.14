@@ -1,4 +1,4 @@
-package addsynth.core.util;
+package addsynth.core.util.game;
 
 public final class RedstoneUtil {
 

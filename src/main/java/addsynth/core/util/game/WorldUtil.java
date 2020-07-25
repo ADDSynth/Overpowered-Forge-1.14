@@ -1,4 +1,4 @@
-package addsynth.core.util;
+package addsynth.core.util.game;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;

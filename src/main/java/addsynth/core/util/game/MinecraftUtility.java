@@ -1,7 +1,8 @@
-package addsynth.core.util;
+package addsynth.core.util.game;
 
 import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
+import addsynth.core.util.StringUtil;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.crash.CrashReport;

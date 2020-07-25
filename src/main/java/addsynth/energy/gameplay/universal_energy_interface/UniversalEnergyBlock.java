@@ -2,7 +2,7 @@ package addsynth.energy.gameplay.universal_energy_interface;
 
 import java.util.List;
 import javax.annotation.Nullable;
-import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.blocks.MachineBlock;
 import net.minecraft.block.BlockState;

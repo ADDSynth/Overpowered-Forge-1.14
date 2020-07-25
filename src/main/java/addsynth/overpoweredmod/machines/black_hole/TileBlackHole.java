@@ -1,10 +1,10 @@
 package addsynth.overpoweredmod.machines.black_hole;
 
 import addsynth.core.Constants;
-import addsynth.core.util.MessageUtil;
-import addsynth.core.util.ServerUtils;
 import addsynth.core.util.TimeUtil;
-import addsynth.core.util.WorldUtil;
+import addsynth.core.util.game.MessageUtil;
+import addsynth.core.util.game.ServerUtils;
+import addsynth.core.util.game.WorldUtil;
 import addsynth.core.util.math.MathUtility;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Config;

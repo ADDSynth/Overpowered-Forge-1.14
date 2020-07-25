@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.Constants;
+import addsynth.core.util.game.MessageUtil;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;

@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 import java.util.ArrayList;
 import javax.annotation.Nullable;
 import addsynth.core.material.MaterialsUtil;
-import addsynth.core.util.RecipeUtil;
+import addsynth.core.util.game.RecipeUtil;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,7 +20,7 @@ public final class OreRefineryRecipes {
    * <p>This will only add an Ore recipe to the Advanced Ore Refinery if, other mods have registered their
    *    ore with the "ores" tag, and it has a Furnace Recipe.
    * <p>This is registered as an Event Responder in {@link addsynth.overpoweredmod.OverpoweredMod} and executed
-   *    whenever {@link addsynth.core.material.MaterialsUtil} or {@link addsynth.core.util.RecipeUtil} is updated.
+   *    whenever {@link addsynth.core.material.MaterialsUtil} or {@link addsynth.core.util.game.RecipeUtil} is updated.
    */
   public static final void refresh_ore_refinery_recipes(){
     if(RecipeUtil.check_furnace_recipes()){

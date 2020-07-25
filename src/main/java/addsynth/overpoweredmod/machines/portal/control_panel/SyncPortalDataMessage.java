@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.portal.control_panel;
 
 import java.util.function.Supplier;
-import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.game.MinecraftUtility;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;

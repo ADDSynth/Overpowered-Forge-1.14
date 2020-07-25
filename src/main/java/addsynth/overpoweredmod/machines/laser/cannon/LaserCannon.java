@@ -4,7 +4,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.Constants;
 import addsynth.core.blocks.BlockTile;
-import addsynth.core.util.WorldUtil;
+import addsynth.core.util.game.WorldUtil;
 import addsynth.core.util.math.BlockUtil;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;

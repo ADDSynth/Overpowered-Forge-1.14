@@ -3,7 +3,7 @@ package addsynth.core.gameplay.music_box;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.blocks.BlockTile;
 import addsynth.core.gameplay.Core;
-import addsynth.core.util.MinecraftUtility;
+import addsynth.core.util.game.MinecraftUtility;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
