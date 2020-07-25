@@ -1,0 +1,131 @@
+v1.3 - July 1, 2020
+  ADDSynth Energy is now its own mod.
+   - Moved Power Core, Advanced Power Core, Energy Wire, Energy Storage Container,
+     Electric Furnace, Compressor, and Universal Energy Interface.
+   - As a result, some of the recipes for these have changed.
+   - This means that your previous worlds will be incompatible if you upgrade to this
+      version. Forge will warn you that some blocks and items are missing.
+  Moved config options that specifically alter Machine values into a dedicated
+    MachineValues config file.
+  New Portal Control Panel texture.
+  Advanced Ore Refinery now has its own texture.
+  Black Hole Optimization:
+   - No longer erases blocks in a single tick, causing lag. Black Hole algorithm
+     is now spread across multiple ticks, and also self-balancing, meaning it will
+     never go over the tick processing limit.
+   - As a result of this, the default radius has been increased from 70 to 90.
+  Now prints a message to Players if you try to set down a Black Hole in a Dmension
+    that is blacklisted in the Overpowered configuration file.
+  The Identifier now has an output slot, allowing it to be automated.
+  New: Added Energy Suspension Bridge.
+   - A new machine that will spawn an energy bridge if it finds another Energy
+     Suspension Bridge. Must have a Lens inside, and turned on by a redstone signal.
+  Added more mods to detect if "Print Mod Detection Results" is enabled in the
+    ADDSynthCore configuration file.
+   - Now detects Blood Magic, Botania, Chisels & Bits, CodeChicken Lib, Dynamic Surroundings,
+     Extra Utilities 2, Forge Multipart, Industrial Craft, JourneyMap, Mantle, Mekanism,
+     Mystical Agriculture, Natura, Pam's Harvestcraft, Project Red, Shadowfact's Forgelin,
+     Thaumcraft (Minecraft 1.12 only), and Tinker's Construct.
+   - Results are now aligned in the log file.
+  Added new Minecraft 1.14 instruments to the Music Box.
+  Added Advancements.
+  Improved JEI Support:
+   - Now shows recipes for the Gem Converter, Advanced Ore Refinery, Compressor,
+     and Inverter.
+   - Electric Furnace now shows as a valid Furnace for Furnace recipes.
+   - Now tells a short description for most things using the built-in JEI Info tab.
+  Updated our Energy system:
+   - All machines now have a center "working" inventory. When machines are ready to
+     work on something, they will move 1 item from the Input to the center and start
+     working on them.
+   - Some machines now have a Power Cycle time, meaning you can't just turn them off
+     and on anymore. After switching a machine off, you have to wait for it to turn off.
+   - Energy is now handled as a decimal value, rather than a full integer. This makes
+     our machines incompatible with other Energy systems directly, but you can still
+     use the Universal Energy Interface machine.
+  Added Blast Furnace recipes for our Ores.
+   - The Blast Furnace is a vanilla machine new in Minecraft 1.14 which can smelt Ores
+      twice as fast. You can now smelt Gem and Metal Ores in the Blast Furnace.
+  Fix not being allowed to put Energy Crystals or Void Crystals into the Magic Infuser.
+   - Fixed for the Minecraft 1.14 version.
+  The Magic Infuser can now produce the new Enchantments from Minecraft 1.13 and 1.14.
+  Improved the Portal Control Panel:
+   - Now has more safety checks to ensure the Portal is constructed properly.
+   - Playeres in Creative Mode can generate a portal without having the proper items or
+       required energy.
+   - Added an option in the configuration file to "Disable the Unknown Dimension". This
+     prevents players from teleporting to the Unknown Dimension, and instead spawns 2
+     Unknown Technology items inside the frame of the Portal.
+     - Only for the Minecraft 1.12 version. 1.14 Doesn't have the Unknown Dimension and
+       does this anyway.
+   - The message that indicates the status of the Portal is now Color Coded.
+   - Automatically turns itself off after generating a portal.
+  Increased Caution block texture from 256x256 to 512x512.
+  Custom Mob Drops now drop for the Vex, Illusioner, Drowned, Phantom, Skeleton Horse,
+    Pillager, and Ravager.
+  Added logo images when you select any of my mods in the Mods List in Forge.
+  Now that we have a center slot, the Gem Converter and Inverter machines will show
+    the item they're working on to slowly transform into the output item.
+    (The items in the center slot will blend together.)
+  Oh yeah. ALL GUIS HAVE BEEN TRANSLATED! Before it was just Blocks and Items, but now
+    Guis and Advancements have been translated!
+  The crafting recipe for the Gem Converter was changed.
+  The crafting recipe for the Fusion Core was changed.
+  Changed the crafting recipe for the Dimensional Anchor. (still doesn't do anything.)
+  You can now disable the Trophy Stand. If it is disabled, Trophies will use a
+    Wooden Slab in their crafting recipes instead.
+  There is now a configuration option to control whether Rings produce particle effects
+    when you wear them.
+
+
+
+v1.2 - November 29, 2019
+  Made ADDSynthCore into its own mod:
+    Moved Caution block, Music Box, and Music Sheet to ADDSynthCore.
+     - This means that Forge now recognizes them as part of the ADDSynthCore mod
+       and not the Overpowered mod, THE BLOCKS CURRENTLY IN YOUR WORLD ARE INVALID!
+       and Forge will warn you that they don't exist. THIS BREAKS YOUR WORLDS!
+       You should record your Music Boxes in a sepereate [fashion]
+  REMOVED DEPENDANCY TO BAUBLES! You no longer need Baubles to play this mod,
+    however, we do add Unidentified Rings if you do play with Baubles.
+  Improved compatability with other mods:
+    - *FIXED CRASH when you took items out of any Overpowered machine!
+    - Project E: Added missing EMC value for Iron Plate and Gold Plate.
+    - The Advanced Ore Refinery now correctly smelts all Ores from all mods.
+    - The Electric Furnace now correctly smelts ItemStacks with meta instead of just
+      the base Items.
+    - Fixed duplication error when picking up Trophy Blocks or the Electric Furnace.
+    - Gem blocks from other mods are now allowed in the Portal Frames.
+  Added debug features that you can enable in the ADDSynthCore config.
+  Added Auto Shotoff feature to Lasers, when checked, Lasers will automatically
+    switch off after firing, so they don't accept energy until switched back on.
+  Gave Fusion Chamber and Laser Housing machinew new textures.
+  Added a machine classification subtitle to all machines tooltips.
+  Gave HD textures to all tools.
+  Added Scythe tools. Thease are used to chop leaves off of trees very quickly, but
+    they drop items as if you had mined them by hand.
+  Added Yellorium to the materials list.
+  All machines now show how much time must pass to finish work, to run out of energy,
+    or to get full of energy.
+  All Guis in the 1.12 version now behave normally
+    (dark background and shows item tooltips.)
+  Fix Laser Machines not working properly in 1.11 and 1.12 versions.
+  Machines now resume operating when the world is first loaded or when teleporting
+   between dimensions.
+  Fix achievements not being registered / not being saved with the player or world
+    in the 1.10 and 1.11 versions. - Error started in the last version.
+  Fixed Machines now drop the items inside of them when they are broken.
+    - This error probably began occurring since the last update.
+  Accessing the Config through the Client Gui has now been improved and works.
+  Fix the the Music Box being played after the first one was powered.
+  Added Universal Energy Interface:
+    This machine will keep 1,000 units of energy and interface with other Energy
+    APIs so it works with Forge Energy, RF Energy and Tesla energy.
+  The crafting recipe for the Portal Control panel now uses Ender Pearls instead of
+    Advanced Power Cores.
+  This is the first version of the Overpowered mod that will use Forge's built-in
+    version checker. Basically it checks for a file on our server for version info,
+    and if it find info for a newer version then it puts a green marker on the Mods
+    button on the Minecraft main menu. Click it and it shows you the new version
+    changelog and a link on where to download it.
+  Fixed trophy texture glitches.
