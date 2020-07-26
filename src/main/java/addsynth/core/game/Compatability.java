@@ -25,6 +25,7 @@ public final class Compatability {
   //       The annotation required a constant expression for the Mod ID.
   // There's no reason to change this back to extending from a base MOD class.
   // I CAN, but it's better to leave it as static constant values in case I need them again.
+  // I can't use an enum either. Enum fields are not constant expressions.
 
   public static final boolean isAPI(final String modid){
     return modid.equals(BAUBLES.modid) || modid.equals(FORGE_MULTIPART.modid) || modid.equals(REDSTONE_FLUX.modid)    ||
