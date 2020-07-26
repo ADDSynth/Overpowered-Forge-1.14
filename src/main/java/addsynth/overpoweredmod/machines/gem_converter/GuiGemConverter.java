@@ -29,12 +29,9 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
 
   private float work_float;
   private int work_percentage;
-  private int energy_percentage;
 
   private static final int work_percentage_x = 25;
   private static final int work_percentage_y = 88;
-  private static final int energy_percentage_text_x = 156;
-  private static final int energy_percentage_text_y = 28;
   private static final int time_left_y = 99;
 
   private static final int left_button_x = 64;
@@ -50,8 +47,6 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
   private static final int gem_draw_y = 45;
   // private static final int gem_draw_size = 16;
   
-  private final ProgressBar energy_progress_bar = new ProgressBar(148, 39, 17, 42, 204, 21);
-
   private final ProgressBar work_progress_bar = new ProgressBar(43, 89, 122, 5, 40, 199);
   
   public GuiGemConverter(final ContainerGemConverter container, final PlayerInventory player_inventory, final ITextComponent title){
@@ -86,9 +81,6 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
   @Override
   protected final void drawGuiContainerBackgroundLayer(final float partialTicks, final int mouseX, final int mouseY){
     draw_background_texture();
-    // final float energy_float = tile.getEnergyPercentage();
-    // energy_percentage = Math.round(energy_float*100);
-    /// energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
     
     work_float = tile.getWorkTimePercentage();
     work_percentage = (int)Math.floor(work_float*100);
@@ -100,7 +92,6 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     super.draw_title();
-    // draw_text_center(energy_percentage + "%",energy_percentage_text_x,energy_percentage_text_y);
     draw_energy_usage();
     draw_status(tile.getStatus());
     if(tile.getState() == MachineState.RUNNING){
