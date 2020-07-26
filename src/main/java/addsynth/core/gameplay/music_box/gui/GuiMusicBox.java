@@ -14,6 +14,7 @@ import net.minecraft.util.text.ITextComponent;
 public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
 
   private static final ResourceLocation music_box_gui_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/music_box.png");
+  private static final ResourceLocation widget_texture        = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/gui_textures.png");
 
   private final TileMusicBox tile;
 
@@ -75,14 +76,9 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   public static final int note_button_width = 24;
   public static final int note_button_height = 12;
   
-  public static final int mute_button_x = music_grid_x - 27;
-  public static final int mute_button_size = 12;
-
+  private static final int mute_button_x      = music_grid_x - 27;
   private static final int track_instrument_x = music_grid_x - 13;
-  private static final int track_instrument_width = 12;
-  private static final int track_instrument_height = 12;
 
-  private static final ResourceLocation widget_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/gui_textures.png");
   private static final int playhead_x = music_grid_x + Math.round((float)note_button_width / 2) - 8;
   private static final int playhead_y = music_grid_y - 9;
   private static final int playhead_texture_x = 64;
@@ -127,7 +123,14 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
     x = this.guiLeft + mute_button_x;
     for(i = 0; i < MusicGrid.tracks; i++){
       y = this.guiTop + music_grid_y + (i * (track_height));
-      addButton(new MusicButtons.MuteButton(x,y,i,tile));
+      addButton(new MusicButtons.MuteButton(x, y, i, tile));
+    }
+
+    // Track Instrument Buttons
+    x = this.guiLeft + track_instrument_x;
+    for(i = 0; i < MusicGrid.tracks; i++){
+      y = this.guiTop + music_grid_y + (i * track_height);
+      addButton(new MusicButtons.TrackInstrumentButton(x, y, i, tile));
     }
 
     // Note Buttons
@@ -135,7 +138,7 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
       for(i = 0; i < MusicGrid.frames; i++){
         x = this.guiLeft + music_grid_x + (i * track_width);
         y = this.guiTop  + music_grid_y + (j * track_height);
-        addButton(new MusicButtons.NoteButton(x,y,j,i,tile));
+        addButton(new MusicButtons.NoteButton(x, y, j, i, tile));
       }
     }
     // New Instrument Buttons
@@ -146,7 +149,7 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
         if(instrument < MusicGrid.instruments.length){
           x = this.guiLeft + instrument_button_x + (i * instrument_button_size);
           y = this.guiTop  + instrument_button_y + (j * instrument_button_size);
-          addButton(new MusicButtons.InstrumentButton(x,y,instrument));
+          addButton(new MusicButtons.SelectInstrumentButton(x, y, instrument));
         }
       }
     }
@@ -158,7 +161,6 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
     get_variables_from_music_box();
     draw_playhead();
     draw_muted_tracks();
-    draw_instruments();
     draw_instrument_selected();
   }
 
@@ -182,26 +184,6 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
     for(i = 0; i < MusicGrid.tracks; i++){
       if(tile.get_mute(i)){
       }
-    }
-  }
-
-  private final void draw_instruments(){
-    final ResourceLocation instruments_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/instruments.png");
-    this.textureManager.bindTexture(instruments_texture);
-    final int texture_width = 64;
-    final int texture_height = 64;
-    byte i;
-    int instrument;
-    final int x = this.guiLeft + track_instrument_x;
-    int y;
-    int texture_x;
-    int texture_y;
-    for(i = 0; i < MusicGrid.tracks; i++){
-      instrument = tile.get_track_instrument(i);
-      texture_x = (instrument % 4) * texture_width;
-      texture_y = (instrument / 4) * texture_height;
-      y = this.guiTop + music_grid_y + (i * track_height);
-      blit(x, y, track_instrument_width, track_instrument_height, texture_x, texture_y, texture_width, texture_height, 256, 256);
     }
   }
 

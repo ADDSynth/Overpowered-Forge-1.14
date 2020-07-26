@@ -18,7 +18,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 public final class TileMusicBox extends TileBase implements ITickableTileEntity, INamedContainerProvider {
 
   public enum Command {
-    PLAY, CHANGE_TEMPO, CYCLE_NEXT_DIRECTION, CHANGE_TRACK_INSTRUMENT, TOGGLE_MUTE;
+    PLAY, CHANGE_TEMPO, CYCLE_NEXT_DIRECTION, TOGGLE_MUTE;
     public static final Command[] value = Command.values();
   }
 
@@ -49,9 +49,9 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity,
     update_data();
   }
 
-  public final void change_track_instrument(byte track){
+  public final void change_track_instrument(final byte track, final byte instrument){
     if(music_grid != null){
-      music_grid.change_tack_instrument(track);
+      music_grid.change_tack_instrument(track, instrument);
       update_data();
     }
   }
@@ -63,9 +63,9 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity,
     }
   }
 
-  public final void set_note(final byte track, final byte frame, final byte pitch, final byte instrument){
+  public final void set_note(final byte track, final byte frame, final byte pitch){
     if(music_grid != null){
-      music_grid.set_note(track, frame, pitch, instrument);
+      music_grid.set_note(track, frame, pitch);
       update_data();
     }
   }
@@ -151,7 +151,7 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity,
    * but I decided to have each Music Box's tempo's independant of each other so they can have different tempos.
    * So your song can change the tempo mid-song.
    */
-  private final void update_tempo_of_song(){ // DELETE, OPTIMIZE all versions!
+  private final void update_tempo_of_song(){
   }
 
   /**

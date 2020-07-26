@@ -1,6 +1,7 @@
 package addsynth.core.gameplay;
 
 import addsynth.core.ADDSynthCore;
+import addsynth.core.gameplay.music_box.network_messages.ChangeInstrumentMessage;
 import addsynth.core.gameplay.music_box.network_messages.MusicBoxMessage;
 import addsynth.core.gameplay.music_box.network_messages.NoteMessage;
 import net.minecraft.util.ResourceLocation;
@@ -17,7 +18,23 @@ public final class NetworkHandler {
   );
 
   public static final void registerMessages(){
-    INSTANCE.registerMessage(0,MusicBoxMessage.class,MusicBoxMessage::encode,MusicBoxMessage::decode,MusicBoxMessage::handle);
-    INSTANCE.registerMessage(1,NoteMessage.class,NoteMessage::encode,NoteMessage::decode,NoteMessage::handle);
+    INSTANCE.registerMessage(0,
+      MusicBoxMessage.class,
+      MusicBoxMessage::encode,
+      MusicBoxMessage::decode,
+      MusicBoxMessage::handle
+    );
+    INSTANCE.registerMessage(1,
+      NoteMessage.class,
+      NoteMessage::encode,
+      NoteMessage::decode,
+      NoteMessage::handle
+    );
+    INSTANCE.registerMessage(2,
+      ChangeInstrumentMessage.class,
+      ChangeInstrumentMessage::encode,
+      ChangeInstrumentMessage::decode,
+      ChangeInstrumentMessage::handle
+    );
   }
 }

@@ -54,7 +54,6 @@ public final class MusicBoxMessage {
             case PLAY:                    music_box.play(false); break;
             case CHANGE_TEMPO:            music_box.change_tempo(message.info > 0); break;
             case CYCLE_NEXT_DIRECTION:    music_box.increment_next_direction(); break;
-            case CHANGE_TRACK_INSTRUMENT: music_box.change_track_instrument(message.info); break;
             case TOGGLE_MUTE:             music_box.toggle_mute(message.info); break;
             }
           }

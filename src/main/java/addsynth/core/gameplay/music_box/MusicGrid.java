@@ -137,11 +137,10 @@ public final class MusicGrid {
     return getNote(track, frame).on;
   }
 
-  public final void set_note(final byte track, final byte frame, byte pitch, byte instrument){
+  public final void set_note(final byte track, final byte frame, byte pitch){
     this.track[track].note[frame].on = true;
     this.track[track].note[frame].pitch = pitch;
     this.track[track].note[frame].volume = 1.0f;
-    this.track[track].instrument = instrument;
   }
 
   public final void disable_note(final byte track, final byte frame){
@@ -152,8 +151,8 @@ public final class MusicGrid {
     return getNote(track, frame).pitch;
   }
 
-  public final void change_tack_instrument(final byte track){
-    this.track[track].instrument = (byte)((this.track[track].instrument + 1) % instruments.length);
+  public final void change_tack_instrument(final byte track, final byte instrument){
+    this.track[track].instrument = instrument;
   }
 
   public final byte get_track_instrument(final byte track){

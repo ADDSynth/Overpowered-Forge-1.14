@@ -4,6 +4,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.gameplay.music_box.TileMusicBox;
+import addsynth.core.gameplay.music_box.network_messages.ChangeInstrumentMessage;
 import addsynth.core.gameplay.music_box.network_messages.MusicBoxMessage;
 import addsynth.core.gameplay.music_box.network_messages.NoteMessage;
 import addsynth.core.gui.objects.AdjustableButton;
@@ -15,6 +16,9 @@ import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.util.ResourceLocation;
 
 public final class MusicButtons {
+
+  private static final ResourceLocation instruments_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/instruments.png");
+  private static final int instrument_texture_size = 64;
 
   public static final class PlayButton extends AdjustableButton {
 
@@ -85,8 +89,8 @@ public final class MusicButtons {
   public static final class MuteButton extends AbstractButton {
   
     private static final ResourceLocation texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/gui_textures.png");
-    private static final int texture_width = 24;
-    private static final int texture_height = 24;
+    private static final int button_size = 12;
+    private static final int texture_size = 24;
     private static final int texture_x = 64;
     private static final int texture_y = 32;
   
@@ -95,7 +99,7 @@ public final class MusicButtons {
     private final byte track;
 
     public MuteButton(final int x, final int y, final byte track, final TileMusicBox tile){
-      super(x, y, GuiMusicBox.mute_button_size, GuiMusicBox.mute_button_size, "");
+      super(x, y, button_size, button_size, "");
       this.tile = tile;
       this.track = track;
     }
@@ -111,8 +115,7 @@ public final class MusicButtons {
       GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
       GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
   
-      blit(x, y, GuiMusicBox.mute_button_size, GuiMusicBox.mute_button_size,
-        mute ? texture_x + 24 : texture_x, texture_y, texture_width, texture_height, 256, 256);
+      blit(x, y, button_size, button_size, mute ? texture_x + 24 : texture_x, texture_y, texture_size, texture_size, 256, 256);
     }
   
     @Override
@@ -126,23 +129,58 @@ public final class MusicButtons {
   
   }
 
-  public static final class InstrumentButton extends AbstractButton {
+  public static final class TrackInstrumentButton extends AbstractButton {
+
+    private static final int button_size = 12;
+
+    private final TileMusicBox tile;
+    private final byte track;
+
+    public TrackInstrumentButton(final int x, final int y, final byte track, final TileMusicBox tile){
+      super(x, y, button_size, button_size, "");
+      this.track = track;
+      this.tile = tile;
+    }
+
+    @Override
+    public final void renderButton(final int mouse_x, final int mouse_y, final float partial_ticks){
+      final int instrument = tile.get_track_instrument(track);
+      final int texture_x = instrument_texture_size * (instrument % 4);
+      final int texture_y = instrument_texture_size * (instrument / 4);
+    
+      Minecraft.getInstance().getTextureManager().bindTexture(instruments_texture);
+      GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+
+      GlStateManager.enableBlend();
+      GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+      GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
+
+      blit(x, y, button_size, button_size, texture_x, texture_y, instrument_texture_size, instrument_texture_size, 256, 256);
+    }
   
-    private static final ResourceLocation instruments_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/instruments.png");
-    private static final int texture_width = 64;
-    private static final int texture_height = 64;
-    private static final int button_width = 16;
-    private static final int button_height = 16;
+    @Override
+    public void onPress(){
+      NetworkHandler.INSTANCE.sendToServer(new ChangeInstrumentMessage(tile.getPos(), track, GuiMusicBox.instrument_selected));
+    }
+
+    @Override
+    public final void playDownSound(final SoundHandler p_playDownSound_1_){
+    }
+  }
+
+  public static final class SelectInstrumentButton extends AbstractButton {
+  
+    private static final int button_size = 16;
 
     private final int instrument;
     private final int texture_x;
     private final int texture_y;
 
-    public InstrumentButton(final int x, final int y, final int instrument){
-      super(x,y,button_width,button_height,"");
+    public SelectInstrumentButton(final int x, final int y, final int instrument){
+      super(x, y, button_size, button_size, "");
       this.instrument = instrument;
-      texture_x = texture_width * (instrument % 4);
-      texture_y = texture_height * (instrument / 4);
+      texture_x = instrument_texture_size * (instrument % 4);
+      texture_y = instrument_texture_size * (instrument / 4);
     }
   
     @Override
@@ -154,7 +192,7 @@ public final class MusicButtons {
       GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
       GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 
-      blit(x, y, button_width, button_height, texture_x, texture_y, texture_width, texture_height, 256, 256);
+      blit(x, y, button_size, button_size, texture_x, texture_y, instrument_texture_size, instrument_texture_size, 256, 256);
     }
   
     @Override
@@ -235,12 +273,12 @@ public final class MusicButtons {
     }
 
     private final void set_note(){
-      NetworkHandler.INSTANCE.sendToServer(new NoteMessage(tile.getPos(),frame,track,GuiMusicBox.instrument_selected,GuiMusicBox.note_selected,1.0f));
+      NetworkHandler.INSTANCE.sendToServer(new NoteMessage(tile.getPos(), frame, track, GuiMusicBox.note_selected, 1.0f));
     }
 
     private final void delete_note(){
       if(visible == true){
-        NetworkHandler.INSTANCE.sendToServer(new NoteMessage(tile.getPos(),frame, track));
+        NetworkHandler.INSTANCE.sendToServer(new NoteMessage(tile.getPos(), frame, track));
       }
     }
 

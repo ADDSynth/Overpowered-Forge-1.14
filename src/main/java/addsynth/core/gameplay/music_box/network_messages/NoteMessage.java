@@ -15,16 +15,14 @@ public final class NoteMessage {
   private byte frame;
   private byte track;
   private boolean on;
-  private byte instrument;
   private byte note;
   private float volume;
 
-  public NoteMessage(BlockPos position, byte frame, byte track, byte instrument, byte note, float volume){
+  public NoteMessage(BlockPos position, byte frame, byte track, byte note, float volume){
     this.position = position;
     this.frame = frame;
     this.track = track;
     this.on = true;
-    this.instrument = instrument;
     this.note = note;
     this.volume = volume;
   }
@@ -43,7 +41,6 @@ public final class NoteMessage {
     buf.writeBoolean(message.on);
     buf.writeByte(message.frame);
     buf.writeByte(message.track);
-    buf.writeByte(message.instrument);
     buf.writeByte(message.note);
     buf.writeFloat(message.volume);
   }
@@ -51,7 +48,7 @@ public final class NoteMessage {
   public static final NoteMessage decode(final PacketBuffer buf){
     final BlockPos position = new BlockPos(buf.readInt(),buf.readInt(),buf.readInt());
     if(buf.readBoolean()){
-      return new NoteMessage(position, buf.readByte(), buf.readByte(), buf.readByte(), buf.readByte(), buf.readFloat());
+      return new NoteMessage(position, buf.readByte(), buf.readByte(), buf.readByte(), buf.readFloat());
     }
     return new NoteMessage(position, buf.readByte(), buf.readByte());
   }
@@ -65,7 +62,7 @@ public final class NoteMessage {
           final TileMusicBox tile = MinecraftUtility.getTileEntity(message.position,world,TileMusicBox.class);
           if(tile != null){
             if(message.on){
-              tile.set_note(message.track, message.frame, message.note, message.instrument);
+              tile.set_note(message.track, message.frame, message.note);
             }
             else{
               tile.disable_note(message.track, message.frame);
