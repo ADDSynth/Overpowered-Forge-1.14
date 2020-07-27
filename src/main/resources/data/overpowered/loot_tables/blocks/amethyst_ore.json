@@ -9,10 +9,6 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "overpowered:amethyst"
-            },
-            {
-              "type": "minecraft:item",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -29,6 +25,15 @@
                 }
               ],
               "name": "overpowered:amethyst_ore"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "function": "minecraft:explosion_decay"
+                }
+              ],
+              "name": "overpowered:amethyst"
             }
           ]
         }
