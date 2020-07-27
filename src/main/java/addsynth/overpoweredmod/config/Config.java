@@ -13,6 +13,8 @@ public final class Config {
   // https://www.minecraftforge.net/forum/topic/72021-1142-how-does-config-work-in-forge-for-1142/
   // https://github.com/Cadiboo/Example-Mod/commit/43db50e176d758ade2338764d7e2fe1b63aae7dd#diff-cb1dc14ae764daf38ef877fabbe0d72aR37
 
+  public static ForgeConfigSpec.BooleanValue blend_working_item;
+
   public static ForgeConfigSpec.ConfigValue<Integer> unknown_dimension_id;
   public static ForgeConfigSpec.ConfigValue<Integer> weird_biome_id;
 
@@ -98,6 +100,10 @@ public final class Config {
   public Config(final ForgeConfigSpec.Builder builder){
 
     builder.push("Main");
+
+    builder.push("Client");
+    blend_working_item = builder.define("Blend Center Item in Guis", true);
+    builder.pop();
 
     // IDs
     builder.push("IDs");

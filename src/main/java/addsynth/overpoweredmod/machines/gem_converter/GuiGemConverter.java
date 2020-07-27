@@ -3,8 +3,8 @@ package addsynth.overpoweredmod.machines.gem_converter;
 import addsynth.core.gui.objects.AdjustableButton;
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
-import addsynth.energy.tiles.machines.MachineState;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Gems;
 import net.minecraft.entity.player.PlayerInventory;
@@ -94,11 +94,16 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
     super.draw_title();
     draw_energy_usage();
     draw_status(tile.getStatus());
-    if(tile.getState() == MachineState.RUNNING){
-      final ItemStack s1 = tile.getWorkingInventory().getStackInSlot(0);
+    
+    final ItemStack s1 = tile.getWorkingInventory().getStackInSlot(0);
+    if(Config.blend_working_item.get()){
       final ItemStack s2 = gem[tile.getConvertingStack()];
       blendItemStacks(s1, s2, 76, 45, work_float);
     }
+    else{
+      drawItemStack(s1, 76, 45);
+    }
+    
     draw_text_center(work_percentage + "%", work_percentage_x, work_percentage_y);
     draw_time_left(tile, time_left_y);
   }

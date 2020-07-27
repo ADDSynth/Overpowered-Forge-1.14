@@ -2,8 +2,8 @@ package addsynth.overpoweredmod.machines.inverter;
 
 import addsynth.core.gui.objects.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
-import addsynth.energy.tiles.machines.MachineState;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.config.Config;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -37,11 +37,16 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
     draw_title();
     draw_energy_usage();
     draw_status(tile.getStatus());
-    if(tile.getState() == MachineState.RUNNING){
-      final ItemStack s1 = tile.getWorkingInventory().getStackInSlot(0);
+    
+    final ItemStack s1 = tile.getWorkingInventory().getStackInSlot(0);
+    if(Config.blend_working_item.get()){
       final ItemStack s2 = TileInverter.getInverted(s1);
       blendItemStacks(s1, s2, 77, 44, work_float);
     }
+    else{
+      drawItemStack(s1, 77, 44);
+    }
+    
     draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
     draw_time_left(tile, 93);
   }
