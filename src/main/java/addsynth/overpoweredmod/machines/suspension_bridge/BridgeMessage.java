@@ -20,7 +20,7 @@ public enum BridgeMessage {
   private final String formatting_code;
   private final boolean valid;
   
-  BridgeMessage(final TextFormatting code, final String translation_key, final boolean valid){
+  private BridgeMessage(final TextFormatting code, final String translation_key, final boolean valid){
     this.translation_key = translation_key;
     this.formatting_code = code != null ? code.toString() : "";
     this.valid = valid;

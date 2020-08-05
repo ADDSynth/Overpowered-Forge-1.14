@@ -14,7 +14,7 @@ public enum MachineState {
 
   private final String translation_key;
 
-  MachineState(final String translation_key){
+  private MachineState(final String translation_key){
     this.translation_key = translation_key;
   }
 
