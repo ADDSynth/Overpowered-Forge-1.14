@@ -77,10 +77,13 @@ public final class RecipeUtil {
     if(furnace_recipes_loaded() == true){ return true;}
     update_furnace_recipes();
     if(furnace_recipes_loaded() == false){
-      ADDSynthCore.log.error(new RuntimeException(
-        "Attempted to access Furnace Recipes at an inappropiate time. Recipes should automatically update when "+
-        "recipes are reloaded, such as when joining worlds."));
-      Thread.dumpStack();
+      // FEATURE: In the future, when I figure out how to determine if we're in a dev environment,
+      //          probably by calling JavaUtils.classExists("Minecraft"), throw this error ONLY if
+      //          we're in a development environment. Add this boolean method to the ForgeUtils class.
+      // ADDSynthCore.log.error(new RuntimeException(
+      //   "Attempted to access Furnace Recipes at an inappropiate time. Recipes should automatically update when "+
+      //   "recipes are reloaded, such as when joining worlds."));
+      // Thread.dumpStack();
       return false;
     }
     return true;
