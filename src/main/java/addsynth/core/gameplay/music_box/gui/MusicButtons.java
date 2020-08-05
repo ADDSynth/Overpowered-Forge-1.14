@@ -70,7 +70,7 @@ public final class MusicButtons {
     };
   
     public NextDirectionButton(int xIn, int yIn, int widthIn, TileMusicBox tile){
-      super(xIn, yIn, widthIn, 14, "");
+      super(xIn, yIn, widthIn, 14);
       this.tile = tile;
     }
 

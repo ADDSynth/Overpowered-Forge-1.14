@@ -33,7 +33,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
     private final TileUniversalEnergyTransfer tile;
 
     public CycleTransferModeButton(int xIn, int yIn, TileUniversalEnergyTransfer tile){
-      super(xIn, yIn, button_width, 16, tile.get_transfer_mode().toString());
+      super(xIn, yIn, button_width, 16);
       this.tile = tile;
     }
 

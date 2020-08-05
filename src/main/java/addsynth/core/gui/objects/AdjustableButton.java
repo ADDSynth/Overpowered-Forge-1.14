@@ -8,10 +8,26 @@ import net.minecraft.client.gui.widget.button.AbstractButton;
 
 public abstract class AdjustableButton extends AbstractButton {
 
+  /**
+   * This constructor passes an empty string to the button. Only use this if you intend to
+   * change the button text on a per-frame basis, such as responding to changes to a TileEntity.
+   * @param x
+   * @param y
+   * @param width
+   * @param height
+   */
   public AdjustableButton(int x, int y, int width, int height){
     super(x, y, width, height, "");
   }
 
+  /**
+   * Only use this constructor if the button text remains static.
+   * @param x
+   * @param y
+   * @param width
+   * @param height
+   * @param buttonText
+   */
   public AdjustableButton(int x, int y, int width, int height, @Nonnull String buttonText){
     super(x, y, width, height, buttonText);
   }
