@@ -33,9 +33,9 @@ public class OreMaterial extends BaseMaterial {
   }
 
   /** Specific Type Material */
-  protected OreMaterial(final String name, final Item item, final Block block, final MiningStrength strength, final ItemGroup group){
+  protected OreMaterial(final String name, final Item item, final Block block, final MiningStrength strength, final ItemGroup group, final int min_experience, final int max_experience){
     super(true, name, item, block);
-    this.ore = new OreBlock(name+"_ore", strength, group);
+    this.ore = new OreBlock(name+"_ore", strength, group, min_experience, max_experience);
   }
 
 }

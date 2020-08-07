@@ -14,11 +14,11 @@ public final class Gem extends OreMaterial {
   public final Item shard;
 
   /** Custom Gem Material */
-  public Gem(final String unlocalized_name, final MaterialColor color){
+  public Gem(final String unlocalized_name, final MaterialColor color, final int min_experience, final int max_experience){
     super(unlocalized_name,
       new CoreItem(unlocalized_name, true),
       new GemBlock(unlocalized_name+"_block", color),
-      MiningStrength.IRON, CreativeTabs.gems_creative_tab);
+      MiningStrength.IRON, CreativeTabs.gems_creative_tab, min_experience, max_experience);
     this.gem = this.item;
     this.shard = new CoreItem(unlocalized_name+"_shard", true);
   }

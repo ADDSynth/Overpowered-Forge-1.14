@@ -5,6 +5,8 @@ v1.3.1 - TBD
    - Also fixes not being able to silk-touch Gem Ore blocks.
    - Only in Minecraft 1.14 and 1.15 versions.
   Added a config option to control blending effects in certain machines.
+  Fixed, Gem Ores now drop experience again.
+   - Only in Minecraft 1.14 and 1.15 versions.
 
 
 

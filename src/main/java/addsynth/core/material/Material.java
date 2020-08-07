@@ -28,15 +28,15 @@ public final class Material {
   public static final Gem         QUARTZ       = new Gem(        "quartz",   Items.QUARTZ,       Blocks.QUARTZ_BLOCK,  Blocks.NETHER_QUARTZ_ORE);
 
   // gems
-  public static final Gem AMETHYST  = new Gem("amethyst",  MaterialColor.MAGENTA);
-  public static final Gem AMBER     = new Gem("amber",     MaterialColor.ADOBE);
-  public static final Gem CITRINE   = new Gem("citrine",   MaterialColor.YELLOW);
-  public static final Gem MALACHITE = new Gem("malachite", MaterialColor.DIAMOND);
-  public static final Gem PERIDOT   = new Gem("peridot",   MaterialColor.GRASS);
-  public static final Gem RUBY      = new Gem("ruby",      MaterialColor.TNT);
-  public static final Gem SAPPHIRE  = new Gem("sapphire",  MaterialColor.WATER);
-  public static final Gem TANZANITE = new Gem("tanzanite", MaterialColor.PURPLE);
-  public static final Gem TOPAZ     = new Gem("topaz",     MaterialColor.ADOBE);
+  public static final Gem AMETHYST  = new Gem("amethyst",  MaterialColor.MAGENTA, 3, 7);
+  public static final Gem AMBER     = new Gem("amber",     MaterialColor.ADOBE,   3, 7);
+  public static final Gem CITRINE   = new Gem("citrine",   MaterialColor.YELLOW,  3, 7);
+  public static final Gem MALACHITE = new Gem("malachite", MaterialColor.DIAMOND, 3, 7);
+  public static final Gem PERIDOT   = new Gem("peridot",   MaterialColor.GRASS,   3, 7);
+  public static final Gem RUBY      = new Gem("ruby",      MaterialColor.TNT,     3, 7);
+  public static final Gem SAPPHIRE  = new Gem("sapphire",  MaterialColor.WATER,   3, 7);
+  public static final Gem TANZANITE = new Gem("tanzanite", MaterialColor.PURPLE,  3, 7);
+  public static final Gem TOPAZ     = new Gem("topaz",     MaterialColor.ADOBE,   3, 7);
   
   // MapColor Quartz is slightly darker than Cloth or Snow
   /* Brightness Scale:

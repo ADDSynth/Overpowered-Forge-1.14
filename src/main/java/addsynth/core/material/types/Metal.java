@@ -34,7 +34,7 @@ public class Metal extends OreMaterial {
   /** Custom Metal */
   public Metal(final String unlocalized_name, final MaterialColor color, final MiningStrength strength){
     super(unlocalized_name, new CoreItem(unlocalized_name+"_ingot", false), new MetalBlock(unlocalized_name+"_block", color),
-      strength, CreativeTabs.metals_creative_tab);
+      strength, CreativeTabs.metals_creative_tab, 0, 0);
     this.ingot = this.item;
     this.nugget = new CoreItem(unlocalized_name+"_nugget", false);
     this.plating = new CoreItem(unlocalized_name+"_plate", false);
