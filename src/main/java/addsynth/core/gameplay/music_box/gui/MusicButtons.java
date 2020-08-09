@@ -60,7 +60,7 @@ public final class MusicButtons {
   public static final class NextDirectionButton extends AdjustableButton {
 
     private final TileMusicBox tile;
-    private static final String[] face = new String[] {
+    private final String[] face = new String[] {
       StringUtil.translate("gui.addsynthcore.direction.down"),
       StringUtil.translate("gui.addsynthcore.direction.up"),
       StringUtil.translate("gui.addsynthcore.direction.north"),
