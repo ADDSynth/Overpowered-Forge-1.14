@@ -1,14 +1,15 @@
 v1.3.1 - TBD
   No longer changes Music Box track instrument when you set notes.
    - Change track instrument by clicking the instrument button beside each track.
+  Added a config option to control blending effects in certain machines.
+  Added Gem Converter advancements.
+For Minecraft 1.14 and 1.15 versions Only:
   Fix warnings in console log relating to inaccessible block loot table entries.
    - Also fixes not being able to silk-touch Gem Ore blocks.
-   - Only in Minecraft 1.14 and 1.15 versions.
-  Added a config option to control blending effects in certain machines.
-  Fixed, Gem Ores now drop experience again.
-   - Only in Minecraft 1.14 and 1.15 versions.
-  Added Gem Converter advancements.
+  Fixed: Gem Ores now drop experience again.
   Fix description for Void Crystal advancement not being translated.
+  Fixed problems using the Music Sheet on certain sides of the Music Box.
+
 
 
 v1.3 - July 1, 2020
