@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "Boş blok",
 "advancements.overpowered.null_block.description": "boş blok yapmak",
 
+"advancements.overpowered.gem_converter.title": "Gem Dönüştürücü",
+"advancements.overpowered.gem_converter.description": "Bir Mücevher Dönüştürücü oluşturun",
+"advancements.overpowered.convert_a_thousand_gems.title": "uzman dönüştürücü",
+"advancements.overpowered.convert_a_thousand_gems.description": "Bin mücevheri dönüştürün.",
+
 "advancements.overpowered.craft_laser.title": "Lazer",
 "advancements.overpowered.craft_laser.description": "Bir lazer makinesi hazırlayın.",
 "advancements.overpowered.fire_laser.title": "Lazer Ateşi",

@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "Нулевой блок",
 "advancements.overpowered.null_block.description": "Сделать нулевой блок",
 
+"advancements.overpowered.gem_converter.title": "Конвертер драгоценных камней",
+"advancements.overpowered.gem_converter.description": "Создать конвертер драгоценных камней",
+"advancements.overpowered.convert_a_thousand_gems.title": "экспертный конвертер",
+"advancements.overpowered.convert_a_thousand_gems.description": "Превратите тысячу драгоценных камней.",
+
 "advancements.overpowered.craft_laser.title": "лазер",
 "advancements.overpowered.craft_laser.description": "Изготовить лазерный станок.",
 "advancements.overpowered.fire_laser.title": "Лазерный Огонь",

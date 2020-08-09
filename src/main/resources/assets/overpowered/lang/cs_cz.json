@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "Nulový blok",
 "advancements.overpowered.null_block.description": "vytvořte nulový blok",
 
+"advancements.overpowered.gem_converter.title": "Převodník drahokamů",
+"advancements.overpowered.gem_converter.description": "Vytvořte převaděč drahokamů",
+"advancements.overpowered.convert_a_thousand_gems.title": "Hlavní převodník",
+"advancements.overpowered.convert_a_thousand_gems.description": "Převeďte tisíc drahokamů.",
+
 "advancements.overpowered.craft_laser.title": "Laser",
 "advancements.overpowered.craft_laser.description": "Vytvořte laserový stroj.",
 "advancements.overpowered.fire_laser.title": "Laserová aktivita",

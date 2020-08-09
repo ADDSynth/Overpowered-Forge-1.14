@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "Bloque nulo",
 "advancements.overpowered.null_block.description": "Hacer un bloque nulo",
 
+"advancements.overpowered.gem_converter.title": "Convertidor de gemas",
+"advancements.overpowered.gem_converter.description": "Crea un convertidor de gemas",
+"advancements.overpowered.convert_a_thousand_gems.title": "Convertidor maestro",
+"advancements.overpowered.convert_a_thousand_gems.description": "Convierte mil gemas.",
+
 "advancements.overpowered.craft_laser.title": "Láser",
 "advancements.overpowered.craft_laser.description": "Crea una máquina láser.",
 "advancements.overpowered.fire_laser.title": "Actividad láser",

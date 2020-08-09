@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "பூஜ்ய பிளாக்",
 "advancements.overpowered.null_block.description": "ஒரு பூஜ்ய பிளாக் செய்யுங்கள்",
 
+"advancements.overpowered.gem_converter.title": "ஜெம் மாற்றி",
+"advancements.overpowered.gem_converter.description": "ஒரு மாணிக்க மாற்றி கைவினை",
+"advancements.overpowered.convert_a_thousand_gems.title": "நிபுணர் மாற்றி",
+"advancements.overpowered.convert_a_thousand_gems.description": "ஆயிரம் ரத்தினங்களை மாற்றவும்.",
+
 "advancements.overpowered.craft_laser.title": "லேசர்",
 "advancements.overpowered.craft_laser.description": "லேசர் இயந்திரத்தை உருவாக்குங்கள்.",
 "advancements.overpowered.fire_laser.title": "லேசர் தீ",

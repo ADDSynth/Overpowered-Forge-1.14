@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "Nul blok",
 "advancements.overpowered.null_block.description": "maak een nul blok",
 
+"advancements.overpowered.gem_converter.title": "Edelsteen Converter",
+"advancements.overpowered.gem_converter.description": "Maak een edelsteen convertor",
+"advancements.overpowered.convert_a_thousand_gems.title": "deskundige converter",
+"advancements.overpowered.convert_a_thousand_gems.description": "Verander duizend edelstenen.",
+
 "advancements.overpowered.craft_laser.title": "Laser",
 "advancements.overpowered.craft_laser.description": "Maak een lasermachine.",
 "advancements.overpowered.fire_laser.title": "Laseractiviteit",

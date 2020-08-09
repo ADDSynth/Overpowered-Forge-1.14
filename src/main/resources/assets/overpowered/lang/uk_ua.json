@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "нульовий блок",
 "advancements.overpowered.null_block.description": "Зробіть нульовий блок",
 
+"advancements.overpowered.gem_converter.title": "перетворювач дорогоцінних каменів",
+"advancements.overpowered.gem_converter.description": "зробити перетворювач дорогоцінних каменів",
+"advancements.overpowered.convert_a_thousand_gems.title": "експертний конвертер",
+"advancements.overpowered.convert_a_thousand_gems.description": "Перетворити тисячу дорогоцінних каменів.",
+
 "advancements.overpowered.craft_laser.title": "Лазерний",
 "advancements.overpowered.craft_laser.description": "Майстер лазерної машини.",
 "advancements.overpowered.fire_laser.title": "Лазерний вогонь",

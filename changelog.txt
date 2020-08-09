@@ -7,6 +7,7 @@ v1.3.1 - TBD
   Added a config option to control blending effects in certain machines.
   Fixed, Gem Ores now drop experience again.
    - Only in Minecraft 1.14 and 1.15 versions.
+  Added Gem Converter advancements.
 
 
 

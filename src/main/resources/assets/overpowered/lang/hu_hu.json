@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "nulla blokk",
 "advancements.overpowered.null_block.description": "csinálj egy nulla blokkot",
 
+"advancements.overpowered.gem_converter.title": "drágakő konverter",
+"advancements.overpowered.gem_converter.description": "Készítsen egy Gem átalakítót",
+"advancements.overpowered.convert_a_thousand_gems.title": "szakértő konverter",
+"advancements.overpowered.convert_a_thousand_gems.description": "Konvertálj ezer drágakövet.",
+
 "advancements.overpowered.craft_laser.title": "Lézer",
 "advancements.overpowered.craft_laser.description": "Készítsen egy lézergépet.",
 "advancements.overpowered.fire_laser.title": "Lézeres aktivitás",

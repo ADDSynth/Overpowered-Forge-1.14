@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "بلوك الظلام",
 "advancements.overpowered.null_block.description": "جعل كتلة فارغة",
 
+"advancements.overpowered.gem_converter.title": "محول الأحجار الكريمة",
+"advancements.overpowered.gem_converter.description": "صياغة محول جوهرة",
+"advancements.overpowered.convert_a_thousand_gems.title": "المحول الرئيسي",
+"advancements.overpowered.convert_a_thousand_gems.description": "تحويل ألف جوهرة",
+
 "advancements.overpowered.craft_laser.title": "الليزر",
 "advancements.overpowered.craft_laser.description": "اصنع جهاز ليزر.",
 "advancements.overpowered.fire_laser.title": "نشاط الليزر",

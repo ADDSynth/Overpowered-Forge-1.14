@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "μηδενικό μπλοκ",
 "advancements.overpowered.null_block.description": "κάντε ένα μηδενικό μπλοκ",
 
+"advancements.overpowered.gem_converter.title": "Μετατροπέας πολύτιμων λίθων",
+"advancements.overpowered.gem_converter.description": "Δημιουργήστε έναν μετατροπέα πολύτιμων λίθων",
+"advancements.overpowered.convert_a_thousand_gems.title": "Κύριος μετατροπέας",
+"advancements.overpowered.convert_a_thousand_gems.description": "Μετατρέψτε χίλιους πολύτιμους λίθους.",
+
 "advancements.overpowered.craft_laser.title": "Λέιζερ",
 "advancements.overpowered.craft_laser.description": "Δημιουργήστε μια μηχανή λέιζερ.",
 "advancements.overpowered.fire_laser.title": "Δραστηριότητα λέιζερ",

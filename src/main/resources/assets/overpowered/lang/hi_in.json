@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "शून्य ब्लॉक",
 "advancements.overpowered.null_block.description": "एक शून्य ब्लॉक बनाओ",
 
+"advancements.overpowered.gem_converter.title": "जेम कन्वर्टर",
+"advancements.overpowered.gem_converter.description": "एक रत्न परिवर्तक शिल्प",
+"advancements.overpowered.convert_a_thousand_gems.title": "मास्टर कनवर्टर",
+"advancements.overpowered.convert_a_thousand_gems.description": "एक हजार रत्नों को रूपांतरित करें.",
+
 "advancements.overpowered.craft_laser.title": "लेज़र",
 "advancements.overpowered.craft_laser.description": "एक लेज़र मशीन को क्राफ्ट करें।",
 "advancements.overpowered.fire_laser.title": "लेजर गतिविधि",

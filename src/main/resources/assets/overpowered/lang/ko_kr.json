@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "널 블록",
 "advancements.overpowered.null_block.description": "널 블럭 만들기",
 
+"advancements.overpowered.gem_converter.title": "보석 변환기",
+"advancements.overpowered.gem_converter.description": "보석 변환기를 만들다",
+"advancements.overpowered.convert_a_thousand_gems.title": "마스터 변환기",
+"advancements.overpowered.convert_a_thousand_gems.description": "천 보석을 변환.",
+
 "advancements.overpowered.craft_laser.title": "레이저",
 "advancements.overpowered.craft_laser.description": "레이저 기계를 만드십시오.",
 "advancements.overpowered.fire_laser.title": "레이저 활동",

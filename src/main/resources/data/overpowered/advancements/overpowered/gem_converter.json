@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:gem_converter"
+    },
+    "title": {
+      "translate": "advancements.overpowered.gem_converter.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.gem_converter.description"
+    }
+  },
+  "parent": "overpowered:overpowered/overpowered_gem",
+  "criteria": {
+    "gem_converter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:gem_converter"
+          }
+        ]
+      }
+    }
+  }
+}

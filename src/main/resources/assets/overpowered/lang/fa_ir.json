@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "بلوک صفر",
 "advancements.overpowered.null_block.description": "یک بلوک خالی ایجاد کنید",
 
+"advancements.overpowered.gem_converter.title": "مبدل گوهر",
+"advancements.overpowered.gem_converter.description": "مبدل گوهر را تهیه کنید",
+"advancements.overpowered.convert_a_thousand_gems.title": "استاد مبدل",
+"advancements.overpowered.convert_a_thousand_gems.description": "تبدیل هزار جواهرات.",
+
 "advancements.overpowered.craft_laser.title": "لیزر",
 "advancements.overpowered.craft_laser.description": "ساخت دستگاه لیزر.",
 "advancements.overpowered.fire_laser.title": "آتش لیزر",

@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "bloc null",
 "advancements.overpowered.null_block.description": "Faceți un bloc Null",
 
+"advancements.overpowered.gem_converter.title": "Convertor de bijuterii",
+"advancements.overpowered.gem_converter.description": "Artizanat un convertor de bijuterii",
+"advancements.overpowered.convert_a_thousand_gems.title": "convertor principal",
+"advancements.overpowered.convert_a_thousand_gems.description": "Convertiți o mie de pietre.",
+
 "advancements.overpowered.craft_laser.title": "Laser",
 "advancements.overpowered.craft_laser.description": "Artizanat o mașină laser.",
 "advancements.overpowered.fire_laser.title": "Activitatea cu laser",

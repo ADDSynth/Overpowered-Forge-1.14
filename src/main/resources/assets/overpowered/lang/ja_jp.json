@@ -274,6 +274,11 @@
 "advancements.overpowered.null_block.title": "ヌルブロック",
 "advancements.overpowered.null_block.description": "ヌルをブロックする",
 
+"advancements.overpowered.gem_converter.title": "宝石コンバーター",
+"advancements.overpowered.gem_converter.description": "宝石コンバーターを作る",
+"advancements.overpowered.convert_a_thousand_gems.title": "マスターコンバーター",
+"advancements.overpowered.convert_a_thousand_gems.description": "千の宝石を変換する",
+
 "advancements.overpowered.craft_laser.title": "レーザ",
 "advancements.overpowered.craft_laser.description": "レーザー加工機を作ります。",
 "advancements.overpowered.fire_laser.title": "レーザー活動",
