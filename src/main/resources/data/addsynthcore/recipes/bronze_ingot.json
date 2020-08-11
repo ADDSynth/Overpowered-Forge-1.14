@@ -1,11 +1,13 @@
 {
-  "type": "addsynth_energy:compressor",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {"tag": "forge:ingots/tin"},
+    {"tag": "forge:ingots/copper"},
+    {"tag": "forge:ingots/copper"},
     {"tag": "forge:ingots/copper"}
   ],
   "result": {
     "item": "overpowered:bronze_ingot",
-    "count": 2
+    "count": 4
   }
 }

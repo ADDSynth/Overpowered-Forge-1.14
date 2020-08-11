@@ -22,7 +22,7 @@ public final class CompressorRecipeCategory implements IRecipeCategory<Compresso
   // private final LoadingCache<CompressorRecipe, CompressorRecipeDisplayData> cached_display_data;
 
   public CompressorRecipeCategory(final IGuiHelper gui_helper){
-    background = gui_helper.createDrawable(compressor_gui_texture, 112, 0, 91, 18);
+    background = gui_helper.createDrawable(compressor_gui_texture, 130, 0, 73, 18);
     icon = gui_helper.createDrawableIngredient(new ItemStack(EnergyBlocks.compressor));
   }
 
@@ -51,8 +51,7 @@ public final class CompressorRecipeCategory implements IRecipeCategory<Compresso
     final IGuiItemStackGroup gui_item_stacks = recipeLayout.getItemStacks();
     
     gui_item_stacks.init(0, true,   0, 0);
-    gui_item_stacks.init(1, true,  18, 0);
-    gui_item_stacks.init(2, false, 73, 0);
+    gui_item_stacks.init(1, false, 55, 0);
     
     gui_item_stacks.set(ingredients);
   }

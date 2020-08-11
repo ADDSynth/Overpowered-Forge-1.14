@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 /** Nearly all of this code was copied from {@link ShapelessRecipe} */
 public final class CompressorRecipe implements IRecipe<IInventory> {
 
-  public static final int MAX_SIZE = 2;
+  public static final int MAX_SIZE = 1;
 
    private final ResourceLocation id;
    private final String group;

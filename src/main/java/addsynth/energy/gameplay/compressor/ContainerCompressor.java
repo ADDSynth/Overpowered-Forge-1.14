@@ -21,9 +21,8 @@ public final class ContainerCompressor extends BaseContainer<TileCompressor> {
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,100);
-    addSlot(new InputSlot(tile,0,13,41));
-    addSlot(new InputSlot(tile,1,31,41));
-    addSlot(new OutputSlot(tile,0,144,41));
+    addSlot(new InputSlot( tile, 0,  32, 42));
+    addSlot(new OutputSlot(tile, 0, 128, 42));
   }
 
 }
