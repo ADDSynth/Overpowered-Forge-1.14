@@ -1,4 +1,4 @@
-v1.3.1 - TBD
+v1.3.1 - August 13, 2020
   No longer changes Music Box track instrument when you set notes.
    - Change track instrument by clicking the instrument button beside each track.
   Added a config option to control blending effects in certain machines.
