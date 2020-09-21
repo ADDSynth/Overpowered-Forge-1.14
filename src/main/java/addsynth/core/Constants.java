@@ -45,4 +45,9 @@ public static final float pickaxe_speed = -2.8f;
 public static final float shovel_speed  = -3.0f;
 public static final float axe_speed     = -3.2f;
 
+public static final float[] light_level = new float[] {
+  0.0f, 1.0f / 15, 2.0f / 15, 3.0f / 15, 4.0f / 15, 5.0f / 15, 6.0f / 15, 7.0f / 15,
+  8.0f / 15, 9.0f / 15, 10.0f / 15, 11.0f / 15, 12.0f / 15, 13.0f / 15, 14.0f / 15, 1.0f
+};
+
 }
