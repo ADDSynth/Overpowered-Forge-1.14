@@ -16,7 +16,7 @@ import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Lens;
 import addsynth.overpoweredmod.game.core.Machines;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -288,8 +288,8 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   private final void check_position(final int direction, final BlockPos position){
     final TileSuspensionBridge tile = MinecraftUtility.getTileEntity(position, world, TileSuspensionBridge.class);
     if(tile == null){
-      final Block block = world.getBlockState(position).getBlock();
-      if(block == Blocks.AIR || block instanceof EnergyBridge){
+      final BlockState state = world.getBlockState(position);
+      if(state.getMaterial().isReplaceable() || state.getBlock() instanceof EnergyBridge){
         area[direction].add(position);
       }
       else{
