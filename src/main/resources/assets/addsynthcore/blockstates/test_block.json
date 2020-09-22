@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "addsynthcore:block/test_block" }
+  }
+}

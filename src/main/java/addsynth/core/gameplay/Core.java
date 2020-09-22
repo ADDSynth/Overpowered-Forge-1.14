@@ -1,5 +1,6 @@
 package addsynth.core.gameplay;
 
+import addsynth.core.blocks.TestBlock;
 import addsynth.core.gameplay.blocks.CautionBlock;
 import addsynth.core.gameplay.items.ScytheTool;
 import addsynth.core.gameplay.music_box.MusicBox;
@@ -8,6 +9,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemTier;
 
 public final class Core {
+
+  public static final TestBlock       test_block               = new TestBlock();
 
   public static final Block           caution_block            = new CautionBlock("caution_block");
   public static final MusicBox        music_box                = new MusicBox("music_box");

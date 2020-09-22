@@ -1,6 +1,8 @@
 {
 "itemGroup.addsynthcore": "ADDSynthCore",
 
+"block.addsynthcore.test_block": "Test Block",
+
 "block.addsynthcore.caution_block": "Caution Block",
 "block.addsynthcore.music_box": "Music Box",
 
