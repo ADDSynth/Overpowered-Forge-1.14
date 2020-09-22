@@ -58,7 +58,7 @@ import net.minecraft.world.server.ServerWorld;
  * the BlockNetwork, but prevent it from finding the TileEntity that is being removed.
  * 
  * <p><b>5.</b> Continuing from #2, You must've wondered what happens if you place a TileEntity that
- * is adjacent to multiple TileEntities, but they were not connected, so they each have a difference
+ * is adjacent to multiple TileEntities, but they were not connected, so they each have a different
  * BlockNetwork. We still must find an existing BlockNetwork and join it, but which one? Well each one
  * contains the same type of data but possibly different values, it would be far too cumbersome to try
  * to average them all out, so to simplify this case scenerio, we just accept the first one we find and
