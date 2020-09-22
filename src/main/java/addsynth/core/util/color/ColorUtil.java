@@ -248,7 +248,7 @@ public final class ColorUtil {
       }
     }
     catch(Exception e){
-      System.out.println(e.toString());
+      System.err.println(e.toString());
     }
     return blocks.toArray(new Block[blocks.size()]);
   }
