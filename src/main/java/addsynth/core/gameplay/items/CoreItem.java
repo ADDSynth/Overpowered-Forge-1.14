@@ -5,7 +5,8 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class CoreItem extends Item {
+@Deprecated
+public class CoreItem extends Item { // TODO: remove in v1.4
 
   public CoreItem(final Item.Properties properties, final String name){
     super(properties);
