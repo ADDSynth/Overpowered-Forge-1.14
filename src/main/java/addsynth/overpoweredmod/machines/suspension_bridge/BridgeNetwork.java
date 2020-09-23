@@ -338,9 +338,9 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     int opposite;
     BridgeNetwork bridge;
     for(direction = 0; direction < 6; direction++){
-      opposite = CommonUtil.getOppositeDirection(direction);
       bridge = other_bridge[direction];
       if(bridge != null){
+        opposite = CommonUtil.getOppositeDirection(direction);
         bridge.check_direction(opposite); // updates messages, and bridge area.
         bridge.updateBridgeNetwork();
         bridge.update_direction(opposite);
