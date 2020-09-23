@@ -3,7 +3,7 @@ package addsynth.energy.blocks;
 import javax.annotation.Nullable;
 import addsynth.core.Constants;
 import addsynth.core.blocks.BlockTile;
-import addsynth.core.util.math.BlockUtil;
+import addsynth.core.util.block.BlockShape;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -50,7 +50,7 @@ public abstract class Wire extends BlockTile implements IWaterLoggable {
    *  The base Wire class automatically calls this to assign the shapes array.
    */
   protected VoxelShape[] makeShapes(){
-    return BlockUtil.create_six_sided_binary_voxel_shapes(default_min_wire_size, default_max_wire_size);
+    return BlockShape.create_six_sided_binary_voxel_shapes(default_min_wire_size, default_max_wire_size);
   }
 
   @Override
@@ -78,13 +78,13 @@ public abstract class Wire extends BlockTile implements IWaterLoggable {
   @Override
   @SuppressWarnings("deprecation")
   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
-    return shapes[BlockUtil.getIndex(state)];
+    return shapes[BlockShape.getIndex(state)];
   }
 
   @Override
   @SuppressWarnings("deprecation")
   public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
-    return shapes[BlockUtil.getIndex(state)];
+    return shapes[BlockShape.getIndex(state)];
   }
 
   @Override

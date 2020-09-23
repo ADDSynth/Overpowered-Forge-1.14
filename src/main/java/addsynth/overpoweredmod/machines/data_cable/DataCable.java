@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.data_cable;
 
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.IBlockNetworkUser;
-import addsynth.core.util.math.BlockUtil;
+import addsynth.core.util.block.BlockShape;
 import addsynth.energy.blocks.Wire;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
@@ -53,7 +53,7 @@ public final class DataCable extends Wire {
 
   @Override
   protected VoxelShape[] makeShapes(){
-    return BlockUtil.create_six_sided_binary_voxel_shapes(min_wire_size, max_wire_size);
+    return BlockShape.create_six_sided_binary_voxel_shapes(min_wire_size, max_wire_size);
   }
 
   // The world may contain multiple BLOCK Objects, but those are internal, and they all reference the

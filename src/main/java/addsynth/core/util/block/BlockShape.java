@@ -1,4 +1,4 @@
-package addsynth.core.util.math;
+package addsynth.core.util.block;
 
 import addsynth.core.ADDSynthCore;
 import net.minecraft.block.BlockState;
@@ -7,7 +7,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 
-public final class BlockUtil {
+public final class BlockShape {
 
   // !!! This MUST follow the same order as the Direction enum!
   public static final int DOWN  =  1;
@@ -58,7 +58,7 @@ public final class BlockUtil {
 
   public static final VoxelShape combine(final VoxelShape ... shapes){
     if(shapes.length == 0){
-      ADDSynthCore.log.error(new IllegalArgumentException("Improper use of the BlockUtil.combine(VoxelShape[] shapes) function! There are no shapes to combine!"));
+      ADDSynthCore.log.error(new IllegalArgumentException("Improper use of the "+BlockShape.class.getSimpleName()+".combine(VoxelShape[] shapes) function! There are no shapes to combine!"));
       return null;
     }
     if(shapes.length == 1){ return shapes[0]; }
@@ -72,7 +72,7 @@ public final class BlockUtil {
 
   private static final boolean is_90_degrees(final int degrees){
     if(degrees == 0 || degrees == 90 || degrees == 180 || degrees == 270){ return true; }
-    ADDSynthCore.log.error(new IllegalArgumentException("degrees input for rotation functions in BlockUtil is not a multiple of 90!"));
+    ADDSynthCore.log.error(new IllegalArgumentException("degrees input for rotation functions in "+BlockShape.class.getSimpleName()+" is not a multiple of 90!"));
     return false;
   }
 

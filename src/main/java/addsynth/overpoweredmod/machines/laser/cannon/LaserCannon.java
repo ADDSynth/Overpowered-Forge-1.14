@@ -4,8 +4,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.Constants;
 import addsynth.core.blocks.BlockTile;
+import addsynth.core.util.block.BlockShape;
 import addsynth.core.util.game.WorldUtil;
-import addsynth.core.util.math.BlockUtil;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.game.core.Laser;
@@ -59,7 +59,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
     VoxelShape box3 = VoxelShapes.create(calc[5], calc[5], calc[8], calc[11], calc[11], calc[10]);
     VoxelShape box4 = VoxelShapes.create(calc[6], calc[6], calc[6], calc[10], calc[10], calc[8]);
     VoxelShape box5 = VoxelShapes.create(calc[7], calc[7], calc[2], calc[9], calc[9], calc[6]);
-    shape[Constants.NORTH] = BlockUtil.combine(box0, box1, box2, box3, box4, box5);
+    shape[Constants.NORTH] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // SOUTH
     box0 = VoxelShapes.create(calc[1], calc[1], calc[0], calc[15], calc[15], calc[2]);
@@ -68,7 +68,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[5], calc[5], calc[6], calc[11], calc[11], calc[8]);
     box4 = VoxelShapes.create(calc[6], calc[6], calc[8], calc[10], calc[10], calc[10]);
     box5 = VoxelShapes.create(calc[7], calc[7], calc[10], calc[9], calc[9], calc[14]);
-    shape[Constants.SOUTH] = BlockUtil.combine(box0, box1, box2, box3, box4, box5);
+    shape[Constants.SOUTH] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // EAST
     box0 = VoxelShapes.create(calc[0], calc[1], calc[1], calc[2], calc[15], calc[15]);
@@ -77,7 +77,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[6], calc[5], calc[5], calc[8], calc[11], calc[11]);
     box4 = VoxelShapes.create(calc[8], calc[6], calc[6], calc[10], calc[10], calc[10]);
     box5 = VoxelShapes.create(calc[10], calc[7], calc[7], calc[14], calc[9], calc[9]);
-    shape[Constants.EAST] = BlockUtil.combine(box0, box1, box2, box3, box4, box5);
+    shape[Constants.EAST] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // WEST
     box0 = VoxelShapes.create(calc[14], calc[1], calc[1], calc[16], calc[15], calc[15]);
@@ -86,7 +86,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[8], calc[5], calc[5], calc[10], calc[11], calc[11]);
     box4 = VoxelShapes.create(calc[6], calc[6], calc[6], calc[8], calc[10], calc[10]);
     box5 = VoxelShapes.create(calc[2], calc[7], calc[7], calc[6], calc[9], calc[9]);
-    shape[Constants.WEST] = BlockUtil.combine(box0, box1, box2, box3, box4, box5);
+    shape[Constants.WEST] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // UP
     box0 = VoxelShapes.create(calc[1], calc[0], calc[1], calc[15], calc[2], calc[15]);
@@ -95,7 +95,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[5], calc[6], calc[5], calc[11], calc[8], calc[11]);
     box4 = VoxelShapes.create(calc[6], calc[8], calc[6], calc[10], calc[10], calc[10]);
     box5 = VoxelShapes.create(calc[7], calc[10], calc[7], calc[9], calc[14], calc[9]);
-    shape[Constants.UP] = BlockUtil.combine(box0, box1, box2, box3, box4, box5);
+    shape[Constants.UP] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // DOWN
     box0 = VoxelShapes.create(calc[1], calc[14], calc[1], calc[15], calc[16], calc[15]);
@@ -104,7 +104,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[5], calc[8], calc[5], calc[11], calc[10], calc[11]);
     box4 = VoxelShapes.create(calc[6], calc[6], calc[6], calc[10], calc[8], calc[10]);
     box5 = VoxelShapes.create(calc[7], calc[2], calc[7], calc[9], calc[6], calc[9]);
-    shape[Constants.DOWN] = BlockUtil.combine(box0, box1, box2, box3, box4, box5);
+    shape[Constants.DOWN] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
 
     return shape;
   }
