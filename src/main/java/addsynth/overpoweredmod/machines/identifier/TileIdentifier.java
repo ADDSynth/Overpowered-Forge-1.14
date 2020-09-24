@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.identifier;
 import javax.annotation.Nullable;
 import addsynth.core.game.Compatability;
 import addsynth.core.items.ItemUtil;
-import addsynth.core.util.JavaUtils;
+import addsynth.core.util.ArrayUtil;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Tools;
@@ -20,7 +20,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileIdentifier extends TileWorkMachine implements INamedContainerProvider {
 
-  public static final Item[] input_filter = JavaUtils.combine_arrays(
+  public static final Item[] input_filter = ArrayUtil.combine_arrays(
     Tools.unidentified_armor[0],
     Tools.unidentified_armor[1],
     Tools.unidentified_armor[2],

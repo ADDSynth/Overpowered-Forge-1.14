@@ -2,7 +2,7 @@ package addsynth.energy.gameplay.universal_energy_interface;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.core.util.JavaUtils;
+import addsynth.core.util.ArrayUtil;
 import addsynth.energy.Energy;
 import addsynth.energy.compat.energy.EnergyCompat;
 import addsynth.energy.compat.energy.forge.ForgeEnergyIntermediary;
@@ -56,7 +56,7 @@ public final class TileUniversalEnergyTransfer extends TileEnergyWithStorage imp
   @Override
   public final void read(final CompoundNBT nbt){
     super.read(nbt);
-    transfer_mode = JavaUtils.getArrayValue(TRANSFER_MODE.values(), nbt.getByte("Transfer Mode"));
+    transfer_mode = ArrayUtil.getArrayValue(TRANSFER_MODE.values(), nbt.getByte("Transfer Mode"));
   }
 
   @Override

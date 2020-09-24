@@ -3,7 +3,7 @@ package addsynth.core.items.enchantment;
 import java.util.Arrays;
 import java.util.List;
 import addsynth.core.items.ItemUtil;
-import addsynth.core.util.JavaUtils;
+import addsynth.core.util.ArrayUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ArmorItem;
@@ -50,10 +50,10 @@ public final class EnchantmentUtil {
       final Item item = stack.getItem();
       if(item instanceof ArmorItem){
         switch(((ArmorItem)item).getEquipmentSlot()){
-        case HEAD:  enchantment_list = JavaUtils.combine_arrays(common_armor_enchantments, helmet_enchantments); break;
+        case HEAD:  enchantment_list = ArrayUtil.combine_arrays(common_armor_enchantments, helmet_enchantments); break;
         case CHEST: enchantment_list = common_armor_enchantments; break;
         case LEGS:  enchantment_list = common_armor_enchantments; break;
-        case FEET:  enchantment_list = JavaUtils.combine_arrays(common_armor_enchantments, boot_enchantments); break;
+        case FEET:  enchantment_list = ArrayUtil.combine_arrays(common_armor_enchantments, boot_enchantments); break;
       }
       if(item instanceof SwordItem){}
       if(item instanceof ShovelItem){}

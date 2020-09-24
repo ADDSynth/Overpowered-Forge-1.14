@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines;
 
 import addsynth.core.material.MaterialsUtil;
-import addsynth.core.util.JavaUtils;
+import addsynth.core.util.ArrayUtil;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.machines.gem_converter.GemConverterRecipe;
 import net.minecraft.item.Item;
@@ -35,7 +35,7 @@ public final class Filters {
       MaterialsUtil.getAmethystBlocks(), MaterialsUtil.getQuartzBlocks()
     );
     
-    magic_infuser = JavaUtils.combine_arrays(gem_converter, new Item[]{Init.energy_crystal, Init.void_crystal});
+    magic_infuser = ArrayUtil.combine_arrays(gem_converter, new Item[]{Init.energy_crystal, Init.void_crystal});
     
     GemConverterRecipe.generate_recipes();
   }
