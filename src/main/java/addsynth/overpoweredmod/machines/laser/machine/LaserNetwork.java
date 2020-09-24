@@ -5,8 +5,8 @@ import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.Node;
 import addsynth.core.block_network.NodeList;
 import addsynth.core.util.NetworkUtil;
+import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MinecraftUtility;
-import addsynth.core.util.math.MathUtility;
 import addsynth.energy.Energy;
 import addsynth.energy.tiles.IEnergyUser;
 import addsynth.overpoweredmod.assets.Sounds;
@@ -156,7 +156,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
         positions.add(node.position);
       }
     }
-    final double[] center_position = MathUtility.getExactCenter(positions);
+    final double[] center_position = BlockMath.getExactCenter(positions);
     remove_invalid_nodes(lasers);
     for(Node node : lasers){
       ((TileLaser)node.getTile()).activate(this.laser_distance);

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import addsynth.core.util.NetworkUtil;
+import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.core.util.game.WorldUtil;
-import addsynth.core.util.math.MathUtility;
 import addsynth.energy.tiles.machines.MachineState;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.Features;
@@ -168,7 +168,7 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
     
     if(portal_frames_valid){
       // get lowest portal frame
-      lowest_portal_frame = MathUtility.get_minimum_position(portal_frames);
+      lowest_portal_frame = BlockMath.get_minimum_position(portal_frames);
       // the portal could be constructed either along the X axis or Z axis.
       final int x = lowest_portal_frame.getX();
       final int y = lowest_portal_frame.getY();

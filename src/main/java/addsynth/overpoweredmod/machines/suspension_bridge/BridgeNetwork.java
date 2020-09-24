@@ -7,9 +7,9 @@ import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.Node;
 import addsynth.core.util.CommonUtil;
 import addsynth.core.util.NetworkUtil;
+import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.core.util.game.WorldUtil;
-import addsynth.core.util.math.MathUtility;
 import addsynth.energy.Energy;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -100,9 +100,11 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
 
   /** Sets the <code>valid_shape</code> variable. */
-  private final void check_shape(){ // FEATURE: copy this into the MathUtility class, so I can check if a list of positions is in a rectangle shape.
+  private final void check_shape(){
+    // This is a copy of the BlockMath.is_full_rectangle() function, but
+    // keep this as is because we set important variables for this class.
     valid_shape = true;
-    final BlockPos[] positions = MathUtility.get_min_max_positions(blocks.getPositions());
+    final BlockPos[] positions = BlockMath.get_min_max_positions(blocks.getPositions());
     int x;
     int y;
     int z;
