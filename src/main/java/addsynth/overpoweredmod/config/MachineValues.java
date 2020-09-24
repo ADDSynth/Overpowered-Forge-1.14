@@ -30,7 +30,7 @@ public final class MachineValues {
 
   // Always On Machines
   public static final MachineDataConfig advanced_ore_refinery =
-    new MachineDataConfig(MachineType.ALWAYS_ON, 200, 25, 0.1, 0); // 5,000
+    new MachineDataConfig(MachineType.ALWAYS_ON, 400, 20, 0.1, 0); // 8,000
 
   public static ForgeConfigSpec.ConfigValue<Integer> required_energy_per_laser;
   public static ForgeConfigSpec.ConfigValue<Integer> required_energy_per_laser_distance;
