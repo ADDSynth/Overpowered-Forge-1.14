@@ -1,6 +1,5 @@
 package addsynth.overpoweredmod.machines.laser.machine;
 
-import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.Node;
 import addsynth.core.block_network.NodeList;
@@ -150,13 +149,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
   }
 
   private final void fire_lasers(){
-    final ArrayList<BlockPos> positions = new ArrayList<>(100);
-    for(final Node node : blocks){
-      if(node.isInvalid() == false){
-        positions.add(node.position);
-      }
-    }
-    final double[] center_position = BlockMath.getExactCenter(positions);
+    final double[] center_position = BlockMath.getExactCenter(blocks.getPositions());
     remove_invalid_nodes(lasers);
     for(Node node : lasers){
       ((TileLaser)node.getTile()).activate(this.laser_distance);
