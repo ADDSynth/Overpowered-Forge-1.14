@@ -16,9 +16,8 @@ public abstract class BlockTile extends ContainerBlock {
    * Says that the block should use a model to be rendered
    */
   @Override
-  @SuppressWarnings("deprecation")
   public BlockRenderType getRenderType(BlockState state){
-      return BlockRenderType.MODEL;
+    return BlockRenderType.MODEL;
   }
 
 }

@@ -19,9 +19,9 @@ import net.minecraft.world.IBlockReader;
 public final class EnergyBridge extends RotatedPillarBlock {
 
   private static final VoxelShape[] shapes = {
-    VoxelShapes.create(7.0 / 16, 0, 0, 9.0 / 16, 1.0, 1.0),
+    VoxelShapes.create(7.0 / 16, 0, 0, 9.0 / 16, 1.0, 1.0), // X = flat going forward and back, missing left and right
     VoxelShapes.create(0, 14.0 / 16, 0, 1.0, 1.0, 1.0),
-    VoxelShapes.create(0, 0, 7.0 / 16, 1.0, 1.0, 9.0 / 16)
+    VoxelShapes.create(0, 0, 7.0 / 16, 1.0, 1.0, 9.0 / 16)  // Z = flat going left and right, missing front and back
   };
 
   public EnergyBridge(final String name, final Lens lens){
@@ -40,16 +40,52 @@ public final class EnergyBridge extends RotatedPillarBlock {
     return BlockRenderLayer.TRANSLUCENT;
   }
 
-  @SuppressWarnings("deprecation")
   @Override
-  public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
+  @SuppressWarnings("deprecation")
+  public final VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
     return shapes[state.get(AXIS).ordinal()];
   }
 
-  @SuppressWarnings("deprecation")
   @Override
-  public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
+  @SuppressWarnings("deprecation")
+  public final VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
     return shapes[state.get(AXIS).ordinal()];
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public final boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side){
+    // TODO: Fix but not a priority. This successfully renders energy bridges correctly,
+    //       but only in the flat version, does not work for vertical energy bridges.
+    if(adjacentBlockState.getBlock() instanceof EnergyBridge){
+      final Direction.Axis       axis = state.get(AXIS);
+      final Direction.Axis other_axis = adjacentBlockState.get(AXIS);
+      
+      // horizontal orientation
+      if(axis == Direction.Axis.Y){
+        if(side.getAxis() == Direction.Axis.Y){
+          return false;
+        }
+        return other_axis == Direction.Axis.Y;
+      }
+      
+      // vertical orientation
+      if(axis == Direction.Axis.X){
+        if(side.getAxis() == Direction.Axis.X){ return false;}
+        if(side.getAxis() == Direction.Axis.Z){ return other_axis == Direction.Axis.X; }
+        if(side == Direction.UP){               return other_axis == Direction.Axis.X; }
+        if(side == Direction.DOWN){             return other_axis != Direction.Axis.Z; }
+      }
+      
+      if(axis == Direction.Axis.Z){
+        if(side.getAxis() == Direction.Axis.Z){ return false; }
+        if(side.getAxis() == Direction.Axis.X){ return other_axis == Direction.Axis.Z; }
+        if(side == Direction.UP){               return other_axis == Direction.Axis.Z; }
+        if(side == Direction.DOWN){             return other_axis != Direction.Axis.X; }
+      }
+    }
+    // other block entirely
+    return super.isSideInvisible(state, adjacentBlockState, side);
   }
 
 }

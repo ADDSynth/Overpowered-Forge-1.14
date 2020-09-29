@@ -14,6 +14,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -36,6 +37,7 @@ public final class EnergyStorageBlock extends MachineBlock {
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public final TileEntity createNewTileEntity(IBlockReader worldIn){
     return new TileEnergyStorage();
   }
@@ -43,6 +45,12 @@ public final class EnergyStorageBlock extends MachineBlock {
   @Override
   public final BlockRenderLayer getRenderLayer(){
     return BlockRenderLayer.TRANSLUCENT;
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public float getAmbientOcclusionLightValue(BlockState state, IBlockReader worldIn, BlockPos pos){
+    return 1.0f;
   }
 
   @Override
@@ -55,6 +63,12 @@ public final class EnergyStorageBlock extends MachineBlock {
       }
     }
     return true;
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side){
+    return adjacentBlockState.getBlock() == this ? true : super.isSideInvisible(state, adjacentBlockState, side);
   }
 
 }

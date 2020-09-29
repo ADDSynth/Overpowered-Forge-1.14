@@ -11,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -33,13 +34,14 @@ public final class LaserBeam extends BlockTile {
   @Override
   @SuppressWarnings("deprecation")
   public final VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
-     return VoxelShapes.empty();
+    return VoxelShapes.empty();
   }
 
   // You cannot set this block isBurning(true) because this will also set fire to any
   //   item Entities that fall in it, negating the purpose of having a mining laser.
   //   also, that only does 1 damage at a time.
   @Override
+  @SuppressWarnings("deprecation")
   public final void onEntityCollision(final BlockState state, final World world, final BlockPos pos, final Entity entity){
     if(Config.lasers_set_entities_on_fire.get()){
       if(entity instanceof ItemEntity == false){
@@ -58,8 +60,15 @@ public final class LaserBeam extends BlockTile {
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public final TileEntity createNewTileEntity(IBlockReader worldIn){
     return new TileLaserBeam();
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public final boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side){
+    return adjacentBlockState.getBlock() instanceof LaserBeam ? true : super.isSideInvisible(state, adjacentBlockState, side);
   }
 
 }

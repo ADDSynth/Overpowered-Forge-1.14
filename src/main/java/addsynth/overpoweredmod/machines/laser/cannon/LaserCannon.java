@@ -157,6 +157,12 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
 
   @Override
   @SuppressWarnings("deprecation")
+  public boolean isSolid(BlockState state){
+    return false;
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
   public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos){
     if(state.get(WATERLOGGED)){
       world.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
@@ -176,6 +182,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public final TileEntity createNewTileEntity(IBlockReader world){
     return color == -1 ? null : new TileLaser();
   }
