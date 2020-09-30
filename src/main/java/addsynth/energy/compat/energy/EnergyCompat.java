@@ -55,7 +55,7 @@ public final class EnergyCompat {
         capability_side = side.getOpposite();
 
         // Forge Energy
-        final IEnergyStorage energy = tile.getCapability(CapabilityEnergy.ENERGY, capability_side).orElseGet(null);
+        final IEnergyStorage energy = tile.getCapability(CapabilityEnergy.ENERGY, capability_side).orElse(null);
         if(energy != null){
           nodes.add(new CompatEnergyNode(EnergyType.FORGE, energy, capability_side));
           continue;

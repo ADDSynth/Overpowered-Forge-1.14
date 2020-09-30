@@ -8,7 +8,7 @@ import net.minecraftforge.energy.IEnergyStorage;
 public final class ForgeEnergy {
 
   public static final boolean check(final TileEntity tile, final Direction capability_side){
-    return tile.getCapability(CapabilityEnergy.ENERGY, capability_side).orElseGet(null) != null;
+    return tile.getCapability(CapabilityEnergy.ENERGY, capability_side).orElse(null) != null;
   }
 
   public static final int get(final Object input, final int energy_requested, final boolean simulate){

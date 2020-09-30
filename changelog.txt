@@ -11,6 +11,8 @@ v1.3.2 - TBD
    - Laser energy blocks.
    - Fusion Energy Structure Laser Beam.
   Added an Auto Shutoff toggle to the Portal Control Panel.
+  Fixed crashes regarding ticking TileEntities and getCapabilities().
+   - Only for 1.14 and 1.15 versions.
 
 
 

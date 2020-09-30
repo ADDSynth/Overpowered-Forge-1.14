@@ -68,10 +68,13 @@ public final class TileUniversalEnergyTransfer extends TileEnergyWithStorage imp
 
   @Override
   public @Nonnull <T> LazyOptional<T> getCapability(final @Nonnull Capability<T> capability, final @Nullable Direction facing){
-    if(capability == CapabilityEnergy.ENERGY){
-      return (LazyOptional.of(()->forge_energy)).cast();
+    if(removed == false){
+      if(capability == CapabilityEnergy.ENERGY){
+        return forge_energy != null ? (LazyOptional.of(()->forge_energy)).cast() : LazyOptional.empty();
+      }
+      return super.getCapability(capability, facing);
     }
-    return super.getCapability(capability, facing);
+    return LazyOptional.empty();
   }
   
   @Override

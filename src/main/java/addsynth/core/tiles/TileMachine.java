@@ -62,13 +62,16 @@ public abstract class TileMachine extends TileBase {
 
   @Override
   public @Nonnull <T> LazyOptional<T> getCapability(final @Nonnull Capability<T> capability, final @Nullable Direction facing){
-    if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
-      if(facing == Direction.DOWN){
-        return (LazyOptional.of(()->output_inventory)).cast(); // PRIORITY FIX: This kind of code will crash if either input_inventory or output_inventory is null, only in 1.14 version.
+    if(removed == false){
+      if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
+        if(facing == Direction.DOWN){
+          return output_inventory != null ? (LazyOptional.of(()->output_inventory)).cast() : LazyOptional.empty();
+        }
+        return input_inventory != null ? (LazyOptional.of(()->input_inventory)).cast() : LazyOptional.empty();
       }
-      return (LazyOptional.of(()->input_inventory)).cast();
+      return super.getCapability(capability, facing);
     }
-    return super.getCapability(capability, facing);
+    return LazyOptional.empty();
   }
 
   public InputInventory getInputInventory(){

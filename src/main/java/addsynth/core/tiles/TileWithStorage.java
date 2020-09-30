@@ -49,10 +49,13 @@ public abstract class TileWithStorage extends TileBase {
 
   @Override
   public @Nonnull <T> LazyOptional<T> getCapability(final @Nonnull Capability<T> capability, final @Nullable Direction facing){
-    if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
-      return (LazyOptional.of(()->inventory)).cast();
+    if(removed == false){
+      if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
+        return inventory != null ? (LazyOptional.of(()->inventory)).cast() : LazyOptional.empty();
+      }
+      return super.getCapability(capability, facing);
     }
-    return super.getCapability(capability, facing);
+    return LazyOptional.empty();
   }
   
   /**
