@@ -9,7 +9,7 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.material.PushReaction;
 
 /**
- * <p>When constructing blocks, one the block properties you must specify is the Block Material.</p>
+ * <p>When constructing blocks, one of the block properties you must specify is the Block Material.</p>
  * <p>Vanilla has many predefined Block Materials in the {@link Material} class, so if you see
  *    one that matches the properties you want, go ahead and use it.</p>
  * <p>But, disregarding the {@link MaterialColor}, Some vanilla Materials may have the same attributes,
@@ -25,7 +25,7 @@ import net.minecraft.block.material.PushReaction;
  *    your player walks over a custom Material. If you want your Material to be 'recognized' by
  *    other mods, then you'll have to use a vanilla Material.</p>
  * <p>Side Note: If the mod does treat blocks with different materials differently, then you may be
- *    able to register your Block Material with that mod, so it knows how to treat it.</p>
+ *    able to register your Block Material with that mod, so it knows how to use it.</p>
  * <p>This class is mainly used to debug the vanilla Materials. We DO NOT RECOMMEND using this to
  *    define your custom Block Materials, please do that manually yourself!</p>
  * 

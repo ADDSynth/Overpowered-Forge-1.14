@@ -132,7 +132,7 @@ v1.2 - November 29, 2019
   Added debug features that you can enable in the ADDSynthCore config.
   Added Auto Shotoff feature to Lasers, when checked, Lasers will automatically
     switch off after firing, so they don't accept energy until switched back on.
-  Gave Fusion Chamber and Laser Housing machinew new textures.
+  Gave Fusion Chamber and Laser Housing machines new textures.
   Added a machine classification subtitle to all machines tooltips.
   Gave HD textures to all tools.
   Added Scythe tools. Thease are used to chop leaves off of trees very quickly, but

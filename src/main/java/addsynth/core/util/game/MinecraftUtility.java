@@ -1,5 +1,6 @@
 package addsynth.core.util.game;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.StringUtil;
@@ -63,7 +64,10 @@ public final class MinecraftUtility {
     return null;
   }
 
-  public static final void crash(final String context, final Throwable exception){
+  /** DO NOT INTENTIONALLY CRASH THE GAME!
+   *  Whenever possible, always use a <code>try/catch</code> block to check for Exceptions and handle them!
+   *  Only use this in a development environment for debug purposes. */
+  public static final void crash(final String context, @Nonnull final Throwable exception){
     final CrashReport crash_report = new CrashReport(context, exception);
     Minecraft.getInstance().crashed(crash_report);
     Minecraft.getInstance().displayCrashReport(crash_report);
