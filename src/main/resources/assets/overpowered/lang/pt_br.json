@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Parte da estrutura de energia de fusão. Você precisa colocar 6 desses 5 quarteirões de distância do centro em cada direção. Você deve usar o cabo de dados para conectar as unidades de controle de fusão ao conversor de energia de fusão.",
 "gui.overpowered.jei_description.fusion_control_laser": "Parte da estrutura de energia de fusão. Você deve fazer 6 delas e colocar uma em cada unidade de controle de fusão apontando para a câmara de fusão no centro.",
 "gui.overpowered.jei_description.fusion_converter": "Parte da estrutura de energia de fusão. Basta definir em qualquer lugar e conectar-se a cada uma das unidades de controle de fusão usando um cabo de dados. Quando a estrutura completa estiver concluída, ative esta máquina com um fio vermelho para ligá-la. Enquanto estiver em funcionamento, esta máquina estará gerando energia.",
-"gui.overpowered.laser_housing.auto_shutoff": "Desligamento automático",
 "gui.overpowered.laser_housing.lasers": "Lasers",
 "gui.overpowered.laser_housing.distance": "distância",
 "gui.overpowered.laser_housing.current_energy": "energia atual",

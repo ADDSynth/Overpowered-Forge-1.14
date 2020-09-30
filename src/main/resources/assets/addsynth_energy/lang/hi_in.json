@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "फुल चार्ज होने तक का समय",
 "gui.addsynth_energy.common.no_energy_change": "कोई ऊर्जा परिवर्तन नहीं",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "स्वचालित निष्क्रियता",
 "gui.addsynth_energy.jei_description.wire": "ऊर्जा तार का उपयोग मशीनों के बीच ऊर्जा को स्थानांतरित करने के लिए किया जाता है।",
 "gui.addsynth_energy.jei_description.energy_storage": "इससे अतिरिक्त ऊर्जा को स्टोर किया जा सकता है।",
 "gui.addsynth_energy.jei_description.electric_furnace": "यह एक नियमित भट्टी की तरह काम करता है, सिवाय इसके कि यह बिजली से चलता है।",

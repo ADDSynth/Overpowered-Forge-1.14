@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Tid tills full laddning",
 "gui.addsynth_energy.common.no_energy_change": "Ingen energiförändring",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Automatisk inaktivering",
 "gui.addsynth_energy.jei_description.wire": "energitråd används för att överföra energi mellan maskiner.",
 "gui.addsynth_energy.jei_description.energy_storage": "Detta kan lagra överskott av energi.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Detta fungerar precis som en vanlig ugn förutom att den använder el.",

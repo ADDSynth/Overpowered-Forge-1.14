@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "核融合エネルギー構造の一部。 これらの5つのブロックのうち6つを、中心から各方向に離して配置する必要があります。 フュージョンコントロールユニットをフュージョンエネルギーコンバーターに接続するには、データケーブルを使用する必要があります。",
 "gui.overpowered.jei_description.fusion_control_laser": "核融合エネルギー構造の一部。 これらを6つ作成し、各核融合制御ユニットに1つずつ配置して、中央の核融合チャンバーに向けます。",
 "gui.overpowered.jei_description.fusion_converter": "核融合エネルギー構造の一部。 これをどこかに置くだけで、データケーブルを使用してこれを各フュージョンコントロールユニットに接続する必要があります。 完全な構造が完成したら、赤いワイヤーでこのマシンを起動して電源を入れます。 実行中、このマシンはエネルギーを生成します。",
-"gui.overpowered.laser_housing.auto_shutoff": "自動シャットオフ",
 "gui.overpowered.laser_housing.lasers": "レーザー",
 "gui.overpowered.laser_housing.distance": "距離",
 "gui.overpowered.laser_housing.current_energy": "現在のエネルギー",

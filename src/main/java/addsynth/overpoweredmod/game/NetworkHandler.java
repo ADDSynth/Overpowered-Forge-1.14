@@ -5,7 +5,6 @@ import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.machines.gem_converter.CycleGemConverterMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.SetLaserDistanceMessage;
-import addsynth.overpoweredmod.machines.laser.network_messages.ToggleLaserShutoffMessage;
 import addsynth.overpoweredmod.machines.portal.control_panel.GeneratePortalMessage;
 import addsynth.overpoweredmod.machines.portal.control_panel.SyncPortalDataMessage;
 import addsynth.overpoweredmod.machines.suspension_bridge.RotateBridgeMessage;
@@ -59,10 +58,10 @@ public final class NetworkHandler {
       SyncPortalDataMessage::handle
     );
     INSTANCE.registerMessage(5,
-      ToggleLaserShutoffMessage.class,
-      ToggleLaserShutoffMessage::encode,
-      ToggleLaserShutoffMessage::decode,
-      ToggleLaserShutoffMessage::handle
+      ToggleAutoShutoffMessage.class,
+      ToggleAutoShutoffMessage::encode,
+      ToggleAutoShutoffMessage::decode,
+      ToggleAutoShutoffMessage::handle
     );
 
     INSTANCE.registerMessage(6,

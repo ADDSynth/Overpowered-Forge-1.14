@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Idő a teljes töltésig",
 "gui.addsynth_energy.common.no_energy_change": "Nincs energiaváltozás",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Automatikus kikapcsolás",
 "gui.addsynth_energy.jei_description.wire": "Az energiavezetéket energia átvitelére használják a gépek között.",
 "gui.addsynth_energy.jei_description.energy_storage": "Ez energiát tárolhat.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Ez ugyanúgy működik, mint egy normál kemence, kivéve ha villamos energiát üzemeltet.",

@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Temps jusqu'à pleine charge",
 "gui.addsynth_energy.common.no_energy_change": "Aucun changement d'énergie",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Arrêt automatique",
 "gui.addsynth_energy.jei_description.wire": "Le fil d'énergie est utilisé pour transférer l'énergie entre les machines.",
 "gui.addsynth_energy.jei_description.energy_storage": "Cela peut stocker un excès d'énergie.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Cela fonctionne comme un four ordinaire, sauf qu'il utilise de l'électricité.",

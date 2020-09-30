@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Čas do úplného nabitia",
 "gui.addsynth_energy.common.no_energy_change": "Bez zmeny energie",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Automatické vypnutie",
 "gui.addsynth_energy.jei_description.wire": "na prenos energie medzi strojmi sa používa elektrický drôt.",
 "gui.addsynth_energy.jei_description.energy_storage": "To môže ukladať prebytočnú energiu.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Funguje to rovnako ako bežná pec okrem toho, že využíva elektrinu.",

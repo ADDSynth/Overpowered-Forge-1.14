@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "聚變能量結構的一部分。您需要在每個方向上將這5個塊中的6個塊放置在遠離中心的位置。您必須使用數據電纜將聚變控制單元連接到聚變能量轉換器。",
 "gui.overpowered.jei_description.fusion_control_laser": "聚變能量結構的一部分。您必須製造6個，並在每個聚變控制單元上放一個，指向中央的聚變室。",
 "gui.overpowered.jei_description.fusion_converter": "聚變能量結構的一部分。只需將其放置在任何地方，然後就必須使用數據線將其連接到每個融合控制單元。完整結構完成後，用紅線激活此機器以將其打開。在運行時，這台機器將產生能量。",
-"gui.overpowered.laser_housing.auto_shutoff": "自動關機",
 "gui.overpowered.laser_housing.lasers": "雷射",
 "gui.overpowered.laser_housing.distance": "距離",
 "gui.overpowered.laser_housing.current_energy": "當前能量",

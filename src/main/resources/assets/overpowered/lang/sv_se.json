@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Del av fusionsenergistrukturen. Du måste placera 6 av dessa 5 kvarter från centrum i varje riktning. Du måste använda datakabel för att ansluta fusionsstyrenheterna till fusionsenergikonverteraren.",
 "gui.overpowered.jei_description.fusion_control_laser": "Del av fusionsenergistrukturen. Du måste göra 6 av dessa och lägga en på varje fusionsstyrenhet som pekar mot fusionskammaren i mitten.",
 "gui.overpowered.jei_description.fusion_converter": "Del av fusionsenergistrukturen. Sätt bara ned detta var som helst, då måste du ansluta detta till var och en av fusionsstyrenheterna med datakabel. När hela strukturen är klar aktiverar du den här maskinen med en röd tråd för att slå på den. När maskinen körs kommer den att generera energi.",
-"gui.overpowered.laser_housing.auto_shutoff": "Automatisk inaktivering",
 "gui.overpowered.laser_housing.lasers": "lasrar",
 "gui.overpowered.laser_housing.distance": "distans",
 "gui.overpowered.laser_housing.current_energy": "nuvarande energi",

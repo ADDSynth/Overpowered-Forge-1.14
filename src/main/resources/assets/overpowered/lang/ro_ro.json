@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Parte a structurii energiei de fuziune. Trebuie să așezați 6 din aceste 5 blocuri distanță de centru în fiecare direcție. Trebuie să utilizați cablul de date pentru a conecta unitățile de control al fuziunii la convertorul de energie de fuziune.",
 "gui.overpowered.jei_description.fusion_control_laser": "Parte a structurii energiei de fuziune. Trebuie să faceți 6 dintre acestea și să puneți câte una pe fiecare unitate de control de fuziune îndreptată spre camera de fuziune din centru.",
 "gui.overpowered.jei_description.fusion_converter": "Parte a structurii energiei de fuziune. Setați acest lucru oriunde, apoi trebuie să conectați acest lucru la fiecare unitate de control de fuziune folosind cablul de date. După ce structura completă este completă, activați această mașină cu un fir roșu pentru a o porni. În timpul funcționării, această mașină va genera energie.",
-"gui.overpowered.laser_housing.auto_shutoff": "Oprire automată",
 "gui.overpowered.laser_housing.lasers": "lasere",
 "gui.overpowered.laser_housing.distance": "distanţă",
 "gui.overpowered.laser_housing.current_energy": "energia curentă",

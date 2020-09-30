@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Tiempo hasta la carga completa",
 "gui.addsynth_energy.common.no_energy_change": "Sin cambio de energía",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Apagado automatico",
 "gui.addsynth_energy.jei_description.wire": "El cable de energía se utiliza para transferir energía entre máquinas.",
 "gui.addsynth_energy.jei_description.energy_storage": "Esto puede almacenar el exceso de energía.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Esto funciona igual que un horno normal, excepto que usa electricidad.",

@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Час до повної зарядки",
 "gui.addsynth_energy.common.no_energy_change": "Без змін енергії",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Автоматичне відключення",
 "gui.addsynth_energy.jei_description.wire": "Енергетичний провід використовується для передачі енергії між машинами.",
 "gui.addsynth_energy.jei_description.energy_storage": "Це може зберігати зайву енергію.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Це працює так само, як звичайна піч, за винятком того, що вона використовує електрику.",

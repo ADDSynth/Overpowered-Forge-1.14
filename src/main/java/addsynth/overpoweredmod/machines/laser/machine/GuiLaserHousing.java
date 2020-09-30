@@ -6,8 +6,8 @@ import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.NetworkHandler;
+import addsynth.overpoweredmod.game.ToggleAutoShutoffMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.SetLaserDistanceMessage;
-import addsynth.overpoweredmod.machines.laser.network_messages.ToggleLaserShutoffMessage;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.entity.player.PlayerInventory;
@@ -23,7 +23,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   private final String current_energy_text  = StringUtil.translate("gui.overpowered.laser_housing.current_energy");
   private final String lasers_text          = StringUtil.translate("gui.overpowered.laser_housing.lasers");
   private final String distance_text        = StringUtil.translate("gui.overpowered.laser_housing.distance");
-  private final String auto_shutoff_text    = StringUtil.translate("gui.overpowered.laser_housing.auto_shutoff");
+  private final String auto_shutoff_text    = StringUtil.translate("gui.addsynth_energy.common.auto_shutoff");
 
   private TextFieldWidget text_box;
 
@@ -74,7 +74,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
 
     @Override
     public void onPress(){
-      NetworkHandler.INSTANCE.sendToServer(new ToggleLaserShutoffMessage(tile.getPos()));
+      NetworkHandler.INSTANCE.sendToServer(new ToggleAutoShutoffMessage(tile.getPos()));
     }
   }
 
@@ -91,7 +91,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
       setEnableBackgroundDrawing(true);
       setVisible(true);
       setTextColor(16777215);
-      setResponder((String text)-> text_field_changed()); // TODO: can be static or instance method, don't want to bother figuring out which one is better right now.
+      setResponder((String text) -> text_field_changed()); // TODO: can be static or instance method, don't want to bother figuring out which one is better right now.
     }
 
     private final void text_field_changed(){
@@ -118,7 +118,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   @Override
   public final void init(){
     super.init();
-    addButton(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile));
+    addButton(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 17, tile)); // OPTIMIZE: On/Off switch position should be standardized.
     addButton(new ToggleAutoShutoff(this.guiLeft + check_box_x, this.guiTop + check_box_y, tile));
     
     this.text_box = new LaserDistanceTextField(this.font,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height, tile);
@@ -137,7 +137,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   // }
 
   @Override
-  public void tick(){
+  public final void tick(){
     super.tick();
     if(text_box != null){
       text_box.tick();
@@ -145,7 +145,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   }
 
   @Override
-  public void render(final int mouseX, final int mouseY, final float partialTicks){
+  public final void render(final int mouseX, final int mouseY, final float partialTicks){
     super.render(mouseX, mouseY, partialTicks);
     if(text_box != null){
       text_box.render(mouseX, mouseY, partialTicks);

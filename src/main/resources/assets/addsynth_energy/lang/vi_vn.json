@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Thời gian cho đến khi sạc đầy",
 "gui.addsynth_energy.common.no_energy_change": "Không thay đổi năng lượng",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Tự động hủy kích hoạt",
 "gui.addsynth_energy.jei_description.wire": "Dây năng lượng được sử dụng để truyền năng lượng giữa các máy.",
 "gui.addsynth_energy.jei_description.energy_storage": "Điều này có thể lưu trữ năng lượng dư thừa.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Điều này hoạt động giống như một lò thông thường ngoại trừ nó sử dụng điện.",

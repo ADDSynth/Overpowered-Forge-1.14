@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "充滿電之前的時間",
 "gui.addsynth_energy.common.no_energy_change": "無能量變化",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "自動關機",
 "gui.addsynth_energy.jei_description.wire": "能量線用於在機器之間傳遞能量。",
 "gui.addsynth_energy.jei_description.energy_storage": "這會存儲多餘的能量。",
 "gui.addsynth_energy.jei_description.electric_furnace": "就像普通的爐子一樣工作，除了它用電。",

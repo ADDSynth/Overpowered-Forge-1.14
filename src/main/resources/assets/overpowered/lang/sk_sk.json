@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Časť štruktúry jadrovej syntézy. Musíte umiestniť 6 z týchto 5 blokov od stredu v každom smere. Na pripojenie regulátorov fúzie k meniču energie jadrovej syntézy musíte použiť dátový kábel.",
 "gui.overpowered.jei_description.fusion_control_laser": "Časť štruktúry jadrovej syntézy. Musíte urobiť 6 z nich a položiť jednu na každú jednotku riadenia fúzie smerujúcu k fúznej komore v strede.",
 "gui.overpowered.jei_description.fusion_converter": "Časť štruktúry jadrovej syntézy. Stačí to kdekoľvek nastaviť a potom ho musíte pripojiť ku každej z riadiacich jednotiek fúzie pomocou dátového kábla. Po dokončení celej štruktúry zapnite stroj pomocou červeného vodiča. Počas prevádzky bude tento stroj vyrábať energiu.",
-"gui.overpowered.laser_housing.auto_shutoff": "Automatické vypnutie",
 "gui.overpowered.laser_housing.lasers": "lasery",
 "gui.overpowered.laser_housing.distance": "vzdialenosť",
 "gui.overpowered.laser_housing.current_energy": "aktuálna energia",

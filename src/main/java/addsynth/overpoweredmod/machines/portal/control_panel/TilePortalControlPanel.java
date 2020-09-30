@@ -26,6 +26,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -42,11 +43,13 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
   private ArrayList<BlockPos> portal_frames = new ArrayList<>(containers);
   private Direction.Axis axis;
   private BlockPos lowest_portal_frame;
+  private boolean auto_shutoff = true;
 
   // Gui methods:
   public final String getMessage(){ return message.getMessage(); }
   public final boolean getPortalItem(final int index){ return portal_items[index]; }
   public final boolean isValid(){ return valid_portal; }
+  public final boolean getAutoShutoff(){ return auto_shutoff; }
 
   public final void setData(final boolean[] items, final PortalMessage message, final boolean valid_portal){
     this.portal_items = items;
@@ -60,6 +63,24 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
     for(i = 0; i < containers; i++){
       portal_items[i] = false;
     }
+  }
+
+  @Override
+  public final void read(final CompoundNBT nbt){
+    super.read(nbt);
+    auto_shutoff = nbt.getBoolean("Auto Shutoff");
+  }
+
+  @Override
+  public final CompoundNBT write(final CompoundNBT nbt){
+    super.write(nbt);
+    nbt.putBoolean("Auto Shutoff", auto_shutoff);
+    return nbt;
+  }
+
+  public final void toggle_auto_shutoff(){
+    auto_shutoff = !auto_shutoff;
+    update_data();
   }
 
   /**
@@ -298,8 +319,10 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
       message = PortalMessage.OBSTRUCTED;
       valid_portal = false;
 
-      power_switch = false;
-      turn_off();
+      if(auto_shutoff){
+        power_switch = false;
+        turn_off();
+      }
       
       final SyncPortalDataMessage message = new SyncPortalDataMessage(pos, portal_items, this.message, valid_portal);
       NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message);

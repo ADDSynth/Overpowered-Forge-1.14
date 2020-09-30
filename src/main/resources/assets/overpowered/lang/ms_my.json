@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Sebahagian daripada struktur tenaga pelakuran. Anda perlu meletakkan 6 dari 5 blok ini dari pusat ke setiap arah. Anda mesti menggunakan kabel data untuk menyambungkan unit kawalan fusi ke penukar tenaga pelakuran.",
 "gui.overpowered.jei_description.fusion_control_laser": "Sebahagian daripada struktur tenaga pelakuran. Anda mesti membuat 6 daripadanya dan meletakkan satu di setiap unit kawalan fusi yang menunjuk ke ruang fusi di tengah.",
 "gui.overpowered.jei_description.fusion_converter": "Sebahagian daripada struktur tenaga pelakuran. Cukup tetapkannya di mana sahaja, maka anda mesti menyambungkannya ke setiap unit kawalan fusion menggunakan kabel data. Setelah struktur lengkap selesai, aktifkan mesin ini dengan wayar merah untuk menghidupkannya. Semasa berjalan, mesin ini akan menghasilkan tenaga.",
-"gui.overpowered.laser_housing.auto_shutoff": "Penutupan automatik",
 "gui.overpowered.laser_housing.lasers": "Lasers",
 "gui.overpowered.laser_housing.distance": "jarak",
 "gui.overpowered.laser_housing.current_energy": "tenaga semasa",

@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "A fúziós energia szerkezetének része. Az öt blokkból 6-at mindkét irányban el kell helyeznie a központtól. A fúziós vezérlőegységeket a fúziós energia átalakítóhoz adatkábel segítségével kell csatlakoztatnia.",
 "gui.overpowered.jei_description.fusion_control_laser": "A fúziós energia szerkezetének része. Ebből 6-at kell elkészítenie, és egyet kell elhelyeznie minden egyes fúziós vezérlőegység felé, a középső fúziós kamra felé mutatva.",
 "gui.overpowered.jei_description.fusion_converter": "A fúziós energia szerkezetének része. Csak tegye ezt bárhol, majd csatlakoztassa az adatkezelő kábelen keresztül a fúziós vezérlőegységekhez. Miután a teljes szerkezet elkészült, aktiválja ezt a gépet egy piros huzallal, hogy bekapcsolja. Futás közben ez a gép energiát termel.",
-"gui.overpowered.laser_housing.auto_shutoff": "Automatikus kikapcsolás",
 "gui.overpowered.laser_housing.lasers": "lézerek",
 "gui.overpowered.laser_housing.distance": "távolság",
 "gui.overpowered.laser_housing.current_energy": "jelenlegi energia",

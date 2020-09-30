@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Timpul până la încărcare completă",
 "gui.addsynth_energy.common.no_energy_change": "Fără schimbări de energie",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Oprire automată",
 "gui.addsynth_energy.jei_description.wire": "firul de energie este utilizat pentru a transfera energie între mașini.",
 "gui.addsynth_energy.jei_description.energy_storage": "Aceasta poate stoca excesul de energie.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Acest lucru funcționează la fel ca un cuptor obișnuit, cu excepția faptului că funcționează cu electricitate.",

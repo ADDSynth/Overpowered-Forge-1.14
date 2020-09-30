@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "بخشی از ساختار انرژی همجوشی. شما باید 6 از این 5 بلوک را از مرکز در هر جهت قرار دهید. برای اتصال واحدهای کنترل فیوژن به مبدل انرژی فیوژن باید از کابل داده استفاده کنید.",
 "gui.overpowered.jei_description.fusion_control_laser": "بخشی از ساختار انرژی همجوشی. شما باید 6 مورد از اینها را تهیه کرده و یکی را روی هر واحد کنترل فیوژن که به سمت محفظه فیوژن در مرکز قرار دارد قرار دهید.",
 "gui.overpowered.jei_description.fusion_converter": "بخشی از ساختار انرژی همجوشی. فقط کافیست این کار را در هر کجا تنظیم کنید ، سپس باید این مورد را با استفاده از کابل داده به هر یک از واحدهای کنترل فیوژن متصل کنید. پس از اتمام ساختار کامل ، این دستگاه را با یک سیم قرمز فعال کنید تا آن را روشن کنید. این دستگاه هنگام کار ، انرژی تولید می کند.",
-"gui.overpowered.laser_housing.auto_shutoff": "خاموش شدن خودکار",
 "gui.overpowered.laser_housing.lasers": "لیزرها",
 "gui.overpowered.laser_housing.distance": "مسافت",
 "gui.overpowered.laser_housing.current_energy": "انرژی فعلی",

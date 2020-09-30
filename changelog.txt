@@ -10,6 +10,7 @@ v1.3.2 - TBD
    - Energy Suspension Bridge blocks (but only for horizontal bridges)
    - Laser energy blocks.
    - Fusion Energy Structure Laser Beam.
+  Added an Auto Shutoff toggle to the Portal Control Panel.
 
 
 

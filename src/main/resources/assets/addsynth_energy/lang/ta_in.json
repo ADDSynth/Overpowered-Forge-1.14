@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "முழு கட்டணம் வரை நேரம்",
 "gui.addsynth_energy.common.no_energy_change": "ஆற்றல் மாற்றம் இல்லை",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "ஆட்டோ பணிநிறுத்தம்",
 "gui.addsynth_energy.jei_description.wire": "இயந்திரங்களுக்கு இடையில் ஆற்றலை மாற்ற ஆற்றல் வயர் பயன்படுத்தப்படுகிறது.",
 "gui.addsynth_energy.jei_description.energy_storage": "இது அதிகப்படியான ஆற்றலை சேமிக்கும்.",
 "gui.addsynth_energy.jei_description.electric_furnace": "இது மின்சாரத்தைப் பயன்படுத்துவதைத் தவிர வழக்கமான உலை போலவே செயல்படுகிறது.",

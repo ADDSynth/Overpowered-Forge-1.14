@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Parte de la estructura de energía de fusión. Debe colocar 6 de estos 5 bloques lejos del centro en cada dirección. Debe usar un cable de datos para conectar las unidades de control de fusión al convertidor de energía de fusión.",
 "gui.overpowered.jei_description.fusion_control_laser": "Parte de la estructura de energía de fusión. Debe hacer 6 de estos y poner uno en cada unidad de control de fusión apuntando hacia la cámara de fusión en el centro.",
 "gui.overpowered.jei_description.fusion_converter": "Parte de la estructura de energía de fusión. Simplemente establezca esto en cualquier lugar, luego debe conectarlo a cada una de las unidades de control de fusión con un cable de datos. Una vez que se complete la estructura completa, active esta máquina con un cable rojo para encenderla. Mientras está en funcionamiento, esta máquina generará energía.",
-"gui.overpowered.laser_housing.auto_shutoff": "Apagado automatico",
 "gui.overpowered.laser_housing.lasers": "láseres",
 "gui.overpowered.laser_housing.distance": "distancia",
 "gui.overpowered.laser_housing.current_energy": "energía actual",

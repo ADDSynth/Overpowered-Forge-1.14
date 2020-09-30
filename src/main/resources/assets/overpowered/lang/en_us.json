@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Part of the Fusion Energy structure. You need 6 of these to be placed on each side of the Fusion Chamber, 5 blocks away. Each one must be connected to each other and the Fusion Energy Converter with Data Cable.",
 "gui.overpowered.jei_description.fusion_control_laser": "Part of the Fusion Energy structure. You must craft 6 of these and place them on each Fusion Control Unit, pointing towards the Fusion Chamber.",
 "gui.overpowered.jei_description.fusion_converter": "Part of the Fusion Energy structure. You must first set up the other blocks in their correct positions, then connect the Fusion Energy Converter with the Fusion Control Units using Data Cable. The Fusion Chamber must also contain a Fusion Core. Once everything is set up correctly, activate the Fusion Energy Converter with a redstone signal to turn it on and start generating Energy.",
-"gui.overpowered.laser_housing.auto_shutoff": "Auto Shutoff",
 "gui.overpowered.laser_housing.lasers": "Lasers",
 "gui.overpowered.laser_housing.distance": "Distance",
 "gui.overpowered.laser_housing.current_energy": "Current Energy",

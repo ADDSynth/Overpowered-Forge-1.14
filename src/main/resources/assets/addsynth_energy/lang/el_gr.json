@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Χρόνος έως την πλήρη φόρτιση",
 "gui.addsynth_energy.common.no_energy_change": "Καμία αλλαγή ενέργειας",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Αυτόματη απενεργοποίηση",
 "gui.addsynth_energy.jei_description.wire": "το ενεργειακό καλώδιο χρησιμοποιείται για τη μεταφορά ενέργειας μεταξύ μηχανών.",
 "gui.addsynth_energy.jei_description.energy_storage": "Αυτό μπορεί να αποθηκεύσει υπερβολική ενέργεια.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Αυτό λειτουργεί ακριβώς όπως ένας κανονικός φούρνος, εκτός από ότι χρησιμοποιεί ηλεκτρικό ρεύμα.",

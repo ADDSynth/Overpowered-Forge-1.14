@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "満充電までの時間",
 "gui.addsynth_energy.common.no_energy_change": "エネルギー変化なし",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "自動シャットオフ",
 "gui.addsynth_energy.jei_description.wire": "エネルギー線は、マシン間でエネルギーを転送するために使用されます。",
 "gui.addsynth_energy.jei_description.energy_storage": "これは余分なエネルギーを蓄えることができます。",
 "gui.addsynth_energy.jei_description.electric_furnace": "これは、電気で稼働することを除いて、通常の炉と同じように機能します。",

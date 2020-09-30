@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Một phần của cấu trúc năng lượng nhiệt hạch. Bạn cần đặt 6 trong số 5 khối này cách xa trung tâm theo mỗi hướng. Bạn phải sử dụng cáp dữ liệu để kết nối các bộ điều khiển nhiệt hạch với bộ chuyển đổi năng lượng nhiệt hạch.",
 "gui.overpowered.jei_description.fusion_control_laser": "Một phần của cấu trúc năng lượng nhiệt hạch. Bạn phải thực hiện 6 trong số này và đặt một trong mỗi đơn vị điều khiển nhiệt hạch hướng về buồng nhiệt hạch ở trung tâm.",
 "gui.overpowered.jei_description.fusion_converter": "Một phần của cấu trúc năng lượng nhiệt hạch. Chỉ cần đặt nó xuống bất cứ nơi nào, sau đó bạn phải kết nối nó với từng đơn vị điều khiển nhiệt hạch bằng cáp dữ liệu. Khi cấu trúc đầy đủ hoàn tất, kích hoạt máy này bằng một dây màu đỏ để bật nó lên. Trong khi chạy, máy này sẽ tạo ra năng lượng.",
-"gui.overpowered.laser_housing.auto_shutoff": "Tự động hủy kích hoạt",
 "gui.overpowered.laser_housing.lasers": "Lasers",
 "gui.overpowered.laser_housing.distance": "khoảng cách",
 "gui.overpowered.laser_housing.current_energy": "năng lượng hiện tại",

@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Część struktury energii syntezy jądrowej. Musisz umieścić 6 z tych 5 bloków z dala od centrum w każdym kierunku. Musisz użyć kabla do transmisji danych, aby połączyć jednostki sterujące syntezą termojądrową z konwerterem energii syntezy jądrowej.",
 "gui.overpowered.jei_description.fusion_control_laser": "Część struktury energii syntezy jądrowej. Musisz wykonać 6 z nich i położyć jeden na każdej jednostce sterującej zgrzewaniem, kierując ją w stronę komory zgrzewania pośrodku.",
 "gui.overpowered.jei_description.fusion_converter": "Część struktury energii syntezy jądrowej. Po prostu ustaw to w dowolnym miejscu, a następnie musisz podłączyć to do każdej jednostki sterowania syntezą za pomocą kabla do transmisji danych. Po zakończeniu pełnej struktury aktywuj urządzenie czerwonym przewodem, aby je włączyć. Podczas pracy ta maszyna będzie generować energię.",
-"gui.overpowered.laser_housing.auto_shutoff": "Automatyczne wyłączenie",
 "gui.overpowered.laser_housing.lasers": "lasery",
 "gui.overpowered.laser_housing.distance": "dystans",
 "gui.overpowered.laser_housing.current_energy": "aktualna energia",

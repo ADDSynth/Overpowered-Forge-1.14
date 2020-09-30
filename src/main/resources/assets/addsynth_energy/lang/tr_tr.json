@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Tam Şarja kadar geçen süre",
 "gui.addsynth_energy.common.no_energy_change": "Enerji Değişimi Yok",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Otomatik kapanma",
 "gui.addsynth_energy.jei_description.wire": "Enerji Teli, makineler arasında enerji aktarmak için kullanılır.",
 "gui.addsynth_energy.jei_description.energy_storage": "Bu fazla enerji depolayabilir.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Bu, elektrikle çalışması dışında normal bir fırın gibi çalışır.",

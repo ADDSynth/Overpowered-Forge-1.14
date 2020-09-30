@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Tempo fino alla carica completa",
 "gui.addsynth_energy.common.no_energy_change": "Nessun cambiamento di energia",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Spegnimento automatico",
 "gui.addsynth_energy.jei_description.wire": "Il filo di energia viene utilizzato per trasferire energia tra le macchine.",
 "gui.addsynth_energy.jei_description.energy_storage": "Questo può immagazzinare energia in eccesso.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Funziona proprio come una normale fornace, tranne per il fatto che utilizza elettricità.",

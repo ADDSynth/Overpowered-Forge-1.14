@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Tid indtil fuld opladning",
 "gui.addsynth_energy.common.no_energy_change": "Ingen energiændring",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Automatisk deaktivering",
 "gui.addsynth_energy.jei_description.wire": "energitråd bruges til at overføre energi mellem maskiner.",
 "gui.addsynth_energy.jei_description.energy_storage": "Dette kan lagre overskydende energi.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Dette fungerer ligesom en almindelig ovn, medmindre det bruger elektricitet.",

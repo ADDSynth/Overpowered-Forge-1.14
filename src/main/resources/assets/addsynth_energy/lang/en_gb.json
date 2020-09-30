@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Time to Full Charge",
 "gui.addsynth_energy.common.no_energy_change": "No Energy Change",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Auto Shutoff",
 "gui.addsynth_energy.jei_description.wire": "Use Energy Wire to connect all your machines together to transfer energy.",
 "gui.addsynth_energy.jei_description.energy_storage": "This will store any excess energy that you generate, up to 1 million units of Energy.",
 "gui.addsynth_energy.jei_description.electric_furnace": "This machine works just like a regular Furnace except it runs off of electricity. 1,000 units Energy will perform 1 smelting operation.",

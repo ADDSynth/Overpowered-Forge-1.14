@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "زمان تا شارژ کامل",
 "gui.addsynth_energy.common.no_energy_change": "بدون تغییر انرژی",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "خاموش شدن خودکار",
 "gui.addsynth_energy.jei_description.wire": "سیم انرژی برای انتقال انرژی بین ماشین ها استفاده می شود.",
 "gui.addsynth_energy.jei_description.energy_storage": "این می تواند انرژی اضافی را ذخیره کند.",
 "gui.addsynth_energy.jei_description.electric_furnace": "این درست مانند یک کوره معمولی کار می کند به جز اینکه از برق استفاده می کند.",

@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "En del af fusionsenergistrukturen. Du skal placere 6 af disse 5 blokke væk fra centrum i hver retning. Du skal bruge datakabel til at forbinde fusionskontrolenhederne til fusionenergikonverteren.",
 "gui.overpowered.jei_description.fusion_control_laser": "En del af fusionsenergistrukturen. Du skal lave 6 af disse og lægge en på hver fusionskontrolenhed, der peger mod fusionskammeret i midten.",
 "gui.overpowered.jei_description.fusion_converter": "En del af fusionsenergistrukturen. Bare sæt dette ned overalt, så skal du forbinde dette til hver af fusionskontrolenhederne ved hjælp af datakabel. Når den fulde struktur er færdig, skal du aktivere denne maskine med en rød ledning for at tænde den. Under kørsel genererer denne maskine energi.",
-"gui.overpowered.laser_housing.auto_shutoff": "Automatisk deaktivering",
 "gui.overpowered.laser_housing.lasers": "lasere",
 "gui.overpowered.laser_housing.distance": "afstand",
 "gui.overpowered.laser_housing.current_energy": "nuværende energi",

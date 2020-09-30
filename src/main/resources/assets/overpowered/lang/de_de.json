@@ -219,7 +219,6 @@
 "gui.overpowered.jei_description.fusion_control_laser": "Teil der Fusionsenergiestruktur. Sie müssen 6 davon herstellen und eine auf jede Fusionssteuereinheit setzen, die in Richtung der Fusionskammer in der Mitte zeigt.",
 "gui.overpowered.jei_description.fusion_converter": "Teil der Fusionsenergiestruktur. Stellen Sie dies einfach irgendwo ab, dann müssen Sie es mit einem Datenkabel an jede der Fusionssteuereinheiten anschließen. Sobald die vollständige Struktur fertig ist, aktivieren Sie diese Maschine mit einem roten Draht, um sie einzuschalten. Während des Betriebs erzeugt diese Maschine Energie.",
 "gui.overpowered.laser_housing.auto_shutoff": "Automatische Abschaltung",
-"gui.overpowered.laser_housing.lasers": "Lasers",
 "gui.overpowered.laser_housing.distance": "Entfernung",
 "gui.overpowered.laser_housing.current_energy": "aktuelle Energie",
 "gui.overpowered.laser_housing.required_energy": "benötigte Energie",

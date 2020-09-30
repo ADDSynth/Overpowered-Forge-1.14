@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Füzyon enerji yapısının bir parçası. Bu 5 bloğun 6'sını her yönden merkezden uzağa yerleştirmeniz gerekir. Füzyon kontrol ünitelerini füzyon enerjisi dönüştürücüsüne bağlamak için veri kablosu kullanmalısınız.",
 "gui.overpowered.jei_description.fusion_control_laser": "Füzyon enerji yapısının bir parçası. Bunlardan 6'sını yapmalı ve her bir füzyon kontrol ünitesine merkezdeki füzyon odasına dönük bir tane koymalısınız.",
 "gui.overpowered.jei_description.fusion_converter": "Füzyon enerji yapısının bir parçası. Bunu herhangi bir yere koyun, ardından veri kablosunu kullanarak bunu her bir füzyon kontrol ünitesine bağlamanız gerekir. Tüm yapı tamamlandıktan sonra, açmak için bu makineyi kırmızı bir tel ile etkinleştirin. Çalışırken, bu makine enerji üretecektir.",
-"gui.overpowered.laser_housing.auto_shutoff": "Otomatik kapanma",
 "gui.overpowered.laser_housing.lasers": "lazerler",
 "gui.overpowered.laser_housing.distance": "mesafe",
 "gui.overpowered.laser_housing.current_energy": "mevcut enerji",

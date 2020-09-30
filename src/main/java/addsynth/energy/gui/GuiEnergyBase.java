@@ -19,6 +19,7 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   private final String energy_text           = StringUtil.translate("gui.addsynth_energy.common.energy");
   private final String energy_usage_text     = StringUtil.translate("gui.addsynth_energy.common.energy_usage");
   private final String tick_text             = StringUtil.translate("gui.addsynth_energy.common.tick");
+  /** The word 'Status' translated. */
   private final String status_text           = StringUtil.translate("gui.addsynth_energy.common.status");
   private final String time_left_text        = StringUtil.translate("gui.addsynth_energy.common.time_remaining");
   private final String charge_remaining_text = StringUtil.translate("gui.addsynth_energy.common.charge_time_remaining");
@@ -83,6 +84,10 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   /** Draws the status at the default location, below the energy capacity line. */
   protected final void draw_status(final String status){
     draw_text_left(status_text+": "+status, 6, 28);
+  }
+
+  protected final void draw_status(final String status, final int y){
+    draw_text_left(status_text+": "+status, 6, y);
   }
 
   protected final void draw_status_below_switch(final String status){

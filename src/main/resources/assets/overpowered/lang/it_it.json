@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Parte della struttura dell'energia di fusione. È necessario posizionare 6 di questi 5 blocchi di distanza dal centro in ciascuna direzione. È necessario utilizzare un cavo dati per collegare le unità di controllo della fusione al convertitore di energia di fusione.",
 "gui.overpowered.jei_description.fusion_control_laser": "Parte della struttura dell'energia di fusione. È necessario crearne 6 e posizionarne una su ciascuna unità di controllo della fusione rivolta verso la camera di fusione al centro.",
 "gui.overpowered.jei_description.fusion_converter": "Parte della struttura dell'energia di fusione. Basta posizionarlo ovunque, quindi è necessario collegarlo a ciascuna delle unità di controllo della fusione usando il cavo dati. Una volta completata la struttura completa, attiva questa macchina con un filo rosso per accenderla. Durante il funzionamento, questa macchina genererà energia.",
-"gui.overpowered.laser_housing.auto_shutoff": "Spegnimento automatico",
 "gui.overpowered.laser_housing.lasers": "Lasers",
 "gui.overpowered.laser_housing.distance": "distanza",
 "gui.overpowered.laser_housing.current_energy": "energia attuale",

@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Время до полной зарядки",
 "gui.addsynth_energy.common.no_energy_change": "Без изменений энергии",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Автоматическая деактивация",
 "gui.addsynth_energy.jei_description.wire": "Энергетический провод используется для передачи энергии между машинами.",
 "gui.addsynth_energy.jei_description.energy_storage": "Это может хранить избыточную энергию.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Это работает как обычная печь, за исключением того, что она использует электричество.",

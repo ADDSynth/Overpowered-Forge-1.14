@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "융합 에너지 구조의 일부. 이 5 개 블록 중 6 개를 중앙에서 각 방향으로 멀리 배치해야합니다. 퓨전 제어 장치를 퓨전 에너지 변환기에 연결하려면 데이터 케이블을 사용해야합니다.",
 "gui.overpowered.jei_description.fusion_control_laser": "융합 에너지 구조의 일부. 이 중 6 개를 만들어 각 융합 제어 장치에 중앙의 융합 챔버를 향한 하나를 배치해야합니다.",
 "gui.overpowered.jei_description.fusion_converter": "융합 에너지 구조의 일부. 아무 데나 내려 놓고 데이터 케이블을 사용하여 각 융합 제어 장치에 연결해야합니다. 전체 구조가 완료되면 빨간색 선으로이 기계를 활성화하여 켜십시오. 작동하는 동안이 기계는 에너지를 생성합니다.",
-"gui.overpowered.laser_housing.auto_shutoff": "자동 차단",
 "gui.overpowered.laser_housing.lasers": "레이저",
 "gui.overpowered.laser_housing.distance": "거리",
 "gui.overpowered.laser_housing.current_energy": "현재 에너지",

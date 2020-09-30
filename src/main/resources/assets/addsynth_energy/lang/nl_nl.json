@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "Tijd tot volledige lading",
 "gui.addsynth_energy.common.no_energy_change": "Geen energieverandering",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "Automatisch afsluiten",
 "gui.addsynth_energy.jei_description.wire": "Energiedraad wordt gebruikt om energie over te dragen tussen machines.",
 "gui.addsynth_energy.jei_description.energy_storage": "Dit kan overtollige energie opslaan.",
 "gui.addsynth_energy.jei_description.electric_furnace": "Dit werkt net als een gewone oven, behalve dat het op elektriciteit werkt.",

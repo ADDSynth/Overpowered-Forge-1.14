@@ -21,6 +21,7 @@
 "gui.addsynth_energy.common.time_to_full_charge": "완전 충전까지의 시간",
 "gui.addsynth_energy.common.no_energy_change": "에너지 변화 없음",
 "gui.addsynth_energy.common.tick": "tick",
+"gui.addsynth_energy.common.auto_shutoff": "자동 차단",
 "gui.addsynth_energy.jei_description.wire": "에너지 와이어는 기계간에 에너지를 전달하는 데 사용됩니다.",
 "gui.addsynth_energy.jei_description.energy_storage": "이것은 과도한 에너지를 저장할 수 있습니다.",
 "gui.addsynth_energy.jei_description.electric_furnace": "전기를 사용한다는 점을 제외하면 일반 용광로처럼 작동합니다.",

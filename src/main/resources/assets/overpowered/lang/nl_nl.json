@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "Onderdeel van de fusie-energiestructuur. Je moet 6 van deze 5 blokken in elke richting uit het midden plaatsen. U moet een datakabel gebruiken om de fusieregeleenheden op de fusie-energieomvormer aan te sluiten.",
 "gui.overpowered.jei_description.fusion_control_laser": "Onderdeel van de fusie-energiestructuur. U moet er 6 van maken en er een op elke fusieregeleenheid plaatsen die naar de fusiekamer in het midden wijst.",
 "gui.overpowered.jei_description.fusion_converter": "Onderdeel van de fusie-energiestructuur. Leg dit gewoon ergens neer, dan moet u dit met een datakabel op elk van de fusieregeleenheden aansluiten. Zodra de volledige structuur is voltooid, activeert u deze machine met een rode draad om hem in te schakelen. Tijdens het draaien zal deze machine energie opwekken.",
-"gui.overpowered.laser_housing.auto_shutoff": "Automatisch afsluiten",
 "gui.overpowered.laser_housing.lasers": "Lasers",
 "gui.overpowered.laser_housing.distance": "afstand",
 "gui.overpowered.laser_housing.current_energy": "huidige energie",

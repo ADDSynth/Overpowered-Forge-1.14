@@ -218,7 +218,6 @@
 "gui.overpowered.jei_description.fusion_control_unit": "جزء من هيكل طاقة الانصهار. تحتاج إلى وضع 6 من هذه القطع الخمسة بعيدًا عن المركز في كل اتجاه. يجب عليك استخدام كبل البيانات لتوصيل وحدات التحكم في الاندماج بمحول طاقة الانصهار.",
 "gui.overpowered.jei_description.fusion_control_laser": "جزء من هيكل طاقة الانصهار. يجب أن تصنع 6 من هذه العناصر وتضع واحدة على كل وحدة تحكم في الاندماج تشير إلى غرفة الانصهار في المركز.",
 "gui.overpowered.jei_description.fusion_converter": "جزء من هيكل طاقة الانصهار. ما عليك سوى ضبط هذا في أي مكان ، ثم يجب عليك توصيل هذا بكل من وحدات التحكم في الاندماج باستخدام كابل البيانات. بمجرد اكتمال الهيكل الكامل ، قم بتنشيط هذا الجهاز بسلك أحمر لتشغيله. أثناء التشغيل ، ستولد هذه الآلة طاقة.",
-"gui.overpowered.laser_housing.auto_shutoff": "التعطيل التلقائي",
 "gui.overpowered.laser_housing.lasers": "الليزر",
 "gui.overpowered.laser_housing.distance": "مسافة",
 "gui.overpowered.laser_housing.current_energy": "الطاقة الحالية",
