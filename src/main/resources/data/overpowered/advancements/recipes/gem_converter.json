@@ -1,22 +1,32 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
-    "iron_frame_block": {
+    "aluminum_plate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:iron_frame_block"
+            "tag": "forge:plates/aluminum"
           }
         ]
       }
     },
-    "overpowered_gem": {
+    "energy_crystal_shards": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_crystal"
+            "item": "overpowered:energy_crystal_shards"
+          }
+        ]
+      }
+    },
+    "advanced_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:advanced_power_core"
           }
         ]
       }
@@ -40,8 +50,9 @@
   },
   "requirements": [
     [
-      "iron_frame_block",
-      "overpowered_gem",
+      "aluminum_plate",
+      "energy_crystal_shards",
+      "advanced_power_core",
       "has_recipe",
       "has_gem_converter"
     ]
