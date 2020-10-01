@@ -13,6 +13,9 @@ v1.3.2 - TBD
   Added an Auto Shutoff toggle to the Portal Control Panel.
   Fixed crashes regarding ticking TileEntities and getCapabilities().
    - Only for 1.14 and 1.15 versions.
+  Compressor:
+   - Now has an input filter.
+   - Fixed Hoppers being able to put items into an inaccessible 2nd slot.
 
 
 

@@ -1,6 +1,7 @@
 package addsynth.energy.gameplay.compressor;
 
 import javax.annotation.Nullable;
+import addsynth.core.items.ItemUtil;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
 import addsynth.energy.registers.Tiles;
@@ -20,14 +21,13 @@ public final class TileCompressor extends TileWorkMachine implements INamedConta
   private ItemStack result;
 
   public TileCompressor(){
-    super(Tiles.COMPRESSOR,2,null,1,Config.compressor_data);
+    super(Tiles.COMPRESSOR, 1, CompressorRecipes.filter, 1, Config.compressor_data);
   }
 
   @Override
   protected final boolean test_condition(){
-    final ItemStack[] input = {input_inventory.getStackInSlot(0), input_inventory.getStackInSlot(1)};
-    result = CompressorRecipes.getResult(input, world);
-    return output_inventory.can_add(0, result);
+    result = CompressorRecipes.getResult(input_inventory.getStackInSlot(0), world);
+    return ItemUtil.itemStackExists(result) ? output_inventory.can_add(0, result) : false;
   }
 
   @Override
