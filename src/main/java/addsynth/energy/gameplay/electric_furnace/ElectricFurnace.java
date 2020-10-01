@@ -8,6 +8,7 @@ import addsynth.energy.blocks.MachineBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -32,7 +33,7 @@ public final class ElectricFurnace extends MachineBlock {
   public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
   public ElectricFurnace(final String name){
-    super();
+    super(MaterialColor.LIGHT_GRAY);
     ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
   }
@@ -43,6 +44,7 @@ public final class ElectricFurnace extends MachineBlock {
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public final TileEntity createNewTileEntity(final IBlockReader worldIn){
     return new TileElectricFurnace();
   }

@@ -16,6 +16,10 @@ v1.3.2 - TBD
   Compressor:
    - Now has an input filter.
    - Fixed Hoppers being able to put items into an inaccessible 2nd slot.
+  Made machine Map Colors more accurate.
+  Energy Storage Container no longer sounds like Glass.
+  Fixed the Fusion Chamber being broken in a weird manner.
+   - Only for 1.14 and 1.15 versions.
 
 
 

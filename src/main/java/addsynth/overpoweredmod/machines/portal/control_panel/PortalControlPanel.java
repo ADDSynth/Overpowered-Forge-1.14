@@ -9,6 +9,7 @@ import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -33,7 +34,7 @@ public final class PortalControlPanel extends MachineBlock {
   public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
   public PortalControlPanel(final String name){
-    super();
+    super(MaterialColor.SNOW);
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
   }

@@ -5,6 +5,7 @@ import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
@@ -19,7 +20,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public final class PortalFrame extends MachineBlock {
 
   public PortalFrame(final String name){
-    super();
+    super(MaterialColor.WOOL);
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
   }
 

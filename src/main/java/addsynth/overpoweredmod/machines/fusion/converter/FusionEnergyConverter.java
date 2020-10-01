@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,7 @@ import net.minecraft.world.IBlockReader;
 public final class FusionEnergyConverter extends MachineBlock {
 
   public FusionEnergyConverter(final String name){
-    super();
+    super(MaterialColor.SNOW);
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
   }
 

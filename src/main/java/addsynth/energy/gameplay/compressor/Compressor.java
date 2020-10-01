@@ -6,6 +6,7 @@ import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.blocks.MachineBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -24,7 +25,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public final class Compressor extends MachineBlock {
 
   public Compressor(final String name){
-    super();
+    super(MaterialColor.WOOL);
     ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
   }
 
@@ -34,6 +35,7 @@ public final class Compressor extends MachineBlock {
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public final TileEntity createNewTileEntity(final IBlockReader worldIn){
     return new TileCompressor();
   }

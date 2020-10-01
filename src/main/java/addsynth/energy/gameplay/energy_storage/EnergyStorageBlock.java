@@ -6,7 +6,7 @@ import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.blocks.MachineBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -27,7 +27,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public final class EnergyStorageBlock extends MachineBlock {
 
   public EnergyStorageBlock(final String name){
-    super(SoundType.GLASS);
+    super(MaterialColor.SNOW);
     ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
   }
 

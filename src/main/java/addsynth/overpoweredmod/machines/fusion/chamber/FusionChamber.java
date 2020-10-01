@@ -7,6 +7,7 @@ import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -26,7 +27,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public final class FusionChamber extends MachineBlock {
 
   public FusionChamber(final String name){
-    super();
+    super(MaterialColor.SNOW);
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
   }
 
@@ -54,6 +55,7 @@ public final class FusionChamber extends MachineBlock {
 
   @Override
   public final void onBlockHarvested(final World worldIn, final BlockPos pos, final BlockState state, final PlayerEntity player){
+    super.onBlockHarvested(worldIn, pos, state, player);
     check_container(worldIn, pos);
   }
 
