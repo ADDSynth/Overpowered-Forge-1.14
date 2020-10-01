@@ -100,7 +100,7 @@ description="Library by ADDSynth, for ADDSynth's mods. Adds Energy Wire, a Gener
 
 [[mods]]
 modId="overpowered" #mandatory
-version="1.3.1" #mandatory
+version="1.3.2" #mandatory
 displayName="Overpowered" #mandatory
 updateJSONURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/update.json" #optional
 displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/index.html" #optional

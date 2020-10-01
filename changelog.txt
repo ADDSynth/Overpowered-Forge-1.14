@@ -1,4 +1,4 @@
-v1.3.2 - TBD
+v1.3.2 - October 1, 2020
   Energy Suspension Bridge can now overwrite replaceable blocks.
    - Area is no longer considered obstructed if it contains tall grass.
   Advanced Ore Refinery:
@@ -11,7 +11,7 @@ v1.3.2 - TBD
    - Laser energy blocks.
    - Fusion Energy Structure Laser Beam.
   Added an Auto Shutoff toggle to the Portal Control Panel.
-  Fixed crashes regarding ticking TileEntities and getCapabilities().
+  Fixed crashes regarding ticking TileEntities, LazyOptional.orElseGet(), and getCapabilities().
    - Only for 1.14 and 1.15 versions.
   Compressor:
    - Now has an input filter.
