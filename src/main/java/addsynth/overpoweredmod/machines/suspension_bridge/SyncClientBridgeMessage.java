@@ -45,7 +45,8 @@ public final class SyncClientBridgeMessage {
 
   public static final void handle(final SyncClientBridgeMessage message, final Supplier<NetworkEvent.Context> context){
     context.get().enqueueWork(() -> {
-      final World world = Minecraft.getInstance().player.world;
+      @SuppressWarnings("resource") final Minecraft minecraft = Minecraft.getInstance();
+      final World world = minecraft.player.world;
       if(world.isAreaLoaded(message.position, 0)){
         final TileSuspensionBridge tile = MinecraftUtility.getTileEntity(message.position, world, TileSuspensionBridge.class);
         if(tile != null){

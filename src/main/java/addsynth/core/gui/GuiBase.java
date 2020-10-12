@@ -31,9 +31,6 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
 
   public GuiBase(int width, int height, T container, PlayerInventory player_inventory, ITextComponent title, ResourceLocation gui_texture){
     super(container, player_inventory, title);
-    if(font == null){
-      font = Minecraft.getInstance().fontRenderer;
-    }
     GUI_TEXTURE = gui_texture;
     if(width  > 0){ this.xSize = width; }
     if(height > 0){ this.ySize = height; }
@@ -47,6 +44,16 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
     super.init();
     textureManager = this.minecraft.getTextureManager();
     guiRight = guiLeft + xSize; // the guiLeft variable isn't set up until we call super.init()!
+  }
+
+  @SuppressWarnings("null")
+  private final void getFontRenderer(){
+    if(minecraft == null){
+      minecraft = Minecraft.getInstance();
+    }
+    if(font == null){
+      font = minecraft.fontRenderer;
+    }
   }
 
   @Override
@@ -115,10 +122,9 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
 
 // ========================================================================================================
 
-  protected final int getMaxStringWidth(final String ... text){ // MAYBE, this can be static, if we specify the fontRenderer as first argument.
-    if(font == null){
-      font = Minecraft.getInstance().fontRenderer;
-    }
+  
+  protected final int getMaxStringWidth(final String ... text){
+    getFontRenderer();
     final int[] width = new int[text.length];
     int i;
     for(i = 0; i < text.length; i++){

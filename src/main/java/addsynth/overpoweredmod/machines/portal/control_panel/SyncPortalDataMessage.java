@@ -51,7 +51,8 @@ public final class SyncPortalDataMessage {
 
   public static void handle(final SyncPortalDataMessage message, final Supplier<NetworkEvent.Context> context){
     context.get().enqueueWork(() -> {
-      final World world = Minecraft.getInstance().player.world;
+      @SuppressWarnings("resource") final Minecraft minecraft = Minecraft.getInstance();
+      final World world = minecraft.player.world;
       if(world.isAreaLoaded(message.position, 0)){
         final TilePortalControlPanel control_panel = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
         if(control_panel != null){
