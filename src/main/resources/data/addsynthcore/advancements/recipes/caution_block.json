@@ -59,7 +59,8 @@
   ],
   "rewards": {
     "recipes": [
-      "addsynthcore:caution_block"
+      "addsynthcore:caution_block",
+      "addsynthcore:caution_block_alternate"
     ]
   }
 }

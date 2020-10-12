@@ -1,5 +1,6 @@
 v1.3.3 - TBD
   Fixed Inverter crash. sigh.
+  Added an alternate crafting recipe for the Caution Block.
 
 
 
