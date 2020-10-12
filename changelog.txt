@@ -1,3 +1,8 @@
+v1.3.3 - TBD
+  Fixed Inverter crash. sigh.
+
+
+
 v1.3.2 - October 1, 2020
   Energy Suspension Bridge can now overwrite replaceable blocks.
    - Area is no longer considered obstructed if it contains tall grass.

@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.inverter;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.core.util.StringUtil;
 import addsynth.energy.tiles.machines.TileWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
@@ -29,27 +29,19 @@ public final class TileInverter extends TileWorkMachine implements INamedContain
     if(input_stack.isEmpty()){
       return false;
     }
-    try{
-      return output_inventory.can_add(0, getInverted(input_stack));
-    }
-    catch(Exception e){
-      return false;
-    }
+    return output_inventory.can_add(0, getInverted(input_stack));
   }
 
-  public static final ItemStack getInverted(final ItemStack input_stack) throws IllegalArgumentException {
+  public static final @Nonnull ItemStack getInverted(final ItemStack input_stack){
     final Item item = input_stack.getItem();
     if(item == Init.energy_crystal){ return new ItemStack(Init.void_crystal,1); }
     if(item == Init.void_crystal){   return new ItemStack(Init.energy_crystal,1); }
-    throw new IllegalArgumentException("Invalid input '"+StringUtil.getName(item)+"' for "+TileInverter.class.getSimpleName()+".getInverted(). Input should only be Energy Crystal or Void Crystal!");
+    return ItemStack.EMPTY;
   }
 
   @Override
   public final void perform_work(){
-    try{
-      output_inventory.insertItem(0, getInverted(working_inventory.getStackInSlot(0)), false);
-    }
-    catch(Exception e){}
+    output_inventory.insertItem(0, getInverted(working_inventory.getStackInSlot(0)), false);
     working_inventory.setEmpty();
   }
 
