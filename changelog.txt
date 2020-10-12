@@ -1,6 +1,8 @@
 v1.3.3 - TBD
   Fixed Inverter crash. sigh.
   Added an alternate crafting recipe for the Caution Block.
+  No longer displays Portal warning message as the Unknown Dimension
+    doesn't exist in the 1.14 and 1.15 versions.
 
 
 

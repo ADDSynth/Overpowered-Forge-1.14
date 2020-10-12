@@ -42,6 +42,7 @@ public final class Events {
     }
   }
 
+  /* DELETE when we implement the Unknown Dimension for 1.14+ delete this warning message and all translation keys.
   @SubscribeEvent
   public static final void craft_event(final ItemCraftedEvent event){
     final Item item = event.getCrafting().getItem();
@@ -52,6 +53,7 @@ public final class Events {
       }
     }
   }
+  */
 
   /** @see net.minecraftforge.common.ForgeHooks#onLivingAttack */
   @SubscribeEvent
