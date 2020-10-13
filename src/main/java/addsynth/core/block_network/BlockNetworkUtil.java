@@ -86,7 +86,7 @@ public final class BlockNetworkUtil {
    * @param destroyed_tile
    * @param constructor
    */
-  @SuppressWarnings({ "unchecked", "resource" })
+  @SuppressWarnings({ "unchecked", "resource", "null" })
   public static final <B extends BlockNetwork<T>, T extends TileEntity & IBlockNetworkUser<B>> void tileentity_was_removed(final T destroyed_tile, final BiFunction<World, T, B> constructor){
     final World world = destroyed_tile.getWorld();
     if(world.isRemote){
@@ -105,7 +105,7 @@ public final class BlockNetworkUtil {
 
           if(blocks == null){
             final B first_network = destroyed_tile.getBlockNetwork();
-            if(first_network != null){ // PRIORITY: This caused an error, figure out why this is being called during world load in a Single-player world in regards to the Laser Housings.
+            if(first_network != null){
               first_network.updateBlockNetwork(offset, (T)tile);
               blocks = first_network.getTileEntityList();
             }
