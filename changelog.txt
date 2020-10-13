@@ -1,4 +1,4 @@
-v1.3.3 - TBD
+v1.3.3 - October 13, 2020
   Fixed Inverter crash. sigh.
   Added an alternate crafting recipe for the Caution Block.
   No longer displays Portal warning message as the Unknown Dimension
