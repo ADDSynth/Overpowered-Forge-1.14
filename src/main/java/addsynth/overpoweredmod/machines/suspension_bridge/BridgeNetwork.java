@@ -360,15 +360,15 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
   /** This updates all TileEntities in the network whenever something changes that must be propogated to the rest of them. */
   private final void updateBridgeNetwork(){
-    TileSuspensionBridge tile;
     remove_invalid_nodes(blocks);
+    TileSuspensionBridge tile;
     for(final Node node : blocks){
       tile = (TileSuspensionBridge)node.getTile();
       tile.getInputInventory().setStackInSlot(0, lens_index < 0 ? ItemStack.EMPTY : new ItemStack(Lens.index[lens_index]));
       tile.update_data();
-      final SyncClientBridgeMessage network_message = new SyncClientBridgeMessage(node.position, this.bridge_message, this.message);
-      NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, network_message);
     }
+    final SyncClientBridgeMessage msg = new SyncClientBridgeMessage(blocks.getPositions(), bridge_message, message);
+    NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, msg);
   }
 
   /** This is run every tick, by every Bridge Tile in the network. But we check that only first_tile executes code. */

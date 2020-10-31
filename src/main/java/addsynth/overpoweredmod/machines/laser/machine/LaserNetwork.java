@@ -107,17 +107,18 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   }
 
   private final void updateLaserNetwork(){
-    TileLaserHousing laser_housing;
     remove_invalid_nodes(blocks);
+    
+    // updates server
+    TileLaserHousing laser_housing;
     for(final Node node : blocks){
       laser_housing = (TileLaserHousing)node.getTile();
-      laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff); // updates server
-      final LaserClientSyncMessage message = new LaserClientSyncMessage(node.position, number_of_lasers);
-      NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message); // updates client
-      // OPTIMIZE: Send 1 client Network message, containing the data, and all the Block Positions
-      //           of the tiles we need to update. DO NOT send individual message for each TileEntity!
-      //           Also do this to BridgeNetwork.
+      laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff);
     }
+    
+    // updates client
+    final LaserClientSyncMessage message = new LaserClientSyncMessage(blocks.getPositions(), number_of_lasers);
+    NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message);
   }
 
   /**
