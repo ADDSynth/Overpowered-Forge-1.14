@@ -1,6 +1,6 @@
 package addsynth.energy.compat.energy.redstoneflux;
 
-import addsynth.core.util.JavaUtils;
+import addsynth.core.util.java.JavaUtils;
 // import cofh.redstoneflux.api.IEnergyHandler;
 // import cofh.redstoneflux.api.IEnergyProvider;
 // import cofh.redstoneflux.api.IEnergyReceiver;

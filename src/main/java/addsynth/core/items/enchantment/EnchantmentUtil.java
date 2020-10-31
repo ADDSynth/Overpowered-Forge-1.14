@@ -3,7 +3,7 @@ package addsynth.core.items.enchantment;
 import java.util.Arrays;
 import java.util.List;
 import addsynth.core.items.ItemUtil;
-import addsynth.core.util.ArrayUtil;
+import addsynth.core.util.java.ArrayUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ArmorItem;

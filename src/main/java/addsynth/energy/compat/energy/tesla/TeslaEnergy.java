@@ -1,6 +1,6 @@
 package addsynth.energy.compat.energy.tesla;
 
-import addsynth.core.util.JavaUtils;
+import addsynth.core.util.java.JavaUtils;
 // import net.darkhax.tesla.api.*;
 // import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.tileentity.TileEntity;

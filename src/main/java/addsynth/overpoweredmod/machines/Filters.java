@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines;
 
 import addsynth.core.material.MaterialsUtil;
-import addsynth.core.util.ArrayUtil;
+import addsynth.core.util.java.ArrayUtil;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.machines.gem_converter.GemConverterRecipe;
 import net.minecraft.item.Item;

@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.identifier;
 import javax.annotation.Nullable;
 import addsynth.core.game.Compatability;
 import addsynth.core.items.ItemUtil;
-import addsynth.core.util.ArrayUtil;
+import addsynth.core.util.java.ArrayUtil;
 import addsynth.energy.tiles.machines.TileStandardWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Tools;

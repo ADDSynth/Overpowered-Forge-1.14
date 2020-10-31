@@ -2,7 +2,7 @@ package addsynth.energy.gameplay.universal_energy_interface;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.core.util.ArrayUtil;
+import addsynth.core.util.java.ArrayUtil;
 import addsynth.energy.compat.energy.EnergyCompat;
 import addsynth.energy.compat.energy.forge.ForgeEnergyIntermediary;
 import addsynth.energy.energy_network.tiles.TileEnergyNetwork;

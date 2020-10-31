@@ -1,4 +1,4 @@
-package addsynth.core.util;
+package addsynth.core.util.java;
 
 import addsynth.core.Constants;
 import net.minecraft.server.MinecraftServer;

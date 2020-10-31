@@ -3,7 +3,7 @@ package addsynth.core.game;
 import java.util.Map;
 import java.util.TreeMap;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.util.JavaUtils;
+import addsynth.core.util.java.JavaUtils;
 import net.minecraftforge.fml.ModList;
 
 /**

@@ -1,9 +1,9 @@
 package addsynth.core.gui;
 
 import java.lang.reflect.Method;
-import com.mojang.blaze3d.platform.GlStateManager;
-import addsynth.core.util.JavaUtils;
 import addsynth.core.util.color.Color;
+import addsynth.core.util.java.JavaUtils;
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
