@@ -38,8 +38,8 @@ public final class ToggleAutoShutoffMessage {
           if(tile != null){
             tile.toggle_auto_shutoff();
           }
-          // OPTIMIZE: Toggling Auto Shutoff is now a common feature amongst machines.
-          //           Make this a WorkSystem feature and move to ADDSynth Energy!
+          // TODO: Toggling Auto Shutoff is now a common feature amongst machines. Make this a feature
+          //       of Manual Machines and an IAutoShutoff interface and move to ADDSynth Energy!
           final TilePortalControlPanel tile2 = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
           if(tile2 != null){
             tile2.toggle_auto_shutoff();

@@ -1,12 +1,12 @@
 package addsynth.overpoweredmod.machines.fusion.chamber;
 
-import addsynth.core.container.BaseContainer;
+import addsynth.core.container.InputContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerFusionChamber extends BaseContainer<TileFusionChamber> {
+public final class ContainerFusionChamber extends InputContainer<TileFusionChamber> {
 
   public ContainerFusionChamber(final int id, final PlayerInventory player_inventory, final TileFusionChamber tile){
     super(Containers.FUSION_CHAMBER, id, player_inventory, tile);

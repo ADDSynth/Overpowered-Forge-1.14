@@ -99,7 +99,7 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
     }
     
     draw_text_center(work_percentage + "%", work_percentage_x, work_percentage_y);
-    draw_time_left(tile, time_left_y);
+    draw_time_left(time_left_y);
   }
 
 }

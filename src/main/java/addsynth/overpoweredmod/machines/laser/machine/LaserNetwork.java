@@ -6,8 +6,9 @@ import addsynth.core.block_network.NodeList;
 import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MinecraftUtility;
-import addsynth.energy.Energy;
-import addsynth.energy.tiles.IEnergyUser;
+import addsynth.energy.main.Energy;
+import addsynth.energy.main.IEnergyUser;
+import addsynth.energy.main.Receiver;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -20,13 +21,14 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implements IEnergyUser {
+public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
 
+  public boolean changed;
   private final NodeList lasers = new NodeList(27);
   private int number_of_lasers;
   private boolean activated;
   private int laser_distance;
-  public final Energy energy = new Energy(0,1000);
+  public final Receiver energy = new Receiver(0, 1000);
   public boolean running;
   public boolean auto_shutoff;
 
@@ -34,20 +36,12 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
   // https://blogs.oracle.com/java-platform-group/java-8s-new-type-annotations
   public LaserNetwork(final World world, final TileLaserHousing tile){
     super(world, tile);
-    this.energy.set_receive_only();
-    this.energy.addResponder(this);
   }
 
-  @Override
   public final Energy getEnergy(){
     return energy;
   }
   
-  @Override
-  public final void onEnergyChanged(){
-    updateLaserNetwork();
-  }
-
   @Override
   protected void clear_custom_data(){
     lasers.clear();
@@ -58,7 +52,6 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
     if(lasers.size() != number_of_lasers){
       number_of_lasers = lasers.size();
       update_energy_requirements();
-      updateLaserNetwork(); // because energy was changed
     }
   }
 
@@ -83,6 +76,13 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
     onUpdateNetworkFinished();
   }
 
+  public final void load_data(Energy energy, boolean power_switch, int laser_distance, boolean auto_shutoff){
+    this.energy.set(energy);
+    this.running = power_switch;
+    this.laser_distance = laser_distance;
+    this.auto_shutoff = auto_shutoff;
+  }
+
   public final int getLaserDistance(){
     return laser_distance;
   }
@@ -90,7 +90,6 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
   public final void setLaserDistance(int laser_distance){
     this.laser_distance = laser_distance;
     update_energy_requirements();
-    updateLaserNetwork(); // because energy and laser distance was changed.
   }
 
   /**
@@ -104,15 +103,16 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
       (number_of_lasers * MachineValues.required_energy_per_laser.get()) +
       (number_of_lasers * laser_distance * MachineValues.required_energy_per_laser_distance.get())
     );
+    changed = true;
   }
 
-  public final void updateLaserNetwork(){
+  private final void updateLaserNetwork(){
     TileLaserHousing laser_housing;
     remove_invalid_nodes(blocks);
     for(final Node node : blocks){
       laser_housing = (TileLaserHousing)node.getTile();
       laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff); // updates server
-      final LaserClientSyncMessage message = new LaserClientSyncMessage(node.position,number_of_lasers);
+      final LaserClientSyncMessage message = new LaserClientSyncMessage(node.position, number_of_lasers);
       NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message); // updates client
       // OPTIMIZE: Send 1 client Network message, containing the data, and all the Block Positions
       //           of the tiles we need to update. DO NOT send individual message for each TileEntity!
@@ -142,9 +142,13 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
       else{
         activated = false;
       }
-      energy.update(world);
-      energy.setEnergyIn(0);
-      energy.setEnergyOut(0);
+      if(energy.tick()){
+        changed = true;
+      }
+      if(changed){
+        updateLaserNetwork();
+        changed = false;
+      }
     }
   }
 
@@ -155,11 +159,11 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> implement
       ((TileLaser)node.getTile()).activate(this.laser_distance);
     }
     world.playSound(null, center_position[0], center_position[1], center_position[2], Sounds.laser_fire_sound, SoundCategory.AMBIENT, 2.0f, 1.0f);
-    this.energy.extract_all_energy();
+    this.energy.subtract_capacity();
     if(auto_shutoff){
       running = false;
     }
-    updateLaserNetwork();
+    changed = true;
   }
 
 }

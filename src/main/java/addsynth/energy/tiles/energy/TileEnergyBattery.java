@@ -1,7 +1,8 @@
-package addsynth.energy.energy_network.tiles;
+package addsynth.energy.tiles.energy;
 
-import addsynth.energy.Energy;
-import addsynth.energy.tiles.IEnergyUser;
+import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
+import addsynth.energy.main.Energy;
+import addsynth.energy.main.IEnergyUser;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntityType;
 
@@ -15,20 +16,23 @@ public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEn
   public TileEnergyBattery(final TileEntityType type, final Energy energy){
     super(type);
     this.energy = energy;
-    this.energy.addResponder(this);
   }
 
   @Override
   public void tick(){
     super.tick(); // handles blocknetwork stuff
-    energy.update(world);
+    if(onServerSide()){
+      if(energy.tick()){
+        update_data();
+      }
+    }
   }
 
   @Override
   public void read(final CompoundNBT nbt){
     super.read(nbt);
     if(energy != null){
-      energy.readFromNBT(nbt);
+      energy.loadFromNBT(nbt);
     }
   }
 
@@ -36,7 +40,7 @@ public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEn
   public CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
     if(energy != null){
-      energy.writeToNBT(nbt);
+      energy.saveToNBT(nbt);
     }
     return nbt;
   }
@@ -44,11 +48,6 @@ public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEn
   @Override
   public final Energy getEnergy(){
     return energy;
-  }
-
-  @Override
-  public void onEnergyChanged(){
-    update_data();
   }
 
 }

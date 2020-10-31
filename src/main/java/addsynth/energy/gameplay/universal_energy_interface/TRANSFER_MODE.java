@@ -7,10 +7,10 @@ public enum TRANSFER_MODE {
   BI_DIRECTIONAL(true,  true,  "gui.addsynth_energy.transfer_mode.bi_directional"),
   RECEIVE(       true,  false, "gui.addsynth_energy.transfer_mode.receive"),
   EXTRACT(       false, true,  "gui.addsynth_energy.transfer_mode.extract"),
+  // TODO: reimplement TRANSFER_MODE External and Internal?
   // EXTERNAL(      true,  true,  false, "gui.addsynth_energy.transfer_mode.external"),
   // INTERNAL(      false, false, true,  "gui.addsynth_energy.transfer_mode.internal"),
   NO_TRANSFER(   false, false, "gui.addsynth_energy.transfer_mode.no_transfer");
-  // FUTURE: wait until v1.5 when we've added Work Systems to reimplement this.
   
   public final boolean canReceive;
   public final boolean canExtract;

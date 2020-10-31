@@ -1,10 +1,15 @@
 package addsynth.core.block_network;
 
 import javax.annotation.Nullable;
+import addsynth.core.tiles.TileBase;
 
 /**
- *  Attach this to TileEntities that use a Block Network. The {@link BlockNetwork} class uses this to
- *  set the BlockNetwork of all the TileEntities to the same Block Network.
+ * <p>Attach this to TileEntities that use a Block Network. The {@link BlockNetwork} class
+ *    uses this to set the BlockNetwork of all the TileEntities to the same Block Network.</p>
+ * <p>If your Block Network has data that must be saved with each TileEntity, you MUST
+ *    override the {@link TileBase#update_data update_data()} method and instead update
+ *    your block network. During the update process call your own TileEntity's method to
+ *    set the data, then call <code>super.update_data()</code>.</p>
  */
 public interface IBlockNetworkUser<T extends BlockNetwork> {
 

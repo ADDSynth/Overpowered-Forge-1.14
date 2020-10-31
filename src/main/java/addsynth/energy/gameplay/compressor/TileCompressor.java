@@ -5,7 +5,7 @@ import addsynth.core.items.ItemUtil;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
 import addsynth.energy.registers.Tiles;
-import addsynth.energy.tiles.machines.TileWorkMachine;
+import addsynth.energy.tiles.machines.TileStandardWorkMachine;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -16,7 +16,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileCompressor extends TileWorkMachine implements INamedContainerProvider {
+public final class TileCompressor extends TileStandardWorkMachine implements INamedContainerProvider {
 
   private ItemStack result;
 
@@ -26,15 +26,14 @@ public final class TileCompressor extends TileWorkMachine implements INamedConta
 
   @Override
   protected final boolean test_condition(){
-    result = CompressorRecipes.getResult(input_inventory.getStackInSlot(0), world);
-    return ItemUtil.itemStackExists(result) ? output_inventory.can_add(0, result) : false;
+    result = CompressorRecipes.getResult(inventory.input_inventory.getStackInSlot(0), world);
+    return ItemUtil.itemStackExists(result) ? inventory.output_inventory.can_add(0, result) : false;
   }
 
   @Override
   protected final void perform_work(){
     world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, 0.7f, 0.5f); // lowest pitch can be
-    output_inventory.insertItem(0, result.copy(), false);
-    working_inventory.setEmpty();
+    inventory.output_inventory.insertItem(0, result.copy(), false);
   }
 
   @Override

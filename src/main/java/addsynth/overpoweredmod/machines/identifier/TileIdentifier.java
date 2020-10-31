@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 import addsynth.core.game.Compatability;
 import addsynth.core.items.ItemUtil;
 import addsynth.core.util.ArrayUtil;
-import addsynth.energy.tiles.machines.TileWorkMachine;
+import addsynth.energy.tiles.machines.TileStandardWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Tools;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileIdentifier extends TileWorkMachine implements INamedContainerProvider {
+public final class TileIdentifier extends TileStandardWorkMachine implements INamedContainerProvider {
 
   public static final Item[] input_filter = ArrayUtil.combine_arrays(
     Tools.unidentified_armor[0],
@@ -34,21 +34,20 @@ public final class TileIdentifier extends TileWorkMachine implements INamedConta
 
   @Override
   protected final boolean test_condition(){
-    final ItemStack input = input_inventory.getStackInSlot(0);
-    final ItemStack output = output_inventory.getStackInSlot(0);
+    final ItemStack input = inventory.input_inventory.getStackInSlot(0);
+    final ItemStack output = inventory.output_inventory.getStackInSlot(0);
     return input.isEmpty() == false && output.isEmpty();
   }
 
   @Override
   protected final void perform_work(){
-    final ItemStack input = working_inventory.getStackInSlot(0);
+    final ItemStack input = inventory.working_inventory.getStackInSlot(0);
     if(input.isEmpty() == false){
       if(input.getItem() instanceof UnidentifiedItem){
         final UnidentifiedItem item = (UnidentifiedItem)(input.getItem());
         final ItemStack stack = new ItemStack(ItemUtil.get_armor(item.armor_material, item.equipment_type),1);
         ArmorEffects.enchant(stack);
-        working_inventory.setEmpty();
-        output_inventory.setStackInSlot(0, stack);
+        inventory.output_inventory.setStackInSlot(0, stack);
       }
     }
   }

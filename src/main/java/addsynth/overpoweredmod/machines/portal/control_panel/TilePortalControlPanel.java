@@ -8,7 +8,7 @@ import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.core.util.game.WorldUtil;
 import addsynth.energy.tiles.machines.MachineState;
-import addsynth.energy.tiles.machines.TileWorkMachine;
+import addsynth.energy.tiles.machines.TileManualMachine;
 import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -33,7 +33,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public final class TilePortalControlPanel extends TileWorkMachine implements INamedContainerProvider {
+public final class TilePortalControlPanel extends TileManualMachine implements INamedContainerProvider {
 
   private static final int containers = 8;
   private boolean[] portal_items = new boolean[containers];
@@ -58,7 +58,7 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
   }
 
   public TilePortalControlPanel(){
-    super(Tiles.PORTAL_CONTROL_PANEL, 0, null, 0, MachineValues.portal);
+    super(Tiles.PORTAL_CONTROL_PANEL, MachineValues.portal);
     int i;
     for(i = 0; i < containers; i++){
       portal_items[i] = false;
@@ -80,7 +80,7 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
 
   public final void toggle_auto_shutoff(){
     auto_shutoff = !auto_shutoff;
-    update_data();
+    changed = true;
   }
 
   /**
@@ -339,11 +339,6 @@ public final class TilePortalControlPanel extends TileWorkMachine implements INa
   @Override
   public ITextComponent getDisplayName(){
     return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
-  }
-
-  @Override
-  protected final boolean test_condition(){
-    return true;
   }
 
 }

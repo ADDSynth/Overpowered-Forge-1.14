@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.magic_infuser;
 
-import addsynth.core.container.BaseContainer;
+import addsynth.core.container.AbstractContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.core.container.slots.OutputSlot;
 import addsynth.overpoweredmod.machines.Filters;
@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerMagicInfuser extends BaseContainer<TileMagicInfuser> {
+public final class ContainerMagicInfuser extends AbstractContainer<TileMagicInfuser> {
 
   public ContainerMagicInfuser(final int id, final PlayerInventory player_inventory, final TileMagicInfuser tile){
     super(Containers.MAGIC_INFUSER, id, player_inventory, tile);

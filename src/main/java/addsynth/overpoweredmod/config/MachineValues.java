@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.config;
 
 import org.apache.commons.lang3.tuple.Pair;
 import addsynth.energy.config.MachineDataConfig;
-import addsynth.energy.tiles.machines.MachineType;
+import addsynth.energy.config.MachineType;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class MachineValues {

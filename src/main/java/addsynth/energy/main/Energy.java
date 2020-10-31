@@ -1,26 +1,19 @@
-package addsynth.energy;
+package addsynth.energy.main;
 
-import java.util.ArrayList;
 import javax.annotation.Nonnegative;
 import addsynth.core.util.math.DecimalNumber;
-import addsynth.energy.tiles.IEnergyUser;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.world.World;
 
 // Original inspiration from CJMinecraft: https://github.com/CJMinecraft01/
 
 /**
- * <p>ADDSynth's own implementation of an Energy Storage object.
- * <p>Automatically updates your TileEntity if you set it as a responder, and you call the 
- * {@link Energy#update(World world) update} method every tick!
+ * ADDSynth's own implementation of an Energy Storage object.
  * @author ADDSynth
  */
 public class Energy {
 
-  private final ArrayList<IEnergyUser> responders = new ArrayList<IEnergyUser>();
-
   /** Is set to true whenever any variable changes to signal that various things
-   *  need to be updated in the {@link Energy#update(World)} event.
+   *  need to be updated in the {@link Energy#tick} event.
    */
   protected boolean changed;
 
@@ -29,7 +22,7 @@ public class Energy {
   protected final DecimalNumber maxReceive = new DecimalNumber();
   protected final DecimalNumber maxExtract = new DecimalNumber();
 
-  // protected final DecimalNumber previous_energy = new DecimalNumber();
+  // protected final DecimalNumber previous_energy = new DecimalNumber(); DELETE all mentions of previous_energy
   /** Diagnostic variable that is recalculated every tick. Mainly used on Client side. */
   protected final DecimalNumber energy_in       = new DecimalNumber();
   /** Diagnostic variable that is recalculated every tick. Mainly used on Client side. */
@@ -69,18 +62,6 @@ public class Energy {
     this.energy.set(initial_energy);
   }
 
-  public final void addResponder(final IEnergyUser responder){
-    if(responders.contains(responder) == false){
-      responders.add(responder);
-    }
-  }
-
-  public final void removeResponder(final IEnergyUser responder){
-    if(responders.contains(responder)){
-      responders.remove(responder);
-    }
-  }
-
 // ================================= NBT READ / WRITE =================================
 
   /**
@@ -88,7 +69,7 @@ public class Energy {
    * 
    * @param nbt The {@link CompoundNBT} with all the data
    */
-  public final void readFromNBT(final CompoundNBT nbt){
+  public final void loadFromNBT(final CompoundNBT nbt){
     final CompoundNBT energy_tag = nbt.getCompound("EnergyStorage");
     this.energy.set(         energy_tag.getDouble("Energy")    );
     this.capacity.set(       energy_tag.getDouble("Capacity")  );
@@ -105,7 +86,7 @@ public class Energy {
    * 
    * @param nbt The {@link CompoundNBT} to write to
    */
-  public final void writeToNBT(final CompoundNBT nbt){
+  public final void saveToNBT(final CompoundNBT nbt){
     difference.set(energy_in.get() - energy_out.get()); // record real energy difference
 
     final CompoundNBT energy_tag = new CompoundNBT();
@@ -143,7 +124,8 @@ public class Energy {
     return Math.min(DecimalNumber.align_to_accuracy(energy), getAvailableEnergy());
   }
 
-  /** Adds energy to this object. */
+  /** Adds energy to this object. Only inserts as much as possible, respecting maxReceive
+   *  and maximum Capacity variables. */
   public final void receiveEnergy(final double energy_to_add){
     final double actual_energy = simulateReceive(energy_to_add);
     energy.add(actual_energy);
@@ -235,7 +217,7 @@ public class Energy {
    * Sets the maximum transfer rate to and from this EnergyStorage.
    * @param transferRate The max transfer to set
    */
-  public final void setTransferRate(final int transferRate){
+  public void setTransferRate(final int transferRate){
     this.maxReceive.set(transferRate);
     this.maxExtract.set(transferRate);
     changed = true;
@@ -245,7 +227,7 @@ public class Energy {
    * Set the current max receive
    * @param maxReceive The max receive to set
    */
-  public final void setMaxReceive(final int maxReceive){
+  public void setMaxReceive(final int maxReceive){
     this.maxReceive.set(maxReceive);
     changed = true;
   }
@@ -254,7 +236,7 @@ public class Energy {
    * Set the current max extract
    * @param maxExtract The max extract to set
    */
-  public final void setMaxExtract(final int maxExtract){
+  public void setMaxExtract(final int maxExtract){
     this.maxExtract.set(maxExtract);
     changed = true;
   }
@@ -303,7 +285,7 @@ public class Energy {
    * Get the maximum energy this can receive
    * @return The maximum energy this can receive
    */
-  public final double getMaxReceive(){
+  public double getMaxReceive(){
     return this.maxReceive.get();
   }
 
@@ -311,11 +293,12 @@ public class Energy {
    * Get the maximum energy that can be extracted
    * @return The maximum energy that can be extracted
    */
-  public final double getMaxExtract(){
+  public double getMaxExtract(){
     return this.maxExtract.get();
   }
 
-  /** Returns the amount of energy needed to reach Capacity. */
+  /** Returns the amount of energy needed to reach Capacity. For normal transfer of energy
+   *  please use {@link Energy#getRequestedEnergy() getRequestedEnergy} instead. */
   public final double getEnergyNeeded(){
     final double energy   = this.energy.get();
     final double capacity = this.capacity.get();
@@ -348,16 +331,6 @@ public class Energy {
 
 // ==================================== COMMANDS ====================================
 
-  public final void set_receive_only(){
-    this.maxExtract.set(0);
-    changed = true;
-  }
-
-  public final void set_extract_only(){
-    this.maxReceive.set(0);
-    changed = true;
-  }
-
   public final void set_to_full(){
     energy.set(capacity.get());
     changed = true;
@@ -369,12 +342,67 @@ public class Energy {
   }
 
   /** Subtracts capacity from current energy level.<br />
-   *  For example, if <code>energy</code> = 20 and <code>capacity</code> = 100,
-   *  this function will set <code>energy</code> to -80.
+   *  For example, if <code>energy</code> = 100 and <code>capacity</code> = 80,
+   *  this function will set <code>energy</code> to 20. Energy is never set below 0.
    */
-  public final void extract_all_energy(){
-    energy.subtract(capacity.get());
+  public final void subtract_capacity(){
+    energy.subtract(Math.min(energy.get(), capacity.get()));
     changed = true;
+  }
+
+// =================================== SPECIAL ======================================
+
+  /** Sets the new Energy level of this Energy object, ignoring the maxExtract and
+   *  maxReceive variables. Counts as real energy transfer. This is only intended to
+   *  be used in special circumstances. 
+   * @param new_energy_level
+   */
+  public final void set_new_energy_level(final double new_energy_level){
+    final double actual_energy = Math.min(Math.max(DecimalNumber.align_to_accuracy(new_energy_level), 0), capacity.get());
+    final double difference = actual_energy - energy.get();
+    if(difference != 0){
+      energy.set(actual_energy);
+      if(difference > 0){ energy_in.add(difference); }
+      if(difference < 0){ energy_out.add(Math.abs(difference)); }
+      changed = true;
+    }
+  }
+
+  /** Extracts energy without being limited by the maxExtract variable.
+   *  Counts as real transfer of energy. This is only intended to be used under
+   *  special circumstances. Please use the standard extract functions above.
+   * @param energy_to_extract
+   */
+  public final double extract_bypass(final double energy_to_extract){
+    final double extracted_energy = Math.min(DecimalNumber.align_to_accuracy(energy_to_extract), energy.get());
+    energy.subtract(extracted_energy);
+    energy_out.add(extracted_energy);
+    changed = true;
+    return extracted_energy;
+  }
+
+  /** Gives energy to this energy object without being limited by the maxReceive
+   *  variable. Counts as real transfer of energy. This is only intended to be used
+   *  under special circumstances. Please use the standard receive methods above.
+   * @param energy_to_receive
+   */
+  public final void insert_bypass(final double energy_to_receive){
+    final double received_energy = Math.min(DecimalNumber.align_to_accuracy(energy_to_receive), getEnergyNeeded());
+    energy.add(received_energy);
+    energy_in.add(received_energy);
+    changed = true;
+  }
+
+  /** Extracts all energy ignoring the maxExtract variable. Counts as real
+   *  transfer of energy. This is only intended to be used in special
+   *  circumstances. Please use the standard extract methods above.
+   */
+  public final double extract_all_energy(){
+    final double extracted_energy = energy.get();
+    energy.set(0);
+    energy_out.add(extracted_energy);
+    changed = true;
+    return extracted_energy;
   }
 
 // =================================== QUERIES ======================================
@@ -387,7 +415,7 @@ public class Energy {
     return maxReceive.get() > 0;
   }
 
-  /** @return true if energy is equal or greater than max capacity. */
+  /** Returns true if energy is equal or greater than max capacity. */
   public final boolean isFull(){
     return energy.get() >= capacity.get();
   }
@@ -407,17 +435,13 @@ public class Energy {
 
 // ======================================== MISC =======================================
 
-  /** This should be called in the TileEntity's update() or tick() function. */
-  public final void update(final World world){
-    if(world.isRemote == false){
-      if(changed){
-        responders.removeIf((IEnergyUser n) -> n == null);
-        for(final IEnergyUser responder : responders){
-          responder.onEnergyChanged();
-        }
-        changed = false;
-      }
+  /** This should be called in your TileEntity's update() or tick() function. */
+  public final boolean tick(){
+    if(changed){
+      changed = false;
+      return true;
     }
+    return false;
   }
 
   @Override

@@ -1,3 +1,12 @@
+v1.3.4 - TBD
+  Major code optimizations and maintenance.
+  Fix Laser Distance or Energy not saving on world reload.
+  Energy stored in Batteries is now balanaced across all batteries on the
+    Energy Network.
+  Fixed several errors with the Universal Energy Interface.
+
+
+
 v1.3.3 - October 13, 2020
   Fixed Inverter crash. sigh.
   Added an alternate crafting recipe for the Caution Block.

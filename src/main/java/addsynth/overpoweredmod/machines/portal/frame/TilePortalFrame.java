@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.portal.frame;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.material.MaterialsUtil;
-import addsynth.core.tiles.TileMachine;
+import addsynth.core.tiles.TileStorageMachine;
 import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,10 +15,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TilePortalFrame extends TileMachine implements INamedContainerProvider {
+public final class TilePortalFrame extends TileStorageMachine implements INamedContainerProvider {
 
   public TilePortalFrame(){
-    super(Tiles.PORTAL_FRAME, new SlotData[]{new SlotData(Filters.portal_frame, 1)}, 0);
+    super(Tiles.PORTAL_FRAME, new SlotData[]{new SlotData(Filters.portal_frame, 1)});
   }
 
   public final int check_item(){

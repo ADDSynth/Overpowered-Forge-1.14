@@ -1,12 +1,12 @@
 package addsynth.overpoweredmod.machines.generator;
 
-import addsynth.core.container.BaseContainer;
+import addsynth.core.container.InputContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerGenerator extends BaseContainer<TileCrystalEnergyGenerator> {
+public final class ContainerGenerator extends InputContainer<TileCrystalEnergyGenerator> {
 
   public ContainerGenerator(final int id, final PlayerInventory player_inventory, final TileCrystalEnergyGenerator tile){
     super(Containers.GENERATOR, id, player_inventory, tile);

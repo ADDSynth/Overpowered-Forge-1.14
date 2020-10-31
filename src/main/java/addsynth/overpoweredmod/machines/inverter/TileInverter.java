@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.inverter;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.energy.tiles.machines.TileWorkMachine;
+import addsynth.energy.tiles.machines.TileStandardWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -15,21 +15,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileInverter extends TileWorkMachine implements INamedContainerProvider {
+public final class TileInverter extends TileStandardWorkMachine implements INamedContainerProvider {
 
   public static final Item[] input_filter = new Item[] {Init.energy_crystal, Init.void_crystal};
 
   public TileInverter(){
-    super(Tiles.INVERTER,1,input_filter,1,MachineValues.inverter);
+    super(Tiles.INVERTER, 1, input_filter, 1, MachineValues.inverter);
   }
 
   @Override
   protected final boolean test_condition(){
-    final ItemStack input_stack = input_inventory.getStackInSlot(0);
+    final ItemStack input_stack = inventory.input_inventory.getStackInSlot(0);
     if(input_stack.isEmpty()){
       return false;
     }
-    return output_inventory.can_add(0, getInverted(input_stack));
+    return inventory.output_inventory.can_add(0, getInverted(input_stack));
   }
 
   public static final @Nonnull ItemStack getInverted(final ItemStack input_stack){
@@ -41,8 +41,7 @@ public final class TileInverter extends TileWorkMachine implements INamedContain
 
   @Override
   public final void perform_work(){
-    output_inventory.insertItem(0, getInverted(working_inventory.getStackInSlot(0)), false);
-    working_inventory.setEmpty();
+    inventory.output_inventory.insertItem(0, getInverted(inventory.working_inventory.getStackInSlot(0)), false);
   }
 
   @Override

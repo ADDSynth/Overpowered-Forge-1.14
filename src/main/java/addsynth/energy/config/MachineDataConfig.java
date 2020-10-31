@@ -1,7 +1,5 @@
 package addsynth.energy.config;
 
-import addsynth.energy.tiles.machines.MachineData;
-import addsynth.energy.tiles.machines.MachineType;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class MachineDataConfig extends MachineData {

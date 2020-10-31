@@ -108,7 +108,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   @Override
   public final void init(){
     super.init();
-    addButton(new OnOffSwitch(this.guiLeft + 6, this.guiTop + 19, tile));
+    addButton(new OnOffSwitch<>(this.guiLeft + 6, this.guiTop + 19, tile));
     addButton(new ToggleAutoShutoff(this.guiLeft + checkbox_x, this.guiTop + checkbox_y, tile));
     addButton(new GeneratePortalButton(this.guiLeft + button_x, this.guiTop + button_y, tile));
   }

@@ -37,7 +37,7 @@ public final class GuiCompressor extends GuiEnergyBase<TileCompressor, Container
     draw_status(tile.getStatus());
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 80, 42);
     draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
-    draw_time_left(tile, time_left_y);
+    draw_time_left(time_left_y);
   }
 
 }

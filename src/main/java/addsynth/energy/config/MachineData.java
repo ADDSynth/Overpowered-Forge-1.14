@@ -1,4 +1,4 @@
-package addsynth.energy.tiles.machines;
+package addsynth.energy.config;
 
 import javax.annotation.Nonnegative;
 import addsynth.core.Constants;

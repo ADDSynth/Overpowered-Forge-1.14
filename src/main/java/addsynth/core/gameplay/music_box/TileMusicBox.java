@@ -36,7 +36,7 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity,
   }
 
   public final void change_tempo(final boolean direction){
-    if(world.isRemote == false){
+    if(onServerSide()){
       if(music_grid.setTempo(direction)){
         // update_tempo_of_song();
         update_data();
@@ -79,7 +79,7 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity,
 
   @Override
   public final void tick(){
-    if(world.isRemote == false){
+    if(onServerSide()){
       if(world.isBlockPowered(pos)){ // FIX: music boxes will play if block is powered when the world loads up.
         if(activated == false){
           play(true);

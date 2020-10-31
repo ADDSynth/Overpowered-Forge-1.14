@@ -3,13 +3,13 @@ package addsynth.energy.energy_network;
 import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.util.TimeUtil;
-import addsynth.energy.Energy;
-import addsynth.energy.EnergyUtil;
-import addsynth.energy.energy_network.tiles.TileEnergyBattery;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
-import addsynth.energy.tiles.TileEnergyReceiver;
-import addsynth.energy.tiles.TileEnergyGenerator;
-import addsynth.energy.tiles.TileEnergyWithStorage;
+import addsynth.energy.main.Energy;
+import addsynth.energy.main.EnergyUtil;
+import addsynth.energy.main.IEnergyConsumer;
+import addsynth.energy.main.IEnergyGenerator;
+import addsynth.energy.main.IEnergyUser;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -27,9 +27,9 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
 
   public long tick_time;
 
-  public final ArrayList<EnergyNode> receivers = new ArrayList<>();
-  public final ArrayList<EnergyNode> batteries = new ArrayList<>();
-  public final ArrayList<EnergyNode> generators = new ArrayList<>();
+  private final ArrayList<EnergyNode> receivers = new ArrayList<>();
+  private final ArrayList<EnergyNode> batteries = new ArrayList<>();
+  private final ArrayList<EnergyNode> generators = new ArrayList<>();
 
   public EnergyNetwork(final World world, final TileEnergyNetwork energy_network_tile){
     super(world, energy_network_tile);
@@ -69,14 +69,24 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
       remove_invalid_nodes(receivers);
       remove_invalid_nodes(generators);
       
-      // Step 1: subtract as much energy as we can from the generators:
-      EnergyUtil.transfer_energy(generators, receivers);
-
-      // Step 2: if receivers still need energy, subtract it from batteries.
-      EnergyUtil.transfer_energy(batteries, receivers);
-
-      // Step 3: put remaining energy from Step 1 into batteries.
-      EnergyUtil.transfer_energy(generators, batteries);
+      try{
+        // Step 1: subtract as much energy as we can from the generators.
+        EnergyUtil.transfer_energy(generators, receivers);
+        
+        // Step 2: if receivers still need energy, subtract it from batteries.
+        EnergyUtil.transfer_energy(batteries, receivers);
+        
+        // Step 3: put remaining energy from generators into batteries.
+        EnergyUtil.transfer_energy(generators, batteries);
+        
+        // Step 4: balance all batteries
+        if(batteries.size() >= 2){
+          EnergyUtil.balance_batteries(batteries);
+        }
+      }
+      catch(Exception e){
+        ADDSynthEnergy.log.fatal("Encountered a fatal error during Energy Network Tick.", e);
+      }
       
       tick_time = TimeUtil.get_elapsed_time(start);
     }
@@ -85,19 +95,16 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
   @Override
   protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
     if(tile != null){
-      if(tile instanceof TileEnergyBattery){
-        add_energy_node(batteries, new EnergyNode(position, (TileEnergyBattery)tile));
-      }
-      if(tile instanceof TileEnergyReceiver){
-        add_energy_node(receivers, new EnergyNode(position, (TileEnergyReceiver)tile));
+      if(tile instanceof IEnergyConsumer){
+        add_energy_node(receivers, new EnergyNode(position, tile, ((IEnergyConsumer)tile).getEnergy()));
         return;
       }
-      if(tile instanceof TileEnergyGenerator){
-        add_energy_node(generators, new EnergyNode(position, (TileEnergyGenerator)tile));
+      if(tile instanceof IEnergyGenerator){
+        add_energy_node(generators, new EnergyNode(position, tile, ((IEnergyGenerator)tile).getEnergy()));
         return;
       }
-      if(tile instanceof TileEnergyWithStorage){
-        add_energy_node(batteries, new EnergyNode(position, (TileEnergyWithStorage)tile));
+      if(tile instanceof IEnergyUser){
+        add_energy_node(batteries, new EnergyNode(position, tile, ((IEnergyUser)tile).getEnergy()));
       }
     }
   }
@@ -106,7 +113,7 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
   public void neighbor_was_changed(final BlockPos current_position, final BlockPos position_of_neighbor){
     final TileEntity tile = world.getTileEntity(position_of_neighbor);
     if(tile != null){
-      if(tile instanceof TileEnergyWithStorage || tile instanceof TileEnergyBattery){
+      if(tile instanceof IEnergyUser){
         updateBlockNetwork(current_position);
       }
     }

@@ -1,20 +1,24 @@
 package addsynth.overpoweredmod.machines.fusion.converter;
 
 import java.util.ArrayList;
+import addsynth.core.tiles.TileBase;
 import addsynth.core.util.game.MinecraftUtility;
-import addsynth.energy.Energy;
-import addsynth.energy.tiles.TileEnergyGenerator;
+import addsynth.energy.main.Energy;
+import addsynth.energy.main.Generator;
+import addsynth.energy.main.IEnergyGenerator;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.machines.data_cable.DataCableNetwork;
 import addsynth.overpoweredmod.machines.data_cable.TileDataCable;
 import addsynth.overpoweredmod.machines.fusion.chamber.TileFusionChamber;
 import addsynth.overpoweredmod.registers.Tiles;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 
-public final class TileFusionEnergyConverter extends TileEnergyGenerator {
+public final class TileFusionEnergyConverter extends TileBase implements IEnergyGenerator, ITickableTileEntity {
 
+  private Generator energy = new Generator(MachineValues.fusion_energy_output_per_tick.get());
   private static final int sync_timer = 4; // TODO: remove sync timer in version 1.4
   private final ArrayList<DataCableNetwork> data_cable_networks = new ArrayList<>(1);
   private TileFusionChamber fusion_chamber;
@@ -22,12 +26,12 @@ public final class TileFusionEnergyConverter extends TileEnergyGenerator {
   private boolean valid;
 
   public TileFusionEnergyConverter(){
-    super(Tiles.FUSION_ENERGY_CONVERTER, new Energy(0,MachineValues.fusion_energy_output_per_tick.get()));
+    super(Tiles.FUSION_ENERGY_CONVERTER);
   }
 
   @Override
   public final void tick(){
-    if(world.isRemote == false){
+    if(onServerSide()){
       if(world.getGameTime() % sync_timer == 0){
         
         final BlockPos previous_position = fusion_chamber != null ? fusion_chamber.getPos() : null;
@@ -54,9 +58,11 @@ public final class TileFusionEnergyConverter extends TileEnergyGenerator {
       if(activated && valid){
         energy.set_to_full();
       }
-      energy.update(world);
+      energy.tick();
     }
   }
+
+  // No data needs to be saved to disk.
 
   private final void check_connection(){
     get_networks();
@@ -96,6 +102,11 @@ public final class TileFusionEnergyConverter extends TileEnergyGenerator {
         }
       }
     }
+  }
+
+  @Override
+  public Energy getEnergy(){
+    return energy;
   }
 
 }

@@ -1,5 +1,7 @@
 package addsynth.core.tiles;
 
+import addsynth.core.ADDSynthCore;
+import addsynth.core.block_network.BlockNetwork;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
@@ -9,12 +11,17 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.util.Constants;
 
 /** YES! ALL of ADDSynth's TileEntities should override THIS class, because this
- *  simplifies updating the TileEntity!
+ *  simplifies updating the TileEntity, and has many common features!
  */
 public abstract class TileBase extends TileEntity {
 
   public TileBase(final TileEntityType type){
     super(type);
+  }
+
+  @SuppressWarnings("null")
+  protected final boolean onServerSide(){
+    return !world.isRemote;
   }
 
   // http://mcforge.readthedocs.io/en/latest/tileentities/tileentity/#synchronizing-the-data-to-the-client
@@ -32,14 +39,14 @@ public abstract class TileBase extends TileEntity {
 
   @Override
   public final SUpdateTileEntityPacket getUpdatePacket(){
-      CompoundNBT nbtTag = new CompoundNBT();
-      write(nbtTag);
-      return new SUpdateTileEntityPacket(this.pos, -1, nbtTag);
+    CompoundNBT nbtTag = new CompoundNBT();
+    write(nbtTag);
+    return new SUpdateTileEntityPacket(this.pos, -1, nbtTag);
   }
 
   @Override
   public final void onDataPacket(final NetworkManager net, final SUpdateTileEntityPacket pkt){
-      read(pkt.getNbtCompound());
+    read(pkt.getNbtCompound());
   }
 
   @Override
@@ -54,6 +61,15 @@ public abstract class TileBase extends TileEntity {
     read(tag);
   }
 
+  /** <p>Helper method to send TileEntity changes to the client.</p>
+   *  <p>This should only be called on the server side and should be called when any data changes.
+   *     For complex TileEntities that likely has data that changes every tick, we actually recommend
+   *     setting a boolean variable to <code>true</code> when any data changes, then check that
+   *     boolean variable at the end of the <code>tick()</code> method and call update_data().</p>
+   *  <p>For TileEntities which are a part of a {@link BlockNetwork} it is required to override
+   *     this so that you instead update the BlockNetwork which then updates each TileEntity manually.</p>
+   */
+  @SuppressWarnings("null")
   public void update_data(){
     if(world != null){
       markDirty();
@@ -62,15 +78,11 @@ public abstract class TileBase extends TileEntity {
     }
   }
 
-  /**
-   * Marks chunk as dirty because a block with data was changed. This chunk will be saved. I Override
-   * this method so I can remove some unecessary code involving block meta and Comparator Levels.
-   * Most of my Tile Entities aren't going to use those.
-   */
-  @Override
-  public final void markDirty(){
-    // https://minecraft.gamepedia.com/1.13/Flattening
-    world.markChunkDirty(pos,this);
+  protected final void report_ticking_error(final Throwable e){
+    ADDSynthCore.log.fatal(
+      "Encountered an error while ticking TileEntity: "+getClass().getSimpleName()+", at position: "+pos+". "+
+      "Please report this to the developer.", e);
+    remove();
   }
 
 }

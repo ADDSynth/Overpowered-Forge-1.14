@@ -38,7 +38,7 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreR
     RenderHelper.enableGUIStandardItemLighting();
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 43);
     draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
-    draw_time_left(tile, 92);
+    draw_time_left(92);
   }
 
 }

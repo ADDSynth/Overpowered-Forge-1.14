@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.gem_converter;
 
-import addsynth.core.container.BaseContainer;
+import addsynth.core.container.AbstractContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.core.container.slots.OutputSlot;
 import addsynth.overpoweredmod.machines.Filters;
@@ -8,7 +8,7 @@ import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerGemConverter extends BaseContainer<TileGemConverter> {
+public final class ContainerGemConverter extends AbstractContainer<TileGemConverter> {
 
   public ContainerGemConverter(final int id, final PlayerInventory player_inventory, final TileGemConverter tile){
     super(Containers.GEM_CONVERTER, id, player_inventory, tile);

@@ -49,7 +49,7 @@ public final class BlockNetworkUtil {
     if(world.isRemote == false){
       final B network = constructor.apply(world, tile);
       tile.setBlockNetwork(network);
-      tile.load_block_network_data();
+      tile.load_block_network_data(); // set BlockNetwork data from first TileEntity that created it.
       network.updateBlockNetwork(tile.getPos(), tile);
     }
   }

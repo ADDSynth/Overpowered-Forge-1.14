@@ -4,20 +4,21 @@ import addsynth.core.util.StringUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import addsynth.energy.registers.NetworkHandler;
-import addsynth.energy.tiles.machines.TileWorkMachine;
+import addsynth.energy.tiles.machines.ISwitchableMachine;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.widget.button.AbstractButton;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 /**
  * Draws a custom button which displays an on/off switch depending on the Machine's running state.
  * Currently, we only use this to toggle the running state of an EnergyReceiver machine.
  */
-public final class OnOffSwitch extends AbstractButton {
+public final class OnOffSwitch<T extends TileEntity & ISwitchableMachine> extends AbstractButton {
 
-  private final TileWorkMachine tile;
+  private final T tile;
   private static final ResourceLocation gui_switch = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/gui_textures.png");
 
   private final String on_text  = StringUtil.translate("gui.addsynth_energy.switch.on");
@@ -29,7 +30,7 @@ public final class OnOffSwitch extends AbstractButton {
    * @param y
    * @param tile
    */
-  public OnOffSwitch(final int x, final int y, final TileWorkMachine tile){
+  public OnOffSwitch(final int x, final int y, final T tile){
     super(x, y, 34, 16, "");
     this.tile = tile;
   }
@@ -40,6 +41,7 @@ public final class OnOffSwitch extends AbstractButton {
    */
   @Override
   public final void renderButton(final int mouseX, final int mouseY, final float partial_ticks){
+    @SuppressWarnings("resource")
     final Minecraft minecraft = Minecraft.getInstance();
     int texture_y = 0;
 

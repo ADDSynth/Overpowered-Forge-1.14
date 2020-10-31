@@ -10,18 +10,22 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 
-public abstract class BaseContainer<T extends TileEntity> extends Container {
+/** Use this Container only if your TileEntity doesn't have any inventories.
+ *  If it does, you'll have to use one of the other Container classes.
+ * @param <T>
+ */
+public abstract class AbstractContainer<T extends TileEntity> extends Container {
 
   protected final T tile;
 
-  public BaseContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final T tile){
+  public AbstractContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final T tile){
     super(type, id);
     this.tile = tile;
   }
 
   // New in 1.14, thanks again to this guy: https://github.com/Cadiboo/Example-Mod/blob/1.14.4/src/main/java/io/github/cadiboo/examplemod/container/ElectricFurnaceContainer.java
   @SuppressWarnings("unchecked")
-  public BaseContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final PacketBuffer data){
+  public AbstractContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final PacketBuffer data){
     super(type, id);
     this.tile = (T)(player_inventory.player.world.getTileEntity(data.readBlockPos()));
   }
@@ -64,7 +68,7 @@ public abstract class BaseContainer<T extends TileEntity> extends Container {
 
   /*
   protected final ItemStack default_transfer(final int index, final int number_of_input_slots){
-    FUTURE: Adding Shift-click support is just too complicated right now, so I'm moving it to the December 2020 release.
+    TODO: Add Shift-click support.
 
     final int player_inventory_max = 36;
     ItemStack stack = ItemStack.EMPTY;

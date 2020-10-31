@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 
 import javax.annotation.Nullable;
-import addsynth.energy.tiles.machines.TileWorkMachine;
+import addsynth.energy.tiles.machines.TileAlwaysOnMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,24 +18,26 @@ import net.minecraft.util.text.TranslationTextComponent;
  *  work on Ores. After an ore is done being worked on it will return its smelted output in the
  *  multiplied factor amount.
  */
-public final class TileAdvancedOreRefinery extends TileWorkMachine implements INamedContainerProvider {
+public final class TileAdvancedOreRefinery extends TileAlwaysOnMachine implements INamedContainerProvider {
 
   private ItemStack result;
 
   public TileAdvancedOreRefinery(){
-    super(Tiles.ADVANCED_ORE_REFINERY,1,OreRefineryRecipes.get_input_filter(),1,MachineValues.advanced_ore_refinery);
+    super(Tiles.ADVANCED_ORE_REFINERY,
+      1, OreRefineryRecipes.get_input_filter(), 1,
+      MachineValues.advanced_ore_refinery
+    );
   }
 
   @Override
   protected final boolean test_condition(){
-    result = OreRefineryRecipes.get_result(input_inventory.getStackInSlot(0).getItem());
-    return output_inventory.can_add(0, result);
+    result = OreRefineryRecipes.get_result(inventory.input_inventory.getStackInSlot(0).getItem());
+    return inventory.output_inventory.can_add(0, result);
   }
 
   @Override
   protected final void perform_work(){
-    output_inventory.insertItem(0, result.copy(), false);
-    working_inventory.setEmpty();
+    inventory.output_inventory.insertItem(0, result.copy(), false);
   }
 
   @Override

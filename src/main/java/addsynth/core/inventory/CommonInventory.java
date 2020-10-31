@@ -5,18 +5,41 @@ import addsynth.core.ADDSynthCore;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
 /**
  * Base class for inventories in ADDSynth's Mods. Contains all common functionality.
+ * This can also be used as a standard Inventory and allows machines to insert and extract items.
+ * When an inventory changes, the changes must be saved to disk. So for this reason,
+ * you must specify a {@link IInventoryUser} that responds to inventory changes.
  * @author ADDSynth
  */
 public class CommonInventory extends ItemStackHandler {
 
-  public CommonInventory(final int number_of_slots){
+  private final IInventoryUser responder;
+
+  protected CommonInventory(final IInventoryUser responder, final int number_of_slots){
     super(number_of_slots);
+    this.responder = responder;
+  }
+
+  public static CommonInventory create(final SlotData[] slots){
+    return slots != null ? (slots.length > 0 ? new CommonInventory(null, slots.length) : null) : null;
+  }
+  
+  public static CommonInventory create(final int number_of_slots){
+    return number_of_slots > 0 ? new CommonInventory(null, number_of_slots) : null;
+  }
+
+  public static CommonInventory create(final IInventoryUser responder, final SlotData[] slots){
+    return slots != null ? (slots.length > 0 ? new CommonInventory(responder, slots.length) : null) : null;
+  }
+
+  public static CommonInventory create(final IInventoryUser responder, final int number_of_slots){
+    return number_of_slots > 0 ? new CommonInventory(responder, number_of_slots) : null;
   }
 
   @Override
@@ -93,6 +116,29 @@ public class CommonInventory extends ItemStackHandler {
   @Override
   protected final void validateSlotIndex(int slot){
     // in order to crash properly, this method can't do anything.
+  }
+
+  public void save(final CompoundNBT nbt){
+    nbt.put("Inventory", serializeNBT());
+  }
+
+  public void load(final CompoundNBT nbt){
+    deserializeNBT(nbt.getCompound("Inventory"));
+  }
+
+  public final void save(final CompoundNBT nbt, final String name){
+    nbt.put(name, serializeNBT());
+  }
+  
+  public final void load(final CompoundNBT nbt, final String name){
+    deserializeNBT(nbt.getCompound(name));
+  }
+
+  @Override
+  protected final void onContentsChanged(final int slot){
+    if(responder != null){
+      responder.onInventoryChanged();
+    }
   }
 
 }

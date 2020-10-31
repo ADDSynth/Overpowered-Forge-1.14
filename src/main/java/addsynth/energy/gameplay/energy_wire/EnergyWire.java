@@ -4,7 +4,7 @@ import addsynth.core.block_network.BlockNetwork;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.blocks.Wire;
 import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
-import addsynth.energy.tiles.TileEnergyWithStorage;
+import addsynth.energy.main.IEnergyUser;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -30,7 +30,7 @@ public final class EnergyWire extends Wire {
       valid_sides[side.ordinal()] = false;
       final TileEntity tile = world.getTileEntity(pos.offset(side));
       if(tile != null){
-        if(tile instanceof TileEnergyNetwork || tile instanceof TileEnergyWithStorage){
+        if(tile instanceof TileEnergyNetwork || tile instanceof IEnergyUser){
           valid_sides[side.ordinal()] = true;
         }
       }

@@ -40,7 +40,7 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
     RenderHelper.enableGUIStandardItemLighting();
     drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 80, 40);
     draw_text_center(work_percentage + "%", center_x + 21, work_percentage_text_y);
-    draw_time_left(tile, time_left_y);
+    draw_time_left(time_left_y);
   }
 
 }

@@ -1,13 +1,13 @@
 package addsynth.overpoweredmod.machines.inverter;
 
-import addsynth.core.container.BaseContainer;
+import addsynth.core.container.AbstractContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.core.container.slots.OutputSlot;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerInverter extends BaseContainer<TileInverter> {
+public final class ContainerInverter extends AbstractContainer<TileInverter> {
 
   public ContainerInverter(final int id, final PlayerInventory player_inventory, final TileInverter tile){
     super(Containers.INVERTER, id, player_inventory, tile);

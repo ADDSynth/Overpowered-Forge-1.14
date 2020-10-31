@@ -48,7 +48,7 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
     }
     
     draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
-    draw_time_left(tile, 93);
+    draw_time_left(93);
   }
 
 }

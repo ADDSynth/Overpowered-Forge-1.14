@@ -4,6 +4,8 @@ import javax.annotation.Nonnull;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/** SlotData allows you to specify item filter and stack limit on a per-slot basis.
+ *  {@link InputInventory} uses this. */
 public final class SlotData {
 
   public final Item[] filter;

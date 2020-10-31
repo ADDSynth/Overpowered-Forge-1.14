@@ -1,13 +1,17 @@
 package addsynth.core.inventory;
 
 import javax.annotation.Nullable;
-import addsynth.core.tiles.TileMachine;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 
-public final class OutputInventory extends ReactiveInventory {
+public final class OutputInventory extends CommonInventory {
 
-  public OutputInventory(final TileMachine responder, final int output_slots){
+  private OutputInventory(final IOutputInventory responder, final int output_slots){
     super(responder, output_slots);
+  }
+
+  public static final OutputInventory create(final IOutputInventory responder, final int number_of_slots){
+    return number_of_slots > 0 ? new OutputInventory(responder, number_of_slots) : null;
   }
 
   /** This is useful for machines. Tests whether the input stack can fully be added to the output slot. */
@@ -22,6 +26,16 @@ public final class OutputInventory extends ReactiveInventory {
       return existing_stack.isItemEqual(input_stack) && existing_stack.getCount() + input_stack.getCount() <= getStackLimit(slot, existing_stack);
     }
     return false;
+  }
+
+  @Override
+  public final void save(final CompoundNBT nbt){
+    nbt.put("OutputInventory", serializeNBT());
+  }
+
+  @Override
+  public final void load(final CompoundNBT nbt){
+    deserializeNBT(nbt.getCompound("OutputInventory"));
   }
 
 }

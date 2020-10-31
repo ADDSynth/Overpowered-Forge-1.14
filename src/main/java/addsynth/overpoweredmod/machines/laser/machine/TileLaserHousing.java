@@ -3,10 +3,11 @@ package addsynth.overpoweredmod.machines.laser.machine;
 import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
-import addsynth.energy.Energy;
-import addsynth.energy.tiles.machines.MachineData;
-import addsynth.energy.tiles.machines.MachineType;
-import addsynth.energy.tiles.machines.TileWorkMachine;
+import addsynth.core.tiles.TileBase;
+import addsynth.energy.main.Energy;
+import addsynth.energy.main.IEnergyConsumer;
+import addsynth.energy.main.Receiver;
+import addsynth.energy.tiles.machines.ISwitchableMachine;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,12 +19,17 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileLaserHousing extends TileWorkMachine implements ITickableTileEntity, IBlockNetworkUser<LaserNetwork>, INamedContainerProvider {
+public final class TileLaserHousing extends TileBase implements IBlockNetworkUser<LaserNetwork>,
+  ITickableTileEntity, IEnergyConsumer, ISwitchableMachine, INamedContainerProvider {
+
+  private final Receiver energy = new Receiver();
+  private boolean power_switch = true;
 
   private LaserNetwork network;
   private boolean first_tick = true;
 
   private int laser_distance = Config.default_laser_distance.get();
+
   /** Set by {@link LaserNetwork#updateLaserNetwork()} method and used by
    *  {@link addsynth.overpoweredmod.machines.laser.machine.GuiLaserHousing}.
    */
@@ -31,26 +37,27 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   private boolean auto_shutoff = true;
 
   public TileLaserHousing(){
-    super(Tiles.LASER_MACHINE, 0, null, 0, new MachineData(MachineType.MANUAL_ACTIVATION, 0, 0, 0, 0));
-  }
-
-  @Override
-  public final void onLoad(){
+    super(Tiles.LASER_MACHINE);
   }
 
   @Override
   public final void tick(){
-    if(world.isRemote == false){
-      if(first_tick){
-        BlockNetworkUtil.create_or_join(world, this, LaserNetwork::new);
-        first_tick = false;
+    if(onServerSide()){
+      try{
+        if(first_tick){
+          BlockNetworkUtil.create_or_join(world, this, LaserNetwork::new);
+          first_tick = false;
+        }
+        network.tick(this);
       }
-      network.tick(this);
+      catch(Exception e){
+        report_ticking_error(e);
+      }
     }
   }
 
   @Override
-  public void remove(){
+  public final void remove(){
     super.remove();
     BlockNetworkUtil.tileentity_was_removed(this, LaserNetwork::new);
   }
@@ -58,6 +65,8 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   @Override
   public final void read(final CompoundNBT nbt){
     super.read(nbt);
+    energy.loadFromNBT(nbt);
+    power_switch = nbt.getBoolean("Power Switch");
     laser_distance = nbt.getInt("Laser Distance");
     auto_shutoff = nbt.getBoolean("Auto Shutoff");
   }
@@ -65,6 +74,8 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   @Override
   public final CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
+    energy.saveToNBT(nbt);
+    nbt.putBoolean("Power Switch", power_switch);
     nbt.putInt("Laser Distance", laser_distance);
     nbt.putBoolean("Auto Shutoff", auto_shutoff);
     return nbt;
@@ -98,17 +109,15 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   // Only the gui calls these
   public final int getLaserDistance(){ return laser_distance; }
   public final boolean getAutoShutoff(){ return auto_shutoff; }
+  @Override
+  public boolean get_switch_state(){     return power_switch; }
 
   public final void setDataDirectlyFromNetwork(final Energy energy, final int laser_distance, final boolean running, final boolean shutoff){
     this.energy.set(energy);
     this.laser_distance = laser_distance;
     this.power_switch = running;
     this.auto_shutoff = shutoff;
-    super.update_data(); // explicitly calls super method, because THIS class overrides it!
-  }
-
-  @Override
-  public void onEnergyChanged(){ // do nothing, because we already track changes whenever the network's Energy changes!
+    super.update_data();
   }
 
   @Override
@@ -124,27 +133,25 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
 
   @Override
   public final void load_block_network_data(){
-    network.auto_shutoff = auto_shutoff;
-    network.setLaserDistance(laser_distance);
+    network.load_data(energy, power_switch, laser_distance, auto_shutoff);
   }
 
   /**
-   * This is overridden so whatever code calls this function is actually updates the whole network.
+   * This is overridden so whatever code calls this function actually updates the whole network.
    */
   @Override
   public final void update_data(){
-    network.updateLaserNetwork();
   }
 
   @Override
-  public final void toggleRun(){
+  public final void togglePowerSwitch(){
     network.running = !network.running;
-    network.updateLaserNetwork();
+    network.changed = true;
   }
 
   public final void toggle_auto_shutoff(){
     network.auto_shutoff = !network.auto_shutoff;
-    network.updateLaserNetwork();
+    network.changed = true;
   }
 
   @Override
@@ -156,11 +163,6 @@ public final class TileLaserHousing extends TileWorkMachine implements ITickable
   @Override
   public ITextComponent getDisplayName(){
     return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
-  }
-
-  @Override
-  protected final boolean test_condition(){
-    return true;
   }
 
 }

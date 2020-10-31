@@ -3,18 +3,18 @@ package addsynth.energy.gameplay.universal_energy_interface;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import addsynth.core.util.ArrayUtil;
-import addsynth.energy.Energy;
 import addsynth.energy.compat.energy.EnergyCompat;
 import addsynth.energy.compat.energy.forge.ForgeEnergyIntermediary;
+import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
 import addsynth.energy.gameplay.Config;
+import addsynth.energy.main.Energy;
+import addsynth.energy.main.IEnergyUser;
 import addsynth.energy.registers.Tiles;
-import addsynth.energy.tiles.TileEnergyWithStorage;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -22,24 +22,55 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 
-public final class TileUniversalEnergyTransfer extends TileEnergyWithStorage implements ITickableTileEntity, INamedContainerProvider {
+public final class TileUniversalEnergyTransfer extends TileEnergyNetwork implements IEnergyUser, INamedContainerProvider {
 
-  private final ForgeEnergyIntermediary forge_energy;
+  private final Energy energy = new Energy(Config.universal_energy_interface_buffer.get());
+
+  private final ForgeEnergyIntermediary forge_energy = new ForgeEnergyIntermediary(energy){
+    @Override
+    public boolean canExtract(){
+      return super.canExtract() && transfer_mode.canExtract;
+    }
+    @Override
+    public boolean canReceive(){
+      return super.canReceive() && transfer_mode.canReceive;
+    }
+  };
+
+  private boolean changed;
 
   private TRANSFER_MODE transfer_mode = TRANSFER_MODE.BI_DIRECTIONAL;
 
   public TileUniversalEnergyTransfer(){
-    super(Tiles.UNIVERSAL_ENERGY_INTERFACE, new Energy(Config.universal_energy_interface_buffer.get()));
-    forge_energy = new ForgeEnergyIntermediary(energy){
-      @Override
-      public boolean canExtract(){
-        return super.canExtract() && transfer_mode.canExtract;
+    super(Tiles.UNIVERSAL_ENERGY_INTERFACE);
+  }
+
+  @Override
+  public final void tick(){
+    if(onServerSide()){
+      try{
+        super.tick(); // handles EnergyNetwork stuff
+        final EnergyCompat.CompatEnergyNode[] energy_nodes = EnergyCompat.getConnectedEnergy(pos, world);
+        if(energy_nodes.length > 0){
+          if(transfer_mode.canReceive){
+            EnergyCompat.acceptEnergy(energy_nodes, this.energy);
+          }
+          if(transfer_mode.canExtract){
+            EnergyCompat.transmitEnergy(energy_nodes, this.energy);
+          }
+        }
+        if(energy.tick()){
+          changed = true;
+        }
+        if(changed){
+          update_data();
+          changed = false;
+        }
       }
-      @Override
-      public boolean canReceive(){
-        return super.canReceive() && transfer_mode.canReceive;
+      catch(Exception e){
+        report_ticking_error(e);
       }
-    };
+    }
   }
 
   public final TRANSFER_MODE get_transfer_mode(){
@@ -49,19 +80,20 @@ public final class TileUniversalEnergyTransfer extends TileEnergyWithStorage imp
   public final void set_next_transfer_mode(){
     final int mode = (transfer_mode.ordinal() + 1) % TRANSFER_MODE.values().length;
     transfer_mode = TRANSFER_MODE.values()[mode];
-    // energy.setTransferRate(transfer_mode.integrate ? Config.universal_energy_interface_buffer.get() : 0);
-    update_data();
+    changed = true;
   }
 
   @Override
   public final void read(final CompoundNBT nbt){
     super.read(nbt);
+    energy.loadFromNBT(nbt);
     transfer_mode = ArrayUtil.getArrayValue(TRANSFER_MODE.values(), nbt.getByte("Transfer Mode"));
   }
 
   @Override
   public final CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
+    energy.saveToNBT(nbt);
     nbt.putByte("Transfer Mode", (byte)transfer_mode.ordinal());
     return nbt;
   }
@@ -78,21 +110,10 @@ public final class TileUniversalEnergyTransfer extends TileEnergyWithStorage imp
   }
   
   @Override
-  public final void tick(){
-    if(world.isRemote == false){
-      final EnergyCompat.CompatEnergyNode[] energy_nodes = EnergyCompat.getConnectedEnergy(pos, world);
-      if(energy_nodes.length > 0){
-        if(transfer_mode.canReceive){
-          EnergyCompat.acceptEnergy(energy_nodes, this.energy);
-        }
-        if(transfer_mode.canExtract){
-          EnergyCompat.transmitEnergy(energy_nodes, this.energy);
-        }
-      }
-      energy.update(world);
-    }
+  public final Energy getEnergy(){
+    return energy;
   }
-
+  
   @Override
   @Nullable
   public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){

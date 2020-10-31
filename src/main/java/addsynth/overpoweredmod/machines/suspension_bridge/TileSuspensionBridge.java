@@ -5,8 +5,8 @@ import addsynth.core.Constants;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.core.inventory.SlotData;
-import addsynth.energy.Energy;
-import addsynth.energy.tiles.TileEnergyReceiver;
+import addsynth.energy.main.Receiver;
+import addsynth.energy.tiles.TileBasicMachine;
 import addsynth.overpoweredmod.game.core.Lens;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,11 +14,10 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileSuspensionBridge extends TileEnergyReceiver implements IBlockNetworkUser<BridgeNetwork>, ITickableTileEntity, INamedContainerProvider {
+public final class TileSuspensionBridge extends TileBasicMachine implements IBlockNetworkUser<BridgeNetwork>, INamedContainerProvider {
 
   public static final Item[] filter = Lens.index;
 
@@ -30,21 +29,23 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
   private BridgeMessage[] message = new BridgeMessage[6];
 
   public TileSuspensionBridge(){
-    super(Tiles.ENERGY_SUSPENSION_BRIDGE, new SlotData[] {new SlotData(filter, 1)}, 0, new Energy());
+    super(Tiles.ENERGY_SUSPENSION_BRIDGE, new SlotData[] {new SlotData(filter, 1)}, new Receiver());
   }
 
   @Override
   public final void tick(){
-    if(world.isRemote == false){
-      if(first_tick){
-        BlockNetworkUtil.create_or_join(world, this, BridgeNetwork::new);
-        first_tick = false;
-      }
-      if(network != null){
+    if(onServerSide()){
+      try{
+        if(first_tick){
+          BlockNetworkUtil.create_or_join(world, this, BridgeNetwork::new);
+          first_tick = false;
+        }
         network.tick(this);
       }
+      catch(Exception e){
+        report_ticking_error(e);
+      }
     }
-    super.tick();
   }
 
   @Override
@@ -55,13 +56,13 @@ public final class TileSuspensionBridge extends TileEnergyReceiver implements IB
 
   @Override
   public void load_block_network_data(){
-    network.lens_index = Lens.get_index(input_inventory.getStackInSlot(0));
+    network.lens_index = Lens.get_index(inventory.getStackInSlot(0));
   }
 
   @Override
   public final void onInventoryChanged(){
-    if(world.isRemote == false){
-      network.update_lens(input_inventory.getStackInSlot(0));
+    if(onServerSide()){
+      network.update_lens(inventory.getStackInSlot(0));
     }
   }
 

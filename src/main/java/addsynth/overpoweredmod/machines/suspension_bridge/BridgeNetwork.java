@@ -10,7 +10,7 @@ import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.core.util.game.WorldUtil;
-import addsynth.energy.Energy;
+import addsynth.energy.main.Receiver;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Lens;
@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 
 public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
-  public final Energy energy = new Energy(0,1000);
+  public final Receiver energy = new Receiver(0, 1000);
 
   public int lens_index = -1;
 
@@ -56,7 +56,6 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
   public BridgeNetwork(final World world, final TileSuspensionBridge first_tile){
     super(world, first_tile);
-    energy.set_receive_only();
   }
 
   public final int get_min_x(){ return min_x; }

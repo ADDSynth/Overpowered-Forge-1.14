@@ -1,13 +1,13 @@
 package addsynth.energy.blocks;
 
 import addsynth.core.blocks.BlockTile;
-import addsynth.core.tiles.TileMachine;
-import addsynth.core.util.game.MinecraftUtility;
+import addsynth.core.inventory.IInventoryUser;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -31,9 +31,11 @@ public abstract class MachineBlock extends BlockTile {
   @Override
   @SuppressWarnings("deprecation")
    public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving){
-    final TileMachine tile = MinecraftUtility.getTileEntity(pos, world, TileMachine.class);
+    final TileEntity tile = world.getTileEntity(pos);
     if(tile != null){
-      tile.drop_inventory();
+      if(tile instanceof IInventoryUser){
+        ((IInventoryUser)tile).drop_inventory();
+      }
     }
     super.onReplaced(state, world, pos, newState, isMoving);
   }

@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.fusion.chamber;
 
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
-import addsynth.core.tiles.TileMachine;
+import addsynth.core.tiles.TileStorageMachine;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -18,7 +18,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.Explosion;
 
-public final class TileFusionChamber extends TileMachine implements INamedContainerProvider {
+public final class TileFusionChamber extends TileStorageMachine implements INamedContainerProvider {
 
   public static final Item[] input_filter = new Item[]{ModItems.fusion_core};
 
@@ -29,7 +29,7 @@ public final class TileFusionChamber extends TileMachine implements INamedContai
   private boolean on;
 
   public TileFusionChamber(){
-    super(Tiles.FUSION_CHAMBER, new SlotData[]{new SlotData(input_filter,1)}, 0);
+    super(Tiles.FUSION_CHAMBER, new SlotData[]{new SlotData(input_filter,1)});
   }
 
   public final boolean has_fusion_core(){

@@ -6,7 +6,7 @@ import addsynth.core.inventory.SlotData;
 import addsynth.core.material.MaterialsUtil;
 import addsynth.core.util.StringUtil;
 import addsynth.core.util.math.MathUtility;
-import addsynth.energy.tiles.machines.TileWorkMachine;
+import addsynth.energy.tiles.machines.TileStandardWorkMachine;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
@@ -24,7 +24,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.item.ItemStack;
 
-public final class TileMagicInfuser extends TileWorkMachine implements INamedContainerProvider {
+public final class TileMagicInfuser extends TileStandardWorkMachine implements INamedContainerProvider {
 
   private static final Enchantment[] ruby_enchantments = new Enchantment[]{
     Enchantments.POWER,
@@ -85,8 +85,7 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
   };
 
   public TileMagicInfuser(){
-    super(
-      Tiles.MAGIC_INFUSER,
+    super(Tiles.MAGIC_INFUSER,
       new SlotData[]{
         new SlotData(Items.BOOK),
         new SlotData(Filters.magic_infuser)
@@ -98,9 +97,9 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
 
   @Override
   protected final boolean test_condition(){
-    return !input_inventory.getStackInSlot(0).isEmpty() &&
-           !input_inventory.getStackInSlot(1).isEmpty() &&
-            output_inventory.getStackInSlot(0).isEmpty();
+    return !inventory.input_inventory.getStackInSlot(0).isEmpty() &&
+           !inventory.input_inventory.getStackInSlot(1).isEmpty() &&
+            inventory.output_inventory.getStackInSlot(0).isEmpty();
   }
 
   @Override
@@ -109,14 +108,13 @@ public final class TileMagicInfuser extends TileWorkMachine implements INamedCon
     if(enchantment != null){
       final ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1);
       enchant_book.addEnchantment(enchantment, enchantment == Enchantments.FORTUNE ? 2 : 1);
-      output_inventory.setStackInSlot(0, enchant_book);
+      inventory.output_inventory.setStackInSlot(0, enchant_book);
     }
-    working_inventory.setEmpty();
   }
 
   private final Enchantment get_enchantment(){
     // https://minecraft.gamepedia.com/Enchanting#Summary_of_enchantments
-    final Item item = working_inventory.getStackInSlot(1).getItem();
+    final Item item = inventory.working_inventory.getStackInSlot(1).getItem();
     final Random random = new Random();
     if(MaterialsUtil.match(item, MaterialsUtil.getRubies())){
       return MathUtility.choose(random, ruby_enchantments);

@@ -19,7 +19,7 @@ public abstract class TileEnergyNetwork extends TileBase implements ITickableTil
 
   @Override
   public void tick(){
-    if(world.isRemote == false){
+    if(onServerSide()){
       if(first_tick){
         BlockNetworkUtil.create_or_join(world, this, EnergyNetwork::new);
         first_tick = false;

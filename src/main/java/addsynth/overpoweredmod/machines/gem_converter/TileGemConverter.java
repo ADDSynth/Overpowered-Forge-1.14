@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.gem_converter;
 
 import javax.annotation.Nullable;
-import addsynth.energy.tiles.machines.TileWorkMachine;
+import addsynth.energy.tiles.machines.TileStandardWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.machines.Filters;
@@ -16,18 +16,18 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileGemConverter extends TileWorkMachine implements INamedContainerProvider {
+public final class TileGemConverter extends TileStandardWorkMachine implements INamedContainerProvider {
 	
   private byte selection;
   private ItemStack gem_selected = new ItemStack(Gems.ruby, 1);
   private byte converting_to;
   
   public TileGemConverter(){
-    super(Tiles.GEM_CONVERTER,1,Filters.gem_converter,1,MachineValues.gem_converter);
+    super(Tiles.GEM_CONVERTER, 1, Filters.gem_converter, 1, MachineValues.gem_converter);
   }
 
   public final void cycle(final boolean direction){
-    if(world.isRemote == false){
+    if(onServerSide()){
       if(direction){
         selection += 1;
         if(selection == 8){
@@ -41,7 +41,7 @@ public final class TileGemConverter extends TileWorkMachine implements INamedCon
         }
       }
       gem_selected = Gems.getItemStack(selection); // updates on server-side
-      update_data();
+      changed = true;
     }
   }
 
@@ -66,7 +66,7 @@ public final class TileGemConverter extends TileWorkMachine implements INamedCon
     if(quick_transfer()){
       return false;
     }
-    return input_inventory.getStackInSlot(0).isEmpty() ? false : output_inventory.can_add(0, gem_selected);
+    return inventory.input_inventory.getStackInSlot(0).isEmpty() ? false : inventory.output_inventory.can_add(0, gem_selected);
   }
 
   /** Checks if the Input gem matches the gem we're converting to, and if that is the case,
@@ -75,12 +75,12 @@ public final class TileGemConverter extends TileWorkMachine implements INamedCon
    *  we'll convert the gem to OUR gem.
    */
   private final boolean quick_transfer(){
-    final ItemStack input_stack = input_inventory.getStackInSlot(0);
+    final ItemStack input_stack = inventory.input_inventory.getStackInSlot(0);
     if(input_stack.isEmpty() == false){
-      if(match(input_stack.getItem(), selection) && output_inventory.can_add(0, gem_selected)){
-        final ItemStack insert = input_inventory.extractItem(0, 1, false);
-        output_inventory.insertItem(0, insert, false);
-        update_data();
+      if(match(input_stack.getItem(), selection) && inventory.output_inventory.can_add(0, gem_selected)){
+        final ItemStack insert = inventory.input_inventory.extractItem(0, 1, false);
+        inventory.output_inventory.insertItem(0, insert, false);
+        changed = true;
         return true;
       }
     }
@@ -93,19 +93,13 @@ public final class TileGemConverter extends TileWorkMachine implements INamedCon
   }
 
   @Override
-  protected final void begin_work(){
-    final ItemStack stack = input_inventory.extractItem(0, 1, false);
-    working_inventory.setStackInSlot(0, stack);
-    // always remember to pass A COPY of the stack your trying to insert! Do not reference
-    // a stack you're keeping. Otherwise it will assign a direct reference!
+  protected final void onJobStart(){
     converting_to = selection;
-    changed = true;
   }
 
   @Override
   protected final void perform_work(){
-    working_inventory.setEmpty();
-    output_inventory.insertItem(0, Gems.getItemStack(converting_to), false);
+    inventory.output_inventory.insertItem(0, Gems.getItemStack(converting_to), false);
   }
 
   public final int get_gem_selected(){

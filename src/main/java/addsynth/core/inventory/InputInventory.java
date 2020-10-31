@@ -2,40 +2,34 @@ package addsynth.core.inventory;
 
 import javax.annotation.Nonnull;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.tiles.TileMachine;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-/** <p>
- *  The origin of this class came about when I tried to extract items out of a machine using a Hopper.
- *  The hopper uses the getCapability(EnumFacing.DOWN) function, but because I return only one 
- *  ItemStackHandler regardless of the direction, the hopper started pulling items from the whole
- *  inventory.
- *  </p>
- *  <p>
- *  So it seems that the input inventory and output inventory had to be seperate ItemStackHandlers.
- *  </p>
+/** This inventory only allows items to be inserted. It also has an Item filter to control
+ *  which items are allowed. Pass null as the item filter to allow all items.
  */
-public final class InputInventory extends ReactiveInventory {
+public final class InputInventory extends CommonInventory {
 
   private final SlotData[] slot_data;
   public boolean custom_stack_limit_is_vanilla_dependant = true;
 
-  public InputInventory(final TileMachine responder, final int input_slots){
-    this(responder, SlotData.create_new_array(input_slots, null));
-  }
-
-  public InputInventory(final TileMachine responder, final int input_slots, final Item[] filter){
-    this(responder, SlotData.create_new_array(input_slots, filter));
-  }
-
-  public InputInventory(final TileMachine responder, @Nonnull final SlotData[] slots){
+  private InputInventory(final IInputInventory responder, @Nonnull final SlotData[] slots){
     super(responder, slots.length);
-    if(slots.length == 0){
-      throw new RuntimeException("TileMachine constructor is not supposed to create an InputInventory with 0 slots!");
-    }
     this.slot_data = slots;
+  }
+
+  public static final InputInventory create(final IInputInventory responder, final int number_of_slots){
+    return number_of_slots > 0 ? new InputInventory(responder, SlotData.create_new_array(number_of_slots, null)) : null;
+  }
+
+  public static final InputInventory create(final IInputInventory responder, final int number_of_slots, final Item[] filter){
+    return number_of_slots > 0 ? new InputInventory(responder, SlotData.create_new_array(number_of_slots, filter)) : null;
+  }
+
+  public static final InputInventory create(final IInputInventory responder, final SlotData[] slots){
+    return slots != null ? (slots.length > 0 ? new InputInventory(responder, slots) : null) : null;
   }
 
   @Override
@@ -153,6 +147,16 @@ public final class InputInventory extends ReactiveInventory {
       return Math.min(this.slot_data[slot].stack_limit, stack.getMaxStackSize());
     }
     return this.slot_data[slot].stack_limit;
+  }
+
+  @Override
+  public final void save(final CompoundNBT nbt){
+    nbt.put("InputInventory", serializeNBT());
+  }
+
+  @Override
+  public final void load(final CompoundNBT nbt){
+    deserializeNBT(nbt.getCompound("InputInventory"));
   }
 
 }
