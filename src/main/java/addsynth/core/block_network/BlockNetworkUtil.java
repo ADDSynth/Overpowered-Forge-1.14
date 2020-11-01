@@ -10,8 +10,13 @@ import net.minecraft.world.World;
 public final class BlockNetworkUtil {
 
   /**
-   * Please use this to simplify the creation of your BlockNetwork variable!
-   * Call this in your TileEntity's <code>onLoad()</code> event or first tick!
+   * <p>Use this to initialize your BlockNetwork variable!
+   * <p><b>Important!</b> Call this in your TileEntity's tick function, on the first tick!
+   *   This produces an error if you call it in the onLoad() event, because the
+   *   {@link BlockNetwork#updateBlockNetwork(BlockPos, TileEntity)} calls
+   *   {@link World#getBlockState(BlockPos)} which could potentially load a chunk and then
+   *   load more TileEntities, which call their onLoad() functions and begin creating
+   *   another BlockNetwork! While we're already in the middle of updating one.
    * @param <B> ? extends from BlockNetwork&ltT&gt
    * @param <T> ? extends from TileEntity AND IBlockNetworkUser&ltB&gt
    * @param world
@@ -79,8 +84,8 @@ public final class BlockNetworkUtil {
     network.updateBlockNetwork(tile.getPos(), tile);
   }
 
-  /** <b>Required!</b> Call this function in your TileEntity's <code>invalidate()</code> or <code>remove()</code>
-   *  function! Remember to call the <code>super</code> method first!
+  /** <b>Required!</b> Call this function in your TileEntity's <code>invalidate()</code> or
+   *  <code>remove()</code> function! Remember to call the <code>super</code> method first!
    * @param <B>
    * @param <T>
    * @param destroyed_tile
@@ -106,7 +111,7 @@ public final class BlockNetworkUtil {
           if(blocks == null){
             final B first_network = destroyed_tile.getBlockNetwork();
             if(first_network != null){
-              first_network.updateBlockNetwork(offset, (T)tile);
+              first_network.updateBlockNetwork(offset, (T)tile); // update BlockNetwork with first adjacent TileEntity
               blocks = first_network.getTileEntityList();
             }
           }

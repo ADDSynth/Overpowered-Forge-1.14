@@ -2,6 +2,7 @@ package addsynth.energy.energy_network;
 
 import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
+import addsynth.core.block_network.Node;
 import addsynth.core.util.java.TimeUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
@@ -10,7 +11,6 @@ import addsynth.energy.main.EnergyUtil;
 import addsynth.energy.main.IEnergyConsumer;
 import addsynth.energy.main.IEnergyGenerator;
 import addsynth.energy.main.IEnergyUser;
-import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -93,18 +93,19 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
   }
 
   @Override
-  protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
+  protected final void customSearch(final Node node){
+    final TileEntity tile = node.getTile();
     if(tile != null){
       if(tile instanceof IEnergyConsumer){
-        add_energy_node(receivers, new EnergyNode(position, tile, ((IEnergyConsumer)tile).getEnergy()));
+        add_energy_node(receivers, new EnergyNode(node.position, tile, ((IEnergyConsumer)tile).getEnergy()));
         return;
       }
       if(tile instanceof IEnergyGenerator){
-        add_energy_node(generators, new EnergyNode(position, tile, ((IEnergyGenerator)tile).getEnergy()));
+        add_energy_node(generators, new EnergyNode(node.position, tile, ((IEnergyGenerator)tile).getEnergy()));
         return;
       }
       if(tile instanceof IEnergyUser){
-        add_energy_node(batteries, new EnergyNode(position, tile, ((IEnergyUser)tile).getEnergy()));
+        add_energy_node(batteries, new EnergyNode(node.position, tile, ((IEnergyUser)tile).getEnergy()));
       }
     }
   }

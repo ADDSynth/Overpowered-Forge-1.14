@@ -1,18 +1,17 @@
 package addsynth.core.block_network;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
+import addsynth.core.util.block.BlockUtil;
 import addsynth.energy.energy_network.EnergyNetwork;
-import addsynth.overpoweredmod.machines.laser.machine.LaserNetwork;
 import addsynth.overpoweredmod.machines.data_cable.DataCableNetwork;
+import addsynth.overpoweredmod.machines.laser.machine.LaserNetwork;
 import addsynth.overpoweredmod.machines.suspension_bridge.BridgeNetwork;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -184,37 +183,36 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
     return null;
   }
 
-  @SuppressWarnings("unchecked")
-  public void updateBlockNetwork(final BlockPos from){ // TODO: Must find a better way to merge this into the other updateBlockNetwork function.
-    final TileEntity tile = world.getTileEntity(from);
-    if(is_valid_tile(tile)){
-      updateBlockNetwork(from, (T)tile);
-    }
+  public final void updateBlockNetwork(final BlockPos from){
+    updateBlockNetwork(from, first_tile);
   }
 
   /**
    * Must be called when splitting or joining BlockNetworks, and right after creating BlockNetworks during TileEnity load.
    * @param from
+   * @param tile First TileEntity in network, or a new TileEntity if the first was destroyed.
    */
-  public void updateBlockNetwork(final BlockPos from, final T tile){
+  public final void updateBlockNetwork(final BlockPos from, final T tile){
     if(world != null){
       if(world.isRemote == false){
-        onBeforeUpdate();
-
-        blocks.clear();
-        clear_custom_data();
-        final ArrayList<BlockPos> searched = new ArrayList<>(100);
-        blocks.add(new Node(from, tile));
-        searched.add(from);
-        search_algorithm(from, searched);
-        customSearch(from, tile.getBlockState().getBlock(), tile);
-
-        // Changes first_tile less often, only when necessary
-        if(blocks.contains(first_tile) == false){
-          first_tile = tile;
+        try{
+          onBeforeUpdate();
+  
+          blocks.clear();
+          clear_custom_data();
+          blocks.setFrom(BlockUtil.find_blocks(from, world, this::is_valid_tile, this::customSearch));
+          blocks.setBlockNetwork(this);
+  
+          // Changes first_tile less often, only when necessary
+          if(blocks.contains(first_tile) == false){
+            first_tile = tile;
+          }
+  
+          onUpdateNetworkFinished();
         }
-
-        onUpdateNetworkFinished();
+        catch(Exception e){
+          ADDSynthCore.log.fatal("Error occured in BlockNetwork update! WHAT HAPPENED???", e);
+        }
         return;
       }
     }
@@ -222,28 +220,8 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
     // Thread.dumpStack();
   }
 
-  @SuppressWarnings({ "null", "unchecked" })
-  private final void search_algorithm(final BlockPos from, ArrayList<BlockPos> searched){
-    Block block;
-    BlockPos position;
-    TileEntity tile;
-    for(Direction side: Direction.values()){
-      position = from.offset(side);
-      if(searched.contains(position) == false){
-        searched.add(position);
-        block = world.getBlockState(position).getBlock();
-        tile  = world.getTileEntity(position);
-        if(is_valid_tile(tile)){
-          blocks.add(new Node(position, tile));
-          ((IBlockNetworkUser)tile).setBlockNetwork(this);
-          search_algorithm(position, searched);
-        }
-        customSearch(position, block, tile);
-      }
-    }
-  }
-
-  private final boolean is_valid_tile(final TileEntity tile){
+  private final boolean is_valid_tile(final Node node){
+    final TileEntity tile = node.getTile();
     if(tile != null){
       if(tile.isRemoved() == false && class_type.isInstance(tile)){
         return true;
@@ -291,10 +269,11 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   protected void onUpdateNetworkFinished(){
   }
 
-  protected abstract void customSearch(final BlockPos position, final Block block, final TileEntity tile);
+  protected void customSearch(final Node node){
+  }
 
   /**<p>
-   *   <b>Required:</b> call this in the block's
+   *   Call this in the block's
    *   {@link Block#neighborChanged(BlockState, World, BlockPos, Block, BlockPos, boolean)} method.<br>
    *   <b>Do not use</b> the {@link Block#onNeighborChange(BlockState, net.minecraft.world.IWorldReader, BlockPos, BlockPos)} method!
    *   Starting in Minecraft 1.11 the {@link World#updateComparatorOutputLevel(BlockPos, Block)} method
@@ -302,18 +281,18 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
    *   so it doesn't update Block Networks at all.
    * <p>NOTE: We're in Minecraft 1.14 now, and I have no idea how any of this works! Disregard previous paragraph.
    * <p>
-   *   If the neighboring block is a block that holds this type of BlockNetwork (such as a wire), then that
-   *   block also has a TileEntity which automatically adds itself to the existing network when its
-   *   {@link TileEntity#onLoad()} method is called, and correctly reassigns block networks when its
-   *   breakBlock() method is called.
+   *   THIS IS ONLY USED TO RESPOND TO TileEntity changes that your BlockNetwork keeps track of, that are
+   *   NOT a part of your BlockNetwork. For instance, the Energy Network keeps track of all IEnergyUser machines.
    * <p>
-   *   This method is used to check for additional blocks that the BlockNetwork should look for, such as machines.
-   *   If the reported position that changed is a valid block then call updateNetwork().
-   *   If the reported position is not a TileEntity or not a valid block, then you need to check the custom
-   *   data to make sure it is still valid. For entities you can call the TileEntity.isInvalid() function.
+   *   If the list of TileEntities you keep track of utilize {@link Node Nodes}, then you can call
+   *   {@link #remove_invalid_nodes(Collection)} to automatically remove TileEntities that were removed.
+   *   Otherwise you'll have to check for removed TileEntities yourself!
+   * <p>
+   *   For TileEntities that are part of the BlockNetwork itself, refer to the instructions in {@link BlockNetworkUtil}.
    * @param current_position
    * @param position_of_neighbor
    */
-  public abstract void neighbor_was_changed(final BlockPos current_position, final BlockPos position_of_neighbor);
+  public void neighbor_was_changed(final BlockPos current_position, final BlockPos position_of_neighbor){
+  }
 
 }

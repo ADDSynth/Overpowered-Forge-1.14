@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.machines.data_cable;
 
 import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
+import addsynth.core.block_network.Node;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.machines.fusion.chamber.TileFusionChamber;
@@ -9,7 +10,6 @@ import addsynth.overpoweredmod.machines.fusion.converter.TileFusionEnergyConvert
 import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -46,15 +46,15 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
   }
 
   @Override
-  protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
-    if(block == Machines.fusion_control_unit){
-      if(scanning_units.contains(position) == false){
-        scanning_units.add(position);
+  protected final void customSearch(final Node node){
+    if(node.block == Machines.fusion_control_unit){
+      if(scanning_units.contains(node.position) == false){
+        scanning_units.add(node.position);
       }
     }
-    if(block == Machines.fusion_converter){
-      if(fusion_energy_converters.contains(position) == false){
-        fusion_energy_converters.add(position);
+    if(node.block == Machines.fusion_converter){
+      if(fusion_energy_converters.contains(node.position) == false){
+        fusion_energy_converters.add(node.position);
       }
     }
   }
@@ -98,7 +98,9 @@ public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
       TileFusionEnergyConverter tile;
       for(BlockPos tile_position : fusion_energy_converters){
         tile = (TileFusionEnergyConverter)world.getTileEntity(tile_position);
-        tile.getEnergy().setCapacity(actual_energy); // MAYBE: merhaps I can move this to the TileFusionEnergyConverter class.
+        if(tile != null){
+          tile.getEnergy().setCapacity(actual_energy); // MAYBE: merhaps I can move this to the TileFusionEnergyConverter class.
+        }
       }
     }
   }

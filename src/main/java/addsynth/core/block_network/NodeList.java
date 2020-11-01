@@ -15,6 +15,10 @@ public final class NodeList extends HashSet<Node> {
     super(size);
   }
 
+  public final void setFrom(final HashSet<Node> hash_set){
+    addAll(hash_set);
+  }
+
   public final ArrayList<BlockPos> getPositions(){
     final ArrayList<BlockPos> positions = new ArrayList<>(100);
     for(final Node node : this){
@@ -27,9 +31,13 @@ public final class NodeList extends HashSet<Node> {
 
   public final ArrayList<TileEntity> getTileEntities(){
     final ArrayList<TileEntity> tiles = new ArrayList<>(100);
+    TileEntity tile;
     for(final Node node : this){
-      if(node.isInvalid() == false){
-        tiles.add(node.getTile());
+      tile = node.getTile();
+      if(tile != null){
+        if(node.isInvalid() == false){
+          tiles.add(tile);
+        }
       }
     }
     return tiles;
@@ -55,6 +63,16 @@ public final class NodeList extends HashSet<Node> {
 
   public final void remove_invalid(){
     removeIf((Node n) -> n == null ? true : n.isInvalid());
+  }
+
+  @SuppressWarnings({"unchecked", "null"})
+  public final void setBlockNetwork(final BlockNetwork network){
+    remove_invalid();
+    forEach((Node node) -> {
+      if(node.getTile() != null){
+        ((IBlockNetworkUser)node.getTile()).setBlockNetwork(network);
+      }
+    });
   }
 
 }

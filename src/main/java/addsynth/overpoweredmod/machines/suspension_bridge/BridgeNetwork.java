@@ -18,7 +18,6 @@ import addsynth.overpoweredmod.game.core.Machines;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -364,8 +363,10 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     TileSuspensionBridge tile;
     for(final Node node : blocks){
       tile = (TileSuspensionBridge)node.getTile();
-      tile.getInputInventory().setStackInSlot(0, lens_index < 0 ? ItemStack.EMPTY : new ItemStack(Lens.index[lens_index]));
-      tile.update_data();
+      if(tile != null){
+        tile.getInputInventory().setStackInSlot(0, lens_index < 0 ? ItemStack.EMPTY : new ItemStack(Lens.index[lens_index]));
+        tile.update_data();
+      }
     }
     final SyncClientBridgeMessage msg = new SyncClientBridgeMessage(blocks.getPositions(), bridge_message, message);
     NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, msg);
@@ -496,14 +497,6 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
 
   @Override
   protected final void clear_custom_data(){
-  }
-
-  @Override
-  protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
-  }
-
-  @Override
-  public final void neighbor_was_changed(final BlockPos current_position, final BlockPos position_of_neighbor){
   }
 
 }

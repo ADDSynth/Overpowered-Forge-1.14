@@ -15,8 +15,6 @@ import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
 import addsynth.overpoweredmod.machines.laser.cannon.TileLaser;
 import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
-import net.minecraft.block.Block;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -49,6 +47,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
 
   @Override
   protected final void onUpdateNetworkFinished(){
+    // OPTIMIZE: This only needs to be called if the Lasers change. Move this in-place of its call in neighbor_was_changed().
     if(lasers.size() != number_of_lasers){
       number_of_lasers = lasers.size();
       update_energy_requirements();
@@ -56,10 +55,10 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   }
 
   @Override
-  protected final void customSearch(final BlockPos position, final Block block, final TileEntity tile){
-    if(block instanceof LaserCannon){
-      if(lasers.contains(position) == false){
-        lasers.add(new Node(position, tile));
+  protected final void customSearch(final Node node){
+    if(node.block instanceof LaserCannon){
+      if(lasers.contains(node.position) == false){
+        lasers.add(node);
       }
     }
   }
@@ -113,7 +112,9 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
     TileLaserHousing laser_housing;
     for(final Node node : blocks){
       laser_housing = (TileLaserHousing)node.getTile();
-      laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff);
+      if(laser_housing != null){
+        laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff);
+      }
     }
     
     // updates client
