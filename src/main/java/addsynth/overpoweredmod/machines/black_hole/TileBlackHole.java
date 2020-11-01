@@ -167,7 +167,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
         if(entity instanceof PlayerEntity){ // server players
           final PlayerEntity player = (PlayerEntity)entity;
           if(player.isCreative() == false && player.isSpectator() == false){
-            player.setHealth(0.0f); // DO NOT REMOVE PLAYERS! You must DAMAGE them!
+            player.setHealth(0.0f); // Do Not Remove Players! You must DAMAGE them!
           }
         }
         else{

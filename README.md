@@ -3,7 +3,7 @@
 Welcome to the source code repository for the Overpowered mod for Minecraft, by ADDSynth.
 The source code is licensed under GNU GPL v3.0 or Later, with The Commons Clause.
 
-**Last Updated:** October 21, 2020
+**Last Updated:** November 1, 2020
 
 <!-- a double space after a line = a line break -->
 
@@ -20,13 +20,13 @@ The source code, including this file, will continually be improved upon as time 
 Owner  
 : ADDSynth
 
-* [Links](#links)
-* [About the Project](#about)
-* [How to Build](#build)
-* [Format Rules](#formatting)
-* [License](#license)
+* [Links](#Links)
+* [About the Project](#About-the-Project)
+* [How to Build](#How-to-Build)
+* [Format Rules](#Source-Code-Formatting)
+* [License](#License)
 
-# Links {#links}
+# Links
 
 You can Download Overpowered on CurseForge.  
 [Download on CurseForge](https://www.curseforge.com/minecraft/mc-mods/overpowered)
@@ -55,7 +55,7 @@ Any videos about Overpowered I'll post to my channel on YouTube:
 Business email: (but please contact via one of the above methods)  
 [gyrostudioscomputers@gmail.com](mailto:gyrostudioscomputers@gmail.com)
 
-# Source {#about}
+# About the Project
 
 I'm still not all that familiar with how Github works. But I'm pretty sure you can clone
 the repository and make pull requests if you think there's something you can improve
@@ -89,14 +89,15 @@ Please configure your IDE to recognize these Task Tags.
 | PRIORITY |   High   | Something that needs to be worked on next or soon, before the next release. |
 | FUTURE   |  Normal  | Describes features I plan to add in the future, but can't right now.        |
 | OPTIMIZE |  Normal  | Code that can be upgraded or improved.                                      |
+| REMOVE   |  Normal  | Code that is scheduled to be removed at a later time. Must specify when to remove.       |
 | TEST     |  Normal  | Further testing is required to see if there's a better way to do something. |
-| DELETE   |   Low    | Code that can be deleted later when I'm sure I won't miss it.               |
+| DELETE   |   Low    | Commented code that can be deleted when I'm sure I won't miss it.           |
 | FEATURE  |   Low    | Describes a feature that would be nice to have, but ultimately not needed at the moment. |
 | MAYBE    |   Low    | Suggests an alternative. |
 | NOTE     |   Low    | Leaves a note about the code, so I can find it later. |
 | UNUSED   |   Low    | Code that was added, but doesn't do anything. Safe to leave as is. |
 
-# How to Build {#build}
+# How to Build
 
 <!--
 First, go to [Minecraft Forge Files](https://files.minecraftforge.net/) and download the **Mdk**
@@ -118,7 +119,7 @@ Just type \'gradlew build\' and the output .jar file will be in build/libs.
 Type the command \'gradlew eclipse\', or replace eclipse with your preferred IDE. You can type
 \'gradlew tasks --all\' to get a list of all Gradle tasks.
 
-# Source Code Formatting {#formatting}
+# Source Code Formatting
 
 We prefer the source code be formatted in a specific way, but we're not strict about it.
 We won't decline or turn away pull requests if they do not follow these format rules.
@@ -131,7 +132,7 @@ I'll probably just reformat it myself later in the future anyway.
    start of the line and hold SHIFT and press DOWN to select the whole line,
    then use the common keyboard cut and paste commands.
 
-3. Keep code safe. Most variable declarations are implicitly initalized to some value.
+3. Keep code safe. Most variable declarations are explicitly initalized to some value.
    I understand that putting everything in a 'try/catch' block is not always convenient,
    but at the very least you should report errors to the log if an error does occur.
    And above all, THE GAME SHOULD NEVER CRASH.
@@ -144,7 +145,7 @@ I'll probably just reformat it myself later in the future anyway.
    1. Initalize variables one line at a time. We prefer this partly because of the same reason
       above, where sometimes the variable needs to be changed or moved. For instance:
 
-   'int x = 0;  
+    'int x = 0;  
     int y = 0;  
     int width = 0;  
     int height = 0;  
@@ -154,7 +155,7 @@ I'll probably just reformat it myself later in the future anyway.
 
     'int x, y, width, height, space = 0;'
 
-  2. If you're going to use a variable inside the loop, initalize the variable outside the loop,
+  2. If you're going to use a variable inside a loop, initalize the variable outside the loop,
      so that you can reuse it. Example:
 
     'int i;  
@@ -183,14 +184,19 @@ I'll probably just reformat it myself later in the future anyway.
      int num_lasers;  
      String msg;'
 
-  4. Function arguments should have a space in between them. 
+  4. Using conditional statements is fine as long as they're simple enough. So for instance
+     'return tile != null ? tile.getSomething() : null' is perfectly fine. But if your conditional
+     statement gets any more complicated than that, or consists of multiple embedded conditional
+     statements, it may be better to use embedded if statements instead, or even a dedicated function.
 
-  5. Also, I often like to align a long list of variables. This is not as important as some
-     of the other rules. But in regards to this I've noticed that the lists often become misaligned
-     because I used a Refactor command to change the name of something which I then discover
-     later.
+  5. Function arguments should have a space in between them. 
 
-5. Variables are usually in lowercase underscore style, but when it comes to methods I'm
+  6. Also, I often like to space out lines of code so that they line up with each other. This is
+     not as important as some of the other rules. But in regards to this, I've noticed that the
+     lists often become misaligned because I used a Refactor command to change the name of something
+     which I then discover later messes up the alignment of a list somewhere.
+
+5. Variables should be in lowercase underscore style, but when it comes to methods I'm
    guilty of using both camelCase and lowercase underscore, so whatever.
 
 6. Yes, I frequently add the keyword 'final' to method declarations and arguments. This was back
@@ -206,7 +212,7 @@ I'll probably just reformat it myself later in the future anyway.
    the field or method you want, because fields and method names are obfuscated outside a
    dev environment and are translated to be easier to read inside a dev environment.
 
-# License {#license}
+# License
 
 This source code is licensed under the GNU General Public License v3.0 (or later) with The Commons Clause.  
 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0-standalone.html)  
