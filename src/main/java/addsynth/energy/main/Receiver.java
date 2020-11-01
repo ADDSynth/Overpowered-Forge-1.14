@@ -7,11 +7,11 @@ public final class Receiver extends Energy {
   }
   
   public Receiver(final double capacity){
-    super(0, capacity, capacity, 0);
+    super(capacity, capacity, 0, 0);
   }
 
   public Receiver(final double capacity, final double maxReceive){
-    super(0, capacity, maxReceive, 0);
+    super(capacity, maxReceive, 0, 0);
   }
 
   @Override

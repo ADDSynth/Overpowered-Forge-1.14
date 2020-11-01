@@ -38,15 +38,15 @@ public class Energy {
   }
 
   public Energy(final double capacity){
-    this(0, capacity, capacity, capacity);
+    this(capacity, capacity, capacity, 0);
   }
 
   public Energy(final double capacity, final double maxTransferRate){
-    this(0, capacity, maxTransferRate, maxTransferRate);
+    this(capacity, maxTransferRate, maxTransferRate, 0);
   }
 
   public Energy(final double capacity, final double maxReceive, final double maxExtract){
-    this(0, capacity, maxReceive, maxExtract);
+    this(capacity, maxReceive, maxExtract, 0);
   }
 
   /**
@@ -55,7 +55,7 @@ public class Energy {
    * @param maxReceive
    * @param maxExtract
    */
-  public Energy(final double initial_energy, final double capacity, final double maxReceive, final double maxExtract){
+  public Energy(final double capacity, final double maxReceive, final double maxExtract, final double initial_energy){
     this.capacity.set(capacity);
     this.maxReceive.set(maxReceive);
     this.maxExtract.set(maxExtract);

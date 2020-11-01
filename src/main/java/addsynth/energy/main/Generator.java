@@ -7,11 +7,11 @@ public final class Generator extends Energy {
   }
   
   public Generator(final double capacity){
-    super(0, capacity, 0, capacity);
+    super(capacity, 0, capacity, 0);
   }
   
   public Generator(final double capacity, final double maxExtract){
-    super(0, capacity, 0, maxExtract);
+    super(capacity, 0, maxExtract, 0);
   }
 
   @Override
