@@ -27,7 +27,7 @@ public final class BlockNetworkUtil {
     if(world == null){
       throw new NullPointerException("Can't create BlockNetwork because the world isn't loaded yet.");
     }
-    if(world.isRemote == false){
+    if(world.isRemote == false && tile.isRemoved() == false){
       B network = tile.getBlockNetwork();
       if(network == null){ // block network doesn't already exist
         network = find_existing_network(world, tile);

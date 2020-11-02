@@ -26,7 +26,6 @@ public final class TileLaserHousing extends TileBase implements IBlockNetworkUse
   private boolean power_switch = true;
 
   private LaserNetwork network;
-  private boolean first_tick = true;
 
   private int laser_distance = Config.default_laser_distance.get();
 
@@ -44,9 +43,8 @@ public final class TileLaserHousing extends TileBase implements IBlockNetworkUse
   public final void tick(){
     if(onServerSide()){
       try{
-        if(first_tick){
+        if(network == null){
           BlockNetworkUtil.create_or_join(world, this, LaserNetwork::new);
-          first_tick = false;
         }
         network.tick(this);
       }

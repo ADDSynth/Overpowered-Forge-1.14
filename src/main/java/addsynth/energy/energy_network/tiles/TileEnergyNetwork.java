@@ -11,7 +11,6 @@ import net.minecraft.tileentity.TileEntityType;
 public abstract class TileEnergyNetwork extends TileBase implements ITickableTileEntity, IBlockNetworkUser<EnergyNetwork> {
 
   private EnergyNetwork network;
-  private boolean first_tick = true;
 
   public TileEnergyNetwork(final TileEntityType type){
     super(type);
@@ -20,9 +19,8 @@ public abstract class TileEnergyNetwork extends TileBase implements ITickableTil
   @Override
   public void tick(){
     if(onServerSide()){
-      if(first_tick){
+      if(network == null){
         BlockNetworkUtil.create_or_join(world, this, EnergyNetwork::new);
-        first_tick = false;
       }
       network.tick(this);
     }

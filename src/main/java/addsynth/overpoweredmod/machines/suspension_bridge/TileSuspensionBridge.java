@@ -21,8 +21,6 @@ public final class TileSuspensionBridge extends TileBasicMachine implements IBlo
 
   public static final Item[] filter = Lens.index;
 
-  private boolean first_tick = true;
-
   private BridgeNetwork network;
 
   private BridgeMessage bridge_message;
@@ -36,9 +34,8 @@ public final class TileSuspensionBridge extends TileBasicMachine implements IBlo
   public final void tick(){
     if(onServerSide()){
       try{
-        if(first_tick){
+        if(network == null){
           BlockNetworkUtil.create_or_join(world, this, BridgeNetwork::new);
-          first_tick = false;
         }
         network.tick(this);
       }

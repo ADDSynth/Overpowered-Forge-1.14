@@ -3,30 +3,24 @@ package addsynth.overpoweredmod.machines.data_cable;
 import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
+import addsynth.core.tiles.TileBase;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
 
-public final class TileDataCable extends TileEntity implements IBlockNetworkUser<DataCableNetwork>, ITickableTileEntity {
+public final class TileDataCable extends TileBase implements IBlockNetworkUser<DataCableNetwork>, ITickableTileEntity {
 
   private DataCableNetwork cable_network;
-  private boolean first_tick = true;
 
   public TileDataCable(){
     super(Tiles.DATA_CABLE);
   }
 
   @Override
-  public final void onLoad(){
-  }
-
-  @Override
-  public void tick(){
-    if(first_tick){
-      if(world.isRemote == false){
+  public final void tick(){
+    if(onServerSide()){
+      if(cable_network == null){
         BlockNetworkUtil.create_or_join(world, this, DataCableNetwork::new);
       }
-      first_tick = false;
     }
   }
 
