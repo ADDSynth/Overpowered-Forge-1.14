@@ -2,12 +2,17 @@ package addsynth.core.tiles;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.core.block_network.BlockNetwork;
+import addsynth.core.util.game.MessageUtil;
+import addsynth.core.util.game.WorldUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.util.Constants;
 
 /** YES! ALL of ADDSynth's TileEntities should override THIS class, because this
@@ -82,7 +87,14 @@ public abstract class TileBase extends TileEntity {
     ADDSynthCore.log.fatal(
       "Encountered an error while ticking TileEntity: "+getClass().getSimpleName()+", at position: "+pos+". "+
       "Please report this to the developer.", e);
-    remove();
+
+    WorldUtil.delete_block(world, pos);
+
+    final TranslationTextComponent message = new TranslationTextComponent("message.addsynthcore.tileentity_error",
+      getClass().getSimpleName(), pos.getX(), pos.getY(), pos.getZ());
+
+    message.setStyle(new Style().setColor(TextFormatting.RED));
+    MessageUtil.send_to_all_players_in_world(world, message);
   }
 
 }

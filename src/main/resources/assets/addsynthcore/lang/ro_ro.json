@@ -1,6 +1,8 @@
 ﻿{
 "itemGroup.addsynthcore": "ADDSynthCore",
 
+"message.addsynthcore.tileentity_error": "The TileEntity '%s' at position ( %s , %s , %s ) encountered an error and was automatically removed. See the log for more details.",
+
 "block.addsynthcore.caution_block": "Atenție Blocați",
 "block.addsynthcore.music_box": "Cutie muzicală",
 
