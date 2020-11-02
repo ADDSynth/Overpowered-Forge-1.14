@@ -7,7 +7,6 @@ import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.main.Energy;
-import addsynth.energy.main.IEnergyUser;
 import addsynth.energy.main.Receiver;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.MachineValues;

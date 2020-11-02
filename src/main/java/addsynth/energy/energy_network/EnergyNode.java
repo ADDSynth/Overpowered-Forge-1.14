@@ -21,7 +21,7 @@ public final class EnergyNode extends Node {
     this.energy = tileEntity.getEnergy();
   }
 
-  public EnergyNode(final BlockPos position, @Nonnull final TileEntity tileEntity, final Energy energy){
+  public EnergyNode(final BlockPos position, @Nonnull final TileEntity tileEntity, @Nonnull final Energy energy){
     super(position, tileEntity.getBlockState().getBlock(), tileEntity);
     this.energy = energy;
   }
@@ -33,11 +33,10 @@ public final class EnergyNode extends Node {
 
   @Override
   public boolean isInvalid(){
-    if(tile == null){
-      return block == null || position == null;
+    if(block == null || position == null || tile == null || energy == null){
+      return true;
     }
-    return (block == null || position == null || energy == null) ? true :
-           (tile.isRemoved() || !tile.getPos().equals(position));
+    return tile.isRemoved() || !tile.getPos().equals(position);
   }
 
   @Override

@@ -196,8 +196,6 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
     if(world != null){
       if(world.isRemote == false){
         try{
-          onBeforeUpdate();
-  
           blocks.clear();
           clear_custom_data();
           blocks.setFrom(BlockUtil.find_blocks(from, world, this::is_valid_tile, this::customSearch));
@@ -258,10 +256,6 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   }
 
   protected abstract void clear_custom_data();
-
-  /** Called before updateNetwork() executes. */
-  protected void onBeforeUpdate(){ // UNUSED DELETE
-  }
 
   /**
    * Called when updateNetwork() function is completed.

@@ -7,6 +7,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 public final class InventoryUtil {
@@ -14,7 +15,7 @@ public final class InventoryUtil {
   /** <p>Used to safely return the Inventory Capability. Use this if your inventory allows bi-directional
    *  transfer of items because we return the inventory regardless of which side we're checking from.
    *  Remember to ONLY USE THIS IF the Capability you're checking is
-   *  {@link net.minecraftforge.items.CapabilityItemHandler#ITEM_HANDLER_CAPABILITY ITEM_HANDLER_CAPABILITY}.</p>
+   *  {@link CapabilityItemHandler#ITEM_HANDLER_CAPABILITY ITEM_HANDLER_CAPABILITY}.</p>
    *  <p>Use case:<br />
    *  <pre><code>
    *  &#64;Override

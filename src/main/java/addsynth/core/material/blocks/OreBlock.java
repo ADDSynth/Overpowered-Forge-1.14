@@ -1,6 +1,5 @@
 package addsynth.core.material.blocks;
 
-import addsynth.core.ADDSynthCore;
 import addsynth.core.material.MiningStrength;
 import addsynth.core.util.math.MathUtility;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -19,7 +18,7 @@ public class OreBlock extends Block {
   private final int max_experience;
 
   /**
-   * Use this constructor if this Ore Block should be mined and smelted in a Furnace. The Furnace givex experience to the player.
+   * Use this constructor if this Ore Block should be mined and smelted in a Furnace. The Furnace gives experience to the player.
    * @param name
    * @param strength
    * @param group
@@ -45,7 +44,7 @@ public class OreBlock extends Block {
   }
 
   @Override
-  public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch){
+  public final int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch){
     return silktouch == 0 ? MathUtility.RandomRange(min_experience, max_experience) : 0;
   }
 

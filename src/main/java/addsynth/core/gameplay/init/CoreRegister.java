@@ -29,6 +29,7 @@ public final class CoreRegister {
     
     if(Features.caution_block.get()){ game.register(Core.caution_block); }
     if(Features.music_box.get()){ game.register(Core.music_box); }
+    // game.register(Core.test_block);
 
     ADDSynthCore.log.info("Done registering blocks.");
   }
@@ -51,6 +52,7 @@ public final class CoreRegister {
       game.register(Core.gold_scythe);
       game.register(Core.diamond_scythe);
     }
+    // game.register(ADDSynthCore.registry.getItemBlock(Core.test_block));
 
     ADDSynthCore.log.info("Done registering items.");
   }

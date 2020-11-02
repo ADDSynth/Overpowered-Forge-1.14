@@ -29,7 +29,11 @@ public final class UnknownWood extends Block {
     final World world = w.getWorld();
     if(world.isRemote == false){
       BlockUtil.find_blocks(position, world, (Node node) -> valid(node, position)).forEach(
-        (Node node) -> world.removeBlock(node.position, false)
+        (Node node) -> {
+          if(node.position != position){
+            world.removeBlock(node.position, false);
+          }
+        }
       );
       WorldUtil.spawnItemStack(world, position, new ItemStack(ModItems.unknown_technology, 1));
     }

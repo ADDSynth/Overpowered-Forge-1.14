@@ -12,7 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public abstract class GuiEnergyBase<T extends TileEntity, C extends AbstractContainer> extends GuiBase<C> {
+public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extends AbstractContainer<T>> extends GuiBase<C> {
 
   protected final T tile;
   protected final Energy energy;
@@ -28,18 +28,16 @@ public abstract class GuiEnergyBase<T extends TileEntity, C extends AbstractCont
   private final String no_energy_change_text = StringUtil.translate("gui.addsynth_energy.common.no_energy_change");
   private final String null_energy_reference = "[Error: Null Energy Reference]";
 
-  @SuppressWarnings("unchecked")
   public GuiEnergyBase(final C container, final PlayerInventory player_inventory, final ITextComponent title, final ResourceLocation gui_texture_location){
     super(-1, -1, container, player_inventory, title, gui_texture_location);
     this.tile = (T)container.getTileEntity();
-    this.energy = tile instanceof IEnergyUser ? ((IEnergyUser)tile).getEnergy() : null;
+    this.energy = tile.getEnergy();
   }
 
-  @SuppressWarnings("unchecked")
   public GuiEnergyBase(int width, int height, C container, PlayerInventory player_inventory, ITextComponent title, ResourceLocation gui_texture_location){
     super(width, height, container, player_inventory, title, gui_texture_location);
     this.tile = (T)container.getTileEntity();
-    this.energy = tile instanceof IEnergyUser ? ((IEnergyUser)tile).getEnergy() : null;
+    this.energy = tile.getEnergy();
   }
 
   /** Draws Energy: Level / Capacity in the standard location, just below the title, at y = 17 pixels.

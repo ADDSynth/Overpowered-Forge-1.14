@@ -105,10 +105,10 @@ public final class TileLaserHousing extends TileBase implements IBlockNetworkUse
   }
 
   // Only the gui calls these
-  public final int getLaserDistance(){ return laser_distance; }
-  public final boolean getAutoShutoff(){ return auto_shutoff; }
+  public final int getLaserDistance(){     return laser_distance; }
+  public final boolean getAutoShutoff(){   return auto_shutoff; }
   @Override
-  public boolean get_switch_state(){     return power_switch; }
+  public final boolean get_switch_state(){ return power_switch; }
 
   public final void setDataDirectlyFromNetwork(final Energy energy, final int laser_distance, final boolean running, final boolean shutoff){
     this.energy.set(energy);

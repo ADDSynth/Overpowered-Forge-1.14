@@ -41,10 +41,10 @@ public class Node {
   }
 
   public boolean isInvalid(){
-    if(tile == null){
-      return block == null || position == null;
+    if(block == null || position == null){
+      return true;
     }
-    return (block == null || position == null) ? true : (tile.isRemoved() || !tile.getPos().equals(position));
+    return tile != null ? (tile.isRemoved() || !tile.getPos().equals(position)) : false;
   }
 
   @Nullable
