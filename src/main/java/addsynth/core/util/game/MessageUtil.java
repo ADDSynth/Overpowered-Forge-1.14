@@ -15,7 +15,7 @@ public final class MessageUtil {
    * @param player
    * @param translation_key
    */
-  public static void send_to_player(final PlayerEntity player, final String translation_key, final Object ... arguments){
+  public static final void send_to_player(final PlayerEntity player, final String translation_key, final Object ... arguments){
     @SuppressWarnings("resource")
     final MinecraftServer server = ServerUtils.getServer(player.world); // gets server no matter what
     if(server != null){
@@ -23,25 +23,49 @@ public final class MessageUtil {
     }
   }
 
-  public static void send_to_all_players(final ITextComponent text_component){
-    @SuppressWarnings("resource")
-    final MinecraftServer server = ServerUtils.getServer();
-    if(server != null){
-      PlayerList player_list = server.getPlayerList();
-      if(player_list != null){
-        player_list.sendMessage(text_component);
-      }
-    }
-  }
-
-  public static void send_to_all_players_in_world(final World world, final String translation_key, final Object ... arguments){
+  public static final void send_to_all_players(final World world, final String translation_key, final Object ... arguments){
     @SuppressWarnings("resource")
     final MinecraftServer server = ServerUtils.getServer(world);
     if(server != null){
-      for(final ServerPlayerEntity player : server.getPlayerList().getPlayers()){
-        if(player.world == world){
-          player.sendMessage(TextComponentHelper.createComponentTranslation(server, translation_key, arguments));
-        }
+      send_to_all_players(server, TextComponentHelper.createComponentTranslation(server, translation_key, arguments));
+    }
+  }
+
+  public static final void send_to_all_players(final World world, final ITextComponent text_component){
+    @SuppressWarnings("resource")
+    final MinecraftServer server = ServerUtils.getServer(world);
+    if(server != null){
+      send_to_all_players(server, text_component);
+    }
+  }
+  
+  private static final void send_to_all_players(final MinecraftServer server, final ITextComponent text_component){
+    final PlayerList player_list = server.getPlayerList();
+    if(player_list != null){
+      player_list.sendMessage(text_component);
+    }
+  }
+
+  public static final void send_to_all_players_in_world(final World world, final String translation_key, final Object ... arguments){
+    @SuppressWarnings("resource")
+    final MinecraftServer server = ServerUtils.getServer(world);
+    if(server != null){
+      send_to_all_players_in_world(server, world, TextComponentHelper.createComponentTranslation(server, translation_key, arguments));
+    }
+  }
+
+  public static final void send_to_all_players_in_world(final World world, final ITextComponent text_component){
+    @SuppressWarnings("resource")
+    final MinecraftServer server = ServerUtils.getServer(world);
+    if(server != null){
+      send_to_all_players_in_world(server, world, text_component);
+    }
+  }
+
+  private static final void send_to_all_players_in_world(final MinecraftServer server, final World world, final ITextComponent text_component){
+    for(final ServerPlayerEntity player : server.getPlayerList().getPlayers()){
+      if(player.world.getDimension().getType() == world.getDimension().getType()){
+        player.sendMessage(text_component);
       }
     }
   }
