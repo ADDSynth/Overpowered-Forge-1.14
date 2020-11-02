@@ -1,12 +1,12 @@
 package addsynth.overpoweredmod.machines.crystal_matter_generator;
 
-import addsynth.core.container.OutputContainer;
+import addsynth.core.container.AbstractContainer;
 import addsynth.core.container.slots.OutputSlot;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerCrystalGenerator extends OutputContainer<TileCrystalMatterGenerator> {
+public final class ContainerCrystalGenerator extends AbstractContainer<TileCrystalMatterGenerator> {
 
   public ContainerCrystalGenerator(final int id, final PlayerInventory player_inventory, final TileCrystalMatterGenerator tile){
     super(Containers.CRYSTAL_MATTER_GENERATOR, id, player_inventory, tile);

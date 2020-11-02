@@ -1,6 +1,6 @@
 package addsynth.energy.gameplay.compressor;
 
-import addsynth.core.container.MachineContainer;
+import addsynth.core.container.AbstractContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.core.container.slots.OutputSlot;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
@@ -8,7 +8,7 @@ import addsynth.energy.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerCompressor extends MachineContainer<TileCompressor> {
+public final class ContainerCompressor extends AbstractContainer<TileCompressor> {
 
   public ContainerCompressor(final int id, final PlayerInventory player_inventory, final TileCompressor tile){
     super(Containers.COMPRESSOR, id, player_inventory, tile);

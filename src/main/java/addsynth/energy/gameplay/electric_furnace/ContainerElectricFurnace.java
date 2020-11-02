@@ -1,13 +1,13 @@
 package addsynth.energy.gameplay.electric_furnace;
 
-import addsynth.core.container.MachineContainer;
+import addsynth.core.container.AbstractContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.core.container.slots.OutputSlot;
 import addsynth.energy.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerElectricFurnace extends MachineContainer<TileElectricFurnace> {
+public final class ContainerElectricFurnace extends AbstractContainer<TileElectricFurnace> {
 
   public ContainerElectricFurnace(final int id, final PlayerInventory player_inventory, final TileElectricFurnace tile){
     super(Containers.ELECTRIC_FURNACE, id, player_inventory, tile);
