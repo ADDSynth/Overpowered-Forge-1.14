@@ -1,8 +1,8 @@
 package addsynth.core.util.math;
 
-import java.lang.Math;
 import java.util.Random;
 import javax.annotation.Nonnegative;
+import addsynth.core.ADDSynthCore;
 import net.minecraft.util.math.MathHelper;
 
 public final class MathUtility {
@@ -11,11 +11,21 @@ public final class MathUtility {
     if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMin() input was null!"); }
     if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMin() requires at least one integer as input."); }
     int min = input[0];
-    if(input.length > 1){
-      for(final int value : input){
-        if(value < min){
-          min = value;
-        }
+    for(int i = 1; i < input.length; i++){
+      if(input[i] < min){
+        min = input[i];
+      }
+    }
+    return min;
+  }
+
+  public static final long getMin(final long ... input){
+    if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMin() input was null!"); }
+    if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMin() requires at least one integer as input."); }
+    long min = input[0];
+    for(int i = 1; i < input.length; i++){
+      if(input[i] < min){
+        min = input[i];
       }
     }
     return min;
@@ -25,11 +35,21 @@ public final class MathUtility {
     if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMax() input was null!"); }
     if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMax() requires at least one integer as input."); }
     int max = input[0];
-    if(input.length > 1){
-      for(final int value : input){
-        if(value > max){
-          max = value;
-        }
+    for(int i = 1; i < input.length; i++){
+      if(input[i] > max){
+        max = input[i];
+      }
+    }
+    return max;
+  }
+
+  public static final long getMax(final long ... input){
+    if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMax() input was null!"); }
+    if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMax() requires at least one integer as input."); }
+    long max = input[0];
+    for(int i = 1; i < input.length; i++){
+      if(input[i] > max){
+        max = input[i];
       }
     }
     return max;
@@ -158,50 +178,69 @@ public final class MathUtility {
    *  you an example: If you're trying to extract 30 from the list [8, 15, 4, 1, 15], this function will produce
    *  the list [8, 9, 4, 1, 8], which, when extracted from the original list would produce [0, 6, 0, 0, 7].
    * @param number
-   * @param input
+   * @param list
    */
-  public static final int[] divide_evenly(@Nonnegative int number, final int[] input){
-    if(input.length == 0){
-      throw new IllegalArgumentException("MathUtility.divide_evenly() cannot use an empty integer array.");
+  public static final int[] divide_evenly(@Nonnegative int number, int[] list){
+    final int length = list.length;
+    final int[] final_list = new int[length]; // already initialized to all 0
+
+    if(length == 0){
+      ADDSynthCore.log.fatal(new IllegalArgumentException(MathUtility.class.getSimpleName()+".divide_evenly() cannot use an empty integer array."));
+      return final_list;
     }
     if(number < 0){
-      throw new IllegalArgumentException("Cannot use MathUtility.divide_evenly() to divide a negative number!");
+      ADDSynthCore.log.fatal(new IllegalArgumentException("Cannot use "+MathUtility.class.getSimpleName()+".divide_evenly() to divide a negative number!"));
+      return final_list;
     }
-
-    final int[] list = input.clone();
-    int count = 0;
-    int min_number = list[0];
-    for(final int i : list){
-      if(i < 0){
-        throw new IllegalArgumentException("Numbers in the integer input list for MathUtility.divide_evenly() cannot be a negative!");
-      }
-      count += i;
-      if(i < min_number){
-        min_number = i;
-      }
-    }
-    if(count <= number){
-      return list;
+    if(length == 1){
+      return new int[]{Math.min(number, Math.max(list[0], 0))};
     }
 
     int i;
-    count = list.length;
-    final int[] final_list = new int[count];
-    min_number = Math.min(min_number, number / count);
-    if(min_number > 0){
-      number -= (count * min_number);
-      for(i = 0; i < count; i++){
-        final_list[i] = min_number;
-        list[i] -= min_number;
+    int count;
+    int min_number;
+
+    do{
+      // reset
+      count = 0;
+      
+      // get first index, count, and min number
+      min_number = getMax(list);
+      for(i = 0; i < length; i++){
+        if(list[i] > 0){
+          count += 1;
+          if(list[i] < min_number){
+            min_number = list[i];
+          }
+        }
+      }
+      
+      if(count > 0){
+        // transfer
+        min_number = Math.min(min_number, number / count);
+        if(min_number == 0){
+          break;
+        }
+        for(i = 0; i < length; i++){
+          if(list[i] > 0){
+            list[i] -= min_number;
+            final_list[i] += min_number;
+            number -= min_number;
+          }
+        }
       }
     }
-    while(number > 0){
-      for(i = 0; i < count && number > 0; i++){
-        if(list[i] > 0){
-          list[i] -= 1;
-          final_list[i] += 1;
-          number -= 1;
-        }
+    while(number >= count && count > 0);
+    
+    if(count == 0){
+      return final_list;
+    }
+
+    // transfer remaining
+    for(i = 0; i < length && number > 0; i++){
+      if(list[i] > 0){
+        final_list[i] += 1;
+        number -= 1;
       }
     }
     return final_list;
@@ -213,50 +252,69 @@ public final class MathUtility {
    *  you an example: If you're trying to extract 30 from the list [8, 15, 4, 1, 15], this function will produce
    *  the list [8, 9, 4, 1, 8], which, when extracted from the original list would produce [0, 6, 0, 0, 7].
    * @param number
-   * @param input
+   * @param list
    */
-  public static final long[] divide_evenly(@Nonnegative long number, final long[] input){
-    if(input.length == 0){
-      throw new IllegalArgumentException("MathUtility.divide_evenly() cannot use an empty integer array.");
+  public static final long[] divide_evenly(@Nonnegative long number, long[] list){
+    final int length = list.length;
+    final long[] final_list = new long[length]; // already initialized to all 0
+
+    if(length == 0){
+      ADDSynthCore.log.fatal(new IllegalArgumentException(MathUtility.class.getSimpleName()+".divide_evenly() cannot use an empty integer array."));
+      return final_list;
     }
     if(number < 0){
-      throw new IllegalArgumentException("Cannot use MathUtility.divide_evenly() to divide a negative number!");
+      ADDSynthCore.log.fatal(new IllegalArgumentException("Cannot use "+MathUtility.class.getSimpleName()+".divide_evenly() to divide a negative number!"));
+      return final_list;
     }
-
-    final long[] list = input.clone();
-    long count = 0;
-    long min_number = list[0];
-    for(final long i : list){
-      if(i < 0){
-        throw new IllegalArgumentException("Numbers in the integer input list for MathUtility.divide_evenly() cannot be a negative!");
-      }
-      count += i;
-      if(i < min_number){
-        min_number = i;
-      }
-    }
-    if(count <= number){
-      return list;
+    if(length == 1){
+      return new long[]{Math.min(number, Math.max(list[0], 0))};
     }
 
     int i;
-    count = list.length;
-    final long[] final_list = new long[list.length];
-    min_number = Math.min(min_number, number / count);
-    if(min_number > 0){
-      number -= (count * min_number);
-      for(i = 0; i < count; i++){
-        final_list[i] = min_number;
-        list[i] -= min_number;
+    int count;
+    long min_number;
+
+    do{
+      // reset
+      count = 0;
+      
+      // get first index, count, and min number
+      min_number = getMax(list);
+      for(i = 0; i < length; i++){
+        if(list[i] > 0){
+          count += 1;
+          if(list[i] < min_number){
+            min_number = list[i];
+          }
+        }
+      }
+      
+      if(count > 0){
+        // transfer
+        min_number = Math.min(min_number, number / count);
+        if(min_number == 0){
+          break;
+        }
+        for(i = 0; i < length; i++){
+          if(list[i] > 0){
+            list[i] -= min_number;
+            final_list[i] += min_number;
+            number -= min_number;
+          }
+        }
       }
     }
-    while(number > 0){
-      for(i = 0; i < count && number > 0; i++){
-        if(list[i] > 0){
-          list[i] -= 1;
-          final_list[i] += 1;
-          number -= 1;
-        }
+    while(number >= count && count > 0);
+    
+    if(count == 0){
+      return final_list;
+    }
+
+    // transfer remaining
+    for(i = 0; i < length && number > 0; i++){
+      if(list[i] > 0){
+        final_list[i] += 1;
+        number -= 1;
       }
     }
     return final_list;
