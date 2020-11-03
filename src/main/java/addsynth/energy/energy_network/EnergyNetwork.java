@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.Node;
 import addsynth.core.util.java.TimeUtil;
+import addsynth.core.util.math.DecimalNumber;
 import addsynth.energy.ADDSynthEnergy;
-import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
+import addsynth.energy.energy_network.tiles.AbstractEnergyNetworkTile;
 import addsynth.energy.main.Energy;
 import addsynth.energy.main.EnergyUtil;
 import addsynth.energy.main.IEnergyConsumer;
@@ -23,7 +24,7 @@ import net.minecraft.world.World;
  *  network, so when it performs an Update search, it passes through the batteries, and works on all
  *  batteries at the same time, preventing energy waterfall effects.
  */
-public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
+public final class EnergyNetwork extends BlockNetwork<AbstractEnergyNetworkTile> {
 
   public long tick_time;
 
@@ -31,9 +32,8 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
   private final ArrayList<EnergyNode> batteries = new ArrayList<>();
   private final ArrayList<EnergyNode> generators = new ArrayList<>();
 
-  public EnergyNetwork(final World world, final TileEnergyNetwork energy_network_tile){
+  public EnergyNetwork(final World world, final AbstractEnergyNetworkTile energy_network_tile){
     super(world, energy_network_tile);
-    class_type = TileEnergyNetwork.class;
   }
 
   @Override
@@ -61,7 +61,7 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
   }
 
   @Override
-  public final void tick(final TileEnergyNetwork tile){
+  public final void tick(final AbstractEnergyNetworkTile tile){
     if(tile == first_tile){
       final long start = TimeUtil.get_start_time();
       
@@ -90,6 +90,12 @@ public final class EnergyNetwork extends BlockNetwork<TileEnergyNetwork> {
       
       tick_time = TimeUtil.get_elapsed_time(start);
     }
+  }
+
+  public final void drain_battery(final Energy battery){
+    final long energy_left_over = (long)(battery.getEnergy() * DecimalNumber.DECIMAL_ACCURACY);
+    batteries.removeIf((EnergyNode n) -> n.energy == battery);
+    EnergyUtil.balance_batteries(batteries, energy_left_over);
   }
 
   @Override

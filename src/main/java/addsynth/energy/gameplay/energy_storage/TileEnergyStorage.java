@@ -15,7 +15,12 @@ import net.minecraft.util.text.TranslationTextComponent;
 public final class TileEnergyStorage extends TileEnergyBattery implements INamedContainerProvider {
 
   public TileEnergyStorage(){
-    super(Tiles.ENERGY_CONTAINER, new Energy(Config.energy_storage_container_capacity.get(),Config.energy_storage_container_extract_rate.get()));
+    super(Tiles.ENERGY_CONTAINER,
+      new Energy(
+        Config.energy_storage_container_capacity.get(),
+        Config.energy_storage_container_extract_rate.get()
+      )
+    );
   }
 
   @Override

@@ -1,6 +1,6 @@
 package addsynth.energy.gameplay.energy_wire;
 
-import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
+import addsynth.energy.energy_network.tiles.BasicEnergyNetworkTile;
 import addsynth.energy.registers.Tiles;
 
 /**
@@ -10,7 +10,7 @@ import addsynth.energy.registers.Tiles;
  * connect to other blocks of the same type.
  * @author ADDSynth
  */
-public final class TileEnergyWire extends TileEnergyNetwork {
+public final class TileEnergyWire extends BasicEnergyNetworkTile {
 
   public TileEnergyWire(){
     super(Tiles.ENERGY_WIRE);

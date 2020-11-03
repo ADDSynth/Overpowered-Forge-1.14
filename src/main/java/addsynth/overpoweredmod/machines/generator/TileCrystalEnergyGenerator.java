@@ -28,15 +28,15 @@ public final class TileCrystalEnergyGenerator extends TileStandardGenerator impl
   protected final void setGeneratorData(){
     final Item item = input_inventory.extractItem(0, 1, false).getItem();
     if(item == Init.energy_crystal){
-      energy.setEnergyLevel(MachineValues.energy_crystal_energy.get());
+      energy.setEnergyAndCapacity(MachineValues.energy_crystal_energy.get());
       energy.setMaxExtract(MachineValues.energy_crystal_max_extract.get());
     }
     if(item == Init.energy_crystal_shards){
-      energy.setEnergyLevel(MachineValues.energy_crystal_shards_energy.get());
+      energy.setEnergyAndCapacity(MachineValues.energy_crystal_shards_energy.get());
       energy.setMaxExtract(MachineValues.energy_crystal_shards_max_extract.get());
     }
     if(item == OverpoweredMod.registry.getItemBlock(Init.light_block)){
-      energy.setEnergyLevel(MachineValues.light_block_energy.get());
+      energy.setEnergyAndCapacity(MachineValues.light_block_energy.get());
       energy.setMaxExtract(MachineValues.light_block_max_extract.get());
     }
   }

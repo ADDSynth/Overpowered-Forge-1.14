@@ -189,7 +189,7 @@ public class Energy {
    * Sets the current energy
    * @param energy The energy to set
    */
-  public final void setEnergy(final int energy){
+  public final void setEnergy(final double energy){
     this.energy.set(energy);
     changed = true;
   }
@@ -198,7 +198,7 @@ public class Energy {
    * Sets the energy and capacity at once to the specified value.
    * @param energy
    */
-  public final void setEnergyLevel(final int energy){
+  public final void setEnergyAndCapacity(final int energy){
     this.energy.set(energy);
     this.capacity.set(energy);
     changed = true;
@@ -239,6 +239,13 @@ public class Energy {
   public void setMaxExtract(final int maxExtract){
     this.maxExtract.set(maxExtract);
     changed = true;
+  }
+
+  public final void set(final int capacity, final int maxReceive, final int maxExtract, final int initial_energy){
+    this.energy.set(     initial_energy);
+    this.capacity.set(   capacity);
+    this.maxReceive.set( maxReceive);
+    this.maxExtract.set( maxExtract);
   }
 
   public final void set(final Energy energy){
@@ -351,22 +358,6 @@ public class Energy {
   }
 
 // =================================== SPECIAL ======================================
-
-  /** Sets the new Energy level of this Energy object, ignoring the maxExtract and
-   *  maxReceive variables. Counts as real energy transfer. This is only intended to
-   *  be used in special circumstances. 
-   * @param new_energy_level
-   */
-  public final void set_new_energy_level(final double new_energy_level){
-    final double actual_energy = Math.min(Math.max(DecimalNumber.align_to_accuracy(new_energy_level), 0), capacity.get());
-    final double difference = actual_energy - energy.get();
-    if(difference != 0){
-      energy.set(actual_energy);
-      if(difference > 0){ energy_in.add(difference); }
-      if(difference < 0){ energy_out.add(Math.abs(difference)); }
-      changed = true;
-    }
-  }
 
   /** Extracts energy without being limited by the maxExtract variable.
    *  Counts as real transfer of energy. This is only intended to be used under

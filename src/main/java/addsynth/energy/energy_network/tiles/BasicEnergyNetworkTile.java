@@ -2,17 +2,12 @@ package addsynth.energy.energy_network.tiles;
 
 import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
-import addsynth.core.block_network.IBlockNetworkUser;
-import addsynth.core.tiles.TileBase;
 import addsynth.energy.energy_network.EnergyNetwork;
-import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 
-public abstract class TileEnergyNetwork extends TileBase implements ITickableTileEntity, IBlockNetworkUser<EnergyNetwork> {
+public abstract class BasicEnergyNetworkTile extends AbstractEnergyNetworkTile {
 
-  private EnergyNetwork network;
-
-  public TileEnergyNetwork(final TileEntityType type){
+  public BasicEnergyNetworkTile(final TileEntityType type){
     super(type);
   }
 
@@ -27,19 +22,19 @@ public abstract class TileEnergyNetwork extends TileBase implements ITickableTil
   }
 
   @Override
-  public void remove(){
+  public final void remove(){
     super.remove();
     BlockNetworkUtil.tileentity_was_removed(this, EnergyNetwork::new);
   }
 
   @Override
   @Nullable
-  public EnergyNetwork getBlockNetwork(){
+  public final EnergyNetwork getBlockNetwork(){
     return network;
   }
 
   @Override
-  public void setBlockNetwork(EnergyNetwork network){
+  public final void setBlockNetwork(final EnergyNetwork network){
     this.network = network;
   }
 

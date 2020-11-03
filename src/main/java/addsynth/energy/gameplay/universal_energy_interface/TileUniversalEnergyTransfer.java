@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 import addsynth.core.util.java.ArrayUtil;
 import addsynth.energy.compat.energy.EnergyCompat;
 import addsynth.energy.compat.energy.forge.ForgeEnergyIntermediary;
-import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
+import addsynth.energy.energy_network.tiles.BasicEnergyNetworkTile;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.main.Energy;
 import addsynth.energy.main.IEnergyUser;
@@ -22,7 +22,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 
-public final class TileUniversalEnergyTransfer extends TileEnergyNetwork implements IEnergyUser, INamedContainerProvider {
+public final class TileUniversalEnergyTransfer extends BasicEnergyNetworkTile implements IEnergyUser, INamedContainerProvider {
 
   private final Energy energy = new Energy(Config.universal_energy_interface_buffer.get());
 

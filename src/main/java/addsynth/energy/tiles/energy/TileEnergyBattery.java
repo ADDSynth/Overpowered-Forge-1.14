@@ -1,6 +1,9 @@
 package addsynth.energy.tiles.energy;
 
-import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
+import javax.annotation.Nullable;
+import addsynth.core.block_network.BlockNetworkUtil;
+import addsynth.energy.energy_network.EnergyNetwork;
+import addsynth.energy.energy_network.tiles.AbstractEnergyNetworkTile;
 import addsynth.energy.main.Energy;
 import addsynth.energy.main.IEnergyUser;
 import net.minecraft.nbt.CompoundNBT;
@@ -9,7 +12,7 @@ import net.minecraft.tileentity.TileEntityType;
 /** TileEntities that act as standard Batteries that should be part of the Energy Network
  *  should extend from this class.
  */
-public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEnergyUser {
+public abstract class TileEnergyBattery extends AbstractEnergyNetworkTile implements IEnergyUser {
 
   protected final Energy energy;
 
@@ -20,8 +23,11 @@ public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEn
 
   @Override
   public void tick(){
-    super.tick(); // handles blocknetwork stuff
     if(onServerSide()){
+      if(network == null){
+        BlockNetworkUtil.create_or_join(world, this, EnergyNetwork::new);
+      }
+      network.tick(this);
       if(energy.tick()){
         update_data();
       }
@@ -43,6 +49,25 @@ public abstract class TileEnergyBattery extends TileEnergyNetwork implements IEn
       energy.saveToNBT(nbt);
     }
     return nbt;
+  }
+
+  @Override
+  public final void remove(){
+    super.remove();
+    if(onServerSide()){
+      network.drain_battery(energy);
+      BlockNetworkUtil.tileentity_was_removed(this, EnergyNetwork::new);
+    }
+  }
+
+  @Override
+  public final void setBlockNetwork(final EnergyNetwork network){
+    this.network = network;
+  }
+
+  @Override
+  public final @Nullable EnergyNetwork getBlockNetwork(){
+    return network;
   }
 
   @Override

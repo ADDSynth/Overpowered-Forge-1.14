@@ -4,6 +4,8 @@ v1.3.4 - TBD
   Energy stored in Batteries is now balanaced across all batteries on the
     Energy Network.
   Fixed several errors with the Universal Energy Interface.
+  Batteries that are removed now redistribute any left over energy to other
+    connected batteries.
 
 
 
