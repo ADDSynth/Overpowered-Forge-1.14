@@ -176,20 +176,13 @@ public abstract class TileStandardWorkMachine extends TileSwitchableMachine
   }
 
   @Override
-  public double getNeededEnergy(){
+  public double getRequestedEnergy(){
     if(state == MachineState.RUNNING){
       return energy.getRequestedEnergy();
     }
     if(state == MachineState.IDLE){
     }
     return 0;
-  }
-
-  @Override
-  public void receiveEnergy(double add_energy){
-    if(state == MachineState.RUNNING){
-      energy.receiveEnergy(add_energy);
-    }
   }
 
   @Override

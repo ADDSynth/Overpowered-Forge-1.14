@@ -21,7 +21,8 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 /** Machines that are always running cannot be turned off. They switch to an
  *  Idle state when they can't do work. These machines don't have idle energy. */
-public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine implements IInputInventory, IOutputInventory {
+public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine
+  implements IInputInventory, IOutputInventory {
 
   protected final MachineInventory inventory;
 
@@ -130,18 +131,11 @@ public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine implem
   }
 
   @Override
-  public double getNeededEnergy(){
+  public double getRequestedEnergy(){
     if(state == MachineState.RUNNING){
       return energy.getRequestedEnergy();
     }
     return 0;
-  }
-
-  @Override
-  public void receiveEnergy(double add_energy){
-    if(state == MachineState.RUNNING){
-      energy.receiveEnergy(add_energy);
-    }
   }
 
   @Override

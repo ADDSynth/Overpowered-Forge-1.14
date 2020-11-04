@@ -8,7 +8,7 @@ import addsynth.energy.compat.energy.forge.ForgeEnergyIntermediary;
 import addsynth.energy.energy_network.tiles.BasicEnergyNetworkTile;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.main.Energy;
-import addsynth.energy.main.IEnergyUser;
+import addsynth.energy.main.ICustomEnergyUser;
 import addsynth.energy.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -22,7 +22,10 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 
-public final class TileUniversalEnergyTransfer extends BasicEnergyNetworkTile implements IEnergyUser, INamedContainerProvider {
+public final class TileUniversalEnergyTransfer extends BasicEnergyNetworkTile
+  // The Universal Energy Interface should REMAIN as an ICustomEnergyUser
+  // and SHOULD NOT be treated as a Battery. Confirmed.
+  implements ICustomEnergyUser, INamedContainerProvider {
 
   private final Energy energy = new Energy(Config.universal_energy_interface_buffer.get());
 
@@ -81,6 +84,22 @@ public final class TileUniversalEnergyTransfer extends BasicEnergyNetworkTile im
     final int mode = (transfer_mode.ordinal() + 1) % TRANSFER_MODE.values().length;
     transfer_mode = TRANSFER_MODE.values()[mode];
     changed = true;
+  }
+
+  @Override
+  public final double getRequestedEnergy(){
+    if(transfer_mode.canExtract){
+      return energy.getRequestedEnergy();
+    }
+    return 0;
+  }
+
+  @Override
+  public final double getAvailableEnergy(){
+    if(transfer_mode.canReceive){
+      return energy.getAvailableEnergy();
+    }
+    return 0;
   }
 
   @Override

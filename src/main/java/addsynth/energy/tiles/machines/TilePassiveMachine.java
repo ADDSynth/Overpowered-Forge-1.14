@@ -78,18 +78,11 @@ public abstract class TilePassiveMachine extends TileSwitchableMachine {
   protected abstract void perform_work();
 
   @Override
-  public double getNeededEnergy(){
+  public double getRequestedEnergy(){
     if(state == MachineState.RUNNING){
       return energy.getRequestedEnergy();
     }
     return 0;
-  }
-
-  @Override
-  public void receiveEnergy(double add_energy){
-    if(state == MachineState.RUNNING){
-      energy.receiveEnergy(add_energy);
-    }
   }
 
 }

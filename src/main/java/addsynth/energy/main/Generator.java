@@ -15,6 +15,11 @@ public final class Generator extends Energy {
   }
 
   @Override
+  public final double getRequestedEnergy(){
+    return 0;
+  }
+
+  @Override
   public final boolean canReceive(){
     return false;
   }

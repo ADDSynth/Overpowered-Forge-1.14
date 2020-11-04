@@ -6,6 +6,11 @@ v1.3.4 - TBD
   Fixed several errors with the Universal Energy Interface.
   Batteries that are removed now redistribute any left over energy to other
     connected batteries.
+  Fix Universal Energy Interface not depositing energy into Energy
+    Storage Containers.
+  Fix machines receiving double energy if you had an Energy Storage Container
+    on your energy network.
+  You can now specify the Laser maximum receive variable in the config.
 
 
 

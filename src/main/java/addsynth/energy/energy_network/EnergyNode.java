@@ -5,31 +5,20 @@ import addsynth.core.block_network.Node;
 import addsynth.energy.main.Energy;
 import addsynth.energy.main.IEnergyUser;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
 
 public final class EnergyNode extends Node {
 
   public final Energy energy;
 
-  /**
-   * @param position
-   * @param tileEntity
-   */
-  // MAYBE: move type variable to class header, but this causes a type safety warning in Energy Network.
-  public <E extends TileEntity & IEnergyUser> EnergyNode(final BlockPos position, @Nonnull final E tileEntity){
-    super(position, tileEntity.getBlockState().getBlock(), tileEntity);
+  public <E extends TileEntity & IEnergyUser> EnergyNode(@Nonnull final E tileEntity){
+    super(tileEntity.getPos(), tileEntity.getBlockState().getBlock(), tileEntity);
     this.energy = tileEntity.getEnergy();
   }
 
-  public EnergyNode(final BlockPos position, @Nonnull final TileEntity tileEntity, @Nonnull final Energy energy){
-    super(position, tileEntity.getBlockState().getBlock(), tileEntity);
+  public EnergyNode(@Nonnull final TileEntity tileEntity, @Nonnull final Energy energy){
+    super(tileEntity.getPos(), tileEntity.getBlockState().getBlock(), tileEntity);
     this.energy = energy;
   }
-
-  // public EnergyNode(final Node node, final Energy energy){ REMOVE: v1.5.x
-  //   super(node.position, node.block, node.getTile());
-  //   this.energy = energy;
-  // }
 
   @Override
   public boolean isInvalid(){

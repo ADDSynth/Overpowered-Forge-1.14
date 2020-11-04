@@ -128,39 +128,57 @@ public class Energy {
    *  and maximum Capacity variables. */
   public final void receiveEnergy(final double energy_to_add){
     final double actual_energy = simulateReceive(energy_to_add);
-    energy.add(actual_energy);
-    energy_in.add(actual_energy);
-    changed = true;
+    if(actual_energy > 0){
+      energy.add(actual_energy);
+      energy_in.add(actual_energy);
+      changed = true;
+    }
   }
 
   /** Extracts energy and returns the amount extracted. */
   public final double extractEnergy(final double energy_requested){
     final double actual_energy = simulateExtract(energy_requested);
-    energy.subtract(actual_energy);
-    energy_out.add(actual_energy);
-    changed = true;
+    if(actual_energy > 0){
+      energy.subtract(actual_energy);
+      energy_out.add(actual_energy);
+      changed = true;
+    }
     return actual_energy;
   }
 
   /** Extracts the most amount of energy that can be extracted, respecting the maxExtract variable. */
   public final double extractAvailableEnergy(){
     final double actual_energy = getAvailableEnergy();
-    energy.subtract(actual_energy);
-    energy_out.add(actual_energy);
-    changed = true;
+    if(actual_energy > 0){
+      energy.subtract(actual_energy);
+      energy_out.add(actual_energy);
+      changed = true;
+    }
     return actual_energy;
   }
 
   /** Returns maximum amount of energy we can extract, restricted by the maxExtract variable. */
-  public final double getAvailableEnergy(){
-    return Math.min( Math.max( energy.get(), 0) , maxExtract.get() );
+  public double getAvailableEnergy(){
+    if(canExtract()){
+      return Math.min(
+        Math.max(energy.get(), 0),
+        Math.max(maxExtract.get() - energy_out.get(), 0)
+      );
+    }
+    return 0;
   }
 
   /** Returns the maximum energy it can receive (restricted by the maxReceive variable)
    *  or returns the last bit of energy needed to reach capacity.
    */
-  public final double getRequestedEnergy(){
-    return Math.min(maxReceive.get(), getEnergyNeeded());
+  public double getRequestedEnergy(){
+    if(canReceive()){
+      return Math.min(
+        getEnergyNeeded(),
+        Math.max(maxReceive.get() - energy_in.get(), 0)
+      );
+    }
+    return 0;
   }
 
   /** Automatically extracts the most that we can from the supplied energy object,
@@ -349,51 +367,12 @@ public class Energy {
   }
 
   /** Subtracts capacity from current energy level.<br />
-   *  For example, if <code>energy</code> = 100 and <code>capacity</code> = 80,
+   *  For example, if <code>energy = 100</code> and <code>capacity = 80</code>,
    *  this function will set <code>energy</code> to 20. Energy is never set below 0.
    */
   public final void subtract_capacity(){
     energy.subtract(Math.min(energy.get(), capacity.get()));
     changed = true;
-  }
-
-// =================================== SPECIAL ======================================
-
-  /** Extracts energy without being limited by the maxExtract variable.
-   *  Counts as real transfer of energy. This is only intended to be used under
-   *  special circumstances. Please use the standard extract functions above.
-   * @param energy_to_extract
-   */
-  public final double extract_bypass(final double energy_to_extract){
-    final double extracted_energy = Math.min(DecimalNumber.align_to_accuracy(energy_to_extract), energy.get());
-    energy.subtract(extracted_energy);
-    energy_out.add(extracted_energy);
-    changed = true;
-    return extracted_energy;
-  }
-
-  /** Gives energy to this energy object without being limited by the maxReceive
-   *  variable. Counts as real transfer of energy. This is only intended to be used
-   *  under special circumstances. Please use the standard receive methods above.
-   * @param energy_to_receive
-   */
-  public final void insert_bypass(final double energy_to_receive){
-    final double received_energy = Math.min(DecimalNumber.align_to_accuracy(energy_to_receive), getEnergyNeeded());
-    energy.add(received_energy);
-    energy_in.add(received_energy);
-    changed = true;
-  }
-
-  /** Extracts all energy ignoring the maxExtract variable. Counts as real
-   *  transfer of energy. This is only intended to be used in special
-   *  circumstances. Please use the standard extract methods above.
-   */
-  public final double extract_all_energy(){
-    final double extracted_energy = energy.get();
-    energy.set(0);
-    energy_out.add(extracted_energy);
-    changed = true;
-    return extracted_energy;
   }
 
 // =================================== QUERIES ======================================

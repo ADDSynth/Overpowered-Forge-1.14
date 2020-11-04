@@ -1,6 +1,7 @@
 package addsynth.energy.tiles.machines;
 
 import addsynth.energy.config.MachineData;
+import addsynth.energy.main.ICustomEnergyUser;
 import addsynth.energy.main.Receiver;
 import addsynth.energy.tiles.TileAbstractMachine;
 import net.minecraft.nbt.CompoundNBT;
@@ -10,7 +11,7 @@ import net.minecraft.tileentity.TileEntityType;
  *  specifically defined and are well managed.
  * @author ADDSynth
  */
-public abstract class TileAbstractWorkMachine extends TileAbstractMachine {
+public abstract class TileAbstractWorkMachine extends TileAbstractMachine implements ICustomEnergyUser {
 
   protected boolean changed;
   protected MachineState state;
@@ -40,6 +41,11 @@ public abstract class TileAbstractWorkMachine extends TileAbstractMachine {
       return energy.getEnergyPercentage();
     }
     return 0.0f;
+  }
+
+  @Override
+  public final double getAvailableEnergy(){
+    return 0;
   }
 
   public final MachineState getState(){

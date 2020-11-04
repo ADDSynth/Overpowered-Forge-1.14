@@ -25,7 +25,12 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   private int number_of_lasers;
   private boolean activated;
   private int laser_distance;
-  public final Receiver energy = new Receiver(0, 1000);
+  public final Receiver energy = new Receiver(0, MachineValues.laser_max_receive.get()){
+    @Override
+    public boolean canReceive(){
+      return super.canReceive() && running;
+    }
+  };
   public boolean running;
   public boolean auto_shutoff;
 
@@ -35,10 +40,6 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
     super(world, tile);
   }
 
-  public final Energy getEnergy(){
-    return energy;
-  }
-  
   @Override
   protected void clear_custom_data(){
     lasers.clear();

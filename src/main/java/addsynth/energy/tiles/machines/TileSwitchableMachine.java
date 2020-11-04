@@ -88,14 +88,4 @@ public abstract class TileSwitchableMachine extends TileAbstractWorkMachine impl
     return power_switch;
   }
 
-  @Override
-  public double getNeededEnergy(){
-    return 0;
-  }
-
-  @Override
-  public void receiveEnergy(double add_energy){
-    energy.receiveEnergy(add_energy);
-  }
-
 }

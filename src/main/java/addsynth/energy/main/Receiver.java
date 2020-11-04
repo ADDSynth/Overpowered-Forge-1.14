@@ -1,6 +1,6 @@
 package addsynth.energy.main;
 
-public final class Receiver extends Energy {
+public class Receiver extends Energy {
 
   public Receiver(){
     super(0, 0, 0, 0);
@@ -12,6 +12,11 @@ public final class Receiver extends Energy {
 
   public Receiver(final double capacity, final double maxReceive){
     super(capacity, maxReceive, 0, 0);
+  }
+
+  @Override
+  public final double getAvailableEnergy(){
+    return 0;
   }
 
   @Override

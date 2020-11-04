@@ -36,14 +36,4 @@ public abstract class TileAbstractMachine extends TileBase implements ITickableT
     return energy;
   }
 
-  @Override
-  public double getNeededEnergy(){
-    return energy.getRequestedEnergy();
-  }
-
-  @Override
-  public void receiveEnergy(double add_energy){
-    energy.receiveEnergy(add_energy);
-  }
-
 }

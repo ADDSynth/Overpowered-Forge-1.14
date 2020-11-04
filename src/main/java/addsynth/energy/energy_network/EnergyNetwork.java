@@ -8,7 +8,7 @@ import addsynth.core.util.math.DecimalNumber;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.energy_network.tiles.AbstractEnergyNetworkTile;
 import addsynth.energy.main.Energy;
-import addsynth.energy.main.EnergyUtil;
+import addsynth.energy.main.ICustomEnergyUser;
 import addsynth.energy.main.IEnergyConsumer;
 import addsynth.energy.main.IEnergyGenerator;
 import addsynth.energy.main.IEnergyUser;
@@ -93,25 +93,31 @@ public final class EnergyNetwork extends BlockNetwork<AbstractEnergyNetworkTile>
   }
 
   public final void drain_battery(final Energy battery){
-    final long energy_left_over = (long)(battery.getEnergy() * DecimalNumber.DECIMAL_ACCURACY);
-    batteries.removeIf((EnergyNode n) -> n.energy == battery);
-    EnergyUtil.balance_batteries(batteries, energy_left_over);
+    remove_invalid_nodes(batteries);
+    if(batteries.size() >= 1){
+      EnergyUtil.balance_batteries(batteries, (long)(battery.getEnergy() * DecimalNumber.DECIMAL_ACCURACY));
+    }
   }
 
   @Override
   protected final void customSearch(final Node node){
     final TileEntity tile = node.getTile();
     if(tile != null){
+      if(tile instanceof ICustomEnergyUser){
+        add_energy_node(generators, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
+        add_energy_node(receivers, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
+        return;
+      }
       if(tile instanceof IEnergyConsumer){
-        add_energy_node(receivers, new EnergyNode(node.position, tile, ((IEnergyConsumer)tile).getEnergy()));
+        add_energy_node(receivers, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
         return;
       }
       if(tile instanceof IEnergyGenerator){
-        add_energy_node(generators, new EnergyNode(node.position, tile, ((IEnergyGenerator)tile).getEnergy()));
+        add_energy_node(generators, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
         return;
       }
       if(tile instanceof IEnergyUser){
-        add_energy_node(batteries, new EnergyNode(node.position, tile, ((IEnergyUser)tile).getEnergy()));
+        add_energy_node(batteries, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
       }
     }
   }

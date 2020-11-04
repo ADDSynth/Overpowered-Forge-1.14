@@ -12,8 +12,11 @@ public enum TRANSFER_MODE {
   // INTERNAL(      false, false, true,  "gui.addsynth_energy.transfer_mode.internal"),
   NO_TRANSFER(   false, false, "gui.addsynth_energy.transfer_mode.no_transfer");
   
+  /** Allow external machines to give Energy to us. */
   public final boolean canReceive;
+  /** Allow external machines to extract Energy from us. */
   public final boolean canExtract;
+
   private final String translation_key;
 
   private TRANSFER_MODE(final boolean receive, final boolean extract, final String translation_key){

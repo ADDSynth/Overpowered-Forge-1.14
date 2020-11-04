@@ -91,19 +91,6 @@ public final class TileLaserHousing extends TileBase implements IBlockNetworkUse
     return getBlockNetwork().energy;
   }
 
-  @Override
-  public final double getNeededEnergy(){
-    return power_switch ? energy.getRequestedEnergy() : 0;
-  }
-
-  @Override
-  public final void receiveEnergy(double add_energy){
-    if(network == null){
-      BlockNetworkUtil.createBlockNetwork(world, this, LaserNetwork::new);
-    }
-    network.energy.receiveEnergy(add_energy);
-  }
-
   // Only the gui calls these
   public final int getLaserDistance(){     return laser_distance; }
   public final boolean getAutoShutoff(){   return auto_shutoff; }

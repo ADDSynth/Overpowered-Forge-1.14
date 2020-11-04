@@ -1,9 +1,9 @@
 package addsynth.overpoweredmod.config;
 
-import org.apache.commons.lang3.tuple.Pair;
 import addsynth.energy.config.MachineDataConfig;
 import addsynth.energy.config.MachineType;
 import net.minecraftforge.common.ForgeConfigSpec;
+import org.apache.commons.lang3.tuple.Pair;
 
 public final class MachineValues {
 
@@ -34,6 +34,7 @@ public final class MachineValues {
 
   public static ForgeConfigSpec.ConfigValue<Integer> required_energy_per_laser;
   public static ForgeConfigSpec.ConfigValue<Integer> required_energy_per_laser_distance;
+  public static ForgeConfigSpec.ConfigValue<Integer> laser_max_receive;
 
   public static ForgeConfigSpec.ConfigValue<Integer> fusion_energy_output_per_tick;
 
@@ -51,6 +52,7 @@ public final class MachineValues {
 
   private static final int DEFAULT_ENERGY_PER_LASER_CANNON   = 5_000;
   private static final int DEFAULT_ENERGY_PER_LASER_DISTANCE =   100;
+  private static final int DEFAULT_LASER_MAX_RECEIVE = 1_000;
 
   private static final Pair<MachineValues, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(MachineValues::new);
   public static final MachineValues INSTANCE = SPEC_PAIR.getLeft();
@@ -98,6 +100,7 @@ public final class MachineValues {
                                               DEFAULT_ENERGY_PER_LASER_CANNON,   0, Integer.MAX_VALUE);
     required_energy_per_laser_distance = builder.defineInRange("Energy per Laser Distance",
                                               DEFAULT_ENERGY_PER_LASER_DISTANCE, 0, Integer.MAX_VALUE);
+    laser_max_receive = builder.defineInRange("Max Receive Per Tick", DEFAULT_LASER_MAX_RECEIVE, 1, Integer.MAX_VALUE);
     builder.pop();
     
     builder.push("Crystal Matter Generator");
