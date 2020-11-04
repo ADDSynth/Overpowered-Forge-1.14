@@ -1,6 +1,5 @@
 package addsynth.core.inventory;
 
-import addsynth.core.ADDSynthCore;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
@@ -13,51 +12,38 @@ import net.minecraftforge.items.ItemStackHandler;
 public final class InventoryUtil {
 
   /** <p>Used to safely return the Inventory Capability. Use this if your inventory allows bi-directional
-   *  transfer of items because we return the inventory regardless of which side we're checking from.
-   *  Remember to ONLY USE THIS IF the Capability you're checking is
+   *  transfer of items because we return the inventory regardless of which side we're checking from.<br />
+   *  <b>Remember:</b> ONLY USE THIS if you're checking for the
    *  {@link CapabilityItemHandler#ITEM_HANDLER_CAPABILITY ITEM_HANDLER_CAPABILITY}.</p>
    *  <p>Use case:<br />
    *  <pre><code>
    *  &#64;Override
    *  public &lt;T&gt; LazyOptional&lt;T&gt; getCapability(&#64;Nonnull Capability&lt;T&gt; capability, &#64;Nullable Direction direction){
-   *    if(removed == false){
-   *      if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
-   *        return InventoryUtil.getInventoryCapability(inventory);
-   *      }
-   *      return super.getCapability(capability, direction);
+   *    if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
+   *      return InventoryUtil.getInventoryCapability(inventory);
    *    }
-   *    return LazyOptional.empty();
+   *    return super.getCapability(capability, direction);
    *  }
    *  </code></pre></p>
    * @param <T>
    * @param inventory
    */
   public static final <T> LazyOptional<T> getInventoryCapability(final CommonInventory inventory){
-    try{
-      return inventory != null ? (LazyOptional.of(() -> inventory)).cast() : LazyOptional.empty();
-    }
-    catch(Exception e){
-      ADDSynthCore.log.error("Tried to use helper method InventoryUtil.getInventoryCapability() but"+
-        "the the capability we're trying to get is not ITEM_HANDLER_CAPABILITY!", e);
-      return LazyOptional.empty();
-    }
+    return inventory != null ? (LazyOptional.of(() -> inventory)).cast() : LazyOptional.empty();
   }
 
-  /** <p>Used to return either the Input Inventory or Output Inventory depending on which face
-   *  we're querrying from. Pass null to either inventory if your TileEntity doesn't have them.
-   *  Remember to ONLY USE THIS IF the Capability you're checking is
+  /** <p>Used to return either the Input Inventory or Output Inventory depending on which side
+   *  we're querying. Pass null to either inventory if your TileEntity doesn't have them.<br />
+   *  <b>Remember</b> ONLY USE THIS if you're checking for the
    *  {@link net.minecraftforge.items.CapabilityItemHandler#ITEM_HANDLER_CAPABILITY ITEM_HANDLER_CAPABILITY}.</p>
    *  <p>Use case:<br />
    *  <pre><code>
    *  &#64;Override
    *  public &lt;T&gt; LazyOptional&lt;T&gt; getCapability(&#64;Nonnull Capability&lt;T&gt; capability, &#64;Nullable Direction direction){
-   *    if(removed == false){
-   *      if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
-   *        return InventoryUtil.getInventoryCapability(input_inventory, output_inventory, direction);
-   *      }
-   *      return super.getCapability(capability, direction);
+   *    if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
+   *      return InventoryUtil.getInventoryCapability(input_inventory, output_inventory, direction);
    *    }
-   *    return LazyOptional.empty();
+   *    return super.getCapability(capability, direction);
    *  }
    *  </code></pre></p>
    * @param <T>
@@ -67,17 +53,11 @@ public final class InventoryUtil {
    */
   public static final <T> LazyOptional<T> getInventoryCapability
   (InputInventory input_inventory, OutputInventory output_inventory, Direction facing){
-    try{
-      if(facing != null){
-        if(facing == Direction.DOWN){
-          return output_inventory != null ? (LazyOptional.of(() -> output_inventory)).cast() : LazyOptional.empty();
-        }
-        return input_inventory != null ? (LazyOptional.of(() -> input_inventory)).cast() : LazyOptional.empty();
+    if(facing != null){
+      if(facing == Direction.DOWN){
+        return output_inventory != null ? (LazyOptional.of(() -> output_inventory)).cast() : LazyOptional.empty();
       }
-    }
-    catch(Exception e){
-      ADDSynthCore.log.error("Tried to use helper method InventoryUtil.getInventoryCapability() but"+
-        "the the capability we're trying to get is not ITEM_HANDLER_CAPABILITY!", e);
+      return input_inventory != null ? (LazyOptional.of(() -> input_inventory)).cast() : LazyOptional.empty();
     }
     return LazyOptional.empty();
   }
