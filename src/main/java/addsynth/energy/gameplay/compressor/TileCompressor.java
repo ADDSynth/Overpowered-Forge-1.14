@@ -10,15 +10,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileCompressor extends TileStandardWorkMachine implements INamedContainerProvider {
-
-  private ItemStack result;
 
   public TileCompressor(){
     super(Tiles.COMPRESSOR, 1, CompressorRecipes.filter, 1, Config.compressor_data);

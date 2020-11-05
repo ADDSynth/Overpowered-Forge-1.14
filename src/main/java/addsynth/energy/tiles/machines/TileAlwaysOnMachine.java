@@ -10,8 +10,10 @@ import addsynth.core.inventory.InventoryUtil;
 import addsynth.core.inventory.MachineInventory;
 import addsynth.core.inventory.OutputInventory;
 import addsynth.core.inventory.SlotData;
+import addsynth.core.items.ItemUtil;
 import addsynth.energy.config.MachineData;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
@@ -25,6 +27,7 @@ public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine
   implements IInputInventory, IOutputInventory {
 
   protected final MachineInventory inventory;
+  protected ItemStack result;
 
   public TileAlwaysOnMachine(TileEntityType type, SlotData[] slots, int output_slots, MachineData data){
     super(type, MachineState.IDLE, data);
@@ -103,12 +106,14 @@ public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine
   public void read(final CompoundNBT nbt){
     super.read(nbt);
     inventory.loadFromNBT(nbt);
+    result = ItemUtil.loadItemStackFromNBT(nbt, "Output");
   }
 
   @Override
   public CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
     inventory.saveToNBT(nbt);
+    ItemUtil.saveItemStackToNBT(nbt, result, "Output");
     return nbt;
   }
 

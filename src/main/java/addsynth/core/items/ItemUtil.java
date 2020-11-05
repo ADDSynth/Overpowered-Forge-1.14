@@ -2,8 +2,8 @@ package addsynth.core.items;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 
 public final class ItemUtil {
@@ -28,6 +28,20 @@ public final class ItemUtil {
   public static final CompoundNBT getItemStackNBT(final ItemStack stack) throws NullPointerException {
     CompoundNBT nbt = stack.getTag();
     return nbt == null ? new CompoundNBT() : nbt;
+  }
+
+  /** If the provided ItemStack exists, saves it with the Compound nbt using the key name. */
+  public static final void saveItemStackToNBT(final CompoundNBT nbt, final ItemStack stack, final String key){
+    if(stack != null){
+      final CompoundNBT item = new CompoundNBT();
+      stack.write(item);
+      nbt.put(key, item);
+    }
+  }
+
+  /** Loads ItemStack if the entry for it exists. Returns an Empty ItemStack if it does not. */
+  public static final ItemStack loadItemStackFromNBT(final CompoundNBT nbt, final String key){
+    return ItemStack.read(nbt.getCompound(key));
   }
 
   public static final void add_to_player_inventory(final PlayerEntity player, final ItemStack stack){
