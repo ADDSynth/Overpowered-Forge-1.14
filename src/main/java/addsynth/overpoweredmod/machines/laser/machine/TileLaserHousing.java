@@ -9,6 +9,7 @@ import addsynth.energy.main.IEnergyConsumer;
 import addsynth.energy.main.Receiver;
 import addsynth.energy.tiles.machines.ISwitchableMachine;
 import addsynth.overpoweredmod.config.Config;
+import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -22,7 +23,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 public final class TileLaserHousing extends TileBase implements IBlockNetworkUser<LaserNetwork>,
   ITickableTileEntity, IEnergyConsumer, ISwitchableMachine, INamedContainerProvider {
 
-  private final Receiver energy = new Receiver();
+  private final Receiver energy = new Receiver(0, MachineValues.laser_max_receive.get());
   private boolean power_switch = true;
 
   private LaserNetwork network;
@@ -72,7 +73,7 @@ public final class TileLaserHousing extends TileBase implements IBlockNetworkUse
   @Override
   public final CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
-    energy.saveToNBT(nbt);
+    energy.saveToNBT(nbt); // save everything just in case we need to save more than just Energy, and maintain backward compatability.
     nbt.putBoolean("Power Switch", power_switch);
     nbt.putInt("Laser Distance", laser_distance);
     nbt.putBoolean("Auto Shutoff", auto_shutoff);
@@ -88,7 +89,7 @@ public final class TileLaserHousing extends TileBase implements IBlockNetworkUse
     if(network == null){
       BlockNetworkUtil.createBlockNetwork(world, this, LaserNetwork::new);
     }
-    return getBlockNetwork().energy;
+    return network.energy;
   }
 
   // Only the gui calls these

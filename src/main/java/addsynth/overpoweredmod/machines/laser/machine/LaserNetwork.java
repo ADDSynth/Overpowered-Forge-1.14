@@ -14,6 +14,7 @@ import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
 import addsynth.overpoweredmod.machines.laser.cannon.TileLaser;
 import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -47,16 +48,14 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
 
   @Override
   protected final void onUpdateNetworkFinished(){
-    // OPTIMIZE: This only needs to be called if the Lasers change. Move this in-place of its call in neighbor_was_changed().
-    if(lasers.size() != number_of_lasers){
-      number_of_lasers = lasers.size();
-      update_energy_requirements();
-    }
+    // MAYBE: This doesn't have to be here. But I definitely know the LaserNetwork needs to update after calling the BlockNetwork update.
+    check_if_lasers_changed();
   }
 
   @Override
   protected final void customSearch(final Node node){
     if(node.block instanceof LaserCannon){
+      // FIX: only checks for LaserCannon block. Potential error if Laser is wrong type or laser is not attached to THIS laser network!
       if(lasers.contains(node.position) == false){
         lasers.add(node);
       }
@@ -65,14 +64,15 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
 
   @Override
   public void neighbor_was_changed(final BlockPos current_position, final BlockPos position_of_neighbor){
+    remove_invalid_nodes(lasers);
+
     final TileLaser laser = MinecraftUtility.getTileEntity(position_of_neighbor, world, TileLaser.class);
     if(laser != null){
       if(lasers.contains(laser) == false){
         lasers.add(new Node(position_of_neighbor, laser));
       }
     }
-    remove_invalid_nodes(lasers);
-    onUpdateNetworkFinished();
+    check_if_lasers_changed();
   }
 
   public final void load_data(Energy energy, boolean power_switch, int laser_distance, boolean auto_shutoff){
@@ -89,6 +89,13 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   public final void setLaserDistance(int laser_distance){
     this.laser_distance = laser_distance;
     update_energy_requirements();
+  }
+
+  private final void check_if_lasers_changed(){
+    if(lasers.size() != number_of_lasers){
+      number_of_lasers = lasers.size();
+      update_energy_requirements();
+    }
   }
 
   /**
@@ -108,7 +115,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   private final void updateLaserNetwork(){
     remove_invalid_nodes(blocks);
     
-    // updates server
+    // updates server (needs to be saved to world data)
     TileLaserHousing laser_housing;
     for(final Node node : blocks){
       laser_housing = (TileLaserHousing)node.getTile();
@@ -117,7 +124,8 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
       }
     }
     
-    // updates client
+    // updates client (client can determine the information)
+    // TEST: Number of Lasers still isn't getting sent to clients on world load, test all versions. Only fix is to save with TileEntities.
     final LaserClientSyncMessage message = new LaserClientSyncMessage(blocks.getPositions(), number_of_lasers);
     NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message);
   }
@@ -151,14 +159,19 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
         updateLaserNetwork();
         changed = false;
       }
+      energy.updateEnergyIO();
     }
   }
 
   private final void fire_lasers(){
     final double[] center_position = BlockMath.getExactCenter(blocks.getPositions());
     remove_invalid_nodes(lasers);
+    TileEntity laser;
     for(Node node : lasers){
-      ((TileLaser)node.getTile()).activate(this.laser_distance);
+      laser = node.getTile();
+      if(laser != null){
+        ((TileLaser)laser).activate(this.laser_distance);
+      }
     }
     world.playSound(null, center_position[0], center_position[1], center_position[2], Sounds.laser_fire_sound, SoundCategory.AMBIENT, 2.0f, 1.0f);
     this.energy.subtract_capacity();

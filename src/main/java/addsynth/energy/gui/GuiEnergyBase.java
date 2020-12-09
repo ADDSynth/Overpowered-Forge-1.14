@@ -40,10 +40,7 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
     this.energy = tile.getEnergy();
   }
 
-  /** Draws Energy: Level / Capacity in the standard location, just below the title, at y = 17 pixels.
-   * 
-   * @param energy
-   */
+  /** Draws Energy: Level / Capacity in the standard location, just below the title, at y = 17 pixels. */
   protected final void draw_energy(){
     this.draw_energy(6, 17);
   }

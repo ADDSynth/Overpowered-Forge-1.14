@@ -23,9 +23,9 @@ public class Energy {
   protected final DecimalNumber maxExtract = new DecimalNumber();
 
   // protected final DecimalNumber previous_energy = new DecimalNumber(); DELETE all mentions of previous_energy
-  /** Diagnostic variable that is recalculated every tick. Mainly used on Client side. */
+  /** Measures how much Energy this energy storage object received. Resets to 0 every tick. */
   protected final DecimalNumber energy_in       = new DecimalNumber();
-  /** Diagnostic variable that is recalculated every tick. Mainly used on Client side. */
+  /** Measures how much energy was extracted from this energy storage object. Resets to 0 every tick. */
   protected final DecimalNumber energy_out      = new DecimalNumber();
   /** This represents REAL transfer of energy, by using the {@link Energy#energy_in energy_in} and
    *  {@link Energy#energy_out energy_out} variables, which only change when REAL energy is transferred. **/
@@ -100,12 +100,7 @@ public class Energy {
 	energy_tag.putDouble("Difference", this.difference.get());
 	nbt.put("EnergyStorage", energy_tag);
 	
-    if(energy_in.get() != 0 || energy_out.get() != 0){
-      // previous_energy.set(energy.get());
-      energy_in.set(0);
-      energy_out.set(0);
-      changed = true; // Update next frame to reset everything to 0.
-    }
+    updateEnergyIO();
   }
 
 // =========================== TRANSMIT / RECEIVE ===================================
@@ -412,6 +407,18 @@ public class Energy {
       return true;
     }
     return false;
+  }
+
+  /** This is only here to call it manually in instances where you don't save or load the Energy.<br />
+   *  Must be called after {@link #tick} to reset <code>changed</code> to true.<br />
+   *  Must be called after updating the TileEntity so the {@link #energy_in} and {@link #energy_out}
+   *  can be sent to the client. */
+  public final void updateEnergyIO(){
+    if(energy_in.get() != 0 || energy_out.get() != 0){
+      energy_in.set(0);
+      energy_out.set(0);
+      changed = true; // Update next frame to reset everything to 0.
+    }
   }
 
   @Override
