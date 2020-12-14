@@ -130,4 +130,22 @@ public final class BlockNetworkUtil {
     network.updateBlockNetwork(tile.getPos(), tile);
   }
 
+  /** Helper function. Call in block's {@link net.minecraft.block.Block#neighborChanged} function.
+   *  Used to cause the BlockNetwork to respond to an adjacent block being added or removed.
+   *  @see BlockNetwork#neighbor_was_changed(BlockPos, BlockPos)
+   **/
+  public static final void neighbor_changed(final World world, final BlockPos pos, final BlockPos position_of_neighbor){
+    if(world.isRemote == false){
+      final TileEntity tile = world.getTileEntity(pos);
+      if(tile != null){
+        if(tile instanceof IBlockNetworkUser){
+          final BlockNetwork block_network = ((IBlockNetworkUser)tile).getBlockNetwork();
+          if(block_network != null){
+            block_network.neighbor_was_changed(pos, position_of_neighbor);
+          }
+        }
+      }
+    }
+  }
+
 }

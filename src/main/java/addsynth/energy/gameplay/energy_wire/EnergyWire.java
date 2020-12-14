@@ -1,6 +1,6 @@
 package addsynth.energy.gameplay.energy_wire;
 
-import addsynth.core.block_network.BlockNetwork;
+import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.blocks.Wire;
 import addsynth.energy.energy_network.tiles.AbstractEnergyNetworkTile;
@@ -52,12 +52,7 @@ public final class EnergyWire extends Wire {
   @Override
   @SuppressWarnings("deprecation")
   public final void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
-    if(world.isRemote == false){
-      final BlockNetwork network = BlockNetwork.getNetwork(world, pos);
-      if(network != null){
-        network.neighbor_was_changed(pos, neighbor);
-      }
-    }
+    BlockNetworkUtil.neighbor_changed(world, pos, neighbor);
   }
 
 }

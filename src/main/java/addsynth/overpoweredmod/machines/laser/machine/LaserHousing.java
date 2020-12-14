@@ -2,8 +2,7 @@ package addsynth.overpoweredmod.machines.laser.machine;
 
 import java.util.List;
 import javax.annotation.Nullable;
-import addsynth.core.block_network.BlockNetwork;
-import addsynth.core.block_network.IBlockNetworkUser;
+import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -64,11 +63,8 @@ public final class LaserHousing extends MachineBlock {
 
   @Override
   @SuppressWarnings("deprecation")
-  public void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
-    if(world.isRemote == false){
-      final BlockNetwork network = ((IBlockNetworkUser)(world.getTileEntity(pos))).getBlockNetwork();
-      network.neighbor_was_changed(pos, neighbor);
-    }
+  public final void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
+    BlockNetworkUtil.neighbor_changed(world, pos, neighbor);
   }
 
 }

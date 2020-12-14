@@ -1,7 +1,6 @@
 package addsynth.overpoweredmod.machines.data_cable;
 
-import addsynth.core.block_network.BlockNetwork;
-import addsynth.core.block_network.IBlockNetworkUser;
+import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.util.block.BlockShape;
 import addsynth.energy.blocks.Wire;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -83,11 +82,8 @@ public final class DataCable extends Wire {
 
   @Override
   @SuppressWarnings("deprecation")
-  public void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
-    if(world.isRemote == false){
-      final BlockNetwork network = ((IBlockNetworkUser)(world.getTileEntity(pos))).getBlockNetwork();
-      network.neighbor_was_changed(pos, neighbor);
-    }
+  public final void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
+    BlockNetworkUtil.neighbor_changed(world, pos, neighbor);
   }
 
 }

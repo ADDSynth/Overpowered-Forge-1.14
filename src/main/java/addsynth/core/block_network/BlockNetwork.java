@@ -2,7 +2,6 @@ package addsynth.core.block_network;
 
 import java.util.Collection;
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.block.BlockUtil;
 import addsynth.energy.energy_network.EnergyNetwork;
@@ -169,20 +168,6 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
     node_list.removeIf((Node n) -> n == null ? true : n.isInvalid());
   }
 
-  @Nullable
-  @Deprecated
-  public static final BlockNetwork getNetwork(final World world, final BlockPos position){
-    final TileEntity tile = world.getTileEntity(position);
-    if(tile != null){
-      if(tile instanceof IBlockNetworkUser){
-        return ((IBlockNetworkUser)tile).getBlockNetwork();
-      }
-      // throw new RuntimeException("The TileEntity "+tile.toString()+" does not implement the IBlockNetwork interface.");
-    }
-    // throw new RuntimeException("Could not find a TileEntity at position "+position.toString()+". BlockNetwork variables must be assigned to Tile Entities.");
-    return null;
-  }
-
   public final void updateBlockNetwork(final BlockPos from){
     updateBlockNetwork(from, first_tile);
   }
@@ -266,6 +251,8 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   protected void customSearch(final Node node){
   }
 
+  // DELETE: Once we start coding for MC 1.16 and leave 1.12 behind, retest the onNeighborChange / neighborChanged issue, and
+  //         remove all references to onNeighborChange.
   /**<p>
    *   Call this in the block's
    *   {@link Block#neighborChanged(BlockState, World, BlockPos, Block, BlockPos, boolean)} method.<br>
@@ -273,16 +260,32 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
    *   Starting in Minecraft 1.11 the {@link World#updateComparatorOutputLevel(BlockPos, Block)} method
    *   is no longer called at the end of the {@link World#setTileEntity(BlockPos, TileEntity)} function,
    *   so it doesn't update Block Networks at all.
-   * <p>NOTE: We're in Minecraft 1.14 now, and I have no idea how any of this works! Disregard previous paragraph.
+   * <p>NOTE: It seems <code>onNeighborChange()</code> is added by Forge and only gets called if the neighbor block was
+   *   a TileEntity, whereas <code>neighborChanged()</code> gets called every time an adjacent block gets changed.
+   *   Best continue to call Minecraft's <code>neighborChanged()</code> function, in case someone's BlockNetwork
+   *   wants to keep track of basic blocks.
    * <p>
-   *   THIS IS ONLY USED TO RESPOND TO TileEntity changes that your BlockNetwork keeps track of, that are
-   *   NOT a part of your BlockNetwork. For instance, the Energy Network keeps track of all IEnergyUser machines.
+   *   We actually recommend you call the simplified helper function
+   *   {@link BlockNetworkUtil#neighbor_changed(World, BlockPos, BlockPos)} instead.
+   * <p>
+   *   Your BlockNetwork automatically responds to block changes if the block is part of your BlockNetwork.
+   *   So this is only used to respond to block changes that your BlockNetwork keeps track of, that are
+   *   NOT part of your BlockNetwork.
+   * <p>
+   *   First, you do not want to update on EVERY neighbor block change, only the blocks that affect your
+   *   BlockNetwork. Once you detect the type of block, the simplest way to update is to call your BlockNetwork's
+   *   {@link #updateBlockNetwork(BlockPos)} function. This will automatically clear your custom data and call
+   *   {@link #customSearch(Node)} which again checks the block and then you can decide what to do with it.
+   *   This is recommended if your BlockNetwork keeps track of lots of different kinds of blocks. But if
+   *   you only track one type of block then we recommend doing the optimized approach, by checking the position
+   *   of the neighbor and adding or removing it from your list accordingly.
    * <p>
    *   If the list of TileEntities you keep track of utilize {@link Node Nodes}, then you can call
    *   {@link #remove_invalid_nodes(Collection)} to automatically remove TileEntities that were removed.
    *   Otherwise you'll have to check for removed TileEntities yourself!
-   * <p>
-   *   For TileEntities that are part of the BlockNetwork itself, refer to the instructions in {@link BlockNetworkUtil}.
+   * @see EnergyNetwork#neighbor_was_changed(BlockPos, BlockPos)
+   * @see DataCableNetwork#neighbor_was_changed(BlockPos, BlockPos)
+   * @see LaserNetwork#neighbor_was_changed(BlockPos, BlockPos)
    * @param current_position
    * @param position_of_neighbor
    */
