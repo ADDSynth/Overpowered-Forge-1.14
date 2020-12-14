@@ -78,12 +78,6 @@ public final class BlockNetworkUtil {
     return network;
   }
 
-  private static final <B extends BlockNetwork<T>, T extends TileEntity & IBlockNetworkUser<B>> void createNewBlockNetwork(final World world, final T tile, final BiFunction<World, T, B> constructor){
-    final B network = constructor.apply(world, tile);
-    tile.setBlockNetwork(network);
-    network.updateBlockNetwork(tile.getPos(), tile);
-  }
-
   /** <b>Required!</b> Call this function in your TileEntity's <code>invalidate()</code> or
    *  <code>remove()</code> function! Remember to call the <code>super</code> method first!
    * @param <B>
@@ -128,6 +122,12 @@ public final class BlockNetworkUtil {
       }
     }
     destroyed_tile.setBlockNetwork(null);
+  }
+
+  private static final <B extends BlockNetwork<T>, T extends TileEntity & IBlockNetworkUser<B>> void createNewBlockNetwork(final World world, final T tile, final BiFunction<World, T, B> constructor){
+    final B network = constructor.apply(world, tile);
+    tile.setBlockNetwork(network);
+    network.updateBlockNetwork(tile.getPos(), tile);
   }
 
 }

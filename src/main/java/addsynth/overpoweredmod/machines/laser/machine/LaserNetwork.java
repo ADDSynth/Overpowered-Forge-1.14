@@ -101,32 +101,13 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   /**
    *  The energy requirements of the whole LaserHousing network is calculated dynamically depending on how
    *  many lasers there are and what distance the lasers have to travel. It is recalculated whenever one of
-   *  these variables change. It is calculated dynamically at runtime and does not need to be saved with the
-   *  blocks, only the laser blocks and laser distance need to be saved.
+   *  these variables change.
    */
   private final void update_energy_requirements(){
     energy.setCapacity(
       (number_of_lasers * MachineValues.required_energy_per_laser.get()) +
       (number_of_lasers * laser_distance * MachineValues.required_energy_per_laser_distance.get())
     );
-    changed = true;
-  }
-
-  /** updates server (needs to be saved to world data) */
-  private final void updateLaserNetwork(){
-    remove_invalid_nodes(blocks);
-    TileLaserHousing laser_housing;
-    for(final Node node : blocks){
-      laser_housing = (TileLaserHousing)node.getTile();
-      if(laser_housing != null){
-        laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff);
-      }
-    }
-  }
-  
-  public final void updateClient(){ // (client can determine the information)
-    final LaserClientSyncMessage message = new LaserClientSyncMessage(blocks.getPositions(), number_of_lasers);
-    NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message);
   }
 
   /**
@@ -160,6 +141,23 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
       }
       energy.updateEnergyIO();
     }
+  }
+
+  /** updates server (needs to be saved to world data) */
+  private final void updateLaserNetwork(){
+    remove_invalid_nodes(blocks);
+    TileLaserHousing laser_housing;
+    for(final Node node : blocks){
+      laser_housing = (TileLaserHousing)node.getTile();
+      if(laser_housing != null){
+        laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff);
+      }
+    }
+  }
+  
+  public final void updateClient(){ // (client can determine the information)
+    final LaserClientSyncMessage message = new LaserClientSyncMessage(blocks.getPositions(), number_of_lasers);
+    NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message);
   }
 
   private final void fire_lasers(){
