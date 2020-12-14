@@ -74,6 +74,11 @@ public final class TileSuspensionBridge extends TileBasicMachine implements IBlo
     return network;
   }
 
+  @Override
+  public final Receiver getEnergy(){
+    return energy;
+  }
+
   public final void setMessages(final BridgeMessage bridge_message, final BridgeMessage[] messages){
     this.bridge_message = bridge_message;
     this.message = messages;

@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 
 public final class DataCableNetwork extends BlockNetwork<TileDataCable> {
 
+  // TODO: We could probably handle these lists better if we were using Nodes.
   /** All scanning units that are connected to this Data Cable network. */
   private final ArrayList<BlockPos> scanning_units = new ArrayList<>(6);
   private final ArrayList<BlockPos> fusion_energy_converters = new ArrayList<>(1);

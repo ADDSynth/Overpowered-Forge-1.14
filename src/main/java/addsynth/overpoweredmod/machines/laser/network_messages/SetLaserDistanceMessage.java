@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.machines.laser.network_messages;
 
 import java.util.function.Supplier;
 import addsynth.core.util.game.MinecraftUtility;
+import addsynth.overpoweredmod.machines.laser.machine.LaserNetwork;
 import addsynth.overpoweredmod.machines.laser.machine.TileLaserHousing;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
@@ -38,7 +39,10 @@ public final class SetLaserDistanceMessage {
         if(world.isAreaLoaded(message.position, 0)){
           final TileLaserHousing tile = MinecraftUtility.getTileEntity(message.position, world, TileLaserHousing.class);
           if(tile != null){
-            tile.getBlockNetwork().setLaserDistance(message.laser_distance);
+            final LaserNetwork network = tile.getBlockNetwork();
+            if(network != null){
+              network.setLaserDistance(message.laser_distance);
+            }
           }
         }
       });

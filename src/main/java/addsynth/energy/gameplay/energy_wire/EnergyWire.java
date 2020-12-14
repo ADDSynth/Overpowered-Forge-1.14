@@ -14,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
 public final class EnergyWire extends Wire {
@@ -46,7 +47,7 @@ public final class EnergyWire extends Wire {
   /** Starting in Minecraft 1.11, {@link World#addTileEntity(TileEntity)} no longer calls
    *  {@link World#updateComparatorOutputLevel(BlockPos, Block)} at the end of the function.
    *  For this reason we have to use {@link #neighborChanged(BlockState, World, BlockPos, Block, BlockPos, boolean)}
-   *  instead of {@link #onNeighborChange(IBlockAccess, BlockPos, BlockPos)} like we do in Minecraft 1.10.
+   *  instead of {@link #onNeighborChange(BlockState, IWorldReader, BlockPos, BlockPos)} like we do in Minecraft 1.10.
    *  As it turns out, not even Vanilla Minecraft uses the <code>onNeighborChange()</code> function a whole lot.
    */
   @Override

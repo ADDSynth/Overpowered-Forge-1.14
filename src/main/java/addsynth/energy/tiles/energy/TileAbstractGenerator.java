@@ -1,7 +1,6 @@
 package addsynth.energy.tiles.energy;
 
 import addsynth.core.tiles.TileBase;
-import addsynth.energy.main.Energy;
 import addsynth.energy.main.Generator;
 import addsynth.energy.main.IEnergyGenerator;
 import net.minecraft.nbt.CompoundNBT;
@@ -57,7 +56,7 @@ public abstract class TileAbstractGenerator extends TileBase implements IEnergyG
   protected abstract void setGeneratorData();
 
   @Override
-  public Energy getEnergy(){
+  public Generator getEnergy(){
     return energy;
   }
 

@@ -83,6 +83,7 @@ public final class TileLaserHousing extends TileBase implements IBlockNetworkUse
   @Override
   @SuppressWarnings("null")
   public final Energy getEnergy(){
+    // OPTIMIZE: Standardize getting energy from multi-block structures.
     if(world.isRemote){
       return energy; // only guis should use this.
     }

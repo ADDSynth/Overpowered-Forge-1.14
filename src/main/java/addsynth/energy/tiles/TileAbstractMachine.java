@@ -1,7 +1,6 @@
 package addsynth.energy.tiles;
 
 import addsynth.core.tiles.TileBase;
-import addsynth.energy.main.Energy;
 import addsynth.energy.main.IEnergyConsumer;
 import addsynth.energy.main.Receiver;
 import net.minecraft.nbt.CompoundNBT;
@@ -32,7 +31,7 @@ public abstract class TileAbstractMachine extends TileBase implements ITickableT
   }
 
   @Override
-  public Energy getEnergy(){
+  public Receiver getEnergy(){
     return energy;
   }
 
