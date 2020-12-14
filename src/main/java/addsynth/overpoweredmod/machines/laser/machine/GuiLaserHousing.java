@@ -43,17 +43,6 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   private static final int check_box_x = 70;
   private static final int check_box_y = 19;
 
-  // private int energy_percentage;
-  /*
-  private static final int energy_x = 151;  DELETE, and delete some stuff below.
-  private static final int energy_y = 26;
-  private static final int energy_width = 17;
-  private static final int energy_height = 40;
-  private static final int draw_energy_x = 206;
-  private static final int draw_energy_y = 28;
-  private final ProgressBar energy_progress_bar = new ProgressBar(energy_x, energy_y, energy_width, energy_height, draw_energy_x, draw_energy_y);
-  */
-
   public GuiLaserHousing(final ContainerLaserHousing container, final PlayerInventory player_inventory, final ITextComponent title){
     super(-1, 104, container, player_inventory, title, laser_machine_gui_texture);
   }
@@ -155,9 +144,6 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     draw_background_texture();
-    // final float energy_float = tile.getEnergyPercentage();
-    // energy_percentage = Math.round(energy_float*100);
-    // energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy_float,ProgressBar.Round.NEAREST);
   }
 
   @Override

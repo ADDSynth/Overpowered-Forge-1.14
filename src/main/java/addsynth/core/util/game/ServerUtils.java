@@ -66,16 +66,6 @@ public final class ServerUtils {
     // getServer().getPlayerList().transferPlayerToDimension(player, dimension_id, teleporter);
   }
 
-  /* DELETE
-  JUST USE: NetworkHandler.INSTANCE.sendToDimension(new Message(), world.provider.getDimension()));
-  public static void send_network_message_to_clients_in_world(SimpleNetworkWrapper network, World world, IMessage message){
-    final ArrayList<EntityPlayerMP> players_in_world = get_players_in_world(world);
-    for(EntityPlayerMP player : players_in_world){
-      network.sendTo(message, player);
-    }
-  }
-  */
-
   /** <p>I was going to develop some complicated algorithm, but then I found the Vanilla code,
    *  and I got it to work! Please see the code inside this function and execute that
    *  instead of this function.</p>

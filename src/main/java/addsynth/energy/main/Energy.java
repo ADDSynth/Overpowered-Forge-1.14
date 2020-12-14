@@ -22,7 +22,6 @@ public class Energy {
   protected final DecimalNumber maxReceive = new DecimalNumber();
   protected final DecimalNumber maxExtract = new DecimalNumber();
 
-  // protected final DecimalNumber previous_energy = new DecimalNumber(); DELETE all mentions of previous_energy
   /** Measures how much Energy this energy storage object received. Resets to 0 every tick. */
   protected final DecimalNumber energy_in       = new DecimalNumber();
   /** Measures how much energy was extracted from this energy storage object. Resets to 0 every tick. */
@@ -75,7 +74,6 @@ public class Energy {
     this.capacity.set(       energy_tag.getDouble("Capacity")  );
     this.maxReceive.set(     energy_tag.getDouble("MaxReceive"));
     this.maxExtract.set(     energy_tag.getDouble("MaxExtract"));
-    // this.previous_energy.set(energy_tag.getDouble("Previous Energy"));
     this.energy_in.set(      energy_tag.getDouble("Energy In"));
     this.energy_out.set(     energy_tag.getDouble("Energy Out"));
     this.difference.set(     energy_tag.getDouble("Difference"));
@@ -94,7 +92,6 @@ public class Energy {
 	energy_tag.putDouble("Capacity",   this.capacity.get());
 	energy_tag.putDouble("MaxReceive", this.maxReceive.get());
 	energy_tag.putDouble("MaxExtract", this.maxExtract.get());
-	// energy_tag.putDouble("Previous Energy", this.previous_energy.get());
 	energy_tag.putDouble("Energy In",  this.energy_in.get());
 	energy_tag.putDouble("Energy Out", this.energy_out.get());
 	energy_tag.putDouble("Difference", this.difference.get());
