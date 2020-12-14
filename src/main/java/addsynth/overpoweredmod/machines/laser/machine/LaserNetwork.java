@@ -48,7 +48,6 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
 
   @Override
   protected final void onUpdateNetworkFinished(){
-    // MAYBE: This doesn't have to be here. But I definitely know the LaserNetwork needs to update after calling the BlockNetwork update.
     check_if_lasers_changed();
   }
 
@@ -95,6 +94,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
     if(lasers.size() != number_of_lasers){
       number_of_lasers = lasers.size();
       update_energy_requirements();
+      updateClient();
     }
   }
 
@@ -112,10 +112,9 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
     changed = true;
   }
 
+  /** updates server (needs to be saved to world data) */
   private final void updateLaserNetwork(){
     remove_invalid_nodes(blocks);
-    
-    // updates server (needs to be saved to world data)
     TileLaserHousing laser_housing;
     for(final Node node : blocks){
       laser_housing = (TileLaserHousing)node.getTile();
@@ -123,9 +122,9 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
         laser_housing.setDataDirectlyFromNetwork(energy, laser_distance, running, auto_shutoff);
       }
     }
-    
-    // updates client (client can determine the information)
-    // TEST: Number of Lasers still isn't getting sent to clients on world load, test all versions. Only fix is to save with TileEntities.
+  }
+  
+  public final void updateClient(){ // (client can determine the information)
     final LaserClientSyncMessage message = new LaserClientSyncMessage(blocks.getPositions(), number_of_lasers);
     NetworkUtil.send_to_clients_in_world(NetworkHandler.INSTANCE, world, message);
   }

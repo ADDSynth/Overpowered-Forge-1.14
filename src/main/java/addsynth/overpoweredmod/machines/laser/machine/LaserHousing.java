@@ -49,7 +49,14 @@ public final class LaserHousing extends MachineBlock {
     if(world.isRemote == false){
       final TileLaserHousing tile = MinecraftUtility.getTileEntity(pos, world, TileLaserHousing.class);
       if(tile != null){
-        NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
+        final LaserNetwork network = tile.getBlockNetwork();
+        if(network != null){
+          network.updateClient();
+          NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
+        }
+        else{
+          OverpoweredMod.log.error(new NullPointerException("Laser Machine at "+pos.toString()+" has no LaserNetwork!"));
+        }
       }
     }
     return true;
