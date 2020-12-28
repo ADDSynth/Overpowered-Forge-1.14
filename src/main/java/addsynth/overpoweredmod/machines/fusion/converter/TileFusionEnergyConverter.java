@@ -3,7 +3,6 @@ package addsynth.overpoweredmod.machines.fusion.converter;
 import java.util.ArrayList;
 import addsynth.core.tiles.TileBase;
 import addsynth.core.util.game.MinecraftUtility;
-import addsynth.energy.main.Energy;
 import addsynth.energy.main.Generator;
 import addsynth.energy.main.IEnergyGenerator;
 import addsynth.overpoweredmod.config.MachineValues;
@@ -49,6 +48,7 @@ public final class TileFusionEnergyConverter extends TileBase implements IEnergy
         if(fusion_chamber != null){ // Cannot be valid without fusion chamber
           fusion_chamber.set_state(activated && valid); // keep fusion chamber up-to-date if it exists.
           if(activated && valid == false && previous_valid == true){
+            // only explodes if valid goes from true to false. Loading a world is safe because it goes from false to true.
             fusion_chamber.explode();
             fusion_chamber = null;
           }
@@ -58,7 +58,7 @@ public final class TileFusionEnergyConverter extends TileBase implements IEnergy
       if(activated && valid){
         energy.set_to_full();
       }
-      energy.tick();
+      energy.updateEnergyIO();
     }
   }
 
@@ -105,7 +105,7 @@ public final class TileFusionEnergyConverter extends TileBase implements IEnergy
   }
 
   @Override
-  public Energy getEnergy(){
+  public final Generator getEnergy(){
     return energy;
   }
 
