@@ -10,8 +10,8 @@ import net.minecraftforge.server.command.TextComponentHelper;
 
 public final class MessageUtil {
 
-  /** Sends a SYSTEM type message to the player. This will execute correctly regardless if it was
-   *  called from the server or client.
+  /** <p>Sends a SYSTEM type message to the player.
+   *  <p>This must be called on the server side. Calling on the client side will only translate to English.
    * @param player
    * @param translation_key
    */

@@ -13,6 +13,8 @@ v1.3.4 - TBD
   You can now specify the Laser maximum receive variable in the config.
   Fixed a rare crash that would occur if you reloaded the world while a machine
     was working on its last item.
+  Fix message telling players the black hole is not allowed in this dimension
+    was displaying twice. - Error since v1.3.
 
 
 

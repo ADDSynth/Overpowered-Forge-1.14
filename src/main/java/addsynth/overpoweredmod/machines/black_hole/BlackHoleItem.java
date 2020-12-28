@@ -9,6 +9,7 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.world.World;
 
 public final class BlackHoleItem extends BlockItem {
 
@@ -17,13 +18,17 @@ public final class BlackHoleItem extends BlockItem {
   }
 
   @Override
+  @SuppressWarnings("resource")
   public final ActionResultType tryPlace(final BlockItemUseContext context){
-    if(TileBlackHole.is_black_hole_allowed(context.getWorld())){
+    final World world = context.getWorld();
+    if(TileBlackHole.is_black_hole_allowed(world)){
       return super.tryPlace(context);
     }
-    final PlayerEntity player = context.getPlayer();
-    if(player != null){
-      MessageUtil.send_to_player(player, "gui.overpowered.black_hole.not_allowed_in_this_dimension");
+    if(world.isRemote == false){
+      final PlayerEntity player = context.getPlayer();
+      if(player != null){
+        MessageUtil.send_to_player(player, "gui.overpowered.black_hole.not_allowed_in_this_dimension");
+      }
     }
     return ActionResultType.FAIL;
   }
