@@ -1,4 +1,4 @@
-v1.3.4 - TBD
+v1.3.4 - December 28, 2020
   Major code optimizations and maintenance.
   Fix Laser Distance or Energy not saving on world reload.
   Energy stored in Batteries is now balanaced across all batteries on the
