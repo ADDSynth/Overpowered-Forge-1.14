@@ -16,6 +16,7 @@ v1.3.4 - TBD
   Fix message telling players the black hole is not allowed in this dimension
     was displaying twice. - Error since v1.3.
   Added an alternate crafting recipe for the Fusion Energy Converter.
+  Fixed a few recipe advancements not working. But nobody cares about that.
 
 
 

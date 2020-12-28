@@ -40,7 +40,7 @@
     ]
   ],
   "rewards": {
-    "recipe": [
+    "recipes": [
       "overpowered:red_laser",
       "overpowered:orange_laser",
       "overpowered:yellow_laser",
