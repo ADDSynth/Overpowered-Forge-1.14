@@ -4,7 +4,7 @@ v1.3.4 - TBD
   Energy stored in Batteries is now balanaced across all batteries on the
     Energy Network.
   Fixed several errors with the Universal Energy Interface.
-  Batteries that are removed now redistribute any left over energy to other
+  Batteries that are removed now redistribute any leftover energy to other
     connected batteries.
   Fix Universal Energy Interface not depositing energy into Energy
     Storage Containers.
@@ -15,6 +15,7 @@ v1.3.4 - TBD
     was working on its last item.
   Fix message telling players the black hole is not allowed in this dimension
     was displaying twice. - Error since v1.3.
+  Added an alternate crafting recipe for the Fusion Energy Converter.
 
 
 
@@ -195,7 +196,7 @@ v1.2 - November 29, 2019
     Advanced Power Cores.
   This is the first version of the Overpowered mod that will use Forge's built-in
     version checker. Basically it checks for a file on our server for version info,
-    and if it find info for a newer version then it puts a green marker on the Mods
+    and if it finds info for a newer version then it puts a green marker on the Mods
     button on the Minecraft main menu. Click it and it shows you the new version
     changelog and a link on where to download it.
   Fixed trophy texture glitches.

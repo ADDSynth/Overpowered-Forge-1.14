@@ -48,7 +48,8 @@
   ],
   "rewards": {
     "recipe": [
-      "overpowered:fusion_energy_converter"
+      "overpowered:fusion_energy_converter",
+      "overpowered:fusion_energy_converter_alternate"
     ]
   }
 }
