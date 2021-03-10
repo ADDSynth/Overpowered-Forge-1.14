@@ -2,8 +2,8 @@ package addsynth.overpoweredmod.machines.portal.frame;
 
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
-import addsynth.core.material.MaterialsUtil;
 import addsynth.core.tiles.TileStorageMachine;
+import addsynth.material.MaterialsUtil;
 import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;

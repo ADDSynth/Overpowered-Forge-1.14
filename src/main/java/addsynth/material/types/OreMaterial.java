@@ -1,9 +1,9 @@
-package addsynth.core.material.types;
+package addsynth.material.types;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.items.CoreItem;
-import addsynth.core.material.MiningStrength;
-import addsynth.core.material.blocks.OreBlock;
+import addsynth.material.MiningStrength;
+import addsynth.material.blocks.OreBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;

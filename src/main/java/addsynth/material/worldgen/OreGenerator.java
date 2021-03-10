@@ -1,11 +1,11 @@
-package addsynth.core.worldgen;
+package addsynth.material.worldgen;
 
 import java.util.ArrayList;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.Constants;
-import addsynth.core.config.WorldgenConfig;
-import addsynth.core.material.Material;
-import addsynth.core.material.types.OreMaterial;
+import addsynth.material.Material;
+import addsynth.material.config.WorldgenConfig;
+import addsynth.material.types.OreMaterial;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;

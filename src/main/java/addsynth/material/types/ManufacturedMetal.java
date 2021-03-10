@@ -1,6 +1,6 @@
-package addsynth.core.material.types;
+package addsynth.material.types;
 
-import addsynth.core.material.MiningStrength;
+import addsynth.material.MiningStrength;
 import net.minecraft.block.material.MaterialColor;
 
 public final class ManufacturedMetal extends Metal {

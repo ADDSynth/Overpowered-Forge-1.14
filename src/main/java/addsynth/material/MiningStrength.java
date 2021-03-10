@@ -1,3 +1,3 @@
-package addsynth.core.material;
+package addsynth.material;
 
 public enum MiningStrength {ANY, STONE, IRON, DIAMOND}

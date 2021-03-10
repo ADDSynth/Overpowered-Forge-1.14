@@ -1,7 +1,7 @@
-package addsynth.core.material.types;
+package addsynth.material.types;
 
-import addsynth.core.material.Material;
 import addsynth.core.util.StringUtil;
+import addsynth.material.Material;
 
 public abstract class AbstractMaterial {
 

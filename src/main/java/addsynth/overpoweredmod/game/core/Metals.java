@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.game.core;
 
-import addsynth.core.material.Material;
-import addsynth.core.material.types.Metal;
+import addsynth.material.Material;
+import addsynth.material.types.Metal;
 import addsynth.overpoweredmod.Debug;
 
 public final class Metals {

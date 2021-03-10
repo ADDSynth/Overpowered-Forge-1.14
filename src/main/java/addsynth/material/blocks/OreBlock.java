@@ -1,7 +1,7 @@
-package addsynth.core.material.blocks;
+package addsynth.material.blocks;
 
-import addsynth.core.material.MiningStrength;
 import addsynth.core.util.math.MathUtility;
+import addsynth.material.MiningStrength;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.registers;
 
 import addsynth.core.game.RegistryUtil;
-import addsynth.core.material.types.Gem;
-import addsynth.core.material.types.Metal;
+import addsynth.material.types.Gem;
+import addsynth.material.types.Metal;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.Sounds;

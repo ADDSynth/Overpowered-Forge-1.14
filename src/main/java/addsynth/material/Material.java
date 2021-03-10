@@ -1,7 +1,7 @@
-package addsynth.core.material;
+package addsynth.material;
 
 import java.util.ArrayList;
-import addsynth.core.material.types.*;
+import addsynth.material.types.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Items;

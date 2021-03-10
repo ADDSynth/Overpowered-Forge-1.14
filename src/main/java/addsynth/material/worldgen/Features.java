@@ -1,4 +1,4 @@
-package addsynth.core.worldgen;
+package addsynth.material.worldgen;
 
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;

@@ -1,4 +1,4 @@
-package addsynth.core.material;
+package addsynth.material;
 
 public final class ADDSynthMaterial {
 

@@ -1,4 +1,4 @@
-package addsynth.core.config;
+package addsynth.material.config;
 
 import org.apache.commons.lang3.tuple.Pair;
 import addsynth.core.Constants;

@@ -1,4 +1,4 @@
-package addsynth.core.material.blocks;
+package addsynth.material.blocks;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.overpoweredmod.OverpoweredMod;
