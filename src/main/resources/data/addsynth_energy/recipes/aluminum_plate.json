@@ -4,6 +4,6 @@
     {"tag": "forge:ingots/aluminum"}
   ],
   "result": {
-    "item": "overpowered:aluminum_plate"
+    "item": "addsynth_materials:aluminum_plate"
   }
 }

@@ -4,6 +4,6 @@
     {"tag": "forge:ingots/gold"}
   ],
   "result": {
-    "item": "overpowered:gold_plate"
+    "item": "addsynth_materials:gold_plate"
   }
 }

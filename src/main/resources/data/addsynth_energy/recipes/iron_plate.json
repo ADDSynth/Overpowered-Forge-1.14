@@ -4,6 +4,6 @@
     {"tag": "forge:ingots/iron"}
   ],
   "result": {
-    "item": "overpowered:iron_plate"
+    "item": "addsynth_materials:iron_plate"
   }
 }

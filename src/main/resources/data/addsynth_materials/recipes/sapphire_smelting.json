@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "addsynth_materials:sapphire_ore"
+  },
+  "result": "addsynth_materials:sapphire",
+  "experience": 1.0,
+  "cookingtime": 200
+}

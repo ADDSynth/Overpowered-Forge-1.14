@@ -1,6 +1,5 @@
 package addsynth.material.types;
 
-import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.items.CoreItem;
 import addsynth.material.MiningStrength;
 import addsynth.material.blocks.OreBlock;

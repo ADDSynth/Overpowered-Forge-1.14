@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "overpowered:titanium_ore"
-  },
-  "result": "overpowered:titanium_ingot",
-  "experience": 1.0,
-  "cookingtime": 200
-}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "ggg",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:gems/sapphire"
+    }
+  },
+  "result": {
+    "item": "addsynth_materials:sapphire_block"
+  }
+}

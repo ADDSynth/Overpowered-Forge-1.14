@@ -70,6 +70,22 @@ description="Core mod required by all of ADDSynth's mods. Also adds a few basic 
     side="BOTH"
 
 [[mods]]
+modId="addsynth_materials"
+version="1.0"
+displayName="ADDSynth Materials"
+displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/minecraft_mods.html"
+logoFile="addsynth_materials_logo.png"
+credits=""
+authors="ADDSynth"
+description="Extra Materials"
+[[dependencies.addsynth_materials]]
+    modId="addsynthcore"
+    mandatory=true
+    versionRange="[1.0,]"
+    ordering="BEFORE"
+    side="BOTH"
+
+[[mods]]
 modId="addsynth_energy"
 version="1.0"
 displayName="ADDSynth Energy"

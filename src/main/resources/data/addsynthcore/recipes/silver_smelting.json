@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "overpowered:silver_ore"
-  },
-  "result": "overpowered:silver_ingot",
-  "experience": 1.0,
-  "cookingtime": 200
-}

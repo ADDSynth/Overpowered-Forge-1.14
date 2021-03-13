@@ -1,9 +1,9 @@
 package addsynth.material.types;
 
 import addsynth.core.gameplay.items.CoreItem;
+import addsynth.material.ADDSynthMaterials;
 import addsynth.material.MiningStrength;
 import addsynth.material.blocks.GemBlock;
-import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
@@ -18,7 +18,7 @@ public final class Gem extends OreMaterial {
     super(unlocalized_name,
       new CoreItem(unlocalized_name, true),
       new GemBlock(unlocalized_name+"_block", color),
-      MiningStrength.IRON, CreativeTabs.gems_creative_tab, min_experience, max_experience);
+      MiningStrength.IRON, ADDSynthMaterials.creative_tab, min_experience, max_experience);
     this.gem = this.item;
     this.shard = new CoreItem(unlocalized_name+"_shard", true);
   }

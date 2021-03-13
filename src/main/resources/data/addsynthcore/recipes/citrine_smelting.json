@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "overpowered:citrine_ore"
-  },
-  "result": "overpowered:citrine",
-  "experience": 1.0,
-  "cookingtime": 200
-}

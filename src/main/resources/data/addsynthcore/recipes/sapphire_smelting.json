@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "overpowered:sapphire_ore"
-  },
-  "result": "overpowered:sapphire",
-  "experience": 1.0,
-  "cookingtime": 200
-}

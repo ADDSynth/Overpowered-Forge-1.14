@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "overpowered:tin_ore"
-  },
-  "result": "overpowered:tin_ingot",
-  "experience": 0.7,
-  "cookingtime": 100
-}

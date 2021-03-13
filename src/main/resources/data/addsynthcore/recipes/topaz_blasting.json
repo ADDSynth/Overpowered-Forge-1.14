@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "overpowered:topaz_ore"
-  },
-  "result": "overpowered:topaz",
-  "experience": 1.0,
-  "cookingtime": 100
-}

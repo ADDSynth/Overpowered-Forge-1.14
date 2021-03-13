@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "addsynth_materials:topaz_ore"
+  },
+  "result": "addsynth_materials:topaz",
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "addsynth_materials:recipes/root",
+  "criteria": {
+    "platinum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/platinum"
+          }
+        ]
+      }
+    },
+    "platinum_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks/platinum"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "platinum",
+      "platinum_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynth_materials:platinum",
+      "addsynth_materials:platinum_block"
+    ]
+  }
+}

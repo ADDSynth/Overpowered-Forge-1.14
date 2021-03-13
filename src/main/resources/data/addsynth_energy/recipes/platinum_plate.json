@@ -4,6 +4,6 @@
     {"tag": "forge:ingots/platinum"}
   ],
   "result": {
-    "item": "overpowered:platinum_plate"
+    "item": "addsynth_materials:platinum_plate"
   }
 }

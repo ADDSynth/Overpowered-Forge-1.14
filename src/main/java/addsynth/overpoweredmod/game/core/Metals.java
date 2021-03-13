@@ -4,6 +4,7 @@ import addsynth.material.Material;
 import addsynth.material.types.Metal;
 import addsynth.overpoweredmod.Debug;
 
+@Deprecated
 public final class Metals {
 
   static {

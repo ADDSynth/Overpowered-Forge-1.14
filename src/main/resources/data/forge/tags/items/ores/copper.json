@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "overpowered:copper_ore"
+    "addsynth_materials:copper_ore"
   ]
 }

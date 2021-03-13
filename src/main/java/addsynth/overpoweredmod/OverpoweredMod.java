@@ -1,10 +1,10 @@
 package addsynth.overpoweredmod;
 
 import java.io.File;
-import addsynth.core.ADDSynthCore;
 import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.util.game.RecipeUtil;
+import addsynth.material.ADDSynthMaterials;
 import addsynth.material.Material;
 import addsynth.material.MaterialsUtil;
 import addsynth.material.worldgen.OreGenerator;
@@ -115,7 +115,7 @@ public class OverpoweredMod {
   }
 
   private static final void request_ores_to_generate(){
-    final String mod = ADDSynthCore.MOD_ID;
+    final String mod = ADDSynthMaterials.MOD_ID;
     final String message = OreGenerator.REQUEST_ORE;
     InterModComms.sendTo(MOD_ID, mod, message, () -> Material.RUBY);
     InterModComms.sendTo(MOD_ID, mod, message, () -> Material.TOPAZ);

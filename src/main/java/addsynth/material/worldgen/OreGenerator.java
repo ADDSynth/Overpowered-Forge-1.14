@@ -1,8 +1,8 @@
 package addsynth.material.worldgen;
 
 import java.util.ArrayList;
-import addsynth.core.ADDSynthCore;
 import addsynth.core.Constants;
+import addsynth.material.ADDSynthMaterials;
 import addsynth.material.Material;
 import addsynth.material.config.WorldgenConfig;
 import addsynth.material.types.OreMaterial;
@@ -22,7 +22,7 @@ public final class OreGenerator {
 
   private static final ArrayList<OreMaterial> requested_ores = new ArrayList<>(20);
 
-  /** Used by {@link ADDSynthCore} when an ore is requested to generate. ADDSynthCore checks if
+  /** Used by {@link ADDSynthMaterials} when an ore is requested to generate. ADDSynthMaterials checks if
    *    this is false, schedules a {@link net.minecraftforge.fml.DeferredWorkQueue} to run
    *    the {@link #register()} function below, then sets this to true.
    */
@@ -36,7 +36,7 @@ public final class OreGenerator {
       }
     }
     else{
-      ADDSynthCore.log.error("ADDSynthCore is done registering Ores to generate, but the mod '"+mod_id+
+      ADDSynthMaterials.log.error("ADDSynthMaterials is done registering Ores to generate, but the mod '"+mod_id+
         "' has requested to register another ore. You should ONLY be registering Ores to generate using "+
         "Forge's Inter-Mod communications feature!");
     }
@@ -45,7 +45,7 @@ public final class OreGenerator {
   public static final void register(){
     if(done == false){
     
-    ADDSynthCore.log.info("Begin registering all requested Ores...");
+    ADDSynthMaterials.log.info("Begin registering all requested Ores...");
     done = true;
     
     // This is how it's done now apparently.
@@ -104,14 +104,14 @@ public final class OreGenerator {
       }
     }
     
-    ADDSynthCore.log.info("Done registering requested Ores.");
+    ADDSynthMaterials.log.info("Done registering requested Ores.");
     }
   }
 
   private static final boolean valid_min_max_values(final String name, final int min, final int max){
     final boolean pass = min >= 0 && max >= 0 && min < Constants.world_height && max < Constants.world_height;
     if(pass == false){
-      ADDSynthCore.log.error("Invalid Worldgen Min/Max values: Min: "+min+", Max: "+max+", while generating Ores for "+name+".");
+      ADDSynthMaterials.log.error("Invalid Worldgen Min/Max values: Min: "+min+", Max: "+max+", while generating Ores for "+name+".");
     }
     return pass;
   }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "ggg",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:gems/citrine"
+    }
+  },
+  "result": {
+    "item": "addsynth_materials:citrine_block"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "addsynth_materials:recipes/root",
+  "criteria": {
+    "citrine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/citrine"
+          }
+        ]
+      }
+    },
+    "citrine_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:storage_blocks/citrine"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "citrine",
+      "citrine_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynth_materials:citrine",
+      "addsynth_materials:citrine_block"
+    ]
+  }
+}

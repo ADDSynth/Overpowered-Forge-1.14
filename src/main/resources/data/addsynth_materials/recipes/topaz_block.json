@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "ggg",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:gems/topaz"
+    }
+  },
+  "result": {
+    "item": "addsynth_materials:topaz_block"
+  }
+}

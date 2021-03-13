@@ -4,6 +4,6 @@
     {"tag": "forge:ingots/bronze"}
   ],
   "result": {
-    "item": "overpowered:bronze_plate"
+    "item": "addsynth_materials:bronze_plate"
   }
 }

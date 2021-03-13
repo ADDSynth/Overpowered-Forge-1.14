@@ -4,6 +4,6 @@
     {"tag": "forge:ingots/silver"}
   ],
   "result": {
-    "item": "overpowered:silver_plate"
+    "item": "addsynth_materials:silver_plate"
   }
 }

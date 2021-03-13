@@ -1,8 +1,6 @@
 package addsynth.overpoweredmod.registers;
 
 import addsynth.core.game.RegistryUtil;
-import addsynth.material.types.Gem;
-import addsynth.material.types.Metal;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.Sounds;
@@ -33,12 +31,6 @@ public final class Registers {
     
     final IForgeRegistry<Block> game = event.getRegistry();
     
-    for(Gem gem : Gems.index){
-      if(gem.custom){
-        game.register(gem.block);
-        game.register(gem.ore);
-      }
-    }
     if(Features.light_block.get()){ game.register(Init.light_block); }
     if(Features.null_block.get()){ game.register(Init.null_block); }
     
@@ -99,12 +91,6 @@ public final class Registers {
       game.register(Machines.fusion_control_laser);
       game.register(Machines.fusion_control_laser_beam);
     }
-    for(Metal metal : Metals.values){
-      if(metal.custom){
-        game.register(metal.block);
-        if(metal.ore != null){ game.register(metal.ore); }
-      }
-    }
     
     OverpoweredMod.log.info("Finished Block Registration Event.");
   }
@@ -115,13 +101,6 @@ public final class Registers {
     
     final IForgeRegistry<Item> game = event.getRegistry();
 
-    if(Features.crystal_matter_generator.get()){
-      for(Gem gem : Gems.index){ game.register(gem.shard); }
-    }
-    for(Gem gem : Gems.index){ if(gem.custom){ game.register(gem.gem); } }
-    for(Gem gem : Gems.index){ if(gem.custom){ game.register(gem.block_item); } }
-    for(Gem gem : Gems.index){ if(gem.custom){ game.register(OverpoweredMod.registry.getItemBlock(gem.ore)); } }
-    
     game.register(Init.energy_crystal_shards);
     game.register(Init.energy_crystal);
     if(Features.light_block.get()){ game.register(OverpoweredMod.registry.getItemBlock(Init.light_block)); }
@@ -199,11 +178,6 @@ public final class Registers {
         for(Item armor : armor_set){ game.register(armor); }
       }
     }
-    
-    for(Metal metal : Metals.values){ if(metal.custom){ game.register(metal.ingot); } }
-    for(Metal metal : Metals.values){ if(metal.custom){ game.register(OverpoweredMod.registry.getItemBlock(metal.block)); } }
-    for(Metal metal : Metals.values){ if(metal.custom){ if(metal.ore != null){ game.register(OverpoweredMod.registry.getItemBlock(metal.ore)); } } }
-    for(Metal metal : Metals.values){ game.register(metal.plating); }
     
     game.register(Portal.portal_image);
 

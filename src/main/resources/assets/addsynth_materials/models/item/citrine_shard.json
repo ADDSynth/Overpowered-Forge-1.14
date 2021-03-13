@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "addsynth_materials:items/gem_shards/citrine_shard"
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "overpowered:platinum_ore"
-  },
-  "result": "overpowered:platinum_ingot",
-  "experience": 1.0,
-  "cookingtime": 200
-}

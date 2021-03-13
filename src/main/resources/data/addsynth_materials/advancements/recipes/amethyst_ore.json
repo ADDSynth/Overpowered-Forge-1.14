@@ -1,0 +1,20 @@
+{
+  "parent": "addsynth_materials:recipes/root",
+  "criteria": {
+    "has_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ores/amethyst"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "addsynth_materials:amethyst_smelting"
+    ]
+  }
+}

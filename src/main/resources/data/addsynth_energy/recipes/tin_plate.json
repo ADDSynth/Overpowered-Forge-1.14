@@ -4,6 +4,6 @@
     {"tag": "forge:ingots/tin"}
   ],
   "result": {
-    "item": "overpowered:tin_plate"
+    "item": "addsynth_materials:tin_plate"
   }
 }

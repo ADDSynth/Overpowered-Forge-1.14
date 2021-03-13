@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "addsynth_materials:platinum_ore"
+  },
+  "result": "addsynth_materials:platinum_ingot",
+  "experience": 1.0,
+  "cookingtime": 100
+}

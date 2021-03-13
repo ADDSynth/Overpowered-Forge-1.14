@@ -7,6 +7,7 @@ import addsynth.overpoweredmod.Debug;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+@Deprecated
 public final class Gems {
 
   static {

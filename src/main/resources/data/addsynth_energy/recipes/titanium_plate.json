@@ -4,6 +4,6 @@
     {"tag": "forge:ingots/titanium"}
   ],
   "result": {
-    "item": "overpowered:titanium_plate"
+    "item": "addsynth_materials:titanium_plate"
   }
 }

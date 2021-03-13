@@ -1,8 +1,8 @@
 package addsynth.material.blocks;
 
 import addsynth.core.util.math.MathUtility;
+import addsynth.material.ADDSynthMaterials;
 import addsynth.material.MiningStrength;
-import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -38,7 +38,7 @@ public class OreBlock extends Block {
   public OreBlock(final String name, final MiningStrength strength, final ItemGroup group, int min_experience, int max_experience){
     super(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 6.0f).harvestTool(ToolType.PICKAXE).harvestLevel(strength.ordinal()));
     // https://minecraft.gamepedia.com/Breaking#Blocks_by_hardness
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(group));
+    ADDSynthMaterials.registry.register_block(this, name, new Item.Properties().group(group));
     this.min_experience = min_experience;
     this.max_experience = max_experience;
   }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "key": {
+    "s": {
+      "item": "addsynth_materials:amethyst_shard"
+    }
+  },
+  "result": {
+    "item": "addsynth_materials:amethyst"
+  }
+}
