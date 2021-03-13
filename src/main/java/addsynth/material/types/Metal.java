@@ -1,7 +1,7 @@
 package addsynth.material.types;
 
-import addsynth.core.gameplay.items.CoreItem;
 import addsynth.material.ADDSynthMaterials;
+import addsynth.material.MaterialItem;
 import addsynth.material.MiningStrength;
 import addsynth.material.blocks.MetalBlock;
 import net.minecraft.block.Block;
@@ -25,19 +25,19 @@ public class Metal extends OreMaterial {
 
   /** Manufactured Metal */
   protected Metal(final String unlocalized_name, final MaterialColor color){
-    super(unlocalized_name, new CoreItem(unlocalized_name+"_ingot", false), new MetalBlock(unlocalized_name+"_block", color));
+    super(unlocalized_name, new MaterialItem(unlocalized_name+"_ingot"), new MetalBlock(unlocalized_name+"_block", color));
     this.ingot = this.item;
-    this.nugget = new CoreItem(unlocalized_name+"_nugget", false);
-    this.plating = new CoreItem(unlocalized_name+"_plate", false);
+    this.nugget = new MaterialItem(unlocalized_name+"_nugget");
+    this.plating = new MaterialItem(unlocalized_name+"_plate");
   }
 
   /** Custom Metal */
   public Metal(final String unlocalized_name, final MaterialColor color, final MiningStrength strength){
-    super(unlocalized_name, new CoreItem(unlocalized_name+"_ingot", false), new MetalBlock(unlocalized_name+"_block", color),
+    super(unlocalized_name, new MaterialItem(unlocalized_name+"_ingot"), new MetalBlock(unlocalized_name+"_block", color),
       strength, ADDSynthMaterials.creative_tab, 0, 0);
     this.ingot = this.item;
-    this.nugget = new CoreItem(unlocalized_name+"_nugget", false);
-    this.plating = new CoreItem(unlocalized_name+"_plate", false);
+    this.nugget = new MaterialItem(unlocalized_name+"_nugget");
+    this.plating = new MaterialItem(unlocalized_name+"_plate");
   }
 
   /** Vanilla Material */
@@ -45,7 +45,7 @@ public class Metal extends OreMaterial {
     super(name, ingot, block, ore);
     this.ingot = this.item;
     this.nugget = nugget;
-    this.plating = new CoreItem(name+"_plate", false);
+    this.plating = new MaterialItem(name+"_plate");
   }
 
 }

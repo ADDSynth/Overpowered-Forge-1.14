@@ -1,12 +1,10 @@
 package addsynth.core.gameplay.music_box;
 
-import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.CoreItem;
 import addsynth.core.items.ItemUtil;
 import addsynth.core.util.game.MessageUtil;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.nbt.CompoundNBT;
@@ -32,7 +30,7 @@ public final class MusicSheet extends CoreItem {
   // See how vanilla handles the Ender Eye, an item that is used on blocks and by istelf.
 
   public MusicSheet(final String name){
-    super(new Item.Properties().group(ADDSynthCore.creative_tab), name);
+    super(name);
   }
 
   @Override
