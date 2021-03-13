@@ -27,6 +27,14 @@ public final class StringUtil {
     return false;
   }
 
+  public static final String build(String ... strings){
+    final StringBuilder b = new StringBuilder();
+    for(String s : strings){
+      b.append(s);
+    }
+    return b.toString();
+  }
+
   // https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toLowerCase-java.util.Locale-
   public static final String Capitalize(final String input_string){
     return Character.toUpperCase(input_string.charAt(0)) + input_string.substring(1);
