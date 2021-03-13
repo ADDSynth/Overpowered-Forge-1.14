@@ -18,10 +18,7 @@ public final class Config {
   public static ForgeConfigSpec.ConfigValue<Integer> unknown_dimension_id;
   public static ForgeConfigSpec.ConfigValue<Integer> weird_biome_id;
 
-  public static ForgeConfigSpec.BooleanValue creative_tab_gems;
-  public static ForgeConfigSpec.BooleanValue creative_tab_machines;
   public static ForgeConfigSpec.BooleanValue creative_tab_tools;
-  public static ForgeConfigSpec.BooleanValue creative_tab_metals;
 
   public static ForgeConfigSpec.ConfigValue<Integer> default_laser_distance;
   public static ForgeConfigSpec.BooleanValue lasers_emit_light;
@@ -112,12 +109,9 @@ public final class Config {
     builder.pop();
 
     // Creative Tabs
-    builder.push("Creative Tabs");
-    creative_tab_gems     = builder.define("Enable Gems Creative Tab", false);
-    creative_tab_machines = builder.define("Enable Machines Creative Tab", false);
+    // builder.push("Creative Tabs");
     creative_tab_tools    = builder.define("Enable Tools Creative Tab", false);
-    creative_tab_metals   = builder.define("Enable Metals Creative Tab", false);
-    builder.pop();
+    // builder.pop();
   
     // Laser Config
     builder.push("Lasers");

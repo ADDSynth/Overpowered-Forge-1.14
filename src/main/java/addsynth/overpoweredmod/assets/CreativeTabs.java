@@ -1,10 +1,8 @@
 package addsynth.overpoweredmod.assets;
 
-import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.game.core.Init;
-import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.Tools;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -20,6 +18,7 @@ public final class CreativeTabs {
     }
   };
 
+  /* DELETE
   public static final ItemGroup machines_creative_tab =
     Config.creative_tab_machines.get() ? new ItemGroup("overpowered_machines")
     {
@@ -29,6 +28,7 @@ public final class CreativeTabs {
       }
     }
   : creative_tab;
+  */
 
   public static final ItemGroup tools_creative_tab =
     Config.creative_tab_tools.get() ? new ItemGroup("overpowered_tools")

@@ -1,5 +1,8 @@
 v1.4 - TBD
   Made ADDSynth Materials into its own mod.
+  Removed the ability to move some Overpowered items into other Creative Tabs.
+
+
 
 v1.3.4 - December 28, 2020
   Major code optimizations and maintenance.

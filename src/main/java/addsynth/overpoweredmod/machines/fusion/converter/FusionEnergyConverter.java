@@ -18,7 +18,7 @@ public final class FusionEnergyConverter extends MachineBlock {
 
   public FusionEnergyConverter(final String name){
     super(MaterialColor.SNOW);
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override

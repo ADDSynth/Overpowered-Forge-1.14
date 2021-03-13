@@ -35,7 +35,7 @@ public final class PortalControlPanel extends MachineBlock {
 
   public PortalControlPanel(final String name){
     super(MaterialColor.SNOW);
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
   }
 

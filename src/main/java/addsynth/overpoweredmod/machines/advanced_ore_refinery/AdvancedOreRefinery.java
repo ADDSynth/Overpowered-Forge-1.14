@@ -27,7 +27,7 @@ public final class AdvancedOreRefinery extends MachineBlock {
 
   public AdvancedOreRefinery(final String name){
     super(MaterialColor.BLACK);
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override

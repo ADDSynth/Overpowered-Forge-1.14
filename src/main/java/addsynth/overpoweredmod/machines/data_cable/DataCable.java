@@ -46,7 +46,7 @@ public final class DataCable extends Wire {
 
   public DataCable(final String name){
     super(Block.Properties.create(Material.GOURD, MaterialColor.WOOL).hardnessAndResistance(0.1f, 0.0f));
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
+    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
     valid_blocks[0] = this;
   }
 
