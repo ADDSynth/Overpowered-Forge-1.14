@@ -114,6 +114,7 @@ public class OverpoweredMod {
     }
   }
 
+  // REMOVE: No longer 'request' to generate ores?
   private static final void request_ores_to_generate(){
     final String mod = ADDSynthMaterials.MOD_ID;
     final String message = OreGenerator.REQUEST_ORE;

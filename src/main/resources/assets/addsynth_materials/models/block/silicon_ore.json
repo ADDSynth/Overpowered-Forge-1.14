@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "addsynth_materials:blocks/silicon_ore"
+	}
+}

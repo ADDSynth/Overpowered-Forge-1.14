@@ -1,6 +1,5 @@
 package addsynth.material.types;
 
-import addsynth.material.ADDSynthMaterials;
 import addsynth.material.MaterialItem;
 import addsynth.material.MiningStrength;
 import addsynth.material.blocks.GemBlock;
@@ -18,7 +17,7 @@ public final class Gem extends OreMaterial {
     super(unlocalized_name,
       new MaterialItem(unlocalized_name),
       new GemBlock(unlocalized_name+"_block", color),
-      MiningStrength.IRON, ADDSynthMaterials.creative_tab, min_experience, max_experience);
+      MiningStrength.IRON, min_experience, max_experience);
     this.gem = this.item;
     this.shard = new MaterialItem(unlocalized_name+"_shard");
   }

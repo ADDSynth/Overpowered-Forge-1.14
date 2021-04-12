@@ -14,6 +14,8 @@ public final class WorldgenConfig {
   private static final int DEFAULT_GEM_MAX_HEIGHT = 40;
   private static final int DEFAULT_GEM_TRIES = 4;
   
+  private static final int DEFAULT_ROSE_QUARTZ_MAX_HEIGHT = 80;
+  
   // should be the same as Iron Ore
   private static final int DEFAULT_COMMON_METAL_MAX_HEIGHT = 128;
   private static final int DEFAULT_COMMON_METAL_TRIES = 15;
@@ -30,6 +32,9 @@ public final class WorldgenConfig {
   private static final int DEFAULT_RARE_METAL_ORE_SIZE = 7;
   // Rare: 3x (0 - 96) every 32 levels.
   
+  private static final int DEFAULT_SILICON_MAX_HEIGHT = 128;
+  private static final int DEFAULT_SILICON_TRIES = 6;
+  private static final int DEFAULT_SILICON_ORE_SIZE = 3;
 
   public static ForgeConfigSpec.BooleanValue generate_ruby;
   public static ForgeConfigSpec.IntValue ruby_min_height;
@@ -60,6 +65,17 @@ public final class WorldgenConfig {
   public static ForgeConfigSpec.IntValue amethyst_min_height;
   public static ForgeConfigSpec.IntValue amethyst_max_height;
   public static ForgeConfigSpec.IntValue amethyst_spawn_tries;
+
+  public static ForgeConfigSpec.BooleanValue generate_silicon;
+  public static ForgeConfigSpec.IntValue silicon_min_height;
+  public static ForgeConfigSpec.IntValue silicon_max_height;
+  public static ForgeConfigSpec.IntValue silicon_spawn_tries;
+  public static ForgeConfigSpec.IntValue silicon_ore_size;
+  
+  public static ForgeConfigSpec.BooleanValue generate_rose_quartz;
+  public static ForgeConfigSpec.IntValue rose_quartz_min_height;
+  public static ForgeConfigSpec.IntValue rose_quartz_max_height;
+  public static ForgeConfigSpec.IntValue rose_quartz_spawn_tries;
 
   public static ForgeConfigSpec.BooleanValue generate_tin;
   public static ForgeConfigSpec.IntValue tin_min_height;
@@ -194,6 +210,21 @@ public final class WorldgenConfig {
     titanium_max_height  = worldgen(builder, "maximum height", DEFAULT_RARE_METAL_MAX_HEIGHT);
     titanium_spawn_tries = tries(builder, DEFAULT_RARE_METAL_TRIES);
     titanium_ore_size    = size(builder, DEFAULT_RARE_METAL_ORE_SIZE);
+    builder.pop();
+
+    builder.push("Silicon Ore");
+    generate_silicon    = builder.define("generate", true);
+    silicon_min_height  = worldgen(builder, "minimum height", DEFAULT_MIN_HEIGHT);
+    silicon_max_height  = worldgen(builder, "maximum height", DEFAULT_SILICON_MAX_HEIGHT);
+    silicon_spawn_tries = tries(builder, DEFAULT_SILICON_TRIES);
+    silicon_ore_size    = size(builder, DEFAULT_SILICON_ORE_SIZE);
+    builder.pop();
+    
+    builder.push("Rose Quartz Ore");
+    generate_rose_quartz    = builder.define("generate", true);
+    rose_quartz_min_height  = worldgen(builder, "minimum height", DEFAULT_MIN_HEIGHT);
+    rose_quartz_max_height  = worldgen(builder, "maximum height", DEFAULT_ROSE_QUARTZ_MAX_HEIGHT);
+    rose_quartz_spawn_tries = tries(builder, 1);
     builder.pop();
 
     builder.pop();

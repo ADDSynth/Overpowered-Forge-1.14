@@ -5,6 +5,7 @@
     "#forge:gems/topaz",
     "#forge:gems/citrine",
     "#forge:gems/sapphire",
-    "#forge:gems/amethyst"
+    "#forge:gems/amethyst",
+    "#forge:gems/quartz"
   ]
 }

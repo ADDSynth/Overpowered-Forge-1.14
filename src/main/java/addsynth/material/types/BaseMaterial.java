@@ -27,7 +27,7 @@ public class BaseMaterial extends AbstractMaterial {
     super(custom, name);
     this.item = item;
     this.block = block;
-    this.block_item = block == null ? null : ADDSynthMaterials.registry.getItemBlock(this.block);
+    this.block_item = ADDSynthMaterials.registry.getItemBlock(this.block);
   }
 
 }

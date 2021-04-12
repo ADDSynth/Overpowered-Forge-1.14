@@ -1,6 +1,7 @@
 v1.4 - TBD
   Made ADDSynth Materials into its own mod.
   Removed the ability to move some Overpowered items into other Creative Tabs.
+  Added Silicon and Rose Quartz.
 
 
 

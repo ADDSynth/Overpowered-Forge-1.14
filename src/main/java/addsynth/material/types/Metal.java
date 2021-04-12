@@ -1,6 +1,5 @@
 package addsynth.material.types;
 
-import addsynth.material.ADDSynthMaterials;
 import addsynth.material.MaterialItem;
 import addsynth.material.MiningStrength;
 import addsynth.material.blocks.MetalBlock;
@@ -17,7 +16,7 @@ public class Metal extends OreMaterial {
 
   /** Placeholder Metal */
   public Metal(final String name){
-    super(name, null, null);
+    super(name);
     this.ingot = null;
     this.nugget = null;
     this.plating = null;
@@ -34,7 +33,7 @@ public class Metal extends OreMaterial {
   /** Custom Metal */
   public Metal(final String unlocalized_name, final MaterialColor color, final MiningStrength strength){
     super(unlocalized_name, new MaterialItem(unlocalized_name+"_ingot"), new MetalBlock(unlocalized_name+"_block", color),
-      strength, ADDSynthMaterials.creative_tab, 0, 0);
+      strength, 0, 0);
     this.ingot = this.item;
     this.nugget = new MaterialItem(unlocalized_name+"_nugget");
     this.plating = new MaterialItem(unlocalized_name+"_plate");

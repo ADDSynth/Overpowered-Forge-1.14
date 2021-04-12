@@ -3,6 +3,7 @@ package addsynth.material.types;
 import addsynth.material.MiningStrength;
 import net.minecraft.block.material.MaterialColor;
 
+/** Manufactured metals do not have an Ore Block. */
 public final class ManufacturedMetal extends Metal {
 
   /** Placeholder Metal */

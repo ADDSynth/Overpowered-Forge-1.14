@@ -53,53 +53,64 @@ public final class OreGenerator {
       if(biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND){
 
         if(requested_ores.contains(Material.RUBY) && WorldgenConfig.generate_ruby.get()){
-          generate_gem_ore(biome, Material.RUBY, WorldgenConfig.ruby_spawn_tries.get(),
+          generate_single_ore(biome, Material.RUBY, WorldgenConfig.ruby_spawn_tries.get(),
                            WorldgenConfig.ruby_min_height.get(), WorldgenConfig.ruby_max_height.get());
         }
         if(requested_ores.contains(Material.TOPAZ) && WorldgenConfig.generate_topaz.get()){
-          generate_gem_ore(biome, Material.TOPAZ, WorldgenConfig.topaz_spawn_tries.get(),
+          generate_single_ore(biome, Material.TOPAZ, WorldgenConfig.topaz_spawn_tries.get(),
                            WorldgenConfig.topaz_min_height.get(), WorldgenConfig.topaz_max_height.get());
         }
         if(requested_ores.contains(Material.CITRINE) && WorldgenConfig.generate_citrine.get()){
-          generate_gem_ore(biome, Material.CITRINE, WorldgenConfig.citrine_spawn_tries.get(),
+          generate_single_ore(biome, Material.CITRINE, WorldgenConfig.citrine_spawn_tries.get(),
                            WorldgenConfig.citrine_min_height.get(), WorldgenConfig.citrine_max_height.get());
         }
         if(requested_ores.contains(Material.EMERALD) && WorldgenConfig.generate_emerald.get()){
-          generate_gem_ore(biome, Material.EMERALD, WorldgenConfig.emerald_spawn_tries.get(),
+          generate_single_ore(biome, Material.EMERALD, WorldgenConfig.emerald_spawn_tries.get(),
                            WorldgenConfig.emerald_min_height.get(), WorldgenConfig.emerald_max_height.get());
         }
         if(requested_ores.contains(Material.SAPPHIRE) && WorldgenConfig.generate_sapphire.get()){
-          generate_gem_ore(biome, Material.SAPPHIRE, WorldgenConfig.sapphire_spawn_tries.get(),
+          generate_single_ore(biome, Material.SAPPHIRE, WorldgenConfig.sapphire_spawn_tries.get(),
                            WorldgenConfig.sapphire_min_height.get(), WorldgenConfig.sapphire_max_height.get());
         }
         if(requested_ores.contains(Material.AMETHYST) && WorldgenConfig.generate_amethyst.get()){
-          generate_gem_ore(biome, Material.AMETHYST, WorldgenConfig.amethyst_spawn_tries.get(),
+          generate_single_ore(biome, Material.AMETHYST, WorldgenConfig.amethyst_spawn_tries.get(),
                            WorldgenConfig.amethyst_min_height.get(), WorldgenConfig.amethyst_max_height.get());
         }
         
         if(requested_ores.contains(Material.TIN) && WorldgenConfig.generate_tin.get()){
-          generate_metal_ore(biome, Material.TIN, WorldgenConfig.tin_ore_size.get(), WorldgenConfig.tin_spawn_tries.get(),
+          generate_ore(biome, Material.TIN, WorldgenConfig.tin_ore_size.get(), WorldgenConfig.tin_spawn_tries.get(),
                              WorldgenConfig.tin_min_height.get(), WorldgenConfig.tin_max_height.get());
         }
         if(requested_ores.contains(Material.COPPER) && WorldgenConfig.generate_copper.get()){
-          generate_metal_ore(biome, Material.COPPER, WorldgenConfig.copper_ore_size.get(), WorldgenConfig.copper_spawn_tries.get(),
+          generate_ore(biome, Material.COPPER, WorldgenConfig.copper_ore_size.get(), WorldgenConfig.copper_spawn_tries.get(),
                              WorldgenConfig.copper_min_height.get(), WorldgenConfig.copper_max_height.get());
         }
         if(requested_ores.contains(Material.ALUMINUM) && WorldgenConfig.generate_aluminum.get()){
-          generate_metal_ore(biome, Material.ALUMINUM, WorldgenConfig.aluminum_ore_size.get(), WorldgenConfig.aluminum_spawn_tries.get(),
+          generate_ore(biome, Material.ALUMINUM, WorldgenConfig.aluminum_ore_size.get(), WorldgenConfig.aluminum_spawn_tries.get(),
                              WorldgenConfig.aluminum_min_height.get(), WorldgenConfig.aluminum_max_height.get());
         }
         if(requested_ores.contains(Material.SILVER) && WorldgenConfig.generate_silver.get()){
-          generate_metal_ore(biome, Material.SILVER, WorldgenConfig.silver_ore_size.get(), WorldgenConfig.silver_spawn_tries.get(),
+          generate_ore(biome, Material.SILVER, WorldgenConfig.silver_ore_size.get(), WorldgenConfig.silver_spawn_tries.get(),
                              WorldgenConfig.silver_min_height.get(), WorldgenConfig.silver_max_height.get());
         }
         if(requested_ores.contains(Material.PLATINUM) && WorldgenConfig.generate_platinum.get()){
-          generate_metal_ore(biome, Material.PLATINUM, WorldgenConfig.platinum_ore_size.get(), WorldgenConfig.platinum_spawn_tries.get(),
+          generate_ore(biome, Material.PLATINUM, WorldgenConfig.platinum_ore_size.get(), WorldgenConfig.platinum_spawn_tries.get(),
                              WorldgenConfig.platinum_min_height.get(), WorldgenConfig.platinum_max_height.get());
         }
         if(requested_ores.contains(Material.TITANIUM) && WorldgenConfig.generate_titanium.get()){
-          generate_metal_ore(biome, Material.TITANIUM, WorldgenConfig.titanium_ore_size.get(), WorldgenConfig.titanium_spawn_tries.get(),
+          generate_ore(biome, Material.TITANIUM, WorldgenConfig.titanium_ore_size.get(), WorldgenConfig.titanium_spawn_tries.get(),
                              WorldgenConfig.titanium_min_height.get(), WorldgenConfig.titanium_max_height.get());
+        }
+        
+        if(WorldgenConfig.generate_silicon.get()){
+          generate_ore(biome, Material.SILICON, WorldgenConfig.silicon_ore_size.get(), WorldgenConfig.silicon_spawn_tries.get(),
+                             WorldgenConfig.silicon_min_height.get(), WorldgenConfig.silicon_max_height.get());
+        }
+        
+        // Rose Quartz is the most rare. Make sure it is the last one generated
+        if(WorldgenConfig.generate_rose_quartz.get()){
+          generate_single_ore(biome, Material.ROSE_QUARTZ, WorldgenConfig.rose_quartz_spawn_tries.get(),
+                           WorldgenConfig.rose_quartz_min_height.get(), WorldgenConfig.rose_quartz_max_height.get());
         }
       }
     }
@@ -116,7 +127,7 @@ public final class OreGenerator {
     return pass;
   }
 
-  private static final void generate_gem_ore(final Biome biome, final OreMaterial material, final int tries, final int min, final int max){
+  private static final void generate_single_ore(final Biome biome, final OreMaterial material, final int tries, final int min, final int max){
     if(valid_min_max_values(material.name, min, max)){
       final int min_depth = Math.min(min, max);
       final int max_depth = Math.max(min, max);
@@ -128,7 +139,7 @@ public final class OreGenerator {
     }
   }
 
-  private static final void generate_metal_ore(final Biome biome, final OreMaterial material, final int size, final int tries, final int min, final int max){
+  private static final void generate_ore(final Biome biome, final OreMaterial material, final int size, final int tries, final int min, final int max){
     if(valid_min_max_values(material.name, min, max)){
       final int min_depth = Math.min(min, max);
       final int max_depth = Math.max(min, max);
