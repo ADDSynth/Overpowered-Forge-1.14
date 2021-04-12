@@ -2,6 +2,12 @@ v1.4 - TBD
   Made ADDSynth Materials into its own mod.
   Removed the ability to move some Overpowered items into other Creative Tabs.
   Added Silicon and Rose Quartz.
+  Added more mods to detect:
+    The One Probe, Hwyla, The Beneath, Cooking for Blockheads, Tiny Progressions,
+    FoamFix, RFTools Utility, Draconic Evolution, Curios, Forestry,
+    Immersive Engineering, Immersive Railroading, Track API, Sound Filters,
+    Block Renderer, Item Zoom, Neat, and McJtyLib.
+    - Updated Pam's Harvestcraft so it can detect it now.
 
 
 
