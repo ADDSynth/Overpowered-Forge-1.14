@@ -1,13 +1,13 @@
 package addsynth.overpoweredmod.machines.portal.frame;
 
-import addsynth.core.container.AbstractContainer;
+import addsynth.core.container.TileEntityContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerPortalFrame extends AbstractContainer<TilePortalFrame> {
+public final class ContainerPortalFrame extends TileEntityContainer<TilePortalFrame> {
 
   public ContainerPortalFrame(final int id, final PlayerInventory player_inventory, final TilePortalFrame tile){
     super(Containers.PORTAL_FRAME, id, player_inventory, tile);

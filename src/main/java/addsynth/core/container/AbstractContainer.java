@@ -7,27 +7,16 @@ import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IWorldPosCallable;
 
-/** Use this Container only if your TileEntity doesn't have any inventories.
- *  If it does, you'll have to use one of the other Container classes.
- * @param <T>
- */
-public abstract class AbstractContainer<T extends TileEntity> extends Container {
+public abstract class AbstractContainer extends Container {
 
-  protected final T tile;
-
-  public AbstractContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final T tile){
+  public AbstractContainer(final ContainerType type, final int id, final PlayerInventory player_inventory){
     super(type, id);
-    this.tile = tile;
   }
 
   // New in 1.14, thanks again to this guy: https://github.com/Cadiboo/Example-Mod/blob/1.14.4/src/main/java/io/github/cadiboo/examplemod/container/ElectricFurnaceContainer.java
-  @SuppressWarnings("unchecked")
   public AbstractContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final PacketBuffer data){
     super(type, id);
-    this.tile = (T)(player_inventory.player.world.getTileEntity(data.readBlockPos()));
   }
 
   protected final void make_player_inventory(PlayerInventory player_inventory){
@@ -61,11 +50,6 @@ public abstract class AbstractContainer<T extends TileEntity> extends Container 
     return ItemStack.EMPTY;
   }
 
-  @Override
-  public boolean canInteractWith(final PlayerEntity player){
-    return isWithinUsableDistance(IWorldPosCallable.DUMMY, player, tile.getBlockState().getBlock());
-  }
-
   /*
   protected final ItemStack default_transfer(final int index, final int number_of_input_slots){
     TODO: Add Shift-click support.
@@ -90,9 +74,5 @@ public abstract class AbstractContainer<T extends TileEntity> extends Container 
     return stack;
   }
     */
-
-  public final T getTileEntity(){
-    return tile;
-  }
 
 }

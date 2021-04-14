@@ -1,13 +1,13 @@
 package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 
-import addsynth.core.container.AbstractContainer;
+import addsynth.core.container.TileEntityContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.core.container.slots.OutputSlot;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerOreRefinery extends AbstractContainer<TileAdvancedOreRefinery> {
+public final class ContainerOreRefinery extends TileEntityContainer<TileAdvancedOreRefinery> {
 
   public ContainerOreRefinery(final int id, final PlayerInventory player_inventory, final TileAdvancedOreRefinery tile){
     super(Containers.ADVANCED_ORE_REFINERY, id, player_inventory, tile);

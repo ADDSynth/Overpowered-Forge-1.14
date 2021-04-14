@@ -1,6 +1,6 @@
 package addsynth.energy.gui;
 
-import addsynth.core.container.AbstractContainer;
+import addsynth.core.container.TileEntityContainer;
 import addsynth.core.gui.GuiBase;
 import addsynth.core.inventory.IInputInventory;
 import addsynth.core.util.StringUtil;
@@ -12,7 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extends AbstractContainer<T>> extends GuiBase<C> {
+public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extends TileEntityContainer<T>> extends GuiBase<C> {
 
   protected final T tile;
   protected final Energy energy;

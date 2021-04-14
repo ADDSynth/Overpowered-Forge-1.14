@@ -10,7 +10,7 @@ import net.minecraft.tileentity.TileEntity;
  *  items to be inserted and extracted.
  * @param <T>
  */
-public abstract class BasicContainer<T extends TileEntity & IStorageInventory> extends AbstractContainer<T> {
+public abstract class BasicContainer<T extends TileEntity & IStorageInventory> extends TileEntityContainer<T> {
 
   public BasicContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final T tile){
     super(type, id, player_inventory, tile);

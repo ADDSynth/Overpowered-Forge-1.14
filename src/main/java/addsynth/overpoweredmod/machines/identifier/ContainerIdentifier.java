@@ -1,13 +1,13 @@
 package addsynth.overpoweredmod.machines.identifier;
 
-import addsynth.core.container.AbstractContainer;
+import addsynth.core.container.TileEntityContainer;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.core.container.slots.OutputSlot;
 import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerIdentifier extends AbstractContainer<TileIdentifier> {
+public final class ContainerIdentifier extends TileEntityContainer<TileIdentifier> {
 
   public ContainerIdentifier(final int id, final PlayerInventory player_inventory, final TileIdentifier tile){
     super(Containers.IDENTIFIER, id, player_inventory, tile);
