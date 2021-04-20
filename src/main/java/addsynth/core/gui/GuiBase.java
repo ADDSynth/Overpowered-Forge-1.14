@@ -33,6 +33,7 @@ public abstract class GuiBase extends Screen {
 
   @Override
   public void render(int mouse_x, int mouse_y, float partialTicks){
+    // CHECK: This is a replica of ContainerScreen.render() but without drawing any ItemStacks. Make sure it matches whenever we update Forge.
     super.renderBackground();
     drawGuiBackgroundLayer(partialTicks, mouse_x, mouse_y);
     // net.minecraftforge.common.MinecraftForge.EVENT_BUS.pose(new net.minecraftforge.client.event.GuiContainerEvent.DrawBackground(this, mouse_x, mouse_y));

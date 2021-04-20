@@ -3,7 +3,7 @@
 Welcome to the source code repository for the Overpowered mod for Minecraft, by ADDSynth.
 The source code is licensed under GNU GPL v3.0 or Later, with The Commons Clause.
 
-**Last Updated:** November 1, 2020
+**Last Updated:** April 20, 2021
 
 <!-- a double space after a line = a line break -->
 
@@ -91,6 +91,7 @@ Please configure your IDE to recognize these Task Tags.
 | OPTIMIZE |  Normal  | Code that can be upgraded or improved.                                      |
 | REMOVE   |  Normal  | Code that is scheduled to be removed at a later time. Must specify when to remove.       |
 | TEST     |  Normal  | Further testing is required to see if there's a better way to do something. |
+| CHECK    |   Low    | Code that is an exact duplicate of someone else's code, because I need a custom version. Must check for any differences each time the external code is updated. |
 | DELETE   |   Low    | Commented code that can be deleted when I'm sure I won't miss it.           |
 | FEATURE  |   Low    | Describes a feature that would be nice to have, but ultimately not needed at the moment. |
 | MAYBE    |   Low    | Suggests an alternative. |
