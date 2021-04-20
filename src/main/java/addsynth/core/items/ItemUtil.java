@@ -1,6 +1,5 @@
 package addsynth.core.items;
 
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -42,12 +41,6 @@ public final class ItemUtil {
   /** Loads ItemStack if the entry for it exists. Returns an Empty ItemStack if it does not. */
   public static final ItemStack loadItemStackFromNBT(final CompoundNBT nbt, final String key){
     return ItemStack.read(nbt.getCompound(key));
-  }
-
-  public static final void add_to_player_inventory(final PlayerEntity player, final ItemStack stack){
-    if(player.inventory.addItemStackToInventory(stack) == false){
-      player.dropItem(stack, false);
-    }
   }
 
   public static final Item get_armor(final ArmorMaterial armor_material, final EquipmentType equipment_type){

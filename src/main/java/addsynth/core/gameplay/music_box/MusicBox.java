@@ -4,6 +4,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.blocks.BlockTile;
 import addsynth.core.gameplay.Core;
 import addsynth.core.util.game.MinecraftUtility;
+import addsynth.core.util.game.PlayerUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -11,7 +12,6 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
@@ -42,12 +42,9 @@ public final class MusicBox extends BlockTile {
   @SuppressWarnings("deprecation")
   public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final ItemStack heldItem = player.getHeldItemMainhand(); // TEST OPTIMIZE can this code be moved into the Music_Sheet.onUseItemFirst() function? for all versions?
-      if(heldItem != null){
-        if(heldItem.getItem() == Core.music_sheet){
-          return false; // let the music sheet item handle it.
-        }
-      }
+    if(PlayerUtil.isPlayerHoldingItem(player, Core.music_sheet)){
+      return false; // let the music sheet item handle it.
+    }
       final TileMusicBox tile = MinecraftUtility.getTileEntity(pos, world, TileMusicBox.class);
       if(tile != null){
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
