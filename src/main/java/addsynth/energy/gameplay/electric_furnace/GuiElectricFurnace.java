@@ -1,6 +1,7 @@
 package addsynth.energy.gameplay.electric_furnace;
 
-import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.gui.util.GuiUtil;
+import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
 import net.minecraft.client.renderer.RenderHelper;
@@ -25,7 +26,7 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
-    draw_background_texture();
+    guiUtil.draw_background_texture();
     
     final float work_float = tile.getWorkTimePercentage();
     work_percentage = (int)Math.floor(work_float*100);
@@ -34,12 +35,12 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
 
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
-    super.draw_title();
+    guiUtil.draw_title(this.title);
     draw_energy_usage();
     draw_status(tile.getStatus());
     RenderHelper.enableGUIStandardItemLighting();
-    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 80, 40);
-    draw_text_center(work_percentage + "%", center_x + 21, work_percentage_text_y);
+    GuiUtil.drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 80, 40);
+    GuiUtil.draw_text_center(work_percentage + "%", guiUtil.center_x + 21, work_percentage_text_y);
     draw_time_left(time_left_y);
   }
 

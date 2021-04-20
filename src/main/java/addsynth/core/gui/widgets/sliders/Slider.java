@@ -1,4 +1,4 @@
-package addsynth.core.gui.objects.sliders;
+package addsynth.core.gui.widgets.sliders;
 
 import net.minecraft.client.gui.widget.Widget;
 

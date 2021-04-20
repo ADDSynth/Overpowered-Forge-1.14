@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.crystal_matter_generator;
 
-import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -30,7 +30,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
-    draw_background_texture();
+    guiUtil.draw_background_texture();
     
     final float work_float = tile.getWorkTimePercentage();
     work_percentage = (int)Math.floor(work_float * 100);
@@ -39,10 +39,10 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
 
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
-    draw_title();
+    guiUtil.draw_title(this.title);
     draw_energy_usage_after_switch();
     draw_status_below_switch(tile.getStatus());
-    draw_text_center(work_percentage + "%", work_percentage_text_y);
+    guiUtil.draw_text_center(work_percentage + "%", work_percentage_text_y);
     draw_time_left(98);
   }
 

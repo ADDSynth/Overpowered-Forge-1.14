@@ -1,5 +1,6 @@
 package addsynth.core.container;
 
+import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -10,13 +11,18 @@ import net.minecraft.network.PacketBuffer;
 
 public abstract class AbstractContainer extends Container {
 
+  /** Be warned! When accessing the Container from the Gui, this is the {@link ClientPlayerEntity}! */
+  public final PlayerEntity player;
+
   public AbstractContainer(final ContainerType type, final int id, final PlayerInventory player_inventory){
     super(type, id);
+    player = player_inventory.player;
   }
 
   // New in 1.14, thanks again to this guy: https://github.com/Cadiboo/Example-Mod/blob/1.14.4/src/main/java/io/github/cadiboo/examplemod/container/ElectricFurnaceContainer.java
   public AbstractContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final PacketBuffer data){
     super(type, id);
+    player = player_inventory.player;
   }
 
   protected final void make_player_inventory(PlayerInventory player_inventory){

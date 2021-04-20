@@ -1,4 +1,4 @@
-package addsynth.core.gui;
+package addsynth.core.gui.util;
 
 import java.lang.reflect.Method;
 import addsynth.core.util.color.Color;

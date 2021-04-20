@@ -3,7 +3,6 @@ package addsynth.core.gameplay.init;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.config.Features;
 import addsynth.core.game.RegistryUtil;
-import addsynth.core.gameplay.Containers;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.Tiles;
 import net.minecraft.block.Block;
@@ -66,7 +65,6 @@ public final class CoreRegister {
   @SubscribeEvent
   public static final void registerContainers(final RegistryEvent.Register<ContainerType<?>> event){
     final IForgeRegistry<ContainerType<?>> game = event.getRegistry();
-    RegistryUtil.register(game, Containers.MUSIC_BOX, new ResourceLocation(ADDSynthCore.MOD_ID, "music_box"));
   }
     
 }

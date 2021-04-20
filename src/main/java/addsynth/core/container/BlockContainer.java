@@ -1,5 +1,6 @@
 package addsynth.core.container;
 
+import addsynth.core.ADDSynthCore;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -10,6 +11,7 @@ import net.minecraft.util.IWorldPosCallable;
 /** This container is used for blocks that don't need to
  *  be a TileEntity.
  */
+@Deprecated // REMOVE BlockContainer if this doesn't get used before the year 2024.
 public abstract class BlockContainer extends AbstractContainer {
 
   private final Block block;
@@ -21,7 +23,14 @@ public abstract class BlockContainer extends AbstractContainer {
 
   public BlockContainer(final ContainerType type, final int id, final PlayerInventory player_inventory, final PacketBuffer data){
     super(type, id, player_inventory, data);
-    this.block = player_inventory.player.world.getBlockState(data.readBlockPos()).getBlock();
+    Block block = null;
+    try{
+      block = player_inventory.player.world.getBlockState(data.readBlockPos()).getBlock();
+    }
+    catch(Exception e){
+      ADDSynthCore.log.error("Developer didn't include Block position when calling a gui? Read stack trace.", e);
+    }
+    this.block = block;
   }
 
   @Override

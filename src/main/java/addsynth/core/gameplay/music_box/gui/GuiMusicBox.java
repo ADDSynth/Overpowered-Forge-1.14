@@ -5,13 +5,13 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.music_box.MusicGrid;
 import addsynth.core.gameplay.music_box.TileMusicBox;
 import addsynth.core.gui.GuiBase;
+import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.util.StringUtil;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
+public final class GuiMusicBox extends GuiBase {
 
   private static final ResourceLocation music_box_gui_texture = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/music_box.png");
   private static final ResourceLocation widget_texture        = new ResourceLocation(ADDSynthCore.MOD_ID,"textures/gui/gui_textures.png");
@@ -92,9 +92,9 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   private static final int instrument_button_x = instrument_cursor_x + 2;
   private static final int instrument_button_y = instrument_cursor_y + 2;
 
-  public GuiMusicBox(final ContainerMusicBox container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(gui_width, gui_height, container, player_inventory, title, music_box_gui_texture);
-    this.tile = container.getTileEntity();
+  public GuiMusicBox(final TileMusicBox tileEntity, final ITextComponent title){
+    super(gui_width, gui_height, title, music_box_gui_texture);
+    this.tile = tileEntity;
   }
 
   @Override
@@ -102,12 +102,14 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
     super.init();
 
     // controls list
-    int x = this.guiLeft + center_x - (play_button_width / 2);
-    addButton(new MusicButtons.PlayButton(x, this.guiTop + 17, play_button_width, tile));
-    addButton(new MusicButtons.TempoButton(this.guiLeft + 6, this.guiTop + tempo_button_y, tempo_button_width, tempo_button_height, true, tile));
-    x = this.guiLeft + 6 + tempo_button_width + tempo_text_width; // OPTIMIZE calculation of guiTop + tempo_button_y for Tempo buttons.
-    addButton(new MusicButtons.TempoButton(x, this.guiTop + tempo_button_y, tempo_button_width, tempo_button_height, false, tile));
-    addButton(new MusicButtons.NextDirectionButton(this.guiRight - 6 - next_direction_button_width, this.guiTop + 17, next_direction_button_width, tile));
+    final int play_button_x = guiUtil.guiCenter - (play_button_width / 2);
+    final int tempo_x1 = guiUtil.guiLeft + 6;
+    final int tempo_x2 = guiUtil.guiLeft + 6 + tempo_button_width + tempo_text_width;
+    final int tempo_y = guiUtil.guiTop + tempo_button_y;
+    addButton(new MusicButtons.PlayButton(play_button_x, guiUtil.guiTop + 17, play_button_width, tile));
+    addButton(new MusicButtons.TempoButton(tempo_x1, tempo_y, tempo_button_width, tempo_button_height, true, tile));
+    addButton(new MusicButtons.TempoButton(tempo_x2, tempo_y, tempo_button_width, tempo_button_height, false, tile));
+    addButton(new MusicButtons.NextDirectionButton(guiUtil.guiRight - 6 - next_direction_button_width, guiUtil.guiTop + 17, next_direction_button_width, tile));
 
     // music grid buttons
     create_dynamic_buttons();
@@ -120,24 +122,24 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
     int y;
 
     // Mute Buttons
-    x = this.guiLeft + mute_button_x;
+    x = guiUtil.guiLeft + mute_button_x;
     for(i = 0; i < MusicGrid.tracks; i++){
-      y = this.guiTop + music_grid_y + (i * (track_height));
+      y = guiUtil.guiTop + music_grid_y + (i * (track_height));
       addButton(new MusicButtons.MuteButton(x, y, i, tile));
     }
 
     // Track Instrument Buttons
-    x = this.guiLeft + track_instrument_x;
+    x = guiUtil.guiLeft + track_instrument_x;
     for(i = 0; i < MusicGrid.tracks; i++){
-      y = this.guiTop + music_grid_y + (i * track_height);
+      y = guiUtil.guiTop + music_grid_y + (i * track_height);
       addButton(new MusicButtons.TrackInstrumentButton(x, y, i, tile));
     }
 
     // Note Buttons
     for(j = 0; j < MusicGrid.tracks; j++){
       for(i = 0; i < MusicGrid.frames; i++){
-        x = this.guiLeft + music_grid_x + (i * track_width);
-        y = this.guiTop  + music_grid_y + (j * track_height);
+        x = guiUtil.guiLeft + music_grid_x + (i * track_width);
+        y = guiUtil.guiTop  + music_grid_y + (j * track_height);
         addButton(new MusicButtons.NoteButton(x, y, j, i, tile));
       }
     }
@@ -147,8 +149,8 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
       for(i = 0; i < instrument_buttons; i++){
         instrument = i + (j * instrument_buttons);
         if(instrument < MusicGrid.instruments.length){
-          x = this.guiLeft + instrument_button_x + (i * instrument_button_size);
-          y = this.guiTop  + instrument_button_y + (j * instrument_button_size);
+          x = guiUtil.guiLeft + instrument_button_x + (i * instrument_button_size);
+          y = guiUtil.guiTop  + instrument_button_y + (j * instrument_button_size);
           addButton(new MusicButtons.SelectInstrumentButton(x, y, instrument));
         }
       }
@@ -156,8 +158,8 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   }
 
   @Override
-  protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
-    draw_custom_background_texture(384,256);
+  protected final void drawGuiBackgroundLayer(float partialTicks, int mouseX, int mouseY){
+    guiUtil.draw_custom_background_texture(384, 256);
     get_variables_from_music_box();
     draw_playhead();
     draw_muted_tracks();
@@ -172,8 +174,8 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   private final void draw_playhead(){
     if(tile != null){
       if(tile.is_playing()){
-        this.textureManager.bindTexture(widget_texture);
-        blit(this.guiLeft + playhead_x + (tile.playhead * track_width), this.guiTop + playhead_y,
+        GuiUtil.textureManager.bindTexture(widget_texture);
+        blit(guiUtil.guiLeft + playhead_x + (tile.playhead * track_width), guiUtil.guiTop + playhead_y,
                               playhead_texture_x, playhead_texture_y, 16, 8);
       }
     }
@@ -188,27 +190,27 @@ public final class GuiMusicBox extends GuiBase<ContainerMusicBox> {
   }
 
   private final void draw_instrument_selected(){
-    this.textureManager.bindTexture(widget_texture);
+    GuiUtil.textureManager.bindTexture(widget_texture);
     final int texture_x = 112;
     final int texture_y = 32;
     final int texture_size = 40;
-    final int x = this.guiLeft + instrument_cursor_x + ( (instrument_selected % instrument_buttons) * instrument_button_size);
-    final int y = this.guiTop  + instrument_cursor_y + ( (instrument_selected / instrument_buttons) * instrument_button_size);
+    final int x = guiUtil.guiLeft + instrument_cursor_x + ( (instrument_selected % instrument_buttons) * instrument_button_size);
+    final int y = guiUtil.guiTop  + instrument_cursor_y + ( (instrument_selected / instrument_buttons) * instrument_button_size);
     blit(x, y, instrument_button_size, instrument_button_size, texture_x, texture_y, texture_size, texture_size, 256, 256);
   }
 
   @Override
-  protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
-    draw_title();
+  protected final void drawGuiForegroundLayer(final int mouseX, final int mouseY){
+    guiUtil.draw_title(this.title);
     // draw tempo:
-    draw_text_center(tempo_text+":", tempo_text_x_center, 6);
-    draw_text_center(ticks + " "+ticks_text,tempo_text_x_center, 17);
-    draw_text_center(bpm + " "+bpm_text,tempo_text_x_center, 27);
+    GuiUtil.draw_text_center(tempo_text+":", tempo_text_x_center, 6);
+    GuiUtil.draw_text_center(ticks + " "+ticks_text,tempo_text_x_center, 17);
+    GuiUtil.draw_text_center(bpm + " "+bpm_text,tempo_text_x_center, 27);
     
-    draw_text_center(next_text+":", right_edge - (next_direction_button_width / 2), 6);
+    GuiUtil.draw_text_center(next_text+":", guiUtil.right_edge - (next_direction_button_width / 2), 6);
     
-    draw_text_left(current_note_text+": "+MusicButtons.note[note_selected],6,info_text_y);
-    draw_text_left(instrument_text+": "+instrument[instrument_selected], center_x - 10, info_text_y);
+    GuiUtil.draw_text_left(current_note_text+": "+MusicButtons.note[note_selected],6,info_text_y);
+    GuiUtil.draw_text_left(instrument_text+": "+instrument[instrument_selected], guiUtil.center_x - 10, info_text_y);
   }
 
   /**

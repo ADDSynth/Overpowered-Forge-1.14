@@ -1,4 +1,4 @@
-package addsynth.core.gui.objects;
+package addsynth.core.gui.widgets;
 
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 

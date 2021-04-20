@@ -1,7 +1,8 @@
 package addsynth.energy.gameplay.universal_energy_interface;
 
-import addsynth.core.gui.objects.AdjustableButton;
-import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.gui.util.GuiUtil;
+import addsynth.core.gui.widgets.ProgressBar;
+import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
@@ -53,22 +54,22 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
   @Override
   public final void init(){
     super.init();
-    final int button_x = guiLeft + center_x - (button_width / 2) + 4;
+    final int button_x = guiLeft + guiUtil.center_x - (button_width / 2) + 4;
     addButton(new CycleTransferModeButton(button_x, guiTop + 17, tile));
   }
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(final float partialTicks, final int mouseX, final int mouseY){
-    draw_background_texture();
+    guiUtil.draw_background_texture();
     energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy.getEnergyPercentage(),ProgressBar.Round.NEAREST);
   }
 
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
-    draw_title();
-    draw_text_left(mode_text+":", 6, line_1);
-    draw_text_left(energy_text+":", 6, line_2);
-    draw_text_right(energy.getEnergy() + " / "+energy.getCapacity(), 130, line_2);
+    guiUtil.draw_title(this.title);
+    GuiUtil.draw_text_left(mode_text+":", 6, line_1);
+    GuiUtil.draw_text_left(energy_text+":", 6, line_2);
+    GuiUtil.draw_text_right(energy.getEnergy() + " / "+energy.getCapacity(), 130, line_2);
   }
 
 }

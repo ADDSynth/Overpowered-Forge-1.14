@@ -3,14 +3,11 @@ package addsynth.core;
 import java.io.File;
 import addsynth.core.config.*;
 import addsynth.core.game.RegistryUtil;
-import addsynth.core.gameplay.Containers;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.gameplay.compat.CompatabilityManager;
-import addsynth.core.gameplay.music_box.gui.GuiMusicBox;
 import addsynth.material.MaterialsUtil;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -90,7 +87,6 @@ public final class ADDSynthCore {
   }
 
   private static final void client_setup(final FMLClientSetupEvent event){
-    ScreenManager.registerFactory(Containers.MUSIC_BOX, GuiMusicBox::new);
   }
 
   public static void onServerStarting(final FMLServerStartingEvent event){

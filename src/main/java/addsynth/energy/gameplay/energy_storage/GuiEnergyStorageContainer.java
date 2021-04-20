@@ -1,6 +1,7 @@
 package addsynth.energy.gameplay.energy_storage;
 
-import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.gui.util.GuiUtil;
+import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
@@ -29,7 +30,7 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<TileEnergySto
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
-    draw_background_texture();
+    guiUtil.draw_background_texture();
     
     if(energy != null){
       energy_float = energy.getEnergyPercentage();
@@ -39,11 +40,11 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<TileEnergySto
 
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
-    super.draw_title();
-    draw_text_center(energy_stored_text+":", center_x, draw_energy_text_y);
-    draw_text_right(String.format("%.2f", energy.getEnergy()), draw_energy_x, draw_energy_level_y);
-    draw_text_left("/ "+energy.getCapacity(), draw_capacity_x, draw_energy_level_y);
-    draw_text_center(Math.round(energy_float*100) + "%", center_x, draw_energy_percentage_y);
+    guiUtil.draw_title(this.title);
+    GuiUtil.draw_text_center(energy_stored_text+":", guiUtil.center_x, draw_energy_text_y);
+    GuiUtil.draw_text_right(String.format("%.2f", energy.getEnergy()), draw_energy_x, draw_energy_level_y);
+    GuiUtil.draw_text_left("/ "+energy.getCapacity(), draw_capacity_x, draw_energy_level_y);
+    GuiUtil.draw_text_center(Math.round(energy_float*100) + "%", guiUtil.center_x, draw_energy_percentage_y);
     draw_energy_difference(80);
   }
 

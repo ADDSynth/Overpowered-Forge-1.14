@@ -1,4 +1,4 @@
-package addsynth.core.gui.objects.sliders;
+package addsynth.core.gui.widgets.sliders;
 
 public final class VerticalSlider extends Slider {
 

@@ -1,4 +1,4 @@
-package addsynth.core.gui.objects;
+package addsynth.core.gui.widgets.buttons;
 
 import javax.annotation.Nonnull;
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -37,15 +37,15 @@ public abstract class AdjustableButton extends AbstractButton {
      * Otherwise it is exactly the same as {@link Widget#renderButton}.
      */
     @Override
+    @SuppressWarnings("resource")
     public void renderButton(final int mouseX, final int mouseY, final float partialTicks){
       final int max_width = 200;
       final int max_height = 20;
-      final int half_width = Math.min(this.width / 2, max_width / 2);
-      final int half_height = Math.min(this.height / 2, max_height / 2);
+      final int half_width = Math.min(this.width, max_width) / 2;
+      final int half_height = Math.min(this.height, max_height) / 2;
       final int second_x = max_width - half_width;
       final int second_y = max_height - half_height;
       
-      @SuppressWarnings("resource")
       final Minecraft minecraft = Minecraft.getInstance();
       minecraft.getTextureManager().bindTexture(WIDGETS_LOCATION);
       GlStateManager.color4f(1.0F, 1.0F, 1.0F, this.alpha);
@@ -63,7 +63,7 @@ public abstract class AdjustableButton extends AbstractButton {
       this.blit(x + half_width, y + half_height, second_x, button_texture_y + second_y, half_width, half_height);
       this.renderBg(minecraft, mouseX, mouseY);
       
-      final int text_color = getFGColor(); // 14737632;
+      final int text_color = getFGColor(); // 14737632; TODO: Is this the text color I'm looking for? Move this to constants. But now there's one in GuiUtil as well.
       /* DELETE
       if (packedFGColour != 0){
         text_color = packedFGColour;

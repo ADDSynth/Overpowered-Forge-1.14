@@ -1,8 +1,9 @@
 package addsynth.overpoweredmod.machines.portal.control_panel;
 
-import addsynth.core.gui.objects.AdjustableButton;
-import addsynth.core.gui.objects.CheckBox;
-import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.gui.util.GuiUtil;
+import addsynth.core.gui.widgets.ProgressBar;
+import addsynth.core.gui.widgets.buttons.AdjustableButton;
+import addsynth.core.gui.widgets.buttons.CheckBox;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
@@ -115,20 +116,20 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
-    draw_background_texture();
+    guiUtil.draw_background_texture();
     energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy.getEnergyPercentage(),ProgressBar.Round.NEAREST);
     draw_portal_items();
   }
 
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
-    draw_title();
-    draw_text_left(auto_shutoff_text, checkbox_x + 16, checkbox_y + 2);
+    guiUtil.draw_title(this.title);
+    GuiUtil.draw_text_left(auto_shutoff_text, checkbox_x + 16, checkbox_y + 2);
     draw_energy(44, 34);
     draw_status(tile.getStatus(), energy_percentage_y);
-    draw_text_right(Math.round(tile.getWorkTimePercentage() * 100) + "%", energy_percentage_y);
+    guiUtil.draw_text_right(Math.round(tile.getWorkTimePercentage() * 100) + "%", energy_percentage_y);
     draw_energy_difference(energy_change_y);
-    draw_text_center(tile.getMessage(), status_message_y);
+    guiUtil.draw_text_center(tile.getMessage(), status_message_y);
   }
   
   /**
@@ -149,7 +150,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
         index = (j*4) + i;
         x = this.guiLeft + image_x + (i * space_x);
         y = this.guiTop + image_y + (j * space_y);
-        drawItemStack(gem_block[index], x, y);
+        GuiUtil.drawItemStack(gem_block[index], x, y);
       }
     }
     minecraft.getTextureManager().bindTexture(gui_icons);

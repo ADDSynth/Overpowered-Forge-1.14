@@ -1,12 +1,12 @@
 package addsynth.overpoweredmod.machines.fusion.chamber;
 
-import addsynth.core.gui.GuiBase;
+import addsynth.core.gui.GuiContainerBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiFusionChamber extends GuiBase<ContainerFusionChamber> {
+public final class GuiFusionChamber extends GuiContainerBase<ContainerFusionChamber> {
 
   private static final ResourceLocation fusion_chamber_gui = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_frame.png");
 
@@ -16,7 +16,7 @@ public final class GuiFusionChamber extends GuiBase<ContainerFusionChamber> {
 
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
-    super.draw_title();
+    guiUtil.draw_title(this.title);
   }
 
 }

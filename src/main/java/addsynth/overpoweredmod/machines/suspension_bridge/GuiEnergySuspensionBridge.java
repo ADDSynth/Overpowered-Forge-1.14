@@ -1,7 +1,8 @@
 package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import addsynth.core.Constants;
-import addsynth.core.gui.objects.AdjustableButton;
+import addsynth.core.gui.util.GuiUtil;
+import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -29,8 +30,8 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
   private static final int lens_text_x = (6 + ContainerSuspensionBridge.lens_slot_x) / 2;
   private static final int lens_text_y = 24;
   private final int[] text_x = {
-           6,        6 + getMaxStringWidth(north+": ", south+": ", west+": "),
-    center_x, center_x + getMaxStringWidth(up+": ", down+": ", east+": ")
+                   6,                6 + GuiUtil.getMaxStringWidth(north+": ", south+": ", west+": "),
+    guiUtil.center_x, guiUtil.center_x + GuiUtil.getMaxStringWidth(up+": ", down+": ", east+": ")
   };
   private static final int[] text_y = {lens_text_y + 16, lens_text_y + 27, lens_text_y + 38};
 
@@ -65,21 +66,21 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
 
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
-    super.draw_title();
-    draw_text_center(lens_string+":", lens_text_x, lens_text_y);
-    draw_text_left(north+":", text_x[0], text_y[0]);
-    draw_text_left(south+":", text_x[0], text_y[1]);
-    draw_text_left(west+":",  text_x[0], text_y[2]);
-    draw_text_left(tile.getMessage(Constants.NORTH), text_x[1], text_y[0]);
-    draw_text_left(tile.getMessage(Constants.SOUTH), text_x[1], text_y[1]);
-    draw_text_left(tile.getMessage(Constants.WEST),  text_x[1], text_y[2]);
-    draw_text_left(up+":",   text_x[2], text_y[0]);
-    draw_text_left(down+":", text_x[2], text_y[1]);
-    draw_text_left(east+":", text_x[2], text_y[2]);
-    draw_text_left(tile.getMessage(Constants.UP),    text_x[3], text_y[0]);
-    draw_text_left(tile.getMessage(Constants.DOWN),  text_x[3], text_y[1]);
-    draw_text_left(tile.getMessage(Constants.EAST),  text_x[3], text_y[2]);
-    draw_text_center(tile.getBridgeMessage(), 73);
+    guiUtil.draw_title(this.title);
+    GuiUtil.draw_text_center(lens_string+":", lens_text_x, lens_text_y);
+    GuiUtil.draw_text_left(north+":", text_x[0], text_y[0]);
+    GuiUtil.draw_text_left(south+":", text_x[0], text_y[1]);
+    GuiUtil.draw_text_left(west+":",  text_x[0], text_y[2]);
+    GuiUtil.draw_text_left(tile.getMessage(Constants.NORTH), text_x[1], text_y[0]);
+    GuiUtil.draw_text_left(tile.getMessage(Constants.SOUTH), text_x[1], text_y[1]);
+    GuiUtil.draw_text_left(tile.getMessage(Constants.WEST),  text_x[1], text_y[2]);
+    GuiUtil.draw_text_left(up+":",   text_x[2], text_y[0]);
+    GuiUtil.draw_text_left(down+":", text_x[2], text_y[1]);
+    GuiUtil.draw_text_left(east+":", text_x[2], text_y[2]);
+    GuiUtil.draw_text_left(tile.getMessage(Constants.UP),    text_x[3], text_y[0]);
+    GuiUtil.draw_text_left(tile.getMessage(Constants.DOWN),  text_x[3], text_y[1]);
+    GuiUtil.draw_text_left(tile.getMessage(Constants.EAST),  text_x[3], text_y[2]);
+    guiUtil.draw_text_center(tile.getBridgeMessage(), 73);
   }
 
 }

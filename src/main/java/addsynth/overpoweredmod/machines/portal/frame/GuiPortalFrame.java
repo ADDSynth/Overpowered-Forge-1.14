@@ -1,12 +1,12 @@
 package addsynth.overpoweredmod.machines.portal.frame;
 
-import addsynth.core.gui.GuiBase;
+import addsynth.core.gui.GuiContainerBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiPortalFrame extends GuiBase<ContainerPortalFrame> {
+public final class GuiPortalFrame extends GuiContainerBase<ContainerPortalFrame> {
 
   private static final ResourceLocation portal_frame_gui_texture =
     new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_frame.png");
@@ -17,7 +17,7 @@ public final class GuiPortalFrame extends GuiBase<ContainerPortalFrame> {
 
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
-    super.draw_title();
+    guiUtil.draw_title(this.title);
   }
 
 }

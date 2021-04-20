@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.machines.inverter;
 
-import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.gui.util.GuiUtil;
+import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Config;
@@ -25,7 +26,7 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
-    draw_background_texture();
+    guiUtil.draw_background_texture();
     
     work_float = tile.getWorkTimePercentage();
     work_percentage = (int)(Math.floor(work_float*100));
@@ -34,20 +35,20 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
 
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
-    draw_title();
+    guiUtil.draw_title(this.title);
     draw_energy_usage();
     draw_status(tile.getStatus());
     
     final ItemStack s1 = tile.getWorkingInventory().getStackInSlot(0);
     if(Config.blend_working_item.get()){
       final ItemStack s2 = TileInverter.getInverted(s1);
-      blendItemStacks(s1, s2, 77, 44, work_float);
+      GuiUtil.blendItemStacks(s1, s2, 77, 44, work_float);
     }
     else{
-      drawItemStack(s1, 77, 44);
+      GuiUtil.drawItemStack(s1, 77, 44);
     }
     
-    draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
+    GuiUtil.draw_text_center(work_percentage + "%", guiUtil.center_x, work_percentage_text_y);
     draw_time_left(93);
   }
 

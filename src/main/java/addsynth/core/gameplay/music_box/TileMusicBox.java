@@ -1,21 +1,13 @@
 package addsynth.core.gameplay.music_box;
 
-import javax.annotation.Nullable;
 import addsynth.core.gameplay.Tiles;
-import addsynth.core.gameplay.music_box.gui.ContainerMusicBox;
 import addsynth.core.tiles.TileBase;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileMusicBox extends TileBase implements ITickableTileEntity, INamedContainerProvider {
+public final class TileMusicBox extends TileBase implements ITickableTileEntity {
 
   public enum Command {
     PLAY, CHANGE_TEMPO, CYCLE_NEXT_DIRECTION, TOGGLE_MUTE;
@@ -195,17 +187,6 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity,
       return music_grid.get_mute(track);
     }
     return false;
-  }
-
-  @Override
-  @Nullable
-  public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
-    return new ContainerMusicBox(id, player_inventory, this);
-  }
-
-  @Override
-  public ITextComponent getDisplayName(){
-    return new TranslationTextComponent(getBlockState().getBlock().getTranslationKey());
   }
 
 }

@@ -1,6 +1,7 @@
 package addsynth.energy.gameplay.compressor;
 
-import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.gui.util.GuiUtil;
+import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
 import net.minecraft.entity.player.PlayerInventory;
@@ -23,7 +24,7 @@ public final class GuiCompressor extends GuiEnergyBase<TileCompressor, Container
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(final float partialTicks, final int mouseX, final int mouseY){
-    draw_background_texture();
+    guiUtil.draw_background_texture();
     
     final float work_float = tile.getWorkTimePercentage();
     work_percentage = (int)Math.floor(work_float*100);
@@ -32,11 +33,11 @@ public final class GuiCompressor extends GuiEnergyBase<TileCompressor, Container
 
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
-    super.draw_title();
+    guiUtil.draw_title(this.title);
     draw_energy_usage();
     draw_status(tile.getStatus());
-    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 80, 42);
-    draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
+    GuiUtil.drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 80, 42);
+    GuiUtil.draw_text_center(work_percentage + "%", guiUtil.center_x, work_percentage_text_y);
     draw_time_left(time_left_y);
   }
 

@@ -1,7 +1,8 @@
 package addsynth.energy.gui;
 
 import addsynth.core.container.TileEntityContainer;
-import addsynth.core.gui.GuiBase;
+import addsynth.core.gui.GuiContainerBase;
+import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.inventory.IInputInventory;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.main.Energy;
@@ -12,7 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extends TileEntityContainer<T>> extends GuiBase<C> {
+public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extends TileEntityContainer<T>> extends GuiContainerBase<C> {
 
   protected final T tile;
   protected final Energy energy;
@@ -51,11 +52,11 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
 
   protected final void draw_energy(final int draw_x, final int draw_y){
     if(energy != null){
-      draw_text_left(energy_text+":",draw_x,draw_y);
-      draw_text_right(String.format("%.2f", energy.getEnergy()) + " / " + energy.getCapacity(), right_edge, draw_y);
+      GuiUtil.draw_text_left(energy_text+":",draw_x,draw_y);
+      GuiUtil.draw_text_right(String.format("%.2f", energy.getEnergy()) + " / " + energy.getCapacity(), guiUtil.right_edge, draw_y);
     }
     else{
-      draw_text_center(null_energy_reference, (draw_x + right_edge) / 2, draw_y);
+      GuiUtil.draw_text_center(null_energy_reference, (draw_x + guiUtil.right_edge) / 2, draw_y);
     }
   }
 
@@ -69,25 +70,25 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   
   protected final void draw_energy_usage(final int draw_x, final int draw_y){
     if(energy != null){
-      draw_text_left(energy_usage_text+":", draw_x, draw_y);
-      draw_text_right(String.format("%.2f", energy.get_energy_in()) + " /"+tick_text, right_edge, draw_y);
+      GuiUtil.draw_text_left(energy_usage_text+":", draw_x, draw_y);
+      GuiUtil.draw_text_right(String.format("%.2f", energy.get_energy_in()) + " /"+tick_text, guiUtil.right_edge, draw_y);
     }
     else{
-      draw_text_left(null_energy_reference, draw_x, draw_y);
+      GuiUtil.draw_text_left(null_energy_reference, draw_x, draw_y);
     }
   }
 
   /** Draws the status at the default location, below the energy capacity line. */
   protected final void draw_status(final String status){
-    draw_text_left(status_text+": "+status, 6, 28);
+    GuiUtil.draw_text_left(status_text+": "+status, 6, 28);
   }
 
   protected final void draw_status(final String status, final int y){
-    draw_text_left(status_text+": "+status, 6, y);
+    GuiUtil.draw_text_left(status_text+": "+status, 6, y);
   }
 
   protected final void draw_status_below_switch(final String status){
-    draw_text_left(status_text+": "+status, 6, 37);
+    GuiUtil.draw_text_left(status_text+": "+status, 6, 37);
   }
 
   protected final void draw_time_left(final int draw_y){
@@ -106,28 +107,28 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
       else{
         time_left = StringUtil.print_time(energy.getEnergyNeeded(), rate);
       }
-      draw_text_left(time_left_text+": "+time_left, 6, draw_y);
+      GuiUtil.draw_text_left(time_left_text+": "+time_left, 6, draw_y);
     }
     else{
-      draw_text_left(time_left_text+": "+null_energy_reference, 6, draw_y);
+      GuiUtil.draw_text_left(time_left_text+": "+null_energy_reference, 6, draw_y);
     }
   }
 
   protected final void draw_energy_difference(final int draw_y){
     if(energy == null){
-      draw_text_left(null_energy_reference, 6, draw_y);
+      GuiUtil.draw_text_left(null_energy_reference, 6, draw_y);
       return;
     }
     final double difference = energy.getDifference();
     switch((int)Math.signum(difference)){
     case 1:
-      draw_text_left(full_charge_time_text+": "+StringUtil.print_time((int)Math.ceil(energy.getEnergyNeeded() / difference)), 6, draw_y);
+      GuiUtil.draw_text_left(full_charge_time_text+": "+StringUtil.print_time((int)Math.ceil(energy.getEnergyNeeded() / difference)), 6, draw_y);
       break;
     case -1:
-      draw_text_left(charge_remaining_text+": "+StringUtil.print_time((int)Math.ceil(energy.getEnergy() / (-difference))), 6, draw_y);
+      GuiUtil.draw_text_left(charge_remaining_text+": "+StringUtil.print_time((int)Math.ceil(energy.getEnergy() / (-difference))), 6, draw_y);
       break;
     case 0:
-      draw_text_left(no_energy_change_text, 6, draw_y);
+      GuiUtil.draw_text_left(no_energy_change_text, 6, draw_y);
       break;
     }
   }

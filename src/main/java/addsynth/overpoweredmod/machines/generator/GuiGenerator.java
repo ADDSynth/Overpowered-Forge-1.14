@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.machines.generator;
 
-import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.gui.util.GuiUtil;
+import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -35,7 +36,7 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
-    draw_background_texture();
+    guiUtil.draw_background_texture();
     
     final float energy_float = energy.getEnergyPercentage();
     energy_percentage = Math.round(energy_float*100);
@@ -44,14 +45,14 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
 
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
-    super.draw_title();
-    draw_text_right(input_text+":",input_text_x,input_text_y);
+    guiUtil.draw_title(this.title);
+    GuiUtil.draw_text_right(input_text+":",input_text_x,input_text_y);
     
-    draw_text_left(extract_text+": " + energy.getMaxExtract(),extract_text_x,extract_text_line_1);
+    GuiUtil.draw_text_left(extract_text+": " + energy.getMaxExtract(),extract_text_x,extract_text_line_1);
     // draw_text_left("Energy Draw: "+energy_draw,extract_text_x,extract_text_line_2);
     
     draw_energy(6, energy_text_line_1);
-    draw_text_center(energy_percentage + "%", center_x, energy_text_line_2);
+    GuiUtil.draw_text_center(energy_percentage + "%", guiUtil.center_x, energy_text_line_2);
     draw_energy_difference(82);
   }
 

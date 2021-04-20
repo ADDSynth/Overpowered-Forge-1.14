@@ -1,6 +1,7 @@
 package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 
-import addsynth.core.gui.objects.ProgressBar;
+import addsynth.core.gui.util.GuiUtil;
+import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.client.renderer.RenderHelper;
@@ -23,7 +24,7 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreR
 
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
-    draw_background_texture();
+    guiUtil.draw_background_texture();
     
     final float work_float = tile.getWorkTimePercentage();
     work_percentage = (int)Math.floor(work_float*100);
@@ -32,12 +33,12 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreR
 
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
-    super.draw_title();
+    guiUtil.draw_title(this.title);
     draw_energy_usage();
     draw_status(tile.getStatus());
     RenderHelper.enableGUIStandardItemLighting();
-    drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 43);
-    draw_text_center(work_percentage + "%", center_x, work_percentage_text_y);
+    GuiUtil.drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 43);
+    GuiUtil.draw_text_center(work_percentage + "%", guiUtil.center_x, work_percentage_text_y);
     draw_time_left(92);
   }
 

@@ -7,7 +7,7 @@ import addsynth.core.gameplay.music_box.TileMusicBox;
 import addsynth.core.gameplay.music_box.network_messages.ChangeInstrumentMessage;
 import addsynth.core.gameplay.music_box.network_messages.MusicBoxMessage;
 import addsynth.core.gameplay.music_box.network_messages.NoteMessage;
-import addsynth.core.gui.objects.AdjustableButton;
+import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.core.util.StringUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;

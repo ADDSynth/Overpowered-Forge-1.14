@@ -1,4 +1,4 @@
-package addsynth.core.gui.objects;
+package addsynth.core.gui.widgets.buttons;
 
 import addsynth.core.ADDSynthCore;
 import com.mojang.blaze3d.platform.GlStateManager;
