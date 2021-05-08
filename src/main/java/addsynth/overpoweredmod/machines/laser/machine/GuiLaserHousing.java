@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.laser.machine;
 
 import addsynth.core.gui.util.GuiUtil;
-import addsynth.core.gui.widgets.buttons.CheckBox;
+import addsynth.core.gui.widgets.buttons.Checkbox;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
@@ -17,6 +17,10 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, ContainerLaserHousing> {
 
+  // TODO: The Laser machine also doesn't have any item slots in its inventory. It can derive from a Non-container
+  //       GuiEnergyBase, but that means that I need to extract all the common helper functions from GuiEnergyBase
+  //       into a GuiEnergyUtil. I can have that extend GuiUtil, then pass that as a reference through the Gui constructors.
+
   private static final ResourceLocation laser_machine_gui_texture =
     new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/laser_machine.png");
 
@@ -24,7 +28,6 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   private final String current_energy_text  = StringUtil.translate("gui.overpowered.laser_housing.current_energy");
   private final String lasers_text          = StringUtil.translate("gui.overpowered.laser_housing.lasers");
   private final String distance_text        = StringUtil.translate("gui.overpowered.laser_housing.distance");
-  private final String auto_shutoff_text    = StringUtil.translate("gui.addsynth_energy.common.auto_shutoff");
 
   private TextFieldWidget text_box;
 
@@ -45,15 +48,15 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   private static final int check_box_y = 19;
 
   public GuiLaserHousing(final ContainerLaserHousing container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 104, container, player_inventory, title, laser_machine_gui_texture);
+    super(176, 104, container, player_inventory, title, laser_machine_gui_texture);
   }
 
-  private static final class ToggleAutoShutoff extends CheckBox {
+  private static final class ToggleAutoShutoff extends Checkbox {
 
     private final TileLaserHousing tile;
 
     public ToggleAutoShutoff(int x, int y, TileLaserHousing tile){
-      super(x, y);
+      super(x, y, StringUtil.translate("gui.addsynth_energy.common.auto_shutoff"));
       this.tile = tile;
     }
 
@@ -150,7 +153,6 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     guiUtil.draw_title(this.title);
-    GuiUtil.draw_text_left(auto_shutoff_text, check_box_x + 12 + space, check_box_y + 2);
     GuiUtil.draw_text_left(lasers_text+": "+tile.number_of_lasers, 6, line_1);
     GuiUtil.draw_text_left(distance_text+": ", 6, line_2);
     draw_energy_requirements();

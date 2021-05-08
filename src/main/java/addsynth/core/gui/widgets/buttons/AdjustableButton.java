@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.client.gui.widget.button.AbstractButton;
 
+/** Hey! This has a maximum height of 20! So setting it any higher will have no effect. */
 public abstract class AdjustableButton extends AbstractButton {
 
   /**
@@ -43,6 +44,7 @@ public abstract class AdjustableButton extends AbstractButton {
       final int max_height = 20;
       final int half_width = Math.min(this.width, max_width) / 2;
       final int half_height = Math.min(this.height, max_height) / 2;
+      // I could replace this with WidgetUtil.get_half_lengths(), but this already works pretty well.
       final int second_x = max_width - half_width;
       final int second_y = max_height - half_height;
       

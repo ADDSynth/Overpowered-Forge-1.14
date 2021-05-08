@@ -30,7 +30,7 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   private final String null_energy_reference = "[Error: Null Energy Reference]";
 
   public GuiEnergyBase(final C container, final PlayerInventory player_inventory, final ITextComponent title, final ResourceLocation gui_texture_location){
-    super(-1, -1, container, player_inventory, title, gui_texture_location);
+    super(container, player_inventory, title, gui_texture_location);
     this.tile = (T)container.getTileEntity();
     this.energy = tile.getEnergy();
   }

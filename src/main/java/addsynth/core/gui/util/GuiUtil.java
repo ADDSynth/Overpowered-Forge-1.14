@@ -45,11 +45,8 @@ public final class GuiUtil {
   /** equivalent to xSize - 6. Use for drawing text. */
   public final int right_edge;
 
-  /* DELETE
-  public GuiUtil(final ResourceLocation gui_texture){
-    GUI_TEXTURE = gui_texture;
-  }
-  */
+  // OPTIMIZE, we could probably calculate some of these coordinate variables ourselves, in that case you can initialize the GuiUtil in the gui Constructor,
+  //           and can have the GuiUtil field as final, and also remove the GUI_TEXTURE field as well.
 
   /** */
   public GuiUtil(final ContainerScreen gui, final ResourceLocation gui_texture){

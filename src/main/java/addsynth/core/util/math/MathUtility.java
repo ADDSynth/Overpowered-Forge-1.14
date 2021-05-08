@@ -3,6 +3,7 @@ package addsynth.core.util.math;
 import java.util.Random;
 import javax.annotation.Nonnegative;
 import addsynth.core.ADDSynthCore;
+import addsynth.core.gui.widgets.scrollbar.Scrollbar;
 import net.minecraft.util.math.MathHelper;
 
 public final class MathUtility {
@@ -359,6 +360,62 @@ public final class MathUtility {
     }
     final double adjustment = Math.pow(10, decimals);
     return Math.round(input * adjustment) / adjustment;
+  }
+
+  /** Used in {@link Scrollbar}s. Generates an array of stop positions for the scrollbar. */
+  public static final int[] getPositions(int max_number, int positions){
+    return getPositions(0, max_number, positions);
+  }
+  
+  /** Used in {@link Scrollbar}s. Generates an array of stop positions for the scrollbar. */
+  public static final int[] getPositions(int min_number, int max_number, int positions){
+    // handle a position of 1 to prevent divide by zero
+    if(positions <= 1){
+      return new int[] {min_number};
+    }
+    int[] recorded_positions = new int[positions];
+    double step = ((double)(max_number - min_number)) / (positions-1);
+    int i;
+    for(i = 0; i < positions; i++){
+      recorded_positions[i] = (int)Math.round(((double)(min_number)) + (step*i));
+    }
+    return recorded_positions;
+  }
+
+  /** Used in {@link Scrollbar}s. Uses the scrollbar's current position to determine the index amongst the
+   *  stop positions and writes all visible lines according to the index position.
+   * @param position
+   * @param values
+   */
+  public static final int getPositionIndex(int position, int[] values){
+    if(position <= values[0]){
+      return 0;
+    }
+    if(position >= values[values.length-1]){
+      return values.length-1;
+    }
+    int i = 1;
+    while(position >= values[i]){
+      i += 1;
+    }
+    final int left = values[i-1];
+    final int right = values[i];
+    return getExtreme(left, position, right) == left ? i-1 : i;
+  }
+
+  /** Checks a value against a left value and a right value and returns whichever value it is closest to.
+   *  if it is equally close to both, we return the right value.
+   * @param left_value
+   * @param value
+   * @param right_value
+   */
+  public static final int getExtreme(int left_value, int value, int right_value){
+    final int left_check = Math.abs(left_value - value);
+    final int right_check = Math.abs(right_value -value);
+    if(left_check < right_check){
+      return left_value;
+    }
+    return right_value;
   }
 
 }

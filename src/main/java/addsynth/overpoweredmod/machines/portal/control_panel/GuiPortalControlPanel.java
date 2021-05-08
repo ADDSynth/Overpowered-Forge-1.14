@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.portal.control_panel;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.core.gui.widgets.buttons.AdjustableButton;
-import addsynth.core.gui.widgets.buttons.CheckBox;
+import addsynth.core.gui.widgets.buttons.Checkbox;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
@@ -55,8 +55,6 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   
   private static final int status_message_y = button_y + button_height + 6;
 
-  private final String auto_shutoff_text = StringUtil.translate("gui.addsynth_energy.common.auto_shutoff");
-
   // TODO: record which player has this gui open so you can award them with the achievement when they
   //          activate the portal.
 
@@ -86,12 +84,12 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
 
   }
 
-  private static final class ToggleAutoShutoff extends CheckBox {
+  private static final class ToggleAutoShutoff extends Checkbox {
   
     private final TilePortalControlPanel tile;
     
     public ToggleAutoShutoff(int x, int y, TilePortalControlPanel tile){
-      super(x, y);
+      super(x, y, StringUtil.translate("gui.addsynth_energy.common.auto_shutoff"));
       this.tile = tile;
     }
     
@@ -124,7 +122,6 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     guiUtil.draw_title(this.title);
-    GuiUtil.draw_text_left(auto_shutoff_text, checkbox_x + 16, checkbox_y + 2);
     draw_energy(44, 34);
     draw_status(tile.getStatus(), energy_percentage_y);
     guiUtil.draw_text_right(Math.round(tile.getWorkTimePercentage() * 100) + "%", energy_percentage_y);
