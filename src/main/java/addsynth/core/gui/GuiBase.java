@@ -11,24 +11,11 @@ import net.minecraft.util.text.ITextComponent;
 /** Extend from this class if you just want your own gui screen. */
 public abstract class GuiBase extends Screen {
 
-  protected GuiUtil guiUtil;
-  // I would rather have another private variable for the texture if it means
-  // the alignment fields in GuiUtil can stay final and unchangeable.
-  private final ResourceLocation GUI_TEXTURE;
-  private final int guiWidth;
-  private final int guiHeight;
+  protected final GuiUtil guiUtil;
 
   protected GuiBase(final int width, final int height, final ITextComponent title, final ResourceLocation gui_texture){
     super(title);
-    GUI_TEXTURE = gui_texture;
-    guiWidth = width;
-    guiHeight = height;
-  }
-
-  @Override
-  protected void init(){
-    super.init();
-    guiUtil = new GuiUtil(this, GUI_TEXTURE, guiWidth, guiHeight);
+    guiUtil = new GuiUtil(gui_texture, width, height);
   }
 
   @Override

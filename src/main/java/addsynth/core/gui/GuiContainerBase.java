@@ -10,25 +10,18 @@ import net.minecraft.util.text.ITextComponent;
 /** Extend from this class if your gui screen contains item slots. */
 public abstract class GuiContainerBase<T extends Container> extends ContainerScreen<T> {
 
-  protected GuiUtil guiUtil;
-  private final ResourceLocation GUI_TEXTURE;
+  protected final GuiUtil guiUtil;
   
   public GuiContainerBase(final T container, final PlayerInventory player_inventory, final ITextComponent title, final ResourceLocation gui_texture){
     super(container, player_inventory, title);
-    GUI_TEXTURE = gui_texture;
+    guiUtil = new GuiUtil(gui_texture, 176, 166);
   }
 
   public GuiContainerBase(int width, int height, T container, PlayerInventory player_inventory, ITextComponent title, ResourceLocation gui_texture){
     super(container, player_inventory, title);
-    GUI_TEXTURE = gui_texture;
+    guiUtil = new GuiUtil(gui_texture, width, height);
     this.xSize = width;
     this.ySize = height;
-  }
-
-  @Override
-  protected void init(){
-    super.init();
-    guiUtil = new GuiUtil(this, GUI_TEXTURE);
   }
 
   @Override

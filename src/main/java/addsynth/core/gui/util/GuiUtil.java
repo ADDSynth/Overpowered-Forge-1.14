@@ -5,8 +5,6 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.item.ItemStack;
@@ -22,9 +20,10 @@ public final class GuiUtil {
 
   public static final int text_color = 4210752;
 
-  public static final TextureManager textureManager = Minecraft.getInstance().textureManager;
-  public static final FontRenderer   font           = Minecraft.getInstance().fontRenderer;
-  public static final ItemRenderer   itemRenderer   = Minecraft.getInstance().getItemRenderer();
+  public static final Minecraft      minecraft      = Minecraft.getInstance();
+  public static final TextureManager textureManager = minecraft.textureManager;
+  public static final FontRenderer   font           = minecraft.fontRenderer;
+  public static final ItemRenderer   itemRenderer   = minecraft.getItemRenderer();
 
   private final ResourceLocation GUI_TEXTURE;
   public final int guiWidth;
@@ -45,29 +44,12 @@ public final class GuiUtil {
   /** equivalent to xSize - 6. Use for drawing text. */
   public final int right_edge;
 
-  // OPTIMIZE, we could probably calculate some of these coordinate variables ourselves, in that case you can initialize the GuiUtil in the gui Constructor,
-  //           and can have the GuiUtil field as final, and also remove the GUI_TEXTURE field as well.
-
-  /** */
-  public GuiUtil(final ContainerScreen gui, final ResourceLocation gui_texture){
-    GUI_TEXTURE = gui_texture;
-    guiWidth    = gui.getXSize();
-    guiHeight   = gui.getYSize();
-    guiLeft     = gui.getGuiLeft();
-    guiTop      = gui.getGuiTop();
-    guiRight    = guiLeft + guiWidth;
-    center_x    = guiWidth / 2;
-    guiCenter   = guiLeft + center_x;
-    right_edge  = guiWidth - 6;
-  }
-
-  /** */
-  public GuiUtil(final Screen gui, final ResourceLocation gui_texture, final int gui_width, final int gui_height){
+  public GuiUtil(final ResourceLocation gui_texture, final int gui_width, final int gui_height){
     GUI_TEXTURE = gui_texture;
     guiWidth    = gui_width;
     guiHeight   = gui_height;
-    guiLeft     = (gui.width  - gui_width)  / 2;
-    guiTop      = (gui.height - gui_height) / 2;
+    guiLeft     = (minecraft.mainWindow.getScaledWidth()  - gui_width)  / 2;
+    guiTop      = (minecraft.mainWindow.getScaledHeight() - gui_height) / 2;
     guiRight    = guiLeft + gui_width;
     center_x    = gui_width / 2;
     guiCenter   = guiLeft + center_x;
