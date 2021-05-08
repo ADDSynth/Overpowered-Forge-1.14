@@ -1,13 +1,14 @@
 package addsynth.core.util.java;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import javax.annotation.Nonnull;
 import addsynth.core.ADDSynthCore;
 
 public final class ArrayUtil {
 
-  public static final boolean isInsideBounds(final int i, final int max_length){
-    return i >= 0 && i < max_length;
+  public static final boolean isInsideBounds(final int index, final int max_length){
+    return index >= 0 && index < max_length;
   }
 
   /** This will attempt to return the value at index in the array.
@@ -102,7 +103,7 @@ public final class ArrayUtil {
     return true;
   }
 
-  // MAYBE can I just pass an object array?
+  // TEST can I just pass an object array?
   public static final <T> boolean is_valid_array(final T[] array, final String call_location){
     if(array == null){
       ADDSynthCore.log.error(new NullPointerException("Input for "+call_location+" was null!"));
@@ -146,6 +147,18 @@ public final class ArrayUtil {
     return total_length;
   }
 
+  /** Used to check if the array contains the value. */
+  public static final <T> boolean valueExists(final T[] array, final T value){
+    boolean exists = false;
+    for(final T i : array){
+      if(i.equals(value)){
+        exists = true;
+        break;
+      }
+    }
+    return exists;
+  }
+
   // https://stackoverflow.com/questions/12462079/potential-heap-pollution-via-varargs-parameter
   // https://softwareengineering.stackexchange.com/questions/155994/java-heap-pollution#
   // https://docs.oracle.com/javase/tutorial/java/generics/nonReifiableVarargsType.html
@@ -166,6 +179,112 @@ public final class ArrayUtil {
       }
     }
     return Arrays.copyOfRange(final_array, 0, i);
+  }
+
+  /** This checks the two arrays and returns true if they are different.
+   *  Only replaces the cached_array if the size changed. */
+  public static final <T> boolean arrayChanged(final T[] cached_array, final T[] new_array){
+    if(new_array.length != cached_array.length){
+      return true;
+    }
+    boolean changed = false;
+    int i;
+    final int length = new_array.length;
+    for(i = 0; i < length; i++){
+      if(cached_array[i].equals(new_array[i]) == false){
+        changed = true;
+        break;
+      }
+    }
+    return changed;
+  }
+
+  /** This checks the array against the supplied {@link ArrayList} to see if the array needs to be updated. */
+  public static final <T> boolean arrayChanged(final T[] cached_array, final ArrayList<T> list){
+    if(list.size() != cached_array.length){
+      return true;
+    }
+    boolean changed = false;
+    int i;
+    final int length = cached_array.length;
+    for(i = 0; i < length; i++){
+      if(list.get(i).equals(cached_array[i]) == false){
+        changed = true;
+        break;
+      }
+    }
+    return changed;
+  }
+
+  /** This checks the data in the new_array against the data in the cached array and updates the
+   *  cached_array accordingly. Returns true if an update occured. */
+  public static final <T> boolean updateArray(T[] cached_array, final T[] new_array){
+    boolean changed = false;
+    final int length = new_array.length;
+    if(cached_array.length == length){
+      int i;
+      for(i = 0; i < length; i++){
+        if(cached_array[i].equals(new_array[i]) == false){
+          changed = true;
+          cached_array[i] = new_array[i];
+        }
+      }
+    }
+    else{
+      cached_array = new_array;
+      changed = true;
+    }
+    return changed;
+  }
+
+  /** This checks the cached_array against the data stored in the supplied list, and updates
+   *  it if there were any changes. Returns true if an update occured. */
+  public static final <T> boolean updateArray(T[] cached_array, final ArrayList<T> list){
+    boolean changed = false;
+    final int length = list.size();
+    if(cached_array.length == length){
+      int i;
+      T e;
+      for(i = 0; i < length; i++){
+        e = list.get(i);
+        if(e.equals(cached_array[i]) == false){
+          changed = true;
+          cached_array[i] = e;
+        }
+      }
+    }
+    else{
+      cached_array = (T[])list.toArray(); // list.toArray(new T[length]);
+      return true;
+    }
+    return changed;
+  }
+
+  /** Syncs the data in the cached_list with that in the supplied list. Only copies data.
+   *  Does not replace the cached_list object. Returns true if an update occured. */
+  public static final <T> boolean syncList(final ArrayList<T> cached_list, final ArrayList<T> new_list){
+    boolean changed = false;
+    final int length = new_list.size();
+    while(cached_list.size() > length){
+      cached_list.remove(length);
+      changed = true;
+    }
+    final int old_length = cached_list.size();
+    int i;
+    T a;
+    for(i = 0; i < length; i++){
+      a = new_list.get(i);
+      if(i < old_length){
+        if(cached_list.get(i).equals(a) == false){
+          cached_list.set(i, a);
+          changed = true;
+        }
+        continue;
+      }
+      cached_list.add(a);
+      changed = true;
+    }
+    return changed;
   }
 
 }

@@ -9,6 +9,7 @@ v1.4 - TBD
     Block Renderer, Item Zoom, Neat, and McJtyLib.
     - Updated Pam's Harvestcraft so it can detect it now.
   The Music Box gui no longer has the JEI item panel, because it doesn't need to.
+  Added Team Manager.
 
 
 

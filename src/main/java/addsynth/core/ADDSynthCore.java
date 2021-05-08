@@ -6,6 +6,7 @@ import addsynth.core.game.RegistryUtil;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.gameplay.compat.CompatabilityManager;
+import addsynth.core.gameplay.team_manager.TeamData;
 import addsynth.material.MaterialsUtil;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
@@ -53,7 +54,12 @@ public final class ADDSynthCore {
     bus.addListener(ADDSynthCore::main_setup);
     bus.addListener(ADDSynthCore::client_setup);
     MinecraftForge.EVENT_BUS.addListener(ADDSynthCore::onServerStarting); // UNUSED
+
     init_config();
+
+    if(Features.team_manager.get()){
+      MinecraftForge.EVENT_BUS.addListener(TeamData::serverTick);
+    }
     ADDSynthCore.log.info("Done constructing ADDSynthCore class object.");
   }
 
@@ -90,6 +96,7 @@ public final class ADDSynthCore {
   }
 
   public static void onServerStarting(final FMLServerStartingEvent event){
+    // TODO: I can customize recipes here?
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

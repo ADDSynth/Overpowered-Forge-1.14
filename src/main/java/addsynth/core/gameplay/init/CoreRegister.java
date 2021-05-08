@@ -27,7 +27,8 @@ public final class CoreRegister {
     ADDSynthCore.init_config();
     
     if(Features.caution_block.get()){ game.register(Core.caution_block); }
-    if(Features.music_box.get()){ game.register(Core.music_box); }
+    if(Features.music_box.get()){     game.register(Core.music_box);     }
+    if(Features.team_manager.get()){  game.register(Core.team_manager);  }
     // game.register(Core.test_block);
 
     ADDSynthCore.log.info("Done registering blocks.");
@@ -39,10 +40,17 @@ public final class CoreRegister {
 
     final IForgeRegistry<Item> game = event.getRegistry();
 
-    if(Features.caution_block.get()){    game.register(ADDSynthCore.registry.getItemBlock(Core.caution_block)); }
+    if(Features.caution_block.get()){
+      game.register(ADDSynthCore.registry.getItemBlock(Core.caution_block));
+    }
     if(Features.music_box.get()){
       game.register(ADDSynthCore.registry.getItemBlock(Core.music_box));
-      if(Features.music_sheet.get()){ game.register(Core.music_sheet); }
+      if(Features.music_sheet.get()){
+        game.register(Core.music_sheet);
+      }
+    }
+    if(Features.team_manager.get()){
+      game.register(ADDSynthCore.registry.getItemBlock(Core.team_manager));
     }
     if(Features.scythes.get()){
       game.register(Core.wooden_scythe);

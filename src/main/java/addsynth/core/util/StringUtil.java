@@ -48,6 +48,11 @@ public final class StringUtil {
     return I18n.format(translation_key);
   }
 
+  @Deprecated
+  public static final String print_array(final Object[] array){
+    return Arrays.deepToString(array);
+  }
+
   public static final String print_time(final int ticks){
     final int seconds = (int)Math.ceil(((double)ticks) / Constants.ticks_per_second);
     final int minutes = (int)Math.floor(((double)seconds) / 60);
@@ -60,9 +65,8 @@ public final class StringUtil {
     return print_time(ticks);
   }
 
-  /** <p>Prints the Types of your array, such as <code>Class, Object, Integer, Short, Long,
+  /** Prints the Types of your array, such as <code>Class, Object, Integer, Short, Long,
    *  Float, Double, Boolean, String, </code>or <code> Character</code>.
-   *  <p>Note: If you need to print a standard array, use {@link Arrays#deepToString(Object[])}.
    * @param array
    */
   public static final String print_type_array(final Object[] array){

@@ -4,6 +4,10 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.music_box.network_messages.ChangeInstrumentMessage;
 import addsynth.core.gameplay.music_box.network_messages.MusicBoxMessage;
 import addsynth.core.gameplay.music_box.network_messages.NoteMessage;
+import addsynth.core.gameplay.team_manager.network_messages.TeamManagerSyncMessage;
+import addsynth.core.gameplay.team_manager.network_messages.RequestPlayerScoreMessage;
+import addsynth.core.gameplay.team_manager.network_messages.PlayerScoreMessage;
+import addsynth.core.gameplay.team_manager.network_messages.TeamManagerCommand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
@@ -18,6 +22,7 @@ public final class NetworkHandler {
   );
 
   public static final void registerMessages(){
+    ADDSynthCore.log.info("Begin registering ADDSynthCore network messages...");
     INSTANCE.registerMessage(0,
       MusicBoxMessage.class,
       MusicBoxMessage::encode,
@@ -36,5 +41,30 @@ public final class NetworkHandler {
       ChangeInstrumentMessage::decode,
       ChangeInstrumentMessage::handle
     );
+    INSTANCE.registerMessage(3,
+      TeamManagerSyncMessage.class,
+      TeamManagerSyncMessage::encode,
+      TeamManagerSyncMessage::decode,
+      TeamManagerSyncMessage::handle
+    );
+    INSTANCE.registerMessage(4,
+      TeamManagerCommand.class,
+      TeamManagerCommand::encode,
+      TeamManagerCommand::decode,
+      TeamManagerCommand::handle
+    );
+    INSTANCE.registerMessage(5,
+      RequestPlayerScoreMessage.class,
+      RequestPlayerScoreMessage::encode,
+      RequestPlayerScoreMessage::decode,
+      RequestPlayerScoreMessage::handle
+    );
+    INSTANCE.registerMessage(6,
+      PlayerScoreMessage.class,
+      PlayerScoreMessage::encode,
+      PlayerScoreMessage::decode,
+      PlayerScoreMessage::handle
+    );
+    ADDSynthCore.log.info("Done registering ADDSynthCore network messages.");
   }
 }

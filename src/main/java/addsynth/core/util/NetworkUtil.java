@@ -1,8 +1,9 @@
 package addsynth.core.util;
 
-import io.netty.buffer.ByteBuf;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
@@ -36,24 +37,46 @@ public final class NetworkUtil {
     return positions;
   }
 
-  public static final String readString(final ByteBuf byte_data){
-    final int string_length = byte_data.readInt();
-    int i;
-    final StringBuilder string_message = new StringBuilder();
-    for(i = 0; i < string_length; i++){
-      string_message.append(byte_data.readChar());
-    }
-    return string_message.toString();
-  }
-
-  public static final void writeString(final ByteBuf data, final String string){
-    data.writeInt(string.length());
-    int i;
-    for(i = 0; i <string.length(); i++){
-      data.writeChar(string.charAt(i));
+  public static final void writeStringArray(final PacketBuffer data, final String[] string_array){
+    data.writeInt(string_array.length);
+    for(final String s : string_array){
+      data.writeString(s);
     }
   }
 
+  public static final String[] readStringArray(final PacketBuffer data){
+    int i;
+    final int length = data.readInt();
+    final String[] strings = new String[length];
+    for(i = 0; i < length; i++){
+      strings[i] = data.readString();
+    }
+    return strings;
+  }
+
+  public static final void writeTextComponentArray(final PacketBuffer data, final ITextComponent[] text_component_array){
+    data.writeInt(text_component_array.length);
+    for(final ITextComponent t : text_component_array){
+      data.writeString(t.getFormattedText());
+    }
+  }
+
+  public static final ITextComponent[] readTextComponentArray(final PacketBuffer data){
+    int i;
+    final int length = data.readInt();
+    final ITextComponent[] text_components = new ITextComponent[length];
+    for(i = 0; i < length; i++){
+      text_components[i] = new StringTextComponent(data.readString());
+    }
+    return text_components;
+  }
+
+  /** Sends the Network message to all clients in the world you specify.
+   *  Must be called on the server side.
+   * @param network
+   * @param world
+   * @param message
+   */
   public static final void send_to_clients_in_world(final SimpleChannel network, final World world, final Object message){
     network.send(PacketDistributor.DIMENSION.with(() -> world.dimension.getType()), message);
   }
