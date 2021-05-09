@@ -1,6 +1,5 @@
 v1.4 - TBD
-  Made ADDSynth Materials into its own mod.
-  Removed the ability to move some Overpowered items into other Creative Tabs.
+ADDED:
   Added Silicon and Rose Quartz.
   Added more mods to detect:
     The One Probe, Hwyla, The Beneath, Cooking for Blockheads, Tiny Progressions,
@@ -8,8 +7,12 @@ v1.4 - TBD
     Immersive Engineering, Immersive Railroading, Track API, Sound Filters,
     Block Renderer, Item Zoom, Neat, and McJtyLib.
     - Updated Pam's Harvestcraft so it can detect it now.
-  The Music Box gui no longer has the JEI item panel, because it doesn't need to.
   Added Team Manager.
+CHANGED:
+  Made ADDSynth Materials into its own mod.
+  The Music Box gui no longer has the JEI item panel, because it doesn't need to.
+REMOVED:
+  Removed the ability to move some Overpowered items into other Creative Tabs.
 
 
 
