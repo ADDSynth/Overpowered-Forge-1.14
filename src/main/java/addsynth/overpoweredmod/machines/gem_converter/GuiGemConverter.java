@@ -45,7 +45,7 @@ public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, Conta
   private final ProgressBar work_progress_bar = new ProgressBar(43, 89, 122, 5, 40, 199);
   
   public GuiGemConverter(final ContainerGemConverter container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 194, container, player_inventory, title, gem_converter_gui_texture);
+    super(176, 194, container, player_inventory, title, gem_converter_gui_texture);
   }
 
   private static final class CycleGemButton extends AdjustableButton {

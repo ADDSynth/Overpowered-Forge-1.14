@@ -19,7 +19,7 @@ public final class GuiCompressor extends GuiEnergyBase<TileCompressor, Container
   private final ProgressBar work_progress_bar = new ProgressBar(8, 79, 160, 5, 8, 194);
   
   public GuiCompressor(final ContainerCompressor container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 182, container, player_inventory, title, compressor_gui_texture);
+    super(176, 182, container, player_inventory, title, compressor_gui_texture);
   }
 
   @Override

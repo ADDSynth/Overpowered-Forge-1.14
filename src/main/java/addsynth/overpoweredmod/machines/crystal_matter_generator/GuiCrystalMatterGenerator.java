@@ -19,7 +19,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
   private static final int work_percentage_text_y = 77;
 
   public GuiCrystalMatterGenerator(final ContainerCrystalGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 192, container, player_inventory, title, crystal_matter_generator_gui_texture);
+    super(176, 192, container, player_inventory, title, crystal_matter_generator_gui_texture);
   }
 
   @Override

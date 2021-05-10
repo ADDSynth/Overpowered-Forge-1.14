@@ -18,7 +18,7 @@ public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, Container
   private final ProgressBar work_progress_bar = new ProgressBar(8, 75, 160, 5, 11, 184);
 
   public GuiIdentifier(final ContainerIdentifier container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 169, container, player_inventory, title, identifier_gui_texture);
+    super(176, 169, container, player_inventory, title, identifier_gui_texture);
   }
 
   @Override

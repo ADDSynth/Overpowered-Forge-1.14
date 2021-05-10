@@ -19,7 +19,7 @@ public final class GuiMagicInfuser extends GuiEnergyBase<TileMagicInfuser, Conta
   private final ProgressBar work_progress_bar = new ProgressBar(8, 84, 160, 5, 8, 194);
   
   public GuiMagicInfuser(final ContainerMagicInfuser container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 187, container, player_inventory, title, magic_infuser_gui_texture);
+    super(176, 187, container, player_inventory, title, magic_infuser_gui_texture);
   }
 
   @Override

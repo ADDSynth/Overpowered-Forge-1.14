@@ -21,7 +21,7 @@ public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInve
   private static final int work_percentage_text_y = 70;
 
   public GuiInverter(final ContainerInverter container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 187, container, player_inventory, title, inverter_gui_texture);
+    super(176, 187, container, player_inventory, title, inverter_gui_texture);
   }
 
   @Override

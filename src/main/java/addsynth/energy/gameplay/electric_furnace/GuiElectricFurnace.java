@@ -21,7 +21,7 @@ public final class GuiElectricFurnace extends GuiEnergyBase<TileElectricFurnace,
   private static final int time_left_y = 78;
 
   public GuiElectricFurnace(final ContainerElectricFurnace container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 172, container, player_inventory, title, electric_furnace_gui_texture);
+    super(176, 172, container, player_inventory, title, electric_furnace_gui_texture);
   }
 
   @Override

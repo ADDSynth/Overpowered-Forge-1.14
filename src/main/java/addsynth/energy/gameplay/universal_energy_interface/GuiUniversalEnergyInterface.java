@@ -26,7 +26,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
   private static final int line_2 = 41;
 
   public GuiUniversalEnergyInterface(final ContainerUniversalInterface container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 60, container, player_inventory, title, universal_interface_gui_texture);
+    super(176, 60, container, player_inventory, title, universal_interface_gui_texture);
   }
 
   private static final class CycleTransferModeButton extends AdjustableButton {

@@ -19,7 +19,7 @@ public final class GuiAdvancedOreRefinery extends GuiEnergyBase<TileAdvancedOreR
   private static final int work_percentage_text_y = 69;
 
   public GuiAdvancedOreRefinery(final ContainerOreRefinery container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(-1, 186, container, player_inventory, title, advanced_ore_refinery_gui_texture);
+    super(176, 186, container, player_inventory, title, advanced_ore_refinery_gui_texture);
   }
 
   @Override
