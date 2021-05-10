@@ -5,9 +5,8 @@ import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.EnergyBlocks;
 import addsynth.energy.gameplay.EnergyItems;
+import addsynth.energy.gameplay.circuit_fabricator.recipe.CircuitFabricatorRecipes;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
-import addsynth.energy.registers.Containers;
-import addsynth.energy.registers.Names;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
@@ -67,7 +66,8 @@ public final class Registers {
   @SubscribeEvent
   public static final void registerRecipeSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event){
     final IForgeRegistry<IRecipeSerializer<?>> game = event.getRegistry();
-    RegistryUtil.register(game, CompressorRecipes.serializer, Names.COMPRESSOR);
+    RegistryUtil.register(game, CompressorRecipes.INSTANCE.serializer, Names.COMPRESSOR);
+    RegistryUtil.register(game, CircuitFabricatorRecipes.INSTANCE.serializer, Names.CIRCUIT_FABRICATOR);
   }
 
 }

@@ -3,7 +3,7 @@ package addsynth.overpoweredmod;
 import java.io.File;
 import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
-import addsynth.core.util.game.RecipeUtil;
+import addsynth.core.recipe.RecipeUtil;
 import addsynth.material.ADDSynthMaterials;
 import addsynth.material.Material;
 import addsynth.material.MaterialsUtil;

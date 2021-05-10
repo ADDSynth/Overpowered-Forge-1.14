@@ -18,12 +18,12 @@ import net.minecraft.util.text.TranslationTextComponent;
 public final class TileCompressor extends TileStandardWorkMachine implements INamedContainerProvider {
 
   public TileCompressor(){
-    super(Tiles.COMPRESSOR, 1, CompressorRecipes.filter, 1, Config.compressor_data);
+    super(Tiles.COMPRESSOR, 1, CompressorRecipes.INSTANCE.filter, 1, Config.compressor_data);
   }
 
   @Override
   protected final boolean test_condition(){
-    result = CompressorRecipes.getResult(inventory.input_inventory.getStackInSlot(0), world);
+    result = CompressorRecipes.INSTANCE.getResult(inventory.input_inventory.getStackInSlot(0), world);
     return ItemUtil.itemStackExists(result) ? inventory.output_inventory.can_add(0, result) : false;
   }
 

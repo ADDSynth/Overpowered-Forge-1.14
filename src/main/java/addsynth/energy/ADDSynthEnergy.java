@@ -4,9 +4,9 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import addsynth.core.game.RegistryUtil;
-import addsynth.core.util.game.RecipeUtil;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.EnergyBlocks;
+import addsynth.energy.gameplay.circuit_fabricator.recipe.CircuitFabricatorRecipes;
 import addsynth.energy.gameplay.compressor.GuiCompressor;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
 import addsynth.energy.gameplay.electric_furnace.GuiElectricFurnace;
@@ -14,7 +14,6 @@ import addsynth.energy.gameplay.energy_storage.GuiEnergyStorageContainer;
 import addsynth.energy.gameplay.universal_energy_interface.GuiUniversalEnergyInterface;
 import addsynth.energy.registers.Containers;
 import addsynth.energy.registers.NetworkHandler;
-import addsynth.material.MaterialsUtil;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -65,8 +64,8 @@ public class ADDSynthEnergy {
 
   private static final void main_setup(final FMLCommonSetupEvent event){
     NetworkHandler.registerMessages();
-    RecipeUtil.registerResponder(CompressorRecipes::build_compressor_filter);
-    MaterialsUtil.registerResponder(CompressorRecipes::build_compressor_filter);
+    CompressorRecipes.INSTANCE.registerResponders();
+    CircuitFabricatorRecipes.INSTANCE.registerResponders();
   }
 
   private static final void client_setup(final FMLClientSetupEvent event){

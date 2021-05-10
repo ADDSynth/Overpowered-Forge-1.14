@@ -1,4 +1,4 @@
-package addsynth.energy.gameplay.compressor.recipe;
+package addsynth.energy.gameplay.circuit_fabricator.recipe;
 
 import addsynth.core.recipe.shapeless.AbstractRecipe;
 import addsynth.energy.gameplay.EnergyBlocks;
@@ -9,26 +9,26 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 
-public final class CompressorRecipe extends AbstractRecipe {
+public final class CircuitFabricatorRecipe extends AbstractRecipe {
 
-  public CompressorRecipe(ResourceLocation id, String group, ItemStack output, NonNullList<Ingredient> input){
+  public CircuitFabricatorRecipe(ResourceLocation id, String group, ItemStack output, NonNullList<Ingredient> input) {
     super(id, group, output, input);
-    CompressorRecipes.INSTANCE.addRecipe(this);
+    CircuitFabricatorRecipes.INSTANCE.addRecipe(this);
   }
 
   @Override
   public ItemStack getIcon(){
-    return new ItemStack(EnergyBlocks.compressor, 1);
+    return new ItemStack(EnergyBlocks.circuit_fabricator, 1);
   }
 
   @Override
   public IRecipeSerializer<?> getSerializer(){
-    return CompressorRecipes.INSTANCE.serializer;
+    return CircuitFabricatorRecipes.INSTANCE.serializer;
   }
 
   @Override
   public IRecipeType<?> getType(){
-    return CompressorRecipes.INSTANCE.type;
+    return CircuitFabricatorRecipes.INSTANCE.type;
   }
 
 }

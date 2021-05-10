@@ -1,15 +1,23 @@
 package addsynth.core;
 
-import addsynth.core.ADDSynthCore;
 import addsynth.core.config.Config;
 import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.util.color.ColorUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.math.BlockPos;
 
 public final class Debug {
+
+  public static final boolean debug_recipes = true;
+  
+  public static final void log_recipe(IRecipe recipe){
+    if(debug_recipes){
+      ADDSynthCore.log.info("Added "+recipe.getClass().getSimpleName()+" "+recipe.getId()+".");
+    }
+  }
 
   public static final void block(final Block block){
     block(block, null);

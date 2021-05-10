@@ -37,7 +37,7 @@ public final class EnergyJEIPlugin implements IModPlugin {
 
   @Override
   public void registerRecipes(IRecipeRegistration registration){
-    registration.addRecipes(CompressorRecipes.recipes, CompressorRecipeCategory.id);
+    registration.addRecipes(CompressorRecipes.INSTANCE.recipes, CompressorRecipeCategory.id);
     add_information(registration);
   }
 
