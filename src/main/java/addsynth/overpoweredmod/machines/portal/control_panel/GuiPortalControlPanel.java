@@ -1,12 +1,13 @@
 package addsynth.overpoweredmod.machines.portal.control_panel;
 
 import addsynth.core.gui.util.GuiUtil;
-import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.core.gui.widgets.buttons.Checkbox;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
+import addsynth.energy.gui.widgets.EnergyProgressBar;
 import addsynth.energy.gui.widgets.OnOffSwitch;
+import addsynth.energy.gui.widgets.WorkProgressBar;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.ToggleAutoShutoffMessage;
@@ -40,7 +41,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   private static final int energy_percentage_y = 45;
   private static final int energy_change_y = 56;
 
-  private final ProgressBar energy_bar = new ProgressBar(177, 56, 17, 63, 211, 24);
+  private final EnergyProgressBar energy_bar = new EnergyProgressBar(177, 56, 17, 63, 211, 24);
 
   private static final ResourceLocation gui_icons = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gui_textures.png");
   private static final int image_x = 14;
@@ -115,7 +116,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     guiUtil.draw_background_texture();
-    energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy.getEnergyPercentage(),ProgressBar.Round.NEAREST);
+    energy_bar.drawVertical(this, energy);
     draw_portal_items();
   }
 
@@ -124,7 +125,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
     guiUtil.draw_title(this.title);
     draw_energy(44, 34);
     draw_status(tile.getStatus(), energy_percentage_y);
-    guiUtil.draw_text_right(Math.round(tile.getWorkTimePercentage() * 100) + "%", energy_percentage_y);
+    guiUtil.draw_text_right(WorkProgressBar.getWorkTimeProgress(tile), energy_percentage_y);
     draw_energy_difference(energy_change_y);
     guiUtil.draw_text_center(tile.getMessage(), status_message_y);
   }

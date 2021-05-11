@@ -4,7 +4,6 @@ import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 
 public class ProgressBar {
 
-  // private final ResourceLocation texture;
   private final int x;
   private final int y;
   private final int width;
@@ -23,18 +22,8 @@ public class ProgressBar {
     this.texture_x = texture_x;
     this.texture_y = texture_y;
   }
-/* UNUSED
-  public ProgressBar(ResourceLocation gui_texture, int x, int y, int width, int height, int replace_x, int replace_y) {
-    this.texture = gui_texture;
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.replace_x = replace_x;
-    this.replace_y = replace_y;
-  }
-*/
-  public void draw(ContainerScreen gui, int gui_left, int gui_top, Direction direction, float value, Round round_type){
+
+  public void draw(ContainerScreen gui, Direction direction, float value, Round round_type){
     float texture_percentage = 0.0f;
     switch(direction){
     case LEFT_TO_RIGHT: case RIGHT_TO_LEFT: texture_percentage = width  * value; break;
@@ -46,12 +35,11 @@ public class ProgressBar {
     case NEAREST: progress = Math.round(texture_percentage); break;
     case CEILING: progress = (int)Math.ceil(texture_percentage); break;
     }
-    // gui.mc.renderEngine.bindTexture(texture);
     switch(direction){
-    case LEFT_TO_RIGHT: gui.blit(gui_left + x, gui_top + y, texture_x, texture_y, progress, height); break;
-    case RIGHT_TO_LEFT: gui.blit(gui_left + x + width - progress, gui_top + y, texture_x + width - progress, texture_y, progress, height); break;
-    case TOP_TO_BOTTOM: gui.blit(gui_left + x, gui_top + y, texture_x, texture_y, width, progress); break;
-    case BOTTOM_TO_TOP: gui.blit(gui_left + x, gui_top + y + height - progress, texture_x, texture_y + height - progress, width, progress); break;
+    case LEFT_TO_RIGHT: gui.blit(gui.getGuiLeft() + x, gui.getGuiTop() + y, texture_x, texture_y, progress, height); break;
+    case RIGHT_TO_LEFT: gui.blit(gui.getGuiLeft() + x + width - progress, gui.getGuiTop() + y, texture_x + width - progress, texture_y, progress, height); break;
+    case TOP_TO_BOTTOM: gui.blit(gui.getGuiLeft() + x, gui.getGuiTop() + y, texture_x, texture_y, width, progress); break;
+    case BOTTOM_TO_TOP: gui.blit(gui.getGuiLeft() + x, gui.getGuiTop() + y + height - progress, texture_x, texture_y + height - progress, width, progress); break;
     }
   }
 

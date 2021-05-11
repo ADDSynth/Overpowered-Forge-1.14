@@ -1,11 +1,11 @@
 package addsynth.energy.gameplay.universal_energy_interface;
 
 import addsynth.core.gui.util.GuiUtil;
-import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gui.GuiEnergyBase;
+import addsynth.energy.gui.widgets.EnergyProgressBar;
 import addsynth.energy.registers.NetworkHandler;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +20,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
   private final String energy_text = StringUtil.translate("gui.addsynth_energy.common.energy");
 
   private static final int button_width = 90;
-  private final ProgressBar energy_bar = new ProgressBar(156, 18, 12, 34, 206, 28);
+  private final EnergyProgressBar energy_bar = new EnergyProgressBar(156, 18, 12, 34, 206, 28);
   
   private static final int line_1 = 21;
   private static final int line_2 = 41;
@@ -61,7 +61,7 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
   @Override
   protected final void drawGuiContainerBackgroundLayer(final float partialTicks, final int mouseX, final int mouseY){
     guiUtil.draw_background_texture();
-    energy_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.BOTTOM_TO_TOP,energy.getEnergyPercentage(),ProgressBar.Round.NEAREST);
+    energy_bar.drawVertical(this, energy);
   }
 
   @Override

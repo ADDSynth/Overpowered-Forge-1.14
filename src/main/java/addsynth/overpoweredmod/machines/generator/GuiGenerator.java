@@ -1,9 +1,9 @@
 package addsynth.overpoweredmod.machines.generator;
 
 import addsynth.core.gui.util.GuiUtil;
-import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.gui.GuiEnergyBase;
+import addsynth.energy.gui.widgets.EnergyProgressBar;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -16,9 +16,7 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
   private final String input_text   = StringUtil.translate("gui.overpowered.crystal_energy_generator.input");
   private final String extract_text = StringUtil.translate("gui.overpowered.crystal_energy_generator.max_extract");
 
-  private int energy_percentage;
-
-  private final ProgressBar energy_progress_bar = new ProgressBar(8, 68, 168, 20, 8, 182);
+  private final EnergyProgressBar energy_progress_bar = new EnergyProgressBar(8, 68, 168, 20, 8, 182);
 
   private static final int input_text_x = 52;
   private static final int input_text_y = 24;
@@ -37,10 +35,7 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     guiUtil.draw_background_texture();
-    
-    final float energy_float = energy.getEnergyPercentage();
-    energy_percentage = Math.round(energy_float*100);
-    energy_progress_bar.draw(this,this.guiLeft,this.guiTop,ProgressBar.Direction.LEFT_TO_RIGHT,energy_float,ProgressBar.Round.NEAREST);
+    energy_progress_bar.drawHorizontal(this, energy);
   }
 
   @Override
@@ -52,7 +47,7 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
     // draw_text_left("Energy Draw: "+energy_draw,extract_text_x,extract_text_line_2);
     
     draw_energy(6, energy_text_line_1);
-    GuiUtil.draw_text_center(energy_percentage + "%", guiUtil.center_x, energy_text_line_2);
+    GuiUtil.draw_text_center(energy_progress_bar.getEnergyPercentage(), guiUtil.center_x, energy_text_line_2);
     draw_energy_difference(82);
   }
 

@@ -60,6 +60,7 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
     }
   }
 
+  /** Draws the energy usage after the title. */
   protected final void draw_energy_usage(){
     this.draw_energy_usage(6, 17);
   }

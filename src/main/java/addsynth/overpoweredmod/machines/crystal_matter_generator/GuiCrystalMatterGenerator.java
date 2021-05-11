@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.machines.crystal_matter_generator;
 
-import addsynth.core.gui.widgets.ProgressBar;
 import addsynth.energy.gui.GuiEnergyBase;
 import addsynth.energy.gui.widgets.OnOffSwitch;
+import addsynth.energy.gui.widgets.WorkProgressBar;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -13,8 +13,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
   private static final ResourceLocation crystal_matter_generator_gui_texture =
     new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/crystal_matter_generator.png");
 
-  private int work_percentage;
-  private final ProgressBar work_progress_bar = new ProgressBar(8, 89, 160, 5, 11, 194);
+  private final WorkProgressBar work_progress_bar = new WorkProgressBar(8, 89, 160, 5, 11, 194);
   
   private static final int work_percentage_text_y = 77;
 
@@ -31,10 +30,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     guiUtil.draw_background_texture();
-    
-    final float work_float = tile.getWorkTimePercentage();
-    work_percentage = (int)Math.floor(work_float * 100);
-    work_progress_bar.draw(this, guiLeft, guiTop, ProgressBar.Direction.LEFT_TO_RIGHT, work_float, ProgressBar.Round.FLOOR);
+    work_progress_bar.draw(this, tile);
   }
 
   @Override
@@ -42,7 +38,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
     guiUtil.draw_title(this.title);
     draw_energy_usage_after_switch();
     draw_status_below_switch(tile.getStatus());
-    guiUtil.draw_text_center(work_percentage + "%", work_percentage_text_y);
+    guiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), work_percentage_text_y);
     draw_time_left(98);
   }
 
