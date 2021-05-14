@@ -2,13 +2,14 @@ package addsynth.core.container.slots;
 
 import javax.annotation.Nonnull;
 import addsynth.core.inventory.IInputInventory;
+import addsynth.core.items.ItemUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;
 
 public final class InputSlot extends SlotItemHandler {
 
-  private final Item[] valid_items;
+  private Item[] valid_items;
 
   private static final int default_stack_size = 64;
   private final int max_stack_size;
@@ -43,6 +44,14 @@ public final class InputSlot extends SlotItemHandler {
       }
     }
     return false;
+  }
+
+  public final void setFilter(final Item[] input){
+    valid_items = input;
+  }
+
+  public final void setFilter(final ItemStack[] input){
+    valid_items = ItemUtil.toItemArray(input);
   }
 
   @Override

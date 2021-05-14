@@ -1,0 +1,16 @@
+{
+  "type": "addsynth_energy:circuit_fabricator",
+  "ingredients": [
+    {"item": "minecraft:paper"},
+    {"tag": "forge:plates/platinum"},
+    {"tag": "forge:dyes/purple"},
+    {"item": "minecraft:comparator"},
+    {"tag": "forge:silicon"},
+    {"tag": "forge:plates/silver"},
+    {"tag": "forge:plates/gold"},
+    {"tag": "forge:ender_pearls"}
+  ],
+  "result": {
+    "item": "addsynth_energy:circuit_tier_6"
+  }
+}

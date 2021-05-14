@@ -33,7 +33,7 @@ public final class MachineInventory {
     return false;
   }
 
-  /** Decrements all inputs by 1 and transfers them to the output inventory.
+  /** Decrements all inputs by 1 and transfers them to the working inventory
    *  to begin working on it.<br />
    *  <b>Note:</b> It is STRONGLY recommended you DO NOT Override this! */
   public void begin_work(){

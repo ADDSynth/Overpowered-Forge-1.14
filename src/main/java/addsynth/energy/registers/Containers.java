@@ -1,5 +1,6 @@
 package addsynth.energy.registers;
 
+import addsynth.energy.gameplay.circuit_fabricator.CircuitFabricatorContainer;
 import addsynth.energy.gameplay.compressor.ContainerCompressor;
 import addsynth.energy.gameplay.electric_furnace.ContainerElectricFurnace;
 import addsynth.energy.gameplay.energy_storage.ContainerEnergyStorage;
@@ -20,5 +21,8 @@ public final class Containers {
 
   public static final ContainerType<ContainerElectricFurnace> ELECTRIC_FURNACE =
     new ContainerType<>((IContainerFactory<ContainerElectricFurnace>)ContainerElectricFurnace::new);
+
+  public static final ContainerType<CircuitFabricatorContainer> CIRCUIT_FABRICATOR =
+    new ContainerType<>((IContainerFactory<CircuitFabricatorContainer>)CircuitFabricatorContainer::new);
 
 }

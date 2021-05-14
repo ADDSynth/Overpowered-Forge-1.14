@@ -1,0 +1,16 @@
+{
+  "type": "addsynth_energy:circuit_fabricator",
+  "ingredients": [
+    {"item": "minecraft:paper"},
+    {"tag": "forge:plates/platinum"},
+    {"tag": "forge:dyes/orange"},
+    {"item": "minecraft:redstone_lamp"},
+    {"tag": "forge:silicon"},
+    {"tag": "forge:plates/silver"},
+    {"tag": "forge:plates/gold"},
+    {"item": "minecraft:ender_eye"}
+  ],
+  "result": {
+    "item": "addsynth_energy:circuit_tier_7"
+  }
+}

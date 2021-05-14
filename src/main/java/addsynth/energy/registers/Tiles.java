@@ -1,6 +1,7 @@
 package addsynth.energy.registers;
 
 import addsynth.energy.gameplay.EnergyBlocks;
+import addsynth.energy.gameplay.circuit_fabricator.TileCircuitFabricator;
 import addsynth.energy.gameplay.compressor.TileCompressor;
 import addsynth.energy.gameplay.electric_furnace.TileElectricFurnace;
 import addsynth.energy.gameplay.energy_storage.TileEnergyStorage;
@@ -24,5 +25,8 @@ public final class Tiles {
 
   public static final TileEntityType<TileElectricFurnace> ELECTRIC_FURNACE =
     TileEntityType.Builder.create(TileElectricFurnace::new, EnergyBlocks.electric_furnace).build(null);
+
+  public static final TileEntityType<TileCircuitFabricator> CIRCUIT_FABRICATOR =
+    TileEntityType.Builder.create(TileCircuitFabricator::new, EnergyBlocks.circuit_fabricator).build(null);
 
 }

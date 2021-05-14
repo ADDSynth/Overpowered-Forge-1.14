@@ -52,6 +52,13 @@ public class CommonInventory extends ItemStackHandler {
     }
   }
 
+  /** Extracts the entire ItemStack from the slot. */
+  public final ItemStack extractItemStack(final int slot){
+    final ItemStack stack = getStackInSlot(slot);
+    setStackInSlot(slot, ItemStack.EMPTY);
+    return stack;
+  }
+
   public final boolean isEmpty(){
     boolean empty = true;
     for(final ItemStack stack : stacks){
@@ -63,6 +70,7 @@ public class CommonInventory extends ItemStackHandler {
     return empty;
   }
 
+  /** Sets all slots in the inventory to Empty. */
   public final void setEmpty(){
     int i;
     for(i = 0; i < stacks.size(); i++){

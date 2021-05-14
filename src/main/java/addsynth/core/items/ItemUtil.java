@@ -43,6 +43,16 @@ public final class ItemUtil {
     return ItemStack.read(nbt.getCompound(key));
   }
 
+  public static final Item[] toItemArray(final ItemStack[] input){
+    int i;
+    int length = input.length;
+    final Item[] items = new Item[length];
+    for(i = 0; i < length; i++){
+      items[i] = input[i].getItem();
+    }
+    return items;
+  }
+
   public static final Item get_armor(final ArmorMaterial armor_material, final EquipmentType equipment_type){
     Item armor = null;
     switch(armor_material){

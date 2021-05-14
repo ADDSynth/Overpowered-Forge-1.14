@@ -1,0 +1,16 @@
+{
+  "type": "addsynth_energy:circuit_fabricator",
+  "ingredients": [
+    {"item": "minecraft:paper"},
+    {"tag": "forge:plates/iron"},
+    {"tag": "forge:dyes/blue"},
+    {"item": "minecraft:repeater"},
+    {"tag": "forge:silicon"},
+    {"tag": "forge:plates/silver"},
+    {"tag": "forge:plates/gold"},
+    {"tag": "forge:dusts/glowstone"}
+  ],
+  "result": {
+    "item": "addsynth_energy:circuit_tier_4"
+  }
+}

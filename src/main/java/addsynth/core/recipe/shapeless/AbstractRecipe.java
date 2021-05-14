@@ -36,6 +36,17 @@ public abstract class AbstractRecipe implements IRecipe<IInventory> {
     return recipeItems; // what are the consequences of returning the EXACT list object? it can be manipulated from an external source.
   }
 
+  /** Gets all valid ItemStacks for each Ingredient in this recipe. */
+  public final ItemStack[][] getItemStackIngredients(){
+    final int number_of_ingredients = recipeItems.size();
+    final ItemStack[][] stacks = new ItemStack[number_of_ingredients][];
+    int i;
+    for(i = 0; i < number_of_ingredients; i++){
+      stacks[i] = recipeItems.get(i).getMatchingStacks();
+    }
+    return stacks;
+  }
+
   @Override
   public boolean matches(IInventory inv, World world){
     final RecipeItemHelper recipeitemhelper = new RecipeItemHelper();
@@ -73,6 +84,11 @@ public abstract class AbstractRecipe implements IRecipe<IInventory> {
   @Override
   public ResourceLocation getId(){
     return id;
+  }
+
+  @Override
+  public String toString(){
+    return getClass().getSimpleName()+"(Ingredients: "+recipeItems.size()+", Output: "+result.toString()+")";
   }
 
 }

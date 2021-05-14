@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
  *  {@link InputInventory} uses this. */
 public final class SlotData {
 
-  public final Item[] filter;
+  public Item[] filter;
   public final int stack_limit;
 
   public final static SlotData[] create_new_array(final int number_of_slots){
@@ -62,6 +62,18 @@ public final class SlotData {
       }
     }
     return false;
+  }
+
+  public final void setFilter(final Item[] new_filter){
+    this.filter = new_filter;
+  }
+
+  public final void setNoFilter(){
+    this.filter = null;
+  }
+  
+  public final void setFilterAll(){
+    this.filter = new Item[0];
   }
 
 }

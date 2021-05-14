@@ -65,26 +65,33 @@ public final class GuiUtil {
     AbstractGui.blit(guiLeft, guiTop, guiWidth, guiHeight, 0, 0, guiWidth, guiHeight, 256, 256);
   }
 
-  /** <p>Draws the background texture with custom width and height. Use this if you have a
-   *     background texture that is not the default size of 256x256.
-   *  <p>Draws texture at z level = 0, which is what it normally draws at anyway.
+  /** Draws the background texture with custom scaled width and height. Use this
+   *  if you have a background texture that is not the default size of 256x256.
    * @param texture_width
    * @param texture_height
    */
   public void draw_custom_background_texture(final int texture_width, int texture_height){
-    draw(0, 0, 0, 0, guiWidth, guiHeight, texture_width, texture_height);
+    GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+    textureManager.bindTexture(GUI_TEXTURE);
+    AbstractGui.blit(guiLeft, guiTop, guiWidth, guiHeight, 0, 0, guiWidth, guiHeight, texture_width, texture_height);
   }
 
-  /** Draws another part of the gui texture at the coordinates you specify. */
+  /** Draws another part of the gui texture at the coordinates you specify.
+   *  This draws the texture portion the same size that is drawn on the gui.
+   *  Assumes a default texture size of 256x256. */
   public void draw(final int x, final int y, final int u, final int v, final int width, final int height){
-    draw(x, y, u, v, width, height, width, height);
+    GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+    textureManager.bindTexture(GUI_TEXTURE);
+    AbstractGui.blit(guiLeft + x, guiTop + y, width, height, u, v, width, height, 256, 256);
   }
 
-  /** Draws another part of the gui texture at the coordinates you specify. */
+  /** Draws another part of the gui texture at the coordinates you specify.
+   *  If you need more control over how it's drawn, you might as well use the
+   *  vanilla blit() function. */
   public void draw(int x, int y, int u, int v, int width, int height, int texture_width, int texture_height){
     GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
     textureManager.bindTexture(GUI_TEXTURE);
-    AbstractGui.blit(guiLeft + x, guiTop + y, width, height, u, v, width, height, texture_width, texture_height);
+    AbstractGui.blit(guiLeft + x, guiTop + y, width, height, u, v, texture_width, texture_height, 256, 256);
   }
 
   /** Draws another part of the gui texture at the coordinates you specify.

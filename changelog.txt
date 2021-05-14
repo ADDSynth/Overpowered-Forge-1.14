@@ -8,6 +8,8 @@ ADDED:
     Block Renderer, Item Zoom, Neat, and McJtyLib.
     - Updated Pam's Harvestcraft so it can detect it now.
   Added Team Manager.
+  Added Circuit Fabricator.
+    - Added 8 circuits, however you can only craft 7 of them at the moment.
 CHANGED:
   Made ADDSynth Materials into its own mod.
   The Music Box gui no longer has the JEI item panel, because it doesn't need to.

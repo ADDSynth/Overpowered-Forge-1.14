@@ -7,7 +7,8 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class Config {
 
-  public static final MachineDataConfig compressor_data = new MachineDataConfig(MachineType.ALWAYS_ON, 200, 10, 0, 0); // 2,000
+  public static final MachineDataConfig compressor_data         = new MachineDataConfig(MachineType.ALWAYS_ON, 200, 10, 0, 0); // 2,000
+  public static final MachineDataConfig circuit_fabricator_data = new MachineDataConfig(MachineType.ALWAYS_ON, 1000, 25, 0, 0);
 
   public static ForgeConfigSpec.BooleanValue electric_furnace;
 
@@ -30,6 +31,10 @@ public final class Config {
   
     builder.push("Compressor");
     compressor_data.build(builder);
+    builder.pop();
+    
+    builder.push("Circuit Fabricator");
+    circuit_fabricator_data.build(builder);
     builder.pop();
     
     builder.push("Electric Furnace");

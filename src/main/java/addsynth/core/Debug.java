@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 
 public final class Debug {
 
-  public static final boolean debug_recipes = true;
+  public static final boolean debug_recipes = false;
   
   public static final void log_recipe(IRecipe recipe){
     if(debug_recipes){

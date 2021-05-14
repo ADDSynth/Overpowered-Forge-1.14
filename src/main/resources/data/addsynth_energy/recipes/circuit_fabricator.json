@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "asa",
+    "cwc",
+    "ata"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:plates/aluminum"
+    },
+    "s": {
+      "tag": "forge:silicon"
+    },
+    "c": {
+      "item": "addsynth_energy:circuit_tier_1"
+    },
+    "w": {
+      "item": "minecraft:crafting_table"
+    },
+    "t": {
+      "tag": "forge:plates/steel"
+    }
+  },
+  "result": {
+    "item": "addsynth_energy:circuit_fabricator"
+  }
+}

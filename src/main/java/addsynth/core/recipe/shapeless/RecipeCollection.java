@@ -77,4 +77,20 @@ public class RecipeCollection <T extends AbstractRecipe> {
     }
     return null;
   }
+  
+  /** Finds the recipe with an output that matches the passed in ItemStack.
+   *  Warning: Finds the FIRST recipe with a matching output. There may be
+   *  more than one recipe that makes that item. Returns null if no recipe was found.
+   */
+  public final T find_recipe(final ItemStack output){
+    T recipe = null;
+    for(T r : recipes){
+      if(r.getRecipeOutput().isItemEqual(output)){
+        recipe = r;
+        break;
+      }
+    }
+    return recipe;
+  }
+
 }

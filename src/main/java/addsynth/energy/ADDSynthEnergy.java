@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import addsynth.core.game.RegistryUtil;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.EnergyBlocks;
+import addsynth.energy.gameplay.circuit_fabricator.CircuitFabricatorGui;
 import addsynth.energy.gameplay.circuit_fabricator.recipe.CircuitFabricatorRecipes;
 import addsynth.energy.gameplay.compressor.GuiCompressor;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
@@ -77,6 +78,7 @@ public class ADDSynthEnergy {
     ScreenManager.registerFactory(Containers.ENERGY_STORAGE_CONTAINER,   GuiEnergyStorageContainer::new);
     ScreenManager.registerFactory(Containers.UNIVERSAL_ENERGY_INTERFACE, GuiUniversalEnergyInterface::new);
     ScreenManager.registerFactory(Containers.ELECTRIC_FURNACE,           GuiElectricFurnace::new);
+    ScreenManager.registerFactory(Containers.CIRCUIT_FABRICATOR,         CircuitFabricatorGui::new);
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

@@ -1,6 +1,7 @@
 package addsynth.energy.registers;
 
 import addsynth.energy.ADDSynthEnergy;
+import addsynth.energy.gameplay.circuit_fabricator.ChangeCircuitCraftType;
 import addsynth.energy.gameplay.universal_energy_interface.CycleTransferModeMessage;
 import addsynth.energy.network.server_messages.SwitchMachineMessage;
 import net.minecraft.util.ResourceLocation;
@@ -29,7 +30,12 @@ public final class NetworkHandler {
       CycleTransferModeMessage::decode,
       CycleTransferModeMessage::handle
     );
-
+    INSTANCE.registerMessage(3,
+      ChangeCircuitCraftType.class,
+      ChangeCircuitCraftType::encode,
+      ChangeCircuitCraftType::decode,
+      ChangeCircuitCraftType::handle
+    );
   }
 
 }

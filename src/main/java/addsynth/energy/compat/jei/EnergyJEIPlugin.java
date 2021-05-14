@@ -3,6 +3,7 @@ package addsynth.energy.compat.jei;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gameplay.EnergyBlocks;
+import addsynth.energy.gameplay.circuit_fabricator.recipe.CircuitFabricatorRecipes;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -31,28 +32,32 @@ public final class EnergyJEIPlugin implements IModPlugin {
     final IJeiHelpers jei_helpers = registration.getJeiHelpers();
     final IGuiHelper gui_helper = jei_helpers.getGuiHelper();
     registration.addRecipeCategories(
-      new CompressorRecipeCategory(gui_helper)
+      new CompressorRecipeCategory(gui_helper),
+      new CircuitRecipeCategory(gui_helper)
     );
   }
 
   @Override
   public void registerRecipes(IRecipeRegistration registration){
     registration.addRecipes(CompressorRecipes.INSTANCE.recipes, CompressorRecipeCategory.id);
+    registration.addRecipes(CircuitFabricatorRecipes.INSTANCE.recipes, CircuitRecipeCategory.id);
     add_information(registration);
   }
 
   private static void add_information(IRecipeRegistration registry){
-    registry.addIngredientInfo(new ItemStack(EnergyBlocks.wire),             VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.wire"));
-    registry.addIngredientInfo(new ItemStack(EnergyBlocks.energy_storage),   VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.energy_storage"));
-    registry.addIngredientInfo(new ItemStack(EnergyBlocks.electric_furnace), VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.electric_furnace"));
-    registry.addIngredientInfo(new ItemStack(EnergyBlocks.compressor),       VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.compressor"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.wire),               VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.wire"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.energy_storage),     VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.energy_storage"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.electric_furnace),   VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.electric_furnace"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.compressor),         VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.compressor"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.circuit_fabricator), VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.circuit_fabricator"));
     registry.addIngredientInfo(new ItemStack(EnergyBlocks.universal_energy_machine), VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.universal_energy_interface"));
   }
 
   @Override
   public void registerRecipeCatalysts(IRecipeCatalystRegistration registration){
-    registration.addRecipeCatalyst(new ItemStack(EnergyBlocks.compressor), CompressorRecipeCategory.id);
-    registration.addRecipeCatalyst(new ItemStack(EnergyBlocks.electric_furnace), VanillaRecipeCategoryUid.FURNACE);
+    registration.addRecipeCatalyst(new ItemStack(EnergyBlocks.compressor),         CompressorRecipeCategory.id);
+    registration.addRecipeCatalyst(new ItemStack(EnergyBlocks.electric_furnace),   VanillaRecipeCategoryUid.FURNACE);
+    registration.addRecipeCatalyst(new ItemStack(EnergyBlocks.circuit_fabricator), CircuitRecipeCategory.id);
   }
 
 }
