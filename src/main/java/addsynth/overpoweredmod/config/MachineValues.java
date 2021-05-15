@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.config;
 
-import addsynth.energy.config.MachineDataConfig;
-import addsynth.energy.config.MachineType;
+import addsynth.energy.api.config.MachineDataConfig;
+import addsynth.energy.api.config.MachineType;
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 

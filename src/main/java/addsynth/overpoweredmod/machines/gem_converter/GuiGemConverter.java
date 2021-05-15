@@ -2,8 +2,8 @@ package addsynth.overpoweredmod.machines.gem_converter;
 
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.buttons.AdjustableButton;
-import addsynth.energy.gui.GuiEnergyBase;
-import addsynth.energy.gui.widgets.WorkProgressBar;
+import addsynth.energy.api.gui.GuiEnergyBase;
+import addsynth.energy.api.gui.widgets.WorkProgressBar;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.NetworkHandler;

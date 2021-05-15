@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.portal.frame;
 
 import addsynth.core.util.game.MinecraftUtility;
-import addsynth.energy.blocks.MachineBlock;
+import addsynth.energy.api.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;

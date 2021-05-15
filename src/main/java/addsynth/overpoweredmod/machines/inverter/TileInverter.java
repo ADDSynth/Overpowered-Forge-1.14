@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.inverter;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.energy.tiles.machines.TileStandardWorkMachine;
+import addsynth.energy.api.tiles.machines.TileStandardWorkMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.registers.Tiles;

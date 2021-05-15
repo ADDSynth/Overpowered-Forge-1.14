@@ -1,11 +1,11 @@
 package addsynth.energy.registers;
 
-import addsynth.energy.gameplay.circuit_fabricator.CircuitFabricatorContainer;
-import addsynth.energy.gameplay.compressor.ContainerCompressor;
-import addsynth.energy.gameplay.electric_furnace.ContainerElectricFurnace;
-import addsynth.energy.gameplay.energy_storage.ContainerEnergyStorage;
-import addsynth.energy.gameplay.generator.ContainerGenerator;
-import addsynth.energy.gameplay.universal_energy_interface.ContainerUniversalInterface;
+import addsynth.energy.gameplay.machines.circuit_fabricator.CircuitFabricatorContainer;
+import addsynth.energy.gameplay.machines.compressor.ContainerCompressor;
+import addsynth.energy.gameplay.machines.electric_furnace.ContainerElectricFurnace;
+import addsynth.energy.gameplay.machines.energy_storage.ContainerEnergyStorage;
+import addsynth.energy.gameplay.machines.generator.ContainerGenerator;
+import addsynth.energy.gameplay.machines.universal_energy_interface.ContainerUniversalInterface;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.fml.network.IContainerFactory;
 

@@ -2,7 +2,7 @@ package addsynth.energy.compat.jei;
 
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gameplay.EnergyBlocks;
-import addsynth.energy.gameplay.circuit_fabricator.recipe.CircuitFabricatorRecipe;
+import addsynth.energy.gameplay.machines.circuit_fabricator.recipe.CircuitFabricatorRecipe;
 import addsynth.energy.registers.Names;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

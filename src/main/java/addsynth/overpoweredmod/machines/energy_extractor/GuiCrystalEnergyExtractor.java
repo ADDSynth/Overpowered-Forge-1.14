@@ -2,8 +2,8 @@ package addsynth.overpoweredmod.machines.energy_extractor;
 
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.util.StringUtil;
-import addsynth.energy.gui.GuiEnergyBase;
-import addsynth.energy.gui.widgets.EnergyProgressBar;
+import addsynth.energy.api.gui.GuiEnergyBase;
+import addsynth.energy.api.gui.widgets.EnergyProgressBar;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;

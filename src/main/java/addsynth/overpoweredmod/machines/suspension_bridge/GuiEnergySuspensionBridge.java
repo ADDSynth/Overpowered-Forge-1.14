@@ -4,7 +4,7 @@ import addsynth.core.Constants;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.core.util.StringUtil;
-import addsynth.energy.gui.GuiEnergyBase;
+import addsynth.energy.api.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import net.minecraft.entity.player.PlayerInventory;

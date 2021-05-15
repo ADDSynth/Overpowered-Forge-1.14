@@ -1,13 +1,13 @@
 package addsynth.energy.registers;
 
 import addsynth.energy.gameplay.EnergyBlocks;
-import addsynth.energy.gameplay.circuit_fabricator.TileCircuitFabricator;
-import addsynth.energy.gameplay.compressor.TileCompressor;
-import addsynth.energy.gameplay.electric_furnace.TileElectricFurnace;
-import addsynth.energy.gameplay.energy_storage.TileEnergyStorage;
-import addsynth.energy.gameplay.energy_wire.TileEnergyWire;
-import addsynth.energy.gameplay.generator.TileGenerator;
-import addsynth.energy.gameplay.universal_energy_interface.TileUniversalEnergyTransfer;
+import addsynth.energy.gameplay.machines.circuit_fabricator.TileCircuitFabricator;
+import addsynth.energy.gameplay.machines.compressor.TileCompressor;
+import addsynth.energy.gameplay.machines.electric_furnace.TileElectricFurnace;
+import addsynth.energy.gameplay.machines.energy_storage.TileEnergyStorage;
+import addsynth.energy.gameplay.machines.energy_wire.TileEnergyWire;
+import addsynth.energy.gameplay.machines.generator.TileGenerator;
+import addsynth.energy.gameplay.machines.universal_energy_interface.TileUniversalEnergyTransfer;
 import net.minecraft.tileentity.TileEntityType;
 
 public final class Tiles {

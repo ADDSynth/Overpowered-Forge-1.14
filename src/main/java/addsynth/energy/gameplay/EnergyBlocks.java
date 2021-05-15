@@ -1,12 +1,12 @@
 package addsynth.energy.gameplay;
 
-import addsynth.energy.gameplay.circuit_fabricator.CircuitFabricatorBlock;
-import addsynth.energy.gameplay.compressor.Compressor;
-import addsynth.energy.gameplay.electric_furnace.ElectricFurnace;
-import addsynth.energy.gameplay.energy_storage.EnergyStorageBlock;
-import addsynth.energy.gameplay.energy_wire.EnergyWire;
-import addsynth.energy.gameplay.generator.GeneratorBlock;
-import addsynth.energy.gameplay.universal_energy_interface.UniversalEnergyBlock;
+import addsynth.energy.gameplay.machines.circuit_fabricator.CircuitFabricatorBlock;
+import addsynth.energy.gameplay.machines.compressor.Compressor;
+import addsynth.energy.gameplay.machines.electric_furnace.ElectricFurnace;
+import addsynth.energy.gameplay.machines.energy_storage.EnergyStorageBlock;
+import addsynth.energy.gameplay.machines.energy_wire.EnergyWire;
+import addsynth.energy.gameplay.machines.generator.GeneratorBlock;
+import addsynth.energy.gameplay.machines.universal_energy_interface.UniversalEnergyBlock;
 
 public final class EnergyBlocks {
 

@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.machines.crystal_matter_generator;
 
-import addsynth.energy.gui.GuiEnergyBase;
-import addsynth.energy.gui.widgets.OnOffSwitch;
-import addsynth.energy.gui.widgets.WorkProgressBar;
+import addsynth.energy.api.gui.GuiEnergyBase;
+import addsynth.energy.api.gui.widgets.OnOffSwitch;
+import addsynth.energy.api.gui.widgets.WorkProgressBar;
 import addsynth.overpoweredmod.OverpoweredMod;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
