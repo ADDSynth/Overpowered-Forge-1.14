@@ -16,6 +16,7 @@ public final class Features {
   public static ForgeConfigSpec.BooleanValue light_block;
   public static ForgeConfigSpec.BooleanValue null_block;
 
+  public static ForgeConfigSpec.BooleanValue crystal_energy_extractor;
   public static ForgeConfigSpec.BooleanValue gem_converter;
   public static ForgeConfigSpec.BooleanValue magic_infuser;
   public static ForgeConfigSpec.BooleanValue identifier;
@@ -79,6 +80,7 @@ public final class Features {
     builder.pop();
 
     builder.push("Machines");
+    crystal_energy_extractor   = builder.define("Crystal Energy Extractor", true);
     gem_converter              = builder.define("Gem Converter",            true);
     magic_infuser              = builder.define("Magic Infuser",            true);
     identifier                 = builder.define("Identifier",               true);

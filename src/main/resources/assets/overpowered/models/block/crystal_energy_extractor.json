@@ -2,6 +2,6 @@
     "parent": "block/cube_column",
     "textures": {
         "end":   "overpowered:blocks/machines/default_machine_texture",
-        "side":  "overpowered:blocks/machines/generator"
+        "side":  "overpowered:blocks/machines/crystal_energy_extractor"
     }
 }

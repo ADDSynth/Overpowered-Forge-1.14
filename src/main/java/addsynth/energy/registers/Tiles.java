@@ -6,6 +6,7 @@ import addsynth.energy.gameplay.compressor.TileCompressor;
 import addsynth.energy.gameplay.electric_furnace.TileElectricFurnace;
 import addsynth.energy.gameplay.energy_storage.TileEnergyStorage;
 import addsynth.energy.gameplay.energy_wire.TileEnergyWire;
+import addsynth.energy.gameplay.generator.TileGenerator;
 import addsynth.energy.gameplay.universal_energy_interface.TileUniversalEnergyTransfer;
 import net.minecraft.tileentity.TileEntityType;
 
@@ -13,6 +14,9 @@ public final class Tiles {
 
   public static final TileEntityType<TileEnergyWire> ENERGY_WIRE =
     TileEntityType.Builder.create(TileEnergyWire::new, EnergyBlocks.wire).build(null);
+
+  public static final TileEntityType<TileGenerator> GENERATOR =
+    TileEntityType.Builder.create(TileGenerator::new, EnergyBlocks.generator).build(null);
 
   public static final TileEntityType<TileCompressor> COMPRESSOR =
     TileEntityType.Builder.create(TileCompressor::new, EnergyBlocks.compressor).build(null);

@@ -90,14 +90,14 @@ public final class OverpoweredJEI implements IModPlugin {
     void_tools.add(new ItemStack(Tools.void_toolset.hoe));
     registry.addIngredientInfo(void_tools, VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.void_tools"));
 
-    registry.addIngredientInfo(new ItemStack(Machines.generator),     VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.generator"));
-    registry.addIngredientInfo(new ItemStack(Wires.data_cable),       VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.data_cable"));
-    registry.addIngredientInfo(new ItemStack(Machines.gem_converter), VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.gem_converter"));
-    registry.addIngredientInfo(new ItemStack(Machines.inverter),      VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.inverter"));
-    registry.addIngredientInfo(new ItemStack(Machines.magic_infuser), VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.magic_infuser"));
-    registry.addIngredientInfo(new ItemStack(Machines.identifier),    VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.identifier"));
+    registry.addIngredientInfo(new ItemStack(Machines.crystal_energy_extractor), VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.crystal_energy_extractor"));
+    registry.addIngredientInfo(new ItemStack(Wires.data_cable),              VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.data_cable"));
+    registry.addIngredientInfo(new ItemStack(Machines.gem_converter),        VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.gem_converter"));
+    registry.addIngredientInfo(new ItemStack(Machines.inverter),             VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.inverter"));
+    registry.addIngredientInfo(new ItemStack(Machines.magic_infuser),        VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.magic_infuser"));
+    registry.addIngredientInfo(new ItemStack(Machines.identifier),           VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.identifier"));
     registry.addIngredientInfo(new ItemStack(Machines.portal_control_panel), VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.portal_control_panel"));
-    registry.addIngredientInfo(new ItemStack(Machines.portal_frame),  VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.portal_frame"));
+    registry.addIngredientInfo(new ItemStack(Machines.portal_frame),         VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.portal_frame"));
     
     registry.addIngredientInfo(new ItemStack(Machines.laser_housing), VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.laser_housing"));
     final ArrayList<ItemStack> lasers = new ArrayList<>(8);

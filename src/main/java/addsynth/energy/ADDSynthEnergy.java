@@ -12,6 +12,7 @@ import addsynth.energy.gameplay.compressor.GuiCompressor;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipes;
 import addsynth.energy.gameplay.electric_furnace.GuiElectricFurnace;
 import addsynth.energy.gameplay.energy_storage.GuiEnergyStorageContainer;
+import addsynth.energy.gameplay.generator.GuiGenerator;
 import addsynth.energy.gameplay.universal_energy_interface.GuiUniversalEnergyInterface;
 import addsynth.energy.registers.Containers;
 import addsynth.energy.registers.NetworkHandler;
@@ -42,7 +43,7 @@ public class ADDSynthEnergy {
   public static final ItemGroup creative_tab = new ItemGroup("addsynth_energy"){
     @Override
     public final ItemStack createIcon(){
-      return new ItemStack(registry.getItemBlock(EnergyBlocks.wire));
+      return new ItemStack(registry.getItemBlock(EnergyBlocks.generator));
     }
   };
 
@@ -74,11 +75,12 @@ public class ADDSynthEnergy {
   }
 
   private static final void register_guis(){
-    ScreenManager.registerFactory(Containers.COMPRESSOR,                 GuiCompressor::new);
+    ScreenManager.registerFactory(Containers.GENERATOR,                  GuiGenerator::new);
     ScreenManager.registerFactory(Containers.ENERGY_STORAGE_CONTAINER,   GuiEnergyStorageContainer::new);
-    ScreenManager.registerFactory(Containers.UNIVERSAL_ENERGY_INTERFACE, GuiUniversalEnergyInterface::new);
+    ScreenManager.registerFactory(Containers.COMPRESSOR,                 GuiCompressor::new);
     ScreenManager.registerFactory(Containers.ELECTRIC_FURNACE,           GuiElectricFurnace::new);
     ScreenManager.registerFactory(Containers.CIRCUIT_FABRICATOR,         CircuitFabricatorGui::new);
+    ScreenManager.registerFactory(Containers.UNIVERSAL_ENERGY_INTERFACE, GuiUniversalEnergyInterface::new);
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

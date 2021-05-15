@@ -1,4 +1,4 @@
-package addsynth.overpoweredmod.machines.generator;
+package addsynth.overpoweredmod.machines.energy_extractor;
 
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.util.StringUtil;
@@ -9,9 +9,9 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator, ContainerGenerator> {
+public final class GuiCrystalEnergyExtractor extends GuiEnergyBase<TileCrystalEnergyExtractor, ContainerCrystalEnergyExtractor> {
 
-  private static final ResourceLocation generator_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/generator.png");
+  private static final ResourceLocation gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/crystal_energy_extractor.png");
 
   private final String input_text   = StringUtil.translate("gui.overpowered.crystal_energy_generator.input");
   private final String extract_text = StringUtil.translate("gui.overpowered.crystal_energy_generator.max_extract");
@@ -28,8 +28,8 @@ public final class GuiGenerator extends GuiEnergyBase<TileCrystalEnergyGenerator
   private static final int energy_text_line_1 = 44;
   private static final int energy_text_line_2 = 56;
 
-  public GuiGenerator(final ContainerGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(182, 176, container, player_inventory, title, generator_gui_texture);
+  public GuiCrystalEnergyExtractor(final ContainerCrystalEnergyExtractor container, final PlayerInventory player_inventory, final ITextComponent title){
+    super(182, 176, container, player_inventory, title, gui_texture);
   }
 
   @Override

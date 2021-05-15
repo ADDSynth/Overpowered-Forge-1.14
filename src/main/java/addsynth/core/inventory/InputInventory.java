@@ -1,6 +1,7 @@
 package addsynth.core.inventory;
 
 import java.util.ArrayList;
+import java.util.function.BiFunction;
 import javax.annotation.Nonnull;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.items.ItemUtil;
@@ -23,12 +24,22 @@ import net.minecraftforge.items.ItemHandlerHelper;
  */
 public final class InputInventory extends CommonInventory {
 
+  @Nonnull
   private final SlotData[] slot_data;
   public boolean custom_stack_limit_is_vanilla_dependant = true;
+
+  /** Override this to specify your own way of determining whether an item
+   *  is allowed in this inventory.
+   */
+  @Nonnull
+  public BiFunction<Integer, ItemStack, Boolean> isItemStackValid;
 
   private InputInventory(final IInputInventory responder, @Nonnull final SlotData[] slots){
     super(responder, slots.length);
     this.slot_data = slots;
+    isItemStackValid = (Integer slot, ItemStack stack) -> {
+      return slot_data[slot].is_item_valid(stack);
+    };
   }
 
   public static final InputInventory create(final IInputInventory responder, final int number_of_slots){
@@ -49,7 +60,7 @@ public final class InputInventory extends CommonInventory {
     if(stack.getCount() == 0){ return ItemStack.EMPTY; }
     if(is_valid_slot(slot) == false){ return stack; }
     try{
-      if(this.slot_data[slot].is_item_valid(stack) == false){
+      if(isItemStackValid.apply(slot, stack) == false){
         return stack;
       }
       final ItemStack existing_stack = this.stacks.get(slot);

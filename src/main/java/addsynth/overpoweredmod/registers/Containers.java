@@ -3,9 +3,9 @@ package addsynth.overpoweredmod.registers;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.ContainerOreRefinery;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.ContainerCrystalGenerator;
+import addsynth.overpoweredmod.machines.energy_extractor.ContainerCrystalEnergyExtractor;
 import addsynth.overpoweredmod.machines.fusion.chamber.ContainerFusionChamber;
 import addsynth.overpoweredmod.machines.gem_converter.ContainerGemConverter;
-import addsynth.overpoweredmod.machines.generator.ContainerGenerator;
 import addsynth.overpoweredmod.machines.identifier.ContainerIdentifier;
 import addsynth.overpoweredmod.machines.inverter.ContainerInverter;
 import addsynth.overpoweredmod.machines.laser.machine.ContainerLaserHousing;
@@ -22,8 +22,8 @@ public final class Containers {
     Debug.log_setup_info(Containers.class.getName()+" class was loaded...");
   }
 
-  public static final ContainerType<ContainerGenerator> GENERATOR =
-    new ContainerType<>((IContainerFactory<ContainerGenerator>)ContainerGenerator::new);
+  public static final ContainerType<ContainerCrystalEnergyExtractor> CRYSTAL_ENERGY_EXTRACTOR  =
+    new ContainerType<>((IContainerFactory<ContainerCrystalEnergyExtractor>)ContainerCrystalEnergyExtractor::new);
 
   public static final ContainerType<ContainerInverter> INVERTER =
     new ContainerType<>((IContainerFactory<ContainerInverter>)ContainerInverter::new);

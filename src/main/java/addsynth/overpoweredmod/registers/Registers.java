@@ -45,7 +45,7 @@ public final class Registers {
     }
     
     game.register(Wires.data_cable);
-    game.register(Machines.generator);
+    if(Features.crystal_energy_extractor.get()){ game.register(Machines.crystal_energy_extractor); }
     if(Features.gem_converter.get()){ game.register(Machines.gem_converter); }
     game.register(Machines.inverter);
     if(Features.magic_infuser.get()){ game.register(Machines.magic_infuser); }
@@ -128,7 +128,7 @@ public final class Registers {
     }
     
     game.register(OverpoweredMod.registry.getItemBlock(Wires.data_cable));
-    game.register(OverpoweredMod.registry.getItemBlock(Machines.generator));
+    if(Features.crystal_energy_extractor.get()){ game.register(OverpoweredMod.registry.getItemBlock(Machines.crystal_energy_extractor)); }
     if(Features.gem_converter.get()){    game.register(OverpoweredMod.registry.getItemBlock(Machines.gem_converter)); }
     game.register(OverpoweredMod.registry.getItemBlock(Machines.inverter));
     if(Features.magic_infuser.get()){    game.register(OverpoweredMod.registry.getItemBlock(Machines.magic_infuser)); }
@@ -189,17 +189,17 @@ public final class Registers {
     Debug.log_setup_info("Begin registering Tile Entities...");
     /*
       https://github.com/MinecraftForge/MinecraftForge/pull/4681#issuecomment-405115908
-      NOTE: If anyone needs an example of how to fix the warning caused by this change without breaking old saved games,
+      TODO: If anyone needs an example of how to fix the warning caused by this change without breaking old saved games,
       I (someone else) just updated all of McJty's mods to use a DataFixer to do so.
     */
     final IForgeRegistry<TileEntityType<?>> game = event.getRegistry();
 
-    RegistryUtil.register(game, Tiles.GENERATOR,                  Names.GENERATOR);
+    RegistryUtil.register(game, Tiles.CRYSTAL_ENERGY_EXTRACTOR,   Names.CRYSTAL_ENERGY_EXTRACTOR);
     RegistryUtil.register(game, Tiles.GEM_CONVERTER,              Names.GEM_CONVERTER);
     RegistryUtil.register(game, Tiles.INVERTER,                   Names.INVERTER);
     RegistryUtil.register(game, Tiles.MAGIC_INFUSER,              Names.MAGIC_INFUSER);
     RegistryUtil.register(game, Tiles.IDENTIFIER,                 Names.IDENTIFIER);
-    RegistryUtil.register(game, Tiles.ENERGY_SUSPENSION_BRIDGE,          Names.ENERGY_SUSPENSION_BRIDGE);
+    RegistryUtil.register(game, Tiles.ENERGY_SUSPENSION_BRIDGE,   Names.ENERGY_SUSPENSION_BRIDGE);
     RegistryUtil.register(game, Tiles.LASER_MACHINE,              Names.LASER_HOUSING);
     RegistryUtil.register(game, Tiles.LASER,                      Names.LASER_CANNON);
     RegistryUtil.register(game, Tiles.LASER_BEAM,                 Names.LASER_BEAM);
@@ -220,7 +220,7 @@ public final class Registers {
   public static final void registerContainers(final RegistryEvent.Register<ContainerType<?>> event){
     final IForgeRegistry<ContainerType<?>> game = event.getRegistry();
     
-    RegistryUtil.register(game, Containers.GENERATOR,                  Names.GENERATOR);
+    RegistryUtil.register(game, Containers.CRYSTAL_ENERGY_EXTRACTOR,   Names.CRYSTAL_ENERGY_EXTRACTOR);
     RegistryUtil.register(game, Containers.GEM_CONVERTER,              Names.GEM_CONVERTER);
     RegistryUtil.register(game, Containers.INVERTER,                   Names.INVERTER);
     RegistryUtil.register(game, Containers.IDENTIFIER,                 Names.IDENTIFIER);

@@ -246,7 +246,7 @@ public class Energy {
    * Set the current max extract
    * @param maxExtract The max extract to set
    */
-  public void setMaxExtract(final int maxExtract){
+  public void setMaxExtract(final double maxExtract){
     this.maxExtract.set(maxExtract);
     changed = true;
   }

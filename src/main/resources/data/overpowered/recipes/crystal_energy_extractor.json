@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ipi",
+    "wfw",
+    "ipi"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:ingots/iron"
+    },
+    "p": {
+      "item": "addsynth_energy:power_core"
+    },
+    "w": {
+      "item": "addsynth_energy:energy_wire"
+    },
+    "f": {
+      "item": "minecraft:furnace"
+    }
+  },
+  "result": {
+    "item": "overpowered:crystal_energy_extractor"
+  }
+}

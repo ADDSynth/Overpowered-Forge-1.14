@@ -10,10 +10,10 @@ import addsynth.overpoweredmod.machines.advanced_ore_refinery.TileAdvancedOreRef
 import addsynth.overpoweredmod.machines.black_hole.TileBlackHole;
 import addsynth.overpoweredmod.machines.crystal_matter_generator.TileCrystalMatterGenerator;
 import addsynth.overpoweredmod.machines.data_cable.TileDataCable;
+import addsynth.overpoweredmod.machines.energy_extractor.TileCrystalEnergyExtractor;
 import addsynth.overpoweredmod.machines.fusion.chamber.TileFusionChamber;
 import addsynth.overpoweredmod.machines.fusion.converter.TileFusionEnergyConverter;
 import addsynth.overpoweredmod.machines.gem_converter.TileGemConverter;
-import addsynth.overpoweredmod.machines.generator.TileCrystalEnergyGenerator;
 import addsynth.overpoweredmod.machines.identifier.TileIdentifier;
 import addsynth.overpoweredmod.machines.inverter.TileInverter;
 import addsynth.overpoweredmod.machines.laser.beam.TileLaserBeam;
@@ -32,8 +32,8 @@ public final class Tiles {
     Debug.log_setup_info(Tiles.class.getName()+" class was loaded...");
   }
 
-  public static final TileEntityType<TileCrystalEnergyGenerator> GENERATOR =
-    TileEntityType.Builder.create(TileCrystalEnergyGenerator::new, Machines.generator).build(null);
+  public static final TileEntityType<TileCrystalEnergyExtractor> CRYSTAL_ENERGY_EXTRACTOR =
+    TileEntityType.Builder.create(TileCrystalEnergyExtractor::new, Machines.crystal_energy_extractor).build(null);
 
   public static final TileEntityType<TileGemConverter> GEM_CONVERTER =
     TileEntityType.Builder.create(TileGemConverter::new, Machines.gem_converter).build(null);

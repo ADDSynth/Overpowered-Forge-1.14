@@ -25,7 +25,7 @@ public class Receiver extends Energy {
   }
 
   @Override
-  public final void setMaxExtract(final int maxExtract){
+  public final void setMaxExtract(final double maxExtract){
   }
 
   @Override

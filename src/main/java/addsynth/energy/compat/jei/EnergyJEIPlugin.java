@@ -46,6 +46,7 @@ public final class EnergyJEIPlugin implements IModPlugin {
 
   private static void add_information(IRecipeRegistration registry){
     registry.addIngredientInfo(new ItemStack(EnergyBlocks.wire),               VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.wire"));
+    registry.addIngredientInfo(new ItemStack(EnergyBlocks.generator),          VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.generator"));
     registry.addIngredientInfo(new ItemStack(EnergyBlocks.energy_storage),     VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.energy_storage"));
     registry.addIngredientInfo(new ItemStack(EnergyBlocks.electric_furnace),   VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.electric_furnace"));
     registry.addIngredientInfo(new ItemStack(EnergyBlocks.compressor),         VanillaTypes.ITEM, StringUtil.translate("gui.addsynth_energy.jei_description.compressor"));

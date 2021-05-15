@@ -1,4 +1,4 @@
-package addsynth.overpoweredmod.machines.generator;
+package addsynth.overpoweredmod.machines.energy_extractor;
 
 import javax.annotation.Nullable;
 import addsynth.energy.tiles.energy.TileStandardGenerator;
@@ -14,14 +14,14 @@ import net.minecraft.item.Item;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public final class TileCrystalEnergyGenerator extends TileStandardGenerator implements INamedContainerProvider {
+public final class TileCrystalEnergyExtractor extends TileStandardGenerator implements INamedContainerProvider {
 
   public static final Item[] input_filter = new Item[] {
     Init.energy_crystal_shards, Init.energy_crystal, Item.BLOCK_TO_ITEM.get(Init.light_block)
   };
 
-  public TileCrystalEnergyGenerator(){
-    super(Tiles.GENERATOR, input_filter);
+  public TileCrystalEnergyExtractor(){
+    super(Tiles.CRYSTAL_ENERGY_EXTRACTOR, input_filter);
   }
 
   @Override
@@ -44,7 +44,7 @@ public final class TileCrystalEnergyGenerator extends TileStandardGenerator impl
   @Override
   @Nullable
   public Container createMenu(final int windowID, final PlayerInventory player_inventory, final PlayerEntity player){
-    return new ContainerGenerator(windowID, player_inventory, this);
+    return new ContainerCrystalEnergyExtractor(windowID, player_inventory, this);
   }
 
   @Override

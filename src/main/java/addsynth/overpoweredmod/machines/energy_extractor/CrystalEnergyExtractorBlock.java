@@ -1,4 +1,4 @@
-package addsynth.overpoweredmod.machines.generator;
+package addsynth.overpoweredmod.machines.energy_extractor;
 
 import java.util.List;
 import javax.annotation.Nullable;
@@ -23,9 +23,9 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class Generator extends MachineBlock {
+public final class CrystalEnergyExtractorBlock extends MachineBlock {
 
-  public Generator(final String name){
+  public CrystalEnergyExtractorBlock(final String name){
     super(MaterialColor.WOOL);
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
@@ -38,7 +38,7 @@ public final class Generator extends MachineBlock {
   @Override
   @SuppressWarnings("deprecation")
   public final TileEntity createNewTileEntity(IBlockReader worldIn){
-    return new TileCrystalEnergyGenerator();
+    return new TileCrystalEnergyExtractor();
   }
 
   /** @deprecated Call via {@link BlockState#onBlockActivated(World, PlayerEntity, Hand, BlockRayTraceResult)} whenever possible.
@@ -47,7 +47,7 @@ public final class Generator extends MachineBlock {
   @Override
   public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final TileCrystalEnergyGenerator tile = MinecraftUtility.getTileEntity(pos, world, TileCrystalEnergyGenerator.class);
+      final TileCrystalEnergyExtractor tile = MinecraftUtility.getTileEntity(pos, world, TileCrystalEnergyExtractor.class);
       if(tile != null){
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }
