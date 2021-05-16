@@ -13,6 +13,7 @@ ADDED:
   Added a standard Generator to ADDSynth Energy.
     - It takes in standard fuel items such as Coal, Charcoal, Wood, and Planks.
     - Updated the texture to high definition.
+  Added new Scanning Laser item.
 CHANGED:
   Made ADDSynth Materials into its own mod.
   The Music Box gui no longer has the JEI item panel, because it doesn't need it.

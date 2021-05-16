@@ -112,6 +112,7 @@ public final class Registers {
     game.register(ModItems.energy_grid);
     game.register(ModItems.vacuum_container);
     game.register(ModItems.beam_emitter);
+    game.register(ModItems.scanning_laser);
     for(Lens lens : Lens.values()){
       game.register(lens.lens);
     }

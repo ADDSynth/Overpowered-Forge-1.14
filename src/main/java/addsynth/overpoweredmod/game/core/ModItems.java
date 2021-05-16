@@ -18,6 +18,7 @@ public final class ModItems {
   public static final Item            energy_grid              = new OverpoweredItem("energy_grid");
   public static final Item            vacuum_container         = new OverpoweredItem("vacuum_container");
   public static final Item            beam_emitter             = new OverpoweredItem("beam_emitter");
+  public static final Item            scanning_laser           = new OverpoweredItem("scanning_laser");
   public static final Item            unknown_technology       = new UnknownTechnology("unknown_technology");
   public static final Item            fusion_core              = new FusionCore("fusion_core");
   public static final Item            dimensional_anchor       = new DimensionAnchor("dimensional_anchor");
