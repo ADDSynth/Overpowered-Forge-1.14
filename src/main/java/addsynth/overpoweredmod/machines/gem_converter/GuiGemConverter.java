@@ -4,7 +4,7 @@ import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.energy.api.gui.GuiEnergyBase;
 import addsynth.energy.api.gui.widgets.WorkProgressBar;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Gems;
@@ -15,7 +15,7 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiGemConverter extends GuiEnergyBase<TileGemConverter, ContainerGemConverter> {
 
-  private static final ResourceLocation gem_converter_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gem_converter.png");
+  private static final ResourceLocation gem_converter_gui_texture = new ResourceLocation(OverpoweredTechnology.MOD_ID,"textures/gui/gem_converter.png");
 
   private static final ItemStack[] gem = new ItemStack[] {
     new ItemStack(Gems.ruby, 1),

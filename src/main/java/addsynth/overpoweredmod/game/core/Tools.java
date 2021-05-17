@@ -6,7 +6,7 @@ import addsynth.core.items.ArmorMaterial;
 import addsynth.core.items.EquipmentType;
 import addsynth.core.items.Toolset;
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.items.tools.*;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
@@ -30,7 +30,7 @@ public final class Tools {
   );
     
   public static final ScytheTool overpowered_scythe =
-  new ScytheTool("celestial_scythe", OverpoweredTiers.CELESTIAL, OverpoweredMod.registry, new Item.Properties().group(CreativeTabs.tools_creative_tab)){
+  new ScytheTool("celestial_scythe", OverpoweredTiers.CELESTIAL, OverpoweredTechnology.registry, new Item.Properties().group(CreativeTabs.tools_creative_tab)){
     @Override
     public boolean isEnchantable(final ItemStack stack){
       return false;

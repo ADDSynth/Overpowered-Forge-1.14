@@ -6,7 +6,7 @@ import addsynth.core.Constants;
 import addsynth.core.blocks.BlockTile;
 import addsynth.core.util.block.BlockShape;
 import addsynth.core.util.game.WorldUtil;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.game.core.Machines;
@@ -112,7 +112,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
   public LaserCannon(final String name, final int color){
     super(Block.Properties.create(Material.IRON, color >= 0 ? MaterialColor.STONE : MaterialColor.GRAY)
       .sound(SoundType.METAL).hardnessAndResistance(3.5f, 6.0f));
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
+    OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
     this.color = color;
   }

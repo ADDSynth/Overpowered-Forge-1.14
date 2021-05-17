@@ -117,10 +117,10 @@ description="Library by ADDSynth, for ADDSynth's mods. Adds Energy Wire, a Gener
 [[mods]]
 modId="overpowered" #mandatory
 version="1.3.4" #mandatory
-displayName="Overpowered" #mandatory
+displayName="Overpowered Technology" #mandatory
 updateJSONURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/update.json" #optional
 displayURL="http://www.gyrostudiostechnology.com/minecraft/mods/overpowered/index.html" #optional
-logoFile="overpowered_logo.png" #optional
+logoFile="overpowered_technology_logo.png" #optional
 credits="Mojang, and the Forge Development Team" #optional
 authors="ADDSynth" #optional
 description="This mod adds a bunch of really cool science and tech stuff."

@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.compatability.jei;
 
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.machines.gem_converter.GemConverterRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -15,8 +15,8 @@ import net.minecraft.util.ResourceLocation;
 
 public final class GemConverterCategory implements IRecipeCategory<GemConverterRecipe> {
 
-  public static final ResourceLocation id = new ResourceLocation(OverpoweredMod.MOD_ID, "gem_converter");
-  private final ResourceLocation gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/gui_textures.png");
+  public static final ResourceLocation id = new ResourceLocation(OverpoweredTechnology.MOD_ID, "gem_converter");
+  private final ResourceLocation gui_texture = new ResourceLocation(OverpoweredTechnology.MOD_ID, "textures/gui/gui_textures.png");
   private final IDrawable background;
   private final IDrawable icon;
 

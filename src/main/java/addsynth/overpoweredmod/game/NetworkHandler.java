@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.game;
 
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.machines.gem_converter.CycleGemConverterMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.SetLaserDistanceMessage;
@@ -20,7 +20,7 @@ public final class NetworkHandler {
   private static final String PROTOCAL_VERSION = "1";
 
   public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(
-    new ResourceLocation(OverpoweredMod.MOD_ID, "main_network_channel"),
+    new ResourceLocation(OverpoweredTechnology.MOD_ID, "main_network_channel"),
     () -> PROTOCAL_VERSION, PROTOCAL_VERSION::equals, PROTOCAL_VERSION::equals
   );
 

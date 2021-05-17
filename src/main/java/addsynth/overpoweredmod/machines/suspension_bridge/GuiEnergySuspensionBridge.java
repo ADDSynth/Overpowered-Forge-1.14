@@ -5,7 +5,7 @@ import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.api.gui.GuiEnergyBase;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -14,7 +14,7 @@ import net.minecraft.util.text.ITextComponent;
 public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensionBridge, ContainerSuspensionBridge> {
 
   private static final ResourceLocation energy_suspension_bridge_gui_texture =
-    new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/energy_suspension_bridge.png");
+    new ResourceLocation(OverpoweredTechnology.MOD_ID, "textures/gui/energy_suspension_bridge.png");
 
   // translation strings
   private final String lens_string = StringUtil.translate("gui.overpowered.energy_suspension_bridge.lens");

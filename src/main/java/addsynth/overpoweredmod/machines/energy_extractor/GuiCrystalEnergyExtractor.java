@@ -4,14 +4,14 @@ import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.api.gui.GuiEnergyBase;
 import addsynth.energy.api.gui.widgets.EnergyProgressBar;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 public final class GuiCrystalEnergyExtractor extends GuiEnergyBase<TileCrystalEnergyExtractor, ContainerCrystalEnergyExtractor> {
 
-  private static final ResourceLocation gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID, "textures/gui/crystal_energy_extractor.png");
+  private static final ResourceLocation gui_texture = new ResourceLocation(OverpoweredTechnology.MOD_ID, "textures/gui/crystal_energy_extractor.png");
 
   private final String input_text   = StringUtil.translate("gui.overpowered.crystal_energy_generator.input");
   private final String extract_text = StringUtil.translate("gui.overpowered.crystal_energy_generator.max_extract");

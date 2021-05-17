@@ -6,7 +6,7 @@ import java.util.Random;
 import addsynth.core.items.enchantment.EnchantmentUtil;
 import addsynth.core.items.ItemUtil;
 import addsynth.core.items.enchantment.EnchantPair;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
@@ -32,7 +32,7 @@ public final class ArmorEffects {
         }
         return;
       }
-      OverpoweredMod.log.error("ItemStack used as input for "+ArmorEffects.class.getName()+".enchant() is not an armor Item.");
+      OverpoweredTechnology.log.error("ItemStack used as input for "+ArmorEffects.class.getName()+".enchant() is not an armor Item.");
     }
   }
 

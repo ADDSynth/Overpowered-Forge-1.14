@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import addsynth.core.Constants;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.core.Lens;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -28,7 +28,7 @@ public final class EnergyBridge extends RotatedPillarBlock {
     super(Block.Properties.create(
       new Material(lens.color, false, true, true, false, false, false, false, PushReaction.BLOCK)
     ).lightValue(11).hardnessAndResistance(-1.0f, Constants.infinite_resistance).variableOpacity().noDrops());
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredTechnology.registry.register_block(this, name);
   }
 
   public final BlockState getRotated(final Direction.Axis axis){

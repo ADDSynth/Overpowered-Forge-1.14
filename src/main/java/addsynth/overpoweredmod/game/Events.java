@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.game;
 
 import addsynth.core.util.game.MessageUtil;
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +19,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.ItemPickupEvent;
 
 /** Note: functions with the <code>@SubscribeEvent</code> annotation MUST be public! */
-@Mod.EventBusSubscriber(modid = OverpoweredMod.MOD_ID)
+@Mod.EventBusSubscriber(modid = OverpoweredTechnology.MOD_ID)
 public final class Events {
 
   static {

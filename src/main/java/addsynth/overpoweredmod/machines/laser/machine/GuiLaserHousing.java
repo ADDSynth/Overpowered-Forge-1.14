@@ -5,7 +5,7 @@ import addsynth.core.gui.widgets.buttons.Checkbox;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.api.gui.GuiEnergyBase;
 import addsynth.energy.api.gui.widgets.OnOffSwitch;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.ToggleAutoShutoffMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.SetLaserDistanceMessage;
@@ -22,7 +22,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   //       into a GuiEnergyUtil. I can have that extend GuiUtil, then pass that as a reference through the Gui constructors.
 
   private static final ResourceLocation laser_machine_gui_texture =
-    new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/laser_machine.png");
+    new ResourceLocation(OverpoweredTechnology.MOD_ID,"textures/gui/laser_machine.png");
 
   private final String required_energy_text = StringUtil.translate("gui.overpowered.laser_housing.required_energy");
   private final String current_energy_text  = StringUtil.translate("gui.overpowered.laser_housing.current_energy");

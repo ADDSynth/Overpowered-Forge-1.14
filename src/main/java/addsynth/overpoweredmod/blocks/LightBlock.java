@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.blocks;
 
 import java.util.List;
 import javax.annotation.Nullable;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.config.MachineValues;
 import net.minecraft.block.Block;
@@ -20,7 +20,7 @@ public final class LightBlock extends Block {
 
   public LightBlock(final String name){
     super(Block.Properties.create(Material.ROCK, MaterialColor.QUARTZ).lightValue(15).hardnessAndResistance(5.0f, 6.0f).harvestTool(ToolType.PICKAXE).harvestLevel(2));
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
+    OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override

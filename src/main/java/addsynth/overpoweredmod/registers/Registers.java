@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.registers;
 
 import addsynth.core.game.RegistryUtil;
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.game.Names;
@@ -18,7 +18,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@EventBusSubscriber(modid = OverpoweredMod.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = OverpoweredTechnology.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public final class Registers {
 
   static {
@@ -27,7 +27,7 @@ public final class Registers {
 
   @SubscribeEvent
   public static final void registerBlocks(final RegistryEvent.Register<Block> event){
-    OverpoweredMod.log.info("Begin Block Registration Event...");
+    OverpoweredTechnology.log.info("Begin Block Registration Event...");
     
     final IForgeRegistry<Block> game = event.getRegistry();
     
@@ -92,21 +92,21 @@ public final class Registers {
       game.register(Machines.fusion_control_laser_beam);
     }
     
-    OverpoweredMod.log.info("Finished Block Registration Event.");
+    OverpoweredTechnology.log.info("Finished Block Registration Event.");
   }
 
   @SubscribeEvent
   public static final void registerItems(final RegistryEvent.Register<Item> event){
-    OverpoweredMod.log.info("Begin Item Registration Event...");
+    OverpoweredTechnology.log.info("Begin Item Registration Event...");
     
     final IForgeRegistry<Item> game = event.getRegistry();
 
     game.register(Init.celestial_gem);
     game.register(Init.energy_crystal_shards);
     game.register(Init.energy_crystal);
-    if(Features.light_block.get()){ game.register(OverpoweredMod.registry.getItemBlock(Init.light_block)); }
+    if(Features.light_block.get()){ game.register(OverpoweredTechnology.registry.getItemBlock(Init.light_block)); }
     game.register(Init.void_crystal);
-    if(Features.null_block.get()){ game.register(OverpoweredMod.registry.getItemBlock(Init.null_block)); }
+    if(Features.null_block.get()){ game.register(OverpoweredTechnology.registry.getItemBlock(Init.null_block)); }
     
     game.register(ModItems.energized_power_core);
     game.register(ModItems.nullified_power_core);
@@ -128,42 +128,42 @@ public final class Registers {
       if(Features.platinum_trophy.get()){ game.register(Trophy.PLATINUM.item_block); }
     }
     
-    game.register(OverpoweredMod.registry.getItemBlock(Wires.data_cable));
-    if(Features.crystal_energy_extractor.get()){ game.register(OverpoweredMod.registry.getItemBlock(Machines.crystal_energy_extractor)); }
-    if(Features.gem_converter.get()){    game.register(OverpoweredMod.registry.getItemBlock(Machines.gem_converter)); }
-    game.register(OverpoweredMod.registry.getItemBlock(Machines.inverter));
-    if(Features.magic_infuser.get()){    game.register(OverpoweredMod.registry.getItemBlock(Machines.magic_infuser)); }
-    if(Features.identifier.get()){       game.register(OverpoweredMod.registry.getItemBlock(Machines.identifier)); }
-    if(Features.energy_suspension_bridge.get()){ game.register(OverpoweredMod.registry.getItemBlock(Machines.energy_suspension_bridge)); }
+    game.register(OverpoweredTechnology.registry.getItemBlock(Wires.data_cable));
+    if(Features.crystal_energy_extractor.get()){ game.register(OverpoweredTechnology.registry.getItemBlock(Machines.crystal_energy_extractor)); }
+    if(Features.gem_converter.get()){    game.register(OverpoweredTechnology.registry.getItemBlock(Machines.gem_converter)); }
+    game.register(OverpoweredTechnology.registry.getItemBlock(Machines.inverter));
+    if(Features.magic_infuser.get()){    game.register(OverpoweredTechnology.registry.getItemBlock(Machines.magic_infuser)); }
+    if(Features.identifier.get()){       game.register(OverpoweredTechnology.registry.getItemBlock(Machines.identifier)); }
+    if(Features.energy_suspension_bridge.get()){ game.register(OverpoweredTechnology.registry.getItemBlock(Machines.energy_suspension_bridge)); }
     if(Features.portal.get()){
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.portal_control_panel));
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.portal_frame));
+      game.register(OverpoweredTechnology.registry.getItemBlock(Machines.portal_control_panel));
+      game.register(OverpoweredTechnology.registry.getItemBlock(Machines.portal_frame));
       // MAYBE: register Item versions of the unknown / weird tree  (but item order is specific. don't register them here.)
     }
-    if(Features.crystal_matter_generator.get()){ game.register(OverpoweredMod.registry.getItemBlock(Machines.crystal_matter_generator)); }
-    if(Features.advanced_ore_refinery.get()){ game.register(OverpoweredMod.registry.getItemBlock(Machines.advanced_ore_refinery)); }
+    if(Features.crystal_matter_generator.get()){ game.register(OverpoweredTechnology.registry.getItemBlock(Machines.crystal_matter_generator)); }
+    if(Features.advanced_ore_refinery.get()){ game.register(OverpoweredTechnology.registry.getItemBlock(Machines.advanced_ore_refinery)); }
     
     if(Features.lasers.get()){
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.laser_housing));
-      if(Features.white_laser.get()){   game.register(OverpoweredMod.registry.getItemBlock(Laser.WHITE.cannon));   }
-      if(Features.red_laser.get()){     game.register(OverpoweredMod.registry.getItemBlock(Laser.RED.cannon));     }
-      if(Features.orange_laser.get()){  game.register(OverpoweredMod.registry.getItemBlock(Laser.ORANGE.cannon));  }
-      if(Features.yellow_laser.get()){  game.register(OverpoweredMod.registry.getItemBlock(Laser.YELLOW.cannon));  }
-      if(Features.green_laser.get()){   game.register(OverpoweredMod.registry.getItemBlock(Laser.GREEN.cannon));   }
-      if(Features.cyan_laser.get()){    game.register(OverpoweredMod.registry.getItemBlock(Laser.CYAN.cannon));    }
-      if(Features.blue_laser.get()){    game.register(OverpoweredMod.registry.getItemBlock(Laser.BLUE.cannon));    }
-      if(Features.magenta_laser.get()){ game.register(OverpoweredMod.registry.getItemBlock(Laser.MAGENTA.cannon)); }
+      game.register(OverpoweredTechnology.registry.getItemBlock(Machines.laser_housing));
+      if(Features.white_laser.get()){   game.register(OverpoweredTechnology.registry.getItemBlock(Laser.WHITE.cannon));   }
+      if(Features.red_laser.get()){     game.register(OverpoweredTechnology.registry.getItemBlock(Laser.RED.cannon));     }
+      if(Features.orange_laser.get()){  game.register(OverpoweredTechnology.registry.getItemBlock(Laser.ORANGE.cannon));  }
+      if(Features.yellow_laser.get()){  game.register(OverpoweredTechnology.registry.getItemBlock(Laser.YELLOW.cannon));  }
+      if(Features.green_laser.get()){   game.register(OverpoweredTechnology.registry.getItemBlock(Laser.GREEN.cannon));   }
+      if(Features.cyan_laser.get()){    game.register(OverpoweredTechnology.registry.getItemBlock(Laser.CYAN.cannon));    }
+      if(Features.blue_laser.get()){    game.register(OverpoweredTechnology.registry.getItemBlock(Laser.BLUE.cannon));    }
+      if(Features.magenta_laser.get()){ game.register(OverpoweredTechnology.registry.getItemBlock(Laser.MAGENTA.cannon)); }
     }
     
     if(Features.fusion_container.get()){
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.fusion_converter));
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.fusion_control_unit));
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.fusion_chamber));
-      game.register(OverpoweredMod.registry.getItemBlock(Machines.fusion_control_laser));
+      game.register(OverpoweredTechnology.registry.getItemBlock(Machines.fusion_converter));
+      game.register(OverpoweredTechnology.registry.getItemBlock(Machines.fusion_control_unit));
+      game.register(OverpoweredTechnology.registry.getItemBlock(Machines.fusion_chamber));
+      game.register(OverpoweredTechnology.registry.getItemBlock(Machines.fusion_control_laser));
     }
     
-    if(Features.iron_frame_block.get()){ game.register(OverpoweredMod.registry.getItemBlock(Init.iron_frame_block)); }
-    if(Features.black_hole.get()){       game.register(OverpoweredMod.registry.getItemBlock(Init.black_hole)); }
+    if(Features.iron_frame_block.get()){ game.register(OverpoweredTechnology.registry.getItemBlock(Init.iron_frame_block)); }
+    if(Features.black_hole.get()){       game.register(OverpoweredTechnology.registry.getItemBlock(Init.black_hole)); }
     
     if(Features.celestial_tools.get()){
       for(Item tool : Tools.overpowered_tools.tools){ game.register(tool); }
@@ -182,7 +182,7 @@ public final class Registers {
     
     game.register(Portal.portal_image);
 
-    OverpoweredMod.log.info("Finished Item Registration Event.");
+    OverpoweredTechnology.log.info("Finished Item Registration Event.");
   }
 
   @SubscribeEvent

@@ -8,7 +8,7 @@ import addsynth.energy.api.gui.GuiEnergyBase;
 import addsynth.energy.api.gui.widgets.EnergyProgressBar;
 import addsynth.energy.api.gui.widgets.OnOffSwitch;
 import addsynth.energy.api.gui.widgets.WorkProgressBar;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.ToggleAutoShutoffMessage;
 import addsynth.overpoweredmod.game.core.Gems;
@@ -21,7 +21,7 @@ import net.minecraft.util.text.ITextComponent;
 public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControlPanel, ContainerPortalControlPanel> {
 
   private static final ResourceLocation portal_control_panel_gui_texture =
-    new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/portal_control_panel.png");
+    new ResourceLocation(OverpoweredTechnology.MOD_ID,"textures/gui/portal_control_panel.png");
 
   // It's efficient to create each ItemStack only ONCE when the gui is constructed then pass it as a reference when drawing the ItemStack.
   private static final ItemStack[] gem_block = new ItemStack[] {
@@ -43,7 +43,7 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
 
   private final EnergyProgressBar energy_bar = new EnergyProgressBar(177, 56, 17, 63, 211, 24);
 
-  private static final ResourceLocation gui_icons = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/gui_textures.png");
+  private static final ResourceLocation gui_icons = new ResourceLocation(OverpoweredTechnology.MOD_ID,"textures/gui/gui_textures.png");
   private static final int image_x = 14;
   private static final int image_y = 67;
   private static final int space_x = 40;

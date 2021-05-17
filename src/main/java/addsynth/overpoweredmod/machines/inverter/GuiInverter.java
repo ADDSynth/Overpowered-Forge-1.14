@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.inverter;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.energy.api.gui.GuiEnergyBase;
 import addsynth.energy.api.gui.widgets.WorkProgressBar;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.Config;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -12,7 +12,7 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiInverter extends GuiEnergyBase<TileInverter, ContainerInverter> {
 
-  private static final ResourceLocation inverter_gui_texture = new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/inverter.png");
+  private static final ResourceLocation inverter_gui_texture = new ResourceLocation(OverpoweredTechnology.MOD_ID,"textures/gui/inverter.png");
 
   private final WorkProgressBar work_progress_bar = new WorkProgressBar(8, 84, 160, 5, 8, 194);
   

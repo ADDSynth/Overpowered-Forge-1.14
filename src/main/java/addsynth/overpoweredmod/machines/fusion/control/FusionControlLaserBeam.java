@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.fusion.control;
 
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -16,7 +16,7 @@ public final class FusionControlLaserBeam extends Block {
 
   public FusionControlLaserBeam(String name){
     super(Block.Properties.create(Material.FIRE).lightValue(15).variableOpacity().doesNotBlockMovement());
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredTechnology.registry.register_block(this, name);
   }
 
   @Override

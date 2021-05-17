@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.black_hole;
 
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -14,8 +14,8 @@ public final class BlackHole extends Block implements ITileEntityProvider {
   public BlackHole(final String name){
     super(Block.Properties.create(Material.PORTAL, MaterialColor.BLACK).doesNotBlockMovement());
     // setResistance(100.0f);
-    OverpoweredMod.registry.register_block(this, name);
-    OverpoweredMod.registry.register_ItemBlock(new BlackHoleItem(this));
+    OverpoweredTechnology.registry.register_block(this, name);
+    OverpoweredTechnology.registry.register_ItemBlock(new BlackHoleItem(this));
   }
 
   @Override

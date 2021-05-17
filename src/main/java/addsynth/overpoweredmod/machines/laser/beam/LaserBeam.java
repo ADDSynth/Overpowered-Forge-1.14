@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.laser.beam;
 
 import addsynth.core.blocks.BlockTile;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.DamageSources;
 import addsynth.overpoweredmod.config.Config;
 import net.minecraft.block.Block;
@@ -23,7 +23,7 @@ public final class LaserBeam extends BlockTile {
 
   public LaserBeam(String name){
     super(Block.Properties.create(Material.FIRE).variableOpacity().doesNotBlockMovement().lightValue(Config.laser_light_level.get()));
-    OverpoweredMod.registry.register_block(this, name);
+    OverpoweredTechnology.registry.register_block(this, name);
   }
 
   @Override

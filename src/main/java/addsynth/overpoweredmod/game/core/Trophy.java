@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.game.core;
 
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.blocks.TrophyBlock;
 import addsynth.overpoweredmod.items.OverpoweredItem;
 import net.minecraft.item.BlockItem;
@@ -29,7 +29,7 @@ public enum Trophy {
 
   private Trophy(final String name){
     this.trophy = new TrophyBlock(name+"_trophy");
-    this.item_block = OverpoweredMod.registry.getItemBlock(this.trophy);
+    this.item_block = OverpoweredTechnology.registry.getItemBlock(this.trophy);
   }
 
   static {

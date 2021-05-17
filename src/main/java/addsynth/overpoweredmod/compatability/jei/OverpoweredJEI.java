@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.compatability.jei;
 import java.util.ArrayList;
 import addsynth.core.util.StringUtil;
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.game.core.Machines;
@@ -44,7 +44,7 @@ public final class OverpoweredJEI implements IModPlugin {
 
   @Override
   public ResourceLocation getPluginUid(){
-    return new ResourceLocation(OverpoweredMod.MOD_ID, "jei_plugin");
+    return new ResourceLocation(OverpoweredTechnology.MOD_ID, "jei_plugin");
   }
 
   @Override

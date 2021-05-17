@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.assets;
 import addsynth.core.game.Compatability;
 import addsynth.core.items.ArmorMaterial;
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.game.core.Tools;
@@ -15,7 +15,7 @@ import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = OverpoweredMod.MOD_ID)
+@Mod.EventBusSubscriber(modid = OverpoweredTechnology.MOD_ID)
 public final class LootTables {
 
 // https://mcforge.readthedocs.io/en/latest/items/loot_tables/
@@ -83,7 +83,7 @@ public final class LootTables {
       final String name = event.getName().toString();
       if(name.startsWith(prefix)){
         if(debug_loot_tables){
-          OverpoweredMod.log.info("Loading Loot Table: "+name);
+          OverpoweredTechnology.log.info("Loading Loot Table: "+name);
         }
         final String mob = name.substring(prefix.length());
         boolean add_rings = false;
@@ -118,7 +118,7 @@ public final class LootTables {
         if(add_rings){
           event.getTable().addPool(custom_loot_pool);
           if(debug_loot_tables){
-            OverpoweredMod.log.info("Successfully injected custom loot pool into Loot Table for: "+mob);
+            OverpoweredTechnology.log.info("Successfully injected custom loot pool into Loot Table for: "+mob);
           }
         }
       }

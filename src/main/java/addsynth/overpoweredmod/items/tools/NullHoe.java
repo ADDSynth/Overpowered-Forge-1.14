@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.items.tools;
 
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
@@ -11,7 +11,7 @@ public class NullHoe extends HoeItem {
 
   public NullHoe(final String name){
     super(OverpoweredTiers.VOID, 0.0f, new Item.Properties().group(CreativeTabs.tools_creative_tab));
-    OverpoweredMod.registry.register_item(this, name);
+    OverpoweredTechnology.registry.register_item(this, name);
   }
 
   @Override

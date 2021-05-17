@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.portal.rift;
 
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -34,7 +34,7 @@ public final class PortalEnergyBlock extends ContainerBlock {
 
   public PortalEnergyBlock(final String name){
     super(Block.Properties.create(Material.PORTAL).doesNotBlockMovement().noDrops().variableOpacity());
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties());
+    OverpoweredTechnology.registry.register_block(this, name, new Item.Properties());
     // Portal Energy Block needs an ItemBlock form to use as an icon for the Achievement.
   }
 

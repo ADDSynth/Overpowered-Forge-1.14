@@ -26,7 +26,7 @@ def mc_version = "1.14.4"
 
 version = "Forge-" + mc_version + "-" + mod_version
 group = 'addsynth.overpowered' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Overpowered"
+archivesBaseName = "OverpoweredTechnology"
 
 // Need this here so eclipse task generates correctly.
 def java_version = "1.8"

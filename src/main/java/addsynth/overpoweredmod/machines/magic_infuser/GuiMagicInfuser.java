@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.magic_infuser;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.energy.api.gui.GuiEnergyBase;
 import addsynth.energy.api.gui.widgets.WorkProgressBar;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -11,7 +11,7 @@ import net.minecraft.util.text.ITextComponent;
 public final class GuiMagicInfuser extends GuiEnergyBase<TileMagicInfuser, ContainerMagicInfuser> {
 
   private static final ResourceLocation magic_infuser_gui_texture =
-    new ResourceLocation(OverpoweredMod.MOD_ID,"textures/gui/magic_infuser.png");
+    new ResourceLocation(OverpoweredTechnology.MOD_ID,"textures/gui/magic_infuser.png");
 
   private static final int work_percentage_text_y = 72;
 

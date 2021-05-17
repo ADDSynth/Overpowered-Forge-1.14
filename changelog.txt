@@ -1,4 +1,9 @@
 v1.4 - TBD
+INFO:
+  Starting in version 1.5.x, ADDSynthCore, ADDSynth Energy, and Overpowered Technology
+    will be split apart into 3 separate files.
+  Starting in version 1.5.x, the mod_id for Overpowered Technology will be renamed
+    from overpowered to overpowered_technology.
 ADDED:
   Added Silicon and Rose Quartz.
   Added more mods to detect:
@@ -6,7 +11,7 @@ ADDED:
     FoamFix, RFTools Utility, Draconic Evolution, Curios, Forestry,
     Immersive Engineering, Immersive Railroading, Track API, Sound Filters,
     Block Renderer, Item Zoom, Neat, and McJtyLib.
-    - Updated Pam's Harvestcraft so it can detect it now.
+    - Updated Pam's Harvestcraft so we can detect it now.
   Added Team Manager.
   Added Circuit Fabricator.
     - Added 8 circuits, however you can only craft 7 of them at the moment.
@@ -17,7 +22,7 @@ ADDED:
   Whitelisted TileEntities to work with Applied Energistics Spatial-IO.
     - As of now, this needs further testing to ensure there aren't any errors.
   Added Celestial Gem:
-    - Their function is the same as the Energy Crystal in previous versions.
+    - They look and function the same as the Energy Crystal in previous versions.
     - You now get Energy Crystals by smelting Celestial Gems in a Blast Furnace.
   The amount of energy the Energy Crystal, Energy Crystal Shards, and Light Block
     give you in the Crystal Energy Extractor now shows in the tooltip when you
@@ -30,6 +35,8 @@ CHANGED:
   Renamed Energy Crystal to Celestial Gem.
     - You now get Energy Crystals by smelting Celestial Gems in a Blast Furnace.
     - Renamed all Energy Tools to Celestial Tools.
+  Renamed mod to Overpowered Technology.
+    - This will cause your configuration files to be reset.
 REMOVED:
   Removed the ability to move some Overpowered items into other Creative Tabs.
   Removed Unknown Technology.

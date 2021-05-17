@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.items.tools;
 
 import addsynth.core.Constants;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,7 +12,7 @@ public class NullShovel extends ShovelItem {
 
   public NullShovel(final String name){
     super(OverpoweredTiers.VOID, Constants.shovel_damage, Constants.shovel_speed, new Item.Properties().group(CreativeTabs.tools_creative_tab));
-    OverpoweredMod.registry.register_item(this, name);
+    OverpoweredTechnology.registry.register_item(this, name);
   }
 
   @Override

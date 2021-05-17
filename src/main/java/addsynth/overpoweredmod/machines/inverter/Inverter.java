@@ -4,7 +4,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.api.blocks.MachineBlock;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.MaterialColor;
@@ -27,7 +27,7 @@ public final class Inverter extends MachineBlock {
 
   public Inverter(final String name){
     super(MaterialColor.SNOW);
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
+    OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override

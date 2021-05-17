@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import javax.annotation.Nullable;
 import addsynth.core.recipe.RecipeUtil;
 import addsynth.material.MaterialsUtil;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -19,8 +19,8 @@ public final class OreRefineryRecipes {
   /**
    * <p>This will only add an Ore recipe to the Advanced Ore Refinery if, other mods have registered their
    *    ore with the "ores" tag, and it has a Furnace Recipe.
-   * <p>This is registered as an Event Responder in {@link addsynth.overpoweredmod.OverpoweredMod} and executed
-   *    whenever {@link addsynth.material.MaterialsUtil} or {@link addsynth.core.recipe.RecipeUtil} is updated.
+   * <p>This is registered as an Event Responder in {@link OverpoweredTechnology} and executed
+   *    whenever {@link MaterialsUtil} or {@link RecipeUtil} is updated.
    */
   public static final void refresh_ore_refinery_recipes(){
     if(RecipeUtil.check_furnace_recipes()){
@@ -47,8 +47,12 @@ public final class OreRefineryRecipes {
     if(valid_ores == null){
       refresh_ore_refinery_recipes();
       if(valid_ores == null){
-        OverpoweredMod.log.error(new NullPointerException("OreRefineryRecipes Item[] array input filter is null! There must be "+
-                                                          "a problem in the refresh_ore_refinery_recipes() function!"));
+        OverpoweredTechnology.log.error(
+          new NullPointerException(
+            OreRefineryRecipes.class.getSimpleName()+" Item[] array input filter is null! There must be "+
+            "a problem in the refresh_ore_refinery_recipes() function!"
+          )
+        );
         return new Item[0];
       }
     }

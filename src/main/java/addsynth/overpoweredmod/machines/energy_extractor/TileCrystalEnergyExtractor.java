@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.energy_extractor;
 
 import javax.annotation.Nullable;
 import addsynth.energy.api.tiles.energy.TileStandardGenerator;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -35,7 +35,7 @@ public final class TileCrystalEnergyExtractor extends TileStandardGenerator impl
       energy.setEnergyAndCapacity(MachineValues.energy_crystal_shards_energy.get());
       energy.setMaxExtract(MachineValues.energy_crystal_shards_max_extract.get());
     }
-    if(item == OverpoweredMod.registry.getItemBlock(Init.light_block)){
+    if(item == OverpoweredTechnology.registry.getItemBlock(Init.light_block)){
       energy.setEnergyAndCapacity(MachineValues.light_block_energy.get());
       energy.setMaxExtract(MachineValues.light_block_max_extract.get());
     }

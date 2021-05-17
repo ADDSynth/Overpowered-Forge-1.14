@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.compatability;
 
 import addsynth.core.game.Compatability;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.core.Init;
 import moze_intel.projecte.api.imc.CustomEMCRegistration;
 import moze_intel.projecte.api.imc.IMCMethods;
@@ -12,7 +12,7 @@ public final class ProjectE {
 
   public static final void register_emc_values(){
     
-    final String sender = OverpoweredMod.MOD_ID;
+    final String sender = OverpoweredTechnology.MOD_ID;
     final String mod = Compatability.PROJECT_E.modid;
     final String message = IMCMethods.REGISTER_CUSTOM_EMC;
 

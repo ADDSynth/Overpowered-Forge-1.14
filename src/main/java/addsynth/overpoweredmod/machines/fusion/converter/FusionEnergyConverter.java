@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.fusion.converter;
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.energy.api.blocks.MachineBlock;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
@@ -18,7 +18,7 @@ public final class FusionEnergyConverter extends MachineBlock {
 
   public FusionEnergyConverter(final String name){
     super(MaterialColor.SNOW);
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
+    OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override

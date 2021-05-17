@@ -41,11 +41,11 @@ import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-@Mod(value = OverpoweredMod.MOD_ID) // MAYBE: look into using SaveInspectionHandler to control which saved worlds are opened with THIS version of the mod.
-public class OverpoweredMod {
+@Mod(value = OverpoweredTechnology.MOD_ID) // MAYBE: look into using SaveInspectionHandler to control which saved worlds are opened with THIS version of the mod.
+public class OverpoweredTechnology {
 
-  public static final String MOD_ID = "overpowered";
-  public static final String MOD_NAME = "Overpowered";
+  public static final String MOD_ID = "overpowered"; // FUTURE: version 1.5 will rename the modid to overpowered_technology. All assets must also be renamed.
+  public static final String MOD_NAME = "Overpowered Technology";
   public static final String VERSION = "1.3.4";
   public static final String VERSION_DATE = "December 28, 2020";
   private static final boolean is_beta = false;
@@ -56,20 +56,20 @@ public class OverpoweredMod {
 
   private static boolean config_loaded;
 
-  public OverpoweredMod(){
-    OverpoweredMod.log.info("Begin constructing OverpoweredMod class object...");
+  public OverpoweredTechnology(){
+    OverpoweredTechnology.log.info("Begin constructing "+OverpoweredTechnology.class.getSimpleName()+" class object...");
     final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
     final IEventBus bus = context.getModEventBus();
-    bus.addListener(OverpoweredMod::main_setup);
-    bus.addListener(OverpoweredMod::client_setup);
-    bus.addListener(OverpoweredMod::inter_mod_communications);
+    bus.addListener(OverpoweredTechnology::main_setup);
+    bus.addListener(OverpoweredTechnology::client_setup);
+    bus.addListener(OverpoweredTechnology::inter_mod_communications);
     init_config();
-    OverpoweredMod.log.info("Done constructing OverpoweredMod class object.");
+    OverpoweredTechnology.log.info("Done constructing "+OverpoweredTechnology.class.getSimpleName()+" class object.");
   }
 
   public static final void init_config(){
     if(config_loaded == false){
-      OverpoweredMod.log.info("Loading Configuration files...");
+      OverpoweredTechnology.log.info("Loading Configuration files...");
   
       new File(FMLPaths.CONFIGDIR.get().toString(), MOD_NAME).mkdir();
 
@@ -82,16 +82,16 @@ public class OverpoweredMod {
       context.registerConfig(ModConfig.Type.COMMON, MachineValues.CONFIG_SPEC, MOD_NAME+File.separator+"machine_values.toml");
       context.registerConfig(ModConfig.Type.COMMON, Values.CONFIG_SPEC,        MOD_NAME+File.separator+"values.toml");
 
-      FMLJavaModLoadingContext.get().getModEventBus().addListener(OverpoweredMod::mod_config_event);
+      FMLJavaModLoadingContext.get().getModEventBus().addListener(OverpoweredTechnology::mod_config_event);
 
       config_loaded = true;
   
-      OverpoweredMod.log.info("Done Loading Configuration files.");
+      OverpoweredTechnology.log.info("Done Loading Configuration files.");
     }
   }
   
   private static final void main_setup(final FMLCommonSetupEvent event){
-    log.info("Begin Overpowered main setup...");
+    log.info("Begin "+MOD_NAME+" main setup...");
     
     log.info("Overpowered Mod by ADDSynth, version "+VERSION+(is_beta ? "-BETA" : "")+", built on "+VERSION_DATE+".");
     
@@ -104,7 +104,7 @@ public class OverpoweredMod {
     MaterialsUtil.registerResponder(Filters::regenerate_machine_filters);
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());
     
-    log.info("Finished Overpowered main setup.");
+    log.info("Finished "+MOD_NAME+" main setup.");
   }
 
   private static final void inter_mod_communications(final InterModEnqueueEvent event){

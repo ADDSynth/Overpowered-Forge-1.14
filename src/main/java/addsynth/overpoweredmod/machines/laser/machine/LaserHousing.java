@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.api.blocks.MachineBlock;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -29,7 +29,7 @@ public final class LaserHousing extends MachineBlock {
 
   public LaserHousing(final String name){
     super(MaterialColor.SNOW);
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
+    OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override
@@ -54,7 +54,7 @@ public final class LaserHousing extends MachineBlock {
           NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
         }
         else{
-          OverpoweredMod.log.error(new NullPointerException("Laser Machine at "+pos.toString()+" has no LaserNetwork!"));
+          OverpoweredTechnology.log.error(new NullPointerException("Laser Machine at "+pos.toString()+" has no LaserNetwork!"));
         }
       }
     }

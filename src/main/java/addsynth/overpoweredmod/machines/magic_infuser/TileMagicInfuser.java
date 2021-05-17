@@ -7,7 +7,7 @@ import addsynth.core.util.StringUtil;
 import addsynth.core.util.math.MathUtility;
 import addsynth.energy.api.tiles.machines.TileStandardWorkMachine;
 import addsynth.material.MaterialsUtil;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.machines.Filters;
@@ -146,7 +146,7 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
     if(item == Init.void_crystal){
       return MathUtility.choose(random, void_crystal_enchantments);
     }
-    OverpoweredMod.log.error("function get_enchantment() in "+TileMagicInfuser.class.getSimpleName()+" returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
+    OverpoweredTechnology.log.error("function get_enchantment() in "+TileMagicInfuser.class.getSimpleName()+" returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
     return null;
   }
 

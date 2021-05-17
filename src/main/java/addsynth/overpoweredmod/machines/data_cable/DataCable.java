@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.data_cable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.util.block.BlockShape;
 import addsynth.energy.api.blocks.Wire;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
@@ -46,7 +46,7 @@ public final class DataCable extends Wire {
 
   public DataCable(final String name){
     super(Block.Properties.create(Material.GOURD, MaterialColor.WOOL).hardnessAndResistance(0.1f, 0.0f));
-    OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
+    OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
     valid_blocks[0] = this;
   }
 

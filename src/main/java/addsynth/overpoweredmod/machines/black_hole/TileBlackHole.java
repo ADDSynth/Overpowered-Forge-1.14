@@ -7,7 +7,7 @@ import addsynth.core.util.game.ServerUtils;
 import addsynth.core.util.game.WorldUtil;
 import addsynth.core.util.java.TimeUtil;
 import addsynth.core.util.math.MathUtility;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.block.Blocks;
@@ -115,7 +115,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
 
   public static final boolean is_black_hole_allowed(final World world){
     if(world == null){
-      OverpoweredMod.log.error(new NullPointerException("World not loaded yet."));
+      OverpoweredTechnology.log.error(new NullPointerException("World not loaded yet."));
       return false;
     }
     if(world.getWorldType() == WorldType.DEBUG_ALL_BLOCK_STATES){

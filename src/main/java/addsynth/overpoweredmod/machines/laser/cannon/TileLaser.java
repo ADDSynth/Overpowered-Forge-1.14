@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.laser.cannon;
 
 import addsynth.core.Debug;
 import addsynth.core.tiles.TileBase;
-import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.block.Block;
@@ -55,7 +55,7 @@ public final class TileLaser extends TileBase implements ITickableTileEntity {
         final LaserCannon block = (LaserCannon)block_state.getBlock();
         this.laser = Laser.index[Math.max(0, block.color)];
         if(block.color < 0){
-          OverpoweredMod.log.fatal(
+          OverpoweredTechnology.log.fatal(
             "Standard Lasers have a color index indicating the type of laser 0-"+(Laser.index.length-1)+", but this laser has an "+
             "index of "+block.color+". Non-standard lasers currently don't need a TileEntity. If you're receiving this message, "+
             "it's probably safe to continue playing, but this indicates a serious error. Please report this to the mod author.");

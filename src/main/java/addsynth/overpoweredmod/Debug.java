@@ -14,7 +14,7 @@ public final class Debug {
 
   public static final void log_setup_info(final String message){
     if(debug_setup){
-      OverpoweredMod.log.info(message);
+      OverpoweredTechnology.log.info(message);
       // Basically levels Severe, Error, Warning, and Info will print in the
       // log file and Console, but Debug and Trace will only print in the log file.
     }
@@ -22,7 +22,7 @@ public final class Debug {
 
   public static final void log(final int debug_level, final String message){
     if(debug_level <= Debug.debug_level){
-      OverpoweredMod.log.info(message);
+      OverpoweredTechnology.log.info(message);
     }
   }
 
