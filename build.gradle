@@ -125,8 +125,13 @@ repositories {
     url = "https://dvs1.progwml6.com/files/maven"
   }
   maven {
-    // location of a maven mirror for JEI files, as a fallback
     name = "ModMaven"
+    url = "https://modmaven.dev/"
+    // For Gradel 5.1 and above, just limit it to AE2
+  }
+  maven {
+    // location of a maven mirror for JEI files, as a fallback
+    name = "ModMaven2"
     url = "https://modmaven.k-4u.nl"
   }
 }
@@ -161,7 +166,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
     compileOnly "moze_intel.projecte:projecte-${mc_version}:${projecte_version}:api"
-
+    compileOnly "appeng:appliedenergistics2:${applied_energistics_version}:api"
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

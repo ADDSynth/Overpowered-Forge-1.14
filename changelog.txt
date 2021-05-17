@@ -14,6 +14,8 @@ ADDED:
     - It takes in standard fuel items such as Coal, Charcoal, Wood, and Planks.
     - Updated the texture to high definition.
   Added new Scanning Laser item.
+  Whitelisted TileEntities to work with Applied Energistics Spatial-IO.
+    - As of now, this needs further testing to ensure there aren't any errors.
 CHANGED:
   Made ADDSynth Materials into its own mod.
   The Music Box gui no longer has the JEI item panel, because it doesn't need it.
