@@ -38,7 +38,7 @@ public final class Filters {
       MaterialsUtil.getAmethystBlocks(), MaterialsUtil.getQuartzBlocks()
     );
     
-    magic_infuser = ArrayUtil.combine_arrays(gem_converter, new Item[]{Init.energy_crystal, Init.void_crystal});
+    magic_infuser = ArrayUtil.combine_arrays(gem_converter, new Item[]{Init.celestial_gem, Init.void_crystal});
     
     GemConverterRecipe.generate_recipes();
   }

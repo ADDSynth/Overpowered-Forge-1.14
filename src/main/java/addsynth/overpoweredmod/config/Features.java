@@ -10,7 +10,7 @@ public final class Features {
     Debug.log_setup_info("Features class was loaded.");
   }
 
-  public static ForgeConfigSpec.BooleanValue energy_tools;
+  public static ForgeConfigSpec.BooleanValue celestial_tools;
   public static ForgeConfigSpec.BooleanValue void_tools;
 
   public static ForgeConfigSpec.BooleanValue light_block;
@@ -74,7 +74,7 @@ public final class Features {
     builder.push("Feature Disable");
   
     builder.push("Items");
-    energy_tools       = builder.define("Energy Tools", true);
+    celestial_tools    = builder.define("Celestial Tools", true);
     void_tools         = builder.define("Void Tools", true);
     dimensional_anchor = builder.define("Dimensional Anchor", true);
     builder.pop();
@@ -119,7 +119,7 @@ public final class Features {
     
     Features.unknown_dimension = builder.comment(
       "If this is disabled, Portals will not transport you to the Unknown Dimension.\n"+
-      "Instead the Portal will just spawn Unknown Technology items inside the Portal frame.")
+      "Instead the Portal will just spawn a Void Crystal inside the Portal frame.")
                                         .define("Unknown Dimension", true);
     
     builder.pop();

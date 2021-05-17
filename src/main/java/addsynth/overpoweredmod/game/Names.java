@@ -12,6 +12,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public final class Names {
 
+  public static final ResourceLocation CELESTIAL_GEM         = new ResourceLocation(OverpoweredMod.MOD_ID, "celestial_gem");
   public static final ResourceLocation ENERGY_CRYSTAL_SHARDS = new ResourceLocation(OverpoweredMod.MOD_ID, "energy_crystal_shards");
   public static final ResourceLocation ENERGY_CRYSTAL        = new ResourceLocation(OverpoweredMod.MOD_ID, "energy_crystal");
   public static final ResourceLocation LIGHT_BLOCK           = new ResourceLocation(OverpoweredMod.MOD_ID, "light_block");
@@ -41,7 +42,7 @@ public final class Names {
   public static final ResourceLocation MAGENTA_LENS          = new ResourceLocation(OverpoweredMod.MOD_ID, "magenta_lens");
 
   public static final ResourceLocation DATA_CABLE               = new ResourceLocation(OverpoweredMod.MOD_ID, "data_cable");
-  public static final ResourceLocation CRYSTAL_ENERGY_EXTRACTOR = new ResourceLocation(OverpoweredMod.MOD_ID, "energy_extractor");
+  public static final ResourceLocation CRYSTAL_ENERGY_EXTRACTOR = new ResourceLocation(OverpoweredMod.MOD_ID, "crystal_energy_extractor");
   public static final ResourceLocation GEM_CONVERTER            = new ResourceLocation(OverpoweredMod.MOD_ID, "gem_converter");
   public static final ResourceLocation MAGIC_INFUSER            = new ResourceLocation(OverpoweredMod.MOD_ID, "magic_infuser");
   public static final ResourceLocation IDENTIFIER               = new ResourceLocation(OverpoweredMod.MOD_ID, "identifier");

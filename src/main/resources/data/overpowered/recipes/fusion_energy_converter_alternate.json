@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "tat",
-    "eun",
+    "ecn",
     "tat"
   ],
   "key": {
@@ -18,8 +18,8 @@
     "e": {
       "item": "overpowered:energized_power_core"
     },
-    "u": {
-      "item": "overpowered:unknown_technology"
+    "c": {
+      "item": "addsynth_energy:circuit_tier_6"
     }
   },
   "result": {

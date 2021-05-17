@@ -7,10 +7,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 
-public class EnergyHoe extends HoeItem {
+public class OverpoweredHoe extends HoeItem {
 
-  public EnergyHoe(final String name){
-    super(OverpoweredTiers.ENERGY, 0.0f, new Item.Properties().group(CreativeTabs.tools_creative_tab));
+  public OverpoweredHoe(final String name){
+    super(OverpoweredTiers.CELESTIAL, 0.0f, new Item.Properties().group(CreativeTabs.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

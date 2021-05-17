@@ -73,7 +73,7 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
     Enchantments.EFFICIENCY,
     Enchantments.UNBREAKING
   };
-  private static final Enchantment[] energy_crystal_enchantments = new Enchantment[]{
+  private static final Enchantment[] celestial_enchantments = new Enchantment[]{
     Enchantments.FORTUNE,
     Enchantments.INFINITY,
     Enchantments.SILK_TOUCH,
@@ -140,8 +140,8 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
     if(MaterialsUtil.match(item, MaterialsUtil.getQuartz())){
       return MathUtility.choose(random, quartz_enchantments);
     }
-    if(item == Init.energy_crystal){
-      return MathUtility.choose(random, energy_crystal_enchantments);
+    if(item == Init.celestial_gem){
+      return MathUtility.choose(random, celestial_enchantments);
     }
     if(item == Init.void_crystal){
       return MathUtility.choose(random, void_crystal_enchantments);

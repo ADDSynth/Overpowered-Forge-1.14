@@ -3,8 +3,8 @@ package addsynth.overpoweredmod.game;
 import addsynth.core.util.game.MessageUtil;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredMod;
+import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
-import addsynth.overpoweredmod.game.core.ModItems;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
@@ -30,7 +30,7 @@ public final class Events {
   public static final void pick_up_item(final ItemPickupEvent event){
     final Item item = event.getStack().getItem();
     final PlayerEntity player = event.getPlayer();
-    if(item == ModItems.unknown_technology){
+    if(item == Init.void_crystal){
       /*
       if(player.dimension.getId() == WeirdDimension.id){
         final MinecraftServer server = player.getServer();

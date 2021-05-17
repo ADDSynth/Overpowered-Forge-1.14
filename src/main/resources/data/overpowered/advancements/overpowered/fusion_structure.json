@@ -10,7 +10,7 @@
       "translate": "advancements.overpowered.fusion_structure.description"
     }
   },
-  "parent": "overpowered:overpowered/unknown_technology",
+  "parent": "overpowered:overpowered/void_crystal",
   "criteria": {
     "fusion_energy_0": {
       "trigger": "minecraft:inventory_changed",

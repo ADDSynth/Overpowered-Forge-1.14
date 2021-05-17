@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "overpowered:energy_crystal"
+      "item": "overpowered:celestial_gem"
     },
     "title": {
       "translate": "advancements.overpowered.overpowered_gem.title"
@@ -12,12 +12,12 @@
   },
   "parent": "overpowered:overpowered/all_gems",
   "criteria": {
-    "energy_crystal": {
+    "celestial_gem": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_crystal"
+            "item": "overpowered:celestial_gem"
           }
         ]
       }

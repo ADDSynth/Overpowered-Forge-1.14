@@ -14,7 +14,6 @@ import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Machines;
-import addsynth.overpoweredmod.game.core.ModItems;
 import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.game.core.Wires;
 import addsynth.overpoweredmod.machines.portal.frame.TilePortalFrame;
@@ -289,7 +288,7 @@ public final class TilePortalControlPanel extends TileManualMachine implements I
         }
         if(Features.unknown_dimension.get() == false){
         }
-        WorldUtil.spawnItemStack(world, center, start_y, start_z, new ItemStack(ModItems.unknown_technology, 2), false);
+        WorldUtil.spawnItemStack(world, center, start_y, start_z, new ItemStack(Init.void_crystal, 1), false);
         break;
       case Z:
         start_x = lowest_portal_frame.getX();
@@ -304,7 +303,7 @@ public final class TilePortalControlPanel extends TileManualMachine implements I
         }
         if(Features.unknown_dimension.get() == false){
         }
-        WorldUtil.spawnItemStack(world, start_x, start_y, center, new ItemStack(ModItems.unknown_technology, 2), false);
+        WorldUtil.spawnItemStack(world, start_x, start_y, center, new ItemStack(Init.void_crystal, 1), false);
         break;
       }
 

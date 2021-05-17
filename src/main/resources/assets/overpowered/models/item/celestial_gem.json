@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "overpowered:items/unknown_technology"
+    "layer0": "overpowered:items/celestial_gem"
   }
 }

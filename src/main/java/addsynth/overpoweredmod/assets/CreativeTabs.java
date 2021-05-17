@@ -14,7 +14,7 @@ public final class CreativeTabs {
   {
     @Override
     public final ItemStack createIcon(){
-      return new ItemStack(Init.energy_crystal, 1);
+      return new ItemStack(Init.celestial_gem, 1);
     }
   };
 
@@ -35,9 +35,9 @@ public final class CreativeTabs {
     {
       @Override
       public final ItemStack createIcon(){
-        return Features.energy_tools.get() ? new ItemStack(Tools.energy_tools.pickaxe, 1) :
-               Features.identifier.get()   ? new ItemStack(Tools.unidentified_armor[2][0], 1) :
-               Features.void_tools.get()   ? new ItemStack(Tools.void_toolset.sword, 1) :
+        return Features.celestial_tools.get() ? new ItemStack(Tools.overpowered_tools.pickaxe, 1) :
+               Features.identifier.get()      ? new ItemStack(Tools.unidentified_armor[2][0], 1) :
+               Features.void_tools.get()      ? new ItemStack(Tools.void_toolset.sword, 1) :
                new ItemStack(Items.STONE_SHOVEL, 1);
       }
     }

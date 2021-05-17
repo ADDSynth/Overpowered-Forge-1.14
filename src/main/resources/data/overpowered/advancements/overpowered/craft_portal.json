@@ -10,7 +10,7 @@
       "translate": "advancements.overpowered.craft_portal.description"
     }
   },
-  "parent": "overpowered:overpowered/void_crystal",
+  "parent": "overpowered:overpowered/overpowered_gem",
   "criteria": {
     "portal": {
       "trigger": "minecraft:inventory_changed",

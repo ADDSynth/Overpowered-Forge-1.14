@@ -16,13 +16,23 @@ ADDED:
   Added new Scanning Laser item.
   Whitelisted TileEntities to work with Applied Energistics Spatial-IO.
     - As of now, this needs further testing to ensure there aren't any errors.
+  Added Celestial Gem:
+    - Their function is the same as the Energy Crystal in previous versions.
+    - You now get Energy Crystals by smelting Celestial Gems in a Blast Furnace.
+  The amount of energy the Energy Crystal, Energy Crystal Shards, and Light Block
+    give you in the Crystal Energy Extractor now shows in the tooltip when you
+    hover over the item.
 CHANGED:
   Made ADDSynth Materials into its own mod.
   The Music Box gui no longer has the JEI item panel, because it doesn't need it.
   The Creative Tab icon for ADDSynth Energy is now the new Generator.
   The Generator that was part of Overpowered has been renamed to Crystal Energy Extractor.
+  Renamed Energy Crystal to Celestial Gem.
+    - You now get Energy Crystals by smelting Celestial Gems in a Blast Furnace.
+    - Renamed all Energy Tools to Celestial Tools.
 REMOVED:
   Removed the ability to move some Overpowered items into other Creative Tabs.
+  Removed Unknown Technology.
 
 
 

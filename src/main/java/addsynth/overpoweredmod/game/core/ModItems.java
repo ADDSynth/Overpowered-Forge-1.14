@@ -4,7 +4,6 @@ import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.items.DimensionAnchor;
 import addsynth.overpoweredmod.items.FusionCore;
 import addsynth.overpoweredmod.items.OverpoweredItem;
-import addsynth.overpoweredmod.items.UnknownTechnology;
 import net.minecraft.item.Item;
 
 public final class ModItems {
@@ -19,7 +18,6 @@ public final class ModItems {
   public static final Item            vacuum_container         = new OverpoweredItem("vacuum_container");
   public static final Item            beam_emitter             = new OverpoweredItem("beam_emitter");
   public static final Item            scanning_laser           = new OverpoweredItem("scanning_laser");
-  public static final Item            unknown_technology       = new UnknownTechnology("unknown_technology");
   public static final Item            fusion_core              = new FusionCore("fusion_core");
   public static final Item            dimensional_anchor       = new DimensionAnchor("dimensional_anchor");
   

@@ -3,7 +3,6 @@ package addsynth.overpoweredmod.compatability;
 import addsynth.core.game.Compatability;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.game.core.Init;
-import addsynth.overpoweredmod.game.core.ModItems;
 import moze_intel.projecte.api.imc.CustomEMCRegistration;
 import moze_intel.projecte.api.imc.IMCMethods;
 import moze_intel.projecte.api.nss.NSSItem;
@@ -19,12 +18,10 @@ public final class ProjectE {
 
     InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Init.energy_crystal_shards), 7282L));
     // MAYBE: I feel as though people are going to get back at me for not calculating this correctly.
-    InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Init.energy_crystal),       65536L));
+    InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Init.celestial_gem),        65536L));
     InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Init.light_block),         589824L));
     InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Init.void_crystal),        131072L));
     InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(Init.null_block),          524288L));
-    
-    InterModComms.sendTo(sender, mod, message, () -> new CustomEMCRegistration(NSSItem.createItem(ModItems.unknown_technology), 793600L)); // based on the recipe
     
   }
 

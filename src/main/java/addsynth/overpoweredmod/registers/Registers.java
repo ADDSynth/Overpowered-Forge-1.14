@@ -101,6 +101,7 @@ public final class Registers {
     
     final IForgeRegistry<Item> game = event.getRegistry();
 
+    game.register(Init.celestial_gem);
     game.register(Init.energy_crystal_shards);
     game.register(Init.energy_crystal);
     if(Features.light_block.get()){ game.register(OverpoweredMod.registry.getItemBlock(Init.light_block)); }
@@ -116,7 +117,6 @@ public final class Registers {
     for(Lens lens : Lens.values()){
       game.register(lens.lens);
     }
-    game.register(ModItems.unknown_technology);
     game.register(ModItems.fusion_core);
     if(Features.dimensional_anchor.get()){ game.register(ModItems.dimensional_anchor); }
     
@@ -165,10 +165,10 @@ public final class Registers {
     if(Features.iron_frame_block.get()){ game.register(OverpoweredMod.registry.getItemBlock(Init.iron_frame_block)); }
     if(Features.black_hole.get()){       game.register(OverpoweredMod.registry.getItemBlock(Init.black_hole)); }
     
-    if(Features.energy_tools.get()){
-      for(Item tool : Tools.energy_tools.tools){ game.register(tool); }
+    if(Features.celestial_tools.get()){
+      for(Item tool : Tools.overpowered_tools.tools){ game.register(tool); }
       if(addsynth.core.config.Features.scythes.get()){
-        game.register(Tools.energy_scythe);
+        game.register(Tools.overpowered_scythe);
       }
     }
     if(Features.void_tools.get()){

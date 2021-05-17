@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "eee",
-    " s ",
-    " s "
+    "ee",
+    " s",
+    " s"
   ],
   "key": {
     "s": {
       "tag": "forge:rods/wooden"
     },
     "e": {
-      "item": "overpowered:energy_crystal"
+      "item": "overpowered:celestial_gem"
     }
   },
   "result": {
-    "item": "overpowered:energy_pickaxe"
+    "item": "overpowered:celestial_hoe"
   }
 }

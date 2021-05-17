@@ -74,13 +74,20 @@ public final class OverpoweredJEI implements IModPlugin {
   }
 
   private static final void add_information(IRecipeRegistration registry){
-    final ArrayList<ItemStack> energy_tools = new ArrayList<>(6);
-    energy_tools.add(new ItemStack(Tools.energy_tools.sword));
-    energy_tools.add(new ItemStack(Tools.energy_tools.shovel));
-    energy_tools.add(new ItemStack(Tools.energy_tools.axe));
-    energy_tools.add(new ItemStack(Tools.energy_tools.pickaxe));
-    energy_tools.add(new ItemStack(Tools.energy_tools.hoe));
-    registry.addIngredientInfo(energy_tools, VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.overpowered_tools"));
+    registry.addIngredientInfo(new ItemStack(Init.celestial_gem),         VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.celestial_gem"));
+    registry.addIngredientInfo(new ItemStack(Init.energy_crystal_shards), VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.energy_crystal_shards"));
+    registry.addIngredientInfo(new ItemStack(Init.energy_crystal),        VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.energy_crystal"));
+    registry.addIngredientInfo(new ItemStack(Init.light_block),           VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.light_block"));
+    registry.addIngredientInfo(new ItemStack(Init.void_crystal),          VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.void_crystal"));
+    registry.addIngredientInfo(new ItemStack(Init.null_block),            VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.null_block"));
+    
+    final ArrayList<ItemStack> celestial_tools = new ArrayList<>(6);
+    celestial_tools.add(new ItemStack(Tools.overpowered_tools.sword));
+    celestial_tools.add(new ItemStack(Tools.overpowered_tools.shovel));
+    celestial_tools.add(new ItemStack(Tools.overpowered_tools.axe));
+    celestial_tools.add(new ItemStack(Tools.overpowered_tools.pickaxe));
+    celestial_tools.add(new ItemStack(Tools.overpowered_tools.hoe));
+    registry.addIngredientInfo(celestial_tools, VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.overpowered_tools"));
 
     final ArrayList<ItemStack> void_tools = new ArrayList<>(5);
     void_tools.add(new ItemStack(Tools.void_toolset.sword));
@@ -112,7 +119,6 @@ public final class OverpoweredJEI implements IModPlugin {
     registry.addIngredientInfo(lasers, VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.laser"));
     
     registry.addIngredientInfo(new ItemStack(Machines.energy_suspension_bridge), VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.energy_suspension_bridge"));
-    registry.addIngredientInfo(new ItemStack(ModItems.unknown_technology),       VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.unknown_technology"));
     registry.addIngredientInfo(new ItemStack(Machines.advanced_ore_refinery),    VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.advanced_ore_refinery"));
     registry.addIngredientInfo(new ItemStack(Machines.crystal_matter_generator), VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.crystal_matter_generator"));
     registry.addIngredientInfo(new ItemStack(ModItems.dimensional_anchor),       VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.dimensional_anchor"));

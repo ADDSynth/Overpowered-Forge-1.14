@@ -11,7 +11,7 @@
     },
     "frame": "goal"
   },
-  "parent": "overpowered:overpowered/inverter",
+  "parent": "overpowered:overpowered/portal",
   "criteria": {
     "void_crystal": {
       "trigger": "minecraft:inventory_changed",

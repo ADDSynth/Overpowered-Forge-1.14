@@ -1,25 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "pbp",
-    "efe",
-    "pup"
+    "psp",
+    "ece",
+    "pnp"
   ],
   "key": {
     "p": {
       "tag": "forge:plates/platinum"
     },
-    "b": {
+    "s": {
       "item": "overpowered:scanning_laser"
     },
     "e": {
       "item": "overpowered:energized_power_core"
     },
-    "f": {
-      "item": "overpowered:focus_lens"
+    "c": {
+      "item": "addsynth_energy:circuit_tier_7"
     },
-    "u": {
-      "item": "overpowered:unknown_technology"
+    "n": {
+      "item": "overpowered:nullified_power_core"
     }
   },
   "result": {

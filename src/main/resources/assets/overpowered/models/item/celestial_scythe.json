@@ -1,0 +1,6 @@
+{
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "overpowered:items/tools/celestial_scythe"
+	}
+}

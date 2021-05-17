@@ -1,18 +1,16 @@
 package addsynth.overpoweredmod.items.tools;
 
-import addsynth.core.Constants;
 import addsynth.overpoweredmod.OverpoweredMod;
 import addsynth.overpoweredmod.assets.CreativeTabs;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 
-public class EnergyPickaxe extends PickaxeItem {
+public final class OverpoweredAxe extends AxeItem {
 
-  public EnergyPickaxe(final String name){
-    super(OverpoweredTiers.ENERGY_PICKAXE, Constants.pickaxe_damage, Constants.pickaxe_speed,
-      new Item.Properties().group(CreativeTabs.tools_creative_tab));
+  public OverpoweredAxe(final String name){
+    super(OverpoweredTiers.CELESTIAL, 14.0f, -3.0f, new Item.Properties().group(CreativeTabs.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

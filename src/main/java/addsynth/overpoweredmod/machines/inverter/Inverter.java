@@ -32,7 +32,7 @@ public final class Inverter extends MachineBlock {
 
   @Override
   public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-    tooltip.add(new StringTextComponent("Class 2 Machine"));
+    tooltip.add(new StringTextComponent("Class 3 Machine"));
   }
 
   @Override

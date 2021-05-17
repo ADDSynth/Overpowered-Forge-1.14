@@ -1,16 +1,6 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
-    "unknown_technology": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "overpowered:unknown_technology"
-          }
-        ]
-      }
-    },
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
@@ -30,7 +20,6 @@
   },
   "requirements": [
     [
-      "unknown_technology",
       "has_recipe",
       "has_fusion_core"
     ]

@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "ses",
-    "aga",
-    "ses"
+    "sas",
+    "egv",
+    "sas"
   ],
   "key": {
     "s": {
@@ -11,6 +11,9 @@
     },
     "e": {
       "item": "overpowered:energy_crystal"
+    },
+    "v": {
+      "item": "overpowered:void_crystal"
     },
     "g": {
       "item": "overpowered:energy_grid"

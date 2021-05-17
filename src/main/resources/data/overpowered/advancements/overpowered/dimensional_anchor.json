@@ -10,7 +10,7 @@
       "translate": "advancements.overpowered.dimensional_anchor.description"
     }
   },
-  "parent": "overpowered:overpowered/unknown_technology",
+  "parent": "overpowered:overpowered/void_crystal",
   "criteria": {
     "gold_trophy": {
       "trigger": "minecraft:inventory_changed",

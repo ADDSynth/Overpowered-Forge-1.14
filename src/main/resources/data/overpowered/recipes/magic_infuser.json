@@ -1,19 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "ava",
-    "vbv",
-    "ava"
+    "aea",
+    "bcb",
+    "aea"
   ],
   "key": {
     "a": {
       "tag": "forge:plates/aluminum"
     },
-    "v": {
-      "item": "overpowered:void_crystal"
-    },
     "b": {
       "item": "minecraft:bookshelf"
+    },
+    "c": {
+      "item": "addsynth_energy:circuit_tier_5"
+    },
+    "e": {
+      "item": "overpowered:energy_crystal"
     }
   },
   "result": {

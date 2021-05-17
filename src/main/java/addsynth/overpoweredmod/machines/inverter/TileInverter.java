@@ -34,8 +34,8 @@ public final class TileInverter extends TileStandardWorkMachine implements IName
 
   public static final @Nonnull ItemStack getInverted(final ItemStack input_stack){
     final Item item = input_stack.getItem();
-    if(item == Init.energy_crystal){ return new ItemStack(Init.void_crystal,1); }
-    if(item == Init.void_crystal){   return new ItemStack(Init.energy_crystal,1); }
+    if(item == Init.energy_crystal){ return new ItemStack(Init.void_crystal,   1); }
+    if(item == Init.void_crystal){   return new ItemStack(Init.energy_crystal, 1); }
     return ItemStack.EMPTY;
   }
 

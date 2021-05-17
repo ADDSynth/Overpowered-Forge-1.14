@@ -20,17 +20,17 @@ public final class Tools {
     Debug.log_setup_info("Begin loading Tools class...");
   }
 
-  public static final Toolset energy_tools = new Toolset( // MAYBE: should I automatically assign tools their names? and just provide the base name? I should also pass the Mod ID to register translation keys as well.
-    new EnergySword("energy_sword"),
-    new EnergyShovel("energy_shovel"),
-    new EnergyPickaxe("energy_pickaxe"),
-    new EnergyAxe("energy_axe"),
-    new EnergyHoe("energy_hoe"),
-    Init.energy_crystal
+  public static final Toolset overpowered_tools = new Toolset( // MAYBE: should I automatically assign tools their names? and just provide the base name? I should also pass the Mod ID to register translation keys as well.
+    new OverpoweredSword("celestial_sword"),
+    new OverpoweredShovel("celestial_shovel"),
+    new OverpoweredPickaxe("celestial_pickaxe"),
+    new OverpoweredAxe("celestial_axe"),
+    new OverpoweredHoe("celestial_hoe"),
+    Init.celestial_gem
   );
     
-  public static final ScytheTool energy_scythe =
-  new ScytheTool("energy_scythe", OverpoweredTiers.ENERGY, OverpoweredMod.registry, new Item.Properties().group(CreativeTabs.tools_creative_tab)){
+  public static final ScytheTool overpowered_scythe =
+  new ScytheTool("celestial_scythe", OverpoweredTiers.CELESTIAL, OverpoweredMod.registry, new Item.Properties().group(CreativeTabs.tools_creative_tab)){
     @Override
     public boolean isEnchantable(final ItemStack stack){
       return false;

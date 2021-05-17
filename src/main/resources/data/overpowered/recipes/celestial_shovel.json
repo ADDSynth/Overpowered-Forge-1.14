@@ -10,10 +10,10 @@
       "tag": "forge:rods/wooden"
     },
     "e": {
-      "item": "overpowered:energy_crystal"
+      "item": "overpowered:celestial_gem"
     }
   },
   "result": {
-    "item": "overpowered:energy_shovel"
+    "item": "overpowered:celestial_shovel"
   }
 }

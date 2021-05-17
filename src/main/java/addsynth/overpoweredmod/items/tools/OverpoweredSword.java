@@ -13,10 +13,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.SwordItem;
 
-public final class EnergySword extends SwordItem {
+public final class OverpoweredSword extends SwordItem {
 
-  public EnergySword(final String name){
-    super(OverpoweredTiers.ENERGY_SWORD, Constants.sword_damage, Constants.sword_damage, new Item.Properties().group(CreativeTabs.tools_creative_tab));
+  public OverpoweredSword(final String name){
+    super(OverpoweredTiers.CELESTIAL_SWORD, Constants.sword_damage, Constants.sword_damage, new Item.Properties().group(CreativeTabs.tools_creative_tab));
     OverpoweredMod.registry.register_item(this, name);
   }
 

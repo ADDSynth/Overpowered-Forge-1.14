@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "sus",
+    "scs",
     "afa",
     "ses"
   ],
@@ -9,8 +9,8 @@
     "s": {
       "tag": "forge:plates/steel"
     },
-    "u": {
-      "item": "overpowered:unknown_technology"
+    "c": {
+      "item": "overpowered:nullified_power_core"
     },
     "a": {
       "item": "addsynth_energy:advanced_power_core"

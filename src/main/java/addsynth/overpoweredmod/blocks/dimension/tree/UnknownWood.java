@@ -4,7 +4,7 @@ import addsynth.core.block_network.Node;
 import addsynth.core.util.block.BlockUtil;
 import addsynth.core.util.game.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredMod;
-import addsynth.overpoweredmod.game.core.ModItems;
+import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Portal;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -35,7 +35,7 @@ public final class UnknownWood extends Block {
           }
         }
       );
-      WorldUtil.spawnItemStack(world, position, new ItemStack(ModItems.unknown_technology, 1));
+      WorldUtil.spawnItemStack(world, position, new ItemStack(Init.void_crystal, 1));
     }
   }
 

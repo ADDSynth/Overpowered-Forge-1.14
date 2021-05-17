@@ -32,7 +32,7 @@ public final class CompatabilityManager {
     override_scythe_field(Core.gold_scythe, leaves);
     override_scythe_field(Core.diamond_scythe, leaves);
     if(Compatability.OVERPOWERED.loaded){ // TEMP
-      override_scythe_field(addsynth.overpoweredmod.game.core.Tools.energy_scythe, leaves);
+      override_scythe_field(addsynth.overpoweredmod.game.core.Tools.overpowered_scythe, leaves);
     }
   }
 

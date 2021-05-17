@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "overpowered:energy_sword"
+      "item": "overpowered:celestial_sword"
     },
     "title": {
       "translate": "advancements.overpowered.overpowered_tools.title"
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_sword"
+            "item": "overpowered:celestial_sword"
           }
         ]
       }
@@ -27,7 +27,7 @@
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_shovel"
+            "item": "overpowered:celestial_shovel"
           }
         ]
       }
@@ -37,7 +37,7 @@
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_axe"
+            "item": "overpowered:celestial_axe"
           }
         ]
       }
@@ -47,7 +47,7 @@
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_pickaxe"
+            "item": "overpowered:celestial_pickaxe"
           }
         ]
       }
@@ -57,7 +57,7 @@
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_hoe"
+            "item": "overpowered:celestial_hoe"
           }
         ]
       }

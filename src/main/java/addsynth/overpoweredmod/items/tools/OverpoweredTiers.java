@@ -6,10 +6,10 @@ import net.minecraft.item.ItemTier;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum OverpoweredTiers implements IItemTier {
-  ENERGY        (4, ItemTier.DIAMOND.getMaxUses()*3, 12.0f, 4.0f, 0, Ingredient.fromItems(Init.energy_crystal)),
-  ENERGY_PICKAXE(4, ItemTier.DIAMOND.getMaxUses()*3, 16.0f, 4.0f, 0, Ingredient.fromItems(Init.energy_crystal)),
-  ENERGY_SWORD  (4, 1000,                            12.0f, 4.0f, 0, Ingredient.fromItems(Init.energy_crystal)),
-  VOID          (4, ItemTier.DIAMOND.getMaxUses()*5, 12.0f, 5.0f, 0, Ingredient.fromItems(Init.void_crystal));
+  CELESTIAL        (4, ItemTier.DIAMOND.getMaxUses()*3, 12.0f, 4.0f, 0, Ingredient.fromItems(Init.celestial_gem)),
+  CELESTIAL_PICKAXE(4, ItemTier.DIAMOND.getMaxUses()*3, 16.0f, 4.0f, 0, Ingredient.fromItems(Init.celestial_gem)),
+  CELESTIAL_SWORD  (4, 1000,                            12.0f, 4.0f, 0, Ingredient.fromItems(Init.celestial_gem)),
+  VOID             (4, ItemTier.DIAMOND.getMaxUses()*5, 12.0f, 5.0f, 0, Ingredient.fromItems(Init.void_crystal));
   // MAYBE: Add Unimatter Tools, THESE will have Integer.MAX_VALUE durability.
 
   private final int harvestLevel;

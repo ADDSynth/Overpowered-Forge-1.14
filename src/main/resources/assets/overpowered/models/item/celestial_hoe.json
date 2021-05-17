@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "overpowered:items/tools/energy_hoe"
+    "layer0": "overpowered:items/tools/celestial_hoe"
   }
 }
