@@ -110,6 +110,7 @@ public final class Registers {
     for(Lens lens : Lens.values()){
       game.register(lens.lens);
     }
+    game.register(ModItems.plasma);
     game.register(ModItems.fusion_core);
     if(Features.dimensional_anchor.get()){ game.register(ModItems.dimensional_anchor); }
     

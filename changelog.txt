@@ -27,6 +27,8 @@ ADDED:
   The amount of energy the Energy Crystal, Energy Crystal Shards, and Light Block
     give you in the Crystal Energy Extractor now shows in the tooltip when you
     hover over the item.
+  Added Plasma item.
+    - But players won't be able to do anything with it until the next update.
 CHANGED:
   Made ADDSynth Materials into its own mod.
   The Music Box gui no longer has the JEI item panel, because it doesn't need it.

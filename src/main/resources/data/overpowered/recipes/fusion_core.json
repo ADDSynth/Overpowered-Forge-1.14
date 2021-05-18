@@ -2,15 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "fff",
-    "fuf",
+    "fpf",
     "fff"
   ],
   "key": {
     "f": {
       "item": "minecraft:fire_charge"
     },
-    "u": {
-      "item": "overpowered:unknown_technology"
+    "p": {
+      "item": "overpowered:nullified_power_core"
     }
   },
   "result": {
