@@ -6,7 +6,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public final class Config {
 
   public static ForgeConfigSpec.BooleanValue debug_mod_detection;
-  public static ForgeConfigSpec.BooleanValue debug_materials_detection;
+  public static ForgeConfigSpec.BooleanValue dump_tags;
   public static ForgeConfigSpec.BooleanValue dump_map_colors;
 
   public static ForgeConfigSpec.BooleanValue show_advanced_config;
@@ -21,6 +21,7 @@ public final class Config {
 
     builder.push("Debug");
     debug_mod_detection = builder.define("Print Mod Detection Results", false);
+    dump_tags           = builder.define("Dump Block & Item Tags", false);
     dump_map_colors     = builder.define("Dump Map Colors", false);
     builder.pop();
 

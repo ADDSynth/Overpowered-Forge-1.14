@@ -29,6 +29,8 @@ ADDED:
     hover over the item.
   Added Plasma item.
     - But players won't be able to do anything with it until the next update.
+  Added a new debug feature to ADDSynthCore that allows you to print all defined
+    block and item tags into text files.
 CHANGED:
   Made ADDSynth Materials into its own mod.
   The Music Box gui no longer has the JEI item panel, because it doesn't need it.
