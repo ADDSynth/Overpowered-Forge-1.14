@@ -15,7 +15,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-/** Code here is copied from {@link net.minecraft.item.crafting.ShapelessRecipe.Serializer ShapelessRecipe.Serializer} */
+/** REPLICA: Code here is copied from {@link net.minecraft.item.crafting.ShapelessRecipe.Serializer ShapelessRecipe.Serializer} */
 public class ShapelessRecipeSerializer<T extends AbstractRecipe> extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<T> {
 
   private final int max_size;

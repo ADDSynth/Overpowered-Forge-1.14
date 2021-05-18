@@ -8,7 +8,7 @@ import net.minecraft.item.Items;
 import net.minecraft.tileentity.AbstractFurnaceTileEntity;
 import net.minecraftforge.items.SlotItemHandler;
 
-/** CHECK: Although it isn't likely to change very often, this is a replica of {@link FurnaceFuelSlot}
+/** REPLICA: Although it isn't likely to change very often, this is a replica of {@link FurnaceFuelSlot}
  */
 public final class FuelSlot extends SlotItemHandler {
 

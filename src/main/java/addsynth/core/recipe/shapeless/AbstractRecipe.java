@@ -10,7 +10,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-/** Nearly all of this code was copied from {@link net.minecraft.item.crafting.ShapelessRecipe} */
+/** REPLICA: Nearly all of this code was copied from {@link net.minecraft.item.crafting.ShapelessRecipe} */
 public abstract class AbstractRecipe implements IRecipe<IInventory> {
 
    private final ResourceLocation id;

@@ -26,7 +26,7 @@ public final class RenderUtil {
     JavaUtils.getMethod(ItemRenderer.class, "func_191967_a", IBakedModel.class, int.class, ItemStack.class);
 
 
-  /** <p>CHECK: This is an exact copy of {@link ItemRenderer#renderItemModelIntoGUI(ItemStack, int, int, IBakedModel)}.
+  /** <p>REPLICA: This is an exact copy of {@link ItemRenderer#renderItemModelIntoGUI(ItemStack, int, int, IBakedModel)}.
    *     You MUST ensure there aren't any changes whenver the Forge version updates!
    * @param stack
    * @param x
@@ -74,7 +74,7 @@ public final class RenderUtil {
     }
   }
 
-  /** CHECK: This is an exact replica of {@link ItemRenderer#renderItem(ItemStack, IBakedModel)}.
+  /** REPLICA: This is an exact replica of {@link ItemRenderer#renderItem(ItemStack, IBakedModel)}.
    *  Must check for ANY changes whenever you update Forge!
    */
   private static final void custom_render_item(ItemRenderer itemRenderer, TextureManager textureManager, ItemStack stack, IBakedModel model, float opacity){

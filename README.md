@@ -3,7 +3,7 @@
 Welcome to the source code repository for the Overpowered mod for Minecraft, by ADDSynth.
 The source code is licensed under GNU GPL v3.0 or Later, with The Commons Clause.
 
-**Last Updated:** April 20, 2021
+**Last Updated:** May 18, 2021
 
 <!-- a double space after a line = a line break -->
 
@@ -91,11 +91,11 @@ Please configure your IDE to recognize these Task Tags.
 | OPTIMIZE |  Normal  | Code that can be upgraded or improved.                                      |
 | REMOVE   |  Normal  | Code that is scheduled to be removed at a later time. Must specify when to remove.       |
 | TEST     |  Normal  | Further testing is required to see if there's a better way to do something. |
-| CHECK    |   Low    | Code that is an exact duplicate of someone else's code, because I need a custom version. Must check for any differences each time the external code is updated. |
 | DELETE   |   Low    | Commented code that can be deleted when I'm sure I won't miss it.           |
 | FEATURE  |   Low    | Describes a feature that would be nice to have, but ultimately not needed at the moment. |
 | MAYBE    |   Low    | Suggests an alternative. |
 | NOTE     |   Low    | Leaves a note about the code, so I can find it later. |
+| REPLICA  |   Low    | Code that is an exact duplicate of someone else's code, because I need a custom version. Must check for any differences each time the external code is updated. |
 | UNUSED   |   Low    | Code that was added, but doesn't do anything. Safe to leave as is. |
 
 # How to Build
@@ -185,14 +185,17 @@ I'll probably just reformat it myself later in the future anyway.
      int num_lasers;  
      String msg;'
 
-  4. Using conditional statements is fine as long as they're simple enough. So for instance
+  4. Function arguments should have a space in between them. 
+
+  5. Although, in most languages, declaring a field without an access modifier is implicitly
+     defined as being private to that class, we still prefer you type out the private keyword.
+
+  6. Using conditional statements is fine as long as they're simple enough. So for instance
      'return tile != null ? tile.getSomething() : null' is perfectly fine. But if your conditional
      statement gets any more complicated than that, or consists of multiple embedded conditional
      statements, it may be better to use embedded if statements instead, or even a dedicated function.
 
-  5. Function arguments should have a space in between them. 
-
-  6. Also, I often like to space out lines of code so that they line up with each other. This is
+  7. Also, I often like to space out lines of code so that they line up with each other. This is
      not as important as some of the other rules. But in regards to this, I've noticed that the
      lists often become misaligned because I used a Refactor command to change the name of something
      which I then discover later messes up the alignment of a list somewhere.
