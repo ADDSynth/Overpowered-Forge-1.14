@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Forsigtighedsblok",
 "block.addsynthcore.music_box": "Musik boks",
-
 "item.addsynthcore.music_sheet": "Musikark",
 
 "item.addsynthcore.wooden_scythe": "Træ Le",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "jern Le",
 "item.addsynthcore.gold_scythe": "Gyldne Le",
 "item.addsynthcore.diamond_scythe": "diamant Le",
+
+"item.addsynthcore.trophy_base": "Trofæ Base",
+"block.addsynthcore.bronze_trophy": "Bronze tropi",
+"block.addsynthcore.silver_trophy": "Sølv trofæ",
+"block.addsynthcore.gold_trophy": "Guld trofæ",
+"block.addsynthcore.platinum_trophy": "Platin trofæ",
 
 "gui.addsynthcore.direction.north": "Nord",
 "gui.addsynthcore.direction.south": "Syd",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Musik boks",
 "advancements.addsynthcore.music_box.description": "Lav en musikboks.",
 "advancements.addsynthcore.scythe.title": "Le",
-"advancements.addsynthcore.scythe.description": "Lav en Le."
+"advancements.addsynthcore.scythe.description": "Lav en Le.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Bronze trofæ",
+"advancements.addsynthcore.bronze_trophy.description": "Få et bronze trofæ",
+"advancements.addsynthcore.silver_trophy.title": "Sølv trofæ",
+"advancements.addsynthcore.silver_trophy.description": "få et sølvtrofæ",
+"advancements.addsynthcore.gold_trophy.title": "Guld trofæ",
+"advancements.addsynthcore.gold_trophy.description": "Få et guld trofæ",
+"advancements.addsynthcore.platinum_trophy.title": "Platin trofæ",
+"advancements.addsynthcore.platinum_trophy.description": "få et platin trofæ"
 }

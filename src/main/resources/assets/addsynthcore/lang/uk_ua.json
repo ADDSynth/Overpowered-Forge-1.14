@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Блок попередження",
 "block.addsynthcore.music_box": "Музична скринька",
-
 "item.addsynthcore.music_sheet": "Музичний аркуш",
 
 "item.addsynthcore.wooden_scythe": "Дерев'яна коса",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Залізна коса",
 "item.addsynthcore.gold_scythe": "Золота коса",
 "item.addsynthcore.diamond_scythe": "Алмазна коса",
+
+"item.addsynthcore.trophy_base": "База трофеїв",
+"block.addsynthcore.bronze_trophy": "Бронзовий трофей",
+"block.addsynthcore.silver_trophy": "Срібний трофей",
+"block.addsynthcore.gold_trophy": "Золотий трофей",
+"block.addsynthcore.platinum_trophy": "Платиновий трофей",
 
 "gui.addsynthcore.direction.north": "Північ",
 "gui.addsynthcore.direction.south": "Південь",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Музична скринька",
 "advancements.addsynthcore.music_box.description": "Оформити музичну скриньку.",
 "advancements.addsynthcore.scythe.title": "Коса",
-"advancements.addsynthcore.scythe.description": "Вимайструйте косу."
+"advancements.addsynthcore.scythe.description": "Вимайструйте косу.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Бронзовий трофей",
+"advancements.addsynthcore.bronze_trophy.description": "Отримайте бронзовий трофей",
+"advancements.addsynthcore.silver_trophy.title": "Срібний трофей",
+"advancements.addsynthcore.silver_trophy.description": "Отримати срібний трофей",
+"advancements.addsynthcore.gold_trophy.title": "Золотий трофей",
+"advancements.addsynthcore.gold_trophy.description": "Отримати золотий трофей",
+"advancements.addsynthcore.platinum_trophy.title": "Платиновий трофей",
+"advancements.addsynthcore.platinum_trophy.description": "Отримати платиновий трофей"
 }

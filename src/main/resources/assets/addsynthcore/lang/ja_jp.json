@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "警告ブロック",
 "block.addsynthcore.music_box": "オルゴール",
-
 "item.addsynthcore.music_sheet": "五線紙",
 
 "item.addsynthcore.wooden_scythe": "木製鎌",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "鉄の鎌",
 "item.addsynthcore.gold_scythe": "ゴールデン鎌",
 "item.addsynthcore.diamond_scythe": "ダイヤモンド鎌",
+
+"item.addsynthcore.trophy_base": "トロフィーベース",
+"block.addsynthcore.bronze_trophy": "ブロンズトロフィー",
+"block.addsynthcore.silver_trophy": "シルバートロフィー",
+"block.addsynthcore.gold_trophy": "ゴールドトロフィー",
+"block.addsynthcore.platinum_trophy": "プラチナトロフィー",
 
 "gui.addsynthcore.direction.north": "北",
 "gui.addsynthcore.direction.south": "南",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "オルゴール",
 "advancements.addsynthcore.music_box.description": "オルゴールを作ります。",
 "advancements.addsynthcore.scythe.title": "鎌",
-"advancements.addsynthcore.scythe.description": "鎌を作る。"
+"advancements.addsynthcore.scythe.description": "鎌を作る。",
+
+"advancements.addsynthcore.bronze_trophy.title": "ブロンズトロフィー",
+"advancements.addsynthcore.bronze_trophy.description": "ブロンズトロフィーを手に入れよう",
+"advancements.addsynthcore.silver_trophy.title": "シルバートロフィー",
+"advancements.addsynthcore.silver_trophy.description": "シルバートロフィーを手に入れよう",
+"advancements.addsynthcore.gold_trophy.title": "ゴールドトロフィー",
+"advancements.addsynthcore.gold_trophy.description": "ゴールドトロフィーを手に入れよう",
+"advancements.addsynthcore.platinum_trophy.title": "プラチナトロフィー",
+"advancements.addsynthcore.platinum_trophy.description": "プラチナトロフィーを入手する"
 }

@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "आयरन फ्रेम ब्लॉक",
 "block.overpowered.black_hole": "ब्लैक होल",
 
-"item.overpowered.trophy_base": "ट्रॉफी बेस",
-"block.overpowered.bronze_trophy": "कांस्य ट्रॉफी",
-"block.overpowered.silver_trophy": "सिल्वर ट्रॉफी",
-"block.overpowered.gold_trophy": "गोल्ड ट्रॉफी",
-"block.overpowered.platinum_trophy": "प्लेटिनम ट्रॉफी",
-
 "item.overpowered.unidentified_leather_helmet": "अज्ञात चमड़ा कैप",
 "item.overpowered.unidentified_leather_chestplate": "अज्ञात चमड़ा आर्मर",
 "item.overpowered.unidentified_leather_leggings": "अज्ञात चमड़े के पैंट",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "आयामी लंगर",
 "advancements.overpowered.dimensional_anchor.description": "एक आयामी लंगर शिल्प।",
 "advancements.overpowered.world_destroyer.title": "संसार का नाश करनेवाला",
-"advancements.overpowered.world_destroyer.description": "दुनिया के हिस्से को नष्ट करने के लिए एक ब्लैक होल का उपयोग करें।",
-
-"advancements.overpowered.bronze_trophy.title": "कांस्य ट्रॉफी",
-"advancements.overpowered.bronze_trophy.description": "एक कांस्य ट्रॉफी प्राप्त करें",
-"advancements.overpowered.silver_trophy.title": "सिल्वर ट्रॉफी",
-"advancements.overpowered.silver_trophy.description": "एक रजत ट्रॉफी प्राप्त करें",
-"advancements.overpowered.gold_trophy.title": "गोल्ड ट्रॉफी",
-"advancements.overpowered.gold_trophy.description": "एक स्वर्ण ट्रॉफी प्राप्त करें",
-"advancements.overpowered.platinum_trophy.title": "प्लेटिनम ट्रॉफी",
-"advancements.overpowered.platinum_trophy.description": "प्लैटिनम ट्रॉफी प्राप्त करें"
+"advancements.overpowered.world_destroyer.description": "दुनिया के हिस्से को नष्ट करने के लिए एक ब्लैक होल का उपयोग करें।"
 }

@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "எச்சரிக்கை கல்",
 "block.addsynthcore.music_box": "இசை பெட்டி",
-
 "item.addsynthcore.music_sheet": "இசை குறிப்பு தாள்",
 
 "item.addsynthcore.wooden_scythe": "மர அரிவாள்",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "இரும்பு அரிவாள்",
 "item.addsynthcore.gold_scythe": "கோல்டன் அரிவாள்",
 "item.addsynthcore.diamond_scythe": "வைர அரிவாள்",
+
+"item.addsynthcore.trophy_base": "டிராபி பேஸ்",
+"block.addsynthcore.bronze_trophy": "வெண்கலம் டிராபி",
+"block.addsynthcore.silver_trophy": "வெள்ளி டிராபி",
+"block.addsynthcore.gold_trophy": "கோல்ட் டிராபி",
+"block.addsynthcore.platinum_trophy": "பிளாட்டினம் டிராபி",
 
 "gui.addsynthcore.direction.north": "வடக்கு",
 "gui.addsynthcore.direction.south": "தெற்கு",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "இசை பெட்டி",
 "advancements.addsynthcore.music_box.description": "ஒரு இசை பெட்டியை உருவாக்கவும்.",
 "advancements.addsynthcore.scythe.title": "ஸ்கைத்",
-"advancements.addsynthcore.scythe.description": "ஒரு ஸ்கைட் கைவினை."
+"advancements.addsynthcore.scythe.description": "ஒரு ஸ்கைட் கைவினை.",
+
+"advancements.addsynthcore.bronze_trophy.title": "வெண்கலம் டிராபி",
+"advancements.addsynthcore.bronze_trophy.description": "ஒரு வெண்கலம் டிராபி கிடைக்கும்",
+"advancements.addsynthcore.silver_trophy.title": "வெள்ளி டிராபி",
+"advancements.addsynthcore.silver_trophy.description": "ஒரு வெள்ளி டிராபி கிடைக்கும்",
+"advancements.addsynthcore.gold_trophy.title": "கோல்ட் டிராபி",
+"advancements.addsynthcore.gold_trophy.description": "ஒரு கோல்ட் டிராபி கிடைக்கும்",
+"advancements.addsynthcore.platinum_trophy.title": "பிளாட்டினம் டிராபி",
+"advancements.addsynthcore.platinum_trophy.description": "ஒரு பிளாட்டினம் டிராபி கிடைக்கும்"
 }

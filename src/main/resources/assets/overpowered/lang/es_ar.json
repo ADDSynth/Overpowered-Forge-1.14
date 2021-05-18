@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Bloque de marco de hierro",
 "block.overpowered.black_hole": "Calabozo",
 
-"item.overpowered.trophy_base": "Base de trofeos",
-"block.overpowered.bronze_trophy": "Trofeo de bronce",
-"block.overpowered.silver_trophy": "Trofeo de plata",
-"block.overpowered.gold_trophy": "Trofeo de oro",
-"block.overpowered.platinum_trophy": "Trofeo de platino",
-
 "item.overpowered.unidentified_leather_helmet": "Gorra de cuero no identificada",
 "item.overpowered.unidentified_leather_chestplate": "Armadura de cuero no identificada",
 "item.overpowered.unidentified_leather_leggings": "Pantalones de cuero no identificados",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Ancla dimensional",
 "advancements.overpowered.dimensional_anchor.description": "Crea un ancla dimensional.",
 "advancements.overpowered.world_destroyer.title": "Destructor del mundo",
-"advancements.overpowered.world_destroyer.description": "Usa un agujero negro para destruir parte del mundo.",
-
-"advancements.overpowered.bronze_trophy.title": "Trofeo de bronce",
-"advancements.overpowered.bronze_trophy.description": "Consigue un trofeo de bronce",
-"advancements.overpowered.silver_trophy.title": "Trofeo de plata",
-"advancements.overpowered.silver_trophy.description": "Consigue un trofeo de plata",
-"advancements.overpowered.gold_trophy.title": "Trofeo de oro",
-"advancements.overpowered.gold_trophy.description": "Consigue un trofeo de oro",
-"advancements.overpowered.platinum_trophy.title": "Trofeo de platino",
-"advancements.overpowered.platinum_trophy.description": "Consigue un trofeo de platino"
+"advancements.overpowered.world_destroyer.description": "Usa un agujero negro para destruir parte del mundo."
 }

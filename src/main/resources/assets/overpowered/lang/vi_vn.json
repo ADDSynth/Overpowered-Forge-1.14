@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Khối khung sắt",
 "block.overpowered.black_hole": "Hố đen",
 
-"item.overpowered.trophy_base": "Cơ sở cúp",
-"block.overpowered.bronze_trophy": "Cúp đồng",
-"block.overpowered.silver_trophy": "Cúp bạc",
-"block.overpowered.gold_trophy": "Cúp vàng",
-"block.overpowered.platinum_trophy": "Cúp bạch kim",
-
 "item.overpowered.unidentified_leather_helmet": "Mũ da không xác định",
 "item.overpowered.unidentified_leather_chestplate": "Áo giáp da không xác định",
 "item.overpowered.unidentified_leather_leggings": "Quần da không xác định",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Neo kích thước",
 "advancements.overpowered.dimensional_anchor.description": "Thủ công một chiều neo.",
 "advancements.overpowered.world_destroyer.title": "Tàu khu trục thế giới",
-"advancements.overpowered.world_destroyer.description": "Sử dụng một lỗ đen để phá hủy một phần của thế giới.",
-
-"advancements.overpowered.bronze_trophy.title": "Cúp đồng",
-"advancements.overpowered.bronze_trophy.description": "Nhận cúp đồng",
-"advancements.overpowered.silver_trophy.title": "Cúp bạc",
-"advancements.overpowered.silver_trophy.description": "Nhận cúp bạc",
-"advancements.overpowered.gold_trophy.title": "Cúp vàng",
-"advancements.overpowered.gold_trophy.description": "Nhận cúp vàng",
-"advancements.overpowered.platinum_trophy.title": "Cúp bạch kim",
-"advancements.overpowered.platinum_trophy.description": "nhận được một chiếc cúp bạch kim"
+"advancements.overpowered.world_destroyer.description": "Sử dụng một lỗ đen để phá hủy một phần của thế giới."
 }

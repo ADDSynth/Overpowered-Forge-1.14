@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "kovový rám blok",
 "block.overpowered.black_hole": "Černá díra",
 
-"item.overpowered.trophy_base": "Trofejní základna",
-"block.overpowered.bronze_trophy": "Bronzová trofej",
-"block.overpowered.silver_trophy": "Stříbrná trofej",
-"block.overpowered.gold_trophy": "Zlatá trofej",
-"block.overpowered.platinum_trophy": "Platinová trofej",
-
 "item.overpowered.unidentified_leather_helmet": "Neidentifikovaná kožená čepice",
 "item.overpowered.unidentified_leather_chestplate": "Neznámá kožená zbroj",
 "item.overpowered.unidentified_leather_leggings": "Neidentifikované kožené kalhoty",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Dimenzionální kotva",
 "advancements.overpowered.dimensional_anchor.description": "Vytvořte položku Dimensional Kotva",
 "advancements.overpowered.world_destroyer.title": "Světový torpédoborec",
-"advancements.overpowered.world_destroyer.description": "Pomocí černé díry zničte část světa.",
-
-"advancements.overpowered.bronze_trophy.title": "Bronzová trofej",
-"advancements.overpowered.bronze_trophy.description": "Získejte bronzovou trofej",
-"advancements.overpowered.silver_trophy.title": "Stříbrná trofej",
-"advancements.overpowered.silver_trophy.description": "Získejte stříbrnou trofej",
-"advancements.overpowered.gold_trophy.title": "Zlatá trofej",
-"advancements.overpowered.gold_trophy.description": "Získejte zlatou trofej",
-"advancements.overpowered.platinum_trophy.title": "Platinová trofej",
-"advancements.overpowered.platinum_trophy.description": "Získejte platinovou trofej"
+"advancements.overpowered.world_destroyer.description": "Pomocí černé díry zničte část světa."
 }

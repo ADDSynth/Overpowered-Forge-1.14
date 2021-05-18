@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "كتلة تحذيرية",
 "block.addsynthcore.music_box": "صندوق الموسيقى",
-
 "item.addsynthcore.music_sheet": "ورقة الموسيقى",
 
 "item.addsynthcore.wooden_scythe": "منجل خشبي",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "المنجل الحديدي",
 "item.addsynthcore.gold_scythe": "المنجل الذهبي",
 "item.addsynthcore.diamond_scythe": "منجل الماس",
+
+"item.addsynthcore.trophy_base": "قاعدة الكأس",
+"block.addsynthcore.bronze_trophy": "الكأس البرونزي",
+"block.addsynthcore.silver_trophy": "الكأس الفضي",
+"block.addsynthcore.gold_trophy": "الكأس الذهبية",
+"block.addsynthcore.platinum_trophy": "البلاتين الكأس",
 
 "gui.addsynthcore.direction.north": "شمال",
 "gui.addsynthcore.direction.south": "جنوب",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "صندوق الموسيقى",
 "advancements.addsynthcore.music_box.description": "اصنع صندوق موسيقى.",
 "advancements.addsynthcore.scythe.title": "منجل",
-"advancements.addsynthcore.scythe.description": "اصنع منجل."
+"advancements.addsynthcore.scythe.description": "اصنع منجل.",
+
+"advancements.addsynthcore.bronze_trophy.title": "الكأس البرونزي",
+"advancements.addsynthcore.bronze_trophy.description": "الحصول على الكأس البرونزي",
+"advancements.addsynthcore.silver_trophy.title": "الكأس الفضي",
+"advancements.addsynthcore.silver_trophy.description": "الحصول على الكأس الفضية",
+"advancements.addsynthcore.gold_trophy.title": "الكأس الذهبية",
+"advancements.addsynthcore.gold_trophy.description": "الحصول على الكأس الذهبية",
+"advancements.addsynthcore.platinum_trophy.title": "البلاتين الكأس",
+"advancements.addsynthcore.platinum_trophy.description": "الحصول على الكأس البلاتين"
 }

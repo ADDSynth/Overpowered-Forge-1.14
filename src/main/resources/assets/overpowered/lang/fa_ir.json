@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "بلوک قاب آهن",
 "block.overpowered.black_hole": "سیاه چاله",
 
-"item.overpowered.trophy_base": "پایه ی جایزه",
-"block.overpowered.bronze_trophy": "جایزه برنز",
-"block.overpowered.silver_trophy": "جایزه نقره ای",
-"block.overpowered.gold_trophy": "جایزه طلا",
-"block.overpowered.platinum_trophy": "جایزه پلاتین",
-
 "item.overpowered.unidentified_leather_helmet": "کلاه چرم ناشناس",
 "item.overpowered.unidentified_leather_chestplate": "زره پوش چرم ناشناس",
 "item.overpowered.unidentified_leather_leggings": "شلوار چرم ناشناس",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "لنگر بعدی",
 "advancements.overpowered.dimensional_anchor.description": "یک لنگر بعدی بکشید.",
 "advancements.overpowered.world_destroyer.title": "ناوشکن جهان",
-"advancements.overpowered.world_destroyer.description": "برای از بین بردن بخشی از جهان از یک سیاه چاله استفاده کنید.",
-
-"advancements.overpowered.bronze_trophy.title": "جایزه برنز",
-"advancements.overpowered.bronze_trophy.description": "دریافت جایزه برنز",
-"advancements.overpowered.silver_trophy.title": "جایزه نقره ای",
-"advancements.overpowered.silver_trophy.description": "یک جایزه نقره دریافت کنید",
-"advancements.overpowered.gold_trophy.title": "جایزه طلا",
-"advancements.overpowered.gold_trophy.description": "دریافت جایزه طلا",
-"advancements.overpowered.platinum_trophy.title": "جایزه پلاتین",
-"advancements.overpowered.platinum_trophy.description": "دریافت جایزه پلاتین"
+"advancements.overpowered.world_destroyer.description": "برای از بین بردن بخشی از جهان از یک سیاه چاله استفاده کنید."
 }

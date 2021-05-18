@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Blok Perhatian",
 "block.addsynthcore.music_box": "Kotak muzik",
-
 "item.addsynthcore.music_sheet": "Lembaran Muzik",
 
 "item.addsynthcore.wooden_scythe": "Sabit kayu",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Besi sabit",
 "item.addsynthcore.gold_scythe": "sabit emas",
 "item.addsynthcore.diamond_scythe": "Berlian sabit",
+
+"item.addsynthcore.trophy_base": "pangkalan piala",
+"block.addsynthcore.bronze_trophy": "Trofi Gangsa",
+"block.addsynthcore.silver_trophy": "Trofi Perak",
+"block.addsynthcore.gold_trophy": "Trofi Emas",
+"block.addsynthcore.platinum_trophy": "Trofi Platinum",
 
 "gui.addsynthcore.direction.north": "Utara",
 "gui.addsynthcore.direction.south": "Selatan",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Kotak muzik",
 "advancements.addsynthcore.music_box.description": "Buat Kotak Muzik.",
 "advancements.addsynthcore.scythe.title": "Sabit",
-"advancements.addsynthcore.scythe.description": "Hasilkan Scythe."
+"advancements.addsynthcore.scythe.description": "Hasilkan Scythe.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Trofi gangsa",
+"advancements.addsynthcore.bronze_trophy.description": "Dapatkan Piala Gangsa",
+"advancements.addsynthcore.silver_trophy.title": "Trofi Perak",
+"advancements.addsynthcore.silver_trophy.description": "Dapatkan Piala Perak",
+"advancements.addsynthcore.gold_trophy.title": "Trofi Emas",
+"advancements.addsynthcore.gold_trophy.description": "Dapatkan Piala Emas",
+"advancements.addsynthcore.platinum_trophy.title": "Trofi Platinum",
+"advancements.addsynthcore.platinum_trophy.description": "dapatkan trofi platinum"
 }

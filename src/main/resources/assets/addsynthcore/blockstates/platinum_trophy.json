@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "addsynthcore:block/platinum_trophy" },
+    "facing=east":  {"model": "addsynthcore:block/platinum_trophy", "y": 90},
+    "facing=south": {"model": "addsynthcore:block/platinum_trophy", "y": 180},
+    "facing=west":  {"model": "addsynthcore:block/platinum_trophy", "y": 270}
+  }
+}

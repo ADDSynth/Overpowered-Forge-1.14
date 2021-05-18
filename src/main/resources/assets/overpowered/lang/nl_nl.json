@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "IJzeren frame blok",
 "block.overpowered.black_hole": "Zwart gat",
 
-"item.overpowered.trophy_base": "trofee basis",
-"block.overpowered.bronze_trophy": "Bronzen trofee",
-"block.overpowered.silver_trophy": "Zilveren trofee",
-"block.overpowered.gold_trophy": "Gouden trofee",
-"block.overpowered.platinum_trophy": "Platina trofee",
-
 "item.overpowered.unidentified_leather_helmet": "onbekende leren hoed",
 "item.overpowered.unidentified_leather_chestplate": "Onbekend leer pantser",
 "item.overpowered.unidentified_leather_leggings": "onbekende lederen broek",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Dimensionaal anker",
 "advancements.overpowered.dimensional_anchor.description": "Maak een dimensionaal anker.",
 "advancements.overpowered.world_destroyer.title": "Wereldvernietiger",
-"advancements.overpowered.world_destroyer.description": "Gebruik een zwart gat om een ​​deel van de wereld te vernietigen.",
-
-"advancements.overpowered.bronze_trophy.title": "Bronzen trofee",
-"advancements.overpowered.bronze_trophy.description": "krijg een bronzen trofee",
-"advancements.overpowered.silver_trophy.title": "Zilveren trofee",
-"advancements.overpowered.silver_trophy.description": "Ontvang een zilveren trofee",
-"advancements.overpowered.gold_trophy.title": "Gouden trofee",
-"advancements.overpowered.gold_trophy.description": "Ontvang een gouden trofee",
-"advancements.overpowered.platinum_trophy.title": "Platina trofee",
-"advancements.overpowered.platinum_trophy.description": "krijg een platina trofee"
+"advancements.overpowered.world_destroyer.description": "Gebruik een zwart gat om een ​​deel van de wereld te vernietigen."
 }

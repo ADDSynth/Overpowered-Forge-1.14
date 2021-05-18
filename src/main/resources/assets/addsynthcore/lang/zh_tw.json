@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "警告塊",
 "block.addsynthcore.music_box": "音樂盒",
-
 "item.addsynthcore.music_sheet": "音樂表",
 
 "item.addsynthcore.wooden_scythe": "木鐮刀",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "鐵鐮刀",
 "item.addsynthcore.gold_scythe": "金鐮刀",
 "item.addsynthcore.diamond_scythe": "鑽石鐮刀",
+
+"item.addsynthcore.trophy_base": "獎杯基地",
+"block.addsynthcore.bronze_trophy": "青銅獎杯",
+"block.addsynthcore.silver_trophy": "銀色獎杯",
+"block.addsynthcore.gold_trophy": "金獎杯",
+"block.addsynthcore.platinum_trophy": "白金獎杯",
 
 "gui.addsynthcore.direction.north": "北",
 "gui.addsynthcore.direction.south": "南",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "音樂盒",
 "advancements.addsynthcore.music_box.description": "製作一個音樂盒。",
 "advancements.addsynthcore.scythe.title": "鐮",
-"advancements.addsynthcore.scythe.description": "製作一把鐮刀。"
+"advancements.addsynthcore.scythe.description": "製作一把鐮刀。",
+
+"advancements.addsynthcore.bronze_trophy.title": "青銅獎杯",
+"advancements.addsynthcore.bronze_trophy.description": "獲得銅獎杯",
+"advancements.addsynthcore.silver_trophy.title": "銀色獎杯",
+"advancements.addsynthcore.silver_trophy.description": "獲得銀獎杯",
+"advancements.addsynthcore.gold_trophy.title": "金獎杯",
+"advancements.addsynthcore.gold_trophy.description": "獲得金獎杯",
+"advancements.addsynthcore.platinum_trophy.title": "白金獎杯",
+"advancements.addsynthcore.platinum_trophy.description": "獲得白金獎杯"
 }

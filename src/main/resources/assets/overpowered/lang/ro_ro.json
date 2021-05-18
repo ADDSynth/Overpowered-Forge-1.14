@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Blocul cadrului de fier",
 "block.overpowered.black_hole": "Gaură neagră",
 
-"item.overpowered.trophy_base": "Baza de trofee",
-"block.overpowered.bronze_trophy": "bronz trofeu",
-"block.overpowered.silver_trophy": "Trofeul de argint",
-"block.overpowered.gold_trophy": "Trofeul de aur",
-"block.overpowered.platinum_trophy": "platina trofeu",
-
 "item.overpowered.unidentified_leather_helmet": "Șapcă de piele neidentificată",
 "item.overpowered.unidentified_leather_chestplate": "Armură din piele neidentificată",
 "item.overpowered.unidentified_leather_leggings": "Pantaloni din piele neidentificat",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Ancoră dimensională",
 "advancements.overpowered.dimensional_anchor.description": "Creează o ancoră dimensională.",
 "advancements.overpowered.world_destroyer.title": "Distrugător mondial",
-"advancements.overpowered.world_destroyer.description": "Folosiți o gaură neagră pentru a distruge o parte a lumii.",
-
-"advancements.overpowered.bronze_trophy.title": "bronz trofeu",
-"advancements.overpowered.bronze_trophy.description": "Obțineți un Trofeu de bronz",
-"advancements.overpowered.silver_trophy.title": "Trofeul de argint",
-"advancements.overpowered.silver_trophy.description": "Obțineți un trofeu de argint",
-"advancements.overpowered.gold_trophy.title": "Trofeul de aur",
-"advancements.overpowered.gold_trophy.description": "Obțineți un trofeu de aur",
-"advancements.overpowered.platinum_trophy.title": "platina trofeu",
-"advancements.overpowered.platinum_trophy.description": "Obțineți un trofeu Platinum"
+"advancements.overpowered.world_destroyer.description": "Folosiți o gaură neagră pentru a distruge o parte a lumii."
 }

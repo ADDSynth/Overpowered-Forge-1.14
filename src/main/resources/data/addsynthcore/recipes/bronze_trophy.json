@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ppp",
+    "ppp",
+    " s "
+  ],
+  "key": {
+    "p": {
+      "tag": "forge:plates/bronze"
+    },
+    "s": {
+      "item": "addsynthcore:trophy_base"
+    }
+  },
+  "result": {
+    "item": "addsynthcore:bronze_trophy"
+  }
+}

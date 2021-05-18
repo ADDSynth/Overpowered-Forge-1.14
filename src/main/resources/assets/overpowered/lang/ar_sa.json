@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "كتلة الإطار الحديدي",
 "block.overpowered.black_hole": "الثقب الأسود",
 
-"item.overpowered.trophy_base": "قاعدة الكأس",
-"block.overpowered.bronze_trophy": "الكأس البرونزي",
-"block.overpowered.silver_trophy": "الكأس الفضي",
-"block.overpowered.gold_trophy": "الكأس الذهبية",
-"block.overpowered.platinum_trophy": "البلاتين الكأس",
-
 "item.overpowered.unidentified_leather_helmet": "قبعة جلدية مجهولة الهوية",
 "item.overpowered.unidentified_leather_chestplate": "درع جلدية مجهولة الهوية",
 "item.overpowered.unidentified_leather_leggings": "سروال جلدية مجهول",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "مرساة الأبعاد",
 "advancements.overpowered.dimensional_anchor.description": "اصنع مرساة الأبعاد.",
 "advancements.overpowered.world_destroyer.title": "مدمر العالم",
-"advancements.overpowered.world_destroyer.description": "استخدم ثقبًا أسود لتدمير جزء من العالم.",
-
-"advancements.overpowered.bronze_trophy.title": "الكأس البرونزي",
-"advancements.overpowered.bronze_trophy.description": "الحصول على الكأس البرونزي",
-"advancements.overpowered.silver_trophy.title": "الكأس الفضي",
-"advancements.overpowered.silver_trophy.description": "الحصول على الكأس الفضية",
-"advancements.overpowered.gold_trophy.title": "الكأس الذهبية",
-"advancements.overpowered.gold_trophy.description": "الحصول على الكأس الذهبية",
-"advancements.overpowered.platinum_trophy.title": "البلاتين الكأس",
-"advancements.overpowered.platinum_trophy.description": "الحصول على الكأس البلاتين"
+"advancements.overpowered.world_destroyer.description": "استخدم ثقبًا أسود لتدمير جزء من العالم."
 }

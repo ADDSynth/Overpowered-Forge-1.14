@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Iron Frame Block",
 "block.overpowered.black_hole": "Black Hole",
 
-"item.overpowered.trophy_base": "Trophy Base",
-"block.overpowered.bronze_trophy": "Bronze Trophy",
-"block.overpowered.silver_trophy": "Silver Trophy",
-"block.overpowered.gold_trophy": "Gold Trophy",
-"block.overpowered.platinum_trophy": "Platinum Trophy",
-
 "item.overpowered.unidentified_leather_helmet": "Unidentified Leather Cap",
 "item.overpowered.unidentified_leather_chestplate": "Unidentified Leather Armor",
 "item.overpowered.unidentified_leather_leggings": "Unidentified Leather Pants",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Dimensional Anchor",
 "advancements.overpowered.dimensional_anchor.description": "Craft a Dimensional Anchor.",
 "advancements.overpowered.world_destroyer.title": "World Destroyer",
-"advancements.overpowered.world_destroyer.description": "Use a Black Hole to destroy part of the world.",
-
-"advancements.overpowered.bronze_trophy.title": "Bronze Trophy",
-"advancements.overpowered.bronze_trophy.description": "Get a Bronze Trophy.",
-"advancements.overpowered.silver_trophy.title": "Silver Trophy",
-"advancements.overpowered.silver_trophy.description": "Get a Silver Trophy.",
-"advancements.overpowered.gold_trophy.title": "Gold Trophy",
-"advancements.overpowered.gold_trophy.description": "Get a Gold Trophy.",
-"advancements.overpowered.platinum_trophy.title": "Platinum Trophy",
-"advancements.overpowered.platinum_trophy.description": "Get a Platinum Trophy."
+"advancements.overpowered.world_destroyer.description": "Use a Black Hole to destroy part of the world."
 }

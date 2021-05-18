@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "بلوک احتیاط",
 "block.addsynthcore.music_box": "جعبه موسیقی",
-
 "item.addsynthcore.music_sheet": "ورق موسیقی",
 
 "item.addsynthcore.wooden_scythe": "داس چوبی",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "داس آهنی",
 "item.addsynthcore.gold_scythe": "داس طلایی",
 "item.addsynthcore.diamond_scythe": "داس الماس",
+
+"item.addsynthcore.trophy_base": "پایه ی جایزه",
+"block.addsynthcore.bronze_trophy": "جایزه برنز",
+"block.addsynthcore.silver_trophy": "جایزه نقره ای",
+"block.addsynthcore.gold_trophy": "جایزه طلا",
+"block.addsynthcore.platinum_trophy": "جایزه پلاتین",
 
 "gui.addsynthcore.direction.north": "شمال",
 "gui.addsynthcore.direction.south": "جنوب",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "جعبه موسیقی",
 "advancements.addsynthcore.music_box.description": "جعبه موسیقی را تهیه کنید.",
 "advancements.addsynthcore.scythe.title": "طرح",
-"advancements.addsynthcore.scythe.description": "هنرنمایی یک طرح."
+"advancements.addsynthcore.scythe.description": "هنرنمایی یک طرح.",
+
+"advancements.addsynthcore.bronze_trophy.title": "جایزه برنز",
+"advancements.addsynthcore.bronze_trophy.description": "دریافت جایزه برنز",
+"advancements.addsynthcore.silver_trophy.title": "جایزه نقره ای",
+"advancements.addsynthcore.silver_trophy.description": "یک جایزه نقره دریافت کنید",
+"advancements.addsynthcore.gold_trophy.title": "جایزه طلا",
+"advancements.addsynthcore.gold_trophy.description": "دریافت جایزه طلا",
+"advancements.addsynthcore.platinum_trophy.title": "جایزه پلاتین",
+"advancements.addsynthcore.platinum_trophy.description": "دریافت جایزه پلاتین"
 }

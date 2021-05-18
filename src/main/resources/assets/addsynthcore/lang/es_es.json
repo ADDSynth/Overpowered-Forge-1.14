@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Bloque de precaución",
 "block.addsynthcore.music_box.name": "Caja de música",
-
 "item.addsynthcore.music_sheet": "Partitura",
 
 "item.addsynthcore.wooden_scythe": "Guadaña de madera",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Guadaña de hierro",
 "item.addsynthcore.gold_scythe": "Guadaña dorada",
 "item.addsynthcore.diamond_scythe": "Guadaña de diamante"
+
+"item.addsynthcore.trophy_base": "Base de trofeos",
+"block.addsynthcore.bronze_trophy": "Trofeo de bronce",
+"block.addsynthcore.silver_trophy": "Trofeo de plata",
+"block.addsynthcore.gold_trophy": "Trofeo de oro",
+"block.addsynthcore.platinum_trophy": "Trofeo de platino",
 
 "gui.addsynthcore.direction.north": "norte",
 "gui.addsynthcore.direction.south": "Sur",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Caja de música",
 "advancements.addsynthcore.music_box.description": "Crea una caja de música.",
 "advancements.addsynthcore.scythe.title": "Guadaña",
-"advancements.addsynthcore.scythe.description": "Fabrica una guadaña."
+"advancements.addsynthcore.scythe.description": "Fabrica una guadaña.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Trofeo de bronce",
+"advancements.addsynthcore.bronze_trophy.description": "Consigue un trofeo de bronce",
+"advancements.addsynthcore.silver_trophy.title": "Trofeo de plata",
+"advancements.addsynthcore.silver_trophy.description": "Consigue un trofeo de plata",
+"advancements.addsynthcore.gold_trophy.title": "Trofeo de oro",
+"advancements.addsynthcore.gold_trophy.description": "Consigue un trofeo de oro",
+"advancements.addsynthcore.platinum_trophy.title": "Trofeo de platino",
+"advancements.addsynthcore.platinum_trophy.description": "Consigue un trofeo de platino"
 }

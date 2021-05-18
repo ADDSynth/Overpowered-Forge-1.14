@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "철제 프레임 블록",
 "block.overpowered.black_hole": "블랙홀",
 
-"item.overpowered.trophy_base": "트로피베이스",
-"block.overpowered.bronze_trophy": "브론즈 트로피",
-"block.overpowered.silver_trophy": "실버 트로피",
-"block.overpowered.gold_trophy": "골드 트로피",
-"block.overpowered.platinum_trophy": "플래티넘 트로피",
-
 "item.overpowered.unidentified_leather_helmet": "미확인 가죽 모자",
 "item.overpowered.unidentified_leather_chestplate": "신원 미상의 가죽 갑옷",
 "item.overpowered.unidentified_leather_leggings": "미확인 가죽 바지",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "치수 앵커",
 "advancements.overpowered.dimensional_anchor.description": "치수 앵커를 제작하십시오.",
 "advancements.overpowered.world_destroyer.title": "세계 구축함",
-"advancements.overpowered.world_destroyer.description": "블랙홀을 사용하여 세계의 일부를 파괴하십시오.",
-
-"advancements.overpowered.bronze_trophy.title": "청동 트로피",
-"advancements.overpowered.bronze_trophy.description": "청동 트로피 획득",
-"advancements.overpowered.silver_trophy.title": "실버 트로피",
-"advancements.overpowered.silver_trophy.description": "실버 트로피 받기",
-"advancements.overpowered.gold_trophy.title": "골드 트로피",
-"advancements.overpowered.gold_trophy.description": "금 트로피 받기",
-"advancements.overpowered.platinum_trophy.title": "플래티넘 트로피",
-"advancements.overpowered.platinum_trophy.description": "플래티넘 트로피 받기"
+"advancements.overpowered.world_destroyer.description": "블랙홀을 사용하여 세계의 일부를 파괴하십시오."
 }

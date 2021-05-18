@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Bloc de prudence",
 "block.addsynthcore.music_box": "Boîte à musique",
-
 "item.addsynthcore.music_sheet": "Feuille de musique",
 
 "item.addsynthcore.wooden_scythe": "Faucille en bois",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Faucille de fer",
 "item.addsynthcore.gold_scythe": "Faucille d'or",
 "item.addsynthcore.diamond_scythe": "Faucille de diamant",
+
+"item.addsynthcore.trophy_base": "Base de trophée",
+"block.addsynthcore.bronze_trophy": "Trophée de bronze",
+"block.addsynthcore.silver_trophy": "Trophée d'Argent",
+"block.addsynthcore.gold_trophy": "Trophée d'Or",
+"block.addsynthcore.platinum_trophy": "Trophée platine",
 
 "gui.addsynthcore.direction.north": "Nord",
 "gui.addsynthcore.direction.south": "Sud",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Boîte à musique",
 "advancements.addsynthcore.music_box.description": "Fabriquez une boîte à musique.",
 "advancements.addsynthcore.scythe.title": "Faux",
-"advancements.addsynthcore.scythe.description": "Fabriquez une faux."
+"advancements.addsynthcore.scythe.description": "Fabriquez une faux.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Trophée de bronze",
+"advancements.addsynthcore.bronze_trophy.description": "Obtenir un trophée de bronze",
+"advancements.addsynthcore.silver_trophy.title": "Trophée d'Argent",
+"advancements.addsynthcore.silver_trophy.description": "Obtenir un trophée d'argent",
+"advancements.addsynthcore.gold_trophy.title": "Trophée d'Or",
+"advancements.addsynthcore.gold_trophy.description": "Obtenir un trophée d'or",
+"advancements.addsynthcore.platinum_trophy.title": "Trophée platine",
+"advancements.addsynthcore.platinum_trophy.description": "Obtenir un trophée de platine"
 }

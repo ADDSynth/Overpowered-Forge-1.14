@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Atenție Blocați",
 "block.addsynthcore.music_box": "Cutie muzicală",
-
 "item.addsynthcore.music_sheet": "hârtie muzicală",
 
 "item.addsynthcore.wooden_scythe": "Coasă de lemn",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Secera de fier",
 "item.addsynthcore.gold_scythe": "Secera de aur",
 "item.addsynthcore.diamond_scythe": "Secera de diamant",
+
+"item.addsynthcore.trophy_base": "Baza de trofee",
+"block.addsynthcore.bronze_trophy": "bronz trofeu",
+"block.addsynthcore.silver_trophy": "Trofeul de argint",
+"block.addsynthcore.gold_trophy": "Trofeul de aur",
+"block.addsynthcore.platinum_trophy": "platina trofeu",
 
 "gui.addsynthcore.direction.north": "Nord",
 "gui.addsynthcore.direction.south": "Sud",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Cutie muzicală",
 "advancements.addsynthcore.music_box.description": "Creați o cutie de muzică.",
 "advancements.addsynthcore.scythe.title": "Coasă",
-"advancements.addsynthcore.scythe.description": "Meșteșugă un scăpător."
+"advancements.addsynthcore.scythe.description": "Meșteșugă un scăpător.",
+
+"advancements.addsynthcore.bronze_trophy.title": "bronz trofeu",
+"advancements.addsynthcore.bronze_trophy.description": "Obțineți un Trofeu de bronz",
+"advancements.addsynthcore.silver_trophy.title": "Trofeul de argint",
+"advancements.addsynthcore.silver_trophy.description": "Obțineți un trofeu de argint",
+"advancements.addsynthcore.gold_trophy.title": "Trofeul de aur",
+"advancements.addsynthcore.gold_trophy.description": "Obțineți un trofeu de aur",
+"advancements.addsynthcore.platinum_trophy.title": "platina trofeu",
+"advancements.addsynthcore.platinum_trophy.description": "Obțineți un trofeu Platinum"
 }

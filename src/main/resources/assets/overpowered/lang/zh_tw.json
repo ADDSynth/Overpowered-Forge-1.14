@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "金屬框架塊",
 "block.overpowered.black_hole": "黑洞",
 
-"item.overpowered.trophy_base": "獎杯基地",
-"block.overpowered.bronze_trophy": "青銅獎杯",
-"block.overpowered.silver_trophy": "銀色獎杯",
-"block.overpowered.gold_trophy": "金獎杯",
-"block.overpowered.platinum_trophy": "白金獎杯",
-
 "item.overpowered.unidentified_leather_helmet": "身份不明的皮帽",
 "item.overpowered.unidentified_leather_chestplate": "身份不明的皮甲",
 "item.overpowered.unidentified_leather_leggings": "身份不明的皮褲",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "尺寸錨",
 "advancements.overpowered.dimensional_anchor.description": "製作尺寸錨。",
 "advancements.overpowered.world_destroyer.title": "世界驅逐艦",
-"advancements.overpowered.world_destroyer.description": "使用黑洞破壞世界的一部分。",
-
-"advancements.overpowered.bronze_trophy.title": "青銅獎杯",
-"advancements.overpowered.bronze_trophy.description": "獲得銅獎杯",
-"advancements.overpowered.silver_trophy.title": "銀色獎杯",
-"advancements.overpowered.silver_trophy.description": "獲得銀獎杯",
-"advancements.overpowered.gold_trophy.title": "金獎杯",
-"advancements.overpowered.gold_trophy.description": "獲得金獎杯",
-"advancements.overpowered.platinum_trophy.title": "白金獎杯",
-"advancements.overpowered.platinum_trophy.description": "獲得白金獎杯"
+"advancements.overpowered.world_destroyer.description": "使用黑洞破壞世界的一部分。"
 }

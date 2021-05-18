@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "μπλοκ προειδοποίησης",
 "block.addsynthcore.music_box": "Μουσικό κουτί",
-
 "item.addsynthcore.music_sheet": "Φύλλο μουσικής",
 
 "item.addsynthcore.wooden_scythe": "Ξύλινο δρεπάνι",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Σιδερένιο δρεπάνι",
 "item.addsynthcore.gold_scythe": "Χρυσό δρεπάνι",
 "item.addsynthcore.diamond_scythe": "Δακτύλιο δρεπάνι",
+
+"item.addsynthcore.trophy_base": "Βάση τροπαίων",
+"block.addsynthcore.bronze_trophy": "Χάλκινο τρόπαιο",
+"block.addsynthcore.silver_trophy": "Αργυρό Trophy",
+"block.addsynthcore.gold_trophy": "Χρυσό τρόπαιο",
+"block.addsynthcore.platinum_trophy": "Πλατινένιο τρόπαιο",
 
 "gui.addsynthcore.direction.north": "Βόρειος",
 "gui.addsynthcore.direction.south": "Νότος",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Μουσικό κουτί",
 "advancements.addsynthcore.music_box.description": "Δημιουργήστε ένα μουσικό κουτί.",
 "advancements.addsynthcore.scythe.title": "Δρεπάνι",
-"advancements.addsynthcore.scythe.description": "Δημιουργήστε ένα δρεπάνι."
+"advancements.addsynthcore.scythe.description": "Δημιουργήστε ένα δρεπάνι.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Χάλκινο τρόπαιο",
+"advancements.addsynthcore.bronze_trophy.description": "Πάρτε ένα χάλκινο τρόπαιο",
+"advancements.addsynthcore.silver_trophy.title": "ασημένιο τρόπαιο",
+"advancements.addsynthcore.silver_trophy.description": "Πάρτε ένα ασημένιο τρόπαιο",
+"advancements.addsynthcore.gold_trophy.title": "Χρυσό τρόπαιο",
+"advancements.addsynthcore.gold_trophy.description": "Αποκτήστε ένα χρυσό τρόπαιο",
+"advancements.addsynthcore.platinum_trophy.title": "Πλατινένιο τρόπαιο",
+"advancements.addsynthcore.platinum_trophy.description": "Πάρτε ένα Πλατινένιο Τρόπαιο"
 }

@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "jern ramme blok",
 "block.overpowered.black_hole": "Sort hul",
 
-"item.overpowered.trophy_base": "Trofæ Base",
-"block.overpowered.bronze_trophy": "Bronze tropi",
-"block.overpowered.silver_trophy": "Sølv trofæ",
-"block.overpowered.gold_trophy": "Guld trofæ",
-"block.overpowered.platinum_trophy": "Platin trofæ",
-
 "item.overpowered.unidentified_leather_helmet": "Uidentificeret læderhætte",
 "item.overpowered.unidentified_leather_chestplate": "Uidentificeret læderarmor",
 "item.overpowered.unidentified_leather_leggings": "Uidentificerede Læderbukser",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Dimensionelt anker",
 "advancements.overpowered.dimensional_anchor.description": "Lav et dimensionelt anker.",
 "advancements.overpowered.world_destroyer.title": "Verden ødelægger",
-"advancements.overpowered.world_destroyer.description": "Brug et sort hul til at ødelægge en del af verden.",
-
-"advancements.overpowered.bronze_trophy.title": "Bronze trofæ",
-"advancements.overpowered.bronze_trophy.description": "Få et bronze trofæ",
-"advancements.overpowered.silver_trophy.title": "Sølv trofæ",
-"advancements.overpowered.silver_trophy.description": "få et sølvtrofæ",
-"advancements.overpowered.gold_trophy.title": "Guld trofæ",
-"advancements.overpowered.gold_trophy.description": "Få et guld trofæ",
-"advancements.overpowered.platinum_trophy.title": "Platin trofæ",
-"advancements.overpowered.platinum_trophy.description": "få et platin trofæ"
+"advancements.overpowered.world_destroyer.description": "Brug et sort hul til at ødelægge en del af verden."
 }

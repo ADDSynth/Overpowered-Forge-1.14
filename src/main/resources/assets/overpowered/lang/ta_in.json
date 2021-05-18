@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "இரும்பு சட்ட தொகுதி",
 "block.overpowered.black_hole": "கருப்பு துளை",
 
-"item.overpowered.trophy_base": "டிராபி பேஸ்",
-"block.overpowered.bronze_trophy": "வெண்கலம் டிராபி",
-"block.overpowered.silver_trophy": "வெள்ளி டிராபி",
-"block.overpowered.gold_trophy": "கோல்ட் டிராபி",
-"block.overpowered.platinum_trophy": "பிளாட்டினம் டிராபி",
-
 "item.overpowered.unidentified_leather_helmet": "அடையாளம் தெரியாத லெதர் ஹாட்",
 "item.overpowered.unidentified_leather_chestplate": "அடையாளம் தெரியாத தோல் ஆர்மர்",
 "item.overpowered.unidentified_leather_leggings": "அடையாளம் தெரியாத லெதர் பேன்ட்ஸ்",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "பரிமாண நங்கூரம்",
 "advancements.overpowered.dimensional_anchor.description": "ஒரு பரிமாண நங்கூரத்தை வடிவமைக்கவும்.",
 "advancements.overpowered.world_destroyer.title": "உலக அழிப்பான்",
-"advancements.overpowered.world_destroyer.description": "உலகின் ஒரு பகுதியை அழிக்க கருந்துளையைப் பயன்படுத்துங்கள்.",
-
-"advancements.overpowered.bronze_trophy.title": "வெண்கலம் டிராபி",
-"advancements.overpowered.bronze_trophy.description": "ஒரு வெண்கலம் டிராபி கிடைக்கும்",
-"advancements.overpowered.silver_trophy.title": "வெள்ளி டிராபி",
-"advancements.overpowered.silver_trophy.description": "ஒரு வெள்ளி டிராபி கிடைக்கும்",
-"advancements.overpowered.gold_trophy.title": "கோல்ட் டிராபி",
-"advancements.overpowered.gold_trophy.description": "ஒரு கோல்ட் டிராபி கிடைக்கும்",
-"advancements.overpowered.platinum_trophy.title": "பிளாட்டினம் டிராபி",
-"advancements.overpowered.platinum_trophy.description": "ஒரு பிளாட்டினம் டிராபி கிடைக்கும்"
+"advancements.overpowered.world_destroyer.description": "உலகின் ஒரு பகுதியை அழிக்க கருந்துளையைப் பயன்படுத்துங்கள்."
 }

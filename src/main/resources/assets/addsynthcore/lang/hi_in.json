@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "सावधानी ब्लॉक",
 "block.addsynthcore.music_box": "संगीत बक्सा",
-
 "item.addsynthcore.music_sheet": "संगीत नोटशीट",
 
 "item.addsynthcore.wooden_scythe": "लकड़ी की दरांती",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "लोहे की दरांती",
 "item.addsynthcore.gold_scythe": "सुनहरी दरांती",
 "item.addsynthcore.diamond_scythe": "हीरा दरांती",
+
+"item.addsynthcore.trophy_base": "ट्रॉफी बेस",
+"block.addsynthcore.bronze_trophy": "कांस्य ट्रॉफी",
+"block.addsynthcore.silver_trophy": "सिल्वर ट्रॉफी",
+"block.addsynthcore.gold_trophy": "गोल्ड ट्रॉफी",
+"block.addsynthcore.platinum_trophy": "प्लेटिनम ट्रॉफी",
 
 "gui.addsynthcore.direction.north": "उत्तर",
 "gui.addsynthcore.direction.south": "दक्षिण",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "संगीत बक्सा",
 "advancements.addsynthcore.music_box.description": "एक संगीत बॉक्स क्राफ्ट करें।",
 "advancements.addsynthcore.scythe.title": "घास काटने का आला",
-"advancements.addsynthcore.scythe.description": "एक स्कैथ को क्राफ्ट करें।"
+"advancements.addsynthcore.scythe.description": "एक स्कैथ को क्राफ्ट करें।",
+
+"advancements.addsynthcore.bronze_trophy.title": "कांस्य ट्रॉफी",
+"advancements.addsynthcore.bronze_trophy.description": "एक कांस्य ट्रॉफी प्राप्त करें",
+"advancements.addsynthcore.silver_trophy.title": "सिल्वर ट्रॉफी",
+"advancements.addsynthcore.silver_trophy.description": "एक रजत ट्रॉफी प्राप्त करें",
+"advancements.addsynthcore.gold_trophy.title": "गोल्ड ट्रॉफी",
+"advancements.addsynthcore.gold_trophy.description": "एक स्वर्ण ट्रॉफी प्राप्त करें",
+"advancements.addsynthcore.platinum_trophy.title": "प्लेटिनम ट्रॉफी",
+"advancements.addsynthcore.platinum_trophy.description": "प्लैटिनम ट्रॉफी प्राप्त करें"
 }

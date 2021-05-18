@@ -1,0 +1,8 @@
+{
+  "parent": "addsynthcore:block/trophy_model",
+  "textures": {
+    "particle":              "addsynthcore:blocks/trophies/platinum_trophy",
+    "trophy_texture":        "addsynthcore:blocks/trophies/platinum_trophy",
+    "trophy_texture_inside": "addsynthcore:blocks/trophies/platinum_trophy_inside"
+  }
+}

@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Bloco de armação de ferro",
 "block.overpowered.black_hole": "Buraco negro",
 
-"item.overpowered.trophy_base": "Base do Troféu",
-"block.overpowered.bronze_trophy": "troféu de bronze",
-"block.overpowered.silver_trophy": "Troféu De Prata",
-"block.overpowered.gold_trophy": "Troféu De Ouro",
-"block.overpowered.platinum_trophy": "Troféu De Platina",
-
 "item.overpowered.unidentified_leather_helmet": "Boné de couro não identificado",
 "item.overpowered.unidentified_leather_chestplate": "Armadura de couro não identificada",
 "item.overpowered.unidentified_leather_leggings": "Calças de couro não identificadas",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Âncora dimensional",
 "advancements.overpowered.dimensional_anchor.description": "Crie uma âncora dimensional.",
 "advancements.overpowered.world_destroyer.title": "Destruidor do mundo",
-"advancements.overpowered.world_destroyer.description": "Use um buraco negro para destruir parte do mundo.",
-
-"advancements.overpowered.bronze_trophy.title": "troféu de bronze",
-"advancements.overpowered.bronze_trophy.description": "Receba um troféu de bronze",
-"advancements.overpowered.silver_trophy.title": "Troféu De Prata",
-"advancements.overpowered.silver_trophy.description": "Receba um troféu de prata",
-"advancements.overpowered.gold_trophy.title": "Troféu De Ouro",
-"advancements.overpowered.gold_trophy.description": "Receba um troféu de ouro",
-"advancements.overpowered.platinum_trophy.title": "Troféu De Platina",
-"advancements.overpowered.platinum_trophy.description": "Receba um troféu de platina"
+"advancements.overpowered.world_destroyer.description": "Use um buraco negro para destruir parte do mundo."
 }

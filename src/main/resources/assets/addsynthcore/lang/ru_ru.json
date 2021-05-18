@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "предостерегающий блок",
 "block.addsynthcore.music_box": "Музыкальная шкатулка",
-
 "item.addsynthcore.music_sheet": "Музыкальный лист",
 
 "item.addsynthcore.wooden_scythe": "Деревянная коса",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Железная коса",
 "item.addsynthcore.gold_scythe": "Золотая коса",
 "item.addsynthcore.diamond_scythe": "Алмазная коса",
+
+"item.addsynthcore.trophy_base": "Трофейная база",
+"block.addsynthcore.bronze_trophy": "Бронзовый трофей",
+"block.addsynthcore.silver_trophy": "Серебряный трофей",
+"block.addsynthcore.gold_trophy": "Золотой трофей",
+"block.addsynthcore.platinum_trophy": "Платиновый трофей",
 
 "gui.addsynthcore.direction.north": "к северу",
 "gui.addsynthcore.direction.south": "юг",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Музыкальная шкатулка",
 "advancements.addsynthcore.music_box.description": "Создание музыкальной шкатулки.",
 "advancements.addsynthcore.scythe.title": "косить",
-"advancements.addsynthcore.scythe.description": "Создание Косы."
+"advancements.addsynthcore.scythe.description": "Создание Косы.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Бронзовый трофей",
+"advancements.addsynthcore.bronze_trophy.description": "Получите бронзовый трофей",
+"advancements.addsynthcore.silver_trophy.title": "Серебряный трофей",
+"advancements.addsynthcore.silver_trophy.description": "Получите Серебряный трофей",
+"advancements.addsynthcore.gold_trophy.title": "Золотой трофей",
+"advancements.addsynthcore.gold_trophy.description": "Получите золотой трофей",
+"advancements.addsynthcore.platinum_trophy.title": "Платиновый трофей",
+"advancements.addsynthcore.platinum_trophy.description": "Получите платиновый трофей"
 }

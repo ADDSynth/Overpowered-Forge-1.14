@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynthcore:bronze_trophy"
+    },
+    "title": {
+      "translate": "advancements.addsynthcore.bronze_trophy.title"
+    },
+    "description": {
+      "translate": "advancements.addsynthcore.bronze_trophy.description"
+    },
+    "frame": "goal"
+  },
+  "parent": "addsynthcore:root",
+  "criteria": {
+    "bronze_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:bronze_trophy"
+          }
+        ]
+      }
+    }
+  }
+}

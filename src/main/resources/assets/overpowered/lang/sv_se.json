@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Järnram block",
 "block.overpowered.black_hole": "Svart hål",
 
-"item.overpowered.trophy_base": "Trofé basen",
-"block.overpowered.bronze_trophy": "Brons trofé",
-"block.overpowered.silver_trophy": "silver trofé",
-"block.overpowered.gold_trophy": "guld trofé",
-"block.overpowered.platinum_trophy": "platina trofi",
-
 "item.overpowered.unidentified_leather_helmet": "Oidentifierad läderhatt",
 "item.overpowered.unidentified_leather_chestplate": "Oidentifierad läderarmor",
 "item.overpowered.unidentified_leather_leggings": "Oidentifierade läderbyxor",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Dimensionellt ankare",
 "advancements.overpowered.dimensional_anchor.description": "Skapa ett dimensionellt ankare.",
 "advancements.overpowered.world_destroyer.title": "Världsdödare",
-"advancements.overpowered.world_destroyer.description": "Använd ett svart hål för att förstöra en del av världen.",
-
-"advancements.overpowered.bronze_trophy.title": "Brons trofé",
-"advancements.overpowered.bronze_trophy.description": "få en brons trofé",
-"advancements.overpowered.silver_trophy.title": "Silver Trofé",
-"advancements.overpowered.silver_trophy.description": "få en silver trofé",
-"advancements.overpowered.gold_trophy.title": "guld trofé",
-"advancements.overpowered.gold_trophy.description": "Få en guld trofé",
-"advancements.overpowered.platinum_trophy.title": "Platina Trofé",
-"advancements.overpowered.platinum_trophy.description": "få en Platina Trofé"
+"advancements.overpowered.world_destroyer.description": "Använd ett svart hål för att förstöra en del av världen."
 }

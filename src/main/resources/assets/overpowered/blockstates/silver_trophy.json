@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": {"model": "overpowered:block/silver_trophy" },
-    "facing=east":  {"model": "overpowered:block/silver_trophy", "y": 90},
-    "facing=south": {"model": "overpowered:block/silver_trophy", "y": 180},
-    "facing=west":  {"model": "overpowered:block/silver_trophy", "y": 270}
-  }
-}

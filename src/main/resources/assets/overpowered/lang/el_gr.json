@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Σιδερένιο πλαίσιο",
 "block.overpowered.black_hole": "Μαύρη τρύπα",
 
-"item.overpowered.trophy_base": "Βάση τροπαίων",
-"block.overpowered.bronze_trophy": "Χάλκινο τρόπαιο",
-"block.overpowered.silver_trophy": "Αργυρό Trophy",
-"block.overpowered.gold_trophy": "Χρυσό τρόπαιο",
-"block.overpowered.platinum_trophy": "Πλατινένιο τρόπαιο",
-
 "item.overpowered.unidentified_leather_helmet": "Μη αναγνωρισμένο δερμάτινο καπάκι",
 "item.overpowered.unidentified_leather_chestplate": "Άγνωστη δερμάτινη θωράκιση",
 "item.overpowered.unidentified_leather_leggings": "Άγνωστα δερμάτινα παντελόνια",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Διαστατική άγκυρα",
 "advancements.overpowered.dimensional_anchor.description": "Δημιουργήστε μια διαστατική άγκυρα.",
 "advancements.overpowered.world_destroyer.title": "Παγκόσμιος καταστροφέας",
-"advancements.overpowered.world_destroyer.description": "Χρησιμοποιήστε μια μαύρη τρύπα για να καταστρέψετε μέρος του κόσμου.",
-
-"advancements.overpowered.bronze_trophy.title": "Χάλκινο τρόπαιο",
-"advancements.overpowered.bronze_trophy.description": "Πάρτε ένα χάλκινο τρόπαιο",
-"advancements.overpowered.silver_trophy.title": "ασημένιο τρόπαιο",
-"advancements.overpowered.silver_trophy.description": "Πάρτε ένα ασημένιο τρόπαιο",
-"advancements.overpowered.gold_trophy.title": "Χρυσό τρόπαιο",
-"advancements.overpowered.gold_trophy.description": "Αποκτήστε ένα χρυσό τρόπαιο",
-"advancements.overpowered.platinum_trophy.title": "Πλατινένιο τρόπαιο",
-"advancements.overpowered.platinum_trophy.description": "Πάρτε ένα Πλατινένιο Τρόπαιο"
+"advancements.overpowered.world_destroyer.description": "Χρησιμοποιήστε μια μαύρη τρύπα για να καταστρέψετε μέρος του κόσμου."
 }

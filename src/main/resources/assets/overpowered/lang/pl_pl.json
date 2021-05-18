@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "żelazny blok ramowy",
 "block.overpowered.black_hole": "Czarna dziura",
 
-"item.overpowered.trophy_base": "stojak na trofeum",
-"block.overpowered.bronze_trophy": "Brązowe trofeum",
-"block.overpowered.silver_trophy": "Srebrne trofeum",
-"block.overpowered.gold_trophy": "Złote trofeum",
-"block.overpowered.platinum_trophy": "Platynowe trofeum",
-
 "item.overpowered.unidentified_leather_helmet": "Niezidentyfikowana skórzana czapka",
 "item.overpowered.unidentified_leather_chestplate": "Niezidentyfikowany skórzany pancerz",
 "item.overpowered.unidentified_leather_leggings": "Niezidentyfikowane skórzane spodnie",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Kotwica wymiarowa",
 "advancements.overpowered.dimensional_anchor.description": "Stwórz wymiarową kotwicę.",
 "advancements.overpowered.world_destroyer.title": "Światowy niszczyciel",
-"advancements.overpowered.world_destroyer.description": "Użyj czarnej dziury, aby zniszczyć część świata.",
-
-"advancements.overpowered.bronze_trophy.title": "Brązowe trofeum",
-"advancements.overpowered.bronze_trophy.description": "Zdobądź Brązowe Trofeum",
-"advancements.overpowered.silver_trophy.title": "Srebrne trofeum",
-"advancements.overpowered.silver_trophy.description": "Zdobądź Srebrne Trofeum",
-"advancements.overpowered.gold_trophy.title": "Złote trofeum",
-"advancements.overpowered.gold_trophy.description": "Zdobądź złote trofeum",
-"advancements.overpowered.platinum_trophy.title": "Platynowe trofeum",
-"advancements.overpowered.platinum_trophy.description": "Zdobądź Platynową Trofeum"
+"advancements.overpowered.world_destroyer.description": "Użyj czarnej dziury, aby zniszczyć część świata."
 }

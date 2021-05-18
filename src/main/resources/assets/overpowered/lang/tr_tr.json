@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Demir çerçeve bloğu",
 "block.overpowered.black_hole": "Kara delik",
 
-"item.overpowered.trophy_base": "Kupa Üssü",
-"block.overpowered.bronze_trophy": "Bronz Kupa",
-"block.overpowered.silver_trophy": "Gümüş Kupa",
-"block.overpowered.gold_trophy": "Altın Kupa",
-"block.overpowered.platinum_trophy": "Platin Kupa",
-
 "item.overpowered.unidentified_leather_helmet": "Tanımlanamayan Deri Şapka",
 "item.overpowered.unidentified_leather_chestplate": "Tanımlanamayan Deri Zırh",
 "item.overpowered.unidentified_leather_leggings": "Tanımlanamayan Deri Pantolon",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Boyutlu çapa",
 "advancements.overpowered.dimensional_anchor.description": "Boyutlu bir çapa hazırlayın.",
 "advancements.overpowered.world_destroyer.title": "Dünya muhripleri",
-"advancements.overpowered.world_destroyer.description": "Dünyanın bir bölümünü yok etmek için bir kara delik kullanın.",
-
-"advancements.overpowered.bronze_trophy.title": "Bronz Kupa",
-"advancements.overpowered.bronze_trophy.description": "bronz bir kupa almak",
-"advancements.overpowered.silver_trophy.title": "Gümüş Kupa",
-"advancements.overpowered.silver_trophy.description": "gümüş bir kupa almak",
-"advancements.overpowered.gold_trophy.title": "Altın Kupa",
-"advancements.overpowered.gold_trophy.description": "Altın Kupa Alın",
-"advancements.overpowered.platinum_trophy.title": "Platin Kupa",
-"advancements.overpowered.platinum_trophy.description": "Platin Kupa Alın"
+"advancements.overpowered.world_destroyer.description": "Dünyanın bir bölümünü yok etmek için bir kara delik kullanın."
 }

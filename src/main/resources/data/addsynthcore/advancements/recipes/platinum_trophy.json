@@ -1,0 +1,54 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "platinum_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/platinum"
+          }
+        ]
+      }
+    },
+    "trophy_base": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:trophy_base"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:platinum_trophy"
+      }
+    },
+    "has_platinum_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:platinum_trophy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "platinum_plate",
+      "trophy_base",
+      "has_recipe",
+      "has_platinum_trophy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:platinum_trophy"
+    ]
+  }
+}

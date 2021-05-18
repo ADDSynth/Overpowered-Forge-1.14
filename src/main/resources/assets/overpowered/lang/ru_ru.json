@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Железный блок рамы",
 "block.overpowered.black_hole": "Черная дыра",
 
-"item.overpowered.trophy_base": "Трофейная база",
-"block.overpowered.bronze_trophy": "Бронзовый трофей",
-"block.overpowered.silver_trophy": "Серебряный трофей",
-"block.overpowered.gold_trophy": "Золотой трофей",
-"block.overpowered.platinum_trophy": "Платиновый трофей",
-
 "item.overpowered.unidentified_leather_helmet": "Неопознанная кожаная крышка",
 "item.overpowered.unidentified_leather_chestplate": "Неопознанный кожаный доспех",
 "item.overpowered.unidentified_leather_leggings": "Неопознанные кожаные штаны",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Размерный якорь",
 "advancements.overpowered.dimensional_anchor.description": "Создайте размерный якорь.",
 "advancements.overpowered.world_destroyer.title": "Разрушитель мира",
-"advancements.overpowered.world_destroyer.description": "Используйте черную дыру, чтобы уничтожить часть мира.",
-
-"advancements.overpowered.bronze_trophy.title": "Бронзовый трофей",
-"advancements.overpowered.bronze_trophy.description": "Получите бронзовый трофей",
-"advancements.overpowered.silver_trophy.title": "Серебряный трофей",
-"advancements.overpowered.silver_trophy.description": "Получите Серебряный трофей",
-"advancements.overpowered.gold_trophy.title": "Золотой трофей",
-"advancements.overpowered.gold_trophy.description": "Получите золотой трофей",
-"advancements.overpowered.platinum_trophy.title": "Платиновый трофей",
-"advancements.overpowered.platinum_trophy.description": "Получите платиновый трофей"
+"advancements.overpowered.world_destroyer.description": "Используйте черную дыру, чтобы уничтожить часть мира."
 }

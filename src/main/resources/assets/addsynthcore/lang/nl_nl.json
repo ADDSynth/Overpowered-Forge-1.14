@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Cwaarschuwingsblok",
 "block.addsynthcore.music_box": "Muziekdoos",
-
 "item.addsynthcore.music_sheet": "Bladmuziek",
 
 "item.addsynthcore.wooden_scythe": "Houten zeis",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "IJzeren zeis",
 "item.addsynthcore.gold_scythe": "Gouden zeis",
 "item.addsynthcore.diamond_scythe": "Diamanten zeis",
+
+"item.addsynthcore.trophy_base": "trofee basis",
+"block.addsynthcore.bronze_trophy": "Bronzen trofee",
+"block.addsynthcore.silver_trophy": "Zilveren trofee",
+"block.addsynthcore.gold_trophy": "Gouden trofee",
+"block.addsynthcore.platinum_trophy": "Platina trofee",
 
 "gui.addsynthcore.direction.north": "noorden",
 "gui.addsynthcore.direction.south": "zuiden",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Muziekdoos",
 "advancements.addsynthcore.music_box.description": "Maak een muziekdoos.",
 "advancements.addsynthcore.scythe.title": "Zeis",
-"advancements.addsynthcore.scythe.description": "Maak een zeis."
+"advancements.addsynthcore.scythe.description": "Maak een zeis.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Bronzen trofee",
+"advancements.addsynthcore.bronze_trophy.description": "krijg een bronzen trofee",
+"advancements.addsynthcore.silver_trophy.title": "Zilveren trofee",
+"advancements.addsynthcore.silver_trophy.description": "Ontvang een zilveren trofee",
+"advancements.addsynthcore.gold_trophy.title": "Gouden trofee",
+"advancements.addsynthcore.gold_trophy.description": "Ontvang een gouden trofee",
+"advancements.addsynthcore.platinum_trophy.title": "Platina trofee",
+"advancements.addsynthcore.platinum_trophy.description": "krijg een platina trofee"
 }

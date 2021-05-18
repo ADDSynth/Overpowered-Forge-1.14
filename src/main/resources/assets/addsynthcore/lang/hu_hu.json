@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "óvatosság blokk",
 "block.addsynthcore.music_box": "Zene doboz",
-
 "item.addsynthcore.music_sheet": "Kotta",
 
 "item.addsynthcore.wooden_scythe": "Fa kaszát",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Vas kasza",
 "item.addsynthcore.gold_scythe": "Arany Kasza",
 "item.addsynthcore.diamond_scythe": "Gyémánt kasza",
+
+"item.addsynthcore.trophy_base": "Trófea bázis",
+"block.addsynthcore.bronze_trophy": "Bronz trófeát",
+"block.addsynthcore.silver_trophy": "Ezüst trófeát",
+"block.addsynthcore.gold_trophy": "Arany trófea",
+"block.addsynthcore.platinum_trophy": "Platina trófeát",
 
 "gui.addsynthcore.direction.north": "Északi",
 "gui.addsynthcore.direction.south": "Déli",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Zene doboz",
 "advancements.addsynthcore.music_box.description": "Készítsen egy zenei dobozt.",
 "advancements.addsynthcore.scythe.title": "Kasza",
-"advancements.addsynthcore.scythe.description": "Kézműves egy kaszát."
+"advancements.addsynthcore.scythe.description": "Kézműves egy kaszát.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Bronz trófeát",
+"advancements.addsynthcore.bronze_trophy.description": "Kapj egy bronz trófeát",
+"advancements.addsynthcore.silver_trophy.title": "Ezüst trófeát",
+"advancements.addsynthcore.silver_trophy.description": "Kap egy ezüst trófeát",
+"advancements.addsynthcore.gold_trophy.title": "Arany trófeát",
+"advancements.addsynthcore.gold_trophy.description": "kap egy arany trófeát",
+"advancements.addsynthcore.platinum_trophy.title": "Platina trófeát",
+"advancements.addsynthcore.platinum_trophy.description": "kap egy platina trófeát"
 }

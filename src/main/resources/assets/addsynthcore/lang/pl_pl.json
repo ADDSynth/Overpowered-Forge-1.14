@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "blokuj ostrożność",
 "block.addsynthcore.music_box": "Pozytywka",
-
 "item.addsynthcore.music_sheet": "papier muzyczny",
 
 "item.addsynthcore.wooden_scythe": "Drewniana kosa",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Żelazna kosa",
 "item.addsynthcore.gold_scythe": "Złota kosa",
 "item.addsynthcore.diamond_scythe": "Diamentowa kosa",
+
+"item.addsynthcore.trophy_base": "stojak na trofeum",
+"block.addsynthcore.bronze_trophy": "Brązowe trofeum",
+"block.addsynthcore.silver_trophy": "Srebrne trofeum",
+"block.addsynthcore.gold_trophy": "Złote trofeum",
+"block.addsynthcore.platinum_trophy": "Platynowe trofeum",
 
 "gui.addsynthcore.direction.north": "Północ",
 "gui.addsynthcore.direction.south": "południe",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Pozytywka",
 "advancements.addsynthcore.music_box.description": "Stwórz pozytywkę.",
 "advancements.addsynthcore.scythe.title": "Kosa",
-"advancements.addsynthcore.scythe.description": "Stwórz kosę."
+"advancements.addsynthcore.scythe.description": "Stwórz kosę.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Brązowe trofeum",
+"advancements.addsynthcore.bronze_trophy.description": "Zdobądź Brązowe Trofeum",
+"advancements.addsynthcore.silver_trophy.title": "Srebrne trofeum",
+"advancements.addsynthcore.silver_trophy.description": "Zdobądź Srebrne Trofeum",
+"advancements.addsynthcore.gold_trophy.title": "Złote trofeum",
+"advancements.addsynthcore.gold_trophy.description": "Zdobądź złote trofeum",
+"advancements.addsynthcore.platinum_trophy.title": "Platynowe trofeum",
+"advancements.addsynthcore.platinum_trophy.description": "Zdobądź Platynową Trofeum"
 }

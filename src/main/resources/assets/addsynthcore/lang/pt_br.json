@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Bloco de aviso",
 "block.addsynthcore.music_box": "Caixa de música",
-
 "item.addsynthcore.music_sheet": "Folha de música",
 
 "item.addsynthcore.wooden_scythe": "Foice de madeira",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Foice de Ferro",
 "item.addsynthcore.gold_scythe": "Foice de Ouro",
 "item.addsynthcore.diamond_scythe": "Foice de diamante",
+
+"item.addsynthcore.trophy_base": "Base do Troféu",
+"block.addsynthcore.bronze_trophy": "troféu de bronze",
+"block.addsynthcore.silver_trophy": "Troféu De Prata",
+"block.addsynthcore.gold_trophy": "Troféu De Ouro",
+"block.addsynthcore.platinum_trophy": "Troféu De Platina",
 
 "gui.addsynthcore.direction.north": "Norte",
 "gui.addsynthcore.direction.south": "Sul",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Caixa de música",
 "advancements.addsynthcore.music_box.description": "Crie uma caixa de música.",
 "advancements.addsynthcore.scythe.title": "Foice",
-"advancements.addsynthcore.scythe.description": "Crie uma foice."
+"advancements.addsynthcore.scythe.description": "Crie uma foice.",
+
+"advancements.addsynthcore.bronze_trophy.title": "troféu de bronze",
+"advancements.addsynthcore.bronze_trophy.description": "Receba um troféu de bronze",
+"advancements.addsynthcore.silver_trophy.title": "Troféu De Prata",
+"advancements.addsynthcore.silver_trophy.description": "Receba um troféu de prata",
+"advancements.addsynthcore.gold_trophy.title": "Troféu De Ouro",
+"advancements.addsynthcore.gold_trophy.description": "Receba um troféu de ouro",
+"advancements.addsynthcore.platinum_trophy.title": "Troféu De Platina",
+"advancements.addsynthcore.platinum_trophy.description": "Receba um troféu de platina"
 }

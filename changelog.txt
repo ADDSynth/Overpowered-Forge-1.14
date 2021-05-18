@@ -37,6 +37,7 @@ CHANGED:
     - Renamed all Energy Tools to Celestial Tools.
   Renamed mod to Overpowered Technology.
     - This will cause your configuration files to be reset.
+  Moved Trophies to ADDSynthCore.
 REMOVED:
   Removed the ability to move some Overpowered items into other Creative Tabs.
   Removed Unknown Technology.

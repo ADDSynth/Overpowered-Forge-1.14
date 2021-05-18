@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Caution Block",
 "block.addsynthcore.music_box": "Music Box",
-
 "item.addsynthcore.music_sheet": "Music Sheet",
 
 "item.addsynthcore.wooden_scythe": "Wooden Scythe",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scytne": "Iron Scythe",
 "item.addsynthcore.gold_scythe": "Golden Scythe",
 "item.addsynthcore.diamond_scythe": "Diamond Scythe"
+
+"item.addsynthcore.trophy_base": "Trophy Base",
+"block.addsynthcore.bronze_trophy": "Bronze Trophy",
+"block.addsynthcore.silver_trophy": "Silver Trophy",
+"block.addsynthcore.gold_trophy": "Gold Trophy",
+"block.addsynthcore.platinum_trophy": "Platinum Trophy",
 
 "gui.addsynthcore.direction.north": "North",
 "gui.addsynthcore.direction.south": "South",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Music Box",
 "advancements.addsynthcore.music_box.description": "Craft a Music Box",
 "advancements.addsynthcore.scythe.title": "Scythe",
-"advancements.addsynthcore.scythe.description": "Craft a Scythe"
+"advancements.addsynthcore.scythe.description": "Craft a Scythe",
+
+"advancements.addsynthcore.bronze_trophy.title": "Bronze Trophy",
+"advancements.addsynthcore.bronze_trophy.description": "Get a Bronze Trophy.",
+"advancements.addsynthcore.silver_trophy.title": "Silver Trophy",
+"advancements.addsynthcore.silver_trophy.description": "Get a Silver Trophy.",
+"advancements.addsynthcore.gold_trophy.title": "Gold Trophy",
+"advancements.addsynthcore.gold_trophy.description": "Get a Gold Trophy.",
+"advancements.addsynthcore.platinum_trophy.title": "Platinum Trophy",
+"advancements.addsynthcore.platinum_trophy.description": "Get a Platinum Trophy."
 }

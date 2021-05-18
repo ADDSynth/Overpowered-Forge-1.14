@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Залізний каркасний блок",
 "block.overpowered.black_hole": "Чорна діра",
 
-"item.overpowered.trophy_base": "База трофеїв",
-"block.overpowered.bronze_trophy": "Бронзовий трофей",
-"block.overpowered.silver_trophy": "Срібний трофей",
-"block.overpowered.gold_trophy": "Золотий трофей",
-"block.overpowered.platinum_trophy": "Платиновий трофей",
-
 "item.overpowered.unidentified_leather_helmet": "Невідомі шкіряні капелюхи",
 "item.overpowered.unidentified_leather_chestplate": "Невідомий шкіряний доспех",
 "item.overpowered.unidentified_leather_leggings": "Невідомі шкіряні штани",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Габаритний якір",
 "advancements.overpowered.dimensional_anchor.description": "Зробіть розмірний якір.",
 "advancements.overpowered.world_destroyer.title": "Світовий руйнівник",
-"advancements.overpowered.world_destroyer.description": "Використовуйте чорну діру, щоб знищити частину світу.",
-
-"advancements.overpowered.bronze_trophy.title": "Бронзовий трофей",
-"advancements.overpowered.bronze_trophy.description": "Отримайте бронзовий трофей",
-"advancements.overpowered.silver_trophy.title": "Срібний трофей",
-"advancements.overpowered.silver_trophy.description": "Отримати срібний трофей",
-"advancements.overpowered.gold_trophy.title": "Золотий трофей",
-"advancements.overpowered.gold_trophy.description": "Отримати золотий трофей",
-"advancements.overpowered.platinum_trophy.title": "Платиновий трофей",
-"advancements.overpowered.platinum_trophy.description": "Отримати платиновий трофей"
+"advancements.overpowered.world_destroyer.description": "Використовуйте чорну діру, щоб знищити частину світу."
 }

@@ -1,0 +1,54 @@
+{
+  "parent": "addsynthcore:recipes/root",
+  "criteria": {
+    "silver_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:plates/silver"
+          }
+        ]
+      }
+    },
+    "trophy_base": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:trophy_base"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "addsynthcore:silver_trophy"
+      }
+    },
+    "has_silver_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:silver_trophy"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "silver_plate",
+      "trophy_base",
+      "has_recipe",
+      "has_silver_trophy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "addsynthcore:silver_trophy"
+    ]
+  }
+}

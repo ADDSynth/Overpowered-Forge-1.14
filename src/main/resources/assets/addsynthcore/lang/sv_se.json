@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Varning Block",
 "block.addsynthcore.music_box": "Speldosa",
-
 "item.addsynthcore.music_sheet": "Notblad",
 
 "item.addsynthcore.wooden_scythe": "Träskylt [behöver översätta]",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Järnsegel",
 "item.addsynthcore.gold_scythe": "Gyllene segel",
 "item.addsynthcore.diamond_scythe": "Diamantsjälte",
+
+"item.addsynthcore.trophy_base": "Trofé basen",
+"block.addsynthcore.bronze_trophy": "Brons trofé",
+"block.addsynthcore.silver_trophy": "silver trofé",
+"block.addsynthcore.gold_trophy": "guld trofé",
+"block.addsynthcore.platinum_trophy": "platina trofi",
 
 "gui.addsynthcore.direction.north": "Norr",
 "gui.addsynthcore.direction.south": "söder",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Speldosa",
 "advancements.addsynthcore.music_box.description": "Skapa en musiklåda.",
 "advancements.addsynthcore.scythe.title": "Lie",
-"advancements.addsynthcore.scythe.description": "Skapa en Lie."
+"advancements.addsynthcore.scythe.description": "Skapa en Lie.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Brons trofé",
+"advancements.addsynthcore.bronze_trophy.description": "få en brons trofé",
+"advancements.addsynthcore.silver_trophy.title": "Silver Trofé",
+"advancements.addsynthcore.silver_trophy.description": "få en silver trofé",
+"advancements.addsynthcore.gold_trophy.title": "guld trofé",
+"advancements.addsynthcore.gold_trophy.description": "Få en guld trofé",
+"advancements.addsynthcore.platinum_trophy.title": "Platina Trofé",
+"advancements.addsynthcore.platinum_trophy.description": "få en Platina Trofé"
 }

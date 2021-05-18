@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Blocco di telaio di ferro",
 "block.overpowered.black_hole": "Buco nero",
 
-"item.overpowered.trophy_base": "base del trofeo",
-"block.overpowered.bronze_trophy": "Trofeo di bronzo",
-"block.overpowered.silver_trophy": "Trofeo d'argento",
-"block.overpowered.gold_trophy": "Trofeo d'oro",
-"block.overpowered.platinum_trophy": "Trofeo di platino",
-
 "item.overpowered.unidentified_leather_helmet": "Cappellino di pelle non identificato",
 "item.overpowered.unidentified_leather_chestplate": "Armatura di cuoio non identificata",
 "item.overpowered.unidentified_leather_leggings": "Pantaloni di pelle non identificati",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Ancoraggio dimensionale",
 "advancements.overpowered.dimensional_anchor.description": "Crea un'ancora dimensionale.",
 "advancements.overpowered.world_destroyer.title": "Distruttore mondiale",
-"advancements.overpowered.world_destroyer.description": "Usa un buco nero per distruggere parte del mondo.",
-
-"advancements.overpowered.bronze_trophy.title": "Trofeo di bronzo",
-"advancements.overpowered.bronze_trophy.description": "Ottieni un trofeo di bronzo",
-"advancements.overpowered.silver_trophy.title": "Trofeo d'argento",
-"advancements.overpowered.silver_trophy.description": "Ottieni un trofeo d'argento",
-"advancements.overpowered.gold_trophy.title": "Trofeo d'oro",
-"advancements.overpowered.gold_trophy.description": "Ottieni un trofeo d'oro",
-"advancements.overpowered.platinum_trophy.title": "Trofeo di platino",
-"advancements.overpowered.platinum_trophy.description": "Ottieni un trofeo di platino"
+"advancements.overpowered.world_destroyer.description": "Usa un buco nero per distruggere parte del mondo."
 }

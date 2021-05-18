@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Bloc de cadre en fer",
 "block.overpowered.black_hole": "Trou noir",
 
-"item.overpowered.trophy_base": "Base de trophée",
-"block.overpowered.bronze_trophy": "Trophée de bronze",
-"block.overpowered.silver_trophy": "Trophée d'Argent",
-"block.overpowered.gold_trophy": "Trophée d'Or",
-"block.overpowered.platinum_trophy": "Trophée platine",
-
 "item.overpowered.unidentified_leather_helmet": "Bonnet en cuir non identifié",
 "item.overpowered.unidentified_leather_chestplate": "Armure de cuir non identifiée",
 "item.overpowered.unidentified_leather_leggings": "Pantalon en cuir non identifié",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Ancrage dimensionnel",
 "advancements.overpowered.dimensional_anchor.description": "Fabriquez une ancre dimensionnelle.",
 "advancements.overpowered.world_destroyer.title": "Destructeur mondial",
-"advancements.overpowered.world_destroyer.description": "Utilisez un trou noir pour détruire une partie du monde.",
-
-"advancements.overpowered.bronze_trophy.title": "Trophée de bronze",
-"advancements.overpowered.bronze_trophy.description": "Obtenir un trophée de bronze",
-"advancements.overpowered.silver_trophy.title": "Trophée d'Argent",
-"advancements.overpowered.silver_trophy.description": "Obtenir un trophée d'argent",
-"advancements.overpowered.gold_trophy.title": "Trophée d'Or",
-"advancements.overpowered.gold_trophy.description": "Obtenir un trophée d'or",
-"advancements.overpowered.platinum_trophy.title": "Trophée platine",
-"advancements.overpowered.platinum_trophy.description": "Obtenir un trophée de platine"
+"advancements.overpowered.world_destroyer.description": "Utilisez un trou noir pour détruire une partie du monde."
 }

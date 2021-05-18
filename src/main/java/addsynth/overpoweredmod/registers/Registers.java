@@ -37,13 +37,6 @@ public final class Registers {
     if(Features.iron_frame_block.get()){ game.register(Init.iron_frame_block); }
     if(Features.black_hole.get()){ game.register(Init.black_hole); }
     
-    if(Features.trophies()){
-      if(Features.bronze_trophy.get()){ game.register(Trophy.bronze); }
-      if(Features.silver_trophy.get()){ game.register(Trophy.silver); }
-      if(Features.gold_trophy.get()){ game.register(Trophy.gold); }
-      if(Features.platinum_trophy.get()){ game.register(Trophy.platinum); }
-    }
-    
     game.register(Wires.data_cable);
     if(Features.crystal_energy_extractor.get()){ game.register(Machines.crystal_energy_extractor); }
     if(Features.gem_converter.get()){ game.register(Machines.gem_converter); }
@@ -119,14 +112,6 @@ public final class Registers {
     }
     game.register(ModItems.fusion_core);
     if(Features.dimensional_anchor.get()){ game.register(ModItems.dimensional_anchor); }
-    
-    if(Features.trophies()){
-      game.register(Trophy.trophy_base);
-      if(Features.bronze_trophy.get()){ game.register(Trophy.BRONZE.item_block); }
-      if(Features.silver_trophy.get()){ game.register(Trophy.SILVER.item_block); }
-      if(Features.gold_trophy.get()){ game.register(Trophy.GOLD.item_block); }
-      if(Features.platinum_trophy.get()){ game.register(Trophy.PLATINUM.item_block); }
-    }
     
     game.register(OverpoweredTechnology.registry.getItemBlock(Wires.data_cable));
     if(Features.crystal_energy_extractor.get()){ game.register(OverpoweredTechnology.registry.getItemBlock(Machines.crystal_energy_extractor)); }

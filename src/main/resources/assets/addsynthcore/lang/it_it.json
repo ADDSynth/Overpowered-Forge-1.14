@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "blocco di avviso",
 "block.addsynthcore.music_box": "Carillon",
-
 "item.addsynthcore.music_sheet": "Spartito",
 
 "item.addsynthcore.wooden_scythe": "Falce di legno",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Falce di ferro",
 "item.addsynthcore.gold_scythe": "Falce d'oro",
 "item.addsynthcore.diamond_scythe": "Falce di diamante",
+
+"item.addsynthcore.trophy_base": "base del trofeo",
+"block.addsynthcore.bronze_trophy": "Trofeo di bronzo",
+"block.addsynthcore.silver_trophy": "Trofeo d'argento",
+"block.addsynthcore.gold_trophy": "Trofeo d'oro",
+"block.addsynthcore.platinum_trophy": "Trofeo di platino",
 
 "gui.addsynthcore.direction.north": "Nord",
 "gui.addsynthcore.direction.south": "Sud",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Carillon",
 "advancements.addsynthcore.music_box.description": "Crea un carillon.",
 "advancements.addsynthcore.scythe.title": "Falce",
-"advancements.addsynthcore.scythe.description": "Crea una falce."
+"advancements.addsynthcore.scythe.description": "Crea una falce.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Trofeo di bronzo",
+"advancements.addsynthcore.bronze_trophy.description": "Ottieni un trofeo di bronzo",
+"advancements.addsynthcore.silver_trophy.title": "Trofeo d'argento",
+"advancements.addsynthcore.silver_trophy.description": "Ottieni un trofeo d'argento",
+"advancements.addsynthcore.gold_trophy.title": "Trofeo d'oro",
+"advancements.addsynthcore.gold_trophy.description": "Ottieni un trofeo d'oro",
+"advancements.addsynthcore.platinum_trophy.title": "Trofeo di platino",
+"advancements.addsynthcore.platinum_trophy.description": "Ottieni un trofeo di platino"
 }

@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Vorsicht blockieren",
 "block.addsynthcore.music_box": "Musikbox",
-
 "item.addsynthcore.music_sheet": "Notenblätter",
 
 "item.addsynthcore.wooden_scythe": "Hölzerne Sense",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Eisen Sense",
 "item.addsynthcore.gold_scythe": "Goldene Sense",
 "item.addsynthcore.diamond_scythe": "Diamant-Sense",
+
+"item.addsynthcore.trophy_base": "Trophäenbasis",
+"block.addsynthcore.bronze_trophy": "Bronze Trophäe",
+"block.addsynthcore.silver_trophy": "Silberne Trophäe",
+"block.addsynthcore.gold_trophy": "Gold Trophäe",
+"block.addsynthcore.platinum_trophy": "Platin-Trophäe",
 
 "gui.addsynthcore.direction.north": "Norden",
 "gui.addsynthcore.direction.south": "Süden",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Musikbox",
 "advancements.addsynthcore.music_box.description": "Stelle eine Spieluhr her.",
 "advancements.addsynthcore.scythe.title": "Sense",
-"advancements.addsynthcore.scythe.description": "Stelle eine Sense her."
+"advancements.addsynthcore.scythe.description": "Stelle eine Sense her.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Bronze Trophäe",
+"advancements.addsynthcore.bronze_trophy.description": "hol dir eine Bronzene Trophäe",
+"advancements.addsynthcore.silver_trophy.title": "Silberne Trophäe",
+"advancements.addsynthcore.silver_trophy.description": "Hol dir eine Silber Trophäe",
+"advancements.addsynthcore.gold_trophy.title": "Gold Trophäe",
+"advancements.addsynthcore.gold_trophy.description": "Hol dir eine goldene Trophäe",
+"advancements.addsynthcore.platinum_trophy.title": "Platin-Trophäe",
+"advancements.addsynthcore.platinum_trophy.description": "Holen Sie sich eine Platin Trophy"
 }

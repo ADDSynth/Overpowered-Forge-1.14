@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Eisenrahmen Block",
 "block.overpowered.black_hole": "Schwarzes Loch",
 
-"item.overpowered.trophy_base": "Trophäenbasis",
-"block.overpowered.bronze_trophy": "Bronze Trophäe",
-"block.overpowered.silver_trophy": "Silberne Trophäe",
-"block.overpowered.gold_trophy": "Gold Trophäe",
-"block.overpowered.platinum_trophy": "Platin-Trophäe",
-
 "item.overpowered.unidentified_leather_helmet": "Nicht identifizierte Lederkappe",
 "item.overpowered.unidentified_leather_chestplate": "Nicht identifizierte Lederrüstung",
 "item.overpowered.unidentified_leather_leggings": "Nicht identifizierte lederne Hosen",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Maßanker",
 "advancements.overpowered.dimensional_anchor.description": "Stelle einen dimensionalen Anker her.",
 "advancements.overpowered.world_destroyer.title": "Weltzerstörer",
-"advancements.overpowered.world_destroyer.description": "Verwende ein Schwarzes Loch, um einen Teil der Welt zu zerstören.",
-
-"advancements.overpowered.bronze_trophy.title": "Bronze Trophäe",
-"advancements.overpowered.bronze_trophy.description": "hol dir eine Bronzene Trophäe",
-"advancements.overpowered.silver_trophy.title": "Silberne Trophäe",
-"advancements.overpowered.silver_trophy.description": "Hol dir eine Silber Trophäe",
-"advancements.overpowered.gold_trophy.title": "Gold Trophäe",
-"advancements.overpowered.gold_trophy.description": "Hol dir eine goldene Trophäe",
-"advancements.overpowered.platinum_trophy.title": "Platin-Trophäe",
-"advancements.overpowered.platinum_trophy.description": "Holen Sie sich eine Platin Trophy"
+"advancements.overpowered.world_destroyer.description": "Verwende ein Schwarzes Loch, um einen Teil der Welt zu zerstören."
 }

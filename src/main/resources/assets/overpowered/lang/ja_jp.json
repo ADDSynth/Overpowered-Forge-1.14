@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "アイアンフレームブロック",
 "block.overpowered.black_hole": "ブラックホール",
 
-"item.overpowered.trophy_base": "トロフィーベース",
-"block.overpowered.bronze_trophy": "ブロンズトロフィー",
-"block.overpowered.silver_trophy": "シルバートロフィー",
-"block.overpowered.gold_trophy": "ゴールドトロフィー",
-"block.overpowered.platinum_trophy": "プラチナトロフィー",
-
 "item.overpowered.unidentified_leather_helmet": "未確認の革キャップ",
 "item.overpowered.unidentified_leather_chestplate": "未確認のレザーアーマー",
 "item.overpowered.unidentified_leather_leggings": "未確認のレザーパンツ",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "次元アンカー",
 "advancements.overpowered.dimensional_anchor.description": "次元アンカーを作成します。",
 "advancements.overpowered.world_destroyer.title": "世界の駆逐艦",
-"advancements.overpowered.world_destroyer.description": "ブラックホールを使用して、世界の一部を破壊します。",
-
-"advancements.overpowered.bronze_trophy.title": "ブロンズトロフィー",
-"advancements.overpowered.bronze_trophy.description": "ブロンズトロフィーを手に入れよう",
-"advancements.overpowered.silver_trophy.title": "シルバートロフィー",
-"advancements.overpowered.silver_trophy.description": "シルバートロフィーを手に入れよう",
-"advancements.overpowered.gold_trophy.title": "ゴールドトロフィー",
-"advancements.overpowered.gold_trophy.description": "ゴールドトロフィーを手に入れよう",
-"advancements.overpowered.platinum_trophy.title": "プラチナトロフィー",
-"advancements.overpowered.platinum_trophy.description": "プラチナトロフィーを入手する"
+"advancements.overpowered.world_destroyer.description": "ブラックホールを使用して、世界の一部を破壊します。"
 }

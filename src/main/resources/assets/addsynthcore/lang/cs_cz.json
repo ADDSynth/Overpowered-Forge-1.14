@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Upozornění Blokovat",
 "block.addsynthcore.music_box": "hudební skříň",
-
 "item.addsynthcore.music_sheet": "Hudební list",
 
 "item.addsynthcore.wooden_scythe": "Dřevěná kosa",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "železo kosa",
 "item.addsynthcore.gold_scythe": "Zlatá kosa",
 "item.addsynthcore.diamond_scythe": "diamant kosa",
+
+"item.addsynthcore.trophy_base": "Trofejní základna",
+"block.addsynthcore.bronze_trophy": "Bronzová trofej",
+"block.addsynthcore.silver_trophy": "Stříbrná trofej",
+"block.addsynthcore.gold_trophy": "Zlatá trofej",
+"block.addsynthcore.platinum_trophy": "Platinová trofej",
 
 "gui.addsynthcore.direction.north": "Severní",
 "gui.addsynthcore.direction.south": "Jižní",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "hudební skříň",
 "advancements.addsynthcore.music_box.description": "Vytvořte hudební skříňku.",
 "advancements.addsynthcore.scythe.title": "Kosa",
-"advancements.addsynthcore.scythe.description": "Vytvořte kosu."
+"advancements.addsynthcore.scythe.description": "Vytvořte kosu.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Bronzová trofej",
+"advancements.addsynthcore.bronze_trophy.description": "Získejte bronzovou trofej",
+"advancements.addsynthcore.silver_trophy.title": "Stříbrná trofej",
+"advancements.addsynthcore.silver_trophy.description": "Získejte stříbrnou trofej",
+"advancements.addsynthcore.gold_trophy.title": "Zlatá trofej",
+"advancements.addsynthcore.gold_trophy.description": "Získejte zlatou trofej",
+"advancements.addsynthcore.platinum_trophy.title": "Platinová trofej",
+"advancements.addsynthcore.platinum_trophy.description": "Získejte platinovou trofej"
 }

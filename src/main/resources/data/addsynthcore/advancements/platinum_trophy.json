@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynthcore:platinum_trophy"
+    },
+    "title": {
+      "translate": "advancements.addsynthcore.platinum_trophy.title"
+    },
+    "description": {
+      "translate": "advancements.addsynthcore.platinum_trophy.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "addsynthcore:gold_trophy",
+  "criteria": {
+    "platinum_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynthcore:platinum_trophy"
+          }
+        ]
+      }
+    }
+  }
+}

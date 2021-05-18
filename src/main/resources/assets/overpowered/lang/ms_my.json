@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Blok Bingkai Besi",
 "block.overpowered.black_hole": "Lubang hitam",
 
-"item.overpowered.trophy_base": "pangkalan piala",
-"block.overpowered.bronze_trophy": "Trofi Gangsa",
-"block.overpowered.silver_trophy": "Trofi Perak",
-"block.overpowered.gold_trophy": "Trofi Emas",
-"block.overpowered.platinum_trophy": "Trofi Platinum",
-
 "item.overpowered.unidentified_leather_helmet": "Topi Kulit yang tidak dikenali",
 "item.overpowered.unidentified_leather_chestplate": "Armor Kulit yang tidak dikenali",
 "item.overpowered.unidentified_leather_leggings": "Seluar Kulit yang tidak dikenali",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Sauh dimensi",
 "advancements.overpowered.dimensional_anchor.description": "Buat jangkar dimensi.",
 "advancements.overpowered.world_destroyer.title": "Pemusnah dunia",
-"advancements.overpowered.world_destroyer.description": "Gunakan lubang hitam untuk memusnahkan bahagian dunia.",
-
-"advancements.overpowered.bronze_trophy.title": "Trofi gangsa",
-"advancements.overpowered.bronze_trophy.description": "Dapatkan Piala Gangsa",
-"advancements.overpowered.silver_trophy.title": "Trofi Perak",
-"advancements.overpowered.silver_trophy.description": "Dapatkan Piala Perak",
-"advancements.overpowered.gold_trophy.title": "Trofi Emas",
-"advancements.overpowered.gold_trophy.description": "Dapatkan Piala Emas",
-"advancements.overpowered.platinum_trophy.title": "Trofi Platinum",
-"advancements.overpowered.platinum_trophy.description": "dapatkan trofi platinum"
+"advancements.overpowered.world_destroyer.description": "Gunakan lubang hitam untuk memusnahkan bahagian dunia."
 }

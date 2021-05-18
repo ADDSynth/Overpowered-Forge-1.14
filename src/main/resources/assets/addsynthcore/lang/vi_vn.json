@@ -5,7 +5,6 @@
 
 "block.addsynthcore.caution_block": "Khối chú ý",
 "block.addsynthcore.music_box": "Hộp nhạc",
-
 "item.addsynthcore.music_sheet": "Bản nhạc",
 
 "item.addsynthcore.wooden_scythe": "Lưỡi hái bằng gỗ",
@@ -13,6 +12,12 @@
 "item.addsynthcore.iron_scythe": "Lưỡi hái sắt",
 "item.addsynthcore.gold_scythe": "Lưỡi hái vàng",
 "item.addsynthcore.diamond_scythe": "Lưỡi hái kim cương",
+
+"item.addsynthcore.trophy_base": "Cơ sở cúp",
+"block.addsynthcore.bronze_trophy": "Cúp đồng",
+"block.addsynthcore.silver_trophy": "Cúp bạc",
+"block.addsynthcore.gold_trophy": "Cúp vàng",
+"block.addsynthcore.platinum_trophy": "Cúp bạch kim",
 
 "gui.addsynthcore.direction.north": "Bắc",
 "gui.addsynthcore.direction.south": "miền Nam",
@@ -58,5 +63,14 @@
 "advancements.addsynthcore.music_box.title": "Hộp nhạc",
 "advancements.addsynthcore.music_box.description": "Thủ công một hộp nhạc.",
 "advancements.addsynthcore.scythe.title": "Lưỡi hái",
-"advancements.addsynthcore.scythe.description": "Thủ công một lưỡi hái."
+"advancements.addsynthcore.scythe.description": "Thủ công một lưỡi hái.",
+
+"advancements.addsynthcore.bronze_trophy.title": "Cúp đồng",
+"advancements.addsynthcore.bronze_trophy.description": "Nhận cúp đồng",
+"advancements.addsynthcore.silver_trophy.title": "Cúp bạc",
+"advancements.addsynthcore.silver_trophy.description": "Nhận cúp bạc",
+"advancements.addsynthcore.gold_trophy.title": "Cúp vàng",
+"advancements.addsynthcore.gold_trophy.description": "Nhận cúp vàng",
+"advancements.addsynthcore.platinum_trophy.title": "Cúp bạch kim",
+"advancements.addsynthcore.platinum_trophy.description": "nhận được một chiếc cúp bạch kim"
 }

@@ -97,6 +97,8 @@ public final class ADDSynthCore {
 
   public static void onServerStarting(final FMLServerStartingEvent event){
     // TODO: I can customize recipes here?
+    // TODO: change the recipes of the Trophies to use ingots instead of metal plates, if no plates exist.
+    // And if I can do that, go ahead and reimplement the ability to disable the Trophy base item.
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

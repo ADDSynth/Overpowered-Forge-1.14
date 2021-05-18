@@ -75,12 +75,6 @@
 "block.overpowered.iron_frame_block": "Vas keretes blokk",
 "block.overpowered.black_hole": "Fekete lyuk",
 
-"item.overpowered.trophy_base": "Trófea bázis",
-"block.overpowered.bronze_trophy": "Bronz trófeát",
-"block.overpowered.silver_trophy": "Ezüst trófeát",
-"block.overpowered.gold_trophy": "Arany trófea",
-"block.overpowered.platinum_trophy": "Platina trófeát",
-
 "item.overpowered.unidentified_leather_helmet": "Ismeretlen bőrkabát",
 "item.overpowered.unidentified_leather_chestplate": "Ismeretlen bőrpáncél",
 "item.overpowered.unidentified_leather_leggings": "Ismeretlen bőr nadrágok",
@@ -247,14 +241,5 @@
 "advancements.overpowered.dimensional_anchor.title": "Dimenziós horgony",
 "advancements.overpowered.dimensional_anchor.description": "Készítsen egy méretű horgot.",
 "advancements.overpowered.world_destroyer.title": "Világpusztító",
-"advancements.overpowered.world_destroyer.description": "Használj egy fekete lyukat a világ egy részének elpusztításához.",
-
-"advancements.overpowered.bronze_trophy.title": "Bronz trófeát",
-"advancements.overpowered.bronze_trophy.description": "Kapj egy bronz trófeát",
-"advancements.overpowered.silver_trophy.title": "Ezüst trófeát",
-"advancements.overpowered.silver_trophy.description": "Kap egy ezüst trófeát",
-"advancements.overpowered.gold_trophy.title": "Arany trófeát",
-"advancements.overpowered.gold_trophy.description": "kap egy arany trófeát",
-"advancements.overpowered.platinum_trophy.title": "Platina trófeát",
-"advancements.overpowered.platinum_trophy.description": "kap egy platina trófeát"
+"advancements.overpowered.world_destroyer.description": "Használj egy fekete lyukat a világ egy részének elpusztításához."
 }

@@ -87,10 +87,4 @@ public final class Names {
   public static final ResourceLocation FUSION_CONTROL_LASER     = new ResourceLocation(OverpoweredTechnology.MOD_ID, "fusion_control_laser");
   public static final ResourceLocation FUSION_CONTROL_LASER_BEAM = new ResourceLocation(OverpoweredTechnology.MOD_ID, "fusion_control_laser_beam");
 
-  public static final ResourceLocation TROPHY_BASE              = new ResourceLocation(OverpoweredTechnology.MOD_ID, "trophy_base");
-  public static final ResourceLocation BRONZE_TROPHY            = new ResourceLocation(OverpoweredTechnology.MOD_ID, "bronze_trophy");
-  public static final ResourceLocation SILVER_TROPHY            = new ResourceLocation(OverpoweredTechnology.MOD_ID, "silver_trophy");
-  public static final ResourceLocation GOLD_TROPHY              = new ResourceLocation(OverpoweredTechnology.MOD_ID, "gold_trophy");
-  public static final ResourceLocation PLATINUM_TROPHY          = new ResourceLocation(OverpoweredTechnology.MOD_ID, "platinum_trophy");
-
 }
