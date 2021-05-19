@@ -12,9 +12,9 @@ public final class WorldgenConfig {
   private static final int DEFAULT_MIN_HEIGHT = 5;
   
   private static final int DEFAULT_GEM_MAX_HEIGHT = 40;
-  private static final int DEFAULT_GEM_TRIES = 4;
+  private static final int DEFAULT_GEM_TRIES = 3;
   
-  private static final int DEFAULT_ROSE_QUARTZ_MAX_HEIGHT = 80;
+  private static final int DEFAULT_ROSE_QUARTZ_MAX_HEIGHT = 128;
   
   // should be the same as Iron Ore
   private static final int DEFAULT_COMMON_METAL_MAX_HEIGHT = 128;

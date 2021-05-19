@@ -27,7 +27,7 @@ public final class LootTables {
     Debug.log_setup_info("LootTables class was loaded.");
   }
 
-  private static final float default_spawn_chance = 1.0f / 40.0f; // before, it was just with rings and it was 1 / 15 chance.
+  private static final float default_spawn_chance = 1.0f / 100.0f; // before, it was just with rings and it was 1 / 15 chance.
   private static final float spawn_chance = default_spawn_chance;
 
   private static final int master_armor_weight = 4;

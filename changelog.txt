@@ -1,10 +1,11 @@
 v1.4 - TBD
 INFO:
-  Starting in version 1.5.x, ADDSynthCore, ADDSynth Energy, and Overpowered Technology
-    will be split apart into 3 separate files.
+  The Overpowered mod was renamed to Overpowered Technology.
   Starting in version 1.5.x, the mod_id for Overpowered Technology will be renamed
     from overpowered to overpowered_technology.
-ADDED:
+  Starting in version 1.5.x, ADDSynthCore, ADDSynth Energy, and Overpowered Technology
+    will be split apart into 3 separate files.
+NEW:
   Added Silicon and Rose Quartz.
   Added more mods to detect:
     The One Probe, Hwyla, The Beneath, Cooking for Blockheads, Tiny Progressions,
@@ -43,13 +44,19 @@ CHANGED:
   Renamed mod to Overpowered Technology.
     - This will cause your configuration files to be reset.
   Moved Trophies to ADDSynthCore.
+  Rebalanced Values:
+    Chance to drop an unidentified armor was changed from 1/40 to 1/100.
+    Chance a Weird Tree spawns in the Unknown Dimension was changed from 1/500 to 1/2000.
+      - But this doesn't mean anything right now because the Unknown Dimension doesn't exist.
+    Now that we have a standard generator to power your machines, you won't need as
+      many Energy Crystals. Changed the default tries to generate Gem Ore from 4 to 3.
 FIXED:
   Finally added the ability to get those Advancements that you couldn't get before,
     such as Fire Laser, Fire Laser the Maximum Distance, Portal, World Destroyer,
     and Convert a Thousand Gems.
 REMOVED:
   Removed the ability to move some Overpowered items into other Creative Tabs.
-  Removed Unknown Technology.
+  Removed Unknown Technology item.
 
 
 
