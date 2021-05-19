@@ -2,9 +2,9 @@ package addsynth.overpoweredmod.machines.laser.machine;
 
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.util.StringUtil;
-import addsynth.energy.api.gui.GuiEnergyBase;
-import addsynth.energy.api.gui.widgets.AutoShutoffCheckbox;
-import addsynth.energy.api.gui.widgets.OnOffSwitch;
+import addsynth.energy.lib.gui.GuiEnergyBase;
+import addsynth.energy.lib.gui.widgets.AutoShutoffCheckbox;
+import addsynth.energy.lib.gui.widgets.OnOffSwitch;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.machines.laser.network_messages.SetLaserDistanceMessage;

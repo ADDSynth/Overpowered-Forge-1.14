@@ -2,8 +2,8 @@ package addsynth.energy.gameplay.machines.compressor;
 
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.energy.ADDSynthEnergy;
-import addsynth.energy.api.gui.GuiEnergyBase;
-import addsynth.energy.api.gui.widgets.WorkProgressBar;
+import addsynth.energy.lib.gui.GuiEnergyBase;
+import addsynth.energy.lib.gui.widgets.WorkProgressBar;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;

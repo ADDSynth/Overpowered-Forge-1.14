@@ -1,9 +1,9 @@
 package addsynth.energy.gameplay;
 
 import addsynth.energy.ADDSynthEnergy;
-import addsynth.energy.api.network_messages.*;
 import addsynth.energy.gameplay.machines.circuit_fabricator.ChangeCircuitCraftType;
 import addsynth.energy.gameplay.machines.universal_energy_interface.CycleTransferModeMessage;
+import addsynth.energy.lib.network_messages.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;

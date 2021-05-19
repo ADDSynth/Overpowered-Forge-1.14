@@ -1,6 +1,6 @@
 package addsynth.energy.gameplay.machines.energy_wire;
 
-import addsynth.energy.api.energy_network.tiles.BasicEnergyNetworkTile;
+import addsynth.energy.lib.energy_network.tiles.BasicEnergyNetworkTile;
 import addsynth.energy.registers.Tiles;
 
 /**

@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 import addsynth.core.util.game.AdvancementUtil;
 import addsynth.core.util.game.Game;
 import addsynth.core.util.game.PlayerUtil;
-import addsynth.energy.api.tiles.machines.TileStandardWorkMachine;
+import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;
 import addsynth.overpoweredmod.assets.CustomAdvancements;
 import addsynth.overpoweredmod.assets.CustomStats;
 import addsynth.overpoweredmod.config.MachineValues;

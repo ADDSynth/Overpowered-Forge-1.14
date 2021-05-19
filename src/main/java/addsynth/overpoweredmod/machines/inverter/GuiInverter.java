@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.machines.inverter;
 
 import addsynth.core.gui.util.GuiUtil;
-import addsynth.energy.api.gui.GuiEnergyBase;
-import addsynth.energy.api.gui.widgets.WorkProgressBar;
+import addsynth.energy.lib.gui.GuiEnergyBase;
+import addsynth.energy.lib.gui.widgets.WorkProgressBar;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.Config;
 import net.minecraft.entity.player.PlayerInventory;

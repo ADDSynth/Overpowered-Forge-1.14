@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 
 import javax.annotation.Nullable;
-import addsynth.energy.api.tiles.machines.TileAlwaysOnMachine;
+import addsynth.energy.lib.tiles.machines.TileAlwaysOnMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;

@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.machines.fusion.control;
 
 import java.util.List;
 import javax.annotation.Nullable;
-import addsynth.energy.api.blocks.MachineBlock;
+import addsynth.energy.lib.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.material.MaterialColor;

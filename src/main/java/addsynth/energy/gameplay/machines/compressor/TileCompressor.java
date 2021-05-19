@@ -2,9 +2,9 @@ package addsynth.energy.gameplay.machines.compressor;
 
 import javax.annotation.Nullable;
 import addsynth.core.items.ItemUtil;
-import addsynth.energy.api.tiles.machines.TileStandardWorkMachine;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.machines.compressor.recipe.CompressorRecipes;
+import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;
 import addsynth.energy.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

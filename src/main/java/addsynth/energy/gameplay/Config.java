@@ -1,8 +1,8 @@
 package addsynth.energy.gameplay;
 
 import org.apache.commons.lang3.tuple.Pair;
-import addsynth.energy.api.config.MachineDataConfig;
-import addsynth.energy.api.config.MachineType;
+import addsynth.energy.lib.config.MachineDataConfig;
+import addsynth.energy.lib.config.MachineType;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class Config {

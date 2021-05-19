@@ -1,7 +1,7 @@
 package addsynth.energy.compat.energy.forge;
 
 import javax.annotation.Nonnull;
-import addsynth.energy.api.main.Energy;
+import addsynth.energy.lib.main.Energy;
 import net.minecraftforge.energy.IEnergyStorage;
 
 /** Accepts an {@link Energy} object and automatically calls our

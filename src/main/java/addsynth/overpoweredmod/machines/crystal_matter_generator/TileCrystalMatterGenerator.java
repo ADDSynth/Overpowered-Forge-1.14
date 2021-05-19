@@ -4,7 +4,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.IOutputInventory;
 import addsynth.core.inventory.OutputInventory;
-import addsynth.energy.api.tiles.machines.TilePassiveMachine;
+import addsynth.energy.lib.tiles.machines.TilePassiveMachine;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.registers.Tiles;

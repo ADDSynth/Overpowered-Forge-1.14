@@ -1,9 +1,9 @@
 package addsynth.energy.gameplay.machines.energy_storage;
 
 import javax.annotation.Nullable;
-import addsynth.energy.api.main.Energy;
-import addsynth.energy.api.tiles.energy.TileEnergyBattery;
 import addsynth.energy.gameplay.Config;
+import addsynth.energy.lib.main.Energy;
+import addsynth.energy.lib.tiles.energy.TileEnergyBattery;
 import addsynth.energy.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

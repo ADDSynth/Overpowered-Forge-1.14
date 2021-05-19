@@ -4,7 +4,7 @@ import java.util.Collection;
 import javax.annotation.Nonnull;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.block.BlockUtil;
-import addsynth.energy.api.energy_network.EnergyNetwork;
+import addsynth.energy.lib.energy_network.EnergyNetwork;
 import addsynth.overpoweredmod.machines.data_cable.DataCableNetwork;
 import addsynth.overpoweredmod.machines.laser.machine.LaserNetwork;
 import addsynth.overpoweredmod.machines.suspension_bridge.BridgeNetwork;
@@ -85,7 +85,7 @@ import net.minecraft.world.server.ServerWorld;
  * <p><b>7.</b> Oh dang. There's actually one more scenario I forgot about. Some block networks have extra
  * data, sure, but let's say you want to keep a list of TileEntities this BlockNetwork connects to,
  * Tiles that AREN'T part of the Block Network. For example, the {@link EnergyNetwork}
- * keeps track of {@link addsynth.energy.api.main.IEnergyUser Energy Users} that the network connects to.
+ * keeps track of {@link addsynth.energy.lib.main.IEnergyUser Energy Users} that the network connects to.
  * In this case, you want to update the Block Network (or at least the BlockNetwork's data) whenever
  * you detect the block next to a TileEntity that belongs to this Block Network was CHANGED, because
  * a block could've been added or removed, and you need to update the data accordingly. So, we use

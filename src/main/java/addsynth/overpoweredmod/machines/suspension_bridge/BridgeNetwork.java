@@ -10,7 +10,7 @@ import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.core.util.game.WorldUtil;
-import addsynth.energy.api.main.Receiver;
+import addsynth.energy.lib.main.Receiver;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Lens;

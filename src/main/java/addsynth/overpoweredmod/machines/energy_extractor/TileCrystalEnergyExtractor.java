@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.energy_extractor;
 
 import javax.annotation.Nullable;
-import addsynth.energy.api.tiles.energy.TileStandardGenerator;
+import addsynth.energy.lib.tiles.energy.TileStandardGenerator;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Init;

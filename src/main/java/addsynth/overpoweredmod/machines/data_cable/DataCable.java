@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.data_cable;
 import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.util.block.BlockShape;
-import addsynth.energy.api.blocks.Wire;
+import addsynth.energy.lib.blocks.Wire;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.game.core.Init;

@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.util.StringUtil;
 import addsynth.core.util.math.MathUtility;
-import addsynth.energy.api.tiles.machines.TileStandardWorkMachine;
+import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;
 import addsynth.material.MaterialsUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.MachineValues;

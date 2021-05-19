@@ -6,7 +6,7 @@ import addsynth.core.items.ItemUtil;
 import addsynth.core.util.game.AdvancementUtil;
 import addsynth.core.util.game.PlayerUtil;
 import addsynth.core.util.java.ArrayUtil;
-import addsynth.energy.api.tiles.machines.TileStandardWorkMachine;
+import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;
 import addsynth.overpoweredmod.assets.CustomAdvancements;
 import addsynth.overpoweredmod.assets.CustomStats;
 import addsynth.overpoweredmod.config.MachineValues;

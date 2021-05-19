@@ -2,9 +2,9 @@ package addsynth.energy.gameplay.machines.electric_furnace;
 
 import javax.annotation.Nullable;
 import addsynth.core.recipe.RecipeUtil;
-import addsynth.energy.api.config.MachineData;
-import addsynth.energy.api.config.MachineType;
-import addsynth.energy.api.tiles.machines.TileAlwaysOnMachine;
+import addsynth.energy.lib.config.MachineData;
+import addsynth.energy.lib.config.MachineType;
+import addsynth.energy.lib.tiles.machines.TileAlwaysOnMachine;
 import addsynth.energy.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
