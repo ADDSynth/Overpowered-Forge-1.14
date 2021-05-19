@@ -2,7 +2,6 @@ package addsynth.overpoweredmod.machines.portal.control_panel;
 
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.buttons.AdjustableButton;
-import addsynth.core.gui.widgets.buttons.Checkbox;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.api.gui.GuiEnergyBase;
 import addsynth.energy.api.gui.widgets.AutoShutoffCheckbox;

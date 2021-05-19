@@ -18,19 +18,19 @@ public final class Tiles {
   public static final TileEntityType<TileGenerator> GENERATOR =
     TileEntityType.Builder.create(TileGenerator::new, EnergyBlocks.generator).build(null);
 
-  public static final TileEntityType<TileCompressor> COMPRESSOR =
-    TileEntityType.Builder.create(TileCompressor::new, EnergyBlocks.compressor).build(null);
-
   public static final TileEntityType<TileEnergyStorage> ENERGY_CONTAINER =
     TileEntityType.Builder.create(TileEnergyStorage::new, EnergyBlocks.energy_storage).build(null);
 
-  public static final TileEntityType<TileUniversalEnergyTransfer> UNIVERSAL_ENERGY_INTERFACE =
-    TileEntityType.Builder.create(TileUniversalEnergyTransfer::new, EnergyBlocks.universal_energy_machine).build(null);
+  public static final TileEntityType<TileCompressor> COMPRESSOR =
+    TileEntityType.Builder.create(TileCompressor::new, EnergyBlocks.compressor).build(null);
 
   public static final TileEntityType<TileElectricFurnace> ELECTRIC_FURNACE =
     TileEntityType.Builder.create(TileElectricFurnace::new, EnergyBlocks.electric_furnace).build(null);
 
   public static final TileEntityType<TileCircuitFabricator> CIRCUIT_FABRICATOR =
     TileEntityType.Builder.create(TileCircuitFabricator::new, EnergyBlocks.circuit_fabricator).build(null);
+
+  public static final TileEntityType<TileUniversalEnergyTransfer> UNIVERSAL_ENERGY_INTERFACE =
+    TileEntityType.Builder.create(TileUniversalEnergyTransfer::new, EnergyBlocks.universal_energy_machine).build(null);
 
 }

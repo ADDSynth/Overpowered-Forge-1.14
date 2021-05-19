@@ -1,7 +1,6 @@
 package addsynth.overpoweredmod.machines.laser.machine;
 
 import addsynth.core.gui.util.GuiUtil;
-import addsynth.core.gui.widgets.buttons.Checkbox;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.api.gui.GuiEnergyBase;
 import addsynth.energy.api.gui.widgets.AutoShutoffCheckbox;
