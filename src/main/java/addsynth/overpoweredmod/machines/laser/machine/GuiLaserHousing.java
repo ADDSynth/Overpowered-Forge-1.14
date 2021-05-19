@@ -4,10 +4,10 @@ import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.buttons.Checkbox;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.api.gui.GuiEnergyBase;
+import addsynth.energy.api.gui.widgets.AutoShutoffCheckbox;
 import addsynth.energy.api.gui.widgets.OnOffSwitch;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.NetworkHandler;
-import addsynth.overpoweredmod.game.ToggleAutoShutoffMessage;
 import addsynth.overpoweredmod.machines.laser.network_messages.SetLaserDistanceMessage;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -51,26 +51,6 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
     super(176, 104, container, player_inventory, title, laser_machine_gui_texture);
   }
 
-  private static final class ToggleAutoShutoff extends Checkbox {
-
-    private final TileLaserHousing tile;
-
-    public ToggleAutoShutoff(int x, int y, TileLaserHousing tile){
-      super(x, y, StringUtil.translate("gui.addsynth_energy.common.auto_shutoff"));
-      this.tile = tile;
-    }
-
-    @Override
-    protected boolean get_toggle_state(){
-      return tile.getAutoShutoff();
-    }
-
-    @Override
-    public void onPress(){
-      NetworkHandler.INSTANCE.sendToServer(new ToggleAutoShutoffMessage(tile.getPos()));
-    }
-  }
-
   private static final class LaserDistanceTextField extends TextFieldWidget {
 
     private final TileLaserHousing tile;
@@ -112,7 +92,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   public final void init(){
     super.init();
     addButton(new OnOffSwitch<>(this.guiLeft + 6, this.guiTop + 17, tile)); // OPTIMIZE: On/Off switch position should be standardized.
-    addButton(new ToggleAutoShutoff(this.guiLeft + check_box_x, this.guiTop + check_box_y, tile));
+    addButton(new AutoShutoffCheckbox<TileLaserHousing>(this.guiLeft + check_box_x, this.guiTop + check_box_y, tile));
     
     this.text_box = new LaserDistanceTextField(this.font,this.guiLeft + text_box_x,this.guiTop + text_box_y,text_box_width,text_box_height, tile);
     this.children.add(text_box);

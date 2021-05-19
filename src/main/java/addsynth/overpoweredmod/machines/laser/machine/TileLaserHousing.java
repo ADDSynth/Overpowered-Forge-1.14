@@ -8,7 +8,7 @@ import addsynth.core.util.game.PlayerUtil;
 import addsynth.energy.api.main.Energy;
 import addsynth.energy.api.main.IEnergyConsumer;
 import addsynth.energy.api.main.Receiver;
-import addsynth.energy.api.tiles.machines.ISwitchableMachine;
+import addsynth.energy.api.tiles.machines.IAutoShutoff;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.registers.Tiles;
@@ -23,7 +23,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileLaserHousing extends TileBase implements IBlockNetworkUser<LaserNetwork>,
-  ITickableTileEntity, IEnergyConsumer, ISwitchableMachine, INamedContainerProvider {
+  ITickableTileEntity, IEnergyConsumer, IAutoShutoff, INamedContainerProvider {
 
   private final Receiver energy = new Receiver(0, MachineValues.laser_max_receive.get());
   private boolean power_switch = true;
@@ -101,6 +101,7 @@ public final class TileLaserHousing extends TileBase implements IBlockNetworkUse
 
   // Only the gui calls these
   public final int getLaserDistance(){     return laser_distance; }
+  @Override
   public final boolean getAutoShutoff(){   return auto_shutoff; }
   @Override
   public final boolean get_switch_state(){ return power_switch; }
@@ -151,6 +152,7 @@ public final class TileLaserHousing extends TileBase implements IBlockNetworkUse
     network.changed = true;
   }
 
+  @Override
   public final void toggle_auto_shutoff(){
     network.auto_shutoff = !network.auto_shutoff;
     network.changed = true;

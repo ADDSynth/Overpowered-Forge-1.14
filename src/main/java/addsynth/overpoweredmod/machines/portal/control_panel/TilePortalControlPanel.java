@@ -7,6 +7,7 @@ import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.core.util.game.WorldUtil;
+import addsynth.energy.api.tiles.machines.IAutoShutoff;
 import addsynth.energy.api.tiles.machines.MachineState;
 import addsynth.energy.api.tiles.machines.TileManualMachine;
 import addsynth.overpoweredmod.config.Features;
@@ -32,7 +33,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public final class TilePortalControlPanel extends TileManualMachine implements INamedContainerProvider {
+public final class TilePortalControlPanel extends TileManualMachine implements IAutoShutoff, INamedContainerProvider {
 
   private static final int containers = 8;
   private boolean[] portal_items = new boolean[containers];
@@ -48,6 +49,7 @@ public final class TilePortalControlPanel extends TileManualMachine implements I
   public final String getMessage(){ return message.getMessage(); }
   public final boolean getPortalItem(final int index){ return portal_items[index]; }
   public final boolean isValid(){ return valid_portal; }
+  @Override
   public final boolean getAutoShutoff(){ return auto_shutoff; }
 
   public final void setData(final boolean[] items, final PortalMessage message, final boolean valid_portal){
@@ -77,6 +79,7 @@ public final class TilePortalControlPanel extends TileManualMachine implements I
     return nbt;
   }
 
+  @Override
   public final void toggle_auto_shutoff(){
     auto_shutoff = !auto_shutoff;
     changed = true;

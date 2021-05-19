@@ -1,11 +1,10 @@
-package addsynth.overpoweredmod.game;
+package addsynth.energy.api.network_messages;
 
 import java.util.function.Supplier;
-import addsynth.core.util.game.MinecraftUtility;
-import addsynth.overpoweredmod.machines.laser.machine.TileLaserHousing;
-import addsynth.overpoweredmod.machines.portal.control_panel.TilePortalControlPanel;
+import addsynth.energy.api.tiles.machines.IAutoShutoff;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -34,17 +33,11 @@ public final class ToggleAutoShutoffMessage {
       final ServerWorld world = player.func_71121_q();
       context.get().enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
-          final TileLaserHousing tile = MinecraftUtility.getTileEntity(message.position, world, TileLaserHousing.class);
+          final TileEntity tile = world.getTileEntity(message.position);
           if(tile != null){
-            tile.toggle_auto_shutoff();
-          }
-          // OPTIMIZE: Toggling Auto Shutoff is now a common feature amongst machines. Make this a feature
-          //           of Manual Machines and an IAutoShutoff interface and move to ADDSynth Energy!
-          //           And also save an AutoShutoffCheckbox class that sends the Network message. We can
-          //           instantiate a copy whenever we need to.
-          final TilePortalControlPanel tile2 = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
-          if(tile2 != null){
-            tile2.toggle_auto_shutoff();
+            if(tile instanceof IAutoShutoff){
+              ((IAutoShutoff)tile).toggle_auto_shutoff();
+            }
           }
         }
       });

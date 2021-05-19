@@ -57,13 +57,6 @@ public final class NetworkHandler {
       SyncPortalDataMessage::decode,
       SyncPortalDataMessage::handle
     );
-    INSTANCE.registerMessage(5,
-      ToggleAutoShutoffMessage.class,
-      ToggleAutoShutoffMessage::encode,
-      ToggleAutoShutoffMessage::decode,
-      ToggleAutoShutoffMessage::handle
-    );
-
     INSTANCE.registerMessage(6,
       SyncClientBridgeMessage.class,
       SyncClientBridgeMessage::encode,

@@ -5,12 +5,12 @@ import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.core.gui.widgets.buttons.Checkbox;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.api.gui.GuiEnergyBase;
+import addsynth.energy.api.gui.widgets.AutoShutoffCheckbox;
 import addsynth.energy.api.gui.widgets.EnergyProgressBar;
 import addsynth.energy.api.gui.widgets.OnOffSwitch;
 import addsynth.energy.api.gui.widgets.WorkProgressBar;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.NetworkHandler;
-import addsynth.overpoweredmod.game.ToggleAutoShutoffMessage;
 import addsynth.overpoweredmod.game.core.Gems;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.PlayerInventory;
@@ -82,31 +82,11 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
 
   }
 
-  private static final class ToggleAutoShutoff extends Checkbox {
-  
-    private final TilePortalControlPanel tile;
-    
-    public ToggleAutoShutoff(int x, int y, TilePortalControlPanel tile){
-      super(x, y, StringUtil.translate("gui.addsynth_energy.common.auto_shutoff"));
-      this.tile = tile;
-    }
-    
-    @Override
-    protected boolean get_toggle_state(){
-      return tile.getAutoShutoff();
-    }
-    
-    @Override
-    public void onPress(){
-      NetworkHandler.INSTANCE.sendToServer(new ToggleAutoShutoffMessage(tile.getPos()));
-    }
-  }
-
   @Override
   public final void init(){
     super.init();
     addButton(new OnOffSwitch<>(this.guiLeft + 6, this.guiTop + 19, tile));
-    addButton(new ToggleAutoShutoff(this.guiLeft + checkbox_x, this.guiTop + checkbox_y, tile));
+    addButton(new AutoShutoffCheckbox<TilePortalControlPanel>(this.guiLeft + checkbox_x, this.guiTop + checkbox_y, tile));
     addButton(new GeneratePortalButton(this.guiLeft + button_x, this.guiTop + button_y, tile));
   }
 
