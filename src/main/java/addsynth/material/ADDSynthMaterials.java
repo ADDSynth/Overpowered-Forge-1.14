@@ -6,7 +6,6 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.game.RegistryUtil;
 import addsynth.material.compat.MaterialsCompat;
 import addsynth.material.config.WorldgenConfig;
-import addsynth.material.types.OreMaterial;
 import addsynth.material.worldgen.OreGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -70,7 +69,8 @@ public final class ADDSynthMaterials {
 
   private static final void main_setup(final FMLCommonSetupEvent event){
     // log.info("Begin ADDSynthMaterials main setup...");
-  
+    OreGenerator.register();
+    // DeferredWorkQueue.runLater(OreGenerator::register);
     // log.info("Finished ADDSynthMaterials main setup.");
   }
 
@@ -80,26 +80,7 @@ public final class ADDSynthMaterials {
       final String sender  = message.getSenderModId();
       final String type    = message.getMethod();
       final Object payload = message.getMessageSupplier().get();
-      if(type.equals(OreGenerator.REQUEST_ORE)){
-        handle_generate_ore_requests(sender, payload);
-      }
     });
-  }
-
-  private static final void handle_generate_ore_requests(final String sender, final Object payload){
-    if(payload instanceof OreMaterial){
-      OreGenerator.request_to_generate(sender, (OreMaterial)payload);
-      if(OreGenerator.generate == false){
-        DeferredWorkQueue.runLater(() -> OreGenerator.register());
-        OreGenerator.generate = true;
-      }
-    }
-    else{
-      ADDSynthCore.log.error("Mod '"+sender+"' sent an IMC message to ADDSynthCore requesting to generate an ore "+
-        "for '"+payload.getClass().getSimpleName()+"{"+payload.toString()+"}' but it is not an OreMaterial type! "+
-        "You can only register ore generators with ADDSynthCore by sending an IMC message with the "+
-        Material.class.getName()+" you want to generate. The Material must be of type OreMaterial or an extension.");
-    }
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

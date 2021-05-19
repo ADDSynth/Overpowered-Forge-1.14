@@ -1,6 +1,5 @@
 package addsynth.material.worldgen;
 
-import java.util.ArrayList;
 import addsynth.core.Constants;
 import addsynth.material.ADDSynthMaterials;
 import addsynth.material.Material;
@@ -18,86 +17,57 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public final class OreGenerator {
 
-  public static final String REQUEST_ORE = "request_ore_to_generate";
-
-  private static final ArrayList<OreMaterial> requested_ores = new ArrayList<>(20);
-
-  /** Used by {@link ADDSynthMaterials} when an ore is requested to generate. ADDSynthMaterials checks if
-   *    this is false, schedules a {@link net.minecraftforge.fml.DeferredWorkQueue} to run
-   *    the {@link #register()} function below, then sets this to true.
-   */
-  public static boolean generate;
-  private static boolean done;
-
-  public static final void request_to_generate(final String mod_id, final OreMaterial material){
-    if(done == false){
-      if(requested_ores.contains(material) == false){
-        requested_ores.add(material);
-      }
-    }
-    else{
-      ADDSynthMaterials.log.error("ADDSynthMaterials is done registering Ores to generate, but the mod '"+mod_id+
-        "' has requested to register another ore. You should ONLY be registering Ores to generate using "+
-        "Forge's Inter-Mod communications feature!");
-    }
-  }
-
   public static final void register(){
-    if(done == false){
-    
-    ADDSynthMaterials.log.info("Begin registering all requested Ores...");
-    done = true;
-    
     // This is how it's done now apparently.
     for(Biome biome : ForgeRegistries.BIOMES){
       if(biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND){
 
-        if(requested_ores.contains(Material.RUBY) && WorldgenConfig.generate_ruby.get()){
+        if(WorldgenConfig.generate_ruby.get()){
           generate_single_ore(biome, Material.RUBY, WorldgenConfig.ruby_spawn_tries.get(),
                            WorldgenConfig.ruby_min_height.get(), WorldgenConfig.ruby_max_height.get());
         }
-        if(requested_ores.contains(Material.TOPAZ) && WorldgenConfig.generate_topaz.get()){
+        if(WorldgenConfig.generate_topaz.get()){
           generate_single_ore(biome, Material.TOPAZ, WorldgenConfig.topaz_spawn_tries.get(),
                            WorldgenConfig.topaz_min_height.get(), WorldgenConfig.topaz_max_height.get());
         }
-        if(requested_ores.contains(Material.CITRINE) && WorldgenConfig.generate_citrine.get()){
+        if(WorldgenConfig.generate_citrine.get()){
           generate_single_ore(biome, Material.CITRINE, WorldgenConfig.citrine_spawn_tries.get(),
                            WorldgenConfig.citrine_min_height.get(), WorldgenConfig.citrine_max_height.get());
         }
-        if(requested_ores.contains(Material.EMERALD) && WorldgenConfig.generate_emerald.get()){
+        if(WorldgenConfig.generate_emerald.get()){
           generate_single_ore(biome, Material.EMERALD, WorldgenConfig.emerald_spawn_tries.get(),
                            WorldgenConfig.emerald_min_height.get(), WorldgenConfig.emerald_max_height.get());
         }
-        if(requested_ores.contains(Material.SAPPHIRE) && WorldgenConfig.generate_sapphire.get()){
+        if(WorldgenConfig.generate_sapphire.get()){
           generate_single_ore(biome, Material.SAPPHIRE, WorldgenConfig.sapphire_spawn_tries.get(),
                            WorldgenConfig.sapphire_min_height.get(), WorldgenConfig.sapphire_max_height.get());
         }
-        if(requested_ores.contains(Material.AMETHYST) && WorldgenConfig.generate_amethyst.get()){
+        if(WorldgenConfig.generate_amethyst.get()){
           generate_single_ore(biome, Material.AMETHYST, WorldgenConfig.amethyst_spawn_tries.get(),
                            WorldgenConfig.amethyst_min_height.get(), WorldgenConfig.amethyst_max_height.get());
         }
         
-        if(requested_ores.contains(Material.TIN) && WorldgenConfig.generate_tin.get()){
+        if(WorldgenConfig.generate_tin.get()){
           generate_ore(biome, Material.TIN, WorldgenConfig.tin_ore_size.get(), WorldgenConfig.tin_spawn_tries.get(),
                              WorldgenConfig.tin_min_height.get(), WorldgenConfig.tin_max_height.get());
         }
-        if(requested_ores.contains(Material.COPPER) && WorldgenConfig.generate_copper.get()){
+        if(WorldgenConfig.generate_copper.get()){
           generate_ore(biome, Material.COPPER, WorldgenConfig.copper_ore_size.get(), WorldgenConfig.copper_spawn_tries.get(),
                              WorldgenConfig.copper_min_height.get(), WorldgenConfig.copper_max_height.get());
         }
-        if(requested_ores.contains(Material.ALUMINUM) && WorldgenConfig.generate_aluminum.get()){
+        if(WorldgenConfig.generate_aluminum.get()){
           generate_ore(biome, Material.ALUMINUM, WorldgenConfig.aluminum_ore_size.get(), WorldgenConfig.aluminum_spawn_tries.get(),
                              WorldgenConfig.aluminum_min_height.get(), WorldgenConfig.aluminum_max_height.get());
         }
-        if(requested_ores.contains(Material.SILVER) && WorldgenConfig.generate_silver.get()){
+        if(WorldgenConfig.generate_silver.get()){
           generate_ore(biome, Material.SILVER, WorldgenConfig.silver_ore_size.get(), WorldgenConfig.silver_spawn_tries.get(),
                              WorldgenConfig.silver_min_height.get(), WorldgenConfig.silver_max_height.get());
         }
-        if(requested_ores.contains(Material.PLATINUM) && WorldgenConfig.generate_platinum.get()){
+        if(WorldgenConfig.generate_platinum.get()){
           generate_ore(biome, Material.PLATINUM, WorldgenConfig.platinum_ore_size.get(), WorldgenConfig.platinum_spawn_tries.get(),
                              WorldgenConfig.platinum_min_height.get(), WorldgenConfig.platinum_max_height.get());
         }
-        if(requested_ores.contains(Material.TITANIUM) && WorldgenConfig.generate_titanium.get()){
+        if(WorldgenConfig.generate_titanium.get()){
           generate_ore(biome, Material.TITANIUM, WorldgenConfig.titanium_ore_size.get(), WorldgenConfig.titanium_spawn_tries.get(),
                              WorldgenConfig.titanium_min_height.get(), WorldgenConfig.titanium_max_height.get());
         }
@@ -113,9 +83,6 @@ public final class OreGenerator {
                            WorldgenConfig.rose_quartz_min_height.get(), WorldgenConfig.rose_quartz_max_height.get());
         }
       }
-    }
-    
-    ADDSynthMaterials.log.info("Done registering requested Ores.");
     }
   }
 

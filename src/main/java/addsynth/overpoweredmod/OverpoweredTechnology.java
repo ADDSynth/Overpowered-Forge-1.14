@@ -4,10 +4,7 @@ import java.io.File;
 import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.recipe.RecipeUtil;
-import addsynth.material.ADDSynthMaterials;
-import addsynth.material.Material;
 import addsynth.material.MaterialsUtil;
-import addsynth.material.worldgen.OreGenerator;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -29,7 +26,6 @@ import addsynth.overpoweredmod.registers.Containers;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -108,28 +104,9 @@ public class OverpoweredTechnology {
   }
 
   private static final void inter_mod_communications(final InterModEnqueueEvent event){
-    request_ores_to_generate();
     if(Compatability.PROJECT_E.loaded){
       ProjectE.register_emc_values();
     }
-  }
-
-  // REMOVE: No longer 'request' to generate ores?
-  private static final void request_ores_to_generate(){
-    final String mod = ADDSynthMaterials.MOD_ID;
-    final String message = OreGenerator.REQUEST_ORE;
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.RUBY);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.TOPAZ);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.CITRINE);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.EMERALD);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.SAPPHIRE);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.AMETHYST);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.TIN);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.COPPER);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.ALUMINUM);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.SILVER);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.PLATINUM);
-    InterModComms.sendTo(MOD_ID, mod, message, () -> Material.TITANIUM);
   }
 
   private static final void client_setup(final FMLClientSetupEvent event){
