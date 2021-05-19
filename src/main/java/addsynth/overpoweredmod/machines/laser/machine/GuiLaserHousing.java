@@ -97,9 +97,9 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
       }
       if(captured_distance >= 0){
         if(captured_distance != tile.getLaserDistance()){
-          if(captured_distance > 1000){
-            captured_distance = 1000;
-            setText("1000");
+          if(captured_distance > LaserNetwork.max_laser_distance){
+            captured_distance = LaserNetwork.max_laser_distance;
+            setText(Integer.toString(LaserNetwork.max_laser_distance));
           }
           NetworkHandler.INSTANCE.sendToServer(new SetLaserDistanceMessage(tile.getPos(), captured_distance));
         }

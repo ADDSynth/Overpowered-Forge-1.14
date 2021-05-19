@@ -13,7 +13,7 @@
   },
   "parent": "overpowered:overpowered/fire_laser",
   "criteria": {
-    "portal": {
+    "fire_maximum_laser": {
       "trigger": "minecraft:impossible"
     }
   }

@@ -113,6 +113,11 @@
 
 
 
+"stat.overpowered.gems_converted": "Gems Converted",
+"stat.overpowered.lasers_fired": "Lasers Fired",
+"stat.overpowered.items_identified": "Items Identified",
+"stat.overpowered.black_hole_events": "Singularity Events",
+
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Black Holes are not allowed in this Dimension.",
 "gui.overpowered.black_hole.notify_players": "§5Singularity Event§r detected at coordinates: %s , %1$s , %2$s",
 "gui.overpowered.energy_suspension_bridge.lens": "Lens",

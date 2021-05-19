@@ -3,11 +3,14 @@ package addsynth.overpoweredmod.machines.fusion.chamber;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.tiles.TileStorageMachine;
+import addsynth.core.util.game.AdvancementUtil;
+import addsynth.overpoweredmod.assets.CustomAdvancements;
 import addsynth.overpoweredmod.game.core.Machines;
 import addsynth.overpoweredmod.game.core.ModItems;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
@@ -44,8 +47,8 @@ public final class TileFusionChamber extends TileStorageMachine implements IName
     return on;
   }
 
-  public final void set_state(final boolean state){
-    if(on != state){
+  public final void set_state(final boolean state, final ServerPlayerEntity player){
+    if(on != state){ // Only run on state change
       int i;
       BlockPos position;
       for(Direction side: Direction.values()){
@@ -56,6 +59,9 @@ public final class TileFusionChamber extends TileStorageMachine implements IName
             //       OpenGL special effects that doesn't touch the world and immune to player interference.
             world.setBlockState(position, Machines.fusion_control_laser_beam.getDefaultState(), 3);
             // TEST why would we need block updates for this? Can this just be set to 2 for Client updates?
+            if(player != null){
+              AdvancementUtil.grantAdvancement(player, CustomAdvancements.FUSION_ENERGY);
+            }
           }
           else{
             world.removeBlock(position, false);
@@ -67,7 +73,7 @@ public final class TileFusionChamber extends TileStorageMachine implements IName
   }
 
   public final void explode(){
-    set_state(false);
+    set_state(false, null);
     world.removeBlock(pos, false);
     world.createExplosion(null, pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5, FUSION_CHAMBER_EXPLOSION_SIZE, true, Explosion.Mode.DESTROY);
   }

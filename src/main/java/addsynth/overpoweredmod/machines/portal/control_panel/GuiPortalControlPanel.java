@@ -56,9 +56,6 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
   
   private static final int status_message_y = button_y + button_height + 6;
 
-  // TODO: record which player has this gui open so you can award them with the achievement when they
-  //          activate the portal.
-
   public GuiPortalControlPanel(final ContainerPortalControlPanel container, final PlayerInventory player_inventory, final ITextComponent title){
     super(202, 144, container, player_inventory, title, portal_control_panel_gui_texture);
   }

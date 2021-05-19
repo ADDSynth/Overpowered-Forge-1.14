@@ -13,6 +13,9 @@ import net.minecraft.tileentity.TileEntityType;
  */
 public abstract class TileAbstractWorkMachine extends TileAbstractMachine implements ICustomEnergyUser {
 
+  /** Do not call {@link #update_data()}. Instead set this to true whenever
+   *  important data is changed. Check for this in the TileEntity's tick() function.
+   */
   protected boolean changed;
   protected MachineState state;
 

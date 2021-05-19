@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
@@ -65,6 +66,16 @@ public final class LaserHousing extends MachineBlock {
   @SuppressWarnings("deprecation")
   public final void neighborChanged(BlockState state, World world, BlockPos pos, Block blockIn, BlockPos neighbor, boolean isMoving){
     BlockNetworkUtil.neighbor_changed(world, pos, neighbor);
+  }
+
+  @Override
+  public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack){
+    if(placer instanceof ServerPlayerEntity){ // ensures block was placed by plaer and on server side
+      final TileLaserHousing tile = MinecraftUtility.getTileEntity(pos, world, TileLaserHousing.class);
+      if(tile != null){
+        tile.setPlayer((ServerPlayerEntity)placer);
+      }
+    }
   }
 
 }

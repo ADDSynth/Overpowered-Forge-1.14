@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.assets;
 
-import addsynth.core.game.Game;
+import addsynth.core.util.game.Game;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.util.SoundEvent;
 

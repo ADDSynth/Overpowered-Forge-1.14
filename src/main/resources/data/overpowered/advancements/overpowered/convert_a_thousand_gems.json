@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "overpowered:ruby"
+      "item": "minecraft:diamond"
     },
     "title": {
       "translate": "advancements.overpowered.convert_a_thousand_gems.title"

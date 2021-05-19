@@ -13,8 +13,11 @@
   },
   "parent": "overpowered:overpowered/black_hole",
   "criteria": {
-    "gold_trophy": {
-      "trigger": "minecraft:impossible"
+    "place_black_hole": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "block": "overpowered:black_hole"
+      }
     }
   }
 }

@@ -1,25 +1,32 @@
 package addsynth.overpoweredmod.machines.laser.machine;
 
+import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.Node;
 import addsynth.core.block_network.NodeList;
 import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.block.BlockMath;
+import addsynth.core.util.game.AdvancementUtil;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.api.main.Energy;
 import addsynth.energy.api.main.Receiver;
+import addsynth.overpoweredmod.assets.CustomAdvancements;
+import addsynth.overpoweredmod.assets.CustomStats;
 import addsynth.overpoweredmod.assets.Sounds;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
 import addsynth.overpoweredmod.machines.laser.cannon.TileLaser;
 import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
+
+  public static final int max_laser_distance = 1000;
 
   public boolean changed;
   private final NodeList lasers = new NodeList(27);
@@ -161,21 +168,47 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   }
 
   private final void fire_lasers(){
-    final double[] center_position = BlockMath.getExactCenter(blocks.getPositions());
+    remove_invalid_nodes(blocks);
     remove_invalid_nodes(lasers);
-    TileEntity laser;
+    TileEntity tile;
+    // OPTIMIZE: Node and NodeList by specifying a type parameter.
     for(Node node : lasers){
-      laser = node.getTile();
-      if(laser != null){
-        ((TileLaser)laser).activate(this.laser_distance);
+      tile = node.getTile();
+      if(tile != null){
+        ((TileLaser)tile).activate(this.laser_distance);
       }
     }
+    final double[] center_position = BlockMath.getExactCenter(blocks.getPositions());
     world.playSound(null, center_position[0], center_position[1], center_position[2], Sounds.laser_fire_sound, SoundCategory.AMBIENT, 2.0f, 1.0f);
+    final ArrayList<ServerPlayerEntity> players = new ArrayList<>();
+    ServerPlayerEntity player;
+    for(Node node : blocks){
+      tile = node.getTile();
+      if(tile != null){
+        player = ((TileLaserHousing)tile).getPlayer();
+        if(player != null){
+          if(players.contains(player) == false){
+            players.add(player);
+          }
+        }
+      }
+    }
+    awardPlayers(players, this.laser_distance);
     this.energy.subtract_capacity();
     if(auto_shutoff){
       running = false;
     }
     changed = true;
+  }
+
+  private static final void awardPlayers(final ArrayList<ServerPlayerEntity> players, final int laser_distance){
+    for(final ServerPlayerEntity player : players){
+      AdvancementUtil.grantAdvancement(player, CustomAdvancements.FIRE_LASER);
+      if(laser_distance >= LaserNetwork.max_laser_distance){
+        AdvancementUtil.grantAdvancement(player, CustomAdvancements.FIRE_MAXIMUM_DISTANCE);
+      }
+      player.addStat(CustomStats.LASERS_FIRED);
+    }
   }
 
 }

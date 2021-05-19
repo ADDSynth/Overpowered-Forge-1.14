@@ -31,9 +31,10 @@ ADDED:
     - But players won't be able to do anything with it until the next update.
   Added a new debug feature to ADDSynthCore that allows you to print all defined
     block and item tags into text files.
+  Added stats for Converting Gems, Firing Lasers, and Identifying Items.
 CHANGED:
   Made ADDSynth Materials into its own mod.
-  The Music Box gui no longer has the JEI item panel, because it doesn't need it.
+  The Music Box gui no longer has the JEI item panel. It doesn't need it.
   The Creative Tab icon for ADDSynth Energy is now the new Generator.
   The Generator that was part of Overpowered has been renamed to Crystal Energy Extractor.
   Renamed Energy Crystal to Celestial Gem.
@@ -42,6 +43,10 @@ CHANGED:
   Renamed mod to Overpowered Technology.
     - This will cause your configuration files to be reset.
   Moved Trophies to ADDSynthCore.
+FIXED:
+  Finally added the ability to get those Advancements that you couldn't get before,
+    such as Fire Laser, Fire Laser the Maximum Distance, Portal, World Destroyer,
+    and Convert a Thousand Gems.
 REMOVED:
   Removed the ability to move some Overpowered items into other Creative Tabs.
   Removed Unknown Technology.

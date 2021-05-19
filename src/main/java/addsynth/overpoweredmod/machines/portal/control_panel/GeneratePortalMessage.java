@@ -1,7 +1,9 @@
 package addsynth.overpoweredmod.machines.portal.control_panel;
 
 import java.util.function.Supplier;
+import addsynth.core.util.game.AdvancementUtil;
 import addsynth.core.util.game.MinecraftUtility;
+import addsynth.overpoweredmod.assets.CustomAdvancements;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
@@ -35,6 +37,7 @@ public final class GeneratePortalMessage {
           final TilePortalControlPanel tile = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
           if(tile != null){
             tile.generate_portal();
+            AdvancementUtil.grantAdvancement(player, CustomAdvancements.PORTAL);
           }
         }
       });

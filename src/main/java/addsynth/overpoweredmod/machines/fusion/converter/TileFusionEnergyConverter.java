@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.machines.fusion.converter;
 import java.util.ArrayList;
 import addsynth.core.tiles.TileBase;
 import addsynth.core.util.game.MinecraftUtility;
+import addsynth.core.util.game.PlayerUtil;
 import addsynth.energy.api.main.Generator;
 import addsynth.energy.api.main.IEnergyGenerator;
 import addsynth.overpoweredmod.config.MachineValues;
@@ -10,6 +11,8 @@ import addsynth.overpoweredmod.machines.data_cable.DataCableNetwork;
 import addsynth.overpoweredmod.machines.data_cable.TileDataCable;
 import addsynth.overpoweredmod.machines.fusion.chamber.TileFusionChamber;
 import addsynth.overpoweredmod.registers.Tiles;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -23,6 +26,7 @@ public final class TileFusionEnergyConverter extends TileBase implements IEnergy
   private TileFusionChamber fusion_chamber;
   private boolean activated;
   private boolean valid;
+  private ServerPlayerEntity player;
 
   public TileFusionEnergyConverter(){
     super(Tiles.FUSION_ENERGY_CONVERTER);
@@ -46,7 +50,7 @@ public final class TileFusionEnergyConverter extends TileBase implements IEnergy
         }
         
         if(fusion_chamber != null){ // Cannot be valid without fusion chamber
-          fusion_chamber.set_state(activated && valid); // keep fusion chamber up-to-date if it exists.
+          fusion_chamber.set_state(activated && valid, player); // keep fusion chamber up-to-date if it exists.
           if(activated && valid == false && previous_valid == true){
             // only explodes if valid goes from true to false. Loading a world is safe because it goes from false to true.
             fusion_chamber.explode();
@@ -62,7 +66,25 @@ public final class TileFusionEnergyConverter extends TileBase implements IEnergy
     }
   }
 
-  // No data needs to be saved to disk.
+  @Override
+  public void read(final CompoundNBT nbt){
+    super.read(nbt);
+    player = PlayerUtil.getPlayer(world, nbt.getString("Player"));
+  }
+
+  @Override
+  public CompoundNBT write(final CompoundNBT nbt){
+    super.write(nbt);
+    if(player != null){
+      nbt.putString("Player", player.getGameProfile().getName());
+    }
+    return nbt;
+  }
+
+  public final void setPlayer(final ServerPlayerEntity player){
+    this.player = player;
+    update_data();
+  }
 
   private final void check_connection(){
     get_networks();

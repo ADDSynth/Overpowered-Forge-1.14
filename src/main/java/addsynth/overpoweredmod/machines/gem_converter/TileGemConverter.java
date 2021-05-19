@@ -1,13 +1,19 @@
 package addsynth.overpoweredmod.machines.gem_converter;
 
 import javax.annotation.Nullable;
+import addsynth.core.util.game.AdvancementUtil;
+import addsynth.core.util.game.Game;
+import addsynth.core.util.game.PlayerUtil;
 import addsynth.energy.api.tiles.machines.TileStandardWorkMachine;
+import addsynth.overpoweredmod.assets.CustomAdvancements;
+import addsynth.overpoweredmod.assets.CustomStats;
 import addsynth.overpoweredmod.config.MachineValues;
 import addsynth.overpoweredmod.game.core.Gems;
 import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
@@ -17,7 +23,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileGemConverter extends TileStandardWorkMachine implements INamedContainerProvider {
-	
+
+  private ServerPlayerEntity player;
   private byte selection;
   private ItemStack gem_selected = new ItemStack(Gems.ruby, 1);
   private byte converting_to;
@@ -50,6 +57,9 @@ public final class TileGemConverter extends TileStandardWorkMachine implements I
     super.write(nbt);
     nbt.putByte("Gem Selected", selection);
     nbt.putByte("Converting To", converting_to);
+    if(player != null){
+      nbt.putString("Player", player.getGameProfile().getName());
+    }
     return nbt;
   }
 
@@ -59,6 +69,7 @@ public final class TileGemConverter extends TileStandardWorkMachine implements I
     selection = nbt.getByte("Gem Selected");
     gem_selected = Gems.getItemStack(selection); // updates on client-side and server-side
     converting_to = nbt.getByte("Converting To");
+    player = PlayerUtil.getPlayer(world, nbt.getString("Player"));
   }
 
   @Override
@@ -100,6 +111,13 @@ public final class TileGemConverter extends TileStandardWorkMachine implements I
   @Override
   protected final void perform_work(){
     inventory.output_inventory.insertItem(0, Gems.getItemStack(converting_to), false);
+    
+    if(player != null){
+      player.addStat(CustomStats.GEMS_CONVERTED);
+      if(Game.getCustomStat(player.getStats(), CustomStats.GEMS_CONVERTED) >= 1000){
+        AdvancementUtil.grantAdvancement(player, CustomAdvancements.CONVERT_A_THOUSAND_GEMS);
+      }
+    }
   }
 
   public final int get_gem_selected(){
@@ -113,6 +131,9 @@ public final class TileGemConverter extends TileStandardWorkMachine implements I
   @Override
   @Nullable
   public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
+    if(player instanceof ServerPlayerEntity){
+      this.player = (ServerPlayerEntity)player;
+    }
     return new ContainerGemConverter(id, player_inventory, this);
   }
 

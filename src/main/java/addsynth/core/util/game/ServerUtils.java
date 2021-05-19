@@ -15,6 +15,9 @@ import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 public final class ServerUtils {
 
+  // DO NOT CACHE THE SERVER! Because the actively running server could change during the course
+  // of the game, such as when a player quits a multiplayer world and starts a singleplayer world.
+
   /** @deprecated Use {@link ServerUtils#getServer(World)} whenever possible. */
   @Nullable
   public static final MinecraftServer getServer(){
