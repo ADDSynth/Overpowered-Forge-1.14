@@ -1,6 +1,5 @@
 package addsynth.energy.api.blocks;
 
-import addsynth.core.blocks.BlockTile;
 import addsynth.core.inventory.IInventoryUser;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -16,7 +15,7 @@ import net.minecraft.world.World;
  *     their individual blocks using that mod's {@link addsynth.core.game.RegistryUtil} instance.
  * @author ADDSynth
  */
-public abstract class MachineBlock extends BlockTile {
+public abstract class MachineBlock extends Block {
 
   /** Specify your own Block Properties. Required if block is transparent! */
   public MachineBlock(final Block.Properties properties){

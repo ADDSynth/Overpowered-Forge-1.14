@@ -1,5 +1,6 @@
 package addsynth.energy.gameplay.machines.energy_wire;
 
+import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.api.blocks.Wire;
@@ -40,7 +41,8 @@ public final class EnergyWire extends Wire {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(final IBlockReader world){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TileEnergyWire();
   }
 

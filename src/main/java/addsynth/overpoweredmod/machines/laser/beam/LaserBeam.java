@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.laser.beam;
 
-import addsynth.core.blocks.BlockTile;
+import javax.annotation.Nullable;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.DamageSources;
 import addsynth.overpoweredmod.config.Config;
@@ -19,7 +19,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public final class LaserBeam extends BlockTile {
+public final class LaserBeam extends Block {
 
   public LaserBeam(String name){
     super(Block.Properties.create(Material.FIRE).variableOpacity().doesNotBlockMovement().lightValue(Config.laser_light_level.get()));
@@ -60,8 +60,8 @@ public final class LaserBeam extends BlockTile {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
-  public final TileEntity createNewTileEntity(IBlockReader worldIn){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TileLaserBeam();
   }
 

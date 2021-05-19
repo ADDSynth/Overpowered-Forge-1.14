@@ -35,8 +35,8 @@ public final class GeneratorBlock extends MachineBlock {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
-  public final TileEntity createNewTileEntity(IBlockReader world){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TileGenerator();
   }
 

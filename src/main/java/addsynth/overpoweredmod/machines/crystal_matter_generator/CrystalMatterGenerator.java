@@ -36,7 +36,8 @@ public final class CrystalMatterGenerator extends MachineBlock {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(IBlockReader worldIn){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TileCrystalMatterGenerator();
   }
 

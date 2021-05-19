@@ -3,7 +3,6 @@ package addsynth.overpoweredmod.machines.laser.cannon;
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.Constants;
-import addsynth.core.blocks.BlockTile;
 import addsynth.core.util.block.BlockShape;
 import addsynth.core.util.game.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
@@ -39,7 +38,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
-public final class LaserCannon extends BlockTile implements IWaterLoggable {
+public final class LaserCannon extends Block implements IWaterLoggable {
 
   public static final DirectionProperty FACING = BlockStateProperties.FACING; // Data Cable uses this block property.
   private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -184,8 +183,8 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
-  public final TileEntity createNewTileEntity(IBlockReader world){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return color == -1 ? null : new TileLaser();
   }
 

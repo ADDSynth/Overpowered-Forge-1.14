@@ -33,7 +33,8 @@ public final class FusionEnergyConverter extends MachineBlock {
   }
 
   @Override
-  public TileEntity createNewTileEntity(final IBlockReader worldIn){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
     return new TileFusionEnergyConverter();
   }
 

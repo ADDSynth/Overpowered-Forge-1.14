@@ -31,7 +31,8 @@ public final class EnergySuspensionBridge extends MachineBlock {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(final IBlockReader worldIn){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
     return new TileSuspensionBridge();
   }
 

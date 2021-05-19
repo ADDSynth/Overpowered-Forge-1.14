@@ -1,5 +1,6 @@
 package addsynth.overpoweredmod.machines.data_cable;
 
+import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.util.block.BlockShape;
 import addsynth.energy.api.blocks.Wire;
@@ -76,7 +77,8 @@ public final class DataCable extends Wire {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(final IBlockReader worldIn){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
     return new TileDataCable();
   }
 

@@ -36,7 +36,8 @@ public final class AdvancedOreRefinery extends MachineBlock {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(final IBlockReader worldIn){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
     return new TileAdvancedOreRefinery();
   }
 

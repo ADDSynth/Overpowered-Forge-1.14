@@ -2,7 +2,6 @@ package addsynth.energy.api.blocks;
 
 import javax.annotation.Nullable;
 import addsynth.core.Constants;
-import addsynth.core.blocks.BlockTile;
 import addsynth.core.util.block.BlockShape;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,7 +12,6 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -21,7 +19,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
-public abstract class Wire extends BlockTile implements IWaterLoggable {
+public abstract class Wire extends Block implements IWaterLoggable {
 
   // http://mcforge.readthedocs.io/en/latest/blocks/states/
 
@@ -105,17 +103,6 @@ public abstract class Wire extends BlockTile implements IWaterLoggable {
   @SuppressWarnings("deprecation")
   public IFluidState getFluidState(BlockState state){
     return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
-  }
-
-  /**
-   * This is here because the Wire class is derived from the BlockTile class, which is derived from the BlockContainer class,
-   * which implements the ITileProvider interface, and must implement the createNewTileEntity() method. However more specific
-   * Wire classes that are derived from this one may not need to produce a Tile Entity, so we return null. Override this method
-   * and specify a Tile Entity to spawn if you need to.
-   */
-  @Override
-  public TileEntity createNewTileEntity(IBlockReader worldIn){
-    return null;
   }
 
   @Override

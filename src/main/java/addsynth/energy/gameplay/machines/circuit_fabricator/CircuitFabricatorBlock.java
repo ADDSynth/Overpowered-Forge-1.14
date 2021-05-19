@@ -36,8 +36,7 @@ public final class CircuitFabricatorBlock extends MachineBlock {
 
   @Override
   @Nullable
-  @SuppressWarnings("deprecation")
-  public final TileEntity createNewTileEntity(IBlockReader world){
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TileCircuitFabricator();
   }
 

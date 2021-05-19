@@ -4,7 +4,6 @@ import javax.annotation.Nullable;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.LivingEntity;
@@ -14,8 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-@SuppressWarnings("deprecation")
-public final class BlackHole extends Block implements ITileEntityProvider {
+public final class BlackHole extends Block {
 
   public BlackHole(final String name){
     super(Block.Properties.create(Material.PORTAL, MaterialColor.BLACK).doesNotBlockMovement());
@@ -25,7 +23,8 @@ public final class BlackHole extends Block implements ITileEntityProvider {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(final IBlockReader world){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
     return new TileBlackHole();
   }
 

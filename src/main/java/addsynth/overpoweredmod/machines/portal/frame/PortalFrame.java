@@ -1,5 +1,6 @@
 package addsynth.overpoweredmod.machines.portal.frame;
 
+import javax.annotation.Nullable;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.api.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredTechnology;
@@ -25,7 +26,8 @@ public final class PortalFrame extends MachineBlock {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(IBlockReader worldIn){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TilePortalFrame();
   }
 
