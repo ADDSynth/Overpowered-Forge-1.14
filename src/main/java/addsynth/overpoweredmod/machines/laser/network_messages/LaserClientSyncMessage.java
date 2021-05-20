@@ -2,8 +2,8 @@ package addsynth.overpoweredmod.machines.laser.network_messages;
 
 import java.util.List;
 import java.util.function.Supplier;
-import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.game.MinecraftUtility;
+import addsynth.core.util.network.NetworkUtil;
 import addsynth.overpoweredmod.machines.laser.machine.TileLaserHousing;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.PacketBuffer;

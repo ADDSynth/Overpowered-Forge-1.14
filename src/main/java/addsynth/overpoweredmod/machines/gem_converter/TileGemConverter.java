@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.gem_converter;
 
 import javax.annotation.Nullable;
-import addsynth.core.util.game.AdvancementUtil;
+import addsynth.core.util.data.AdvancementUtil;
 import addsynth.core.util.game.Game;
 import addsynth.core.util.game.PlayerUtil;
 import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;

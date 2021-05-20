@@ -1,4 +1,4 @@
-package addsynth.core.util.game;
+package addsynth.core.util.server;
 
 import java.util.ArrayList;
 import javax.annotation.Nullable;

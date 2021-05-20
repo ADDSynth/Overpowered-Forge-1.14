@@ -2,8 +2,8 @@ package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import java.util.List;
 import java.util.function.Supplier;
-import addsynth.core.util.NetworkUtil;
 import addsynth.core.util.game.MinecraftUtility;
+import addsynth.core.util.network.NetworkUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;

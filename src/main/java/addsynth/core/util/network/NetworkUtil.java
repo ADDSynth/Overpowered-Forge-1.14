@@ -1,4 +1,4 @@
-package addsynth.core.util;
+package addsynth.core.util.network;
 
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;

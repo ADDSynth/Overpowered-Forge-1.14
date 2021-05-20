@@ -2,7 +2,7 @@ package addsynth.core.gameplay.team_manager.network_messages;
 
 import java.util.function.Supplier;
 import addsynth.core.gameplay.NetworkHandler;
-import addsynth.core.util.game.ScoreUtil;
+import addsynth.core.util.data.ScoreUtil;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.scoreboard.Score;
