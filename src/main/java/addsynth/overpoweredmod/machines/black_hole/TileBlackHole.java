@@ -1,12 +1,12 @@
 package addsynth.overpoweredmod.machines.black_hole;
 
 import addsynth.core.Constants;
-import addsynth.core.util.block.BlockMath;
 import addsynth.core.util.game.MessageUtil;
-import addsynth.core.util.game.WorldUtil;
 import addsynth.core.util.java.TimeUtil;
+import addsynth.core.util.math.BlockMath;
 import addsynth.core.util.math.MathUtility;
 import addsynth.core.util.server.ServerUtils;
+import addsynth.core.util.world.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.registers.Tiles;

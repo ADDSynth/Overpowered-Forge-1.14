@@ -5,7 +5,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.music_box.gui.GuiMusicBox;
 import addsynth.core.util.game.MinecraftUtility;
-import addsynth.core.util.game.PlayerUtil;
+import addsynth.core.util.player.PlayerUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;

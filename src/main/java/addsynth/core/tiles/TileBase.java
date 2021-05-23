@@ -3,7 +3,7 @@ package addsynth.core.tiles;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.util.game.MessageUtil;
-import addsynth.core.util.game.WorldUtil;
+import addsynth.core.util.world.WorldUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;

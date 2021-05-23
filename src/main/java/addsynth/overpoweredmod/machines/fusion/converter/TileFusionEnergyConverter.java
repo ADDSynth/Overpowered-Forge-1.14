@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.fusion.converter;
 import java.util.ArrayList;
 import addsynth.core.tiles.TileBase;
 import addsynth.core.util.game.MinecraftUtility;
-import addsynth.core.util.game.PlayerUtil;
+import addsynth.core.util.player.PlayerUtil;
 import addsynth.energy.lib.main.Generator;
 import addsynth.energy.lib.main.IEnergyGenerator;
 import addsynth.overpoweredmod.config.MachineValues;

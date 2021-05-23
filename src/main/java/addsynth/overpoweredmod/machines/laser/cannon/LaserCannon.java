@@ -4,7 +4,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.Constants;
 import addsynth.core.util.block.BlockShape;
-import addsynth.core.util.game.WorldUtil;
+import addsynth.core.util.world.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.game.core.Laser;

@@ -1,8 +1,8 @@
 package addsynth.energy.lib.energy_network;
 
 import java.util.ArrayList;
-import addsynth.core.util.math.DecimalNumber;
 import addsynth.core.util.math.MathUtility;
+import addsynth.core.util.math.number.DecimalNumber;
 import addsynth.energy.lib.main.Energy;
 import addsynth.energy.lib.main.ICustomEnergyUser;
 import net.minecraft.tileentity.TileEntity;

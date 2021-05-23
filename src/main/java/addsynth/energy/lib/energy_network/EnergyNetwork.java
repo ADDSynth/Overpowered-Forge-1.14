@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.Node;
 import addsynth.core.util.java.TimeUtil;
-import addsynth.core.util.math.DecimalNumber;
+import addsynth.core.util.math.number.DecimalNumber;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.lib.energy_network.tiles.AbstractEnergyNetworkTile;
 import addsynth.energy.lib.main.Energy;

@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.blocks.dimension.tree;
 
 import addsynth.core.block_network.Node;
 import addsynth.core.util.block.BlockUtil;
-import addsynth.core.util.game.WorldUtil;
+import addsynth.core.util.world.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Portal;

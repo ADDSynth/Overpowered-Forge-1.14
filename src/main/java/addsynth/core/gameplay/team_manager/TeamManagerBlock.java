@@ -4,6 +4,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.Constants;
 import addsynth.core.gameplay.team_manager.gui.TeamManagerGui;
 import addsynth.core.util.color.ColorCode;
+import addsynth.core.util.server.PermissionLevel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -20,22 +21,20 @@ import net.minecraft.world.World;
 
 public final class TeamManagerBlock extends Block {
 
-  private static final int required_permission_level = 2;
-
   public TeamManagerBlock(){
     super(Block.Properties.create(Material.ROCK, MaterialColor.IRON).sound(SoundType.STONE).hardnessAndResistance(2.0f, Constants.block_resistance));
     ADDSynthCore.registry.register_block(this, "team_manager", new Item.Properties().group(ADDSynthCore.creative_tab));
   }
 
   @Override
-  @SuppressWarnings("deprecation")
+  @SuppressWarnings({ "deprecation", "resource" })
   public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit){
     if(world.isRemote){
-      if(player.hasPermissionLevel(required_permission_level)){
+      if(player.hasPermissionLevel(PermissionLevel.COMMANDS)){
         Minecraft.getInstance().displayGuiScreen(new TeamManagerGui());
       }
       else{
-        player.sendMessage(new StringTextComponent(ColorCode.ERROR+"You need command permission level "+ColorCode.WHITE+required_permission_level+ColorCode.ERROR+" or higher to access the Team Manager."));
+        player.sendMessage(new StringTextComponent(ColorCode.ERROR+"You need command permission level "+ColorCode.WHITE+PermissionLevel.COMMANDS+ColorCode.ERROR+" or higher to access the Team Manager."));
       }
     }
     return true;

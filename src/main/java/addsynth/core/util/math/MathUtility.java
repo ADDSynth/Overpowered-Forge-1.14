@@ -6,6 +6,10 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.gui.widgets.scrollbar.Scrollbar;
 import net.minecraft.util.math.MathHelper;
 
+/** For math functions that use {@link net.minecraft.util.math.BlockPos BlockPos},
+ *  use {@link BlockMath} instead.
+ *  @author ADDSynth
+ */
 public final class MathUtility {
 
   public static final int getMin(final int ... input){
@@ -65,6 +69,8 @@ public final class MathUtility {
   
   // these clamp functions are here so I can find them, but they're also deprecated
   // so I know to replace them with Vanilla's methods. Please leave them as they are!
+
+  /** @deprecated Look at what this function does. Bypass this and use the vanilla method instead. */
   @Deprecated
   public static final int clamp(final int number, final int minimum, final int maximum){
     return MathHelper.clamp(number, minimum, maximum);
@@ -77,11 +83,13 @@ public final class MathUtility {
     return number > maximum ? maximum : number;
   }
 
+  /** @deprecated Look at what this function does. Bypass this and use the vanilla method instead. */
   @Deprecated
   public static final float clamp(final float number, final float minimum, final float maximum){
     return MathHelper.clamp(number, minimum, maximum);
   }
   
+  /** @deprecated Look at what this function does. Bypass this and use the vanilla method instead. */
   @Deprecated
   public static final double clamp(final double number, final double minimum, final float maximum){
     return MathHelper.clamp(number, minimum, maximum);
@@ -321,8 +329,20 @@ public final class MathUtility {
     return final_list;
   }
 
-  public static final double get_distance(double x1, double y1, double z1, double x2, double  y2, double z2){
+  public static final double get_distance(double x1, double z1, double x2, double z2){
+    return Math.sqrt(((x2 - x1) * (x2 - x1)) + ((z2 - z1) * (z2 - z1)));
+  }
+
+  public static final double get_distance(double x1, double y1, double z1, double x2, double y2, double z2){
     return Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)) + ((z2 - z1) * (z2 - z1)));
+  }
+
+  public static final boolean isWithin(double x1, double z1, double x2, double z2, double distance){
+    return get_distance(x1, z1, x2, z2) <= distance;
+  }
+
+  public static final boolean isWithin(double x1, double y1, double z1, double x2, double y2, double z2, double distance){
+    return get_distance(x1, y1, z1, x2, y2, z2) <= distance;
   }
 
   /** Returns a random integer between <code>minimum</code> (inclusive) and <code>maximum</code>

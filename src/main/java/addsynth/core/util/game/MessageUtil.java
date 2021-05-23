@@ -1,5 +1,6 @@
 package addsynth.core.util.game;
 
+import addsynth.core.util.player.PlayerUtil;
 import addsynth.core.util.server.ServerUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -51,7 +52,9 @@ public final class MessageUtil {
     @SuppressWarnings("resource")
     final MinecraftServer server = ServerUtils.getServer(world);
     if(server != null){
-      send_to_all_players_in_world(server, world, TextComponentHelper.createComponentTranslation(server, translation_key, arguments));
+      PlayerUtil.allPlayersInWorld(server, world, (ServerPlayerEntity player) -> {
+        player.sendMessage(TextComponentHelper.createComponentTranslation(server, translation_key, arguments));
+      });
     }
   }
 
@@ -59,15 +62,9 @@ public final class MessageUtil {
     @SuppressWarnings("resource")
     final MinecraftServer server = ServerUtils.getServer(world);
     if(server != null){
-      send_to_all_players_in_world(server, world, text_component);
-    }
-  }
-
-  private static final void send_to_all_players_in_world(final MinecraftServer server, final World world, final ITextComponent text_component){
-    for(final ServerPlayerEntity player : server.getPlayerList().getPlayers()){
-      if(player.world.getDimension().getType() == world.getDimension().getType()){
+      PlayerUtil.allPlayersInWorld(server, world, (ServerPlayerEntity player) -> {
         player.sendMessage(text_component);
-      }
+      });
     }
   }
 

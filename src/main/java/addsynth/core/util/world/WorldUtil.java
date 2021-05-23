@@ -1,4 +1,4 @@
-package addsynth.core.util.game;
+package addsynth.core.util.world;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
@@ -7,11 +7,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.Heightmap;
 
 public final class WorldUtil {
 
   public static final void delete_block(final World world, final BlockPos position){
     world.setBlockState(position, Blocks.AIR.getDefaultState(), 3);
+  }
+
+  public static final int getTopMostFreeSpace(final World world, final BlockPos position){
+    return world.getChunk(position).getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, position.getX(), position.getZ()) + 1;
+  }
+  
+  public static final int getTopMostFreeSpace(final World world, final int x_pos, final int z_pos){
+    return world.getChunk(x_pos >> 4, z_pos >> 4).getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, x_pos, z_pos) + 1;
   }
 
   /** Spawns an ItemStack using the vanilla method. */

@@ -3,7 +3,7 @@ package addsynth.core.gameplay.music_box;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.CoreItem;
 import addsynth.core.util.game.MessageUtil;
-import addsynth.core.util.game.PlayerUtil;
+import addsynth.core.util.player.PlayerUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;

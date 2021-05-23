@@ -1,7 +1,6 @@
-package addsynth.core.util.block;
+package addsynth.core.util.math;
 
 import java.util.Collection;
-import addsynth.core.util.math.MathUtility;
 import net.minecraft.util.math.BlockPos;
 
 public final class BlockMath {
@@ -20,7 +19,7 @@ public final class BlockMath {
   }
 
   /** Returns the distance between a block and an entity.
-   * 
+   *  Adds 0.5 to the BlockPos to set the point in the center of the block.
    * @param block_position
    * @param x
    * @param y
@@ -28,6 +27,45 @@ public final class BlockMath {
    */
   public static final double get_distance(BlockPos block_position, double x, double y, double z){
     return MathUtility.get_distance(block_position.getX() + 0.5, block_position.getY() + 0.5, block_position.getZ() + 0.5, x, y, z);
+  }
+
+  /** Gets horizontal distance between a block and an entity.
+   *  Adds 0.5 to the BlockPos to set the point in the center of the block.
+   * @param block_position
+   * @param x
+   * @param z
+   */
+  public static final double getHorizontalDistance(BlockPos block_position, double x, double z){
+    return MathUtility.get_distance(block_position.getX() + 0.5, block_position.getZ() + 0.5, x, z);
+  }
+
+  /** Returns whether an Entity's position is within the radius of the BlockPos.
+   *  Adds 0.5 to the BlockPos to set the point in the center of the block.
+   * @param position
+   * @param x
+   * @param y
+   * @param z
+   * @param distance
+   */
+  public static final boolean isWithin(BlockPos position, double x, double y, double z, double distance){
+    return get_distance(position, x, y, z) <= distance;
+  }
+
+  /** Returns whether an Entity's horizontal position is within range of the BlockPos.
+   *  Adds 0.5 to the BlockPos to set the point in the center of the block.
+   * @param position
+   * @param x
+   * @param z
+   * @param distance
+   */
+  public static final boolean isWithinHorizontal(BlockPos position, double x, double z, double distance){
+    return getHorizontalDistance(position, x, z) <= distance;
+  }
+
+  /** @deprecated Look at what this function does. Bypass this and use the vanilla method instead. */
+  @Deprecated
+  public static final boolean isWithin(final BlockPos position1, final BlockPos position2, double distance){
+    return position1.withinDistance(position2, distance);
   }
 
   /**

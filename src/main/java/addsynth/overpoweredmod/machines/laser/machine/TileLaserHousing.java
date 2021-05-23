@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
 import addsynth.core.tiles.TileBase;
-import addsynth.core.util.game.PlayerUtil;
+import addsynth.core.util.player.PlayerUtil;
 import addsynth.energy.lib.main.Energy;
 import addsynth.energy.lib.main.IEnergyConsumer;
 import addsynth.energy.lib.main.Receiver;
