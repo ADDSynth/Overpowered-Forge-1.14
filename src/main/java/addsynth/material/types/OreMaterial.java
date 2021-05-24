@@ -32,7 +32,7 @@ public class OreMaterial extends BaseMaterial {
   /** Custom Material */
   public OreMaterial(final String name, final MaterialColor color, final MiningStrength strength){
     // Silicon, Uranium, and Yellorium
-    super(true, name, new MaterialItem(name), null); // TODO: needs generic block
+    super(true, name, new MaterialItem(name));
     this.ore = new OreBlock(name+"_ore", strength);
   }
 

@@ -1,5 +1,6 @@
 package addsynth.material.types;
 
+import javax.annotation.Nonnull;
 import addsynth.material.ADDSynthMaterials;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -23,7 +24,21 @@ public class BaseMaterial extends AbstractMaterial {
     this.block_item = null;
   }
 
-  public BaseMaterial(final boolean custom, final String name, final Item item, final Block block){
+  public BaseMaterial(final boolean custom, final String name, final Item item){
+    super(custom, name);
+    this.item = item;
+    this.block = null;
+    this.block_item = null;
+  }
+
+  /** A block has more characteristics than an item. If you need a Storage Block for your
+   *  material, you should define it yourself.
+   * @param custom
+   * @param name
+   * @param item
+   * @param block
+   */
+  public BaseMaterial(final boolean custom, final String name, final Item item, @Nonnull final Block block){
     super(custom, name);
     this.item = item;
     this.block = block;

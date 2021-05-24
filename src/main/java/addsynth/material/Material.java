@@ -66,39 +66,20 @@ public final class Material {
   public static final Metal TITANIUM = new Metal("titanium", MaterialColor.SNOW,   MiningStrength.IRON);
 
   // manufactured metals
+  /** Metal alloy of Copper and Zinc. Generally 2 parts Copper, 1 part Zinc.
+   *  Used in applications where corrosion resistance and low friction is required, such as door hinges and gears. */
   public static final Metal BRASS    = new ManufacturedMetal("brass",  MaterialColor.YELLOW, MiningStrength.IRON);
-  public static final Metal BRONZE   = new ManufacturedMetal("bronze", MaterialColor.ADOBE,  MiningStrength.IRON); // (combined form of tin and copper)
-  public static final Metal INVAR    = new ManufacturedMetal("invar",  MaterialColor.SAND,   MiningStrength.IRON); // (combination of Iron and Nickel)
-  public static final Metal STEEL    = new ManufacturedMetal("steel",  MaterialColor.GRAY,   MiningStrength.IRON); // (advanced version of iron)
+  /** Metal alloy of Tin and Copper. Stronger and more durable than Copper alone. */
+  public static final Metal BRONZE   = new ManufacturedMetal("bronze", MaterialColor.ADOBE,  MiningStrength.IRON);
+  /** Metal alloy of Iron and Nickel. Known for its strong resistance to heat expansion.
+   *  Has a simplified Nickel/Iron ratio of 3/5 or 1/2. */
+  public static final Metal INVAR    = new ManufacturedMetal("invar",  MaterialColor.SAND,   MiningStrength.IRON);
+  /** An advanced version of Iron. Metal alloy of Iron with a very small amount of Carbon. */
+  public static final Metal STEEL    = new ManufacturedMetal("steel",  MaterialColor.GRAY,   MiningStrength.IRON);
   
   // other materials
   public static final OreMaterial SILICON   = new OreMaterial("silicon",   MaterialColor.GRAY,   MiningStrength.IRON);
   public static final OreMaterial URANIUM   = new OreMaterial("uranium",   MaterialColor.LIME,   MiningStrength.IRON);
   public static final OreMaterial YELLORIUM = new OreMaterial("yellorium", MaterialColor.YELLOW, MiningStrength.ANY);
-
-  /** Call this function if you want a material in your mod.  */
-  public static final void register(final BaseMaterial material){
-  }
-
-  public static final void register(final BaseMaterial material, boolean item, boolean block, boolean ore){
-  }
-
-  public static final void register(final OreMaterial material){// MAYBE: Materials have many different item and block types, perhaps I should use a bit mask enum?
-  }
-
-  public static final void register(final OreMaterial material, boolean item, boolean block, boolean ore, boolean dust){
-  }
-
-  public static final void register(final Gem material){
-  }
-
-  public static final void register(final Gem material, boolean gem, boolean shard, boolean block, boolean ore){
-  }
-
-  public static final void register(final Metal metal){
-  }
-  
-  public static final void register(final Metal metal, boolean ingot, boolean block, boolean ore, boolean nugget, boolean plate, boolean dust){
-  }
 
 }
