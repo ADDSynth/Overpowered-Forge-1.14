@@ -13,9 +13,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public final class BlackHole extends Block {
+public final class BlackHoleBlock extends Block {
 
-  public BlackHole(final String name){
+  public BlackHoleBlock(final String name){
     super(Block.Properties.create(Material.PORTAL, MaterialColor.BLACK).doesNotBlockMovement());
     // setResistance(100.0f);
     OverpoweredTechnology.registry.register_block(this, name);

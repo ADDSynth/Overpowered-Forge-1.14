@@ -11,7 +11,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUniversalEnergyTransfer, ContainerUniversalInterface> {
+public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUniversalEnergyInterface, ContainerUniversalEnergyInterface> {
 
   private static final ResourceLocation universal_interface_gui_texture =
     new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/universal_energy_interface.png");
@@ -25,15 +25,15 @@ public final class GuiUniversalEnergyInterface extends GuiEnergyBase<TileUnivers
   private static final int line_1 = 21;
   private static final int line_2 = 41;
 
-  public GuiUniversalEnergyInterface(final ContainerUniversalInterface container, final PlayerInventory player_inventory, final ITextComponent title){
+  public GuiUniversalEnergyInterface(final ContainerUniversalEnergyInterface container, final PlayerInventory player_inventory, final ITextComponent title){
     super(176, 60, container, player_inventory, title, universal_interface_gui_texture);
   }
 
   private static final class CycleTransferModeButton extends AdjustableButton {
 
-    private final TileUniversalEnergyTransfer tile;
+    private final TileUniversalEnergyInterface tile;
 
-    public CycleTransferModeButton(int xIn, int yIn, TileUniversalEnergyTransfer tile){
+    public CycleTransferModeButton(int xIn, int yIn, TileUniversalEnergyInterface tile){
       super(xIn, yIn, button_width, 16);
       this.tile = tile;
     }

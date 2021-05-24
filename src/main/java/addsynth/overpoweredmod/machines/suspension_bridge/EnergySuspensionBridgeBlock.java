@@ -23,9 +23,9 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class EnergySuspensionBridge extends MachineBlock {
+public final class EnergySuspensionBridgeBlock extends MachineBlock {
 
-  public EnergySuspensionBridge(final String name){
+  public EnergySuspensionBridgeBlock(final String name){
     super(MaterialColor.GRAY);
     OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }

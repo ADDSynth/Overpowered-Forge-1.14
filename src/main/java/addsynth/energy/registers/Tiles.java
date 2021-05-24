@@ -7,7 +7,7 @@ import addsynth.energy.gameplay.machines.electric_furnace.TileElectricFurnace;
 import addsynth.energy.gameplay.machines.energy_storage.TileEnergyStorage;
 import addsynth.energy.gameplay.machines.energy_wire.TileEnergyWire;
 import addsynth.energy.gameplay.machines.generator.TileGenerator;
-import addsynth.energy.gameplay.machines.universal_energy_interface.TileUniversalEnergyTransfer;
+import addsynth.energy.gameplay.machines.universal_energy_interface.TileUniversalEnergyInterface;
 import net.minecraft.tileentity.TileEntityType;
 
 public final class Tiles {
@@ -30,7 +30,7 @@ public final class Tiles {
   public static final TileEntityType<TileCircuitFabricator> CIRCUIT_FABRICATOR =
     TileEntityType.Builder.create(TileCircuitFabricator::new, EnergyBlocks.circuit_fabricator).build(null);
 
-  public static final TileEntityType<TileUniversalEnergyTransfer> UNIVERSAL_ENERGY_INTERFACE =
-    TileEntityType.Builder.create(TileUniversalEnergyTransfer::new, EnergyBlocks.universal_energy_machine).build(null);
+  public static final TileEntityType<TileUniversalEnergyInterface> UNIVERSAL_ENERGY_INTERFACE =
+    TileEntityType.Builder.create(TileUniversalEnergyInterface::new, EnergyBlocks.universal_energy_machine).build(null);
 
 }

@@ -20,9 +20,9 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public final class FusionEnergyConverter extends MachineBlock {
+public final class FusionEnergyConverterBlock extends MachineBlock {
 
-  public FusionEnergyConverter(final String name){
+  public FusionEnergyConverterBlock(final String name){
     super(MaterialColor.SNOW);
     OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }

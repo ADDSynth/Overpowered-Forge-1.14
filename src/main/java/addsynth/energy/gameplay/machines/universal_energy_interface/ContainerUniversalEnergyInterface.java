@@ -5,13 +5,13 @@ import addsynth.energy.registers.Containers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 
-public final class ContainerUniversalInterface extends TileEntityContainer<TileUniversalEnergyTransfer> {
+public final class ContainerUniversalEnergyInterface extends TileEntityContainer<TileUniversalEnergyInterface> {
 
-  public ContainerUniversalInterface(final int id, final PlayerInventory player_inventory, final TileUniversalEnergyTransfer tile){
+  public ContainerUniversalEnergyInterface(final int id, final PlayerInventory player_inventory, final TileUniversalEnergyInterface tile){
     super(Containers.UNIVERSAL_ENERGY_INTERFACE, id, player_inventory, tile);
   }
 
-  public ContainerUniversalInterface(final int id, final PlayerInventory player_inventory, final PacketBuffer data){
+  public ContainerUniversalEnergyInterface(final int id, final PlayerInventory player_inventory, final PacketBuffer data){
     super(Containers.UNIVERSAL_ENERGY_INTERFACE, id, player_inventory, data);
   }
 

@@ -1,10 +1,11 @@
-package addsynth.energy.gameplay.machines.compressor;
+package addsynth.overpoweredmod.machines.inverter;
 
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.util.game.MinecraftUtility;
-import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.lib.blocks.MachineBlock;
+import addsynth.overpoweredmod.OverpoweredTechnology;
+import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
@@ -22,29 +23,29 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class Compressor extends MachineBlock {
+public final class InverterBlock extends MachineBlock {
 
-  public Compressor(final String name){
-    super(MaterialColor.WOOL);
-    ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
+  public InverterBlock(final String name){
+    super(MaterialColor.SNOW);
+    OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override
   public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-    tooltip.add(new StringTextComponent("Class 1 Machine"));
+    tooltip.add(new StringTextComponent("Class 3 Machine"));
   }
 
   @Override
   @Nullable
-  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
-    return new TileCompressor();
+  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
+    return new TileInverter();
   }
 
   @Override
   @SuppressWarnings("deprecation")
   public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final TileCompressor tile = MinecraftUtility.getTileEntity(pos, world, TileCompressor.class);
+      final TileInverter tile = MinecraftUtility.getTileEntity(pos, world, TileInverter.class);
       if(tile != null){
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }

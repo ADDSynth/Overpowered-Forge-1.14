@@ -8,7 +8,7 @@ import addsynth.overpoweredmod.items.EnergyCrystal;
 import addsynth.overpoweredmod.items.EnergyCrystalShards;
 import addsynth.overpoweredmod.items.OverpoweredItem;
 import addsynth.overpoweredmod.items.VoidCrystal;
-import addsynth.overpoweredmod.machines.black_hole.BlackHole;
+import addsynth.overpoweredmod.machines.black_hole.BlackHoleBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
@@ -27,7 +27,7 @@ public final class Init {
   public static final Block                   null_block               = new NullBlock("null_block");
 
   public static final Block                   iron_frame_block         = new IronFrameBlock("iron_frame_block");
-  public static final BlackHole               black_hole               = new BlackHole("black_hole");
+  public static final BlackHoleBlock          black_hole               = new BlackHoleBlock("black_hole");
 
   static {
     Debug.log_setup_info("Finished loading Init class.");

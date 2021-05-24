@@ -22,7 +22,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 
-public final class TileUniversalEnergyTransfer extends BasicEnergyNetworkTile
+public final class TileUniversalEnergyInterface extends BasicEnergyNetworkTile
   // The Universal Energy Interface should REMAIN as an ICustomEnergyUser
   // and SHOULD NOT be treated as a Battery. Confirmed.
   implements ICustomEnergyUser, INamedContainerProvider {
@@ -44,7 +44,7 @@ public final class TileUniversalEnergyTransfer extends BasicEnergyNetworkTile
 
   private TRANSFER_MODE transfer_mode = TRANSFER_MODE.BI_DIRECTIONAL;
 
-  public TileUniversalEnergyTransfer(){
+  public TileUniversalEnergyInterface(){
     super(Tiles.UNIVERSAL_ENERGY_INTERFACE);
   }
 
@@ -136,7 +136,7 @@ public final class TileUniversalEnergyTransfer extends BasicEnergyNetworkTile
   @Override
   @Nullable
   public Container createMenu(int id, PlayerInventory player_inventory, PlayerEntity player){
-    return new ContainerUniversalInterface(id, player_inventory, this);
+    return new ContainerUniversalEnergyInterface(id, player_inventory, this);
   }
 
   @Override

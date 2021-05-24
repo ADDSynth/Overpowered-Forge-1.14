@@ -6,7 +6,7 @@ import addsynth.energy.gameplay.machines.electric_furnace.TileElectricFurnace;
 import addsynth.energy.gameplay.machines.energy_storage.TileEnergyStorage;
 import addsynth.energy.gameplay.machines.energy_wire.TileEnergyWire;
 import addsynth.energy.gameplay.machines.generator.TileGenerator;
-import addsynth.energy.gameplay.machines.universal_energy_interface.TileUniversalEnergyTransfer;
+import addsynth.energy.gameplay.machines.universal_energy_interface.TileUniversalEnergyInterface;
 import appeng.api.AEAddon;
 import appeng.api.IAEAddon;
 import appeng.api.IAppEngApi;
@@ -24,7 +24,7 @@ public final class AppliedEnergisticsCompat implements IAEAddon {
     moveable_registry.whiteListTileEntity(TileCompressor.class);
     moveable_registry.whiteListTileEntity(TileElectricFurnace.class);
     moveable_registry.whiteListTileEntity(TileCircuitFabricator.class);
-    moveable_registry.whiteListTileEntity(TileUniversalEnergyTransfer.class);
+    moveable_registry.whiteListTileEntity(TileUniversalEnergyInterface.class);
   }
 
 }

@@ -23,9 +23,9 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class AdvancedOreRefinery extends MachineBlock {
+public final class AdvancedOreRefineryBlock extends MachineBlock {
 
-  public AdvancedOreRefinery(final String name){
+  public AdvancedOreRefineryBlock(final String name){
     super(MaterialColor.BLACK);
     OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }

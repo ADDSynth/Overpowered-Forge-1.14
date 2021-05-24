@@ -1,4 +1,4 @@
-package addsynth.overpoweredmod.machines.identifier;
+package addsynth.overpoweredmod.machines.gem_converter;
 
 import java.util.List;
 import javax.annotation.Nullable;
@@ -23,29 +23,29 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class Identifier extends MachineBlock {
+public final class GemConverterBlock extends MachineBlock {
 
-  public Identifier(final String name){
+  public GemConverterBlock(final String name){
     super(MaterialColor.SNOW);
     OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override
   public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-    tooltip.add(new StringTextComponent("Class 3 Machine"));
+    tooltip.add(new StringTextComponent("Class 2 Machine"));
   }
 
   @Override
   @Nullable
-  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
-    return new TileIdentifier();
+  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
+    return new TileGemConverter();
   }
 
   @Override
   @SuppressWarnings("deprecation")
   public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final TileIdentifier tile = MinecraftUtility.getTileEntity(pos, world, TileIdentifier.class);
+      final TileGemConverter tile = MinecraftUtility.getTileEntity(pos, world, TileGemConverter.class);
       if(tile != null){
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }

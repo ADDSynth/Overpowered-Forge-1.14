@@ -1,4 +1,4 @@
-package addsynth.overpoweredmod.machines.crystal_matter_generator;
+package addsynth.overpoweredmod.machines.identifier;
 
 import java.util.List;
 import javax.annotation.Nullable;
@@ -23,29 +23,29 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class CrystalMatterGenerator extends MachineBlock {
+public final class IdentifierBlock extends MachineBlock {
 
-  public CrystalMatterGenerator(final String name){
-    super(MaterialColor.WOOL);
+  public IdentifierBlock(final String name){
+    super(MaterialColor.SNOW);
     OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override
   public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-    tooltip.add(new StringTextComponent("Class 4 Machine"));
+    tooltip.add(new StringTextComponent("Class 3 Machine"));
   }
 
   @Override
   @Nullable
   public final TileEntity createTileEntity(BlockState state, IBlockReader world){
-    return new TileCrystalMatterGenerator();
+    return new TileIdentifier();
   }
 
   @Override
   @SuppressWarnings("deprecation")
   public final boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final TileCrystalMatterGenerator tile = MinecraftUtility.getTileEntity(pos, world, TileCrystalMatterGenerator.class);
+      final TileIdentifier tile = MinecraftUtility.getTileEntity(pos, world, TileIdentifier.class);
       if(tile != null){
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }
