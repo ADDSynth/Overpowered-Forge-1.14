@@ -1,26 +1,41 @@
 package addsynth.core.util.world;
 
+import addsynth.core.util.server.ServerUtils;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.server.ServerWorld;
 
 public final class WorldUtil {
 
-  public static final void delete_block(final World world, final BlockPos position){
-    world.setBlockState(position, Blocks.AIR.getDefaultState(), 3);
+  /** Ever since Minecraft 1.13, there are now two other types of Air, Cave Air and Void Air.
+   *  There may also be other Air blocks that are defined by mods.
+   * @param world
+   * @param position
+   * @deprecated Look at what this function does. Bypass this and use the vanilla method instead.
+   */
+  @Deprecated
+  public static final boolean isAir(final World world, final BlockPos position){
+    return world.isAirBlock(position);
   }
 
   public static final int getTopMostFreeSpace(final World world, final BlockPos position){
-    return world.getChunk(position).getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, position.getX(), position.getZ()) + 1;
+    return world.getChunk(position).getTopBlockY(Heightmap.Type.WORLD_SURFACE, position.getX(), position.getZ()) + 1;
   }
   
   public static final int getTopMostFreeSpace(final World world, final int x_pos, final int z_pos){
-    return world.getChunk(x_pos >> 4, z_pos >> 4).getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, x_pos, z_pos) + 1;
+    return world.getChunk(x_pos >> 4, z_pos >> 4).getTopBlockY(Heightmap.Type.WORLD_SURFACE, x_pos, z_pos) + 1;
+  }
+
+  public static final void delete_block(final World world, final BlockPos position){
+    world.setBlockState(position, Blocks.AIR.getDefaultState(), 3);
   }
 
   /** Spawns an ItemStack using the vanilla method. */
@@ -78,6 +93,43 @@ public final class WorldUtil {
         world.addEntity(entity);
       }
     }
+  }
+
+  /** @see net.minecraft.command.impl.TimeCommand */
+  public static final void set_time(final World world, final int world_time){
+    @SuppressWarnings("resource")
+    final MinecraftServer server = ServerUtils.getServer(world);
+    if(server != null){
+      for(ServerWorld w : server.getWorlds()){
+        w.setDayTime((long)world_time);
+      }
+    }
+  }
+
+  /** @see net.minecraft.command.impl.TimeCommand */
+  public static final void set_time(final MinecraftServer server, final int world_time){
+    for(ServerWorld world : server.getWorlds()){
+      world.setDayTime((long)world_time);
+    }
+  }
+
+  /** @deprecated Look at what this function does. Bypass this and use the vanilla method instead. */
+  @Deprecated
+  public static final BlockPos getSpawnPosition(final World world){
+    return world.getSpawnPoint();
+  }
+
+  @SuppressWarnings("resource")
+  @Deprecated
+  public static final BlockPos getSpawnPosition(){
+    final MinecraftServer server = ServerUtils.getServer();
+    if(server != null){
+      final World world = server.func_71218_a(DimensionType.OVERWORLD);
+      if(world != null){
+        return world.getSpawnPoint();
+      }
+    }
+    return BlockPos.ZERO;
   }
 
 }

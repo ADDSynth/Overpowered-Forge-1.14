@@ -132,8 +132,4 @@ public class OverpoweredTechnology {
     event.getConfig().save();
   }
 
-  // TODO: add item_explosion command in Overpowered version 1.4.
-  //       also add a zombie_raid command.
-  //       also add bat blackout command.
-
 }

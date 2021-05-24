@@ -16,6 +16,11 @@ public final class Features {
   public static ForgeConfigSpec.BooleanValue gold_trophy;
   public static ForgeConfigSpec.BooleanValue platinum_trophy;
 
+  public static ForgeConfigSpec.BooleanValue item_explosion_command;
+  public static ForgeConfigSpec.BooleanValue zombie_raid_command;
+  public static ForgeConfigSpec.BooleanValue blackout_command;
+  public static ForgeConfigSpec.BooleanValue lightning_storm_command;
+
   public static final boolean trophies(){
     return bronze_trophy.get() || silver_trophy.get() || gold_trophy.get() || platinum_trophy.get();
   }
@@ -39,6 +44,13 @@ public final class Features {
     silver_trophy   = builder.define("Silver Trophy",   true);
     gold_trophy     = builder.define("Gold Trophy",     true);
     platinum_trophy = builder.define("Platinum Trophy", true);
+    builder.pop();
+    
+    builder.push("Commands");
+    item_explosion_command  = builder.define("Item Explosion",  true);
+    zombie_raid_command     = builder.define("Zombie Raid",     true);
+    blackout_command        = builder.define("Blackout",        true);
+    lightning_storm_command = builder.define("Lightning Storm", true);
     builder.pop();
     
     builder.pop();

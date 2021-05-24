@@ -1,6 +1,8 @@
 package addsynth.core.util.math;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import net.minecraft.util.math.BlockPos;
 
 public final class BlockMath {
@@ -27,6 +29,13 @@ public final class BlockMath {
    */
   public static final double get_distance(BlockPos block_position, double x, double y, double z){
     return MathUtility.get_distance(block_position.getX() + 0.5, block_position.getY() + 0.5, block_position.getZ() + 0.5, x, y, z);
+  }
+
+  /** Gets the horizontal distance between 2 Block Positions, ignoring their y levels. */
+  public static final double getHorizontalDistance(final BlockPos position_1, final BlockPos position_2){
+    final int x_value = (position_2.getX() - position_1.getX()) * (position_2.getX() - position_1.getX());
+    final int z_value = (position_2.getZ() - position_1.getZ()) * (position_2.getZ() - position_1.getZ());
+    return Math.sqrt((double)(x_value + z_value));
   }
 
   /** Gets horizontal distance between a block and an entity.
@@ -64,8 +73,13 @@ public final class BlockMath {
 
   /** @deprecated Look at what this function does. Bypass this and use the vanilla method instead. */
   @Deprecated
-  public static final boolean isWithin(final BlockPos position1, final BlockPos position2, double distance){
+  public static final boolean isWithin(final BlockPos position1, final BlockPos position2, final double distance){
     return position1.withinDistance(position2, distance);
+  }
+
+  /** Returns whether the two Block Positions are horizontally in range of each other, ignoring their y levels. */
+  public static final boolean isWithinHorizontal(final BlockPos position1, final BlockPos position2, final double distance){
+    return getHorizontalDistance(position1, position2) <= distance;
   }
 
   /**
@@ -256,4 +270,132 @@ public final class BlockMath {
     return rectangle;
   }
 
+  public static final class BlockDistanceComparator implements Comparator<BlockPos> {
+    private final BlockPos origin;
+    public BlockDistanceComparator(final BlockPos origin){
+      this.origin = origin;
+    }
+    @Override
+    public int compare(BlockPos pos1, BlockPos pos2){
+      final double length1 = get_distance(origin, pos1);
+      final double length2 = get_distance(origin, pos2);
+      if(length1 < length2){ return -1; }
+      if(length1 > length2){ return 1; }
+      return 0;
+    }
+  }
+  // OPTIMIZE: by using a class or MapEntry that pairs the BlockPos with the distance, then sort the pairs by distance.
+
+  /*
+  public static final class BlockHorizontalDistanceComparator implements Comparator<BlockPos> {
+    private final BlockPos origin;
+    public BlockHorizontalDistanceComparator(final BlockPos origin){
+      this.origin = origin;
+    }
+    @Override
+    public int compare(BlockPos pos1, BlockPos pos2){
+      final double length1 = getHorizontalDistance(origin, pos1);
+      final double length2 = getHorizontalDistance(origin, pos2);
+      if(length1 < length2){ return -1; }
+      if(length1 > length2){ return 1; }
+      return 0;
+    }
+  }
+  */
+
+  /** This returns a list of Block Positions arranged in a cyllinder, given the origin and radius.
+   *  The returned list is sorted so positions near the center are towards the beginning.
+   * @param origin
+   * @param radius
+   */
+  public static final Collection<BlockPos> getBlockPositionsAroundPillar(BlockPos origin, int radius){
+    return getBlockPositionsAroundPillar(origin, radius, radius);
+  }
+
+  /** This returns a list of Block Positions arranged in a cyllinder, given the origin and dimensions.
+   *  The returned list is sorted so positions near the center are towards the beginning.
+   * @param origin
+   * @param horizontal_radius
+   * @param vertical_radius
+   */
+  public static final Collection<BlockPos> getBlockPositionsAroundPillar(BlockPos origin, int horizontal_radius, int vertical_radius){
+    final ArrayList<BlockPos> list = new ArrayList<>();
+    final int final_x = origin.getX() + horizontal_radius;
+    final int final_y = origin.getY() + vertical_radius;
+    final int final_z = origin.getZ() + horizontal_radius;
+    int x;
+    int y;
+    int z;
+    for(y = origin.getY() - vertical_radius; y < final_y; y++){
+      for(x = origin.getX() - horizontal_radius; x < final_x; x++){
+        for(z = origin.getZ() - horizontal_radius; z < final_z; z++){
+          final BlockPos pos = new BlockPos(x, y, z);
+          if(isWithinHorizontal(origin, pos, horizontal_radius)){
+            list.add(pos);
+          }
+        }
+      }
+    }
+    list.sort(new BlockDistanceComparator(origin));
+    return list;
+  }
+
+  /** This returns a list of Block Positions in a spherical shape, given the origin and radius.
+   *  The returned list is sorted so positions near the center are towards the beginning.
+   * @param origin
+   * @param radius
+   */
+  public static final Collection<BlockPos> getBlockPositionsAroundPoint(BlockPos origin, int radius){
+    final ArrayList<BlockPos> list = new ArrayList<>();
+    final int final_x = origin.getX() + radius;
+    final int final_y = origin.getY() + radius;
+    final int final_z = origin.getZ() + radius;
+    int x;
+    int y;
+    int z;
+    for(y = origin.getY() - radius; y < final_y; y++){
+      for(x = origin.getX() - radius; x < final_x; x++){
+        for(z = origin.getZ() - radius; z < final_z; z++){
+          final BlockPos pos = new BlockPos(x, y, z);
+          if(origin.withinDistance(pos, radius)){
+            list.add(pos);
+          }
+        }
+      }
+    }
+    list.sort(new BlockDistanceComparator(origin));
+    return list;
+  }
+
+  /** This returns a list of Block Positions arranged in a custom shaped sphere, given the arguments.
+   *  The returned list is sorted so positions near the center are towards the beginning.
+   * @param origin
+   * @param horizontal_radius
+   * @param vertical_radius
+   * @deprecated You'll need to fix the problem with this function before you can use it.
+   *             Not correctly calculating the distance of a point to its origin given a non-uniform radius.
+   */
+  @Deprecated
+  public static final Collection<BlockPos> getBlockPositionsAroundPoint(BlockPos origin, int horizontal_radius, int vertical_radius){
+    final ArrayList<BlockPos> list = new ArrayList<>();
+    final int final_x = origin.getX() + horizontal_radius;
+    final int final_y = origin.getY() + vertical_radius;
+    final int final_z = origin.getZ() + horizontal_radius;
+    int x;
+    int y;
+    int z;
+    for(y = origin.getY() - vertical_radius; y < final_y; y++){
+      for(x = origin.getX() - horizontal_radius; x < final_x; x++){
+        for(z = origin.getZ() - horizontal_radius; z < final_z; z++){
+          final BlockPos pos = new BlockPos(x, y, z);
+          if(origin.withinDistance(pos, (horizontal_radius + vertical_radius) / 2)){
+            list.add(pos);
+          }
+        }
+      }
+    }
+    list.sort(new BlockDistanceComparator(origin));
+    return list;
+  }
+  
 }

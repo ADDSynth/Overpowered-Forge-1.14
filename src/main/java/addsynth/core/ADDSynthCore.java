@@ -5,6 +5,7 @@ import addsynth.core.config.*;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.NetworkHandler;
+import addsynth.core.gameplay.commands.ADDSynthCommands;
 import addsynth.core.gameplay.compat.CompatabilityManager;
 import addsynth.core.gameplay.team_manager.TeamData;
 import addsynth.material.MaterialsUtil;
@@ -49,17 +50,20 @@ public final class ADDSynthCore {
 
   public ADDSynthCore(){
     ADDSynthCore.log.info("Begin constructing ADDSynthCore class object...");
+
     final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
     final IEventBus bus = context.getModEventBus();
     bus.addListener(ADDSynthCore::main_setup);
     bus.addListener(ADDSynthCore::client_setup);
-    MinecraftForge.EVENT_BUS.addListener(ADDSynthCore::onServerStarting); // UNUSED
+    MinecraftForge.EVENT_BUS.addListener(ADDSynthCore::onServerStarting);
 
     init_config();
 
     if(Features.team_manager.get()){
       MinecraftForge.EVENT_BUS.addListener(TeamData::serverTick);
     }
+    MinecraftForge.EVENT_BUS.addListener(ADDSynthCommands::tick);
+    
     ADDSynthCore.log.info("Done constructing ADDSynthCore class object.");
   }
 
@@ -97,6 +101,7 @@ public final class ADDSynthCore {
   }
 
   public static void onServerStarting(final FMLServerStartingEvent event){
+    ADDSynthCommands.register(event.getCommandDispatcher());
     // TODO: I can customize recipes here?
     // TODO: change the recipes of the Trophies to use ingots instead of metal plates, if no plates exist.
     // And if I can do that, go ahead and reimplement the ability to disable the Trophy base item.

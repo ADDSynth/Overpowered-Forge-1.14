@@ -4,7 +4,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.Constants;
 import addsynth.core.gameplay.team_manager.gui.TeamManagerGui;
 import addsynth.core.util.color.ColorCode;
-import addsynth.core.util.server.PermissionLevel;
+import addsynth.core.util.command.PermissionLevel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;

@@ -19,6 +19,15 @@ public static final double tick_time_in_seconds = 1.0 / ticks_per_second;
 public static final long tick_time_in_milliseconds = 1000 / ticks_per_second;
 public static final long tick_time_in_nanoseconds = 1_000_000_000 / ticks_per_second;
 
+public static final int minecraft_day_in_ticks = 24_000; // 20 real-life minutes.
+public static final int minecraft_day_in_seconds = 1_200;
+public static final int minecraft_half_day_in_ticks = 12_000;
+public static final int minecraft_half_day_in_seconds = 600;
+public static final int world_time_day      =  1000;
+public static final int world_time_noon     =  6000;
+public static final int world_time_night    = 13000;
+public static final int world_time_midnight = 18000;
+
 public static final int DOWN  = Direction.DOWN.ordinal();
 public static final int UP    = Direction.UP.ordinal();
 public static final int NORTH = Direction.NORTH.ordinal();

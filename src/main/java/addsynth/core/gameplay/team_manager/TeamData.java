@@ -20,8 +20,8 @@ import net.minecraft.scoreboard.Team;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.Phase;
+import net.minecraftforge.event.TickEvent.ServerTickEvent;
 import net.minecraftforge.fml.network.PacketDistributor;
 
 public final class TeamData {
@@ -129,7 +129,7 @@ public final class TeamData {
   }
 
   /** This runs every server tick (20 times a second). Assigned to the Forge Event bus by {@link ADDSynthCore}. */
-  public static final void serverTick(final TickEvent.ServerTickEvent event){
+  public static final void serverTick(final ServerTickEvent event){
     if(event.phase == Phase.END){
       tick_time += 1;
       if(tick_time >= Constants.ticks_per_second){

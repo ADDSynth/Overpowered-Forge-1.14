@@ -1,4 +1,4 @@
-package addsynth.core.util.server;
+package addsynth.core.util.command;
 
 public final class PermissionLevel {
 

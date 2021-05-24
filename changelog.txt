@@ -19,7 +19,7 @@ NEW:
   Added a standard Generator to ADDSynth Energy.
     - It takes in standard fuel items such as Coal, Charcoal, Wood, and Planks.
     - Updated the texture to high definition.
-  Added new Scanning Laser item.
+  Added a new Scanning Laser item.
   Whitelisted TileEntities to work with Applied Energistics Spatial-IO.
     - As of now, this needs further testing to ensure there aren't any errors.
   Added Celestial Gem:
@@ -33,6 +33,8 @@ NEW:
   Added a new debug feature to ADDSynthCore that allows you to print all defined
     block and item tags into text files.
   Added stats for Converting Gems, Firing Lasers, and Identifying Items.
+  Added 4 commands to ADDSynthCore. They don't do anything important, they're just
+    there to try out and play with.
 CHANGED:
   Made ADDSynth Materials into its own mod.
   The Music Box gui no longer has the JEI item panel. It doesn't need it.
@@ -44,6 +46,8 @@ CHANGED:
   Renamed mod to Overpowered Technology.
     - This will cause your configuration files to be reset.
   Moved Trophies to ADDSynthCore.
+  You now get a Void Crystal from the portal instead of an Unknown Technology item.
+   - A Void Crystal is required to craft the Inverter.
   Rebalanced Values:
     Chance to drop an unidentified armor was changed from 1/40 to 1/100.
     Chance a Weird Tree spawns in the Unknown Dimension was changed from 1/500 to 1/2000.
