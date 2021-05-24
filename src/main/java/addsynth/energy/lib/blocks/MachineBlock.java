@@ -28,6 +28,11 @@ public abstract class MachineBlock extends Block {
   }
 
   @Override
+  public boolean hasTileEntity(BlockState state){
+    return true;
+  }
+
+  @Override
   @SuppressWarnings("deprecation")
    public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving){
     final TileEntity tile = world.getTileEntity(pos);

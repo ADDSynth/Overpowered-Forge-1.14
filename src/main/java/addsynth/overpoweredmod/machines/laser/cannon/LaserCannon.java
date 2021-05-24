@@ -183,6 +183,11 @@ public final class LaserCannon extends Block implements IWaterLoggable {
   }
 
   @Override
+  public boolean hasTileEntity(BlockState state){
+    return color >= 0;
+  }
+
+  @Override
   @Nullable
   public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return color == -1 ? null : new TileLaser();

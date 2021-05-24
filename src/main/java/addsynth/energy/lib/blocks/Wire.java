@@ -52,7 +52,13 @@ public abstract class Wire extends Block implements IWaterLoggable {
   }
 
   @Override
+  public boolean hasTileEntity(BlockState state){
+    return true;
+  }
+
+  @Override
   @Nullable
+  @SuppressWarnings("resource")
   public final BlockState getStateForPlacement(final BlockItemUseContext context){
     final IWorld world = context.getWorld();
     final BlockPos position  = context.getPos();

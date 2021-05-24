@@ -15,7 +15,7 @@ public final class TilePortal extends TileBase implements ITickableTileEntity {
 
   @Override
   public final void tick(){
-    if(world.isRemote == false){
+    if(onServerSide()){
       count += 1;
       if(count >= life){
         world.removeBlock(pos, false);

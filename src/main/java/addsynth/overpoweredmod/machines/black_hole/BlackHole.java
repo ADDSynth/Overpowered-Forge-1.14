@@ -23,6 +23,11 @@ public final class BlackHole extends Block {
   }
 
   @Override
+  public boolean hasTileEntity(BlockState state){
+    return true;
+  }
+
+  @Override
   @Nullable
   public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
     return new TileBlackHole();

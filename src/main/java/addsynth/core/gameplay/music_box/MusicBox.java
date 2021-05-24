@@ -36,6 +36,11 @@ public final class MusicBox extends Block {
   }
 
   @Override
+  public boolean hasTileEntity(BlockState state){
+    return true;
+  }
+
+  @Override
   @Nullable
   public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TileMusicBox();

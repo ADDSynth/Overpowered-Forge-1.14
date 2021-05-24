@@ -60,6 +60,11 @@ public final class LaserBeam extends Block {
   }
 
   @Override
+  public boolean hasTileEntity(BlockState state){
+    return true;
+  }
+
+  @Override
   @Nullable
   public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TileLaserBeam();
