@@ -1,11 +1,14 @@
 package addsynth.material;
 
 import addsynth.material.compat.MaterialsCompat;
+import addsynth.material.compat.recipe.SteelModAbsentCondition;
 import addsynth.material.types.Gem;
 import addsynth.overpoweredmod.config.Features;
 import addsynth.overpoweredmod.game.core.Gems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -94,7 +97,7 @@ public final class MaterialsRegister {
     game.register(Material.TIN.ingot);
     game.register(Material.COPPER.ingot);
     game.register(Material.ALUMINUM.ingot);
-    game.register(Material.STEEL.ingot);
+    game.register(Material.STEEL.ingot); // Now that I have the MaterialsCompat.SteelModAbsent() function, I could prevent registering Steel if I wanted to.
     game.register(Material.BRONZE.ingot);
     game.register(Material.SILVER.ingot);
     game.register(Material.PLATINUM.ingot);
@@ -133,6 +136,11 @@ public final class MaterialsRegister {
       game.register(Material.PLATINUM.plating);
       game.register(Material.TITANIUM.plating);
     }
+  }
+
+  @SubscribeEvent
+  public static final void registerRecipeSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event){
+    CraftingHelper.register(SteelModAbsentCondition.Serializer.INSTANCE);
   }
 
 }

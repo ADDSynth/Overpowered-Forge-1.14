@@ -93,7 +93,6 @@ public class OverpoweredTechnology {
     
     NetworkHandler.registerMessages();
     // WeirdDimension.register();
-    // TODO: Railcraft doesn't exist for 1.14 yet, but still should find a way to disable the Iron to Steel smelting recipe.
     RecipeUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
     RecipeUtil.registerResponder(Filters::regenerate_machine_filters);
     MaterialsUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);

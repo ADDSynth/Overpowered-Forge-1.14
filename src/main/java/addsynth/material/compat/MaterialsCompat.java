@@ -7,7 +7,12 @@ public final class MaterialsCompat {
 
   public static final boolean addsynth_energy_loaded = Compatability.ADDSYNTH_ENERGY.loaded;
 
-  public static final void check_for_steel_mod(){
+  public static final boolean SteelModAbsent(){
+    return !(
+      Compatability.IMMERSIVE_ENGINEERING.loaded ||
+      Compatability.MEKANISM.loaded ||
+      Compatability.RAILCRAFT.loaded
+    );
   }
 
   public static final void sendIMCMessages(final InterModEnqueueEvent event){
