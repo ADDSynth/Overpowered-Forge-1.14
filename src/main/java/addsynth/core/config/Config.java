@@ -9,6 +9,9 @@ public final class Config {
   public static ForgeConfigSpec.BooleanValue dump_tags;
   public static ForgeConfigSpec.BooleanValue dump_map_colors;
 
+  // Music Box
+  public static ForgeConfigSpec.BooleanValue enable_left_hand;
+
   public static ForgeConfigSpec.BooleanValue show_advanced_config;
 
   private static final Pair<Config, ForgeConfigSpec> SPEC_PAIR = new ForgeConfigSpec.Builder().configure(Config::new);
@@ -23,6 +26,13 @@ public final class Config {
     debug_mod_detection = builder.define("Print Mod Detection Results", false);
     dump_tags           = builder.define("Dump Block & Item Tags", false);
     dump_map_colors     = builder.define("Dump Map Colors", false);
+    builder.pop();
+
+    builder.push("Music Box");
+    enable_left_hand = builder.comment(
+      "By default, the Music Box uses Right-Hand controls (Left-click adds notes, Right-click deletes notes.)\n"+
+      "Set this to true to enable Left-Hand controls, which will swap these functions.")
+      .define("Enable Left Hand", false);
     builder.pop();
 
     builder.push("Advanced");

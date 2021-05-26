@@ -1,9 +1,12 @@
 package addsynth.core.gameplay.music_box;
 
+import java.util.List;
+import javax.annotation.Nullable;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.CoreItem;
 import addsynth.core.util.game.MessageUtil;
 import addsynth.core.util.player.PlayerUtil;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
@@ -14,6 +17,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext.FluidMode;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
@@ -73,7 +79,7 @@ public final class MusicSheet extends CoreItem {
           final CompoundNBT nbt = stack.getTag();
           if(nbt != null){
             tile.getMusicGrid().load_from_nbt(nbt);
-            tile.update_data();
+            tile.changed = true;
             MessageUtil.send_to_player(player, "gui.addsynthcore.music_sheet.paste");
             return ActionResultType.SUCCESS;
           }
@@ -101,6 +107,16 @@ public final class MusicSheet extends CoreItem {
     }
       
     MessageUtil.send_to_player(player, "gui.addsynthcore.music_sheet.copy");
+  }
+
+  @Override
+  public final void addInformation(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag){
+    if(stack.getTag() == null){
+      tooltip.add(new StringTextComponent(TextFormatting.GRAY+"Blank"));
+    }
+    else{
+      tooltip.add(new StringTextComponent(TextFormatting.GRAY+"Has Music Data"));
+    }
   }
 
 }

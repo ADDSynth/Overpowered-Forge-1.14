@@ -42,19 +42,18 @@ public final class MusicBoxMessage {
   public static void handle(final MusicBoxMessage message, final Supplier<NetworkEvent.Context> context){
     final ServerPlayerEntity player = context.get().getSender();
     if(player != null){
+      @SuppressWarnings("resource")
       final ServerWorld world = player.func_71121_q();
       context.get().enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
           final TileMusicBox music_box = MinecraftUtility.getTileEntity(message.position, world, TileMusicBox.class);
           if(music_box != null){
-            // each of these individual functions updates the tile data, so you'd think It would be
-            // better to just call it once after this switch statement? But the play() function is
-            // also called in the TileMusicBox itself! so it MUST call update_data() in the function.
             switch(message.command){
             case PLAY:                    music_box.play(false); break;
             case CHANGE_TEMPO:            music_box.change_tempo(message.info > 0); break;
             case CYCLE_NEXT_DIRECTION:    music_box.increment_next_direction(); break;
             case TOGGLE_MUTE:             music_box.toggle_mute(message.info); break;
+            case SWAP_TRACK:              music_box.swap_track(message.info, message.info + 1); break;
             }
           }
         }

@@ -35,6 +35,10 @@ NEW:
   Added stats for Converting Gems, Firing Lasers, and Identifying Items.
   Added 4 commands to ADDSynthCore. They don't do anything important, they're just
     there to try out and play with.
+  Added a config option to ADDSynthCore that swaps the controls used to Add or Delete
+    notes to/from the Music Box.
+  Added Swap Track buttons to the Music Box gui.
+  If you mouse over a Music Sheet item it now says if its blank or it contains Music Data.
 CHANGED:
   Made ADDSynth Materials into its own mod.
   The Music Box gui no longer has the JEI item panel. It doesn't need it.

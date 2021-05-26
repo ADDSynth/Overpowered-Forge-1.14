@@ -1,4 +1,4 @@
-package addsynth.core.gameplay.music_box;
+package addsynth.core.gameplay.music_box.data;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
@@ -36,89 +36,35 @@ public final class MusicGrid {
   private static final byte default_tempo = 5;
   private static final byte lowest_tempo = 20;
 
-  private static final class Note {
-    public boolean on;
-    public byte pitch;
-    public float volume = 1.0f;
-  }
-
-  private static final class Track {
-    public boolean mute;
-    public byte instrument;
-    public final Note[] note = new Note[frames];
-  }
-
   private byte tempo = default_tempo;
   private final Track[] track = new Track[tracks];
 
-  public MusicGrid() {
-    byte i;
+  public MusicGrid(){
     byte j;
     for(j = 0; j < tracks; j++){
       track[j] = new Track();
-      for(i = 0; i < frames; i++){
-        track[j].note[i] = new Note();
-      }
     }
   }
 
   public final void save_to_nbt(final CompoundNBT nbt){
     final CompoundNBT music_tag = new CompoundNBT();
-    ListNBT track_list;
-    CompoundNBT track_tag;
-    ListNBT note_list;
-    CompoundNBT note_tag;
-    Note note;
-    byte i;
-    byte j;
-    
+    final ListNBT track_list = new ListNBT();
     music_tag.putByte("Tempo", tempo);
-    track_list = new ListNBT();
+    byte j;
     for(j = 0; j < tracks; j++){
-      track_tag = new CompoundNBT();
-      track_tag.putBoolean("Mute", track[j].mute);
-      track_tag.putByte("Instrument", track[j].instrument);
-      note_list = new ListNBT();
-      for(i = 0; i < frames; i++){
-        note_tag = new CompoundNBT();
-        note = track[j].note[i];
-        note_tag.putBoolean("On", note.on);
-        note_tag.putByte("Pitch", note.pitch);
-        note_tag.putFloat("Volume", note.volume);
-        note_list.add(note_tag);
-      }
-      track_tag.put("Notes", note_list);
-      track_list.add(track_tag);
+      track_list.add(track[j].getNBT());
     }
     music_tag.put("Tracks", track_list);
-    
     nbt.put("MusicGrid", music_tag);
   }
 
   public final void load_from_nbt(final CompoundNBT nbt){
     final CompoundNBT music_tag = nbt.getCompound("MusicGrid");
-    ListNBT track_list;
-    CompoundNBT track_tag;
-    ListNBT note_list;
-    CompoundNBT note_tag;
-    Note note;
-    byte i;
-    byte j;
-    
+    final ListNBT track_list = music_tag.getList("Tracks", Constants.NBT.TAG_COMPOUND);
     tempo = music_tag.getByte("Tempo");
+    byte j;
     for(j = 0; j < tracks; j++){
-      track_list = music_tag.getList("Tracks", Constants.NBT.TAG_COMPOUND);
-      track_tag = track_list.getCompound(j);
-      track[j].mute = track_tag.getBoolean("Mute");
-      track[j].instrument = track_tag.getByte("Instrument");
-      note_list = track_tag.getList("Notes", Constants.NBT.TAG_COMPOUND);
-      for (i = 0; i < frames; i++){
-        note_tag = note_list.getCompound(i);
-        note = track[j].note[i];
-        note.on = note_tag.getBoolean("On");
-        note.pitch = note_tag.getByte("Pitch");
-        note.volume = note_tag.getFloat("Volume");
-      }
+      track[j].load_from_nbt(track_list.getCompound(j));
     }
   }
 
@@ -138,9 +84,7 @@ public final class MusicGrid {
   }
 
   public final void set_note(final byte track, final byte frame, byte pitch){
-    this.track[track].note[frame].on = true;
-    this.track[track].note[frame].pitch = pitch;
-    this.track[track].note[frame].volume = 1.0f;
+    this.track[track].note[frame].set(pitch);
   }
 
   public final void disable_note(final byte track, final byte frame){
@@ -227,6 +171,13 @@ public final class MusicGrid {
         }
       }
     }
+  }
+
+  public final void swap_track(final int from, final int to){
+    final Track temp_track = new Track();
+    temp_track.setFrom(track[to]);
+    track[to].setFrom(track[from]);
+    track[from].setFrom(temp_track);
   }
 
 }

@@ -2,8 +2,8 @@ package addsynth.core.gameplay.music_box.gui;
 
 import org.lwjgl.glfw.GLFW;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.gameplay.music_box.MusicGrid;
 import addsynth.core.gameplay.music_box.TileMusicBox;
+import addsynth.core.gameplay.music_box.data.MusicGrid;
 import addsynth.core.gui.GuiBase;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.util.StringUtil;
@@ -91,6 +91,9 @@ public final class GuiMusicBox extends GuiBase {
   private static final int instrument_cursor_y = 164;
   private static final int instrument_button_x = instrument_cursor_x + 2;
   private static final int instrument_button_y = instrument_cursor_y + 2;
+  
+  private static final int track_swap_button_x = music_grid_x + (track_width * MusicGrid.frames) + 2;
+  private static final int track_swap_button_y = music_grid_y + (track_height / 2);
 
   public GuiMusicBox(final TileMusicBox tileEntity, final ITextComponent title){
     super(gui_width, gui_height, title, music_box_gui_texture);
@@ -140,7 +143,7 @@ public final class GuiMusicBox extends GuiBase {
       for(i = 0; i < MusicGrid.frames; i++){
         x = guiUtil.guiLeft + music_grid_x + (i * track_width);
         y = guiUtil.guiTop  + music_grid_y + (j * track_height);
-        addButton(new MusicButtons.NoteButton(x, y, j, i, tile));
+        addButton(new NoteButton(x, y, j, i, tile));
       }
     }
     // New Instrument Buttons
@@ -154,6 +157,13 @@ public final class GuiMusicBox extends GuiBase {
           addButton(new MusicButtons.SelectInstrumentButton(x, y, instrument));
         }
       }
+    }
+    
+    // Track Swap Buttons
+    x = guiUtil.guiLeft + track_swap_button_x;
+    for(i = 0; i < MusicGrid.tracks - 1; i++){
+      y = guiUtil.guiTop + track_swap_button_y + (i * track_height);
+      addButton(new MusicButtons.SwapTrackButton(x, y, tile, i));
     }
   }
 
@@ -209,7 +219,7 @@ public final class GuiMusicBox extends GuiBase {
     
     GuiUtil.draw_text_center(next_text+":", guiUtil.right_edge - (next_direction_button_width / 2), 6);
     
-    GuiUtil.draw_text_left(current_note_text+": "+MusicButtons.note[note_selected],6,info_text_y);
+    GuiUtil.draw_text_left(current_note_text+": "+NoteButton.note[note_selected],6,info_text_y);
     GuiUtil.draw_text_left(instrument_text+": "+instrument[instrument_selected], guiUtil.center_x - 10, info_text_y);
   }
 

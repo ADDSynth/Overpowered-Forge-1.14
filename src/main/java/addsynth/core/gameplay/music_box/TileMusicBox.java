@@ -1,5 +1,6 @@
 package addsynth.core.gameplay.music_box;
 
+import addsynth.core.gameplay.music_box.data.MusicGrid;
 import addsynth.core.gameplay.registers.Tiles;
 import addsynth.core.tiles.TileBase;
 import net.minecraft.nbt.CompoundNBT;
@@ -10,13 +11,13 @@ import net.minecraft.util.Direction;
 public final class TileMusicBox extends TileBase implements ITickableTileEntity {
 
   public enum Command {
-    PLAY, CHANGE_TEMPO, CYCLE_NEXT_DIRECTION, TOGGLE_MUTE;
+    PLAY, CHANGE_TEMPO, CYCLE_NEXT_DIRECTION, TOGGLE_MUTE, SWAP_TRACK;
     public static final Command[] value = Command.values();
   }
 
   private int next_direction = Direction.NORTH.getIndex();
   private final MusicGrid music_grid = new MusicGrid();
-
+  public boolean changed;
   private boolean playing;
   private boolean activated;
   public byte playhead;
@@ -27,47 +28,7 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity 
     super(Tiles.MUSIC_BOX);
   }
 
-  public final void change_tempo(final boolean direction){
-    if(onServerSide()){
-      if(music_grid.setTempo(direction)){
-        // update_tempo_of_song();
-        update_data();
-      }
-    }
-  }
-
-  public final void increment_next_direction(){
-    next_direction = (next_direction + 1) % 6;
-    update_data();
-  }
-
-  public final void change_track_instrument(final byte track, final byte instrument){
-    if(music_grid != null){
-      music_grid.change_tack_instrument(track, instrument);
-      update_data();
-    }
-  }
-
-  public final void disable_note(final byte track, final byte frame){
-    if(music_grid != null){
-      music_grid.disable_note(track, frame);
-      update_data();
-    }
-  }
-
-  public final void set_note(final byte track, final byte frame, final byte pitch){
-    if(music_grid != null){
-      music_grid.set_note(track, frame, pitch);
-      update_data();
-    }
-  }
-
-  public final void toggle_mute(final byte track){
-    if(music_grid != null){
-      music_grid.toggle_mute(track);
-    }
-    update_data();
-  }
+// ===================================== TICK ====================================
 
   @Override
   public final void tick(){
@@ -81,11 +42,11 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity 
       else{
         activated = false;
       }
-      if(playing){ // OPTIMIZE: this should be Client-side.
+      if(playing){
         if(count == 0){
           music_grid.play_frame(world, pos, playhead);
         }
-        count += 1;
+        count += 1; // TODO: Also use a Tick Handler here.
         if(count >= music_grid.getTempo()){
           count = 0;
           playhead += 1;
@@ -95,28 +56,35 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity 
             }
             playing = false;
           }
-          update_data();
+          changed = true;
         }
+      }
+      if(changed){
+        update_data();
+        changed = false;
       }
     }
   }
 
+// ================================ MAIN FUNCTIONS ===================================
+
   @Override
   public final void read(CompoundNBT nbt){
+    super.read(nbt);
     next_direction = nbt.getInt("Next Direction");
     playing = nbt.getBoolean("Playing");
     playhead = nbt.getByte("Playhead Position");
     music_grid.load_from_nbt(nbt);
-    super.read(nbt);
   }
 
   @Override
   public final CompoundNBT write(CompoundNBT nbt){
+    super.write(nbt);
     nbt.putInt("Next Direction", next_direction);
     nbt.putBoolean("Playing", playing);
     nbt.putByte("Playhead Position", playhead);
     music_grid.save_to_nbt(nbt);
-    return super.write(nbt);
+    return nbt;
   }
 
   public final void play(final boolean play_all){
@@ -124,7 +92,7 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity 
     playing = true;
     playhead = 0;
     keep_playing = play_all;
-    update_data();
+    changed = true;
   }
 
   public final boolean is_playing(){
@@ -138,6 +106,8 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity 
     }
   }
 
+// ================================= CHANGE DATA ==================================
+
   /**
    * This function recursively finds other Music Boxes next to this one and sets all their Tempo's,
    * but I decided to have each Music Box's tempo's independant of each other so they can have different tempos.
@@ -145,6 +115,57 @@ public final class TileMusicBox extends TileBase implements ITickableTileEntity 
    */
   private final void update_tempo_of_song(){
   }
+
+  public final void change_tempo(final boolean direction){
+    if(onServerSide()){
+      if(music_grid.setTempo(direction)){
+        // update_tempo_of_song();
+        changed = true;
+      }
+    }
+  }
+
+  public final void increment_next_direction(){
+    next_direction = (next_direction + 1) % 6;
+    changed = true;
+  }
+
+  public final void change_track_instrument(final byte track, final byte instrument){
+    if(music_grid != null){
+      music_grid.change_tack_instrument(track, instrument);
+      changed = true;
+    }
+  }
+
+  public final void disable_note(final byte track, final byte frame){
+    if(music_grid != null){
+      music_grid.disable_note(track, frame);
+      changed = true;
+    }
+  }
+
+  public final void set_note(final byte track, final byte frame, final byte pitch){
+    if(music_grid != null){
+      music_grid.set_note(track, frame, pitch);
+      changed = true;
+    }
+  }
+
+  public final void toggle_mute(final byte track){
+    if(music_grid != null){
+      music_grid.toggle_mute(track);
+      changed = true;
+    }
+  }
+
+  public final void swap_track(final int track_from, final int track_to){
+    if(music_grid != null){
+      music_grid.swap_track(track_from, track_to);
+      changed = true;
+    }
+  }
+
+// =================================== GET DATA ====================================
 
   /**
    * This is only used by the {@link addsynth.core.gameplay.music_box.MusicSheet}.
