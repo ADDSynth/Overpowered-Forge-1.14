@@ -4,6 +4,8 @@ import java.io.File;
 import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.recipe.RecipeUtil;
+import addsynth.core.util.CommonUtil;
+import addsynth.core.util.constants.DevStage;
 import addsynth.material.MaterialsUtil;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
@@ -37,14 +39,13 @@ import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-@Mod(value = OverpoweredTechnology.MOD_ID) // MAYBE: look into using SaveInspectionHandler to control which saved worlds are opened with THIS version of the mod.
+@Mod(value = OverpoweredTechnology.MOD_ID)
 public class OverpoweredTechnology {
 
   public static final String MOD_ID = "overpowered"; // FUTURE: version 1.5 will rename the modid to overpowered_technology. All assets must also be renamed.
   public static final String MOD_NAME = "Overpowered Technology";
   public static final String VERSION = "1.3.4";
   public static final String VERSION_DATE = "December 28, 2020";
-  private static final boolean is_beta = false;
     
   public static final Logger log = LogManager.getLogger(MOD_NAME);
 
@@ -89,7 +90,7 @@ public class OverpoweredTechnology {
   private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin "+MOD_NAME+" main setup...");
     
-    log.info("Overpowered Mod by ADDSynth, version "+VERSION+(is_beta ? "-BETA" : "")+", built on "+VERSION_DATE+".");
+    log.info(CommonUtil.get_mod_info(MOD_NAME, "ADDSynth", VERSION, DevStage.DEVELOPMENT, VERSION_DATE));
     
     NetworkHandler.registerMessages();
     // WeirdDimension.register();

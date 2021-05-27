@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.stream.Stream;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.game.RegistryUtil;
+import addsynth.core.util.CommonUtil;
+import addsynth.core.util.constants.DevStage;
 import addsynth.material.compat.MaterialsCompat;
 import addsynth.material.config.WorldgenConfig;
 import addsynth.material.worldgen.OreGenerator;
@@ -69,6 +71,7 @@ public final class ADDSynthMaterials {
 
   private static final void main_setup(final FMLCommonSetupEvent event){
     // log.info("Begin ADDSynthMaterials main setup...");
+    log.info(CommonUtil.get_mod_info(MOD_NAME, "ADDSynth", VERSION, DevStage.STABLE, VERSION_DATE));
     OreGenerator.register();
     // DeferredWorkQueue.runLater(OreGenerator::register);
     // log.info("Finished ADDSynthMaterials main setup.");

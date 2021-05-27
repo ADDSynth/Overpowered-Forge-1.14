@@ -4,6 +4,8 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import addsynth.core.game.RegistryUtil;
+import addsynth.core.util.CommonUtil;
+import addsynth.core.util.constants.DevStage;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.EnergyBlocks;
 import addsynth.energy.gameplay.NetworkHandler;
@@ -65,6 +67,7 @@ public class ADDSynthEnergy {
   }
 
   private static final void main_setup(final FMLCommonSetupEvent event){
+    log.info(CommonUtil.get_mod_info(MOD_NAME, "ADDSynth", VERSION, DevStage.STABLE, VERSION_DATE));
     NetworkHandler.registerMessages();
     CompressorRecipes.INSTANCE.registerResponders();
     CircuitFabricatorRecipes.INSTANCE.registerResponders();
