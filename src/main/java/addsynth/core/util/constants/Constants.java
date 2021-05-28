@@ -31,7 +31,7 @@ public static final int MONSTER_SPAWN_LIGHT_LEVEL = 7;
  *  @see <a href="https://minecraft.fandom.com/wiki/Light#Effects_of_internal_light">Effects of Light Level</a> */
 public static final int UNDEAD_MOB_BURN_LIGHT_LEVEL = 12;
 public static final int HOSTILE_MOB_ATTACK_RANGE = 16;
-/** Zombies can see players further than other hostile mobs.
+/** Zombies can see players from farther away than other hostile mobs.
  * @see net.minecraft.entity.monster.ZombieEntity#registerAttributes() */
 public static final int ZOMBIE_ATTACK_RANGE = 35;
 

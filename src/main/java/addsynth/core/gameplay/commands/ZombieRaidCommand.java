@@ -3,6 +3,7 @@ package addsynth.core.gameplay.commands;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.command.CommandUtil;
 import addsynth.core.util.command.PermissionLevel;
+import addsynth.core.util.entity.MobUtil;
 import addsynth.core.util.math.MathUtility;
 import addsynth.core.util.player.PlayerUtil;
 import addsynth.core.util.time.TimeConstants;
@@ -154,10 +155,8 @@ public final class ZombieRaidCommand {
         final ZombieEntity entity = EntityType.ZOMBIE.create(world);
         if(entity != null){
           final float angle = ((((float)index / circumference) + 0.25f) * 360 ) % 360.0f;
-          entity.setLocationAndAngles(spawn_x, block_position.getY(), spawn_z, angle, 0.0f);
-          entity.prevRotationYaw = angle;
-          entity.setRotationYawHead(angle);
-          entity.setRenderYawOffset(angle);
+          MobUtil.setPosition(entity, spawn_x, block_position.getY(), spawn_z);
+          MobUtil.setEntityFacingDirection(entity, angle);
           world.summonEntity(entity);
           // if(randomizeProperties){
           //   entity.onInitialSpawn(world, world.getDifficultyForLocation(new BlockPos(entity)), SpawnReason.COMMAND, null, null);

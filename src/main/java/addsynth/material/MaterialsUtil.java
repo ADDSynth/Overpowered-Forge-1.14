@@ -75,8 +75,6 @@ public final class MaterialsUtil {
 
 // =======================================================================================
 
-  // TODO: Move these functions in with the Material's class. Because they already have the material's id name on hand.
-
   @Nullable
   public static final Collection<Item> getRubyBlocks(){
     return getItemCollection(new ResourceLocation("forge:storage_blocks/ruby"));

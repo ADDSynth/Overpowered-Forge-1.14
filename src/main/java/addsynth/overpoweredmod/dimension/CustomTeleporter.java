@@ -39,7 +39,7 @@ public final class CustomTeleporter extends Teleporter {
     final float yaw = entity.rotationYaw;
     final float pitch = entity.rotationPitch;
     if(entity instanceof ServerPlayerEntity){
-      // TODO: set players to face North.
+      // TODO: set players to face North. Use MobUtil.setEntityFacingDirection(player, Direction.NORTH.getHorizontalAngle())
       ((ServerPlayerEntity)entity).connection.setPlayerLocation(x, y, z, yaw, pitch);
       return;
     }
