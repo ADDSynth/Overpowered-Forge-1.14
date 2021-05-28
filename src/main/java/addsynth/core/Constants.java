@@ -10,24 +10,6 @@ public static final int world_height = 256;
 public static final int sea_level = 63;
 public static final int chunk_size = 16;
 
-public static final int ticks_per_second = 20;
-public static final int ticks_per_minute = ticks_per_second * 60;
-public static final int ticks_per_hour = ticks_per_minute * 60;
-public static final int ticks_per_day = ticks_per_hour * 24;
-
-public static final double tick_time_in_seconds = 1.0 / ticks_per_second;
-public static final long tick_time_in_milliseconds = 1000 / ticks_per_second;
-public static final long tick_time_in_nanoseconds = 1_000_000_000 / ticks_per_second;
-
-public static final int minecraft_day_in_ticks = 24_000; // 20 real-life minutes.
-public static final int minecraft_day_in_seconds = 1_200;
-public static final int minecraft_half_day_in_ticks = 12_000;
-public static final int minecraft_half_day_in_seconds = 600;
-public static final int world_time_day      =  1000;
-public static final int world_time_noon     =  6000;
-public static final int world_time_night    = 13000;
-public static final int world_time_midnight = 18000;
-
 public static final int DOWN  = Direction.DOWN.ordinal();
 public static final int UP    = Direction.UP.ordinal();
 public static final int NORTH = Direction.NORTH.ordinal();
@@ -58,5 +40,15 @@ public static final float[] light_level = new float[] { // UNUSED Constants.ligh
   0.0f, 1.0f / 15, 2.0f / 15, 3.0f / 15, 4.0f / 15, 5.0f / 15, 6.0f / 15, 7.0f / 15,
   8.0f / 15, 9.0f / 15, 10.0f / 15, 11.0f / 15, 12.0f / 15, 13.0f / 15, 14.0f / 15, 1.0f
 };
+
+/** Hostile mobs spawn at light level 7 and lower. */
+public static final int MONSTER_SPAWN_LIGHT_LEVEL = 7;
+/** Undead mobs burn at light level 12 and above.
+ *  @see <a href="https://minecraft.fandom.com/wiki/Light#Effects_of_internal_light">Effects of Light Level</a> */
+public static final int UNDEAD_MOB_BURN_LIGHT_LEVEL = 12;
+public static final int HOSTILE_MOB_ATTACK_RANGE = 16;
+/** Zombies can see players further than other hostile mobs.
+ * @see net.minecraft.entity.monster.ZombieEntity#registerAttributes() */
+public static final int ZOMBIE_ATTACK_RANGE = 35;
 
 }

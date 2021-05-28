@@ -1,6 +1,5 @@
-package addsynth.core.util.java;
+package addsynth.core.util.time;
 
-import addsynth.core.Constants;
 import net.minecraft.server.MinecraftServer;
 
 public final class TimeUtil {
@@ -29,11 +28,11 @@ public final class TimeUtil {
 
   @Deprecated // OPTIMIZE, delete this
   public static final boolean exceeds_server_tick_time(final MinecraftServer server, final long nano_seconds){
-    return (server.getTickTime() * 1_000_000) + nano_seconds >= Constants.tick_time_in_nanoseconds;
+    return (server.getTickTime() * 1_000_000) + nano_seconds >= TimeConstants.tick_time_in_nanoseconds;
   }
 
   public static final boolean exceeded_server_tick_time(final MinecraftServer server, final long start_time){
-    return (server.getTickTime() * 1_000_000) + (System.nanoTime() - start_time) >= Constants.tick_time_in_nanoseconds;
+    return (server.getTickTime() * 1_000_000) + (System.nanoTime() - start_time) >= TimeConstants.tick_time_in_nanoseconds;
   }
 
 // =================================================================================================

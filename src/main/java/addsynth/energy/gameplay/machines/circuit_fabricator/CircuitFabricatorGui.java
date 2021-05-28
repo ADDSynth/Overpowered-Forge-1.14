@@ -1,9 +1,9 @@
 package addsynth.energy.gameplay.machines.circuit_fabricator;
 
-import addsynth.core.Constants;
 import addsynth.core.gui.IngredientWidget;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.WidgetUtil;
+import addsynth.core.util.time.TimeConstants;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gameplay.EnergyItems;
 import addsynth.energy.gameplay.NetworkHandler;
@@ -108,8 +108,8 @@ public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabrica
 
   @Override
   public void tick(){
-    tick += 1;
-    if(tick >= Constants.ticks_per_second){
+    tick += 1; // TODO: another spot for a tick handler.
+    if(tick >= TimeConstants.ticks_per_second){
       for(IngredientWidget w : recipe_ingredient){
         w.update();
       }

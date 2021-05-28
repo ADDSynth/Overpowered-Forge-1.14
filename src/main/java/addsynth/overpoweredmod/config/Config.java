@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.config;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.tuple.Pair;
-import addsynth.core.Constants;
+import addsynth.core.util.time.TimeConstants;
 import addsynth.overpoweredmod.machines.black_hole.TileBlackHole;
 import net.minecraftforge.common.ForgeConfigSpec;
 
@@ -161,7 +161,7 @@ public final class Config {
       "is a percentage of how much of a tick is allocated to the Black Hole algorithm. The algorithm is\n"+
       "self balancing, meaning it will slow down if it detects the algorithm is taking too long to process in\n"+
       "a single tick. One block per tick will always be deleted, no matter how low you specify this value.")
-      .defineInRange("Black Hole Max Tick Time", 0.5, (double)1 / Constants.tick_time_in_nanoseconds, 1.0);
+      .defineInRange("Black Hole Max Tick Time", 0.5, (double)1 / TimeConstants.tick_time_in_nanoseconds, 1.0);
     builder.pop();
 
     builder.push("Energy Suspension Bridge");

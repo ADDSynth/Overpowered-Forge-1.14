@@ -4,6 +4,7 @@ import java.util.Random;
 import javax.annotation.Nonnegative;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gui.widgets.scrollbar.Scrollbar;
+import addsynth.core.util.java.JavaUtils;
 import net.minecraft.util.math.MathHelper;
 
 /** For math functions that use {@link net.minecraft.util.math.BlockPos BlockPos},
@@ -148,6 +149,42 @@ public final class MathUtility {
       }
     }
     return smallest_index;
+  }
+
+  public static final int RoundNearest(float value, int multiple){
+    return Math.round(value / multiple) * multiple;
+  }
+  
+  public static final long RoundNearest(double value, long multiple){
+    return Math.round(value / multiple) * multiple;
+  }
+  
+  public static final double RoundNearest(double value, double multiple){
+    return Math.round(value / multiple) * multiple;
+  }
+  
+  public static final int FloorNearest(double value, int multiple){
+    return JavaUtils.cast_to_int((long)Math.floor(value / multiple) * multiple);
+  }
+  
+  public static final long FloorNearest(double value, long multiple){
+    return (long)(Math.floor(value / multiple) * multiple);
+  }
+  
+  public static final double FloorNearest(double value, double multiple){
+    return Math.floor(value / multiple) * multiple;
+  }
+  
+  public static final int CeilingNearest(double value, int multiple){
+    return JavaUtils.cast_to_int((long)Math.ceil(value / multiple) * multiple);
+  }
+  
+  public static final long CeilingNearest(double value, long multiple){
+    return (long)(Math.ceil(value / multiple) * multiple);
+  }
+  
+  public static final double CeilingNearest(double value, double multiple){
+    return Math.ceil(value / multiple) * multiple;
   }
 
   /** This divides a whole number as evenly as possible, with higher numbers closer towards the beginning.
@@ -374,6 +411,7 @@ public final class MathUtility {
     return list[random.nextInt(list.length)];
   }
 
+  /** Rounds input to the specified number of decimal places. */
   public static final double round(final double input, final int decimals){
     if(decimals == 0){
       return Math.round(input);

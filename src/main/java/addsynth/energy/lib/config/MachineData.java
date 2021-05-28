@@ -1,11 +1,11 @@
 package addsynth.energy.lib.config;
 
 import javax.annotation.Nonnegative;
-import addsynth.core.Constants;
+import addsynth.core.util.time.TimeConstants;
 
 public class MachineData {
 
-  public static final float DEFAULT_IDLE_ENERGY = 1.0f / Constants.ticks_per_second;
+  public static final float DEFAULT_IDLE_ENERGY = 1.0f / TimeConstants.ticks_per_second;
 
   public final MachineType type;
 

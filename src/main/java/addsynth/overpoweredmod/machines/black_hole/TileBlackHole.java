@@ -1,11 +1,11 @@
 package addsynth.overpoweredmod.machines.black_hole;
 
-import addsynth.core.Constants;
 import addsynth.core.util.game.MessageUtil;
-import addsynth.core.util.java.TimeUtil;
 import addsynth.core.util.math.BlockMath;
 import addsynth.core.util.math.MathUtility;
 import addsynth.core.util.server.ServerUtils;
+import addsynth.core.util.time.TimeConstants;
+import addsynth.core.util.time.TimeUtil;
 import addsynth.core.util.world.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.Config;
@@ -33,7 +33,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
   private long begin_tick_time;
 
   /** Max time the black hole algorithm is alloted per tick. Can be changed in the config. */
-  private final long max_time = (long)Math.round(Constants.tick_time_in_nanoseconds * Config.black_hole_max_tick_time.get());
+  private final long max_time = (long)Math.round(TimeConstants.tick_time_in_nanoseconds * Config.black_hole_max_tick_time.get());
 
   public static final int MIN_RADIUS = 2;
   public static final int MAX_RADIUS = 500;

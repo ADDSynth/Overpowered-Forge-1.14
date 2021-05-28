@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.Constants;
 import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.gameplay.team_manager.network_messages.TeamManagerSyncMessage;
 import addsynth.core.util.StringUtil;
 import addsynth.core.util.network.NetworkUtil;
 import addsynth.core.util.server.ServerUtils;
+import addsynth.core.util.time.TimeConstants;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.scoreboard.ScoreCriteria;
@@ -132,7 +132,7 @@ public final class TeamData {
   public static final void serverTick(final ServerTickEvent event){
     if(event.phase == Phase.END){
       tick_time += 1;
-      if(tick_time >= Constants.ticks_per_second){
+      if(tick_time >= TimeConstants.ticks_per_second){
         sync();
       }
     }

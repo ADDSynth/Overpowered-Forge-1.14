@@ -95,21 +95,49 @@ public final class WorldUtil {
     }
   }
 
-  /** @see net.minecraft.command.impl.TimeCommand */
+  /** I don't get it. The /time command sets the time for all worlds, but you can also
+   *  set the world's time individually.
+   *  DO NOT set time as a negative value!
+   * @see net.minecraft.command.impl.TimeCommand */
+  @Deprecated
   public static final void set_time(final World world, final int world_time){
+    set_time(world, (long)world_time);
+  }
+  
+  /** I don't get it. The /time command sets the time for all worlds, but you can also
+   *  set the world's time individually.
+   *  DO NOT set time as a negative value!
+   * @see net.minecraft.command.impl.TimeCommand */
+  @Deprecated
+  public static final void set_time(final MinecraftServer server, final int world_time){
+    set_time(server, (long)world_time);
+  }
+  
+  /** I don't get it. The /time command sets the time for all worlds, but you can also
+   *  set the world's time individually.
+   *  DO NOT set time as a negative value!
+   * @see net.minecraft.command.impl.TimeCommand */
+  public static final void set_time(final World world, final long world_time){
     @SuppressWarnings("resource")
     final MinecraftServer server = ServerUtils.getServer(world);
     if(server != null){
       for(ServerWorld w : server.getWorlds()){
-        w.setDayTime((long)world_time);
+        w.setDayTime(world_time >= 0 ? world_time : 0);
       }
     }
+    // else{
+      // they let me do this? What's going to happen?
+      // world.setDayTime(world_time);
+    // }
   }
 
-  /** @see net.minecraft.command.impl.TimeCommand */
-  public static final void set_time(final MinecraftServer server, final int world_time){
+  /** I don't get it. The /time command sets the time for all worlds, but you can also
+   *  set the world's time individually.
+   *  DO NOT set time as a negative value!
+   * @see net.minecraft.command.impl.TimeCommand */
+  public static final void set_time(final MinecraftServer server, final long world_time){
     for(ServerWorld world : server.getWorlds()){
-      world.setDayTime((long)world_time);
+      world.setDayTime(world_time >= 0 ? world_time : 0);
     }
   }
 

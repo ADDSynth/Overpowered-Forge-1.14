@@ -3,8 +3,8 @@ package addsynth.core.util;
 import java.util.Arrays;
 import java.util.Collection;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.Constants;
 import addsynth.core.util.game.MessageUtil;
+import addsynth.core.util.time.TimeConstants;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
@@ -54,7 +54,7 @@ public final class StringUtil {
   }
 
   public static final String print_time(final int ticks){
-    final int seconds = (int)Math.ceil(((double)ticks) / Constants.ticks_per_second);
+    final int seconds = (int)Math.ceil(((double)ticks) / TimeConstants.ticks_per_second);
     final int minutes = (int)Math.floor(((double)seconds) / 60);
     final int hours = (int)Math.floor(((double)minutes) / 60);
     return hours+"h "+(minutes % 60)+"m "+(seconds % 60)+"s";
