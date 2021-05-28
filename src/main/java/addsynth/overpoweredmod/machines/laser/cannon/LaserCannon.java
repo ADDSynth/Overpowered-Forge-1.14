@@ -2,8 +2,8 @@ package addsynth.overpoweredmod.machines.laser.cannon;
 
 import java.util.List;
 import javax.annotation.Nullable;
-import addsynth.core.Constants;
 import addsynth.core.util.block.BlockShape;
+import addsynth.core.util.constants.DirectionConstant;
 import addsynth.core.util.world.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
@@ -58,7 +58,7 @@ public final class LaserCannon extends Block implements IWaterLoggable {
     VoxelShape box3 = VoxelShapes.create(calc[5], calc[5], calc[8], calc[11], calc[11], calc[10]);
     VoxelShape box4 = VoxelShapes.create(calc[6], calc[6], calc[6], calc[10], calc[10], calc[8]);
     VoxelShape box5 = VoxelShapes.create(calc[7], calc[7], calc[2], calc[9], calc[9], calc[6]);
-    shape[Constants.NORTH] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
+    shape[DirectionConstant.NORTH] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // SOUTH
     box0 = VoxelShapes.create(calc[1], calc[1], calc[0], calc[15], calc[15], calc[2]);
@@ -67,7 +67,7 @@ public final class LaserCannon extends Block implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[5], calc[5], calc[6], calc[11], calc[11], calc[8]);
     box4 = VoxelShapes.create(calc[6], calc[6], calc[8], calc[10], calc[10], calc[10]);
     box5 = VoxelShapes.create(calc[7], calc[7], calc[10], calc[9], calc[9], calc[14]);
-    shape[Constants.SOUTH] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
+    shape[DirectionConstant.SOUTH] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // EAST
     box0 = VoxelShapes.create(calc[0], calc[1], calc[1], calc[2], calc[15], calc[15]);
@@ -76,7 +76,7 @@ public final class LaserCannon extends Block implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[6], calc[5], calc[5], calc[8], calc[11], calc[11]);
     box4 = VoxelShapes.create(calc[8], calc[6], calc[6], calc[10], calc[10], calc[10]);
     box5 = VoxelShapes.create(calc[10], calc[7], calc[7], calc[14], calc[9], calc[9]);
-    shape[Constants.EAST] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
+    shape[DirectionConstant.EAST] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // WEST
     box0 = VoxelShapes.create(calc[14], calc[1], calc[1], calc[16], calc[15], calc[15]);
@@ -85,7 +85,7 @@ public final class LaserCannon extends Block implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[8], calc[5], calc[5], calc[10], calc[11], calc[11]);
     box4 = VoxelShapes.create(calc[6], calc[6], calc[6], calc[8], calc[10], calc[10]);
     box5 = VoxelShapes.create(calc[2], calc[7], calc[7], calc[6], calc[9], calc[9]);
-    shape[Constants.WEST] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
+    shape[DirectionConstant.WEST] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // UP
     box0 = VoxelShapes.create(calc[1], calc[0], calc[1], calc[15], calc[2], calc[15]);
@@ -94,7 +94,7 @@ public final class LaserCannon extends Block implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[5], calc[6], calc[5], calc[11], calc[8], calc[11]);
     box4 = VoxelShapes.create(calc[6], calc[8], calc[6], calc[10], calc[10], calc[10]);
     box5 = VoxelShapes.create(calc[7], calc[10], calc[7], calc[9], calc[14], calc[9]);
-    shape[Constants.UP] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
+    shape[DirectionConstant.UP] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
     
     // DOWN
     box0 = VoxelShapes.create(calc[1], calc[14], calc[1], calc[15], calc[16], calc[15]);
@@ -103,7 +103,7 @@ public final class LaserCannon extends Block implements IWaterLoggable {
     box3 = VoxelShapes.create(calc[5], calc[8], calc[5], calc[11], calc[10], calc[11]);
     box4 = VoxelShapes.create(calc[6], calc[6], calc[6], calc[10], calc[8], calc[10]);
     box5 = VoxelShapes.create(calc[7], calc[2], calc[7], calc[9], calc[6], calc[9]);
-    shape[Constants.DOWN] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
+    shape[DirectionConstant.DOWN] = BlockShape.combine(box0, box1, box2, box3, box4, box5);
 
     return shape;
   }

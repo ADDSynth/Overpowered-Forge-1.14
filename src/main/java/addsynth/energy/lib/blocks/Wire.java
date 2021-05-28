@@ -1,8 +1,8 @@
 package addsynth.energy.lib.blocks;
 
 import javax.annotation.Nullable;
-import addsynth.core.Constants;
 import addsynth.core.util.block.BlockShape;
+import addsynth.core.util.constants.DirectionConstant;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -69,12 +69,12 @@ public abstract class Wire extends Block implements IWaterLoggable {
   protected abstract boolean[] get_valid_sides(IBlockReader world, BlockPos pos);
 
   private static final BlockState getState(final BlockState state, final boolean[] valid_sides, final IWorld world, final BlockPos position){
-    final boolean down  = valid_sides[Constants.DOWN];
-    final boolean up    = valid_sides[Constants.UP];
-    final boolean north = valid_sides[Constants.NORTH];
-    final boolean south = valid_sides[Constants.SOUTH];
-    final boolean west  = valid_sides[Constants.WEST];
-    final boolean east  = valid_sides[Constants.EAST];
+    final boolean down  = valid_sides[DirectionConstant.DOWN];
+    final boolean up    = valid_sides[DirectionConstant.UP];
+    final boolean north = valid_sides[DirectionConstant.NORTH];
+    final boolean south = valid_sides[DirectionConstant.SOUTH];
+    final boolean west  = valid_sides[DirectionConstant.WEST];
+    final boolean east  = valid_sides[DirectionConstant.EAST];
     final boolean water = world.getFluidState(position).getFluid() == Fluids.WATER;
     return state.with(DOWN, down).with(UP, up).with(NORTH, north).with(SOUTH, south).with(WEST, west).with(EAST, east).with(WATERLOGGED, water);
   }

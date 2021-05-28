@@ -1,7 +1,7 @@
 package addsynth.core.gameplay.blocks;
 
 import addsynth.core.ADDSynthCore;
-import addsynth.core.Constants;
+import addsynth.core.util.constants.Constants;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

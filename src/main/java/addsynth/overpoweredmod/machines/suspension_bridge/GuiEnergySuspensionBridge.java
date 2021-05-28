@@ -1,9 +1,9 @@
 package addsynth.overpoweredmod.machines.suspension_bridge;
 
-import addsynth.core.Constants;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.buttons.AdjustableButton;
 import addsynth.core.util.StringUtil;
+import addsynth.core.util.constants.DirectionConstant;
 import addsynth.energy.lib.gui.GuiEnergyBase;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -71,15 +71,15 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
     GuiUtil.draw_text_left(north+":", text_x[0], text_y[0]);
     GuiUtil.draw_text_left(south+":", text_x[0], text_y[1]);
     GuiUtil.draw_text_left(west+":",  text_x[0], text_y[2]);
-    GuiUtil.draw_text_left(tile.getMessage(Constants.NORTH), text_x[1], text_y[0]);
-    GuiUtil.draw_text_left(tile.getMessage(Constants.SOUTH), text_x[1], text_y[1]);
-    GuiUtil.draw_text_left(tile.getMessage(Constants.WEST),  text_x[1], text_y[2]);
+    GuiUtil.draw_text_left(tile.getMessage(DirectionConstant.NORTH), text_x[1], text_y[0]);
+    GuiUtil.draw_text_left(tile.getMessage(DirectionConstant.SOUTH), text_x[1], text_y[1]);
+    GuiUtil.draw_text_left(tile.getMessage(DirectionConstant.WEST),  text_x[1], text_y[2]);
     GuiUtil.draw_text_left(up+":",   text_x[2], text_y[0]);
     GuiUtil.draw_text_left(down+":", text_x[2], text_y[1]);
     GuiUtil.draw_text_left(east+":", text_x[2], text_y[2]);
-    GuiUtil.draw_text_left(tile.getMessage(Constants.UP),    text_x[3], text_y[0]);
-    GuiUtil.draw_text_left(tile.getMessage(Constants.DOWN),  text_x[3], text_y[1]);
-    GuiUtil.draw_text_left(tile.getMessage(Constants.EAST),  text_x[3], text_y[2]);
+    GuiUtil.draw_text_left(tile.getMessage(DirectionConstant.UP),    text_x[3], text_y[0]);
+    GuiUtil.draw_text_left(tile.getMessage(DirectionConstant.DOWN),  text_x[3], text_y[1]);
+    GuiUtil.draw_text_left(tile.getMessage(DirectionConstant.EAST),  text_x[3], text_y[2]);
     guiUtil.draw_text_center(tile.getBridgeMessage(), 73);
   }
 

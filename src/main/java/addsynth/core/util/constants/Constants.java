@@ -1,21 +1,16 @@
-package addsynth.core;
+package addsynth.core.util.constants;
 
 import addsynth.core.util.color.ColorCode;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.Direction;
 
+/** @see addsynth.core.items.HarvestLevel
+ *  @see addsynth.core.items.ToolConstants
+ *  @see addsynth.core.util.command.PermissionLevel
+ *  @see addsynth.core.util.world.WorldConstants
+ *  @see addsynth.core.util.time.TimeConstants
+ *  @see addsynth.core.util.time.WorldTime
+ */
 public final class Constants {
-
-public static final int world_height = 256;
-public static final int sea_level = 63;
-public static final int chunk_size = 16;
-
-public static final int DOWN  = Direction.DOWN.ordinal();
-public static final int UP    = Direction.UP.ordinal();
-public static final int NORTH = Direction.NORTH.ordinal();
-public static final int SOUTH = Direction.SOUTH.ordinal();
-public static final int WEST  = Direction.WEST.ordinal();
-public static final int EAST  = Direction.EAST.ordinal();
 
 /** Default error string to show, if attempting to get a status message from TileEntities. */
 public static final String null_error = ColorCode.ERROR.toString() + "[Null Error]";
@@ -24,17 +19,6 @@ public static final String null_error = ColorCode.ERROR.toString() + "[Null Erro
 public static final float block_resistance = Blocks.STONE.getExplosionResistance(); //6.0f; // same as Stone
 @SuppressWarnings("deprecation")
 public static final float infinite_resistance = Blocks.BEDROCK.getExplosionResistance();
-
-public static final int   sword_damage   = 3;
-public static final float shovel_damage  = 1.5f;
-public static final int   pickaxe_damage = 1;
-public static final float axe_damage     = 6.0f;
-
-// for hoes, the speed depends on the Material, so check the speeds set in the Items class and make your best judgement.
-public static final float sword_speed   = -2.4f;
-public static final float pickaxe_speed = -2.8f;
-public static final float shovel_speed  = -3.0f;
-public static final float axe_speed     = -3.2f;
 
 public static final float[] light_level = new float[] { // UNUSED Constants.light_level[]
   0.0f, 1.0f / 15, 2.0f / 15, 3.0f / 15, 4.0f / 15, 5.0f / 15, 6.0f / 15, 7.0f / 15,

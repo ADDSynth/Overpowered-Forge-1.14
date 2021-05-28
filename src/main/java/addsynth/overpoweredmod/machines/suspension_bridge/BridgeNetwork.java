@@ -1,14 +1,14 @@
 package addsynth.overpoweredmod.machines.suspension_bridge;
 
 import java.util.ArrayList;
-import addsynth.core.Constants;
 import addsynth.core.block_network.BlockNetwork;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.Node;
-import addsynth.core.util.CommonUtil;
+import addsynth.core.util.constants.DirectionConstant;
 import addsynth.core.util.game.MinecraftUtility;
 import addsynth.core.util.math.BlockMath;
 import addsynth.core.util.network.NetworkUtil;
+import addsynth.core.util.world.WorldConstants;
 import addsynth.core.util.world.WorldUtil;
 import addsynth.energy.lib.main.Receiver;
 import addsynth.overpoweredmod.config.Config;
@@ -134,16 +134,16 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
 
   private final void check_direction(final int direction){
-    if(direction == Constants.DOWN ){ check_down();  return; }
-    if(direction == Constants.UP   ){ check_up();    return; }
-    if(direction == Constants.NORTH){ check_north(); return; }
-    if(direction == Constants.SOUTH){ check_south(); return; }
-    if(direction == Constants.WEST ){ check_west();  return; }
-    if(direction == Constants.EAST ){ check_east();  return; }
+    if(direction == DirectionConstant.DOWN ){ check_down();  return; }
+    if(direction == DirectionConstant.UP   ){ check_up();    return; }
+    if(direction == DirectionConstant.NORTH){ check_north(); return; }
+    if(direction == DirectionConstant.SOUTH){ check_south(); return; }
+    if(direction == DirectionConstant.WEST ){ check_west();  return; }
+    if(direction == DirectionConstant.EAST ){ check_east();  return; }
   }
 
   private final void check_down(){
-    final int direction = Constants.DOWN;
+    final int direction = DirectionConstant.DOWN;
     // OPTIMIZE, reuse code by calling a common_reset(int direction) function for all these check_direction() functions.
     message[direction] = BridgeMessage.PENDING;
     other_bridge[direction] = null;
@@ -171,7 +171,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
   
   private final void check_up(){
-    final int direction = Constants.UP;
+    final int direction = DirectionConstant.UP;
     message[direction] = BridgeMessage.PENDING;
     other_bridge[direction] = null;
     area[direction] = new ArrayList<>(Config.energy_bridge_max_distance.get() * 2);
@@ -182,7 +182,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     final int start_x = min_x;
     final int end_x   = max_x;
     final int start_y = max_y + 1;
-    final int end_y   = Math.min(max_y + Config.energy_bridge_max_distance.get(), Constants.world_height - 1);
+    final int end_y   = Math.min(max_y + Config.energy_bridge_max_distance.get(), WorldConstants.world_height - 1);
     final int start_z = min_z;
     final int end_z   = max_z;
     for(y = start_y; y <= end_y && message[direction] == BridgeMessage.PENDING; y++){
@@ -198,7 +198,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
   
   private final void check_north(){
-    final int direction = Constants.NORTH;
+    final int direction = DirectionConstant.NORTH;
     message[direction] = BridgeMessage.PENDING;
     other_bridge[direction] = null;
     area[direction] = new ArrayList<>(Config.energy_bridge_max_distance.get() * 2);
@@ -220,7 +220,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
   
   private final void check_south(){
-    final int direction = Constants.SOUTH;
+    final int direction = DirectionConstant.SOUTH;
     message[direction] = BridgeMessage.PENDING;
     other_bridge[direction] = null;
     area[direction] = new ArrayList<>(Config.energy_bridge_max_distance.get() * 2);
@@ -242,7 +242,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
   
   private final void check_west(){
-    final int direction = Constants.WEST;
+    final int direction = DirectionConstant.WEST;
     message[direction] = BridgeMessage.PENDING;
     other_bridge[direction] = null;
     area[direction] = new ArrayList<>(Config.energy_bridge_max_distance.get() * 2);
@@ -264,7 +264,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
   
   private final void check_east(){
-    final int direction = Constants.EAST;
+    final int direction = DirectionConstant.EAST;
     message[direction] = BridgeMessage.PENDING;
     other_bridge[direction] = null;
     area[direction] = new ArrayList<>(Config.energy_bridge_max_distance.get() * 2);
@@ -321,13 +321,13 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     if(valid_shape == false){ return false; }
     final boolean length = this.min_z == min_z && this.max_z == max_z;
     final boolean width  = this.min_x == min_x && this.max_x == max_x;
-    if(direction == Constants.DOWN || direction == Constants.UP){
+    if(direction == DirectionConstant.DOWN || direction == DirectionConstant.UP){
       return width && length;
     }
-    if(direction == Constants.WEST || direction == Constants.EAST){
+    if(direction == DirectionConstant.WEST || direction == DirectionConstant.EAST){
       return length;
     }
-    if(direction == Constants.NORTH || direction == Constants.SOUTH){
+    if(direction == DirectionConstant.NORTH || direction == DirectionConstant.SOUTH){
       return width;
     }
     return false;
@@ -340,7 +340,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     for(direction = 0; direction < 6; direction++){
       bridge = other_bridge[direction];
       if(bridge != null){
-        opposite = CommonUtil.getOppositeDirection(direction);
+        opposite = DirectionConstant.getOppositeDirection(direction);
         bridge.check_direction(opposite); // updates messages, and bridge area.
         bridge.updateBridgeNetwork();
         bridge.update_direction(opposite);
@@ -412,7 +412,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
 
   private final void update_direction(final int direction){
-    final int opposite = CommonUtil.getOppositeDirection(direction);
+    final int opposite = DirectionConstant.getOppositeDirection(direction);
     if(message[direction] == BridgeMessage.OKAY){
     // a message of OKAY means we already know WE'RE valid, and valid in that direction,
     // so we're free to manipulate blocks in that area.
@@ -444,7 +444,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   }
 
   private final void set_energy_block(final int direction, final BlockPos position){
-    if(direction == Constants.DOWN || direction == Constants.UP){
+    if(direction == DirectionConstant.DOWN || direction == DirectionConstant.UP){
       switch(lens_index){
       case 0: world.setBlockState(position, Machines.white_energy_bridge.getRotated(rotate_direction));   break;
       case 1: world.setBlockState(position, Machines.red_energy_bridge.getRotated(rotate_direction));     break;
@@ -491,8 +491,8 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
     case X: rotate_direction = Direction.Axis.Z; break;
     case Z: rotate_direction = Direction.Axis.X; break;
     }
-    update_direction(Constants.DOWN);
-    update_direction(Constants.UP);
+    update_direction(DirectionConstant.DOWN);
+    update_direction(DirectionConstant.UP);
   }
 
   @Override

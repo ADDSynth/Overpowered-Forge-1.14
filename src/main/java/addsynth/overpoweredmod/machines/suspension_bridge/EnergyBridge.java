@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.machines.suspension_bridge;
 
-import addsynth.core.Constants;
+import addsynth.core.util.constants.Constants;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.core.Lens;
 import net.minecraft.block.Block;

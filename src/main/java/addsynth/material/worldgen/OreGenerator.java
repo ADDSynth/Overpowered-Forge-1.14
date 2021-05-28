@@ -1,6 +1,6 @@
 package addsynth.material.worldgen;
 
-import addsynth.core.Constants;
+import addsynth.core.util.world.WorldUtil;
 import addsynth.material.ADDSynthMaterials;
 import addsynth.material.Material;
 import addsynth.material.config.WorldgenConfig;
@@ -87,7 +87,7 @@ public final class OreGenerator {
   }
 
   private static final boolean valid_min_max_values(final String name, final int min, final int max){
-    final boolean pass = min >= 0 && max >= 0 && min < Constants.world_height && max < Constants.world_height;
+    final boolean pass = WorldUtil.validYLevel(min) && WorldUtil.validYLevel(max);
     if(pass == false){
       ADDSynthMaterials.log.error("Invalid Worldgen Min/Max values: Min: "+min+", Max: "+max+", while generating Ores for "+name+".");
     }

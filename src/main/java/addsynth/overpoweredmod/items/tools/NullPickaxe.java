@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.items.tools;
 
-import addsynth.core.Constants;
+import addsynth.core.items.ToolConstants;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.item.Item;
@@ -11,7 +11,7 @@ import net.minecraft.item.Rarity;
 public class NullPickaxe extends PickaxeItem {
 
   public NullPickaxe(final String name){
-    super(OverpoweredTiers.VOID, Constants.pickaxe_damage, Constants.pickaxe_speed, new Item.Properties().group(CreativeTabs.tools_creative_tab));
+    super(OverpoweredTiers.VOID, ToolConstants.pickaxe_damage, ToolConstants.pickaxe_speed, new Item.Properties().group(CreativeTabs.tools_creative_tab));
     OverpoweredTechnology.registry.register_item(this, name);
   }
 

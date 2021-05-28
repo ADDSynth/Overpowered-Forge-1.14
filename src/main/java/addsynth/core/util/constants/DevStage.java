@@ -2,15 +2,17 @@ package addsynth.core.util.constants;
 
 public enum DevStage {
 
-  DEVELOPMENT(true),
-  ALPHA(true),
-  BETA(true),
-  STABLE(false);
+  DEVELOPMENT(true, " (DEVELOPMENT BUILD)"),
+  ALPHA(true, "-ALPHA"),
+  BETA(true, "-BETA"),
+  STABLE(false, "");
 
   public final boolean isDevelopment;
+  public final String label;
 
-  private DevStage(boolean isDevelopment){
+  private DevStage(boolean isDevelopment, String label){
     this.isDevelopment = isDevelopment;
+    this.label = label;
   }
 
 }

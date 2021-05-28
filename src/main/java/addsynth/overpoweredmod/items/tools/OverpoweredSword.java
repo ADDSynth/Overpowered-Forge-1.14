@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.items.tools;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import addsynth.core.Constants;
+import addsynth.core.items.ToolConstants;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -16,7 +16,7 @@ import net.minecraft.item.SwordItem;
 public final class OverpoweredSword extends SwordItem {
 
   public OverpoweredSword(final String name){
-    super(OverpoweredTiers.CELESTIAL_SWORD, Constants.sword_damage, Constants.sword_damage, new Item.Properties().group(CreativeTabs.tools_creative_tab));
+    super(OverpoweredTiers.CELESTIAL_SWORD, ToolConstants.sword_damage, ToolConstants.sword_damage, new Item.Properties().group(CreativeTabs.tools_creative_tab));
     OverpoweredTechnology.registry.register_item(this, name);
   }
 

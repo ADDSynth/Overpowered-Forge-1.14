@@ -34,6 +34,10 @@ public final class WorldUtil {
     return world.getChunk(x_pos >> 4, z_pos >> 4).getTopBlockY(Heightmap.Type.WORLD_SURFACE, x_pos, z_pos) + 1;
   }
 
+  public static final boolean validYLevel(final int y_level){
+    return y_level >= WorldConstants.min_y_level && y_level < WorldConstants.world_height;
+  }
+
   public static final void delete_block(final World world, final BlockPos position){
     world.setBlockState(position, Blocks.AIR.getDefaultState(), 3);
   }

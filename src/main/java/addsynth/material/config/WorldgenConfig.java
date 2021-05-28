@@ -1,7 +1,7 @@
 package addsynth.material.config;
 
 import org.apache.commons.lang3.tuple.Pair;
-import addsynth.core.Constants;
+import addsynth.core.util.world.WorldConstants;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 /**
@@ -231,7 +231,7 @@ public final class WorldgenConfig {
   }
 
   private static final ForgeConfigSpec.IntValue worldgen(final ForgeConfigSpec.Builder builder, final String name, final int default_value){
-    return builder.defineInRange(name, default_value, 0, Constants.world_height - 1);
+    return builder.defineInRange(name, default_value, WorldConstants.min_y_level, WorldConstants.world_height - 1);
   }
 
   private static final ForgeConfigSpec.IntValue tries(final ForgeConfigSpec.Builder builder, final int default_value){

@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.items.tools;
 
-import addsynth.core.Constants;
+import addsynth.core.items.ToolConstants;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.item.Item;
@@ -11,7 +11,7 @@ import net.minecraft.item.SwordItem;
 public class NullSword extends SwordItem {
 
   public NullSword(final String name){
-    super(OverpoweredTiers.VOID, Constants.sword_damage, Constants.sword_speed, new Item.Properties().group(CreativeTabs.tools_creative_tab));
+    super(OverpoweredTiers.VOID, ToolConstants.sword_damage, ToolConstants.sword_speed, new Item.Properties().group(CreativeTabs.tools_creative_tab));
     OverpoweredTechnology.registry.register_item(this, name);
   }
 
