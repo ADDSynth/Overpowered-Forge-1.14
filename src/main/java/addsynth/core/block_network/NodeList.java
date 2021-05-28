@@ -2,6 +2,7 @@ package addsynth.core.block_network;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.function.Consumer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 
@@ -63,6 +64,28 @@ public final class NodeList extends HashSet<Node> {
 
   public final void remove_invalid(){
     removeIf((Node n) -> n == null ? true : n.isInvalid());
+  }
+
+  public final void forAllTileEntities(final Consumer<TileEntity> action){
+    TileEntity tile;
+    for(Node node : this){
+      tile = node.getTile();
+      if(tile != null){
+        action.accept(tile);
+      }
+    }
+  }
+
+  public final <T extends TileEntity> void forAllTileEntities(final Class<T> tileEntity_type, final Consumer<T> action){
+    TileEntity tile;
+    for(Node node : this){
+      tile = node.getTile();
+      if(tile != null){
+        if(tileEntity_type.isInstance(tile)){
+          action.accept(tileEntity_type.cast(tile));
+        }
+      }
+    }
   }
 
   @SuppressWarnings({"unchecked", "null"})

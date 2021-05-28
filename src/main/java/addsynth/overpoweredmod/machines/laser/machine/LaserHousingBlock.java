@@ -71,7 +71,7 @@ public final class LaserHousingBlock extends MachineBlock {
 
   @Override
   public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack){
-    if(placer instanceof ServerPlayerEntity){ // ensures block was placed by plaer and on server side
+    if(placer instanceof ServerPlayerEntity){ // ensures block was placed by player and on server side
       final TileLaserHousing tile = MinecraftUtility.getTileEntity(pos, world, TileLaserHousing.class);
       if(tile != null){
         tile.setPlayer((ServerPlayerEntity)placer);

@@ -19,7 +19,6 @@ import addsynth.overpoweredmod.machines.laser.cannon.LaserCannon;
 import addsynth.overpoweredmod.machines.laser.cannon.TileLaser;
 import addsynth.overpoweredmod.machines.laser.network_messages.LaserClientSyncMessage;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -170,30 +169,15 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   private final void fire_lasers(){
     remove_invalid_nodes(blocks);
     remove_invalid_nodes(lasers);
-    TileEntity tile;
-    // OPTIMIZE: Node and NodeList by specifying a type parameter.
-    for(Node node : lasers){
-      tile = node.getTile();
-      if(tile != null){
-        ((TileLaser)tile).activate(this.laser_distance);
-      }
-    }
+    
+    lasers.forAllTileEntities(TileLaser.class, (TileLaser tile) -> {
+      tile.activate(this.laser_distance);
+    });
+    
     final double[] center_position = BlockMath.getExactCenter(blocks.getPositions());
     world.playSound(null, center_position[0], center_position[1], center_position[2], Sounds.laser_fire_sound, SoundCategory.AMBIENT, 2.0f, 1.0f);
-    final ArrayList<ServerPlayerEntity> players = new ArrayList<>();
-    ServerPlayerEntity player;
-    for(Node node : blocks){
-      tile = node.getTile();
-      if(tile != null){
-        player = ((TileLaserHousing)tile).getPlayer();
-        if(player != null){
-          if(players.contains(player) == false){
-            players.add(player);
-          }
-        }
-      }
-    }
-    awardPlayers(players, this.laser_distance);
+    awardPlayers();
+    
     this.energy.subtract_capacity();
     if(auto_shutoff){
       running = false;
@@ -201,7 +185,19 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
     changed = true;
   }
 
-  private static final void awardPlayers(final ArrayList<ServerPlayerEntity> players, final int laser_distance){
+  private final void awardPlayers(){
+    final ArrayList<ServerPlayerEntity> players = new ArrayList<>();
+    
+    blocks.forAllTileEntities(TileLaserHousing.class, (TileLaserHousing tile) -> {
+      // only count each player once, increment Laser Fired stat of each player
+      final ServerPlayerEntity player = tile.getPlayer();
+      if(player != null){
+        if(players.contains(player) == false){
+          players.add(player);
+        }
+      }
+    });
+    
     for(final ServerPlayerEntity player : players){
       AdvancementUtil.grantAdvancement(player, CustomAdvancements.FIRE_LASER);
       if(laser_distance >= LaserNetwork.max_laser_distance){

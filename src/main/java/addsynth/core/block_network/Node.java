@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 
 /** A Node neatly stores a Block Position, Block Type, and a TileEntity in the same object.
  *  The TileEntity can be null if no TileEntity exists at that location. */
+// OPTIMIZE: Node and NodeList by specifying a type parameter. (I tried and got pretty far, but I encountered an error I couldn't get around.)
 public class Node {
 
   public final BlockPos position;
