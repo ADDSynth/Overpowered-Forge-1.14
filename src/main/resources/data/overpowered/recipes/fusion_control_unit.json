@@ -13,7 +13,7 @@
       "item": "overpowered:data_cable"
     },
     "e": {
-      "item": "overpowered:energized_power_core"
+      "item": "addsynth_energy:circuit_tier_4"
     }
   },
   "result": {

@@ -1,22 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "ipi",
-    "wfw",
-    "ipi"
+    "aea",
+    "sgs",
+    "aca"
   ],
   "key": {
-    "i": {
-      "tag": "forge:ingots/iron"
+    "a": {
+      "tag": "forge:plates/aluminum"
     },
-    "p": {
-      "item": "addsynth_energy:power_core"
+    "s": {
+      "item": "overpowered:scanning_laser"
     },
-    "w": {
-      "item": "addsynth_energy:energy_wire"
+    "e": {
+      "tag": "forge:ender_pearls"
     },
-    "f": {
-      "item": "minecraft:furnace"
+    "c": {
+      "item": "addsynth_energy:circuit_tier_3"
+    },
+    "g": {
+      "tag": "forge:glass_panes/colorless"
     }
   },
   "result": {

@@ -15,7 +15,7 @@ NEW:
     - Updated Pam's Harvestcraft so we can detect it now.
   Added Team Manager.
   Added Circuit Fabricator.
-    - Added 8 circuits, however you can only craft 7 of them at the moment.
+    - Added 8 tiers of circuits.
   Added a standard Generator to ADDSynth Energy.
     - It takes in standard fuel items such as Coal, Charcoal, Wood, and Planks.
     - Updated the texture to high definition.
@@ -60,13 +60,16 @@ CHANGED:
       many Energy Crystals. Changed the default tries to generate Gem Ore from 4 to 3.
   No longer registers a Steel smelting recipe if Immersive Engineering or Mekanism is installed.
   Changed the Steel smelting recipe to a Blast Furnace recipe.
+  The Dimensional Anchor now has a shaped crafting recipe, like how it was in Minecraft 1.12
+    and earlier. (still doesn't do anything.)
+  Items which have an alternate recipe now have both recipes in the same group.
 FIXED:
   Finally added the ability to get those Advancements that you couldn't get before,
     such as Fire Laser, Fire Laser the Maximum Distance, Portal, World Destroyer,
     and Convert a Thousand Gems.
 REMOVED:
   Removed the ability to move some Overpowered items into other Creative Tabs.
-  Removed Unknown Technology item.
+  Removed the Unknown Technology item.
 
 
 

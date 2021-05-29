@@ -1,9 +1,18 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {"item": "overpowered:beam_emitter"},
-    {"tag": "forge:plates/steel"}
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "bsb",
+    " b "
   ],
+  "key": {
+    "s": {
+      "tag": "forge:plates/steel"
+    },
+    "b": {
+      "item": "overpowered:beam_emitter"
+    }
+  },
   "result": {
     "item": "overpowered:energy_grid"
   }

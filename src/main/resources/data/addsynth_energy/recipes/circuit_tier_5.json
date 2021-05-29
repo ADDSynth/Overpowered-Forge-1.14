@@ -2,7 +2,7 @@
   "type": "addsynth_energy:circuit_fabricator",
   "ingredients": [
     {"item": "minecraft:paper"},
-    {"tag": "forge:plates/platinum"},
+    {"tag": "forge:plates/iron"},
     {"tag": "forge:dyes/black"},
     {"item": "minecraft:repeater"},
     {"tag": "forge:silicon"},

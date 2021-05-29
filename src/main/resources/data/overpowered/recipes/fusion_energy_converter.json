@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "fusion_energy_converter",
   "pattern": [
     "tat",
     "nce",

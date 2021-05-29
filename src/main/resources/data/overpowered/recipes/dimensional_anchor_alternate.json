@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "group": "dimensional_anchor",
   "pattern": [
-    "eve",
-    "cpc",
-    "eve"
+    "ece",
+    "vpv",
+    "ece"
   ],
   "key": {
     "e": {

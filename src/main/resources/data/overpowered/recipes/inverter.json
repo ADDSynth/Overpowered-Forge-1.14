@@ -1,22 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "sas",
+    "sbs",
     "egv",
     "sas"
   ],
   "key": {
+    "b": {
+      "item": "overpowered:scanning_laser"
+    },
     "s": {
       "tag": "forge:plates/silver"
     },
     "e": {
-      "item": "overpowered:energy_crystal"
+      "item": "overpowered:energized_power_core"
     },
     "v": {
-      "item": "overpowered:void_crystal"
+      "item": "overpowered:nullified_power_core"
     },
     "g": {
-      "item": "overpowered:energy_grid"
+      "item": "addsynth_energy:circuit_tier_7"
     },
     "a": {
       "item": "addsynth_energy:advanced_power_core"

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "caution_block",
   "pattern": [
     "byb",
     "ysy",

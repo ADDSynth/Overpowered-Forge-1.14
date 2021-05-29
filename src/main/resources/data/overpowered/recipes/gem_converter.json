@@ -1,11 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "aca",
+    "asa",
     "cpc",
     "aca"
   ],
   "key": {
+    "s": {
+      "item": "overpowered:scanning_laser"
+    },
     "a": {
       "tag": "forge:plates/aluminum"
     },
@@ -13,7 +16,7 @@
       "item": "overpowered:energy_crystal_shards"
     },
     "p": {
-      "item": "addsynth_energy:advanced_power_core"
+      "item": "addsynth_energy:circuit_tier_4"
     }
   },
   "result": {

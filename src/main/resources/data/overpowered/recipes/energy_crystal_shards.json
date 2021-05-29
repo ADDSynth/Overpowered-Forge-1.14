@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "addsynth_energy:compressor",
   "ingredients": [
     {
       "item": "overpowered:energy_crystal"

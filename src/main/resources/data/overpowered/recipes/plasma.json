@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "overpowered:energy_crystal"
+    },
+    {
+      "item": "addsynth_energy:circuit_tier_8"
+    }
+  ],
+  "result": {
+    "item": "overpowered:plasma"
+  }
+}

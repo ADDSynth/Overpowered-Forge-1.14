@@ -13,7 +13,7 @@
       "item": "overpowered:beam_emitter"
     },
     "g": {
-      "item": "overpowered:energy_grid"
+      "item": "addsynth_energy:circuit_tier_6"
     }
   },
   "result": {

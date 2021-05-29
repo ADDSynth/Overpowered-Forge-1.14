@@ -16,7 +16,7 @@
       "item": "addsynth_energy:advanced_power_core"
     },
     "f": {
-      "item": "minecraft:furnace"
+      "item": "addsynth_energy:electric_furnace"
     },
     "e": {
       "item": "overpowered:energy_grid"
