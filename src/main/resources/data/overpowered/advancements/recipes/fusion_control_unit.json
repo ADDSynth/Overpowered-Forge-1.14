@@ -11,6 +11,26 @@
         ]
       }
     },
+    "circuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:circuit_tier_4"
+          }
+        ]
+      }
+    },
+    "data_cable": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:data_cable"
+          }
+        ]
+      }
+    },
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
@@ -31,6 +51,8 @@
   "requirements": [
     [
       "titanium_plate",
+      "circuit",
+      "data_cable",
       "has_recipe",
       "has_machine"
     ]

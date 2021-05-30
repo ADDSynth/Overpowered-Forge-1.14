@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:advanced_ore_refinery"
+    },
+    "title": {
+      "translate": "advancements.overpowered.advanced_ore_refinery.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.advanced_ore_refinery.description"
+    }
+  },
+  "parent": "overpowered:overpowered/inverter",
+  "criteria": {
+    "advanced_ore_refinery": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:advanced_ore_refinery"
+          }
+        ]
+      }
+    }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:advanced_ore_refinery"
+    }
+  ]
+}

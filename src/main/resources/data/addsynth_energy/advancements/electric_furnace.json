@@ -10,7 +10,7 @@
       "translate": "advancements.addsynth_energy.electric_furnace.description"
     }
   },
-  "parent": "addsynth_energy:root",
+  "parent": "addsynth_energy:compressor",
   "criteria": {
     "electric_furnace": {
       "trigger": "minecraft:inventory_changed",
@@ -22,5 +22,11 @@
         ]
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "addsynth_energy:electric_furnace"
+    }
+  ]
 }

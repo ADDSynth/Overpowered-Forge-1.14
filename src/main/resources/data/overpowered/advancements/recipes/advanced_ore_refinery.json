@@ -1,13 +1,33 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
+    "nullified_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:nullified_power_core"
+          }
+        ]
+      }
+    },
+    "energy_grid": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_grid"
+          }
+        ]
+      }
+    },
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "overpowered:advanced_ore_refinery"
       }
     },
-    "has_ore_refinery": {
+    "has_advanced_ore_refinery": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -20,8 +40,10 @@
   },
   "requirements": [
     [
+      "nullified_power_core",
+      "energy_grid",
       "has_recipe",
-      "has_ore_refinery"
+      "has_advanced_ore_refinery"
     ]
   ],
   "rewards": {

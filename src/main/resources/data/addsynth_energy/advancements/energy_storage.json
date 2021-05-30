@@ -10,7 +10,7 @@
       "translate": "advancements.addsynth_energy.energy_storage.description"
     }
   },
-  "parent": "addsynth_energy:root",
+  "parent": "addsynth_energy:generator",
   "criteria": {
     "energy_storage": {
       "trigger": "minecraft:inventory_changed",
@@ -22,5 +22,11 @@
         ]
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "addsynth_energy:energy_storage"
+    }
+  ]
 }

@@ -1,12 +1,12 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
-    "void_crystal": {
+    "energy_crystal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:void_crystal"
+            "item": "overpowered:energy_crystal"
           }
         ]
       }
@@ -30,7 +30,7 @@
   },
   "requirements": [
     [
-      "void_crystal",
+      "energy_crystal",
       "has_recipe",
       "has_portal_frame"
     ]

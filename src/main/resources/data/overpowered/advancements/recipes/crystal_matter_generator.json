@@ -11,6 +11,16 @@
         ]
       }
     },
+    "nullified_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:nullified_power_core"
+          }
+        ]
+      }
+    },
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
@@ -31,6 +41,7 @@
   "requirements": [
     [
       "platinum_plate",
+      "nullified_power_core",
       "has_recipe",
       "has_machine"
     ]

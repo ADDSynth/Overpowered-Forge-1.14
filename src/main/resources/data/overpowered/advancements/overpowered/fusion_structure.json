@@ -10,7 +10,7 @@
       "translate": "advancements.overpowered.fusion_structure.description"
     }
   },
-  "parent": "overpowered:overpowered/void_crystal",
+  "parent": "overpowered:overpowered/plasma",
   "criteria": {
     "fusion_energy_0": {
       "trigger": "minecraft:inventory_changed",
@@ -52,5 +52,11 @@
         ]
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:fusion_energy_converter"
+    }
+  ]
 }

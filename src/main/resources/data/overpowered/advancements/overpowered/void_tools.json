@@ -71,5 +71,20 @@
       "void_pickaxe",
       "void_hoe"
     ]
+  ],
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "forge:item_exists",
+          "item": "overpowered:void_pickaxe"
+        },
+        {
+          "type": "forge:item_exists",
+          "item": "overpowered:void_sword"
+        }
+      ]
+    }
   ]
 }

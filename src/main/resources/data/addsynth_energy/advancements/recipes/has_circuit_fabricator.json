@@ -1,0 +1,27 @@
+{
+  "parent": "addsynth_energy:recipes/root",
+  "criteria": {
+    "has_circuit_fabricator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:circuit_fabricator"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "addsynth_energy:circuit_tier_1",
+      "addsynth_energy:circuit_tier_2",
+      "addsynth_energy:circuit_tier_3",
+      "addsynth_energy:circuit_tier_4",
+      "addsynth_energy:circuit_tier_5",
+      "addsynth_energy:circuit_tier_6",
+      "addsynth_energy:circuit_tier_7",
+      "addsynth_energy:circuit_tier_8"
+    ]
+  }
+}

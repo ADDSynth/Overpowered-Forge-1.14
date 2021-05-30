@@ -23,6 +23,22 @@
           }
         ]
       }
+    },
+    "copper_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ores/copper"
+          }
+        ]
+      }
     }
-  }
+  },
+  "requirements": [
+    [
+      "copper",
+      "copper_ore"
+    ]
+  ]
 }

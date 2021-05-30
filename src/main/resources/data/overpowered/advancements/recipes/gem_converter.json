@@ -21,12 +21,22 @@
         ]
       }
     },
-    "advanced_power_core": {
+    "scanning_laser": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "addsynth_energy:advanced_power_core"
+            "item": "overpowered:scanning_laser"
+          }
+        ]
+      }
+    },
+    "circuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:circuit_tier_4"
           }
         ]
       }
@@ -52,7 +62,8 @@
     [
       "aluminum_plate",
       "energy_crystal_shards",
-      "advanced_power_core",
+      "scanning_laser",
+      "circuit",
       "has_recipe",
       "has_gem_converter"
     ]

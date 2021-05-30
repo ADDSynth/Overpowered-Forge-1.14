@@ -10,9 +10,9 @@
       "translate": "advancements.overpowered.dimensional_anchor.description"
     }
   },
-  "parent": "overpowered:overpowered/void_crystal",
+  "parent": "overpowered:overpowered/plasma",
   "criteria": {
-    "gold_trophy": {
+    "dimensional_anchor": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -22,5 +22,11 @@
         ]
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:dimensional_anchor"
+    }
+  ]
 }

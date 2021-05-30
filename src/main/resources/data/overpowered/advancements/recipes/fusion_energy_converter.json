@@ -11,10 +11,26 @@
         ]
       }
     },
+    "nullified_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:nullified_power_core"
+          }
+        ]
+      }
+    },
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "overpowered:fusion_energy_converter"
+      }
+    },
+    "has_alternate_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:fusion_energy_converter_alternate"
       }
     },
     "has_machine": {
@@ -31,7 +47,9 @@
   "requirements": [
     [
       "titanium_plate",
+      "nullified_power_core",
       "has_recipe",
+      "has_alternate_recipe",
       "has_machine"
     ]
   ],

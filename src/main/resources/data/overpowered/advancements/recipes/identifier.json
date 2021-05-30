@@ -1,12 +1,52 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
-    "has_void_crystal": {
+    "aluminum_plate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:void_crystal"
+            "tag": "forge:plates/aluminum"
+          }
+        ]
+      }
+    },
+    "data_cable": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:data_cable"
+          }
+        ]
+      }
+    },
+    "scanning_laser": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:scanning_laser"
+          }
+        ]
+      }
+    },
+    "circuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:circuit_tier_5"
+          }
+        ]
+      }
+    },
+    "advanced_power_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:advanced_power_core"
           }
         ]
       }
@@ -30,7 +70,11 @@
   },
   "requirements": [
     [
-      "has_void_crystal",
+      "aluminum_plate",
+      "data_cable",
+      "scanning_laser",
+      "circuit",
+      "advanced_power_core",
       "has_recipe",
       "has_identifier"
     ]

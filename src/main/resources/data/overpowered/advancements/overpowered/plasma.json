@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:plasma"
+    },
+    "title": {
+      "translate": "advancements.overpowered.plasma.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.plasma.description"
+    },
+    "frame": "goal"
+  },
+  "parent": "overpowered:overpowered/inverter",
+  "criteria": {
+    "plasma": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:plasma"
+          }
+        ]
+      }
+    }
+  }
+}

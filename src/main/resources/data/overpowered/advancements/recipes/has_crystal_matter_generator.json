@@ -14,14 +14,14 @@
   },
   "rewards": {
     "recipes": [
-      "addsynthcore:ruby_from_shards",
-      "addsynthcore:topaz_from_shards",
-      "addsynthcore:citrine_from_shards",
-      "addsynthcore:emerald_from_shards",
-      "addsynthcore:diamond_from_shards",
-      "addsynthcore:sapphire_from_shards",
-      "addsynthcore:amethyst_from_shards",
-      "addsynthcore:quartz_from_shards"
+      "addsynth_materials:ruby_from_shards",
+      "addsynth_materials:topaz_from_shards",
+      "addsynth_materials:citrine_from_shards",
+      "addsynth_materials:emerald_from_shards",
+      "addsynth_materials:diamond_from_shards",
+      "addsynth_materials:sapphire_from_shards",
+      "addsynth_materials:amethyst_from_shards",
+      "addsynth_materials:quartz_from_shards"
     ]
   }
 }

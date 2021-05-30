@@ -11,12 +11,22 @@
         ]
       }
     },
-    "energized_power_core": {
+    "energy_wire": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energized_power_core"
+            "item": "addsynth_energy:energy_wire"
+          }
+        ]
+      }
+    },
+    "circuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:circuit_tier_3"
           }
         ]
       }
@@ -41,7 +51,8 @@
   "requirements": [
     [
       "tin_plate",
-      "energized_power_core",
+      "energy_wire",
+      "circuit",
       "has_recipe",
       "has_laser_housing"
     ]

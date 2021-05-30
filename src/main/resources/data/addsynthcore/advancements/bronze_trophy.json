@@ -23,5 +23,11 @@
         ]
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "addsynthcore:bronze_trophy"
+    }
+  ]
 }

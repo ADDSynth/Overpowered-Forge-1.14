@@ -10,7 +10,7 @@
       "translate": "advancements.overpowered.light_block.description"
     }
   },
-  "parent": "overpowered:overpowered/overpowered_gem",
+  "parent": "overpowered:overpowered/celestial_gem",
   "criteria": {
     "light_block": {
       "trigger": "minecraft:inventory_changed",
@@ -22,5 +22,11 @@
         ]
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:light_block"
+    }
+  ]
 }

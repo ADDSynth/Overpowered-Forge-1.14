@@ -12,7 +12,7 @@
   },
   "parent": "overpowered:overpowered/void_crystal",
   "criteria": {
-    "void_crystal": {
+    "null_block": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -22,5 +22,11 @@
         ]
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:null_block"
+    }
+  ]
 }

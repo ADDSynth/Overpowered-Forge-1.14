@@ -52,6 +52,7 @@ public final class ADDSynthCore {
 
   public ADDSynthCore(){
     ADDSynthCore.log.info("Begin constructing ADDSynthCore class object...");
+    // FIX: Configs aren't working again? Can't disable things before they're registered.
 
     final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
     final IEventBus bus = context.getModEventBus();

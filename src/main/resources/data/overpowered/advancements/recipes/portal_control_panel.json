@@ -1,12 +1,12 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
-    "nullified_power_core": {
+    "circuit": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:nullified_power_core"
+            "item": "addsynth_energy:circuit_tier_6"
           }
         ]
       }
@@ -31,6 +31,16 @@
         ]
       }
     },
+    "ender_pearl": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ender_pearls"
+          }
+        ]
+      }
+    },
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
@@ -50,9 +60,10 @@
   },
   "requirements": [
     [
-      "nullified_power_core",
+      "circuit",
       "data_cable",
       "aluminum_plate",
+      "ender_pearl",
       "has_recipe",
       "has_portal_control_panel"
     ]

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynth_energy:circuit_fabricator"
+    },
+    "title": {
+      "translate": "advancements.addsynth_energy.circuit_fabricator.title"
+    },
+    "description": {
+      "translate": "advancements.addsynth_energy.circuit_fabricator.description"
+    }
+  },
+  "parent": "addsynth_energy:compressor",
+  "criteria": {
+    "circuit_fabricator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:circuit_fabricator"
+          }
+        ]
+      }
+    }
+  }
+}

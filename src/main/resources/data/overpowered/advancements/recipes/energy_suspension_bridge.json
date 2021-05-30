@@ -21,12 +21,12 @@
         ]
       }
     },
-    "energy_grid": {
+    "circuit": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_grid"
+            "item": "addsynth_energy:circuit_tier_6"
           }
         ]
       }
@@ -52,7 +52,7 @@
     [
       "steel_plate",
       "beam_emitter",
-      "energy_grid",
+      "circuit",
       "has_recipe",
       "has_bridge"
     ]

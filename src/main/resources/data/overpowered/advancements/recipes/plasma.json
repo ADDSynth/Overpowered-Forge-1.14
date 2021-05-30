@@ -1,12 +1,12 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
-    "magenta_lens": {
+    "circuit": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:magenta_lens"
+            "item": "addsynth_energy:circuit_tier_8"
           }
         ]
       }
@@ -14,15 +14,15 @@
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "overpowered:magenta_laser"
+        "recipe": "overpowered:plasma"
       }
     },
-    "has_laser": {
+    "has_plasma": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:magenta_laser"
+            "item": "overpowered:plasma"
           }
         ]
       }
@@ -30,14 +30,14 @@
   },
   "requirements": [
     [
-      "magenta_lens",
+      "circuit",
       "has_recipe",
-      "has_laser"
+      "has_plasma"
     ]
   ],
   "rewards": {
     "recipes": [
-      "overpowered:magenta_laser"
+      "overpowered:plasma"
     ]
   }
 }

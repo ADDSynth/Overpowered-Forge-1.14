@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynth_materials:citrine"
+    },
+    "title": {
+      "translate": "advancements.addsynth_materials.root.title"
+    },
+    "description": {
+      "translate": "advancements.addsynth_materials.root.description"
+    },
+    "background": "addsynthcore:textures/gui/advancements/stone.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "root": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

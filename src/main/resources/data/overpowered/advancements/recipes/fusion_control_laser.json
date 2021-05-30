@@ -11,12 +11,12 @@
         ]
       }
     },
-    "energy_grid": {
+    "scanning_laser": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_grid"
+            "item": "overpowered:scanning_laser"
           }
         ]
       }
@@ -61,7 +61,7 @@
   "requirements": [
     [
       "focus_lens",
-      "energy_grid",
+      "scanning_laser",
       "data_cable",
       "steel_plate",
       "has_recipe",

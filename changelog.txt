@@ -29,7 +29,6 @@ NEW:
     give you in the Crystal Energy Extractor now shows in the tooltip when you
     hover over the item.
   Added Plasma item.
-    - But players won't be able to do anything with it until the next update.
   Added a new debug feature to ADDSynthCore that allows you to print all defined
     block and item tags into text files.
   Added stats for Converting Gems, Firing Lasers, and Identifying Items.
@@ -39,6 +38,9 @@ NEW:
     notes to/from the Music Box.
   Added Swap Track buttons to the Music Box gui.
   If you mouse over a Music Sheet item it now says if its blank or it contains Music Data.
+  Added advancements for Energy Crystal, Magic Infuser, Advanced Ore Refinery,
+    Crystal Matter Generator, Energy Suspension Bridge, Plasma, Rose Quartz,
+    the standard Generator, Compressor, and the Circuit Fabricator.
 CHANGED:
   Made ADDSynth Materials into its own mod.
   The Music Box gui no longer has the JEI item panel. It doesn't need it.
@@ -67,9 +69,11 @@ FIXED:
   Finally added the ability to get those Advancements that you couldn't get before,
     such as Fire Laser, Fire Laser the Maximum Distance, Portal, World Destroyer,
     and Convert a Thousand Gems.
+  Fixed advancements logging errors for items that were removed or disabled, I think.
 REMOVED:
   Removed the ability to move some Overpowered items into other Creative Tabs.
   Removed the Unknown Technology item.
+  Removed ADDSynthCore advancements for Caution Block, Music Box, and Scythes.
 
 
 

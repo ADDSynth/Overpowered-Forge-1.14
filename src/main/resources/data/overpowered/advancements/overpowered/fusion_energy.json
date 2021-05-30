@@ -13,8 +13,14 @@
   },
   "parent": "overpowered:overpowered/fusion_structure",
   "criteria": {
-    "gold_trophy": {
+    "fusion_energy": {
       "trigger": "minecraft:impossible"
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:fusion_energy_converter"
+    }
+  ]
 }

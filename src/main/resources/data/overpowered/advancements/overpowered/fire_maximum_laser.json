@@ -16,5 +16,11 @@
     "fire_maximum_laser": {
       "trigger": "minecraft:impossible"
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:laser_housing"
+    }
+  ]
 }

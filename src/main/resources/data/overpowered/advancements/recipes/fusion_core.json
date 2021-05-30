@@ -1,6 +1,16 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
+    "plasma": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:plasma"
+          }
+        ]
+      }
+    },
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
@@ -20,6 +30,7 @@
   },
   "requirements": [
     [
+      "plasma",
       "has_recipe",
       "has_fusion_core"
     ]

@@ -1,26 +1,6 @@
 {
-  "parent": "overpowered:recipes/root",
+  "parent": "addsynth_energy:recipes/root",
   "criteria": {
-    "bookshelf": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:bookshelf"
-          }
-        ]
-      }
-    },
-    "energy_crystal": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "overpowered:energy_crystal"
-          }
-        ]
-      }
-    },
     "aluminum_plate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -31,12 +11,42 @@
         ]
       }
     },
-    "circuit": {
+    "steel_plate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "addsynth_energy:circuit_tier_5"
+            "tag": "forge:plates/steel"
+          }
+        ]
+      }
+    },
+    "green_circuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:circuit_tier_1"
+          }
+        ]
+      }
+    },
+    "silicon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:silicon"
+          }
+        ]
+      }
+    },
+    "crafting_table": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:crafting_table"
           }
         ]
       }
@@ -44,15 +54,15 @@
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "overpowered:magic_infuser"
+        "recipe": "addsynth_energy:electric_furnace"
       }
     },
-    "has_magic_infuser": {
+    "has_electric_furnace": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:magic_infuser"
+            "item": "addsynth_energy:electric_furnace"
           }
         ]
       }
@@ -60,17 +70,18 @@
   },
   "requirements": [
     [
-      "bookshelf",
-      "energy_crystal",
       "aluminum_plate",
-      "circuit",
+      "steel_plate",
+      "green_circuit",
+      "silicon",
+      "crafting_table",
       "has_recipe",
-      "has_magic_infuser"
+      "has_electric_furnace"
     ]
   ],
   "rewards": {
     "recipes": [
-      "overpowered:magic_infuser"
+      "addsynth_energy:electric_furnace"
     ]
   }
 }

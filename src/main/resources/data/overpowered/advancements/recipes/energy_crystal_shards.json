@@ -1,12 +1,12 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
-    "magenta_lens": {
+    "energy_crystal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:magenta_lens"
+            "item": "overpowered:energy_crystal"
           }
         ]
       }
@@ -14,15 +14,15 @@
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "overpowered:magenta_laser"
+        "recipe": "overpowered:energy_crystal_shards"
       }
     },
-    "has_laser": {
+    "has_energy_crystal_shards": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:magenta_laser"
+            "item": "overpowered:energy_crystal_shards"
           }
         ]
       }
@@ -30,14 +30,14 @@
   },
   "requirements": [
     [
-      "magenta_lens",
+      "energy_crystal",
       "has_recipe",
-      "has_laser"
+      "has_energy_crystal_shards"
     ]
   ],
   "rewards": {
     "recipes": [
-      "overpowered:magenta_laser"
+      "overpowered:energy_crystal_shards"
     ]
   }
 }

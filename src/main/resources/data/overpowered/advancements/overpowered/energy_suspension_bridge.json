@@ -1,23 +1,23 @@
 {
   "display": {
     "icon": {
-      "item": "overpowered:laser_housing"
+      "item": "overpowered:energy_suspension_bridge"
     },
     "title": {
-      "translate": "advancements.overpowered.craft_laser.title"
+      "translate": "advancements.overpowered.energy_suspension_bridge.title"
     },
     "description": {
-      "translate": "advancements.overpowered.craft_laser.description"
+      "translate": "advancements.overpowered.energy_suspension_bridge.description"
     }
   },
   "parent": "overpowered:overpowered/root",
   "criteria": {
-    "laser": {
+    "energy_suspension_bridge": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:laser_housing"
+            "item": "overpowered:energy_suspension_bridge"
           }
         ]
       }
@@ -26,7 +26,7 @@
   "conditions": [
     {
       "type": "forge:item_exists",
-      "item": "overpowered:laser_housing"
+      "item": "overpowered:energy_suspension_bridge"
     }
   ]
 }

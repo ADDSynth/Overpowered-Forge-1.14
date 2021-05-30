@@ -1,42 +1,42 @@
 {
-  "parent": "overpowered:recipes/root",
+  "parent": "addsynth_energy:recipes/root",
   "criteria": {
-    "bookshelf": {
+    "iron": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "minecraft:bookshelf"
+            "tag": "forge:ingots/iron"
           }
         ]
       }
     },
-    "energy_crystal": {
+    "power_core": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_crystal"
+            "item": "addsynth_energy:power_core"
           }
         ]
       }
     },
-    "aluminum_plate": {
+    "furnace": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:plates/aluminum"
+            "item": "minecraft:furnace"
           }
         ]
       }
     },
-    "circuit": {
+    "energy_wire": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "addsynth_energy:circuit_tier_5"
+            "item": "addsynth_energy:energy_wire"
           }
         ]
       }
@@ -44,15 +44,15 @@
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "overpowered:magic_infuser"
+        "recipe": "addsynth_energy:generator"
       }
     },
-    "has_magic_infuser": {
+    "has_generator": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:magic_infuser"
+            "item": "addsynth_energy:generator"
           }
         ]
       }
@@ -60,17 +60,17 @@
   },
   "requirements": [
     [
-      "bookshelf",
-      "energy_crystal",
-      "aluminum_plate",
-      "circuit",
+      "iron",
+      "power_core",
+      "furnace",
+      "energy_wire",
       "has_recipe",
-      "has_magic_infuser"
+      "has_generator"
     ]
   ],
   "rewards": {
     "recipes": [
-      "overpowered:magic_infuser"
+      "addsynth_energy:generator"
     ]
   }
 }

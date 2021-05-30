@@ -4,10 +4,10 @@
       "item": "overpowered:celestial_gem"
     },
     "title": {
-      "translate": "advancements.overpowered.overpowered_gem.title"
+      "translate": "advancements.overpowered.celestial_gem.title"
     },
     "description": {
-      "translate": "advancements.overpowered.overpowered_gem.description"
+      "translate": "advancements.overpowered.celestial_gem.description"
     }
   },
   "parent": "overpowered:overpowered/all_gems",

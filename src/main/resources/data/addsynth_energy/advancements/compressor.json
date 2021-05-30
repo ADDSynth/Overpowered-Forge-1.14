@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "addsynth_energy:compressor"
+    },
+    "title": {
+      "translate": "advancements.addsynth_energy.compressor.title"
+    },
+    "description": {
+      "translate": "advancements.addsynth_energy.compressor.description"
+    }
+  },
+  "parent": "addsynth_energy:generator",
+  "criteria": {
+    "compressor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "addsynth_energy:compressor"
+          }
+        ]
+      }
+    }
+  }
+}

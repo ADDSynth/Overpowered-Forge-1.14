@@ -19,5 +19,11 @@
         "block": "overpowered:black_hole"
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:black_hole"
+    }
+  ]
 }

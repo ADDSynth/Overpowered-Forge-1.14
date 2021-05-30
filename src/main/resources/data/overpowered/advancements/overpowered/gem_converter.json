@@ -10,7 +10,7 @@
       "translate": "advancements.overpowered.gem_converter.description"
     }
   },
-  "parent": "overpowered:overpowered/overpowered_gem",
+  "parent": "overpowered:overpowered/energy_crystal",
   "criteria": {
     "gem_converter": {
       "trigger": "minecraft:inventory_changed",
@@ -22,5 +22,11 @@
         ]
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:gem_converter"
+    }
+  ]
 }

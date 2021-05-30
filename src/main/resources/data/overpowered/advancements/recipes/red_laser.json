@@ -1,6 +1,16 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
+    "red_lens": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:red_lens"
+          }
+        ]
+      }
+    },
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
@@ -20,6 +30,7 @@
   },
   "requirements": [
     [
+      "red_lens",
       "has_recipe",
       "has_laser"
     ]

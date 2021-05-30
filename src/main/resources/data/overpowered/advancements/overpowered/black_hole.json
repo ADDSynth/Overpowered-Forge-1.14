@@ -10,9 +10,9 @@
       "translate": "advancements.overpowered.black_hole.description"
     }
   },
-  "parent": "overpowered:overpowered/void_crystal",
+  "parent": "overpowered:overpowered/plasma",
   "criteria": {
-    "gold_trophy": {
+    "black_hole": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -22,5 +22,11 @@
         ]
       }
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:black_hole"
+    }
+  ]
 }

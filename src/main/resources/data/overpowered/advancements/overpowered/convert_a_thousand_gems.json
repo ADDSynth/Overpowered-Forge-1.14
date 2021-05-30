@@ -16,5 +16,11 @@
     "convert_gems": {
       "trigger": "minecraft:impossible"
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:gem_converter"
+    }
+  ]
 }

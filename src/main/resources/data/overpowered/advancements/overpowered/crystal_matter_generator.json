@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:crystal_matter_generator"
+    },
+    "title": {
+      "translate": "advancements.overpowered.crystal_matter_generator.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.crystal_matter_generator.description"
+    }
+  },
+  "parent": "overpowered:overpowered/inverter",
+  "criteria": {
+    "crystal_matter_generator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:crystal_matter_generator"
+          }
+        ]
+      }
+    }
+  },
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "overpowered:crystal_matter_generator"
+    }
+  ]
+}

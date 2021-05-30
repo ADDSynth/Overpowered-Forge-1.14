@@ -1,16 +1,6 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
-    "bookshelf": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "minecraft:bookshelf"
-          }
-        ]
-      }
-    },
     "energy_crystal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -31,12 +21,32 @@
         ]
       }
     },
+    "scanning_laser": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:scanning_laser"
+          }
+        ]
+      }
+    },
     "circuit": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "addsynth_energy:circuit_tier_5"
+            "item": "addsynth_energy:circuit_tier_3"
+          }
+        ]
+      }
+    },
+    "ender_pearl": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ender_pearls"
           }
         ]
       }
@@ -44,15 +54,15 @@
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "overpowered:magic_infuser"
+        "recipe": "overpowered:crystal_energy_extractor"
       }
     },
-    "has_magic_infuser": {
+    "has_machine": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "overpowered:magic_infuser"
+            "item": "overpowered:crystal_energy_extractor"
           }
         ]
       }
@@ -60,17 +70,18 @@
   },
   "requirements": [
     [
-      "bookshelf",
       "energy_crystal",
       "aluminum_plate",
+      "scanning_laser",
       "circuit",
+      "ender_pearl",
       "has_recipe",
-      "has_magic_infuser"
+      "has_machine"
     ]
   ],
   "rewards": {
     "recipes": [
-      "overpowered:magic_infuser"
+      "overpowered:crystal_energy_extractor"
     ]
   }
 }
