@@ -1,6 +1,7 @@
 package addsynth.energy.lib.gui.widgets;
 
 import addsynth.core.gui.widgets.ProgressBar;
+import addsynth.core.util.math.RoundMode;
 import addsynth.energy.lib.tiles.machines.TileAbstractWorkMachine;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 
@@ -18,12 +19,12 @@ public final class WorkProgressBar extends ProgressBar {
 
   public final void draw(ContainerScreen gui, TileAbstractWorkMachine tile){
     work_time = tile.getWorkTimePercentage();
-    super.draw(gui, Direction.LEFT_TO_RIGHT, work_time, Round.FLOOR);
+    super.draw(gui, Direction.LEFT_TO_RIGHT, work_time, RoundMode.Floor);
   }
 
   public final void draw(ContainerScreen gui, Direction direction, TileAbstractWorkMachine tile){
     work_time = tile.getWorkTimePercentage();
-    super.draw(gui, direction, work_time, Round.FLOOR);
+    super.draw(gui, direction, work_time, RoundMode.Floor);
   }
 
   public final float getWorkTime(){

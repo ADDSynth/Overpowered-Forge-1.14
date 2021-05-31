@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.machines.black_hole;
 import addsynth.core.util.game.MessageUtil;
 import addsynth.core.util.math.BlockMath;
 import addsynth.core.util.math.MathUtility;
+import addsynth.core.util.math.random.RandomUtil;
 import addsynth.core.util.server.ServerUtils;
 import addsynth.core.util.time.TimeConstants;
 import addsynth.core.util.time.TimeUtil;
@@ -146,7 +147,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
         final int deviation = 20;
         final int min_value = difficulty_radius[difficulty.ordinal()] - deviation;
         final int max_value = difficulty_radius[difficulty.ordinal()] + deviation;
-        radius = MathHelper.clamp(MathUtility.RandomRange(min_value, max_value), MIN_RADIUS, MAX_RADIUS);
+        radius = MathHelper.clamp(RandomUtil.RandomRange(min_value, max_value), MIN_RADIUS, MAX_RADIUS);
       }
       else{
         radius = difficulty_radius[difficulty.getId()];
@@ -154,7 +155,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
     }
     else{
       if(Config.randomize_black_hole_radius.get()){
-        radius = MathUtility.RandomRange(Config.minimum_black_hole_radius.get(), Config.maximum_black_hole_radius.get());
+        radius = RandomUtil.RandomRange(Config.minimum_black_hole_radius.get(), Config.maximum_black_hole_radius.get());
       }
     }
     return radius;

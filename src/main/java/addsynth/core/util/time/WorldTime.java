@@ -1,6 +1,6 @@
 package addsynth.core.util.time;
 
-import addsynth.core.util.math.MathUtility;
+import addsynth.core.util.math.CommonMath;
 import net.minecraft.world.World;
 
 public final class WorldTime {
@@ -27,17 +27,17 @@ public final class WorldTime {
   public static final long getNextDay(final World world){
     final long world_time = world.getDayTime();
     if(world_time % minecraft_day_in_ticks > morning){
-      return MathUtility.FloorNearest(world_time, minecraft_day_in_ticks) + next_day;
+      return CommonMath.FloorNearest(world_time, minecraft_day_in_ticks) + next_day;
     }
-    return MathUtility.FloorNearest(world_time, minecraft_day_in_ticks) + morning;
+    return CommonMath.FloorNearest(world_time, minecraft_day_in_ticks) + morning;
   }
   
   public static final long getNextNight(final World world){
     final long world_time = world.getDayTime();
     if(world_time % minecraft_day_in_ticks > night){
-      return MathUtility.FloorNearest(world_time, minecraft_day_in_ticks) + minecraft_day_in_ticks + night;
+      return CommonMath.FloorNearest(world_time, minecraft_day_in_ticks) + minecraft_day_in_ticks + night;
     }
-    return MathUtility.FloorNearest(world_time, minecraft_day_in_ticks) + night;
+    return CommonMath.FloorNearest(world_time, minecraft_day_in_ticks) + night;
   }
 
 }

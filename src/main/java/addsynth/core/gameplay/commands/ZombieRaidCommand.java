@@ -4,7 +4,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.util.command.CommandUtil;
 import addsynth.core.util.command.PermissionLevel;
 import addsynth.core.util.entity.MobUtil;
-import addsynth.core.util.math.MathUtility;
+import addsynth.core.util.math.CommonMath;
 import addsynth.core.util.player.PlayerUtil;
 import addsynth.core.util.time.TimeConstants;
 import addsynth.core.util.time.WorldTime;
@@ -171,7 +171,7 @@ public final class ZombieRaidCommand {
     final MinecraftServer server = command_source.getServer();
     previous_world_time = world.getDayTime();
     WorldUtil.set_time(server,
-      MathUtility.CeilingNearest(world.getDayTime(), WorldTime.minecraft_day_in_ticks) // round to start of next day (0)
+      CommonMath.CeilingNearest(world.getDayTime(), WorldTime.minecraft_day_in_ticks) // round to start of next day (0)
       - 540 // subtract the part of sunrise where zombies can still burn
       - zombie_raid_time
     );

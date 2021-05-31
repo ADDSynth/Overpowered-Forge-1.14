@@ -4,7 +4,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
 import addsynth.core.util.StringUtil;
-import addsynth.core.util.math.MathUtility;
+import addsynth.core.util.math.random.RandomUtil;
 import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;
 import addsynth.material.MaterialsUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
@@ -117,34 +117,34 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
     final Item item = inventory.working_inventory.getStackInSlot(1).getItem();
     final Random random = new Random();
     if(MaterialsUtil.match(item, MaterialsUtil.getRubies())){
-      return MathUtility.choose(random, ruby_enchantments);
+      return RandomUtil.choose(random, ruby_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getTopaz())){
-      return MathUtility.choose(random, topaz_enchantments);
+      return RandomUtil.choose(random, topaz_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getCitrine())){
-      return MathUtility.choose(random, citrine_enchantments);
+      return RandomUtil.choose(random, citrine_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getEmeralds())){
-      return MathUtility.choose(random, emerald_enchantments);
+      return RandomUtil.choose(random, emerald_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getDiamonds())){
-      return MathUtility.choose(random, diamond_enchantments);
+      return RandomUtil.choose(random, diamond_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getSapphires())){
-      return MathUtility.choose(random, sapphire_enchantments);
+      return RandomUtil.choose(random, sapphire_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getAmethysts())){
-      return MathUtility.choose(random, amethyst_enchantments);
+      return RandomUtil.choose(random, amethyst_enchantments);
     }
     if(MaterialsUtil.match(item, MaterialsUtil.getQuartz())){
-      return MathUtility.choose(random, quartz_enchantments);
+      return RandomUtil.choose(random, quartz_enchantments);
     }
     if(item == Init.celestial_gem){
-      return MathUtility.choose(random, celestial_enchantments);
+      return RandomUtil.choose(random, celestial_enchantments);
     }
     if(item == Init.void_crystal){
-      return MathUtility.choose(random, void_crystal_enchantments);
+      return RandomUtil.choose(random, void_crystal_enchantments);
     }
     OverpoweredTechnology.log.error("function get_enchantment() in "+TileMagicInfuser.class.getSimpleName()+" returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
     return null;

@@ -1,4 +1,4 @@
-package addsynth.core.util.math;
+package addsynth.core.util.math.random;
 
 import java.util.Random;
 

@@ -1,6 +1,6 @@
 package addsynth.core.gui.util;
 
-import addsynth.core.util.math.MathUtility;
+import addsynth.core.util.math.CommonMath;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
@@ -124,7 +124,7 @@ public final class GuiUtil {
     for(i = 0; i < text.length; i++){
       width[i] = font.getStringWidth(text[i]);
     }
-    return MathUtility.getMax(width);
+    return CommonMath.getMax(width);
   }
 
   /** This will render the string in a different color if you prefix the string with

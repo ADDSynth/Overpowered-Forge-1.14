@@ -11,6 +11,10 @@ public final class ArrayUtil {
     return index >= 0 && index < max_length;
   }
 
+  public static final boolean isInsideBounds(final int index, @Nonnull final Object[] array){
+    return index >= 0 && index < array.length;
+  }
+
   /** This will attempt to return the value at index in the array.
    *  Throws an error if array is null or of length 0.
    *  Returns value at index 0 if index is out of bounds.
@@ -91,6 +95,7 @@ public final class ArrayUtil {
     return array[index];
   }
 
+  /** Returns false if array is null or empty. */
   public static final boolean is_valid_array(final Object[] array){
     if(array == null){
       ADDSynthCore.log.error("Input array is null.");
@@ -115,7 +120,8 @@ public final class ArrayUtil {
     }
     return true;
   }
-          
+  
+  /** Checks array index and prints an ArrayIndexOutofBounds Error if necessary. */
   public static final <T> boolean check_array_index(final T[] array, final int index){
     if(is_valid_array(array)){
       if(index >= 0 && index < array.length){
@@ -128,6 +134,7 @@ public final class ArrayUtil {
 
   /** Prints extremely detailed information to the log, and also prints the stacktrace. */
   public static final <T> void print_array_index_out_of_bounds_error(@Nonnull final T[] array, final int index){
+    // DELETE
     // if(array == null){
     //   ADDSynthCore.log.error(new NullPointerException("null array."));
     // }
@@ -137,6 +144,7 @@ public final class ArrayUtil {
     Thread.dumpStack(); // FEATURE: easiest solution for now because I'm in a time crunch, but would be nice to find a way to print the thread stack EXCEPT the first 2 lines that shows dumpStack() and print_array_error() respectively.
   }
 
+  /** Gets total length of all arrays combined. */
   public static final int get_length_of_arrays(final Object[] ... arrays){
     int total_length = 0;
     for(Object[] array : arrays){

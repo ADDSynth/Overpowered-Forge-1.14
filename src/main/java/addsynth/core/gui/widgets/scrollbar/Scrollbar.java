@@ -5,6 +5,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.gui.widgets.Dimensions;
 import addsynth.core.gui.widgets.WidgetUtil;
 import addsynth.core.util.java.ArrayUtil;
+import addsynth.core.util.math.CommonMath;
 import addsynth.core.util.math.MathUtility;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.widget.Widget;
@@ -138,7 +139,7 @@ public final class Scrollbar extends Widget {
         final double ratio = (double)visible_elements / list_length;
         scrollbar_height = (int)Math.round(height * ratio);
         max_positions = list_length - visible_elements + 1;
-        index_position = MathUtility.clamp(index_position, 0, max_positions - 1);
+        index_position = CommonMath.clamp(index_position, 0, max_positions - 1);
       }
       else{
         scrollbar_height = this.height;
@@ -188,7 +189,7 @@ public final class Scrollbar extends Widget {
   @SuppressWarnings("deprecation")
   protected void onDrag(double gui_x, double gui_y, double screen_x, double screen_y){
     center_y = (int)Math.round(gui_y);
-    position_y = MathUtility.clamp(center_y - scrollbar_half_height, this.y, max_position_y);
+    position_y = CommonMath.clamp(center_y - scrollbar_half_height, this.y, max_position_y);
     updateIndex();
   }
 

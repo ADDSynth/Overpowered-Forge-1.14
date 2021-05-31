@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.game.MessageUtil;
+import addsynth.core.util.math.CommonMath;
+import addsynth.core.util.math.RoundMode;
 import addsynth.core.util.time.TimeConstants;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
@@ -33,6 +35,38 @@ public final class StringUtil {
       b.append(s);
     }
     return b.toString();
+  }
+
+  public static final String toPercentageString(final double value){
+    return CommonMath.toPercentage(value, 0, RoundMode.Round) + "%";
+  }
+  
+  public static final String toPercentageString(final double value, final RoundMode mode){
+    return CommonMath.toPercentage(value, 0, mode) + "%";
+  }
+  
+  public static final String toPercentageString(final double value, final int number_of_decimals){
+    return CommonMath.toPercentage(value, number_of_decimals, RoundMode.Round) + "%";
+  }
+  
+  public static final String toPercentageString(final double value, final int number_of_decimals, final RoundMode mode){
+    return CommonMath.toPercentage(value, number_of_decimals, mode) + "%";
+  }
+  
+  public static final String toPercentageString(final int top, final int bottom){
+    return CommonMath.toPercentage(top, bottom, 0, RoundMode.Round) + "%";
+  }
+  
+  public static final String toPercentageString(final int top, final int bottom, final RoundMode mode){
+    return CommonMath.toPercentage(top, bottom, 0, mode) + "%";
+  }
+  
+  public static final String toPercentageString(final int top, final int bottom, final int number_of_decimals){
+    return CommonMath.toPercentage(top, bottom, number_of_decimals, RoundMode.Round) + "%";
+  }
+  
+  public static final String toPercentageString(final int top, final int bottom, final int number_of_decimals, final RoundMode mode){
+    return CommonMath.toPercentage(top, bottom, number_of_decimals, mode) + "%";
   }
 
   // https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#toLowerCase-java.util.Locale-

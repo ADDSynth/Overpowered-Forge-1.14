@@ -1,191 +1,14 @@
 package addsynth.core.util.math;
 
-import java.util.Random;
 import javax.annotation.Nonnegative;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gui.widgets.scrollbar.Scrollbar;
-import addsynth.core.util.java.JavaUtils;
-import net.minecraft.util.math.MathHelper;
 
 /** For math functions that use {@link net.minecraft.util.math.BlockPos BlockPos},
  *  use {@link BlockMath} instead.
  *  @author ADDSynth
  */
 public final class MathUtility {
-
-  public static final int getMin(final int ... input){
-    if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMin() input was null!"); }
-    if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMin() requires at least one integer as input."); }
-    int min = input[0];
-    for(int i = 1; i < input.length; i++){
-      if(input[i] < min){
-        min = input[i];
-      }
-    }
-    return min;
-  }
-
-  public static final long getMin(final long ... input){
-    if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMin() input was null!"); }
-    if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMin() requires at least one integer as input."); }
-    long min = input[0];
-    for(int i = 1; i < input.length; i++){
-      if(input[i] < min){
-        min = input[i];
-      }
-    }
-    return min;
-  }
-
-  public static final int getMax(final int ... input){
-    if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMax() input was null!"); }
-    if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMax() requires at least one integer as input."); }
-    int max = input[0];
-    for(int i = 1; i < input.length; i++){
-      if(input[i] > max){
-        max = input[i];
-      }
-    }
-    return max;
-  }
-
-  public static final long getMax(final long ... input){
-    if(input == null){     throw new NullPointerException(    MathUtility.class.getName()+".getMax() input was null!"); }
-    if(input.length == 0){ throw new IllegalArgumentException(MathUtility.class.getName()+".getMax() requires at least one integer as input."); }
-    long max = input[0];
-    for(int i = 1; i < input.length; i++){
-      if(input[i] > max){
-        max = input[i];
-      }
-    }
-    return max;
-  }
-
-  public static final short clamp(final short number, final short minimum, final short maximum){
-    if(number < minimum){
-      return minimum;
-    }
-    return number > maximum ? maximum : number;
-  }
-  
-  // these clamp functions are here so I can find them, but they're also deprecated
-  // so I know to replace them with Vanilla's methods. Please leave them as they are!
-
-  /** @deprecated Look at what this function does. Bypass this and use the vanilla method instead. */
-  @Deprecated
-  public static final int clamp(final int number, final int minimum, final int maximum){
-    return MathHelper.clamp(number, minimum, maximum);
-  }
-
-  public static final long clamp(final long number, final long minimum, final long maximum){
-    if(number < minimum){
-      return minimum;
-    }
-    return number > maximum ? maximum : number;
-  }
-
-  /** @deprecated Look at what this function does. Bypass this and use the vanilla method instead. */
-  @Deprecated
-  public static final float clamp(final float number, final float minimum, final float maximum){
-    return MathHelper.clamp(number, minimum, maximum);
-  }
-  
-  /** @deprecated Look at what this function does. Bypass this and use the vanilla method instead. */
-  @Deprecated
-  public static final double clamp(final double number, final double minimum, final float maximum){
-    return MathHelper.clamp(number, minimum, maximum);
-  }
-
-  public static final int get_smallest_index(final short[] array){
-    int smallest_index = 0;
-    int i;
-    for(i = 1; i < array.length; i++){
-      if(array[i] < array[smallest_index]){
-        smallest_index = i;
-      }
-    }
-    return smallest_index;
-  }
-
-  public static final int get_smallest_index(final int[] array){
-    int smallest_index = 0;
-    int i;
-    for(i = 1; i < array.length; i++){
-      if(array[i] < array[smallest_index]){
-        smallest_index = i;
-      }
-    }
-    return smallest_index;
-  }
-
-  public static final int get_smallest_index(final long[] array){
-    int smallest_index = 0;
-    int i;
-    for(i = 1; i < array.length; i++){
-      if(array[i] < array[smallest_index]){
-        smallest_index = i;
-      }
-    }
-    return smallest_index;
-  }
-
-  public static final int get_smallest_index(final float[] array){
-    int smallest_index = 0;
-    int i;
-    for(i = 1; i < array.length; i++){
-      if(array[i] < array[smallest_index]){
-        smallest_index = i;
-      }
-    }
-    return smallest_index;
-  }
-
-  public static final int get_smallest_index(final double[] array){
-    int smallest_index = 0;
-    int i;
-    for(i = 1; i < array.length; i++){
-      if(array[i] < array[smallest_index]){
-        smallest_index = i;
-      }
-    }
-    return smallest_index;
-  }
-
-  public static final int RoundNearest(float value, int multiple){
-    return Math.round(value / multiple) * multiple;
-  }
-  
-  public static final long RoundNearest(double value, long multiple){
-    return Math.round(value / multiple) * multiple;
-  }
-  
-  public static final double RoundNearest(double value, double multiple){
-    return Math.round(value / multiple) * multiple;
-  }
-  
-  public static final int FloorNearest(double value, int multiple){
-    return JavaUtils.cast_to_int((long)Math.floor(value / multiple) * multiple);
-  }
-  
-  public static final long FloorNearest(double value, long multiple){
-    return (long)(Math.floor(value / multiple) * multiple);
-  }
-  
-  public static final double FloorNearest(double value, double multiple){
-    return Math.floor(value / multiple) * multiple;
-  }
-  
-  public static final int CeilingNearest(double value, int multiple){
-    return JavaUtils.cast_to_int((long)Math.ceil(value / multiple) * multiple);
-  }
-  
-  public static final long CeilingNearest(double value, long multiple){
-    return (long)(Math.ceil(value / multiple) * multiple);
-  }
-  
-  public static final double CeilingNearest(double value, double multiple){
-    return Math.ceil(value / multiple) * multiple;
-  }
 
   /** This divides a whole number as evenly as possible, with higher numbers closer towards the beginning.
    *  For example, dividing 18 into 5 equal parts will produce [4, 4, 4, 3, 3].
@@ -251,7 +74,7 @@ public final class MathUtility {
       count = 0;
       
       // get first index, count, and min number
-      min_number = getMax(list);
+      min_number = CommonMath.getMax(list);
       for(i = 0; i < length; i++){
         if(list[i] > 0){
           count += 1;
@@ -325,7 +148,7 @@ public final class MathUtility {
       count = 0;
       
       // get first index, count, and min number
-      min_number = getMax(list);
+      min_number = CommonMath.getMax(list);
       for(i = 0; i < length; i++){
         if(list[i] > 0){
           count += 1;
@@ -382,44 +205,6 @@ public final class MathUtility {
     return get_distance(x1, y1, z1, x2, y2, z2) <= distance;
   }
 
-  /** Returns a random integer between <code>minimum</code> (inclusive) and <code>maximum</code>
-   *  (inclusive). This function won't error if you get the minimum and maximum mixed up,
-   *  or if they're the same value.
-   * @param minimum
-   * @param maximum
-   */
-  public static final int RandomRange(final int minimum, final int maximum){
-    final int min = Math.min(minimum, maximum);
-    final int max = Math.max(minimum, maximum);
-    final int diff = max - min;
-    if(diff == 0){ return min; }
-    final Random random = new Random();
-    return min + random.nextInt(diff + 1);
-  }
-
-  public static final int choose(final Random random, final int ... list){
-    if(list.length == 0){
-      throw new IllegalArgumentException(MathUtility.class.getSimpleName()+".choose() requires a list of at least 1 integer!");
-    }
-    return list[random.nextInt(list.length)];
-  }
-
-  public static final <T> T choose(final Random random, final T[] list){
-    if(list.length == 0){
-      throw new IllegalArgumentException(MathUtility.class.getSimpleName()+".choose() requires a list of 1 or more objects!");
-    }
-    return list[random.nextInt(list.length)];
-  }
-
-  /** Rounds input to the specified number of decimal places. */
-  public static final double round(final double input, final int decimals){
-    if(decimals == 0){
-      return Math.round(input);
-    }
-    final double adjustment = Math.pow(10, decimals);
-    return Math.round(input * adjustment) / adjustment;
-  }
-
   /** Used in {@link Scrollbar}s. Generates an array of stop positions for the scrollbar. */
   public static final int[] getPositions(int max_number, int positions){
     return getPositions(0, max_number, positions);
@@ -458,22 +243,7 @@ public final class MathUtility {
     }
     final int left = values[i-1];
     final int right = values[i];
-    return getExtreme(left, position, right) == left ? i-1 : i;
-  }
-
-  /** Checks a value against a left value and a right value and returns whichever value it is closest to.
-   *  if it is equally close to both, we return the right value.
-   * @param left_value
-   * @param value
-   * @param right_value
-   */
-  public static final int getExtreme(int left_value, int value, int right_value){
-    final int left_check = Math.abs(left_value - value);
-    final int right_check = Math.abs(right_value -value);
-    if(left_check < right_check){
-      return left_value;
-    }
-    return right_value;
+    return CommonMath.getExtreme(left, position, right) == left ? i-1 : i;
   }
 
 }
