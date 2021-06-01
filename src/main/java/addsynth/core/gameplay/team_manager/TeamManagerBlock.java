@@ -2,7 +2,6 @@ package addsynth.core.gameplay.team_manager;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.team_manager.gui.TeamManagerGui;
-import addsynth.core.util.color.ColorCode;
 import addsynth.core.util.command.PermissionLevel;
 import addsynth.core.util.constants.Constants;
 import net.minecraft.block.Block;
@@ -16,7 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 public final class TeamManagerBlock extends Block {
@@ -34,7 +33,7 @@ public final class TeamManagerBlock extends Block {
         Minecraft.getInstance().displayGuiScreen(new TeamManagerGui());
       }
       else{
-        player.sendMessage(new StringTextComponent(ColorCode.ERROR+"You need command permission level "+ColorCode.WHITE+PermissionLevel.COMMANDS+ColorCode.ERROR+" or higher to access the Team Manager."));
+        player.sendMessage(new TranslationTextComponent("gui.addsynthcore.team_manager.you_do_not_have_permission", PermissionLevel.COMMANDS));
       }
     }
     return true;

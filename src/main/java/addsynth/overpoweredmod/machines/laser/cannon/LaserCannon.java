@@ -32,7 +32,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
@@ -119,7 +119,10 @@ public final class LaserCannon extends Block implements IWaterLoggable {
   @Override
   public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
     if(color == -1){
-      tooltip.add(new StringTextComponent("Fusion Energy"));
+      tooltip.add(new TranslationTextComponent("gui.overpowered.tooltip.fusion_machine"));
+    }
+    else{
+      tooltip.add(new TranslationTextComponent("gui.overpowered.tooltip.laser_machine"));
     }
   }
 

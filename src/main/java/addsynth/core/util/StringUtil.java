@@ -79,7 +79,11 @@ public final class StringUtil {
    * @param translation_key
    */
   public static final String translate(final String translation_key){
-    return I18n.format(translation_key);
+    if(I18n.hasKey(translation_key)){
+      return I18n.format(translation_key);
+    }
+    ADDSynthCore.log.warn("Missing translated text for: "+translation_key);
+    return translation_key;
   }
 
   @Deprecated

@@ -37,7 +37,7 @@ NEW:
   Added a config option to ADDSynthCore that swaps the controls used to Add or Delete
     notes to/from the Music Box.
   Added Swap Track buttons to the Music Box gui.
-  If you mouse over a Music Sheet item it now says if its blank or it contains Music Data.
+  If you mouse over a Music Sheet item it now says if it's blank or it contains Music Data.
   Added advancements for Energy Crystal, Magic Infuser, Advanced Ore Refinery,
     Crystal Matter Generator, Energy Suspension Bridge, Plasma, Rose Quartz,
     the standard Generator, Compressor, and the Circuit Fabricator.
@@ -70,6 +70,7 @@ FIXED:
     such as Fire Laser, Fire Laser the Maximum Distance, Portal, World Destroyer,
     and Convert a Thousand Gems.
   Fixed advancements logging errors for items that were removed or disabled, I think.
+  Fixed not translating block and item subtitles in their tooltips.
 REMOVED:
   Removed the ability to move some Overpowered items into other Creative Tabs.
   Removed the Unknown Technology item.

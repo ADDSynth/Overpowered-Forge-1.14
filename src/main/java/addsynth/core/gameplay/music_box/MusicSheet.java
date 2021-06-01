@@ -18,8 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext.FluidMode;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
@@ -112,10 +111,10 @@ public final class MusicSheet extends CoreItem {
   @Override
   public final void addInformation(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag){
     if(stack.getTag() == null){
-      tooltip.add(new StringTextComponent(TextFormatting.GRAY+"Blank"));
+      tooltip.add(new TranslationTextComponent("gui.addsynthcore.music_sheet.no_data"));
     }
     else{
-      tooltip.add(new StringTextComponent(TextFormatting.GRAY+"Has Music Data"));
+      tooltip.add(new TranslationTextComponent("gui.addsynthcore.music_sheet.has_data"));
     }
   }
 

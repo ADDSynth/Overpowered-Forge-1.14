@@ -21,7 +21,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.server.ServerWorld;
 
@@ -183,7 +183,7 @@ public final class ZombieRaidCommand {
     // Start zombie raid
     zombie_tick_count = 0;
     do_zombie_raid = true;
-    command_source.sendFeedback(new StringTextComponent("Zombie Raid started. Zombies: "+zombies+", Time: "+duration+", Distance: "+radius+"."), true);
+    command_source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.zombie_raid.success", zombies, duration, radius), true);
 
     return zombies;
   }
@@ -200,19 +200,20 @@ public final class ZombieRaidCommand {
       }
       // kill all zombies? NO
       // remove night vision from all players? NO
-      source.sendFeedback(new StringTextComponent("Zombie Raid Cancelled."), true);
+      source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.zombie_raid.stop"), true);
       return 1;
     }
-    source.sendFeedback(new StringTextComponent("No Zombie Raid is occuring."), false);
+    source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.zombie_raid.not_occurring"), false);
     return 0;
   }
   
   private static final int query_zombie_raid(final CommandSource source){
     if(do_zombie_raid){
-      source.sendFeedback(new StringTextComponent("Zombie Raid is occuring."), false);
-      return 1;
+      final int seconds_remaining = (int)Math.ceil((double)(zombie_raid_time - zombie_tick_count) / TimeConstants.ticks_per_second);
+      source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.zombie_raid.occurring", seconds_remaining), false);
+      return seconds_remaining;
     }
-    source.sendFeedback(new StringTextComponent("No Zombie Raid is occuring."), false);
+    source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.zombie_raid.not_occurring"), false);
     return 0;
   }
   

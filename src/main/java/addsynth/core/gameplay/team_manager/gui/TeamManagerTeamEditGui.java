@@ -8,16 +8,24 @@ import addsynth.core.gui.GuiBase;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.buttons.ClientCheckbox;
 import addsynth.core.gui.widgets.buttons.RadialButtonGroup;
+import addsynth.core.util.StringUtil;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TeamManagerTeamEditGui extends GuiBase {
 
   private static final ResourceLocation texture = new ResourceLocation(ADDSynthCore.MOD_ID, "textures/gui/team_manager_team_edit.png");
 
-  private static final String friendly_fire_text = "Friendly Fire";
-  private static final String see_invisible_allys_text = "See Invisible Allys";
+  private final String        team_id_name_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.id_name");
+  private final String   team_display_name_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.display_name");
+  private final String       friendly_fire_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.friendly_fire");
+  private final String see_invisible_allys_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.see_invisible_allys");
+  private final String          team_color_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.team_color");
+  private final String show_nametag_option_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.show_nametag");
+  private final String show_death_messages_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.show_death_messages");
+  private final String       member_prefix_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.member_prefix");
+  private final String       member_suffix_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.member_suffix");
 
   private boolean new_team;
   private TextFieldWidget team_id_name;
@@ -31,7 +39,7 @@ public final class TeamManagerTeamEditGui extends GuiBase {
   private TextFieldWidget member_suffix;
 
   public TeamManagerTeamEditGui(final boolean new_team){
-    super(274, 233, new StringTextComponent("Team Edit"), texture);
+    super(274, 233, new TranslationTextComponent("gui.addsynthcore.team_manager.team_edit.gui_title"), texture);
     this.new_team = new_team;
   }
 
@@ -41,8 +49,18 @@ public final class TeamManagerTeamEditGui extends GuiBase {
   private static final int text_box_height = 14;
   private static final int button_width = 80;
   private static final int button_height = 20;
-  private static final String[] nametag_options = {"Always", "Never", "This Team Only", "Other Teams Only"};
-  private static final String[] death_message_options = {"Always", "Never", "This Team Only", "Other Teams Only"};
+  private final String[] nametag_options = {
+    StringUtil.translate("gui.addsynthcore.team_manager.team_edit.always"),
+    StringUtil.translate("gui.addsynthcore.team_manager.team_edit.never"),
+    StringUtil.translate("gui.addsynthcore.team_manager.team_edit.this_team_only"),
+    StringUtil.translate("gui.addsynthcore.team_manager.team_edit.other_teams_only")
+  };
+  private final String[] death_message_options = {
+    StringUtil.translate("gui.addsynthcore.team_manager.team_edit.always"),
+    StringUtil.translate("gui.addsynthcore.team_manager.team_edit.never"),
+    StringUtil.translate("gui.addsynthcore.team_manager.team_edit.this_team_only"),
+    StringUtil.translate("gui.addsynthcore.team_manager.team_edit.other_teams_only")
+  };
 
   // Text
   private static final int left_text_x = 6;
@@ -154,13 +172,13 @@ public final class TeamManagerTeamEditGui extends GuiBase {
   @Override
   protected void drawGuiForegroundLayer(int mouseX, int mouseY){
     guiUtil.draw_title(this.title);
-    GuiUtil.draw_text_left("Team ID Name:",         left_text_x, line_1);
-    GuiUtil.draw_text_left("Team Display Name:",   right_text_x, line_1);
-    GuiUtil.draw_text_left("Team Color:",          right_text_x, line_2);
-    GuiUtil.draw_text_left("Show Nametags:",        left_text_x, line_3);
-    GuiUtil.draw_text_left("Show Death Messages:", right_text_x, line_3);
-    GuiUtil.draw_text_left("Member Prefix:",        left_text_x, line_4);
-    GuiUtil.draw_text_left("Member Suffix:",       right_text_x, line_4);
+    GuiUtil.draw_text_left(team_id_name_text+":",         left_text_x, line_1);
+    GuiUtil.draw_text_left(team_display_name_text+":",   right_text_x, line_1);
+    GuiUtil.draw_text_left(team_color_text+":",          right_text_x, line_2);
+    GuiUtil.draw_text_left(show_nametag_option_text+":",  left_text_x, line_3);
+    GuiUtil.draw_text_left(show_death_messages_text+":", right_text_x, line_3);
+    GuiUtil.draw_text_left(member_prefix_text+":",        left_text_x, line_4);
+    GuiUtil.draw_text_left(member_suffix_text+":",       right_text_x, line_4);
   }
 
 }

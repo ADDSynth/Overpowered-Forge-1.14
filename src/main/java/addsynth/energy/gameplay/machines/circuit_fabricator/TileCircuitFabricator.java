@@ -3,6 +3,9 @@ package addsynth.energy.gameplay.machines.circuit_fabricator;
 import javax.annotation.Nullable;
 import addsynth.core.container.slots.InputSlot;
 import addsynth.core.items.ItemUtil;
+import addsynth.core.util.StringUtil;
+import addsynth.core.util.constants.Constants;
+import addsynth.core.util.java.ArrayUtil;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.EnergyItems;
 import addsynth.energy.gameplay.machines.circuit_fabricator.recipe.CircuitFabricatorRecipe;
@@ -116,8 +119,14 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
     change_circuit_craft(nbt.getInt("Circuit to Craft"), false);
   }
 
-  public final int getCircuitID(){
-    return circuit_id;
+  public final String getCircuitSelected(){
+    if(onClientSide()){
+      if(ArrayUtil.isInsideBounds(circuit_id, EnergyItems.circuit)){
+        return StringUtil.translate(EnergyItems.circuit[circuit_id].getTranslationKey());
+      }
+      return Constants.null_error;
+    }
+    return "";
   }
 
   public final InputSlot[] getInputSlots(){

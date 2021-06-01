@@ -1,5 +1,6 @@
 package addsynth.core.util.game;
 
+import addsynth.core.ADDSynthCore;
 import addsynth.core.util.player.PlayerUtil;
 import addsynth.core.util.server.ServerUtils;
 import net.minecraft.entity.player.PlayerEntity;
@@ -7,17 +8,21 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.translation.LanguageMap;
 import net.minecraft.world.World;
 import net.minecraftforge.server.command.TextComponentHelper;
 
 public final class MessageUtil {
 
-  /** <p>Sends a SYSTEM type message to the player.
-   *  <p>This must be called on the server side. Calling on the client side will only translate to English.
+  /** Sends a SYSTEM type message to the player.<br>
+   *  This must be called on the server side. Calling on the client side will only translate to English.
    * @param player
    * @param translation_key
    */
   public static final void send_to_player(final PlayerEntity player, final String translation_key, final Object ... arguments){
+    if(LanguageMap.getInstance().exists(translation_key) == false){
+      ADDSynthCore.log.warn("Missing translated text for: "+translation_key);
+    }
     @SuppressWarnings("resource")
     final MinecraftServer server = ServerUtils.getServer(player.world); // gets server no matter what
     if(server != null){

@@ -13,8 +13,8 @@ public final class GuiGenerator extends GuiEnergyBase<TileGenerator, ContainerGe
 
   private static final ResourceLocation generator_gui_texture = new ResourceLocation(ADDSynthEnergy.MOD_ID, "textures/gui/generator.png");
 
-  private final String input_text   = "Input";
-  private final String extract_text = "Max Extract";
+  private final String input_text   = StringUtil.translate("gui.addsynth_energy.generator.input");
+  private final String extract_text = StringUtil.translate("gui.addsynth_energy.generator.max_extract");
 
   private final EnergyProgressBar energy_progress_bar = new EnergyProgressBar(8, 68, 168, 20, 8, 182);
 

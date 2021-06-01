@@ -3,6 +3,7 @@ package addsynth.energy.gameplay.machines.circuit_fabricator;
 import addsynth.core.gui.IngredientWidget;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.WidgetUtil;
+import addsynth.core.util.StringUtil;
 import addsynth.core.util.time.TimeConstants;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gameplay.EnergyItems;
@@ -19,11 +20,13 @@ public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabrica
 
   private static final ResourceLocation gui_texture = new ResourceLocation(ADDSynthEnergy.MOD_ID, "textures/gui/circuit_fabricator.png");
 
+  private final String selected_text = StringUtil.translate("gui.addsynth_energy.common.selected");
+
   private static final ItemStack[] circuit_stack = {
     new ItemStack(EnergyItems.circuit_tier_1), new ItemStack(EnergyItems.circuit_tier_2),
     new ItemStack(EnergyItems.circuit_tier_3), new ItemStack(EnergyItems.circuit_tier_4),
     new ItemStack(EnergyItems.circuit_tier_5), new ItemStack(EnergyItems.circuit_tier_6),
-    new ItemStack(EnergyItems.circuit_tier_7), new ItemStack(EnergyItems.circuit_tier_7)
+    new ItemStack(EnergyItems.circuit_tier_7), new ItemStack(EnergyItems.circuit_tier_8)
   };
 
   private final WorkProgressBar work_progress_bar = new WorkProgressBar(153, 114, 58, 5, 8, 228);
@@ -85,7 +88,7 @@ public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabrica
     for(y = 0; y < 3; y++){
       for(x = 0; x < 3; x++){
         circuit_id = x + (y * 3);
-        if(circuit_id < 7){
+        if(circuit_id < 8){
           addButton(new CircuitButton(
             guiUtil.guiLeft + circuit_button_x + (x * (CircuitButton.button_size + spacing)),
             guiUtil.guiTop  + circuit_button_y + (y * (CircuitButton.button_size + spacing)), this.tile, circuit_id
@@ -138,7 +141,7 @@ public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabrica
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     guiUtil.draw_title(this.title);
     draw_energy_usage();
-    GuiUtil.draw_text_left("Selected: Circuit Tier "+(tile.getCircuitID()+1), 6, 28);
+    GuiUtil.draw_text_left(selected_text+": "+tile.getCircuitSelected(), 6, 28);
     // GuiUtil.drawItemStack(circuit_stack[tile.getCircuitID()], 102, 29);
     // draw ingredients
     if(recipe_ingredient != null){

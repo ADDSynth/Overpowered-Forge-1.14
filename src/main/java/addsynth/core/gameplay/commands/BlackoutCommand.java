@@ -14,7 +14,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.server.ServerWorld;
 
 public final class BlackoutCommand {
@@ -22,7 +22,7 @@ public final class BlackoutCommand {
   private static final int MAX_BATS = 2_000;
   private static final int DEFAULT_BATS = 200;
 
-  private static final int up_in_the_sky = 10;
+  private static final int above_ground = 12;
   private static final int horizontal_radius = 19;
   private static final int vertical_radius = 1;
 
@@ -51,7 +51,7 @@ public final class BlackoutCommand {
     final int x = (int)Math.floor(position.x);
     final int z = (int)Math.floor(position.z);
     // get top-most block over player
-    final BlockPos origin = new BlockPos(x, WorldUtil.getTopMostFreeSpace(world, x, z) + 12, z);
+    final BlockPos origin = new BlockPos(x, WorldUtil.getTopMostFreeSpace(world, x, z) + above_ground, z);
     // WorldUtil.getTopMostFreeSpace(world, x, z) + up_in_the_sky + (vertical_radius / 2),
     // spawn bats
     int count = 0;
@@ -67,9 +67,8 @@ public final class BlackoutCommand {
       }
     }
     // feeback
-    command_source.sendFeedback(new StringTextComponent(
-      command_source.getDisplayName().getFormattedText()+" has just summoned "+count+" Bats.\n"+
-      "Use command §a/kill @e[type=minecraft:bat]§r to get rid of them."
+    command_source.sendFeedback(new TranslationTextComponent(
+      "commands.addsynthcore.blackout.success", command_source.getDisplayName().getFormattedText(), count
     ), true);
     return number_of_bats;
   }

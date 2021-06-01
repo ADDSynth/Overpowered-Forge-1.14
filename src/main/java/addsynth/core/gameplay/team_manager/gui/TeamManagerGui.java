@@ -14,20 +14,27 @@ import addsynth.core.gui.widgets.scrollbar.Scrollbar;
 import addsynth.core.util.StringUtil;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TeamManagerGui extends GuiBase {
 
   // private static final String[] temp_values = {"I once again call upon", "a temporary array of", "string values", "in order to", "test the scrollbar", "to ensure it works", "as expected in", "all scenarios.", "And just as before,", "the string array must be", "large enough", "to surpass the", "scrollbar's height.", "It is still", "not enough!", "I must keep typing!", "I am also afraid", "that some of", "these strings", "are too long.", "They may", "extend past", "the scrollbar's width."};
   private static final ResourceLocation gui_texture = new ResourceLocation(ADDSynthCore.MOD_ID, "textures/gui/team_manager.png");
 
-  private static final String selection_text_1 = "Team Selected:";
-  private static final String selection_text_2 = "Player Selected:";
-  private static final String selection_text_3 = "Objective Selected:";
-  private static final String display_slot_text_1 = "Player List:";
-  private static final String display_slot_text_2 = "Sidebar:";
-  private static final String display_slot_text_3 = "Below Nametag:";
+  private final String         team_header_text = StringUtil.translate("gui.addsynthcore.team_manager.main.teams");
+  private final String  all_players_header_text = StringUtil.translate("gui.addsynthcore.team_manager.main.all_players");
+  private final String team_players_header_text = StringUtil.translate("gui.addsynthcore.team_manager.main.players_in_team");
+  private final String    objective_header_text = StringUtil.translate("gui.addsynthcore.team_manager.main.objectives");
+  private final String       team_selected_text = StringUtil.translate("gui.addsynthcore.team_manager.main.team_selected");
+  private final String     player_selected_text = StringUtil.translate("gui.addsynthcore.team_manager.main.player_selected");
+  private final String  objective_selected_text = StringUtil.translate("gui.addsynthcore.team_manager.main.objective_selected");
+  private final String       current_score_text = StringUtil.translate("gui.addsynthcore.team_manager.score.current_score");
+  private final String         input_value_text = StringUtil.translate("gui.addsynthcore.team_manager.score.input");
+  private final String display_slot_header_text = StringUtil.translate("gui.addsynthcore.team_manager.display_slot.header");
+  private final String      display_slot_text_1 = StringUtil.translate("gui.addsynthcore.team_manager.display_slot.player_list");
+  private final String      display_slot_text_2 = StringUtil.translate("gui.addsynthcore.team_manager.display_slot.sidebar");
+  private final String      display_slot_text_3 = StringUtil.translate("gui.addsynthcore.team_manager.display_slot.nametag");
 
   private static String team_selected;
   private static String player_selected;
@@ -96,7 +103,7 @@ public final class TeamManagerGui extends GuiBase {
   private static boolean player_score_can_be_changed;
 
   public TeamManagerGui(){
-    super(442, 326, new StringTextComponent("Team Manager"), gui_texture);
+    super(442, 326, new TranslationTextComponent("block.addsynthcore.team_manager"), gui_texture);
     // team_selected = null;
     // player_selected = null;
     // objective_selected = null;
@@ -134,8 +141,8 @@ public final class TeamManagerGui extends GuiBase {
   private static final int players_text_line = player_buttons_y + TeamManagerGuiButtons.player_button_size + button_x_spacing;
   
 
-  private static final int selected_text_left  = text_x2 + GuiUtil.getMaxStringWidth(selection_text_1, selection_text_2, selection_text_3);
-  private static final int selected_text_right = selected_text_left + 5;
+  private final int selected_text_left  = text_x2 + GuiUtil.getMaxStringWidth(team_selected_text, player_selected_text, objective_selected_text);
+  private final int selected_text_right = selected_text_left + 5;
 
   private static final int selected_text_y = line_1 + text_space + team_list_height + button_y_spacing + button_height + 8 + button_y_spacing;
   private static final int score_spacing = 6;
@@ -157,8 +164,8 @@ public final class TeamManagerGui extends GuiBase {
   private static final int last_x = text_x3 + list_width + scrollbar_width;
   private static final int display_slot_button_x2 = last_x - TeamManagerGuiButtons.display_slot_button_width;
   private static final int display_slot_button_x1 = display_slot_button_x2 - TeamManagerGuiButtons.display_slot_button_width - 6;
-  private static final int display_slot_x1 = text_x2 + GuiUtil.getMaxStringWidth(display_slot_text_1, display_slot_text_2, display_slot_text_3);
-  private static final int display_slot_x2 = (display_slot_x1 + 5 + display_slot_button_x1) / 2;
+  private final int display_slot_x1 = text_x2 + GuiUtil.getMaxStringWidth(display_slot_text_1, display_slot_text_2, display_slot_text_3);
+  private final int display_slot_x2 = (display_slot_x1 + 5 + display_slot_button_x1) / 2;
   // private static final int last_y = 
 
   @Override
@@ -322,22 +329,22 @@ public final class TeamManagerGui extends GuiBase {
   protected final void drawGuiForegroundLayer(final int mouseX, final int mouseY){
     guiUtil.draw_title(this.title);
     // Main Labels
-    GuiUtil.draw_text_left("Players in Team:", text_x1, line_1);
-    GuiUtil.draw_text_left("All Players:",     text_x1, players_text_line);
-    GuiUtil.draw_text_left("Teams:",           text_x2, line_1);
-    GuiUtil.draw_text_left("Objectives:",      text_x3, line_1);
+    GuiUtil.draw_text_left(team_players_header_text+":", text_x1, line_1);
+    GuiUtil.draw_text_left( all_players_header_text+":", text_x1, players_text_line);
+    GuiUtil.draw_text_left(        team_header_text+":", text_x2, line_1);
+    GuiUtil.draw_text_left(   objective_header_text+":", text_x3, line_1);
     // Selected
-    GuiUtil.draw_text_right(selection_text_1, selected_text_left, selected_text_y);
-    GuiUtil.draw_text_right(selection_text_2, selected_text_left, selected_text_y + 10);
-    GuiUtil.draw_text_right(selection_text_3, selected_text_left, selected_text_y + 20);
+    GuiUtil.draw_text_right(     team_selected_text+":", selected_text_left, selected_text_y);
+    GuiUtil.draw_text_right(   player_selected_text+":", selected_text_left, selected_text_y + 10);
+    GuiUtil.draw_text_right(objective_selected_text+":", selected_text_left, selected_text_y + 20);
     GuiUtil.draw_text_left(     team_selected != null ? team_selected      : "", selected_text_right, selected_text_y);
     GuiUtil.draw_text_left(   player_selected != null ? player_selected    : "", selected_text_right, selected_text_y + 10);
     GuiUtil.draw_text_left(objective_selected != null ? objective_selected : "", selected_text_right, selected_text_y + 20);
     // Score Text
-    GuiUtil.draw_text_left("Player's Current Score: "+player_score, text_x2, line_2);
-    GuiUtil.draw_text_left("Input Value:", text_x2, line_3);
+    GuiUtil.draw_text_left(current_score_text+": "+player_score, text_x2, line_2);
+    GuiUtil.draw_text_left(input_value_text+":", text_x2, line_3);
     // Display Slot text
-    GuiUtil.draw_text_left("Display Slots:", text_x2, line_4);
+    GuiUtil.draw_text_left(display_slot_header_text+":", text_x2, line_4);
     GuiUtil.draw_text_right(display_slot_text_1, display_slot_x1, display_slot_text_y1);
     GuiUtil.draw_text_right(display_slot_text_2, display_slot_x1, display_slot_text_y2);
     GuiUtil.draw_text_right(display_slot_text_3, display_slot_x1, display_slot_text_y3);

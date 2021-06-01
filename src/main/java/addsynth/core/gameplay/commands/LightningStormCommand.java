@@ -2,6 +2,7 @@ package addsynth.core.gameplay.commands;
 
 import java.util.Random;
 import addsynth.core.ADDSynthCore;
+import addsynth.core.util.StringUtil;
 import addsynth.core.util.command.PermissionLevel;
 import addsynth.core.util.math.MathUtility;
 import addsynth.core.util.world.WorldUtil;
@@ -13,7 +14,7 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.server.ServerWorld;
 
 public final class LightningStormCommand {
@@ -106,7 +107,7 @@ public final class LightningStormCommand {
     lightning_chance  = chance;
     lightning_count   = 0;
     do_lightning      = true;
-    command_source.sendFeedback(new StringTextComponent("Started lightning storm. Count: "+strikes+", Radius: "+radius+", Every "+delay+" Ticks, Chance: "+chance), true);
+    command_source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.lightning_storm.success", strikes, radius, delay, chance), true);
     return strikes;
   }
 
@@ -141,19 +142,20 @@ public final class LightningStormCommand {
 
   private static final int stop_lightning(final CommandSource source){
     do_lightning = false;
-    source.sendFeedback(new StringTextComponent("Stopped lightning storm."), false);
+    source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.lightning_storm.stop"), false);
     return 0;
   }
 
   private static final int query_lightning(final CommandSource source){
     if(do_lightning){
-      source.sendFeedback(new StringTextComponent(
-        "Lightning Storm occurring: "+lightning_count+" / "+lightning_strikes+" "+
-        "( "+Math.round(((double)lightning_count / lightning_strikes) * 100)+"% )"
-      ), false);
+      source.sendFeedback(
+        new TranslationTextComponent("commands.addsynthcore.lightning_storm.query.true",
+          lightning_count, lightning_strikes, StringUtil.toPercentageString(lightning_count, lightning_strikes)
+        ), false
+      );
       return lightning_strikes - lightning_count;
     }
-    source.sendFeedback(new StringTextComponent("No lightning storm is occurring."), false);
+    source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.lightning_storm.query.false"), false);
     return 0;
   }
 

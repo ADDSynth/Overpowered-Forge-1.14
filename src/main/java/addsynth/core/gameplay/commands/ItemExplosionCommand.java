@@ -15,7 +15,7 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -113,7 +113,7 @@ public final class ItemExplosionCommand {
       item_entity.setPickupDelay(20);
       world.addEntity(item_entity);
     }
-    command_source.sendFeedback(new StringTextComponent("Spawned "+item_count+" items."), true);
+    command_source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.item_explosion.success", item_count), true);
     // \nUse command §b/kill @e[type=item]§r to remove them.
     return item_count;
   }

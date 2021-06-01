@@ -4,7 +4,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import net.minecraft.command.CommandSource;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
 public final class CommandUtil {
 
@@ -23,7 +23,7 @@ public final class CommandUtil {
 
   public static final void check_argument(final String argument, final double value, final double min, final double max) throws CommandSyntaxException {
     if(value > max || value < min){
-      throw new SimpleCommandExceptionType(new StringTextComponent("Argument \""+argument+"\" must be in the range "+min+" and "+max+".")).create();
+      throw new SimpleCommandExceptionType(new TranslationTextComponent("commands.addsynthcore.argument_fail", argument, min, max)).create();
     }
   }
 

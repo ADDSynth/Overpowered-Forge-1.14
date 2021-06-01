@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.team_manager.TeamData;
-import addsynth.core.util.color.ColorCode;
 import addsynth.core.util.game.MessageUtil;
 import addsynth.core.util.java.ArrayUtil;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -195,7 +194,7 @@ public final class TeamManagerCommand {
       final ServerWorld world = player.func_71121_q();
       context.get().enqueueWork(() -> {
         try{
-          final MinecraftServer server = world.getServer(); // in the future, I can use the server as a Command Source, in order to send command feedback.
+          final MinecraftServer server = world.getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           switch(message.command){
           case ADD_TEAM: case EDIT_TEAM:
@@ -241,7 +240,7 @@ public final class TeamManagerCommand {
   private static final void edit_team(final Scoreboard scoreboard, final ServerPlayerEntity player, final Object[] parameters){
     final String team_name = (String)parameters[0];
     if(team_name.isEmpty()){
-      MessageUtil.send_to_player(player, ColorCode.ERROR + "Failed to create team. Team Name must not be empty.");
+      MessageUtil.send_to_player(player, "gui.addsynthcore.team_manager.message.create_team_failed");
       return;
     }
     // if(team_name.length() > max_name_length){ // was 16, but then I saw that vanilla does it anyway
@@ -274,7 +273,7 @@ public final class TeamManagerCommand {
     team.setPrefix(new StringTextComponent(prefix));
     team.setSuffix(new StringTextComponent(suffix));
     
-    // MessageUtil.send_to_player(player, "Successfully editted Team "+team_name+".");
+    // MessageUtil.send_to_player(player, "gui.addsynthcore.team_manager.message.edit_team_success", team_name);
     TeamData.sync();
   }
 
@@ -301,7 +300,7 @@ public final class TeamManagerCommand {
 
   private static final void edit_objective(final Scoreboard scoreboard, final ServerPlayerEntity player, final String objective, final String display_name, final int criteria_id){
     if(objective.isEmpty()){
-      MessageUtil.send_to_player(player, ColorCode.ERROR + "Failed to create objective. Objective Name must not be empty.");
+      MessageUtil.send_to_player(player, "gui.addsynthcore.team_manager.message.create_objective_failed");
       return;
     }
     // final ScoreObjective existing_objective = scoreboard.getObjective(objective);

@@ -7,9 +7,10 @@ import addsynth.core.gui.GuiBase;
 import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.gui.widgets.scrollbar.ListEntry;
 import addsynth.core.gui.widgets.scrollbar.Scrollbar;
+import addsynth.core.util.StringUtil;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TeamManagerObjectiveGui extends GuiBase {
 
@@ -18,17 +19,31 @@ public final class TeamManagerObjectiveGui extends GuiBase {
   private final boolean new_objective;
 
   public TeamManagerObjectiveGui(boolean new_objective){
-    super(274, 233, new StringTextComponent("Edit Objective"), GUI_TEXTURE);
+    super(274, 233, new TranslationTextComponent("gui.addsynthcore.team_manager.objective_edit.gui_title"), GUI_TEXTURE);
     this.new_objective = new_objective;
   }
 
+  private final String      objective_id_name_text = StringUtil.translate("gui.addsynthcore.team_manager.objective_edit.id_name");
+  private final String objective_display_name_text = StringUtil.translate("gui.addsynthcore.team_manager.objective_edit.display_name");
+  private final String        criteria_header_text = StringUtil.translate("gui.addsynthcore.team_manager.objective_edit.criteria_header");
+
   private TextFieldWidget objective_id_name;
   private TextFieldWidget objective_display_name;
-  private final ListEntry[] objective_entries = new ListEntry[objectives.length];
   private Scrollbar objective_list;
-  private static final String[] objectives = {
-    "Dummy", "Trigger", "Death Count", "Player Kills", "Total Kills", "Health", "Total XP", "XP Level", "Air", "Food", "Armor"
+  private final String[] objectives = {
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.dummy"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.trigger"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.death_count"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.player_kills"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.total_kills"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.player_health"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.xp"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.xp_level"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.air"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.food"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.armor")
   };
+  private final ListEntry[] objective_entries = new ListEntry[objectives.length];
 
   private static final int center_space = 3;
   private static final int widget_spacing = 2;
@@ -44,7 +59,7 @@ public final class TeamManagerObjectiveGui extends GuiBase {
   private int right_text_x;
   private static final int line_1 = 18;
   private static final int line_2 = line_1 + 8 + widget_spacing + text_box_height + line_space;
-  private static final int line_3 = line_2 + 8 + widget_spacing; // + (RadialButtonGroup.radial_gui_size*4)+(RadialButtonGroup.line_spacing*3) + line_space;
+  private static final int line_3 = line_2 + 8 + widget_spacing;
 
   @Override
   protected void init(){
@@ -120,10 +135,9 @@ public final class TeamManagerObjectiveGui extends GuiBase {
   @Override
   protected void drawGuiForegroundLayer(int mouse_x, int mouse_y){
     guiUtil.draw_title(this.title);
-    GuiUtil.draw_text_left("Objective ID Name:",       left_text_x, line_1);
-    GuiUtil.draw_text_left("Objective Display Name:", right_text_x, line_1);
-    GuiUtil.draw_text_left("Objective Criteria:",      left_text_x, line_2);
-    GuiUtil.draw_text_left("Display Slot:",           right_text_x, line_2);
+    GuiUtil.draw_text_left(     objective_id_name_text+":", left_text_x, line_1);
+    GuiUtil.draw_text_left(objective_display_name_text+":", right_text_x, line_1);
+    GuiUtil.draw_text_left(       criteria_header_text+":", left_text_x, line_2);
   }
 
 }

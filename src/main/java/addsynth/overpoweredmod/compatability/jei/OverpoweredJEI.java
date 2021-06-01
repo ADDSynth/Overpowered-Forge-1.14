@@ -87,7 +87,7 @@ public final class OverpoweredJEI implements IModPlugin {
     celestial_tools.add(new ItemStack(Tools.overpowered_tools.axe));
     celestial_tools.add(new ItemStack(Tools.overpowered_tools.pickaxe));
     celestial_tools.add(new ItemStack(Tools.overpowered_tools.hoe));
-    registry.addIngredientInfo(celestial_tools, VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.overpowered_tools"));
+    registry.addIngredientInfo(celestial_tools, VanillaTypes.ITEM, StringUtil.translate("gui.overpowered.jei_description.celestial_tools"));
 
     final ArrayList<ItemStack> void_tools = new ArrayList<>(5);
     void_tools.add(new ItemStack(Tools.void_toolset.sword));

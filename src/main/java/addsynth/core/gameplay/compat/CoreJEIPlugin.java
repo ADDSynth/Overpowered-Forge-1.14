@@ -40,6 +40,7 @@ public final class CoreJEIPlugin  implements IModPlugin {
     registry.addIngredientInfo(list, VanillaTypes.ITEM, StringUtil.translate("gui.addsynthcore.jei_description.scythes"));
     registry.addIngredientInfo(new ItemStack(Core.music_box), VanillaTypes.ITEM, StringUtil.translate("gui.addsynthcore.jei_description.music_box"));
     registry.addIngredientInfo(new ItemStack(Core.music_sheet), VanillaTypes.ITEM, StringUtil.translate("gui.addsynthcore.jei_description.music_sheet"));
+    // registry.addIngredientInfo(new ItemStack(Core.team_manager), VanillaTypes.ITEM, StringUtil.translate("gui.addsynthcore.jei_description.team_manager"));
   }
 
 }

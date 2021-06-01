@@ -29,6 +29,11 @@ public abstract class TileBase extends TileEntity {
     return !world.isRemote;
   }
 
+  @SuppressWarnings("null")
+  protected final boolean onClientSide(){
+    return world.isRemote;
+  }
+
   // http://mcforge.readthedocs.io/en/latest/tileentities/tileentity/#synchronizing-the-data-to-the-client
   // https://github.com/TheGreyGhost/MinecraftByExample/blob/master/src/main/java/minecraftbyexample/mbe20_tileentity_data/TileEntityData.java
   // https://github.com/AppliedEnergistics/Applied-Energistics-2/blob/rv6-1.12/src/main/java/appeng/tile/AEBaseTile.java
