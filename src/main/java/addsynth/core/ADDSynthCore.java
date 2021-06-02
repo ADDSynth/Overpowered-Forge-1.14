@@ -2,6 +2,7 @@ package addsynth.core;
 
 import java.io.File;
 import addsynth.core.config.*;
+import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.NetworkHandler;
@@ -93,6 +94,9 @@ public final class ADDSynthCore {
     log.info(CommonUtil.get_mod_info(NAME, "ADDSynth", VERSION, DevStage.STABLE, VERSION_DATE));
   
     Debug.debug();
+    if(Config.debug_mod_detection.get()){
+      DeferredWorkQueue.runLater(() -> Compatability.debug());
+    }
     NetworkHandler.registerMessages();
     MaterialsUtil.registerResponder(CompatabilityManager::set_scythe_harvest_blocks);
     MaterialsUtil.registerResponder(Debug::dump_tags);
