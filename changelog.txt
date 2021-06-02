@@ -1,5 +1,13 @@
 v1.4 - TBD
 INFO:
+  Moved all materials to a new ADDSynth Materials mod.
+   - This once again breaks your old worlds, and Forge will warn you of the missing items.
+   - Hopefully this should be the last time, because I'm not planning on splitting off
+      items into a new mod again.
+   - This time I tried to use a DataFixer to seamlessly convert your world data to the new
+      format, but the DataFixer stuff was much too complicated for me to figure it out
+      without documentation, so I have to wait for someone to explain how it works before
+      I can use it.
   The Overpowered mod was renamed to Overpowered Technology.
   Starting in version 1.5.x, the mod_id for Overpowered Technology will be renamed
     from overpowered to overpowered_technology.
@@ -38,17 +46,18 @@ NEW:
     notes to/from the Music Box.
   Added Swap Track buttons to the Music Box gui.
   If you mouse over a Music Sheet item it now says if it's blank or it contains Music Data.
-  Added advancements for Energy Crystal, Magic Infuser, Advanced Ore Refinery,
+  Added advancements for the Celestial Gem, Magic Infuser, Advanced Ore Refinery,
     Crystal Matter Generator, Energy Suspension Bridge, Plasma, Rose Quartz,
     the standard Generator, Compressor, and the Circuit Fabricator.
 CHANGED:
-  Made ADDSynth Materials into its own mod.
+  All materials are now part of the ADDSynth Materials mod.
   The Music Box gui no longer has the JEI item panel. It doesn't need it.
   The Creative Tab icon for ADDSynth Energy is now the new Generator.
   The Generator that was part of Overpowered has been renamed to Crystal Energy Extractor.
   Renamed Energy Crystal to Celestial Gem.
     - You now get Energy Crystals by smelting Celestial Gems in a Blast Furnace.
     - Renamed all Energy Tools to Celestial Tools.
+  You now get Energy Crystal Shards by putting an Energy Crystal into the Compressor.
   Renamed mod to Overpowered Technology.
     - This will cause your configuration files to be reset.
   Moved Trophies to ADDSynthCore.
@@ -72,9 +81,11 @@ FIXED:
   Fixed advancements logging errors for items that were removed or disabled, I think.
   Fixed not translating block and item subtitles in their tooltips.
 REMOVED:
-  Removed the ability to move some Overpowered items into other Creative Tabs.
+  Removed the ability to move some items into other Creative Tabs.
   Removed the Unknown Technology item.
   Removed ADDSynthCore advancements for Caution Block, Music Box, and Scythes.
+KNOWN PROBLEMS:
+  You can't disable anything in the config files / Config files possibly not working.
 
 
 
