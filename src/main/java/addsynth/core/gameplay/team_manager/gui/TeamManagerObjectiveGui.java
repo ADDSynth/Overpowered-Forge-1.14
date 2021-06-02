@@ -36,7 +36,7 @@ public final class TeamManagerObjectiveGui extends GuiBase {
     StringUtil.translate("gui.addsynthcore.team_manager.criteria.death_count"),
     StringUtil.translate("gui.addsynthcore.team_manager.criteria.player_kills"),
     StringUtil.translate("gui.addsynthcore.team_manager.criteria.total_kills"),
-    StringUtil.translate("gui.addsynthcore.team_manager.criteria.player_health"),
+    StringUtil.translate("gui.addsynthcore.team_manager.criteria.health"),
     StringUtil.translate("gui.addsynthcore.team_manager.criteria.xp"),
     StringUtil.translate("gui.addsynthcore.team_manager.criteria.xp_level"),
     StringUtil.translate("gui.addsynthcore.team_manager.criteria.air"),

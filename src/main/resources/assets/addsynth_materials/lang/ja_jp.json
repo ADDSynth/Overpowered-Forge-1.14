@@ -62,5 +62,22 @@
 "item.addsynth_materials.bronze_plate": "ブロンズメッキ",
 "item.addsynth_materials.silver_plate": "シルバーメッキ",
 "item.addsynth_materials.platinum_plate": "プラチナメッキ",
-"item.addsynth_materials.titanium_plate": "チタンめっき"
+"item.addsynth_materials.titanium_plate": "チタンめっき",
+
+"item.addsynth_materials.silicon": "Silicon",
+"item.addsynth_materials.rose_quartz": "Rose Quartz",
+
+"block.addsynth_materials.silicon_ore": "Silicon Ore",
+"block.addsynth_materials.rose_quartz_ore": "Rose Quartz Ore",
+
+
+
+
+
+
+
+"advancements.addsynth_materials.root.title": "ADDSynth Materials",
+"advancements.addsynth_materials.root.description": "ADDSynth Materials",
+"advancements.addsynth_materials.rose_quartz.title": "Rose Quartz",
+"advancements.addsynth_materials.rose_quartz.description": "Find a Rose Quartz"
 }

@@ -45,7 +45,7 @@
 "gui.addsynth_energy.generator.input": "Input",
 "gui.addsynth_energy.generator.max_extract": "Max Extract",
 "gui.addsynth_energy.jei_description.wire": "Use Energy Wire to connect all your machines together to transfer energy.",
-"gui.addsynth_energy.jei_description.generator": "This is a standard Generator. Insert solid fuels such as Wood, Coal, and Charcoal, to generate energy.",
+"gui.addsynth_energy.jei_description.generator": "This is a standard Generator. Insert solid fuels such as Wood, Coal, and Charcoal to generate energy.",
 "gui.addsynth_energy.jei_description.energy_storage": "This will store any excess energy that you generate, up to 1 million units of Energy.",
 "gui.addsynth_energy.jei_description.electric_furnace": "This machine works just like a regular Furnace except it runs off of electricity. 1,000 units of Energy will perform 1 smelting operation.",
 "gui.addsynth_energy.jei_description.compressor": "The Compressor is used to compress metal ingots into metal plates.",

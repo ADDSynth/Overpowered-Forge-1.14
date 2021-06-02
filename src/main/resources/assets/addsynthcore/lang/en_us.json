@@ -107,7 +107,7 @@
 "gui.addsynthcore.team_manager.criteria.death_count": "Death Count",
 "gui.addsynthcore.team_manager.criteria.player_kills": "Player Kills",
 "gui.addsynthcore.team_manager.criteria.total_kills": "Total Kills",
-"gui.addsynthcore.team_manager.criteria.player_health": "Player Health",
+"gui.addsynthcore.team_manager.criteria.health": "Health",
 "gui.addsynthcore.team_manager.criteria.xp": "Total XP",
 "gui.addsynthcore.team_manager.criteria.xp_level": "XP Level",
 "gui.addsynthcore.team_manager.criteria.air": "Air",
@@ -121,7 +121,7 @@
 
 
 "commands.addsynthcore.argument_fail": "Argument \"%s\" must be in the range %s and %s.",
-"commands.addsynthcore.blackout.success": "%s has just sommoned %s Bats.\nUse command §a/kill @e[type=minecraft:bat]§r to get rid of them.",
+"commands.addsynthcore.blackout.success": "%s has just summoned %s Bats.\nUse command §a/kill @e[type=minecraft:bat]§r to get rid of them.",
 "commands.addsynthcore.item_explosion.success": "Spawned %s items.",
 "commands.addsynthcore.lightning_storm.success": "Started lightning storm. Count: %s, Radius: %s, Every %s Ticks, Chance: %s",
 "commands.addsynthcore.lightning_storm.stop": "Stopped lightning storm.",
@@ -129,7 +129,7 @@
 "commands.addsynthcore.lightning_storm.query.false": "No lightning storm is occurring.",
 "commands.addsynthcore.zombie_raid.success": "Zombie Raid started. Zombies: %s, Time: %s, Distance: %s.",
 "commands.addsynthcore.zombie_raid.stop": "Zombie Raid cancelled.",
-"commands.addsynthcore.zombie_raid.occurring": "Zombie Raid is occurring. $s seconds remaining.",
+"commands.addsynthcore.zombie_raid.occurring": "Zombie Raid is occurring. %s seconds remaining.",
 "commands.addsynthcore.zombie_raid.not_occurring": "No Zombie Raid is occurring.",
 
 "advancements.addsynthcore.root.title": "ADDSynthCore",
