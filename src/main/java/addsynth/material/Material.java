@@ -72,7 +72,7 @@ public final class Material {
   /** Metal alloy of Tin and Copper. Stronger and more durable than Copper alone. */
   public static final Metal BRONZE   = new ManufacturedMetal("bronze", MaterialColor.ADOBE,  MiningStrength.IRON);
   /** Metal alloy of Iron and Nickel. Known for its strong resistance to heat expansion.
-   *  Has a simplified Nickel/Iron ratio of 3/5 or 1/2. */
+   *  Has a simplified Nickel:Iron ratio of 3:5 or 1:2. */
   public static final Metal INVAR    = new ManufacturedMetal("invar",  MaterialColor.SAND,   MiningStrength.IRON);
   /** An advanced version of Iron. Metal alloy of Iron with a very small amount of Carbon. */
   public static final Metal STEEL    = new ManufacturedMetal("steel",  MaterialColor.GRAY,   MiningStrength.IRON);

@@ -31,7 +31,7 @@ public final class CompatabilityManager {
     override_scythe_field(Core.iron_scythe, leaves);
     override_scythe_field(Core.gold_scythe, leaves);
     override_scythe_field(Core.diamond_scythe, leaves);
-    if(Compatability.OVERPOWERED.loaded){ // TEMP
+    if(Compatability.OVERPOWERED_TECHNOLOGY.loaded){ // TEMP
       override_scythe_field(addsynth.overpoweredmod.game.core.Tools.overpowered_scythe, leaves);
     }
   }

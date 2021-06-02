@@ -34,7 +34,7 @@ public final class CoreJEIPlugin  implements IModPlugin {
     list.add(new ItemStack(Core.iron_scythe));
     list.add(new ItemStack(Core.gold_scythe));
     list.add(new ItemStack(Core.diamond_scythe));
-    if(Compatability.OVERPOWERED.loaded){
+    if(Compatability.OVERPOWERED_TECHNOLOGY.loaded){
       list.add(new ItemStack(addsynth.overpoweredmod.game.core.Tools.overpowered_scythe));
     }
     registry.addIngredientInfo(list, VanillaTypes.ITEM, StringUtil.translate("gui.addsynthcore.jei_description.scythes"));

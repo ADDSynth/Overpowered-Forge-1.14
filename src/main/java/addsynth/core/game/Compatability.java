@@ -319,7 +319,7 @@ public final class Compatability {
     public static final ModType type = ModType.Tech;
   }
   
-  public static final class OVERPOWERED {
+  public static final class OVERPOWERED_TECHNOLOGY {
     public static final String name  = "Overpowered Technology";
     public static final String modid = "overpowered";
     public static final boolean loaded = ModList.get().isLoaded(modid);
