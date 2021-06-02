@@ -69,10 +69,6 @@ public final class MaterialsRegister {
     game.register(Material.SAPPHIRE.gem);
     game.register(Material.AMETHYST.gem);
     
-    // other material items
-    game.register(Material.SILICON.item);
-    game.register(Material.ROSE_QUARTZ.gem);
-    
     // gem blocks
     game.register(Material.RUBY.block_item);
     game.register(Material.TOPAZ.block_item);
@@ -86,8 +82,6 @@ public final class MaterialsRegister {
     game.register(ADDSynthMaterials.registry.getItemBlock(Material.CITRINE.ore));
     game.register(ADDSynthMaterials.registry.getItemBlock(Material.SAPPHIRE.ore));
     game.register(ADDSynthMaterials.registry.getItemBlock(Material.AMETHYST.ore));
-    game.register(ADDSynthMaterials.registry.getItemBlock(Material.SILICON.ore));
-    game.register(ADDSynthMaterials.registry.getItemBlock(Material.ROSE_QUARTZ.ore));
 
     if(Features.crystal_matter_generator.get()){ // REMOVE shards
       for(Gem gem : Gems.index){ game.register(gem.shard); }
@@ -136,6 +130,12 @@ public final class MaterialsRegister {
       game.register(Material.PLATINUM.plating);
       game.register(Material.TITANIUM.plating);
     }
+    
+    // other material items
+    game.register(Material.SILICON.item);
+    game.register(ADDSynthMaterials.registry.getItemBlock(Material.SILICON.ore));
+    game.register(Material.ROSE_QUARTZ.gem);
+    game.register(ADDSynthMaterials.registry.getItemBlock(Material.ROSE_QUARTZ.ore));
   }
 
   @SubscribeEvent
