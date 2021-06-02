@@ -11,6 +11,7 @@ import addsynth.core.gui.widgets.buttons.RadialButtonGroup;
 import addsynth.core.util.StringUtil;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TeamManagerTeamEditGui extends GuiBase {
@@ -72,6 +73,7 @@ public final class TeamManagerTeamEditGui extends GuiBase {
 
 
   @Override
+  @SuppressWarnings("null")
   public final void init(){
     super.init();
     
@@ -96,7 +98,11 @@ public final class TeamManagerTeamEditGui extends GuiBase {
     team_display_name      = new TextFieldWidget(this.font, right_x, widget_line_1, right_text_box_width, text_box_height, "");
     friendly_fire          = new ClientCheckbox(       left_x, widget_line_2 + 2, friendly_fire_text);
     see_invisible_allys    = new ClientCheckbox(  left_x, widget_line_2 + ColorButtons.button_gui_size + 2, see_invisible_allys_text);
-    color_buttons          = new ColorButtons(              right_x, widget_line_2, null);
+    color_buttons          = new ColorButtons(              right_x, widget_line_2,
+      (Integer color) -> {
+        // team_display_name.setTextColor(TextFormatting.fromColorIndex(color).getColor());
+      }
+    );
     nametag_controls       = new RadialButtonGroup(          left_x, widget_line_3, nametag_options);
     death_message_controls = new RadialButtonGroup(         right_x, widget_line_3, death_message_options);
     member_prefix          = new TextFieldWidget(this.font,  left_x, widget_line_4, left_text_box_width, text_box_height, "");

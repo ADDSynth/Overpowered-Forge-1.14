@@ -1,5 +1,6 @@
 package addsynth.core.gameplay.team_manager.gui;
 
+import java.util.function.Consumer;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gui.widgets.WidgetUtil;
 import net.minecraft.client.gui.widget.button.AbstractButton;
@@ -28,8 +29,16 @@ public final class ColorButtons extends AbstractButton {
   private int texture_x;
   private int texture_y;
 
-  public ColorButtons(final int x_position, final int y_position, final Object something){
+  private final Consumer<Integer> responder;
+
+  public ColorButtons(final int x_position, final int y_position){
     super(x_position, y_position, gui_width, gui_height, "");
+    responder = null;
+  }
+
+  public ColorButtons(final int x_position, final int y_position, final Consumer<Integer> responder){
+    super(x_position, y_position, gui_width, gui_height, "");
+    this.responder = responder;
   }
 
   @Override
@@ -55,6 +64,9 @@ public final class ColorButtons extends AbstractButton {
 
   @Override
   public void onPress(){
+    if(responder != null){
+      responder.accept(getColor());
+    }
   }
 
   public final int getColor(){
