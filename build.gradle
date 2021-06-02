@@ -21,7 +21,7 @@ apply plugin: 'maven-publish'
 
 
 
-def mod_version = "v1.3.4"
+def mod_version = "v1.4-BETA"
 def mc_version = "1.14.4"
 
 version = "Forge-" + mc_version + "-" + mod_version

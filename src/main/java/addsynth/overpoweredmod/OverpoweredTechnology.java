@@ -44,8 +44,8 @@ public class OverpoweredTechnology {
 
   public static final String MOD_ID = "overpowered"; // FUTURE: version 1.5 will rename the modid to overpowered_technology. All assets must also be renamed.
   public static final String MOD_NAME = "Overpowered Technology";
-  public static final String VERSION = "1.3.4";
-  public static final String VERSION_DATE = "December 28, 2020";
+  public static final String VERSION = "1.4";
+  public static final String VERSION_DATE = "June 2, 2021";
     
   public static final Logger log = LogManager.getLogger(MOD_NAME);
 
@@ -90,7 +90,7 @@ public class OverpoweredTechnology {
   private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin "+MOD_NAME+" main setup...");
     
-    log.info(CommonUtil.get_mod_info(MOD_NAME, "ADDSynth", VERSION, DevStage.DEVELOPMENT, VERSION_DATE));
+    log.info(CommonUtil.get_mod_info(MOD_NAME, "ADDSynth", VERSION, DevStage.BETA, VERSION_DATE));
     
     NetworkHandler.registerMessages();
     // WeirdDimension.register();
