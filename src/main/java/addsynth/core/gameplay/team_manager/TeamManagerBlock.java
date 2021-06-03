@@ -1,7 +1,7 @@
 package addsynth.core.gameplay.team_manager;
 
 import addsynth.core.ADDSynthCore;
-import addsynth.core.gameplay.team_manager.gui.TeamManagerGui;
+import addsynth.core.gameplay.client.GuiProvider;
 import addsynth.core.util.command.PermissionLevel;
 import addsynth.core.util.constants.Constants;
 import net.minecraft.block.Block;
@@ -9,7 +9,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.Hand;
@@ -26,11 +25,11 @@ public final class TeamManagerBlock extends Block {
   }
 
   @Override
-  @SuppressWarnings({ "deprecation", "resource" })
+  @SuppressWarnings({ "deprecation" })
   public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit){
     if(world.isRemote){
       if(player.hasPermissionLevel(PermissionLevel.COMMANDS)){
-        Minecraft.getInstance().displayGuiScreen(new TeamManagerGui());
+        GuiProvider.openTeamManagerGui(this);
       }
       else{
         player.sendMessage(new TranslationTextComponent("gui.addsynthcore.team_manager.you_do_not_have_permission", PermissionLevel.COMMANDS));
