@@ -15,7 +15,8 @@ public final class ServerUtils {
   // DO NOT CACHE THE SERVER! Because the actively running server could change during the course
   // of the game, such as when a player quits a multiplayer world and starts a singleplayer world.
 
-  /** @deprecated Use {@link ServerUtils#getServer(World)} whenever possible. */
+  /** DO NOT CACHE THE SERVER!!!
+   *  @deprecated Use {@link ServerUtils#getServer(World)} whenever possible. */
   @Nullable
   public static final MinecraftServer getServer(){
     final MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
@@ -25,9 +26,12 @@ public final class ServerUtils {
     return server;
   }
 
-  /** This is a more stable way to get the MinecraftServer in my opinion, but it only works if the
+  /** <p>This is a more stable way to get the MinecraftServer in my opinion, but it only works if the
    *  World used is a Server World. Falls back to the other getServer() method if this doesn't work.
+   *  <p>If you're calling from a TileEntity, you can use world.getServer().
+   *  <p>DO NOT CACHE THE SERVER!!!
    * @param world
+   * @deprecated Look at what this function does. If you have access to the World, then just use world.getServer().
    */
   @Nullable
   public static final MinecraftServer getServer(final World world){
@@ -38,6 +42,7 @@ public final class ServerUtils {
     return server;
   }
 
+  @SuppressWarnings("resource")
   public static ArrayList<ServerPlayerEntity> get_players_in_world(final World world){
     final ArrayList<ServerPlayerEntity> player_list = new ArrayList<>(20);
     final MinecraftServer server = getServer(world);

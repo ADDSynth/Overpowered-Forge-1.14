@@ -26,10 +26,6 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 public final class TeamData {
 
-  @SuppressWarnings("deprecation")
-  private static final MinecraftServer server = ServerUtils.getServer();
-  private static final Scoreboard scoreboard = server.getScoreboard();
-
   private static Collection<ScorePlayerTeam> team_list;
   private static int number_of_teams;
   private static ScorePlayerTeam[] team_array;
@@ -134,72 +130,77 @@ public final class TeamData {
       tick_time += 1;
       if(tick_time >= TimeConstants.ticks_per_second){
         sync();
+        tick_time = 0;
       }
     }
   }
 
   /** Gets data from server. */
   public static final void sync(){
-    
-    // Teams
-    team_list = scoreboard.getTeams();
-    number_of_teams = team_list.size();
-    team_array = team_list.toArray(new ScorePlayerTeam[number_of_teams]);
-    teams = new TeamDataUnit[number_of_teams];
-    int i;
-    for(i = 0; i < number_of_teams; i++){
-      teams[i] = new TeamDataUnit();
-      teams[i].name = team_array[i].getName();
-      teams[i].display_name = team_array[i].getDisplayName();
-      teams[i].color = team_array[i].getColor().getColorIndex();
-      teams[i].prefix = team_array[i].getPrefix();
-      teams[i].suffix = team_array[i].getSuffix();
-      teams[i].pvp = team_array[i].getAllowFriendlyFire();
-      teams[i].see_invisible_allys = team_array[i].getSeeFriendlyInvisiblesEnabled();
-      teams[i].nametag_option = team_array[i].getNameTagVisibility().id;
-      teams[i].death_message_option = team_array[i].getDeathMessageVisibility().id;
-    }
-    
-    // Players
-    all_players = server.getPlayerList().getPlayers();
-    non_team_players.clear();
-    for(final PlayerEntity player : all_players){
-      team = player.getTeam();
-      if(team == null){
-        non_team_players.add(player.getDisplayName());
+    @SuppressWarnings({ "deprecation", "resource" })
+    final MinecraftServer server = ServerUtils.getServer();
+    if(server != null){
+      final Scoreboard scoreboard = server.getScoreboard();
+      
+      // Teams
+      team_list = scoreboard.getTeams();
+      number_of_teams = team_list.size();
+      team_array = team_list.toArray(new ScorePlayerTeam[number_of_teams]);
+      teams = new TeamDataUnit[number_of_teams];
+      int i;
+      for(i = 0; i < number_of_teams; i++){
+        teams[i] = new TeamDataUnit();
+        teams[i].name = team_array[i].getName();
+        teams[i].display_name = team_array[i].getDisplayName();
+        teams[i].color = team_array[i].getColor().getColorIndex();
+        teams[i].prefix = team_array[i].getPrefix();
+        teams[i].suffix = team_array[i].getSuffix();
+        teams[i].pvp = team_array[i].getAllowFriendlyFire();
+        teams[i].see_invisible_allys = team_array[i].getSeeFriendlyInvisiblesEnabled();
+        teams[i].nametag_option = team_array[i].getNameTagVisibility().id;
+        teams[i].death_message_option = team_array[i].getDeathMessageVisibility().id;
       }
-      else{
-        for(final TeamDataUnit team_data : teams){
-          if(team_data.matches(team)){
-            team_data.players.add(player.getDisplayName());
+      
+      // Players
+      all_players = server.getPlayerList().getPlayers();
+      non_team_players.clear();
+      for(final PlayerEntity player : all_players){
+        team = player.getTeam();
+        if(team == null){
+          non_team_players.add(player.getDisplayName());
+        }
+        else{
+          for(final TeamDataUnit team_data : teams){
+            if(team_data.matches(team)){
+              team_data.players.add(player.getDisplayName());
+            }
           }
         }
       }
+      
+      // Objectives
+      objectives_list = scoreboard.getScoreObjectives();
+      number_of_objectives = objectives_list.size();
+      objective_array = objectives_list.toArray(new ScoreObjective[number_of_objectives]);
+      objectives = new ObjectiveDataUnit[number_of_objectives];
+      for(i = 0; i < number_of_objectives; i++){
+        objectives[i] = new ObjectiveDataUnit();
+        objectives[i].name = objective_array[i].getName();
+        objectives[i].display_name = objective_array[i].getDisplayName();
+        objectives[i].criteria = objective_array[i].getCriteria();
+        objectives[i].modify = !objectives[i].criteria.isReadOnly();
+      }
+      
+      // DisplaySlots
+      ScoreObjective o = scoreboard.getObjectiveInDisplaySlot(0);
+      display_slot_objective[0] = o != null ? o.getName() : "";
+      o = scoreboard.getObjectiveInDisplaySlot(1);
+      display_slot_objective[1] = o != null ? o.getName() : "";
+      o = scoreboard.getObjectiveInDisplaySlot(2);
+      display_slot_objective[2] = o != null ? o.getName() : "";
+  
+      NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new TeamManagerSyncMessage());
     }
-    
-    // Objectives
-    objectives_list = scoreboard.getScoreObjectives();
-    number_of_objectives = objectives_list.size();
-    objective_array = objectives_list.toArray(new ScoreObjective[number_of_objectives]);
-    objectives = new ObjectiveDataUnit[number_of_objectives];
-    for(i = 0; i < number_of_objectives; i++){
-      objectives[i] = new ObjectiveDataUnit();
-      objectives[i].name = objective_array[i].getName();
-      objectives[i].display_name = objective_array[i].getDisplayName();
-      objectives[i].criteria = objective_array[i].getCriteria();
-      objectives[i].modify = !objectives[i].criteria.isReadOnly();
-    }
-    
-    // DisplaySlots
-    ScoreObjective o = scoreboard.getObjectiveInDisplaySlot(0);
-    display_slot_objective[0] = o != null ? o.getName() : "";
-    o = scoreboard.getObjectiveInDisplaySlot(1);
-    display_slot_objective[1] = o != null ? o.getName() : "";
-    o = scoreboard.getObjectiveInDisplaySlot(2);
-    display_slot_objective[2] = o != null ? o.getName() : "";
-
-    NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new TeamManagerSyncMessage());
-    tick_time = 0;
   }
 
   /** Send data to Clients. */

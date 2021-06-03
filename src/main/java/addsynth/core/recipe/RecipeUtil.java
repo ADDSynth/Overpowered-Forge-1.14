@@ -130,7 +130,7 @@ public final class RecipeUtil {
   }
 
   /** Attempts to get an instance of the RecipeManager from the server. */
-  @SuppressWarnings({ "null", "deprecation" })
+  @SuppressWarnings({ "null", "deprecation", "resource" })
   private static final void updateRecipeManager(){
     if(recipe_manager == null){
       recipe_manager = ServerUtils.getServer().getRecipeManager();

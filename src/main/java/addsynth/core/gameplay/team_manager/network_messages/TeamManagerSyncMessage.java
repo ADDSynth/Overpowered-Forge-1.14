@@ -5,6 +5,7 @@ import addsynth.core.gameplay.team_manager.TeamData;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 
+/** Sent from the server to the client, to sync the {@link TeamData} */
 public final class TeamManagerSyncMessage {
 
   public TeamManagerSyncMessage(){

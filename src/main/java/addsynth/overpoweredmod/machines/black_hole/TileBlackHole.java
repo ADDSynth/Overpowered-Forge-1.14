@@ -4,7 +4,6 @@ import addsynth.core.util.game.MessageUtil;
 import addsynth.core.util.math.BlockMath;
 import addsynth.core.util.math.MathUtility;
 import addsynth.core.util.math.random.RandomUtil;
-import addsynth.core.util.server.ServerUtils;
 import addsynth.core.util.time.TimeConstants;
 import addsynth.core.util.time.TimeUtil;
 import addsynth.core.util.world.WorldUtil;
@@ -15,7 +14,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -53,8 +51,6 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
   private int max_x;
   private int max_y;
   private int max_z;
-
-  private MinecraftServer server;
 
   public TileBlackHole(){
     super(Tiles.BLACK_HOLE);
@@ -109,7 +105,6 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
       if(Config.alert_players_of_black_hole.get()){
         MessageUtil.send_to_all_players_in_world(world, "gui.overpowered.black_hole.notify_players", pos.getX(), pos.getY(), pos.getZ());
       }
-      server = ServerUtils.getServer(world);
     }
     first_tick = false;
   }
@@ -178,7 +173,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
     }
   }
 
-  @SuppressWarnings("null")
+  @SuppressWarnings({ "null", "resource" })
   private final void delete_blocks(){
     BlockPos position;
     boolean check_1;
@@ -215,7 +210,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
       }
       // record time
       check_1 = TimeUtil.time_exceeded(begin_tick_time, max_time);
-      check_2 = TimeUtil.exceeded_server_tick_time(server, begin_tick_time);
+      check_2 = TimeUtil.exceeded_server_tick_time(world.getServer(), begin_tick_time);
     }
     while((check_1 || check_2) == false);
   }
