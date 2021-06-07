@@ -18,7 +18,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 public final class TileCompressor extends TileStandardWorkMachine implements INamedContainerProvider {
 
   public TileCompressor(){
-    super(Tiles.COMPRESSOR, 1, CompressorRecipes.INSTANCE.filter, 1, Config.compressor_data);
+    super(Tiles.COMPRESSOR, 1, CompressorRecipes.INSTANCE.getFilter(), 1, Config.compressor_data);
   }
 
   @Override

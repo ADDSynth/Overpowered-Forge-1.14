@@ -1,6 +1,7 @@
 package addsynth.core.recipe.shapeless;
 
 import java.util.ArrayList;
+import addsynth.core.ADDSynthCore;
 import addsynth.core.Debug;
 import addsynth.core.recipe.RecipeUtil;
 import addsynth.material.MaterialsUtil;
@@ -17,7 +18,8 @@ public class RecipeCollection <T extends AbstractRecipe> {
   public final ShapelessRecipeSerializer<T> serializer;
 
   public final ArrayList<T> recipes = new ArrayList<T>();
-  public Item[] filter;
+  private Item[] filter;
+  private boolean update = true;
 
   public RecipeCollection(IRecipeType<T> type, ShapelessRecipeSerializer<T> serializer){
     this.type = type;
@@ -34,12 +36,20 @@ public class RecipeCollection <T extends AbstractRecipe> {
 
   /** This ensures the input filter gets rebuilt whenever Tags or Recipes are reloaded. */
   public final void registerResponders(){
-    RecipeUtil.registerResponder(this::build_filter);
-    MaterialsUtil.registerResponder(this::build_filter);
+    ADDSynthCore.log.info(type.getClass().getSimpleName()+" input filter was rebuilt.");
+    // rebuild filter on recipe reload.
+    RecipeUtil.registerResponder(() -> {update = true;});
+    // rebuild filter on tag reload.
+    MaterialsUtil.registerResponder(() -> {update = true;});
   }
 
   /** This builds the ingredient filter. */
   public final void build_filter(){
+    if(recipes.size() == 0){
+      ADDSynthCore.log.error("No recipes of type "+type.getClass().getSimpleName()+" exist!");
+      filter = new Item[0];
+      return;
+    }
     final ArrayList<Item> item_list = new ArrayList<>();
     for(final T recipe : recipes){
       for(final Ingredient ingredient : recipe.getIngredients()){
@@ -49,6 +59,14 @@ public class RecipeCollection <T extends AbstractRecipe> {
       }
     }
     filter = item_list.toArray(new Item[item_list.size()]);
+  }
+
+  public final Item[] getFilter(){
+    if(update || filter == null){
+      build_filter();
+      update = false;
+    }
+    return filter;
   }
 
   /** Returns whether the input items matches a recipe in this collection. */

@@ -22,7 +22,7 @@ public final class ContainerCompressor extends TileEntityContainer<TileCompresso
 
   private final void common_setup(final PlayerInventory player_inventory){
     make_player_inventory(player_inventory,8,100);
-    addSlot(new InputSlot( tile, 0, CompressorRecipes.INSTANCE.filter, 32, 42));
+    addSlot(new InputSlot( tile, 0, CompressorRecipes.INSTANCE.getFilter(), 32, 42));
     addSlot(new OutputSlot(tile, 0, 128, 42));
   }
 

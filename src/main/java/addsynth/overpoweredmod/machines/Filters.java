@@ -18,6 +18,7 @@ public final class Filters {
   // TODO: When we do the WorkSystem upgrade, have TileEntities construct their own item filters.
   //       Keep the variable private, and have the get() method first check if it is null and if it is,
   //       then construct it first. Always keep the constructed filter as a cached variable.
+  // PRIORITY: Update Machine filters. Have machine override a getFilter() method, only if necessary.
   public static Item[] gem_converter;
 
   public static Item[] portal_frame;

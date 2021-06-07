@@ -43,10 +43,10 @@ public class ShapelessRecipeSerializer<T extends AbstractRecipe> extends ForgeRe
     String s = JSONUtils.getString(json, "group", "");
     NonNullList<Ingredient> nonnulllist = readIngredients(JSONUtils.getJsonArray(json, "ingredients"));
     if(nonnulllist.isEmpty()){
-      throw new JsonParseException("No ingredients for compressor recipe");
+      throw new JsonParseException("No ingredients for "+recipe_type.getSimpleName()+" recipe");
     }
     if(nonnulllist.size() > max_size){
-      throw new JsonParseException("Too many ingredients for compressor recipe. There can only be a max of "+max_size+" ingredients.");
+      throw new JsonParseException("Too many ingredients for "+recipe_type.getSimpleName()+" recipe. There can only be a max of "+max_size+" ingredients.");
     }
     ItemStack itemstack = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "result"));
     return JavaUtils.InvokeConstructor(recipe_type, recipeId, s, itemstack, nonnulllist);
