@@ -55,8 +55,8 @@ public class ShapelessRecipeSerializer<T extends AbstractRecipe> extends ForgeRe
   @Override
   @Nullable
   public T read(ResourceLocation recipeId, PacketBuffer buffer){
-    String s = buffer.readString(32767);
-    int i = buffer.readVarInt();
+    final String s = buffer.readString(32767); // bypasses the ClientOnly annotation, it's what vanilla does as well.
+    final int i = buffer.readVarInt();
     NonNullList<Ingredient> nonnulllist = NonNullList.withSize(i, Ingredient.EMPTY);
 
     for(int j = 0; j < nonnulllist.size(); ++j) {

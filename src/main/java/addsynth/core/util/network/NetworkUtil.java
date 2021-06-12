@@ -37,40 +37,22 @@ public final class NetworkUtil {
     return positions;
   }
 
-  /** You can use either this method or {@link PacketBuffer#writeString(String)} method,
-   *  however keep in mind that the vanilla method is limited to strings of length 32767.
-   * @param data
-   * @param string
-   */
   public static final void writeString(final PacketBuffer data, final String string){
-    final int length = data.readInt();
-    data.writeInt(length);
-    int i;
-    for(i = 0; i < length; i++){
-      data.writeChar(string.charAt(i));
-    }
+    data.writeString(string);
   }
 
-  /** You MUST use this to read strings! You cannot use the vanilla method
-   *  because it is marked with the ClientOnly annotation. If you try to use
-   *  that on the server side you'll crash the server.
-   * @param data
-   * @return String
+  /** You CANNOT use the vanilla method {@link PacketBuffer#readString()} because it has
+   *  the ClientOnly annotation, and thus will crash the server if called on that side!
+   *  You can call this to get around that. This does exactly what the vanilla method does.
    */
   public static final String readString(final PacketBuffer data){
-    final int string_length = data.readInt();
-    int i;
-    final StringBuilder string_message = new StringBuilder();
-    for(i = 0; i < string_length; i++){
-      string_message.append(data.readChar());
-    }
-    return string_message.toString();
+    return data.readString(32767);
   }
 
   public static final void writeStringArray(final PacketBuffer data, final String[] string_array){
     data.writeInt(string_array.length);
     for(final String s : string_array){
-      writeString(data, s);
+      data.writeString(s);
     }
   }
 
@@ -79,7 +61,7 @@ public final class NetworkUtil {
     final int length = data.readInt();
     final String[] strings = new String[length];
     for(i = 0; i < length; i++){
-      strings[i] = readString(data);
+      strings[i] = data.readString(32767);
     }
     return strings;
   }
