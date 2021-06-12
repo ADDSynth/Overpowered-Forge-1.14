@@ -296,31 +296,40 @@ public final class TeamData {
   }
 
   public static final String[] getTeams(){
-    int i;
-    final String[] t = new String[teams.length];
-    for(i = 0; i < teams.length; i++){
-      t[i] = teams[i].name;
+    if(teams != null){
+      int i;
+      final String[] t = new String[teams.length];
+      for(i = 0; i < teams.length; i++){
+        t[i] = teams[i].name;
+      }
+      return t;
     }
-    return t;
+    return new String[0];
   }
 
   public static final String[] getPlayers(){
-    int i;
-    final int length = non_team_players.size();
-    final String[] p = new String[length];
-    for(i = 0; i < length; i++){
-      p[i] = non_team_players.get(i).getFormattedText();
+    if(non_team_players != null){
+      int i;
+      final int length = non_team_players.size();
+      final String[] p = new String[length];
+      for(i = 0; i < length; i++){
+        p[i] = non_team_players.get(i).getFormattedText();
+      }
+      return p;
     }
-    return p;
+    return new String[0];
   }
 
   public static final String[] getObjectives(){
-    int i;
-    final String[] o = new String[objectives.length];
-    for(i = 0; i < objectives.length; i++){
-      o[i] = objectives[i].name;
+    if(objectives != null){
+      int i;
+      final String[] o = new String[objectives.length];
+      for(i = 0; i < objectives.length; i++){
+        o[i] = objectives[i].name;
+      }
+      return o;
     }
-    return o;
+    return new String[0];
   }
 
   public static final String[] getTeamPlayers(final String team_selected){
