@@ -84,15 +84,15 @@ public final class TeamData {
     
     public static final TeamDataUnit decode(final PacketBuffer data){
       final TeamDataUnit team = new TeamDataUnit();
-      team.name = data.readString();
-      team.display_name = new StringTextComponent(data.readString());
+      team.name = NetworkUtil.readString(data);
+      team.display_name = new StringTextComponent(NetworkUtil.readString(data));
       team.color = data.readByte();
       team.pvp = data.readBoolean();
       team.see_invisible_allys = data.readBoolean();
       team.nametag_option = data.readByte();
       team.death_message_option = data.readByte();
-      team.prefix = new StringTextComponent(data.readString());
-      team.suffix = new StringTextComponent(data.readString());
+      team.prefix = new StringTextComponent(NetworkUtil.readString(data));
+      team.suffix = new StringTextComponent(NetworkUtil.readString(data));
       team.players = new ArrayList<ITextComponent>();
       for(final ITextComponent t : NetworkUtil.readTextComponentArray(data)){
         team.players.add(t);
@@ -116,8 +116,8 @@ public final class TeamData {
     
     public static final ObjectiveDataUnit decode(final PacketBuffer data){
       final ObjectiveDataUnit objective = new ObjectiveDataUnit();
-      objective.name = data.readString();
-      objective.display_name = new StringTextComponent(data.readString());
+      objective.name = NetworkUtil.readString(data);
+      objective.display_name = new StringTextComponent(NetworkUtil.readString(data));
       objective.criteria = getCriteria(data.readInt());
       objective.modify = data.readBoolean();
       return objective;
@@ -236,9 +236,9 @@ public final class TeamData {
     for(i = 0; i < length; i++){
       objectives[i] = ObjectiveDataUnit.decode(data);
     }
-    display_slot_objective[0] = data.readString();
-    display_slot_objective[1] = data.readString();
-    display_slot_objective[2] = data.readString();
+    display_slot_objective[0] = NetworkUtil.readString(data);
+    display_slot_objective[1] = NetworkUtil.readString(data);
+    display_slot_objective[2] = NetworkUtil.readString(data);
     
     changed = true;
   }

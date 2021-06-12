@@ -37,10 +37,40 @@ public final class NetworkUtil {
     return positions;
   }
 
+  /** You can use either this method or {@link PacketBuffer#writeString(String)} method,
+   *  however keep in mind that the vanilla method is limited to strings of length 32767.
+   * @param data
+   * @param string
+   */
+  public static final void writeString(final PacketBuffer data, final String string){
+    final int length = data.readInt();
+    data.writeInt(length);
+    int i;
+    for(i = 0; i < length; i++){
+      data.writeChar(string.charAt(i));
+    }
+  }
+
+  /** You MUST use this to read strings! You cannot use the vanilla method
+   *  because it is marked with the ClientOnly annotation. If you try to use
+   *  that on the server side you'll crash the server.
+   * @param data
+   * @return String
+   */
+  public static final String readString(final PacketBuffer data){
+    final int string_length = data.readInt();
+    int i;
+    final StringBuilder string_message = new StringBuilder();
+    for(i = 0; i < string_length; i++){
+      string_message.append(data.readChar());
+    }
+    return string_message.toString();
+  }
+
   public static final void writeStringArray(final PacketBuffer data, final String[] string_array){
     data.writeInt(string_array.length);
     for(final String s : string_array){
-      data.writeString(s);
+      writeString(data, s);
     }
   }
 
@@ -49,7 +79,7 @@ public final class NetworkUtil {
     final int length = data.readInt();
     final String[] strings = new String[length];
     for(i = 0; i < length; i++){
-      strings[i] = data.readString();
+      strings[i] = readString(data);
     }
     return strings;
   }
@@ -66,7 +96,7 @@ public final class NetworkUtil {
     final int length = data.readInt();
     final ITextComponent[] text_components = new ITextComponent[length];
     for(i = 0; i < length; i++){
-      text_components[i] = new StringTextComponent(data.readString());
+      text_components[i] = new StringTextComponent(readString(data));
     }
     return text_components;
   }

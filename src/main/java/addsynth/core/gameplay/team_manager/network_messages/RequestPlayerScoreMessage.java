@@ -3,6 +3,7 @@ package addsynth.core.gameplay.team_manager.network_messages;
 import java.util.function.Supplier;
 import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.util.data.ScoreUtil;
+import addsynth.core.util.network.NetworkUtil;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.scoreboard.Score;
@@ -29,7 +30,7 @@ public final class RequestPlayerScoreMessage {
   }
 
   public static final RequestPlayerScoreMessage decode(final PacketBuffer buf){
-    return new RequestPlayerScoreMessage(buf.readString(), buf.readString());
+    return new RequestPlayerScoreMessage(NetworkUtil.readString(buf), NetworkUtil.readString(buf));
   }
 
   public static void handle(final RequestPlayerScoreMessage message, final Supplier<NetworkEvent.Context> context){

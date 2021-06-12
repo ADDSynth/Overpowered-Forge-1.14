@@ -6,6 +6,7 @@ import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.team_manager.TeamData;
 import addsynth.core.util.game.MessageUtil;
 import addsynth.core.util.java.ArrayUtil;
+import addsynth.core.util.network.NetworkUtil;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.scoreboard.Score;
@@ -138,38 +139,38 @@ public final class TeamManagerCommand {
       switch(message.command){
       case ADD_TEAM: case EDIT_TEAM:
         message.parameters = new Object[]{
-          data.readString(),
-          data.readString(),
+          NetworkUtil.readString(data),
+          NetworkUtil.readString(data),
           data.readBoolean(),
           data.readBoolean(),
           data.readInt(),
           data.readInt(),
           data.readInt(),
-          data.readString(),
-          data.readString()
+          NetworkUtil.readString(data),
+          NetworkUtil.readString(data)
         };
         break;
       case DELETE_TEAM: case DELETE_OBJECTIVE:
         message.parameters = new Object[]{
-          data.readString()
+          NetworkUtil.readString(data)
         };
         break;
       case ADD_PLAYER: case REMOVE_PLAYER:
         message.parameters = new Object[]{
-          data.readString(),
-          data.readString()
+          NetworkUtil.readString(data),
+          NetworkUtil.readString(data)
         };
         break;
       case ADD_OBJECTIVE: case EDIT_OBJECTIVE: case SET_SCORE: case ADD_SCORE: case SUBTRACT_SCORE:
         message.parameters = new Object[]{
-          data.readString(),
-          data.readString(),
+          NetworkUtil.readString(data),
+          NetworkUtil.readString(data),
           data.readInt()
         };
         break;
       case SET_DISPLAY_SLOT:
         message.parameters = new Object[]{
-          data.readString(),
+          NetworkUtil.readString(data),
           data.readInt()
         };
         break;
