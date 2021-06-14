@@ -69,6 +69,7 @@ CHANGED:
       - But this doesn't mean anything right now because the Unknown Dimension doesn't exist.
     Now that we have a standard generator to power your machines, you won't need as
       many Energy Crystals. Changed the default tries to generate Gem Ore from 4 to 3.
+    Reduced the default number of Ores generated.
   No longer registers a Steel smelting recipe if Immersive Engineering or Mekanism is installed.
   Changed the Steel smelting recipe to a Blast Furnace recipe.
   The Dimensional Anchor now has a shaped crafting recipe, like how it was in Minecraft 1.12

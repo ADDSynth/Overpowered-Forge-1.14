@@ -18,23 +18,23 @@ public final class WorldgenConfig {
   
   // should be the same as Iron Ore
   private static final int DEFAULT_COMMON_METAL_MAX_HEIGHT = 128;
-  private static final int DEFAULT_COMMON_METAL_TRIES = 15;
+  private static final int DEFAULT_COMMON_METAL_TRIES = 8;
   private static final int DEFAULT_COMMON_METAL_ORE_SIZE = 9;
   // 8x  (0 - 120) every 15 levels
 
   private static final int DEFAULT_SILVER_ORE_MAX_HEIGHT = 64;
-  private static final int DEFAULT_SILVER_ORE_TRIES = 4;
+  private static final int DEFAULT_SILVER_ORE_TRIES = 3;
   private static final int DEFAULT_SILVER_ORE_SIZE = 9;
   // Gold: 2x (0 - 32) every 16 levels,     Silver: 4x (0 - 64) every 16 levels.
   
   private static final int DEFAULT_RARE_METAL_MAX_HEIGHT = 96;
-  private static final int DEFAULT_RARE_METAL_TRIES = 3;
+  private static final int DEFAULT_RARE_METAL_TRIES = 2;
   private static final int DEFAULT_RARE_METAL_ORE_SIZE = 7;
   // Rare: 3x (0 - 96) every 32 levels.
   
   private static final int DEFAULT_SILICON_MAX_HEIGHT = 128;
-  private static final int DEFAULT_SILICON_TRIES = 6;
-  private static final int DEFAULT_SILICON_ORE_SIZE = 3;
+  private static final int DEFAULT_SILICON_TRIES = 9;
+  private static final int DEFAULT_SILICON_ORE_SIZE = 6;
 
   public static ForgeConfigSpec.BooleanValue generate_ruby;
   public static ForgeConfigSpec.IntValue ruby_min_height;
