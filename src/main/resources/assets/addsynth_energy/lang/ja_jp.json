@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "エネルギー",
 "gui.addsynth_energy.common.energy_stored": "蓄えられたエネルギー",
 "gui.addsynth_energy.common.energy_usage": "エネルギー使用",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "モード",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "状態",

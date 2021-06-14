@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "energie",
 "gui.addsynth_energy.common.energy_stored": "Energia uložená",
 "gui.addsynth_energy.common.energy_usage": "Využitie energie",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "režim",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "Postavenie",

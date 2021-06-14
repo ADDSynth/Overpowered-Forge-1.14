@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "能源",
 "gui.addsynth_energy.common.energy_stored": "儲能",
 "gui.addsynth_energy.common.energy_usage": "能源消耗",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "模式",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "狀態",

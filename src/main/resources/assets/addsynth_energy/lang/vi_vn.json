@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "Năng lượng",
 "gui.addsynth_energy.common.energy_stored": "Năng lượng được lưu trữ",
 "gui.addsynth_energy.common.energy_usage": "Sử dụng năng lượng",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "Chế độ",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "Trạng thái",

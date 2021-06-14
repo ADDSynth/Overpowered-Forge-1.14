@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "ऊर्जा",
 "gui.addsynth_energy.common.energy_stored": "ऊर्जा का भंडारण",
 "gui.addsynth_energy.common.energy_usage": "ऊर्जा के उपयोग",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "मोड",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "स्थिति",

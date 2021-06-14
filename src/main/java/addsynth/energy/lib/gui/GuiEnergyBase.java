@@ -21,6 +21,7 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   private final String energy_text           = StringUtil.translate("gui.addsynth_energy.common.energy");
   private final String energy_usage_text     = StringUtil.translate("gui.addsynth_energy.common.energy_usage");
   private final String tick_text             = StringUtil.translate("gui.addsynth_energy.common.tick");
+  private final String efficiency_text       = StringUtil.translate("gui.addsynth_energy.common.efficiency");
   /** The word 'Status' translated. */
   private final String status_text           = StringUtil.translate("gui.addsynth_energy.common.status");
   private final String time_left_text        = StringUtil.translate("gui.addsynth_energy.common.time_remaining");
@@ -71,8 +72,15 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   
   protected final void draw_energy_usage(final int draw_x, final int draw_y){
     if(energy != null){
-      GuiUtil.draw_text_left(energy_usage_text+":", draw_x, draw_y);
-      GuiUtil.draw_text_right(String.format("%.2f", energy.get_energy_in()) + " /"+tick_text, guiUtil.right_edge, draw_y);
+      GuiUtil.draw_text_left(efficiency_text+":", draw_x, draw_y);
+      final String energy_usage = StringUtil.build(
+        String.format("%.2f", energy.get_energy_in()),
+        " / ",
+        String.format("%.2f", energy.getMaxReceive()),
+        "  ",
+        StringUtil.toPercentageString(energy.get_energy_in() / energy.getMaxReceive())
+      );
+      GuiUtil.draw_text_right(energy_usage, guiUtil.right_edge, draw_y);
     }
     else{
       GuiUtil.draw_text_left(null_energy_reference, draw_x, draw_y);

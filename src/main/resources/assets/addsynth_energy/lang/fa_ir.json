@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "انرژی",
 "gui.addsynth_energy.common.energy_stored": "انرژی ذخیره شده",
 "gui.addsynth_energy.common.energy_usage": "مصرف انرژی",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "حالت",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "وضعیت",

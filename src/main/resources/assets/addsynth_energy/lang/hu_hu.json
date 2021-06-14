@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "Energia",
 "gui.addsynth_energy.common.energy_stored": "Tárolt energia",
 "gui.addsynth_energy.common.energy_usage": "Energiafelhasználás",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "Mód",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "Állapot",

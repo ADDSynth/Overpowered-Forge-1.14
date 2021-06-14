@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "الطاقة",
 "gui.addsynth_energy.common.energy_stored": "الطاقة المخزنة",
 "gui.addsynth_energy.common.energy_usage": "استخدام الطاقة",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "الوضع",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "الحالة",

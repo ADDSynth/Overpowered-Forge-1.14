@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "ஆற்றல்",
 "gui.addsynth_energy.common.energy_stored": "ஆற்றல் சேமிக்கப்பட்டது",
 "gui.addsynth_energy.common.energy_usage": "ஆற்றல் பயன்பாடு",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "பயன்முறை",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "நிலை",

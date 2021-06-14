@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "Energia",
 "gui.addsynth_energy.common.energy_stored": "Energia zmagazynowana",
 "gui.addsynth_energy.common.energy_usage": "Zużycie energii",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "Tryb",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "Status",

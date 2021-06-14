@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "Tenaga",
 "gui.addsynth_energy.common.energy_stored": "Tenaga Disimpan",
 "gui.addsynth_energy.common.energy_usage": "Penggunaan Tenaga",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "Mod",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "negeri",

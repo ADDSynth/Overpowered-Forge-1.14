@@ -38,11 +38,11 @@ public final class StringUtil {
   }
 
   public static final String toPercentageString(final double value){
-    return CommonMath.toPercentage(value, 0, RoundMode.Round) + "%";
+    return (int)CommonMath.toPercentage(value, 0, RoundMode.Round) + "%";
   }
   
   public static final String toPercentageString(final double value, final RoundMode mode){
-    return CommonMath.toPercentage(value, 0, mode) + "%";
+    return (int)CommonMath.toPercentage(value, 0, mode) + "%";
   }
   
   public static final String toPercentageString(final double value, final int number_of_decimals){
@@ -54,11 +54,11 @@ public final class StringUtil {
   }
   
   public static final String toPercentageString(final int top, final int bottom){
-    return CommonMath.toPercentage(top, bottom, 0, RoundMode.Round) + "%";
+    return (int)CommonMath.toPercentage(top, bottom, 0, RoundMode.Round) + "%";
   }
   
   public static final String toPercentageString(final int top, final int bottom, final RoundMode mode){
-    return CommonMath.toPercentage(top, bottom, 0, mode) + "%";
+    return (int)CommonMath.toPercentage(top, bottom, 0, mode) + "%";
   }
   
   public static final String toPercentageString(final int top, final int bottom, final int number_of_decimals){

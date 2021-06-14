@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "Enerji",
 "gui.addsynth_energy.common.energy_stored": "Depolanan Enerji",
 "gui.addsynth_energy.common.energy_usage": "Enerji kullanımı",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "kip",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "durum",

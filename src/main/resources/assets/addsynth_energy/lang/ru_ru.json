@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "энергии",
 "gui.addsynth_energy.common.energy_stored": "накопленная энергия",
 "gui.addsynth_energy.common.energy_usage": "Использование энергии",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "Режим",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "Положение дел",

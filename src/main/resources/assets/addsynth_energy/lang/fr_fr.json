@@ -23,6 +23,7 @@
 "gui.addsynth_energy.common.energy": "Énergie",
 "gui.addsynth_energy.common.energy_stored": "énergie stockée",
 "gui.addsynth_energy.common.energy_usage": "La consommation d'énergie",
+"gui.addsynth_energy.common.efficiency": "Efficiency",
 "gui.addsynth_energy.common.mode": "Mode",
 "gui.addsynth_energy.common.selected": "Selected",
 "gui.addsynth_energy.common.status": "Statut",

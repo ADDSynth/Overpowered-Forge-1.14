@@ -217,7 +217,7 @@ public final class CommonMath {
   }
   
   public static final double toPercentage(double value, int number_of_decimals, RoundMode mode){
-    double percent_value = 0.0f;
+    double percent_value = 0.0;
     switch(mode){
     case Round:   percent_value =      round(value * 100, number_of_decimals); break;
     case Floor:   percent_value = Math.floor(value * 100); break;
