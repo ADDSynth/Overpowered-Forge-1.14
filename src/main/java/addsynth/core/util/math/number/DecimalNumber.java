@@ -2,7 +2,7 @@ package addsynth.core.util.math.number;
 
 public final class DecimalNumber {
 
-  private static final int ACCURACY = 3;
+  public static final int ACCURACY = 3;
   public static final int DECIMAL_ACCURACY = 1_000; // (int)Math.pow(10, ACCURACY);
 
   public static final double align_to_accuracy(final double input){

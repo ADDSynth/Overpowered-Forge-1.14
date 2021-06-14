@@ -1,6 +1,7 @@
 package addsynth.energy.lib.main;
 
 import javax.annotation.Nonnegative;
+import addsynth.core.util.math.CommonMath;
 import addsynth.core.util.math.number.DecimalNumber;
 import net.minecraft.nbt.CompoundNBT;
 
@@ -319,7 +320,8 @@ public class Energy {
   public final double getEnergyNeeded(){
     final double energy   = this.energy.get();
     final double capacity = this.capacity.get();
-    return energy < capacity ? capacity - energy : 0;
+    // In what world does 1000.0 - 999.999 = 9.999999999763531E-4? Answer: The Java world.
+    return energy < capacity ? CommonMath.round(capacity - energy, DecimalNumber.ACCURACY) : 0;
   }
 
   public final double get_energy_in(){
