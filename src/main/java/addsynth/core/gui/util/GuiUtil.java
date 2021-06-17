@@ -1,10 +1,14 @@
 package addsynth.core.gui.util;
 
+import java.util.List;
+import addsynth.core.gui.widgets.WidgetUtil;
 import addsynth.core.util.math.CommonMath;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.item.ItemStack;
@@ -204,6 +208,20 @@ public final class GuiUtil {
   public static final void blendItemStacks(ItemStack first_stack, ItemStack second_stack, int x, int y, float blend_factor){
     drawItemStack( first_stack, x, y, 1.0f - blend_factor);
     drawItemStack(second_stack, x, y,        blend_factor);
+  }
+
+  /** This must be called in the {@link ContainerScreen#renderHoveredToolTip(int, int)} method.<br>
+   *  The X and Y coordinates must have the <code>guiLeft</code> and <code>guiTop</code> values added. */
+  // REPLICA of Screen.renderTooltip(ItemStack, mouse_x, mouse_y);
+  public static final void drawItemTooltip(Screen screen, ItemStack itemStack, int x, int y, int mouse_x, int mouse_y){
+    if(WidgetUtil.isInsideItemStack(x, y, mouse_x, mouse_y)){
+      @SuppressWarnings("resource")
+      final FontRenderer font = itemStack.getItem().getFontRenderer(itemStack);
+      final List<String> text = screen.getTooltipFromItem(itemStack);
+      net.minecraftforge.fml.client.gui.GuiUtils.preItemToolTip(itemStack);
+      screen.renderTooltip(text, mouse_x, mouse_y, font != null ? font : GuiUtil.font);
+      net.minecraftforge.fml.client.gui.GuiUtils.postItemToolTip();
+    }
   }
 
 }

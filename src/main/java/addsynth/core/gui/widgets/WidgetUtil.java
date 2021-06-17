@@ -125,6 +125,10 @@ public final class WidgetUtil {
            mouse_x <  widget.x+widget.getWidth() && mouse_y <  widget.y+widget.getHeight();
   }
 
+  public static final boolean isInsideItemStack(final int x, final int y, final int mouse_x, final int mouse_y){
+    return mouse_x >= x && mouse_x < x+16 && mouse_y >= y && mouse_y < y+16;
+  }
+
   /** Used with custom buttons that must change a value depending on where the player clicked on the button.
    *  The button is divided into evenly sized cells, starting with cell 0 at the top-left corner.
    * @param mouse_x
