@@ -1,5 +1,6 @@
 package addsynth.core.gameplay.commands;
 
+import java.util.ArrayList;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.command.CommandUtil;
 import addsynth.core.util.command.PermissionLevel;
@@ -44,6 +45,9 @@ public final class ZombieRaidCommand {
   private static int zombie_raid_time;
   private static long previous_world_time;
 
+  private static final ArrayList<ZombieEntity> zombies = new ArrayList<>();
+  private static final ArrayList<ServerPlayerEntity> players = new ArrayList<>();
+
   public static final void register(CommandDispatcher<CommandSource> dispatcher){
     dispatcher.register(
       Commands.literal(ADDSynthCore.MOD_ID).requires(
@@ -52,22 +56,23 @@ public final class ZombieRaidCommand {
         Commands.literal("zombie_raid").executes(
           (command_context) -> { return zombie_raid(command_context.getSource(), DEFAULT_ZOMBIES, DEFAULT_ZOMBIE_RADIUS, DEFAULT_DURATION); }
         ).then(
-          Commands.argument("zombies", IntegerArgumentType.integer(MIN_ZOMBIES, MAX_ZOMBIES)).executes(
-            (command_context) -> { return zombie_raid(command_context.getSource(), IntegerArgumentType.getInteger(command_context, "zombies"), DEFAULT_ZOMBIE_RADIUS, DEFAULT_DURATION); }
-          ).then(
-            Commands.argument("radius", IntegerArgumentType.integer(MIN_ZOMBIE_RADIUS, MAX_ZOMBIE_RADIUS)).executes(
-              (command_context) -> {
-                return zombie_raid(command_context.getSource(), IntegerArgumentType.getInteger(command_context, "zombies"),
-                                                                IntegerArgumentType.getInteger(command_context, "radius"),
-                                                                DEFAULT_DURATION);
-              }
+          Commands.literal("start").then(
+            Commands.argument("zombies", IntegerArgumentType.integer(MIN_ZOMBIES, MAX_ZOMBIES)
             ).then(
-              Commands.argument("duration", IntegerArgumentType.integer(MIN_DURATION, MAX_DURATION)).executes(
+              Commands.argument("radius", IntegerArgumentType.integer(MIN_ZOMBIE_RADIUS, MAX_ZOMBIE_RADIUS)).executes(
                 (command_context) -> {
                   return zombie_raid(command_context.getSource(), IntegerArgumentType.getInteger(command_context, "zombies"),
                                                                   IntegerArgumentType.getInteger(command_context, "radius"),
-                                                                  IntegerArgumentType.getInteger(command_context, "duration"));
+                                                                  DEFAULT_DURATION);
                 }
+              ).then(
+                Commands.argument("duration", IntegerArgumentType.integer(MIN_DURATION, MAX_DURATION)).executes(
+                  (command_context) -> {
+                    return zombie_raid(command_context.getSource(), IntegerArgumentType.getInteger(command_context, "zombies"),
+                                                                    IntegerArgumentType.getInteger(command_context, "radius"),
+                                                                    IntegerArgumentType.getInteger(command_context, "duration"));
+                  }
+                )
               )
             )
           )
@@ -86,35 +91,48 @@ public final class ZombieRaidCommand {
 
   public static final void tick(){
     if(do_zombie_raid){
-      zombie_tick_count += 1;
-      if(zombie_tick_count >= zombie_raid_time){
-        // zombie raid stopped normally
-        // if all the timing calculations were correct, it should be day now,
-        // the zombies should be dying and the night vision effect is worn out.
-        if(world.getGameRules().getBoolean(GameRules.DO_DAYLIGHT_CYCLE) == false){
-          WorldUtil.set_time(world, previous_world_time);
-        }
-        ADDSynthCore.log.info("Zombie Raid ended.");
+      // check win
+      zombies.removeIf((ZombieEntity z) -> {return !z.isAlive(); });
+      if(zombies.size() == 0){
         do_zombie_raid = false;
+        message_all_players("commands.addsynthcore.zombie_raid.win");
+        return_world_time();
+      }
+      
+      // check time elapsed
+      if(do_zombie_raid){
+        zombie_tick_count += 1;
+        if(zombie_tick_count >= zombie_raid_time){
+          // zombie raid stopped normally
+          // if all the timing calculations were correct, it should be day now,
+          // the zombies should be dying and the night vision effect is worn out.
+          if(world.getGameRules().getBoolean(GameRules.DO_DAYLIGHT_CYCLE) == false){
+            WorldUtil.set_time(world, previous_world_time);
+          }
+          message_all_players("commands.addsynthcore.zombie_raid.end");
+          do_zombie_raid = false;
+        }
       }
     }
   }
 
   @SuppressWarnings("resource")
-  private static final int zombie_raid(final CommandSource command_source, final int zombies, final int radius, final int duration) throws CommandSyntaxException {
-    CommandUtil.check_argument("zombies", zombies, MIN_ZOMBIES, MAX_ZOMBIES);
+  private static final int zombie_raid(final CommandSource command_source, final int number_of_zombies, final int radius, final int duration) throws CommandSyntaxException {
+    CommandUtil.check_argument("zombies", number_of_zombies, MIN_ZOMBIES, MAX_ZOMBIES);
     CommandUtil.check_argument("radius", radius, MIN_ZOMBIE_RADIUS, MAX_ZOMBIE_RADIUS);
     CommandUtil.check_argument("duration", duration, MIN_DURATION, MAX_DURATION);
     
     // get world and position
     final BlockPos position = new BlockPos(command_source.getPos());
-    world = command_source.func_197023_e();
+    world = command_source.func_197023_e(); // PRIORITY: run zombie raids on a per-world basis. Use a Zombie Raid struct that contains all the data. Possibly do the same for the lightning storm command.
+    zombies.clear();
+    players.clear();
     
     // get data
     final int[] y_level_adjust = {0, 1, -1, 2, -2, 3, -3, 4, -4, 5, -5, 6, -6};//, 7, -7, 8, -8};
     int i;
     int r = radius;
-    int circumference = Math.min((int)Math.round(radius * 2 * Math.PI), zombies);
+    int circumference = Math.min((int)Math.round(radius * 2 * Math.PI), number_of_zombies);
     int count = 0;
     int index;
     
@@ -126,14 +144,14 @@ public final class ZombieRaidCommand {
     int round_x;
     int round_z;
     int ground_level;
-    for(i = 0; i < zombies; i++){
+    for(i = 0; i < number_of_zombies; i++){
       
       // update circumference
       index = i - count;
       if(index > circumference){
         r += 1;
         count = i;
-        circumference = Math.min((int)Math.round(r * 2 * Math.PI), zombies - i);
+        circumference = Math.min((int)Math.round(r * 2 * Math.PI), number_of_zombies - i);
         index = 0;
       }
       
@@ -161,6 +179,7 @@ public final class ZombieRaidCommand {
           // if(randomizeProperties){
           //   entity.onInitialSpawn(world, world.getDifficultyForLocation(new BlockPos(entity)), SpawnReason.COMMAND, null, null);
           // }
+          zombies.add(entity);
         }
       }
     }
@@ -175,32 +194,39 @@ public final class ZombieRaidCommand {
       - 540 // subtract the part of sunrise where zombies can still burn
       - zombie_raid_time
     );
-    // give all players inside radius night vision
+    // get all players inside radius
     PlayerUtil.allPlayersWithinHorizontalDistance(server, world, position, radius, (ServerPlayerEntity player) -> {
-      player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, duration * TimeConstants.ticks_per_second));
+      if(player.isAlive()){
+        players.add(player);
+      }
     });
     
     // Start zombie raid
+    // TODO: Look into using a boss bar / raid bar to track the player's progress.
     zombie_tick_count = 0;
     do_zombie_raid = true;
-    command_source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.zombie_raid.success", zombies, duration, radius), true);
+    for(ServerPlayerEntity player : players){
+      // give all players inside radius night vision
+      player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, duration * TimeConstants.ticks_per_second, 0, false, false));
+      player.sendMessage(new TranslationTextComponent("commands.addsynthcore.zombie_raid.start", number_of_zombies, duration, radius));
+    }
 
-    return zombies;
+    return number_of_zombies;
   }
   
-  @SuppressWarnings("resource")
   private static final int stop_zombie_raid(final CommandSource source){
     if(do_zombie_raid){
       do_zombie_raid = false;
-      if(world.getGameRules().getBoolean(GameRules.DO_DAYLIGHT_CYCLE)){
-        WorldUtil.set_time(source.getServer(), WorldTime.getNextDay(world));
+      return_world_time();
+      for(ZombieEntity zombie : zombies){
+        if(zombie.isAlive()){
+          // zombie.setHealth(0.0f);
+          zombie.remove();
+        }
       }
-      else{
-        WorldUtil.set_time(source.getServer(), previous_world_time);
-      }
-      // kill all zombies? NO
+      zombies.clear();
       // remove night vision from all players? NO
-      source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.zombie_raid.stop"), true);
+      message_all_players("commands.addsynthcore.zombie_raid.stop");
       return 1;
     }
     source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.zombie_raid.not_occurring"), false);
@@ -215,6 +241,23 @@ public final class ZombieRaidCommand {
     }
     source.sendFeedback(new TranslationTextComponent("commands.addsynthcore.zombie_raid.not_occurring"), false);
     return 0;
+  }
+  
+  @SuppressWarnings("resource")
+  private static final void return_world_time(){
+    if(world.getGameRules().getBoolean(GameRules.DO_DAYLIGHT_CYCLE)){
+      WorldUtil.set_time(world.getServer(), WorldTime.getNextDay(world));
+    }
+    else{
+      WorldUtil.set_time(world.getServer(), previous_world_time);
+    }
+  }
+  
+  private static final void message_all_players(final String translation_key){
+    players.removeIf((ServerPlayerEntity player) -> {return !player.isAlive(); });
+    for(ServerPlayerEntity player : players){
+      player.sendMessage(new TranslationTextComponent(translation_key));
+    }
   }
   
 }

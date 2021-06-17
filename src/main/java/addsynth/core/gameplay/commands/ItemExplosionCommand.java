@@ -73,7 +73,7 @@ public final class ItemExplosionCommand {
 
     // get data
     final int fly_time = 40; // 2 seconds
-    final int rings = (int)Math.ceil(Math.sqrt(((double)item_count) / Math.PI));
+    final int rings = (int)Math.ceil(Math.sqrt((double)item_count / Math.PI));
     final double[] scaled_distance = new double[rings];
     double area;
     final int[] total_area = new int[rings];
@@ -102,7 +102,11 @@ public final class ItemExplosionCommand {
     int ring;
     int index;
     for(i = 0; i < item_count; i++){
-      ring = (int)Math.floor(Math.sqrt(i / Math.PI));
+      // error: 0-2 is ring[0], however the below expression also translates index 3 to ring[0]
+      ring = 0; // (int)Math.floor(Math.sqrt((double)i / Math.PI));
+      while(i >= total_area[ring] && ring+1 < rings){ // this is probably faster anyways. haha
+        ring += 1;
+      }
       index = ring == 0 ? i : i - total_area[ring-1];
       final ItemEntity item_entity = new ItemEntity(world, position.x, position.y, position.z, items[i]);
       item_entity.setMotion(

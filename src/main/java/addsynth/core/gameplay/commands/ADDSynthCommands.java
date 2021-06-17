@@ -2,6 +2,7 @@ package addsynth.core.gameplay.commands;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.core.config.Features;
+import addsynth.core.util.debug.DebugUtil;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
 import net.minecraftforge.event.TickEvent.Phase;
@@ -31,8 +32,10 @@ public final class ADDSynthCommands {
   /** This runs every server tick (20 times a second). Assigned to the Forge Event bus by {@link ADDSynthCore}. */
   public static final void tick(final ServerTickEvent tick_event){
     if(tick_event.phase == Phase.START){
+      DebugUtil.beginSection(ADDSynthCore.NAME+" Commands");
       ZombieRaidCommand.tick();
       LightningStormCommand.tick();
+      DebugUtil.endSection();
     }
   }
 

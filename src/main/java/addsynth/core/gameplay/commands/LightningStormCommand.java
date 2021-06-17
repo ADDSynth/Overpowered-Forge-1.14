@@ -21,10 +21,10 @@ public final class LightningStormCommand {
 
   private static final float MAX_CHANCE = 10.0f;
 
-  private static final int DEFAULT_COUNT = 60;
+  private static final int DEFAULT_COUNT = 30;
   private static final int DEFAULT_RADIUS = 100;
   private static final int DEFAULT_DELAY = 10;
-  private static final float DEFAULT_CHANCE = 0.4f;
+  private static final float DEFAULT_CHANCE = 0.1f;
 
   private static boolean do_lightning;
   private static BlockPos position;
@@ -45,19 +45,21 @@ public final class LightningStormCommand {
         Commands.literal("lightning").executes(
           (command_context) -> { return lightning(command_context.getSource(), DEFAULT_COUNT, DEFAULT_RADIUS, DEFAULT_DELAY, DEFAULT_CHANCE); }
         ).then(
-          Commands.argument("count", IntegerArgumentType.integer(1)
-          ).then(
-            Commands.argument("radius", IntegerArgumentType.integer(8)
+          Commands.literal("start").then(
+            Commands.argument("count", IntegerArgumentType.integer(1)
             ).then(
-              Commands.argument("tick_delay", IntegerArgumentType.integer(1)
+              Commands.argument("radius", IntegerArgumentType.integer(0)
               ).then(
-                Commands.argument("chance", FloatArgumentType.floatArg(0.000001f, MAX_CHANCE)).executes(
-                  (command_context) -> {
-                    return lightning(command_context.getSource(), IntegerArgumentType.getInteger(command_context, "count"),
-                                                                  IntegerArgumentType.getInteger(command_context, "radius"),
-                                                                  IntegerArgumentType.getInteger(command_context, "tick_delay"),
-                                                                  FloatArgumentType.getFloat(command_context, "chance"));
-                  }
+                Commands.argument("tick_delay", IntegerArgumentType.integer(1)
+                ).then(
+                  Commands.argument("chance", FloatArgumentType.floatArg(0.000001f, MAX_CHANCE)).executes(
+                    (command_context) -> {
+                      return lightning(command_context.getSource(), IntegerArgumentType.getInteger(command_context, "count"),
+                                                                    IntegerArgumentType.getInteger(command_context, "radius"),
+                                                                    IntegerArgumentType.getInteger(command_context, "tick_delay"),
+                                                                    FloatArgumentType.getFloat(command_context, "chance"));
+                    }
+                  )
                 )
               )
             )
@@ -124,8 +126,12 @@ public final class LightningStormCommand {
     int location_z;
     for(i = 0; i < times; i++){
       do{
-        location_x = position.getX() - lightning_radius + random.nextInt(lightning_radius * 2);
-        location_z = position.getZ() - lightning_radius + random.nextInt(lightning_radius * 2);
+        location_x = position.getX();
+        location_z = position.getZ();
+        if(lightning_radius > 0){
+          location_x += -lightning_radius + random.nextInt(lightning_radius * 2);
+          location_z += -lightning_radius + random.nextInt(lightning_radius * 2);
+        }
       }
       while(MathUtility.isWithin(position.getX(), position.getZ(), location_x, location_z, lightning_radius) == false);
       LightningBoltEntity lightning = new LightningBoltEntity(

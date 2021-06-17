@@ -127,10 +127,12 @@
 "commands.addsynthcore.lightning_storm.stop": "Stopped lightning storm.",
 "commands.addsynthcore.lightning_storm.query.true": "Lightning Storm occurring: %s / %s ( %s )",
 "commands.addsynthcore.lightning_storm.query.false": "No lightning storm is occurring.",
-"commands.addsynthcore.zombie_raid.success": "Zombie Raid started. Zombies: %s, Time: %s, Distance: %s.",
+"commands.addsynthcore.zombie_raid.start": "Zombie Raid started. Zombies: %s, Time: %s, Distance: %s.",
 "commands.addsynthcore.zombie_raid.stop": "Zombie Raid cancelled.",
 "commands.addsynthcore.zombie_raid.occurring": "Zombie Raid is occurring. %s seconds remaining.",
 "commands.addsynthcore.zombie_raid.not_occurring": "No Zombie Raid is occurring.",
+"commands.addsynthcore.zombie_raid.end": "Zombie Raid is over.",
+"commands.addsynthcore.zombie_raid.win": "You won the Zombie Raid!",
 
 "advancements.addsynthcore.root.title": "ADDSynthCore",
 "advancements.addsynthcore.root.description": "Core mod required for all of ADDSynth's mods.",
