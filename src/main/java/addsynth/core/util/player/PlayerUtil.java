@@ -65,7 +65,7 @@ public final class PlayerUtil {
   }
 
   /** Gets the {@link ServerPlayerEntity} using the player's name.
-   *  Get the Player's name by calling PlayerEntity.getGameProfile().getName().
+   *  Get the Player's name by calling {@link PlayerEntity#getName()}.
    *  This must be called on the server side, otherwise it will return null.
    *  Also returns null if the player isn't on the server at the moment.
    * @param world

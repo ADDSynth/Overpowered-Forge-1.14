@@ -167,12 +167,12 @@ public final class TeamData {
       for(final PlayerEntity player : all_players){
         team = player.getTeam();
         if(team == null){
-          non_team_players.add(player.getDisplayName());
+          non_team_players.add(player.getName());
         }
         else{
           for(final TeamDataUnit team_data : teams){
             if(team_data.matches(team)){
-              team_data.players.add(player.getDisplayName());
+              team_data.players.add(player.getName());
             }
           }
         }
