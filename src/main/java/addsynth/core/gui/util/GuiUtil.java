@@ -218,9 +218,9 @@ public final class GuiUtil {
       @SuppressWarnings("resource")
       final FontRenderer font = itemStack.getItem().getFontRenderer(itemStack);
       final List<String> text = screen.getTooltipFromItem(itemStack);
-      net.minecraftforge.fml.client.gui.GuiUtils.preItemToolTip(itemStack);
+      net.minecraftforge.fml.client.config.GuiUtils.preItemToolTip(itemStack);
       screen.renderTooltip(text, mouse_x, mouse_y, font != null ? font : GuiUtil.font);
-      net.minecraftforge.fml.client.gui.GuiUtils.postItemToolTip();
+      net.minecraftforge.fml.client.config.GuiUtils.postItemToolTip();
     }
   }
 
