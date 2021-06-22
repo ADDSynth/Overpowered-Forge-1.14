@@ -2,7 +2,6 @@ package addsynth.overpoweredmod.machines.gem_converter;
 
 import javax.annotation.Nullable;
 import addsynth.core.util.data.AdvancementUtil;
-import addsynth.core.util.game.Game;
 import addsynth.core.util.player.PlayerUtil;
 import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;
 import addsynth.overpoweredmod.assets.CustomAdvancements;
@@ -19,6 +18,8 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.stats.Stat;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
@@ -113,8 +114,9 @@ public final class TileGemConverter extends TileStandardWorkMachine implements I
     inventory.output_inventory.insertItem(0, Gems.getItemStack(converting_to), false);
     
     if(player != null){
-      player.addStat(CustomStats.GEMS_CONVERTED);
-      if(Game.getCustomStat(player.getStats(), CustomStats.GEMS_CONVERTED) >= 1000){
+      final Stat gems_converted_stat = Stats.CUSTOM.get(CustomStats.GEMS_CONVERTED);
+      player.addStat(gems_converted_stat);
+      if(player.getStats().getValue(gems_converted_stat) >= 1000){
         AdvancementUtil.grantAdvancement(player, CustomAdvancements.CONVERT_A_THOUSAND_GEMS);
       }
     }
