@@ -6,7 +6,9 @@ import addsynth.core.game.RegistryUtil;
 import addsynth.core.recipe.RecipeUtil;
 import addsynth.core.util.CommonUtil;
 import addsynth.core.util.constants.DevStage;
+import addsynth.core.util.game.Game;
 import addsynth.material.MaterialsUtil;
+import addsynth.overpoweredmod.assets.CustomStats;
 import addsynth.overpoweredmod.compatability.*;
 import addsynth.overpoweredmod.config.*;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -99,6 +101,13 @@ public class OverpoweredTechnology {
     MaterialsUtil.registerResponder(OreRefineryRecipes::refresh_ore_refinery_recipes);
     MaterialsUtil.registerResponder(Filters::regenerate_machine_filters);
     DeferredWorkQueue.runLater(() -> CompatabilityManager.init_mod_compatability());
+    
+    // Register Stats
+    // Can't add Overpowered Technology Name to stats because then the text overlaps the stat values.
+    Game.registerCustomStat(CustomStats.GEMS_CONVERTED);
+    Game.registerCustomStat(CustomStats.LASERS_FIRED);
+    Game.registerCustomStat(CustomStats.ITEMS_IDENTIFIED);
+    // Game.registerCustomStat(BLACK_HOLE_EVENTS);
     
     log.info("Finished "+MOD_NAME+" main setup.");
   }
