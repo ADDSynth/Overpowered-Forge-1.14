@@ -75,12 +75,15 @@ CHANGED:
   The Dimensional Anchor now has a shaped crafting recipe, like how it was in Minecraft 1.12
     and earlier. (still doesn't do anything.)
   Items which have an alternate recipe now have both recipes in the same group.
+  Don't know why the Magic Infuser produces a Fortune II Book, but I've changed that back to
+    Fortune I.
 FIXED:
   Finally added the ability to get those Advancements that you couldn't get before,
     such as Fire Laser, Fire Laser the Maximum Distance, Portal, World Destroyer,
     and Convert a Thousand Gems.
   Fixed advancements logging errors for items that were removed or disabled, I think.
   Fixed not translating block and item subtitles in their tooltips.
+  Fixed the Magic Infuser producing Enchanted Books incorrectly.
 REMOVED:
   Removed the ability to move some items into other Creative Tabs.
   Removed the Unknown Technology item.

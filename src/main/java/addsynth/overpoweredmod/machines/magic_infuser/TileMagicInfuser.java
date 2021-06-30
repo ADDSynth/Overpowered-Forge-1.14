@@ -13,11 +13,13 @@ import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.text.ITextComponent;
@@ -26,6 +28,7 @@ import net.minecraft.item.ItemStack;
 
 public final class TileMagicInfuser extends TileStandardWorkMachine implements INamedContainerProvider {
 
+  // TODO: Change these into actual recipes, and show them in JEI.
   private static final Enchantment[] ruby_enchantments = new Enchantment[]{
     Enchantments.POWER,
     Enchantments.PUNCH
@@ -107,7 +110,8 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
     final Enchantment enchantment = get_enchantment();
     if(enchantment != null){
       final ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1);
-      enchant_book.addEnchantment(enchantment, enchantment == Enchantments.FORTUNE ? 2 : 1);
+      final EnchantmentData enchantment_data = new EnchantmentData(enchantment, 1);
+      EnchantedBookItem.addEnchantment(enchant_book, enchantment_data);
       inventory.output_inventory.setStackInSlot(0, enchant_book);
     }
   }
