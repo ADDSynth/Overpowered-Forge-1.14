@@ -29,7 +29,7 @@ public final class GuiCrystalEnergyExtractor extends GuiEnergyBase<TileCrystalEn
   private static final int energy_text_line_2 = 56;
 
   public GuiCrystalEnergyExtractor(final ContainerCrystalEnergyExtractor container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(182, 176, container, player_inventory, title, gui_texture);
+    super(184, 176, container, player_inventory, title, gui_texture);
   }
 
   @Override

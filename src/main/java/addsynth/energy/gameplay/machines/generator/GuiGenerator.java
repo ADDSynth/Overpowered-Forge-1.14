@@ -29,7 +29,7 @@ public final class GuiGenerator extends GuiEnergyBase<TileGenerator, ContainerGe
   private static final int energy_text_line_2 = 56;
 
   public GuiGenerator(ContainerGenerator container, PlayerInventory player_inventory, ITextComponent title){
-    super(182, 176, container, player_inventory, title, generator_gui_texture);
+    super(184, 176, container, player_inventory, title, generator_gui_texture);
   }
 
   @Override
