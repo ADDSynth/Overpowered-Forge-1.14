@@ -20,7 +20,9 @@ public final class ArrayUtil {
    *  Returns value at index 0 if index is out of bounds.
    * @param array
    * @param index
+   * @deprecated because this doesn't ask for a default value in case of an error, and throws exceptions, crashing the game.
    */
+  @Deprecated
   public static final <T> T getArrayValue(final T[] array, final int index){
     return getArrayValue(array, index, false);
   }
@@ -32,7 +34,9 @@ public final class ArrayUtil {
    * @param array
    * @param index
    * @param warn
+   * @deprecated because this doesn't ask for a default value in case of an error, and throws exceptions, crashing the game.
    */
+  @Deprecated
   public static final <T> T getArrayValue(final T[] array, final int index, final boolean warn){
     if(array == null){
       throw new NullPointerException("Input array for "+ArrayUtil.class.getName()+".getArrayValue() is null!");
@@ -246,7 +250,9 @@ public final class ArrayUtil {
   }
 
   /** This checks the cached_array against the data stored in the supplied list, and updates
-   *  it if there were any changes. Returns true if an update occured. */
+   *  it if there were any changes. Returns true if an update occured.
+   *  @deprecated check to see if this works first.
+   */
   public static final <T> boolean updateArray(T[] cached_array, final ArrayList<T> list){
     boolean changed = false;
     final int length = list.size();
