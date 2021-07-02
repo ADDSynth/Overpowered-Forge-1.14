@@ -137,7 +137,7 @@ public final class Scrollbar extends Widget {
       // scrollbar
       if(list_length > visible_elements){
         final double ratio = (double)visible_elements / list_length;
-        scrollbar_height = (int)Math.round(height * ratio);
+        scrollbar_height = Math.max((int)Math.round(height * ratio), 6);
         max_positions = list_length - visible_elements + 1;
         index_position = CommonMath.clamp(index_position, 0, max_positions - 1);
       }
@@ -170,7 +170,7 @@ public final class Scrollbar extends Widget {
 
     // Background
     WidgetUtil.verticalSplitRender(
-      new Dimensions(x, y, scrollbar_gui_width, height, scrollbar_gui_width, max_scrollbar_height / 2),
+      new Dimensions(x, y, scrollbar_gui_width, height, scrollbar_gui_width, max_scrollbar_height),
       new Dimensions(scrollbar_background_x, scrollbar_texture_y, scrollbar_texture_width, height*2, scrollbar_texture_width, max_scrollbar_height),
       texture_scale_width, texture_scale_height
     );

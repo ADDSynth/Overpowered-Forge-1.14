@@ -22,6 +22,7 @@ import net.minecraft.util.text.ITextComponent;
  */
 public final class GuiUtil {
 
+  // NOTE: Text color is also in addsynth.core.util.color.Color
   public static final int text_color = 4210752;
 
   public static final Minecraft      minecraft      = Minecraft.getInstance();
@@ -41,6 +42,8 @@ public final class GuiUtil {
   public final int guiCenter;
   /** Top edge of gui. For use in drawing graphics, NOT text! */
   public final int guiTop;
+  /** Bottom edge of gui. For use in drawing graphics, NOT text! */
+  public final int guiBottom;
 
 
   /** center of gui. Used for drawing text. */
@@ -55,6 +58,7 @@ public final class GuiUtil {
     guiLeft     = (minecraft.mainWindow.getScaledWidth()  - gui_width)  / 2;
     guiTop      = (minecraft.mainWindow.getScaledHeight() - gui_height) / 2;
     guiRight    = guiLeft + gui_width;
+    guiBottom   = guiTop  + gui_height;
     center_x    = gui_width / 2;
     guiCenter   = guiLeft + center_x;
     right_edge  = gui_width - 6;

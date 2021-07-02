@@ -15,23 +15,24 @@ public final class MathUtility {
    * @param number
    * @param count
    */
-  public static final int[] divide_evenly(@Nonnegative final int number, @Nonnegative final int count){
-    if(number < 0 || count < 0){
-      throw new IllegalArgumentException("The input parameters to MathUtility.divide_evenly() cannot be negative!");
-    }
+  public static final int[] divide_evenly(final int number, @Nonnegative final int count){
     if(count == 0){
       throw new ArithmeticException("Error in MathUtility.divide_evenly(). Cannot divide by 0!");
+    }
+    if(number == 0){
+      return new int[count];
     }
     if(count == 1){
       return new int[] {number};
     }
     final int[] list = new int[count];
     final int equal = number / count; // integer division drops the decimal remainder, which is what we want.
-    int remainder = number % count;
+    final int sign = number >= 0 ? 1 : -1;
+    int remainder = Math.abs(number % count);
     int i;
     for(i = 0; i < count; i++){
       if(remainder > 0){
-        list[i] = equal + 1;
+        list[i] = equal + sign;
         remainder -= 1;
       }
       else{

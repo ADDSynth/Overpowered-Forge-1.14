@@ -28,16 +28,24 @@ public final class RadialButtonGroup extends AbstractButton {
   private int i;
   private final int[] button_height;
 
-  private Consumer<Integer> onSelected;
+  private Consumer<Integer> onSelectionChanged;
 
   public RadialButtonGroup(int x, int y, String[] options){
-    this(x, y, options, 0);
+    this(x, y, options, 0, null);
   }
   
   public RadialButtonGroup(int x, int y, String[] options, int default_option){
+    this(x, y, options, default_option, null);
+  }
+  
+  public RadialButtonGroup(int x, int y, String[] options, Consumer<Integer> responder){
+    this(x, y, options, 0, responder);
+  }
+  public RadialButtonGroup(int x, int y, String[] options, int default_option, Consumer<Integer> responder){
     super(x, y, radial_gui_size, line_height*options.length, "");
     this.options = options;
     this.option_selected = default_option;
+    this.onSelectionChanged = responder;
     
     buttons = options.length;
     button_height = new int[buttons];
@@ -61,7 +69,12 @@ public final class RadialButtonGroup extends AbstractButton {
   public void onClick(double mouse_x, double mouse_y){
     for(i = 0; i < buttons; i++){
       if(mouse_y >= button_height[i] && mouse_y <= button_height[i] + radial_gui_size){
-        option_selected = i;
+        if(i != option_selected){
+          option_selected = i;
+          if(onSelectionChanged != null){
+            onSelectionChanged.accept(i);
+          }
+        }
         break;
       }
     }
