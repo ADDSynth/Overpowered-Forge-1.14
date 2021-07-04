@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.Set;
 import addsynth.core.util.constants.DevStage;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -31,6 +32,14 @@ public final class CommonUtil {
   
   public static final Set<ResourceLocation> getAllItemIDs(){
     return ForgeRegistries.ITEMS.getKeys();
+  }
+
+  public static final Collection<EntityType<?>> getAllEntities(){
+    return ForgeRegistries.ENTITIES.getValues();
+  }
+  
+  public static final Set<ResourceLocation> getAllEntityIDs(){
+    return ForgeRegistries.ENTITIES.getKeys();
   }
 
   public static final String get_mod_info(String mod_name, String author, String version, DevStage dev_stage, String date){

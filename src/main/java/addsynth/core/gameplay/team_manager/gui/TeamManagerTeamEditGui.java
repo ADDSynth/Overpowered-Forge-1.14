@@ -28,7 +28,7 @@ public final class TeamManagerTeamEditGui extends GuiBase {
   private final String       member_prefix_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.member_prefix");
   private final String       member_suffix_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.member_suffix");
 
-  private boolean new_team;
+  private final boolean new_team;
   private TextFieldWidget team_id_name;
   private TextFieldWidget team_display_name;
   private ClientCheckbox friendly_fire;
@@ -73,7 +73,6 @@ public final class TeamManagerTeamEditGui extends GuiBase {
 
 
   @Override
-  @SuppressWarnings("null")
   public final void init(){
     super.init();
     

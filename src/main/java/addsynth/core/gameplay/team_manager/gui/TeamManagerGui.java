@@ -76,14 +76,18 @@ public final class TeamManagerGui extends GuiBase {
     updateTeamPlayerList();
   };
   private final BiConsumer<String, Integer> onPlayerSelected = (String value, Integer id) -> {
-    player_selected = TextFormatting.getTextWithoutFormattingCodes(value);
-    player_selected_position = true;
-    team_players_list.setSelected(-1, false);
+    if(value != null){
+      player_selected = TextFormatting.getTextWithoutFormattingCodes(value);
+      player_selected_position = true;
+      team_players_list.unSelect();
+    }
   };
   private final BiConsumer<String, Integer> onTeamPlayerSelected = (String value, Integer id) -> {
-    player_selected = TextFormatting.getTextWithoutFormattingCodes(value);
-    player_selected_position = false;
-    all_players_list.setSelected(-1, false);
+    if(value != null){
+      player_selected = TextFormatting.getTextWithoutFormattingCodes(value);
+      player_selected_position = false;
+      all_players_list.unSelect();
+    }
   };
   private static final BiConsumer<String, Integer> onObjectiveSelected = (String value, Integer id) -> {
     objective_selected = TextFormatting.getTextWithoutFormattingCodes(value);
@@ -91,8 +95,9 @@ public final class TeamManagerGui extends GuiBase {
 
   private TeamManagerGuiButtons.MovePlayerToTeamButton player_to_team_button;
   private TeamManagerGuiButtons.RemovePlayerFromTeamButton player_from_team_button;
-  private TeamManagerGuiButtons.DeleteTeamButton delete_team_button;
   private TeamManagerGuiButtons.EditTeamButton edit_team_button;
+  private TeamManagerGuiButtons.DeleteTeamButton delete_team_button;
+  private TeamManagerGuiButtons.EditObjectiveButton edit_objective_button;
   private TeamManagerGuiButtons.DeleteObjectiveButton delete_objective_button;
   private TextFieldWidget new_score;
   private TeamManagerGuiButtons.SetScoreButton set_score_button;
@@ -230,9 +235,10 @@ public final class TeamManagerGui extends GuiBase {
     objectives_list = new Scrollbar(x_position_3 + list_width, start_y, objectives_list_height, objectives_entries);
     objectives_list.setResponder(onObjectiveSelected);
     addButton(objectives_list);
+    edit_objective_button   = new TeamManagerGuiButtons.EditObjectiveButton(  x_position_3 + 34, objective_buttons_y, 30, button_height);
     delete_objective_button = new TeamManagerGuiButtons.DeleteObjectiveButton(x_position_3 + 68, objective_buttons_y, 50, button_height);
     addButton(new TeamManagerGuiButtons.AddObjectiveButton(   x_position_3,      objective_buttons_y, 30, button_height));
-    // addButton(new TeamManagerGuiButtons.EditObjectiveButton(  x_position_3 + 34, objective_buttons_y, 30, button_height));
+    addButton(edit_objective_button);
     addButton(delete_objective_button);
     
     // Score Controls
@@ -285,6 +291,7 @@ public final class TeamManagerGui extends GuiBase {
     player_from_team_button.active = player_is_selected && !player_selected_position && team_is_selected;
     edit_team_button.active = team_is_selected;
     delete_team_button.active = team_is_selected;
+    edit_objective_button.active = objective_is_selected;
     delete_objective_button.active = objective_is_selected;
     set_score_button.active = player_score_can_be_changed;
     add_score_button.active = player_score_can_be_changed;

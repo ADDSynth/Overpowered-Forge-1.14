@@ -48,7 +48,7 @@ public final class ListEntry extends AbstractButton {
   @Override
   public void onPress(){
     if(StringUtil.StringExists(getMessage())){
-      responder.setSelected(entry_id);
+      responder.setSelected(entry_id, true, false);
     }
   }
 

@@ -68,9 +68,15 @@ public final class TeamManagerCommand {
     this.parameters = new Object[]{player, team};
   }
 
-  /** For adding or editing objectives, or for changing a player's score. */
-  public TeamManagerCommand(int command, String objective_id, String display_name, int criteria){
-    checkCommands(command, ADD_OBJECTIVE, EDIT_OBJECTIVE, SET_SCORE, ADD_SCORE, SUBTRACT_SCORE);
+  /** For changing a player's score. */
+  public TeamManagerCommand(int command, String objective_id, String display_name, int new_score_value){
+    checkCommands(command, SET_SCORE, ADD_SCORE, SUBTRACT_SCORE);
+    this.parameters = new Object[]{objective_id, display_name, new_score_value};
+  }
+
+  /** For adding or editing objectives. */
+  public TeamManagerCommand(int command, String objective_id, String display_name, String criteria){
+    checkCommands(command, ADD_OBJECTIVE, EDIT_OBJECTIVE);
     this.parameters = new Object[]{objective_id, display_name, criteria};
   }
 
@@ -113,7 +119,12 @@ public final class TeamManagerCommand {
         data.writeString((String)message.parameters[0]);
         data.writeString((String)message.parameters[1]);
         break;
-      case ADD_OBJECTIVE: case EDIT_OBJECTIVE: case SET_SCORE: case ADD_SCORE: case SUBTRACT_SCORE:
+      case ADD_OBJECTIVE: case EDIT_OBJECTIVE:
+        data.writeString((String)message.parameters[0]);
+        data.writeString((String)message.parameters[1]);
+        data.writeString((String)message.parameters[2]);
+        break;
+      case SET_SCORE: case ADD_SCORE: case SUBTRACT_SCORE:
         data.writeString((String)message.parameters[0]);
         data.writeString((String)message.parameters[1]);
         data.writeInt((int)message.parameters[2]);
@@ -161,7 +172,14 @@ public final class TeamManagerCommand {
           NetworkUtil.readString(data)
         };
         break;
-      case ADD_OBJECTIVE: case EDIT_OBJECTIVE: case SET_SCORE: case ADD_SCORE: case SUBTRACT_SCORE:
+      case ADD_OBJECTIVE: case EDIT_OBJECTIVE:
+        message.parameters = new Object[]{
+          NetworkUtil.readString(data),
+          NetworkUtil.readString(data),
+          NetworkUtil.readString(data)
+        };
+        break;
+      case SET_SCORE: case ADD_SCORE: case SUBTRACT_SCORE:
         message.parameters = new Object[]{
           NetworkUtil.readString(data),
           NetworkUtil.readString(data),
@@ -211,7 +229,7 @@ public final class TeamManagerCommand {
             remove_player_from_team(scoreboard, player, (String)message.parameters[0], (String)message.parameters[1]);
             break;
           case ADD_OBJECTIVE: case EDIT_OBJECTIVE:
-            edit_objective(scoreboard, player, (String)message.parameters[0], (String)message.parameters[1], (int)message.parameters[2]);
+            edit_objective(scoreboard, player, (String)message.parameters[0], (String)message.parameters[1], (String)message.parameters[2]);
             break;
           case DELETE_OBJECTIVE:
             delete_objective(scoreboard, player, (String)message.parameters[0]);
@@ -299,17 +317,28 @@ public final class TeamManagerCommand {
     }
   }
 
-  private static final void edit_objective(final Scoreboard scoreboard, final ServerPlayerEntity player, final String objective, final String display_name, final int criteria_id){
-    if(objective.isEmpty()){
+  private static final void edit_objective(final Scoreboard scoreboard, final ServerPlayerEntity player, final String objective_name, final String display_name, final String criteria_name){
+    if(objective_name.isEmpty()){
       MessageUtil.send_to_player(player, "gui.addsynthcore.team_manager.message.create_objective_failed");
       return;
     }
-    // final ScoreObjective existing_objective = scoreboard.getObjective(objective);
-    // if(existing_objective == null){
-      final ScoreCriteria criteria = TeamData.getCriteria(criteria_id);
-      scoreboard.addObjective(objective, criteria, new StringTextComponent(display_name), criteria.getRenderType());
-      TeamData.sync();
-    // }
+    final ScoreObjective existing_objective = scoreboard.getObjective(objective_name);
+    final ScoreCriteria criteria = TeamData.getCriteria(criteria_name);
+    if(existing_objective == null){
+      scoreboard.addObjective(objective_name, criteria, new StringTextComponent(display_name), criteria.getRenderType());
+    }
+    else{
+      // Objective exists
+      if(criteria_name.equals(existing_objective.getCriteria().getName())){
+        existing_objective.setDisplayName(new StringTextComponent(display_name));
+      }
+      else{
+        // Can't change criteria. Must delete existing Objective and create a new one.
+        scoreboard.removeObjective(existing_objective);
+        scoreboard.addObjective(objective_name, criteria, new StringTextComponent(display_name), criteria.getRenderType());
+      }
+    }
+    TeamData.sync();
   }
 
   private static final void delete_objective(final Scoreboard scoreboard, final ServerPlayerEntity player, final String objective){

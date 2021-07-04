@@ -8,6 +8,7 @@ import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.NetworkHandler;
 import addsynth.core.gameplay.commands.ADDSynthCommands;
 import addsynth.core.gameplay.compat.CompatabilityManager;
+import addsynth.core.gameplay.team_manager.CriteriaData;
 import addsynth.core.gameplay.team_manager.TeamData;
 import addsynth.core.util.CommonUtil;
 import addsynth.core.util.constants.DevStage;
@@ -106,6 +107,9 @@ public final class ADDSynthCore {
   }
 
   private static final void client_setup(final FMLClientSetupEvent event){
+    if(Features.team_manager.get()){
+      CriteriaData.calculate();
+    }
   }
 
   public static void onServerStarting(final FMLServerStartingEvent event){

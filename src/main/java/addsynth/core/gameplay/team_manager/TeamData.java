@@ -3,8 +3,12 @@ package addsynth.core.gameplay.team_manager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.NetworkHandler;
+import addsynth.core.gameplay.team_manager.gui.TeamManagerGui;
+import addsynth.core.gameplay.team_manager.gui.TeamManagerObjectiveGui;
 import addsynth.core.gameplay.team_manager.network_messages.TeamManagerSyncMessage;
 import addsynth.core.util.StringUtil;
 import addsynth.core.util.network.NetworkUtil;
@@ -101,25 +105,29 @@ public final class TeamData {
     }
   }
 
-  private final static class ObjectiveDataUnit {
+  public final static class ObjectiveDataUnit {
     public String name;
     public ITextComponent display_name;
+    public int criteria_type;
+    public String criteria_name;
     public ScoreCriteria criteria;
+    /** If this objective can be modified (NOT readOnly) */
     public boolean modify;
     
     public final void encode(final PacketBuffer data){
       data.writeString(name);
       data.writeString(display_name.getFormattedText());
-      data.writeInt(getCriteria(criteria));
-      data.writeBoolean(modify);
+      data.writeString(criteria.getName());
     }
     
     public static final ObjectiveDataUnit decode(final PacketBuffer data){
       final ObjectiveDataUnit objective = new ObjectiveDataUnit();
       objective.name = NetworkUtil.readString(data);
       objective.display_name = new StringTextComponent(NetworkUtil.readString(data));
-      objective.criteria = getCriteria(data.readInt());
-      objective.modify = data.readBoolean();
+      objective.criteria_name = NetworkUtil.readString(data);
+      objective.criteria = getCriteria(objective.criteria_name);
+      objective.criteria_type = getCriteriaType(objective.criteria_name);
+      objective.modify = !objective.criteria.isReadOnly();
       return objective;
     }
   }
@@ -188,6 +196,7 @@ public final class TeamData {
         objectives[i].name = objective_array[i].getName();
         objectives[i].display_name = objective_array[i].getDisplayName();
         objectives[i].criteria = objective_array[i].getCriteria();
+        objectives[i].criteria_name = objectives[i].criteria.getName();
         objectives[i].modify = !objectives[i].criteria.isReadOnly();
       }
       
@@ -243,42 +252,41 @@ public final class TeamData {
     changed = true;
   }
 
-  public static final int getCriteria(final ScoreCriteria input_criteria){
-    /*
-    final Collection<ScoreCriteria> criteria_list = ScoreCriteria.INSTANCES.values();
-    final int criteria_length = criteria_list.size();
-    final ScoreCriteria[] criteria = criteria_list.toArray(new ScoreCriteria[criteria_length]);
-    int j;
-    for(j = 0; j < criteria_length; j++){
-      if(criteria[j] == input_criteria){
-        break;
-      }
-    }
-    return j;
-    */
-    if(input_criteria == ScoreCriteria.DUMMY){             return 0; }
-    if(input_criteria == ScoreCriteria.TRIGGER){           return 1; }
-    if(input_criteria == ScoreCriteria.DEATH_COUNT){       return 2; }
-    if(input_criteria == ScoreCriteria.PLAYER_KILL_COUNT){ return 3; }
-    if(input_criteria == ScoreCriteria.TOTAL_KILL_COUNT){  return 4; }
-    if(input_criteria == ScoreCriteria.HEALTH){            return 5; }
-    if(input_criteria == ScoreCriteria.XP){                return 6; }
-    if(input_criteria == ScoreCriteria.LEVEL){             return 7; }
-    if(input_criteria == ScoreCriteria.FOOD){              return 8; }
-    if(input_criteria == ScoreCriteria.AIR){               return 9; }
-    if(input_criteria == ScoreCriteria.ARMOR){             return 10; }
-    ADDSynthCore.log.error(new IllegalArgumentException("Invalid ScoreCriteria"));
+  public static final int getStandardCriteriaIndex(final String criteria){
+    if(criteria.equals(ScoreCriteria.DUMMY.getName())){             return  0; }
+    if(criteria.equals(ScoreCriteria.TRIGGER.getName())){           return  1; }
+    if(criteria.equals(ScoreCriteria.DEATH_COUNT.getName())){       return  2; }
+    if(criteria.equals(ScoreCriteria.PLAYER_KILL_COUNT.getName())){ return  3; }
+    if(criteria.equals(ScoreCriteria.TOTAL_KILL_COUNT.getName())){  return  4; }
+    if(criteria.equals(ScoreCriteria.HEALTH.getName())){            return  5; }
+    if(criteria.equals(ScoreCriteria.XP.getName())){                return  6; }
+    if(criteria.equals(ScoreCriteria.LEVEL.getName())){             return  7; }
+    if(criteria.equals(ScoreCriteria.FOOD.getName())){              return  8; }
+    if(criteria.equals(ScoreCriteria.AIR.getName())){               return  9; }
+    if(criteria.equals(ScoreCriteria.ARMOR.getName())){             return 10; }
     return -1;
   }
 
-  public static final ScoreCriteria getCriteria(final int value){
-    /*
-    final Collection<ScoreCriteria> criteria = ScoreCriteria.INSTANCES.values();
-    final int criteria_length = criteria.size();
-    return criteria.toArray(new ScoreCriteria[criteria_length])[value];
-    */
+  public static final int getStandardCriteriaIndex(final ScoreCriteria input_criteria){
+    if(input_criteria == ScoreCriteria.DUMMY){             return  0; }
+    if(input_criteria == ScoreCriteria.TRIGGER){           return  1; }
+    if(input_criteria == ScoreCriteria.DEATH_COUNT){       return  2; }
+    if(input_criteria == ScoreCriteria.PLAYER_KILL_COUNT){ return  3; }
+    if(input_criteria == ScoreCriteria.TOTAL_KILL_COUNT){  return  4; }
+    if(input_criteria == ScoreCriteria.HEALTH){            return  5; }
+    if(input_criteria == ScoreCriteria.XP){                return  6; }
+    if(input_criteria == ScoreCriteria.LEVEL){             return  7; }
+    if(input_criteria == ScoreCriteria.FOOD){              return  8; }
+    if(input_criteria == ScoreCriteria.AIR){               return  9; }
+    if(input_criteria == ScoreCriteria.ARMOR){             return 10; }
+    ADDSynthCore.log.error(new IllegalArgumentException("Invalid ScoreCriteria."));
+    return -1;
+  }
+
+  /** Currently only used in the Objective Gui to get the Standard Criteria name based on the selected List Entry. */
+  public static final String getStandardCriteria(final int index){
     ScoreCriteria criteria = null;
-    switch(value){
+    switch(index){
     case 0: criteria = ScoreCriteria.DUMMY; break;
     case 1: criteria = ScoreCriteria.TRIGGER; break;
     case 2: criteria = ScoreCriteria.DEATH_COUNT; break;
@@ -290,9 +298,38 @@ public final class TeamData {
     case 8: criteria = ScoreCriteria.FOOD; break;
     case 9: criteria = ScoreCriteria.AIR; break;
     case 10: criteria = ScoreCriteria.ARMOR; break;
-    default: ADDSynthCore.log.error(new IllegalArgumentException("Invalid criteria ID.")); break;
+    default: ADDSynthCore.log.error(new IllegalArgumentException("Invalid index.")); break;
     }
-    return criteria;
+    return criteria != null ? criteria.getName() : "[Null Error]";
+  }
+
+  /** Returns the {@link ScoreCriteria} given the supplied ID. */
+  public static final ScoreCriteria getCriteria(final String id){
+    final Optional<ScoreCriteria> criteria = ScoreCriteria.func_216390_a(id);
+    if(criteria.isPresent()){
+      return criteria.get();
+    }
+    ADDSynthCore.log.error(new NoSuchElementException("Unable to determine Criteria. Invalid criteria ID '"+id+"'."));
+    return null;
+  }
+
+  /** Returns the criteria type given the name. Used for the Radial Button Group
+   *  in the Objective Edit Screen.
+   * @param criteria
+   */
+  public static final int getCriteriaType(final String criteria){
+    if(criteria.startsWith("teamkill.")){            return CriteriaType.TEAM_KILL; }
+    if(criteria.startsWith("killedByTeam.")){        return CriteriaType.KILLED_BY_TEAM; }
+    if(criteria.startsWith("minecraft.broken:")){    return CriteriaType.ITEM_BROKEN; }
+    if(criteria.startsWith("minecraft.crafted:")){   return CriteriaType.ITEM_CRAFTED; }
+    if(criteria.startsWith("minecraft.custom:")){    return CriteriaType.STATISTICS; }
+    if(criteria.startsWith("minecraft.dropped:")){   return CriteriaType.ITEM_DROPPED; }
+    if(criteria.startsWith("minecraft.killed:")){    return CriteriaType.KILLED; }
+    if(criteria.startsWith("minecraft.killed_by:")){ return CriteriaType.KILLED_BY; }
+    if(criteria.startsWith("minecraft.mined:")){     return CriteriaType.BLOCK_MINED; }
+    if(criteria.startsWith("minecraft.picked_up:")){ return CriteriaType.ITEM_PICKED_UP; }
+    if(criteria.startsWith("minecraft.used:")){      return CriteriaType.ITEM_USED; }
+    return CriteriaType.STANDARD;
   }
 
   public static final String[] getTeams(){
@@ -320,6 +357,7 @@ public final class TeamData {
     return new String[0];
   }
 
+  /** Used to build the Objectives List on the Main Screen. */
   public static final String[] getObjectives(){
     if(objectives != null){
       int i;
@@ -362,10 +400,24 @@ public final class TeamData {
     return team;
   }
 
+  /** Used by {@link TeamManagerObjectiveGui} to get existing objective data
+   *  if the player clicked the Edit Objective button. */
+  public static final ObjectiveDataUnit getObjectiveData(final String objective_name){
+    ObjectiveDataUnit objective = null;
+    for(final ObjectiveDataUnit o : objectives){
+      if(o.name.equals(objective_name)){
+        objective = o;
+        break;
+      }
+    }
+    return objective;
+  }
+
   public static final String getDisplaySlotObjective(final int display_slot){
     return display_slot_objective[display_slot];
   }
 
+  /** Used by {@link TeamManagerGui#tick} to determine whether the selected objective can be modified. */
   public static final boolean canObjectiveBeModified(final String objective){
     boolean can_modify = false;
     for(final ObjectiveDataUnit o : objectives){

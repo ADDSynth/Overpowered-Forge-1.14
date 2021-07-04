@@ -106,6 +106,8 @@ public final class Scrollbar extends Widget {
   /** The selected string value in the full list. */
   private int selected = -1;
 
+  /** This is passed the new Selection Index every time it is changed,
+   *  even if it is changed to an invalid value. */
   private BiConsumer<String, Integer> onSelected;
 
   public Scrollbar(int x, int y, int height, ListEntry[] list_items){
@@ -154,6 +156,9 @@ public final class Scrollbar extends Widget {
       // setup
       scrollbar_half_height = scrollbar_height / 2;
       number_of_center_sections = (int)Math.round((double)scrollbar_height / center_ratio);
+      if(number_of_center_sections == 1){
+        number_of_center_sections = 0;
+      }
       scrollbar_gui_height_calc = WidgetUtil.get_half_lengths(scrollbar_height - (number_of_center_sections * center_gui_height));
   
       // set list entries
@@ -186,14 +191,15 @@ public final class Scrollbar extends Widget {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
   protected void onDrag(double gui_x, double gui_y, double screen_x, double screen_y){
-    center_y = (int)Math.round(gui_y);
-    position_y = CommonMath.clamp(center_y - scrollbar_half_height, this.y, max_position_y);
-    updateIndex();
+    move_scrollbar((int)Math.round(gui_y));
   }
 
-  private void updateIndex(){
+  @SuppressWarnings("deprecation")
+  private final void move_scrollbar(final int new_scrollbar_y_position){
+    center_y = new_scrollbar_y_position;
+    position_y = CommonMath.clamp(center_y - scrollbar_half_height, this.y, max_position_y);
+    
     temp_index = MathUtility.getPositionIndex(position_y, index_positions);
     if(temp_index != index_position){
       index_position = temp_index;
@@ -226,11 +232,18 @@ public final class Scrollbar extends Widget {
     this.onSelected = responder;
   }
 
+  public void unSelect(){
+    setSelected(-1, true, false);
+  }
+
   public void setSelected(int list_entry){
-    setSelected(list_entry, true);
+    setSelected(list_entry, true, true);
   }
   
-  public void setSelected(int list_entry, boolean respond){
+  public void setSelected(int list_entry, boolean respond, boolean adjust_scrollbar){
+    // MAYBE: responding to selection changes now happens all the time by default, consider removing
+    //        the parameter. But I may want to control this in the future, so it's left as-is for now.
+    //        Remove this in 2027 if it's no longer necessary.
     selected = list_entry;
     for(final ListEntry e : list_items){
       e.setSelected(selected);
@@ -241,14 +254,44 @@ public final class Scrollbar extends Widget {
         onSelected.accept(getSelected(), selected);
       }
     }
+    
+    if(adjust_scrollbar){
+      scroll_to_value();
+    }
+  }
+
+  /** Attempt to set this scrollbar's selected index to one of the values in the list. */
+  public void setSelected(final String value){
+    int i;
+    for(i = 0; i < values.length; i++){
+      if(values[i].equals(value)){
+        setSelected(i);
+        return;
+      }
+    }
+    unSelect();
+  }
+
+  private final void scroll_to_value(){ // seperate as a function in case we need to call it externally?
+    if(hasValidSelection()){
+      final double index = (double)selected / values.length;
+      move_scrollbar(y + (int)Math.round(index * height));
+    }
+    else{
+      move_scrollbar(y);
+    }
   }
 
   public String getSelected(){
-    return ArrayUtil.isInsideBounds(selected, values.length) ? values[selected] : null;
+    return hasValidSelection() ? values[selected] : null;
   }
 
   public int getSelectedIndex(){
     return selected;
+  }
+
+  public boolean hasValidSelection(){
+    return ArrayUtil.isInsideBounds(selected, values.length);
   }
 
   @Override
