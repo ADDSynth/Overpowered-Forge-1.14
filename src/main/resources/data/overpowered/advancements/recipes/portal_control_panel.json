@@ -41,6 +41,16 @@
         ]
       }
     },
+    "has_portal_frame": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:portal_frame"
+          }
+        ]
+      }
+    },
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
@@ -64,6 +74,7 @@
       "data_cable",
       "aluminum_plate",
       "ender_pearl",
+      "has_portal_frame",
       "has_recipe",
       "has_portal_control_panel"
     ]

@@ -1,6 +1,26 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
+    "iron_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/iron"
+          }
+        ]
+      }
+    },
+    "obsidian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:obsidian"
+          }
+        ]
+      }
+    },
     "energy_crystal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -30,6 +50,8 @@
   },
   "requirements": [
     [
+      "iron_ingot",
+      "obsidian",
       "energy_crystal",
       "has_recipe",
       "has_portal_frame"

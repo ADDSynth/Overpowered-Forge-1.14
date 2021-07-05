@@ -1,12 +1,32 @@
 {
   "parent": "overpowered:recipes/root",
   "criteria": {
+    "iron_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/iron"
+          }
+        ]
+      }
+    },
     "obsidian": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "tag": "forge:obsidian"
+          }
+        ]
+      }
+    },
+    "glass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:glass"
           }
         ]
       }
@@ -30,7 +50,9 @@
   },
   "requirements": [
     [
+      "iron_ingot",
       "obsidian",
+      "glass",
       "has_recipe",
       "has_frame_block"
     ]
