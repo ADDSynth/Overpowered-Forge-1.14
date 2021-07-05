@@ -2,7 +2,8 @@ package addsynth.core.gameplay.team_manager.gui;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.NetworkHandler;
-import addsynth.core.gameplay.team_manager.TeamData;
+import addsynth.core.gameplay.team_manager.data.TeamData;
+import addsynth.core.gameplay.team_manager.data.TeamDataUnit;
 import addsynth.core.gameplay.team_manager.network_messages.TeamManagerCommand;
 import addsynth.core.gui.GuiBase;
 import addsynth.core.gui.util.GuiUtil;
@@ -121,7 +122,7 @@ public final class TeamManagerTeamEditGui extends GuiBase {
 
     if(new_team == false){
       // editing pre-existing team, load all data
-      final TeamData.TeamDataUnit team = TeamData.getTeamData(TeamManagerGui.getTeamSelected());
+      final TeamDataUnit team = TeamData.getTeamData(TeamManagerGui.getTeamSelected());
       team_id_name.setText(team.name);
       team_display_name.setText(team.display_name.getFormattedText());
       color_buttons.setColor(team.color);

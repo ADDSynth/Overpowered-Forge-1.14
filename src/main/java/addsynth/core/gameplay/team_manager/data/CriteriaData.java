@@ -1,4 +1,4 @@
-package addsynth.core.gameplay.team_manager;
+package addsynth.core.gameplay.team_manager.data;
 
 import java.util.ArrayList;
 import java.util.Collection;

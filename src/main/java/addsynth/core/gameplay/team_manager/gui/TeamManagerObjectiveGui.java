@@ -2,9 +2,10 @@ package addsynth.core.gameplay.team_manager.gui;
 
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.NetworkHandler;
-import addsynth.core.gameplay.team_manager.CriteriaData;
-import addsynth.core.gameplay.team_manager.CriteriaType;
-import addsynth.core.gameplay.team_manager.TeamData;
+import addsynth.core.gameplay.team_manager.data.CriteriaData;
+import addsynth.core.gameplay.team_manager.data.CriteriaType;
+import addsynth.core.gameplay.team_manager.data.ObjectiveDataUnit;
+import addsynth.core.gameplay.team_manager.data.TeamData;
 import addsynth.core.gameplay.team_manager.network_messages.TeamManagerCommand;
 import addsynth.core.gui.GuiBase;
 import addsynth.core.gui.util.GuiSection;
@@ -118,7 +119,7 @@ public final class TeamManagerObjectiveGui extends GuiBase {
     }
     else{
       // editting existing Objective, load all data
-      final TeamData.ObjectiveDataUnit objective_data = TeamData.getObjectiveData(TeamManagerGui.getObjectiveSelected());
+      final ObjectiveDataUnit objective_data = TeamData.getObjectiveData(TeamManagerGui.getObjectiveSelected());
       objective_id_name.setText(objective_data.name);
       objective_display_name.setText(objective_data.display_name.getFormattedText());
       criteria_types.option_selected = objective_data.criteria_type;

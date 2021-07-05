@@ -4,7 +4,7 @@ import java.util.function.BiConsumer;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.NetworkHandler;
-import addsynth.core.gameplay.team_manager.TeamData;
+import addsynth.core.gameplay.team_manager.data.TeamData;
 import addsynth.core.gameplay.team_manager.network_messages.RequestPlayerScoreMessage;
 import addsynth.core.gameplay.team_manager.network_messages.TeamManagerCommand;
 import addsynth.core.gui.GuiBase;

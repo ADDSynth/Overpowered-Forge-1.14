@@ -1,7 +1,7 @@
 package addsynth.core.gameplay.team_manager.network_messages;
 
 import java.util.function.Supplier;
-import addsynth.core.gameplay.team_manager.TeamData;
+import addsynth.core.gameplay.team_manager.data.TeamData;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 
