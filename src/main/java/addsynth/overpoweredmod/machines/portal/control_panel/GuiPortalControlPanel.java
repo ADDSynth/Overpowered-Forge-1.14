@@ -34,29 +34,29 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
     new ItemStack(Gems.QUARTZ.block_item,1)
   };
 
-  private static final int checkbox_x = 70;
+  private static final int checkbox_x = 80;
   private static final int checkbox_y = 19;
 
-  private static final int energy_percentage_y = 45;
-  private static final int energy_change_y = 56;
+  private static final int energy_percentage_y = 46;
+  private static final int energy_change_y = 58;
 
-  private final EnergyProgressBar energy_bar = new EnergyProgressBar(177, 56, 17, 63, 211, 24);
+  private final EnergyProgressBar energy_bar = new EnergyProgressBar(193, 57, 17, 64, 227, 24);
 
   private static final ResourceLocation gui_icons = new ResourceLocation(OverpoweredTechnology.MOD_ID,"textures/gui/gui_textures.png");
   private static final int image_x = 14;
-  private static final int image_y = 67;
-  private static final int space_x = 40;
+  private static final int image_y = 69;
+  private static final int space_x = 44;
   private static final int space_y = 18;
 
-  private static final int button_x = 22;
-  private static final int button_y = 104;
+  private static final int button_x = 27;
+  private static final int button_y = 106;
   private static final int button_width = 136;
   private static final int button_height = 16;
   
   private static final int status_message_y = button_y + button_height + 6;
 
   public GuiPortalControlPanel(final ContainerPortalControlPanel container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(202, 144, container, player_inventory, title, portal_control_panel_gui_texture);
+    super(218, 144, container, player_inventory, title, portal_control_panel_gui_texture);
   }
 
   private static final class GeneratePortalButton extends AdjustableButton {

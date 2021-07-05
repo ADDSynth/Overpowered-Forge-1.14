@@ -26,7 +26,7 @@ public final class MachineValues {
 
   // Manual Activation Machines
   public static final MachineDataConfig portal =
-    new MachineDataConfig(MachineType.MANUAL_ACTIVATION,  6000, 100,    0, 1200); // 5 minutes to generate
+    new MachineDataConfig(MachineType.MANUAL_ACTIVATION, 50_000, 100, 0, 1200); // 42 minutes to generate
 
   // Always On Machines
   public static final MachineDataConfig advanced_ore_refinery =

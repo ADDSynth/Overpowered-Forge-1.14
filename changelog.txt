@@ -70,6 +70,7 @@ CHANGED:
     Now that we have a standard generator to power your machines, you won't need as
       many Energy Crystals. Changed the default tries to generate Gem Ore from 4 to 3.
     Reduced the default number of Ores generated.
+    Changed the energy the Portal Control Panel requires from 60,000 to 5,000,000.
   No longer registers a Steel smelting recipe if Immersive Engineering or Mekanism is installed.
   Changed the Steel smelting recipe to a Blast Furnace recipe.
   The Dimensional Anchor now has a shaped crafting recipe, like how it was in Minecraft 1.12
