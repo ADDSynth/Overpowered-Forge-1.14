@@ -18,7 +18,7 @@ public final class WorldgenConfig {
   
   // should be the same as Iron Ore
   private static final int DEFAULT_COMMON_METAL_MAX_HEIGHT = 128;
-  private static final int DEFAULT_COMMON_METAL_TRIES = 8;
+  private static final int DEFAULT_COMMON_METAL_TRIES = 10;
   private static final int DEFAULT_COMMON_METAL_ORE_SIZE = 9;
   // 8x  (0 - 120) every 15 levels
 
