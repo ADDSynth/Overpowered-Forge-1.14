@@ -32,7 +32,7 @@ public final class TeamManagerBlock extends Block {
         GuiProvider.openTeamManagerGui(this);
       }
       else{
-        player.sendMessage(new TranslationTextComponent("gui.addsynthcore.team_manager.you_do_not_have_permission", PermissionLevel.COMMANDS));
+        player.sendMessage(new TranslationTextComponent("gui.addsynthcore.team_manager.message.you_do_not_have_permission", PermissionLevel.COMMANDS));
       }
     }
     return true;

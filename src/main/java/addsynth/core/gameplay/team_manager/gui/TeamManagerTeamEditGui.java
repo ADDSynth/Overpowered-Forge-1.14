@@ -30,6 +30,7 @@ public final class TeamManagerTeamEditGui extends GuiBase {
   private final String       member_suffix_text = StringUtil.translate("gui.addsynthcore.team_manager.team_edit.member_suffix");
 
   private final boolean new_team;
+  private String message;
   private TextFieldWidget team_id_name;
   private TextFieldWidget team_display_name;
   private ClientCheckbox friendly_fire;
@@ -39,15 +40,17 @@ public final class TeamManagerTeamEditGui extends GuiBase {
   private RadialButtonGroup death_message_controls;
   private TextFieldWidget member_prefix;
   private TextFieldWidget member_suffix;
+  private TeamManagerGuiButtons.FinishButton finish_button;
 
   public TeamManagerTeamEditGui(final boolean new_team){
-    super(274, 233, new TranslationTextComponent("gui.addsynthcore.team_manager.team_edit.gui_title"), texture);
+    super(274, 244, new TranslationTextComponent("gui.addsynthcore.team_manager.team_edit.gui_title"), texture);
     this.new_team = new_team;
   }
 
   private static final int center_space = 3;
   private static final int widget_spacing = 2;
-  private static final int line_space = 8;
+  /** Used to space out the sections of elements on the gui. */
+  private static final int spacing = 8;
   private static final int text_box_height = 14;
   private static final int button_width = 80;
   private static final int button_height = 20;
@@ -68,9 +71,10 @@ public final class TeamManagerTeamEditGui extends GuiBase {
   private static final int left_text_x = 6;
   private int right_text_x;
   private static final int line_1 = 18;
-  private static final int line_2 = line_1 + 8 + widget_spacing + text_box_height + line_space;
-  private static final int line_3 = line_2 + 8 + widget_spacing + (ColorButtons.gui_height) + line_space;
-  private static final int line_4 = line_3 + 8 + widget_spacing + (RadialButtonGroup.radial_gui_size*4)+(RadialButtonGroup.line_spacing*3) + line_space;
+  private static final int line_2 = line_1 + 8 + widget_spacing + text_box_height + spacing;
+  private static final int line_3 = line_2 + 8 + widget_spacing + (ColorButtons.gui_height) + spacing;
+  private static final int line_4 = line_3 + 8 + widget_spacing + (RadialButtonGroup.radial_gui_size*4)+(RadialButtonGroup.line_spacing*3) + spacing;
+  private static final int line_5 = line_4 + 8 + widget_spacing + text_box_height + 6;
 
 
   @Override
@@ -88,7 +92,7 @@ public final class TeamManagerTeamEditGui extends GuiBase {
     final int widget_line_2 = guiUtil.guiTop + line_2 + 8 + widget_spacing;
     final int widget_line_3 = guiUtil.guiTop + line_3 + 8 + widget_spacing;
     final int widget_line_4 = guiUtil.guiTop + line_4 + 8 + widget_spacing;
-    final int button_y = widget_line_4 + text_box_height + line_space;
+    final int button_y      = guiUtil.guiTop + line_5 + 8 + 4;
     final int left_text_box_width  =  left_edge -  left_x;
     final int right_text_box_width = right_edge - right_x; // even though technically these should be the same
     final int button_x1 = (( left_x +  left_edge) / 2) - (button_width/2);
@@ -117,13 +121,15 @@ public final class TeamManagerTeamEditGui extends GuiBase {
     this.children.add(team_display_name);
     this.children.add(member_prefix);
     this.children.add(member_suffix);
-    addButton(new TeamManagerGuiButtons.FinishButton(button_x1, button_y, button_width, button_height, this::create_team));
+    finish_button = new TeamManagerGuiButtons.FinishButton(button_x1, button_y, button_width, button_height, this::create_team);
+    addButton(finish_button);
     addButton(new TeamManagerGuiButtons.CancelButton(button_x2, button_y, button_width, button_height));
 
     if(new_team == false){
       // editing pre-existing team, load all data
       final TeamDataUnit team = TeamData.getTeamData(TeamManagerGui.getTeamSelected());
       team_id_name.setText(team.name);
+      // team_id_name.isEnabled = false;
       team_display_name.setText(team.display_name.getFormattedText());
       color_buttons.setColor(team.color);
       friendly_fire.checked = team.pvp;
@@ -164,6 +170,27 @@ public final class TeamManagerTeamEditGui extends GuiBase {
     team_display_name.tick();
     member_prefix.tick();
     member_suffix.tick();
+    validate();
+  }
+
+  private final void validate(){
+    if(team_id_name.getText().isEmpty()){
+      message = TeamManagerMessage.must_specify_name();
+      finish_button.active = false;
+      return;
+    }
+    if(team_id_name.getText().contains(" ")){
+      message = TeamManagerMessage.cannot_contain_spaces();
+      finish_button.active = false;
+      return;
+    }
+    if(team_id_name.getText().length() > 16){
+      message = TeamManagerMessage.must_be_shorter();
+      finish_button.active = false;
+      return;
+    }
+    message = "";
+    finish_button.active = true;
   }
 
   @Override
@@ -190,6 +217,7 @@ public final class TeamManagerTeamEditGui extends GuiBase {
     GuiUtil.draw_text_left(show_death_messages_text+":", right_text_x, line_3);
     GuiUtil.draw_text_left(member_prefix_text+":",        left_text_x, line_4);
     GuiUtil.draw_text_left(member_suffix_text+":",       right_text_x, line_4);
+    GuiUtil.draw_text_left(message,                       left_text_x, line_5);
   }
 
 }

@@ -48,6 +48,7 @@ public final class TeamManagerObjectiveGui extends GuiBase {
     StringUtil.translate("gui.addsynthcore.team_manager.criteria_type.killed"),
     StringUtil.translate("gui.addsynthcore.team_manager.criteria_type.killed_by")
   };
+  private String message;
 
   private TextFieldWidget objective_id_name;
   private TextFieldWidget objective_display_name;
@@ -66,14 +67,16 @@ public final class TeamManagerObjectiveGui extends GuiBase {
   // Text
   private static final int line_1 = 18;
   private static final int line_2 = line_1 + 8 + widget_spacing + text_box_height + line_space;
+  private final int line_5 = guiUtil.guiHeight - 8 - button_height - 12;
 
   // Widgets
   private static final int left_section_width = 120;
   private static final int middle_section_width = 100;
+  private final int bottom = guiUtil.guiTop + line_5 - 4;
   private final int widget_line_1 = guiUtil.guiTop + line_1 + 8 + widget_spacing;
   private final int widget_line_2 = guiUtil.guiTop + line_2 + 8 + widget_spacing;
-  private final GuiSection   left_section = GuiSection.box(     guiUtil.guiLeft + 6, widget_line_1, guiUtil.guiLeft    + 6 + left_section_width,   guiUtil.guiBottom - 6);
-  private final GuiSection middle_section = GuiSection.box(  left_section.right + 6, widget_line_1, left_section.right + 6 + middle_section_width, guiUtil.guiBottom - 6);
+  private final GuiSection   left_section = GuiSection.box(     guiUtil.guiLeft + 6, widget_line_1, guiUtil.guiLeft    + 6 + left_section_width,   bottom);
+  private final GuiSection middle_section = GuiSection.box(  left_section.right + 6, widget_line_1, left_section.right + 6 + middle_section_width, bottom);
   private final GuiSection  right_section = GuiSection.box(middle_section.right + 6, widget_line_1, guiUtil.guiRight   - 6 - scrollbar_width,      guiUtil.guiBottom - 6);
 
   // Criteria List
@@ -108,7 +111,7 @@ public final class TeamManagerObjectiveGui extends GuiBase {
     // Done and Cancel Buttons
     final int button_area = middle_section.right - left_section.left;
     final int[] button_x = WidgetUtil.evenAlignment(button_area, button_width, 2);
-    final int button_y = guiUtil.guiBottom - 6 - button_height;
+    final int button_y = guiUtil.guiBottom - 8 - button_height;
     finish_button = new TeamManagerGuiButtons.FinishButton(guiUtil.guiLeft + button_x[0], button_y, button_width, button_height, this::create_objective);
     addButton(finish_button);
     addButton(new TeamManagerGuiButtons.CancelButton(guiUtil.guiLeft + button_x[1], button_y, button_width, button_height));
@@ -121,6 +124,7 @@ public final class TeamManagerObjectiveGui extends GuiBase {
       // editting existing Objective, load all data
       final ObjectiveDataUnit objective_data = TeamData.getObjectiveData(TeamManagerGui.getObjectiveSelected());
       objective_id_name.setText(objective_data.name);
+      // objective_id_name.isEnabled = false;
       objective_display_name.setText(objective_data.display_name.getFormattedText());
       criteria_types.option_selected = objective_data.criteria_type;
       setCriteria(objective_data.criteria_type, objective_data.criteria_name);
@@ -255,7 +259,32 @@ public final class TeamManagerObjectiveGui extends GuiBase {
     super.tick();
     objective_id_name.tick();
     objective_display_name.tick();
-    finish_button.active = criteria_list.hasValidSelection();
+    validate();
+  }
+
+  private final void validate(){
+    if(objective_id_name.getText().isEmpty()){
+      message = TeamManagerMessage.must_specify_name();
+      finish_button.active = false;
+      return;
+    }
+    if(objective_id_name.getText().contains(" ")){
+      message = TeamManagerMessage.cannot_contain_spaces();
+      finish_button.active = false;
+      return;
+    }
+    if(objective_id_name.getText().length() > 16){
+      message = TeamManagerMessage.must_be_shorter();
+      finish_button.active = false;
+      return;
+    }
+    if(criteria_list.hasValidSelection() == false){
+      message = TeamManagerMessage.must_specify_criteria();
+      finish_button.active = false;
+      return;
+    }
+    message = "";
+    finish_button.active = true;
   }
 
   @Override
@@ -277,6 +306,7 @@ public final class TeamManagerObjectiveGui extends GuiBase {
     GuiUtil.draw_text_left(objective_display_name_text+":", 6, line_2);
     GuiUtil.draw_text_left(         criteria_type_text+":", middle_section.left - guiUtil.guiLeft, line_1);
     GuiUtil.draw_text_left(       criteria_header_text+":",  right_section.left - guiUtil.guiLeft, line_1);
+    GuiUtil.draw_text_left(message,                         6, line_5);
   }
 
 }
