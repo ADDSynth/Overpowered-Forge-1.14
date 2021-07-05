@@ -248,9 +248,9 @@ public final class TeamManagerGui extends GuiBase {
     final int[] score_buttons_width = {70, 50, 75, 60};
     final int score_button_x2 =    x_position_2 + score_buttons_width[0] + button_x_spacing;
     final int score_button_x3 = score_button_x2 + score_buttons_width[1] + button_x_spacing;
-    subtract_score_button = new TeamManagerGuiButtons.SubtractScoreButton(x_position_2, score_buttons_y, score_buttons_width[0], button_height, this);
-         add_score_button = new TeamManagerGuiButtons.AddScoreButton(  score_button_x2, score_buttons_y, score_buttons_width[1], button_height, this);
-         set_score_button = new TeamManagerGuiButtons.SetScoreButton(  score_button_x3, score_buttons_y, score_buttons_width[2], button_height, this);
+    subtract_score_button = new TeamManagerGuiButtons.SubtractScoreButton(x_position_2, score_buttons_y, score_buttons_width[0], button_height, this::subtract_score);
+         add_score_button = new TeamManagerGuiButtons.AddScoreButton(  score_button_x2, score_buttons_y, score_buttons_width[1], button_height, this::add_score);
+         set_score_button = new TeamManagerGuiButtons.SetScoreButton(  score_button_x3, score_buttons_y, score_buttons_width[2], button_height, this::set_score);
     addButton(subtract_score_button);
     addButton(add_score_button);
     addButton(set_score_button);
@@ -315,9 +315,23 @@ public final class TeamManagerGui extends GuiBase {
     team_players_list.updateScrollbar(TeamData.getTeamPlayers(team_selected));
   }
 
-  public final void change_score(final int command){
+  private final void set_score(){
     try{
-      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand(command, player_selected, objective_selected, Integer.parseInt(new_score.getText())));
+      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.SetScore(objective_selected, player_selected, Integer.parseInt(new_score.getText())));
+    }
+    catch(NumberFormatException e){}
+  }
+
+  private final void add_score(){
+    try{
+      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.AddScore(objective_selected, player_selected, Integer.parseInt(new_score.getText())));
+    }
+    catch(NumberFormatException e){}
+  }
+
+  private final void subtract_score(){
+    try{
+      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.SubtractScore(objective_selected, player_selected, Integer.parseInt(new_score.getText())));
     }
     catch(NumberFormatException e){}
   }

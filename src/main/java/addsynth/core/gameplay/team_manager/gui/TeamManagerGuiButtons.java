@@ -45,7 +45,7 @@ public final class TeamManagerGuiButtons {
     }
     @Override
     public void onPress(){
-      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand(TeamManagerCommand.DELETE_TEAM, TeamManagerGui.getTeamSelected()));
+      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.DeleteTeam(TeamManagerGui.getTeamSelected()));
       TeamManagerGui.unSelectTeam();
     }
   }
@@ -69,7 +69,7 @@ public final class TeamManagerGuiButtons {
       // ensure team is selected
       // ensure player is not part of a team
       // if(){
-        NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand(TeamManagerCommand.ADD_PLAYER, TeamManagerGui.getPlayerSelected(), TeamManagerGui.getTeamSelected()));
+        NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.AddPlayerToTeam(TeamManagerGui.getPlayerSelected(), TeamManagerGui.getTeamSelected()));
       // }
     }
   }
@@ -91,7 +91,7 @@ public final class TeamManagerGuiButtons {
     @Override
     public final void onPress(){
       // if(StringUtil.StringExists(TeamManagerGui.team_selected) && StringUtil.StringExists(TeamManagerGui.player_selected)){
-        NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand(TeamManagerCommand.REMOVE_PLAYER, TeamManagerGui.getPlayerSelected(), TeamManagerGui.getTeamSelected()));
+        NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.RemovePlayerFromTeam(TeamManagerGui.getPlayerSelected(), TeamManagerGui.getTeamSelected()));
       // }
     }
   }
@@ -122,36 +122,23 @@ public final class TeamManagerGuiButtons {
     }
     @Override
     public void onPress(){
-      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand(TeamManagerCommand.DELETE_OBJECTIVE, TeamManagerGui.getObjectiveSelected()));
+      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.DeleteObjective(TeamManagerGui.getObjectiveSelected()));
       TeamManagerGui.unSelectObjective();
     }
   }
 
   public static final class FinishButton extends AdjustableButton {
 
-    private final TeamManagerTeamEditGui  team_gui;
-    private final TeamManagerObjectiveGui objective_gui;
+    private final Runnable onClick;
 
-    public FinishButton(int x, int y, int width, int height, TeamManagerTeamEditGui gui){
+    public FinishButton(int x, int y, int width, int height, Runnable onClick){
       super(x, y, width, height, StringUtil.translate("gui.addsynthcore.team_manager.common.done"));
-      team_gui = gui;
-      objective_gui = null;
-    }
-
-    public FinishButton(int x, int y, int width, int height, TeamManagerObjectiveGui gui){
-      super(x, y, width, height, StringUtil.translate("gui.addsynthcore.team_manager.common.done"));
-      objective_gui = gui;
-      team_gui = null;
+      this.onClick = onClick;
     }
 
     @Override
     public void onPress(){
-      if(team_gui != null){
-        team_gui.create_team();
-      }
-      if(objective_gui != null){
-        objective_gui.create_objective();
-      }
+      onClick.run();
       minecraft.displayGuiScreen(new TeamManagerGui());
     }
   }
@@ -170,56 +157,59 @@ public final class TeamManagerGuiButtons {
 
   public static final class SubtractScoreButton extends AdjustableButton {
   
-    private final TeamManagerGui gui;
+    private final Runnable onClick;
     
-    public SubtractScoreButton(int x, int y, int width, int height, TeamManagerGui gui){
+    public SubtractScoreButton(int x, int y, int width, int height, Runnable onClick){
       super(x, y, width, height, StringUtil.translate("gui.addsynthcore.team_manager.score.subtract"));
-      this.gui = gui;
+      this.onClick = onClick;
     }
     @Override
     public void onPress(){
-      gui.change_score(TeamManagerCommand.SUBTRACT_SCORE);
+      onClick.run();
     }
   }
 
   public static final class AddScoreButton extends AdjustableButton {
   
-    private final TeamManagerGui gui;
+    private final Runnable onClick;
     
-    public AddScoreButton(int x, int y, int width, int height, TeamManagerGui gui){
+    public AddScoreButton(int x, int y, int width, int height, Runnable onClick){
       super(x, y, width, height, StringUtil.translate("gui.addsynthcore.team_manager.score.add"));
-      this.gui = gui;
+      this.onClick = onClick;
     }
     @Override
     public void onPress(){
-      gui.change_score(TeamManagerCommand.ADD_SCORE);
+      onClick.run();
     }
   }
 
   public static final class SetScoreButton extends AdjustableButton {
   
-    private final TeamManagerGui gui;
+    private final Runnable onClick;
     
-    public SetScoreButton(int x, int y, int width, int height, TeamManagerGui gui){
+    public SetScoreButton(int x, int y, int width, int height, Runnable onClick){
       super(x, y, width, height, StringUtil.translate("gui.addsynthcore.team_manager.score.set"));
-      this.gui = gui;
+      this.onClick = onClick;
     }
     @Override
     public void onPress(){
-      gui.change_score(TeamManagerCommand.SET_SCORE);
+      onClick.run();
     }
   }
 
   public static final class ResetScoreButton extends AdjustableButton {
   
-    private final TeamManagerGui gui;
-    
-    public ResetScoreButton(int x, int y, int width, int height, TeamManagerGui gui){
+    public ResetScoreButton(int x, int y, int width, int height){
       super(x, y, width, height, StringUtil.translate("gui.addsynthcore.team_manager.score.reset"));
-      this.gui = gui;
     }
     @Override
     public void onPress(){
+      NetworkHandler.INSTANCE.sendToServer(
+        new TeamManagerCommand.ResetScore(
+          TeamManagerGui.getObjectiveSelected(),
+          TeamManagerGui.getPlayerSelected()
+        )
+      );
     }
   }
   
@@ -233,7 +223,7 @@ public final class TeamManagerGuiButtons {
     }
     @Override
     public void onPress(){
-      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand(TeamManagerCommand.SET_DISPLAY_SLOT, TeamManagerGui.getObjectiveSelected(), display_slot));
+      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.SetDisplaySlot(TeamManagerGui.getObjectiveSelected(), display_slot));
     }
   }
   
@@ -247,7 +237,7 @@ public final class TeamManagerGuiButtons {
     }
     @Override
     public void onPress(){
-      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand(TeamManagerCommand.CLEAR_DISPLAY_SLOT, display_slot));
+      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.ClearDisplaySlot(display_slot));
     }
   }
 

@@ -47,12 +47,6 @@ public final class NetworkHandler {
       TeamManagerSyncMessage::decode,
       TeamManagerSyncMessage::handle
     );
-    INSTANCE.registerMessage(4,
-      TeamManagerCommand.class,
-      TeamManagerCommand::encode,
-      TeamManagerCommand::decode,
-      TeamManagerCommand::handle
-    );
     INSTANCE.registerMessage(5,
       RequestPlayerScoreMessage.class,
       RequestPlayerScoreMessage::encode,
@@ -64,6 +58,90 @@ public final class NetworkHandler {
       PlayerScoreMessage::encode,
       PlayerScoreMessage::decode,
       PlayerScoreMessage::handle
+    );
+    INSTANCE.registerMessage(7,
+      TeamManagerCommand.AddTeam.class,
+      TeamManagerCommand.AddTeam::encode,
+      TeamManagerCommand.AddTeam::decode,
+      TeamManagerCommand.AddTeam::handle
+    );
+    INSTANCE.registerMessage(8,
+      TeamManagerCommand.EditTeam.class,
+      TeamManagerCommand.EditTeam::encode,
+      TeamManagerCommand.EditTeam::decode,
+      TeamManagerCommand.EditTeam::handle
+    );
+    INSTANCE.registerMessage(9,
+      TeamManagerCommand.DeleteTeam.class,
+      TeamManagerCommand.DeleteTeam::encode,
+      TeamManagerCommand.DeleteTeam::decode,
+      TeamManagerCommand.DeleteTeam::handle
+    );
+    INSTANCE.registerMessage(10,
+      TeamManagerCommand.AddPlayerToTeam.class,
+      TeamManagerCommand.AddPlayerToTeam::encode,
+      TeamManagerCommand.AddPlayerToTeam::decode,
+      TeamManagerCommand.AddPlayerToTeam::handle
+    );
+    INSTANCE.registerMessage(11,
+      TeamManagerCommand.RemovePlayerFromTeam.class,
+      TeamManagerCommand.RemovePlayerFromTeam::encode,
+      TeamManagerCommand.RemovePlayerFromTeam::decode,
+      TeamManagerCommand.RemovePlayerFromTeam::handle
+    );
+    INSTANCE.registerMessage(12,
+      TeamManagerCommand.AddObjective.class,
+      TeamManagerCommand.AddObjective::encode,
+      TeamManagerCommand.AddObjective::decode,
+      TeamManagerCommand.AddObjective::handle
+    );
+    INSTANCE.registerMessage(13,
+      TeamManagerCommand.EditObjective.class,
+      TeamManagerCommand.EditObjective::encode,
+      TeamManagerCommand.EditObjective::decode,
+      TeamManagerCommand.EditObjective::handle
+    );
+    INSTANCE.registerMessage(14,
+      TeamManagerCommand.DeleteObjective.class,
+      TeamManagerCommand.DeleteObjective::encode,
+      TeamManagerCommand.DeleteObjective::decode,
+      TeamManagerCommand.DeleteObjective::handle
+    );
+    INSTANCE.registerMessage(15,
+      TeamManagerCommand.SetScore.class,
+      TeamManagerCommand.SetScore::encode,
+      TeamManagerCommand.SetScore::decode,
+      TeamManagerCommand.SetScore::handle
+    );
+    INSTANCE.registerMessage(16,
+      TeamManagerCommand.AddScore.class,
+      TeamManagerCommand.AddScore::encode,
+      TeamManagerCommand.AddScore::decode,
+      TeamManagerCommand.AddScore::handle
+    );
+    INSTANCE.registerMessage(17,
+      TeamManagerCommand.SubtractScore.class,
+      TeamManagerCommand.SubtractScore::encode,
+      TeamManagerCommand.SubtractScore::decode,
+      TeamManagerCommand.SubtractScore::handle
+    );
+    INSTANCE.registerMessage(18,
+      TeamManagerCommand.ResetScore.class,
+      TeamManagerCommand.ResetScore::encode,
+      TeamManagerCommand.ResetScore::decode,
+      TeamManagerCommand.ResetScore::handle
+    );
+    INSTANCE.registerMessage(19,
+      TeamManagerCommand.SetDisplaySlot.class,
+      TeamManagerCommand.SetDisplaySlot::encode,
+      TeamManagerCommand.SetDisplaySlot::decode,
+      TeamManagerCommand.SetDisplaySlot::handle
+    );
+    INSTANCE.registerMessage(20,
+      TeamManagerCommand.ClearDisplaySlot.class,
+      TeamManagerCommand.ClearDisplaySlot::encode,
+      TeamManagerCommand.ClearDisplaySlot::decode,
+      TeamManagerCommand.ClearDisplaySlot::handle
     );
     ADDSynthCore.log.info("Done registering ADDSynthCore network messages.");
   }

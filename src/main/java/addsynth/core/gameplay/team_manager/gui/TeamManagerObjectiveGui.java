@@ -108,7 +108,7 @@ public final class TeamManagerObjectiveGui extends GuiBase {
     final int button_area = middle_section.right - left_section.left;
     final int[] button_x = WidgetUtil.evenAlignment(button_area, button_width, 2);
     final int button_y = guiUtil.guiBottom - 6 - button_height;
-    finish_button = new TeamManagerGuiButtons.FinishButton(guiUtil.guiLeft + button_x[0], button_y, button_width, button_height, this);
+    finish_button = new TeamManagerGuiButtons.FinishButton(guiUtil.guiLeft + button_x[0], button_y, button_width, button_height, this::create_objective);
     addButton(finish_button);
     addButton(new TeamManagerGuiButtons.CancelButton(guiUtil.guiLeft + button_x[1], button_y, button_width, button_height));
     
@@ -169,15 +169,16 @@ public final class TeamManagerObjectiveGui extends GuiBase {
     }
   }
 
-  public void create_objective(){
-    NetworkHandler.INSTANCE.sendToServer(
-      new TeamManagerCommand(
-        new_objective ? TeamManagerCommand.ADD_OBJECTIVE : TeamManagerCommand.EDIT_OBJECTIVE,
-        objective_id_name.getText().replace(' ', '_'),
-        objective_display_name.getText(),
-        getCriteriaID()
-      )
-    );
+  public final void create_objective(){
+    final String objective_id = objective_id_name.getText().replace(' ', '_');
+    final String display_name = objective_display_name.getText();
+    final String criteria     = getCriteriaID();
+    if(new_objective){
+      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.AddObjective(objective_id, display_name, criteria));
+    }
+    else{
+      NetworkHandler.INSTANCE.sendToServer(new TeamManagerCommand.EditObjective(objective_id, display_name, criteria));
+    }
   }
 
   /** Gets the Criteria ID given the type selected and the selected List Entry in the Criteria List. */

@@ -116,7 +116,7 @@ public final class TeamManagerTeamEditGui extends GuiBase {
     this.children.add(team_display_name);
     this.children.add(member_prefix);
     this.children.add(member_suffix);
-    addButton(new TeamManagerGuiButtons.FinishButton(button_x1, button_y, button_width, button_height, this));
+    addButton(new TeamManagerGuiButtons.FinishButton(button_x1, button_y, button_width, button_height, this::create_team));
     addButton(new TeamManagerGuiButtons.CancelButton(button_x2, button_y, button_width, button_height));
 
     if(new_team == false){
@@ -135,20 +135,25 @@ public final class TeamManagerTeamEditGui extends GuiBase {
   }
 
   public final void create_team(){
-    NetworkHandler.INSTANCE.sendToServer(
-      new TeamManagerCommand(
-        new_team ? TeamManagerCommand.ADD_TEAM : TeamManagerCommand.EDIT_TEAM,
-        team_id_name.getText().replace(' ', '_'),
-        team_display_name.getText(),
-        friendly_fire.checked,
-        see_invisible_allys.checked,
-        color_buttons.getColor(),
-        nametag_controls.getSelectedOption(),
-        death_message_controls.getSelectedOption(),
-        member_prefix.getText(),
-        member_suffix.getText()
-      )
-    );
+    final String team_name            = team_id_name.getText().replace(' ', '_');
+    final String display_name         = team_display_name.getText();
+    final boolean pvp                 = friendly_fire.checked;
+    final boolean see_invisible_allys = this.see_invisible_allys.checked;
+    final int team_color              = color_buttons.getColor();
+    final int nametag_option          = nametag_controls.getSelectedOption();
+    final int death_message_option    = death_message_controls.getSelectedOption();
+    final String prefix               = member_prefix.getText();
+    final String suffix               = member_suffix.getText();
+    if(new_team){
+      NetworkHandler.INSTANCE.sendToServer(
+        new TeamManagerCommand.AddTeam(team_name, display_name, pvp, see_invisible_allys, team_color, nametag_option, death_message_option, prefix, suffix)
+      );
+    }
+    else{
+      NetworkHandler.INSTANCE.sendToServer(
+        new TeamManagerCommand.EditTeam(team_name, display_name, pvp, see_invisible_allys, team_color, nametag_option, death_message_option, prefix, suffix)
+      );
+    }
   }
 
   @Override
