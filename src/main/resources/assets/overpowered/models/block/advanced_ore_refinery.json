@@ -2,7 +2,7 @@
   "parent": "block/cube_bottom_top",
   "textures": {
     "top":      "overpowered:blocks/machines/dark_top_texture",
-    "side":     "overpowered:blocks/machines/advanced_ore_refinery/side",
-    "bottom":   "overpowered:blocks/machines/advanced_ore_refinery/bottom"
+    "side":     "overpowered:blocks/machines/advanced_ore_refinery",
+    "bottom":   "overpowered:blocks/machines/dark_bottom_texture"
   }
 }

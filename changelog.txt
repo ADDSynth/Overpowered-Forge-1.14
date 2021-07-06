@@ -26,7 +26,7 @@ NEW:
     - Added 8 tiers of circuits.
   Added a standard Generator to ADDSynth Energy.
     - It takes in standard fuel items such as Coal, Charcoal, Wood, and Planks.
-    - Updated the texture to high definition.
+    - Now has an HD texture.
   Added a new Scanning Laser item.
   Whitelisted TileEntities to work with Applied Energistics Spatial-IO.
     - As of now, this needs further testing to ensure there aren't any errors.

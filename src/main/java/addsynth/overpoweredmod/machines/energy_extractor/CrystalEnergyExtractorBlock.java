@@ -26,7 +26,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public final class CrystalEnergyExtractorBlock extends MachineBlock {
 
   public CrystalEnergyExtractorBlock(final String name){
-    super(MaterialColor.WOOL);
+    super(MaterialColor.BLACK);
     OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
