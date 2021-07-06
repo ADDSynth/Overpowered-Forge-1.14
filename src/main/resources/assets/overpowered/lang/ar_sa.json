@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "لا يُسمح بالثقوب السوداء في هذا البعد.",
-"gui.overpowered.black_hole.notify_players": "تم الكشف عن حدث التفرد في الإحداثيات: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "تم الكشف عن حدث التفرد في الإحداثيات: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "عدسة",
 "gui.overpowered.energy_suspension_bridge.rotate": "استدارة",
 "gui.overpowered.bridge_message.checking": "خطأ",

@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Găurile negre nu sunt permise în această dimensiune.",
-"gui.overpowered.black_hole.notify_players": "§5Eveniment de singularitate§r a fost detectat la coordonate: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Eveniment de singularitate§r a fost detectat la coordonate: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens=": "Obiectiv",
 "gui.overpowered.energy_suspension_bridge.rotate=": "Roti",
 "gui.overpowered.bridge_message.checking": "Eroare",

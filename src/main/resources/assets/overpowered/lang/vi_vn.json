@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Lỗ đen không được phép trong chiều này.",
-"gui.overpowered.black_hole.notify_players": "§5Điểm kỳ dị§r được phát hiện tại tọa độ: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Điểm kỳ dị§r được phát hiện tại tọa độ: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "Ống kính",
 "gui.overpowered.energy_suspension_bridge.rotate": "Quay",
 "gui.overpowered.bridge_message.checking": "lỗi",

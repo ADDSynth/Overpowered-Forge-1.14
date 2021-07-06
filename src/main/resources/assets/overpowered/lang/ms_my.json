@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Lubang Hitam tidak dibenarkan dalam dimensi ini.",
-"gui.overpowered.black_hole.notify_players": "§5Acara Singularity§r dikesan pada koordinat: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Acara Singularity§r dikesan pada koordinat: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "Kanta",
 "gui.overpowered.energy_suspension_bridge.rotate": "Putar",
 "gui.overpowered.bridge_message.checking": "Ralat",

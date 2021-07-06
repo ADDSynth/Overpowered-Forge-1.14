@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "這個世界不允許出現黑洞。",
-"gui.overpowered.black_hole.notify_players": "§5奇異事件§r 在坐標處檢測到: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5奇異事件§r 在坐標處檢測到: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "鏡片",
 "gui.overpowered.energy_suspension_bridge.rotate": "旋轉",
 "gui.overpowered.bridge_message.checking": "錯誤",

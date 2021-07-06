@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "この次元ではブラックホールは許可されていません。",
-"gui.overpowered.black_hole.notify_players": "§5特異点イベント§r が検出されました: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5特異点イベント§r が検出されました: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "レンズ",
 "gui.overpowered.energy_suspension_bridge.rotate": "回転",
 "gui.overpowered.bridge_message.checking": "エラー",

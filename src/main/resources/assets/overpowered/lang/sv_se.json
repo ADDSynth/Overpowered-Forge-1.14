@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Svarta hål är inte tillåtna i denna dimension.",
-"gui.overpowered.black_hole.notify_players": "§5Singularitets händelse§r detekteras vid koordinater: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Singularitets händelse§r detekteras vid koordinater: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "Lins",
 "gui.overpowered.energy_suspension_bridge.rotate": "Rotera",
 "gui.overpowered.bridge_message.checking": "Fel",

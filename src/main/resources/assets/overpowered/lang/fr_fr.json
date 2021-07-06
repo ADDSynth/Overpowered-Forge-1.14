@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Les trous noirs ne sont pas autorisés dans cette dimension.",
-"gui.overpowered.black_hole.notify_players": "§5Événement de singularité§r été détecté aux coordonnées: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Événement de singularité§r été détecté aux coordonnées: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "Lentille",
 "gui.overpowered.energy_suspension_bridge.rotate": "Tourner",
 "gui.overpowered.bridge_message.checking": "Erreur",

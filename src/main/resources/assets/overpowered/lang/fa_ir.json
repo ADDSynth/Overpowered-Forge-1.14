@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "سیاهچاله ها در این بعد مجاز نیستند.",
-"gui.overpowered.black_hole.notify_players": "§5رویداد تکینگی§r در مختصات تشخیص داده شد: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5رویداد تکینگی§r در مختصات تشخیص داده شد: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "لنز",
 "gui.overpowered.energy_suspension_bridge.rotate": "چرخش",
 "gui.overpowered.bridge_message.checking": "خطا",

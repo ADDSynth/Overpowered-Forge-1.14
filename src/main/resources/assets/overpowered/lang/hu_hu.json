@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "A fekete lyukak nem engedélyezettek ebben a dimenzióban.",
-"gui.overpowered.black_hole.notify_players": "§5Szingularitás esemény§r a koordinátákon észlelt: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Szingularitás esemény§r a koordinátákon észlelt: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "Lencse",
 "gui.overpowered.energy_suspension_bridge.rotate": "Forog",
 "gui.overpowered.bridge_message.checking": "Hiba",

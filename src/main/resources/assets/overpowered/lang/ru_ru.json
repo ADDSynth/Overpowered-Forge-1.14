@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Черные дыры не допускаются в этом измерении.",
-"gui.overpowered.black_hole.notify_players": "§5Событие Сингулярности§r обнаружен в координатах: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Событие Сингулярности§r обнаружен в координатах: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "объектив",
 "gui.overpowered.energy_suspension_bridge.rotate": "Поворот",
 "gui.overpowered.bridge_message.checking": "ошибка",

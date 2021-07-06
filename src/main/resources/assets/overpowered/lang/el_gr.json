@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Δεν επιτρέπονται μαύρες τρύπες σε αυτήν την ιδιότητα.",
-"gui.overpowered.black_hole.notify_players": "§5Εκδήλωση μοναδικότητας§r εντοπίστηκε στις συντεταγμένες: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Εκδήλωση μοναδικότητας§r εντοπίστηκε στις συντεταγμένες: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "Φακός",
 "gui.overpowered.energy_suspension_bridge.rotate": "Γυρίζω",
 "gui.overpowered.bridge_message.checking": "Λάθος",

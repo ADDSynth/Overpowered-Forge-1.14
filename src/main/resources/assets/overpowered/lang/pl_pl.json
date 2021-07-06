@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Czarne dziury nie są dozwolone w tym wymiarze.",
-"gui.overpowered.black_hole.notify_players": "§5Wydarzenie osobliwości§r zostało wykryte przy współrzędnych: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Wydarzenie osobliwości§r zostało wykryte przy współrzędnych: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "Obiektyw",
 "gui.overpowered.energy_suspension_bridge.rotate": "Obracać się",
 "gui.overpowered.bridge_message.checking": "Błąd",

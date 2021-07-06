@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "이 치수에는 블랙홀이 허용되지 않습니다.",
-"gui.overpowered.black_hole.notify_players": "§5특이점 이벤트§r 좌표에서 감지: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5특이점 이벤트§r 좌표에서 감지: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "렌즈",
 "gui.overpowered.energy_suspension_bridge.rotate": "회전",
 "gui.overpowered.bridge_message.checking": "오류",

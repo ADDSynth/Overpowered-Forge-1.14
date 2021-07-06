@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Zwarte gaten zijn in deze dimensie niet toegestaan.",
-"gui.overpowered.black_hole.notify_players": "§5Singularity Event§r gedetecteerd op coördinaten: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Singularity Event§r gedetecteerd op coördinaten: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "Lens",
 "gui.overpowered.energy_suspension_bridge.rotate": "Draaien",
 "gui.overpowered.bridge_message.checking": "Fout",

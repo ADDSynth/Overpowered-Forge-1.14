@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "I buchi neri non sono ammessi in questa dimensione.",
-"gui.overpowered.black_hole.notify_players": "§5Evento di singolarità§r rilevato alle coordinate: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Evento di singolarità§r rilevato alle coordinate: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "lente",
 "gui.overpowered.energy_suspension_bridge.rotate": "Ruotare",
 "gui.overpowered.bridge_message.checking": "Errore",

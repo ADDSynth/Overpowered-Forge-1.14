@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Schwarze Löcher sind in dieser Dimension nicht zulässig.",
-"gui.overpowered.black_hole.notify_players": "§5Singularitätsereignis§r wurde an Koordinaten festgestellt: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Singularitätsereignis§r wurde an Koordinaten festgestellt: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "Linse",
 "gui.overpowered.energy_suspension_bridge.rotate": "Drehen",
 "gui.overpowered.bridge_message.checking": "Error",

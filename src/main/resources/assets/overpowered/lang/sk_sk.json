@@ -116,7 +116,7 @@
 "stat.overpowered.black_hole_events": "Singularity Events",
 
 "gui.overpowered.black_hole.not_allowed_in_this_dimension": "Čierne diery nie sú v tejto dimenzii povolené.",
-"gui.overpowered.black_hole.notify_players": "§5Mimoriadna udalosť§r bola zistená na súradniciach: %s , %1$s , %2$s",
+"gui.overpowered.black_hole.notify_players": "§5Mimoriadna udalosť§r bola zistená na súradniciach: %s , %s , %s",
 "gui.overpowered.energy_suspension_bridge.lens": "šošovka",
 "gui.overpowered.energy_suspension_bridge.rotate": "Točiť sa",
 "gui.overpowered.bridge_message.checking": "Chyba",
