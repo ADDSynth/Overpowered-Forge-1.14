@@ -28,14 +28,14 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
   private ItemStack[][] filter = new ItemStack[8][];
 
   private final InputSlot[] input_slot = {
-    new InputSlot(this, 0,  76, 65),
-    new InputSlot(this, 1,  94, 65),
-    new InputSlot(this, 2, 112, 65),
-    new InputSlot(this, 3, 130, 65),
-    new InputSlot(this, 4,  76, 83),
-    new InputSlot(this, 5,  94, 83),
-    new InputSlot(this, 6, 112, 83),
-    new InputSlot(this, 7, 130, 83)
+    new InputSlot(this, 0,  76, 76),
+    new InputSlot(this, 1,  94, 76),
+    new InputSlot(this, 2, 112, 76),
+    new InputSlot(this, 3, 130, 76),
+    new InputSlot(this, 4,  76, 94),
+    new InputSlot(this, 5,  94, 94),
+    new InputSlot(this, 6, 112, 94),
+    new InputSlot(this, 7, 130, 94)
   };
 
   public TileCircuitFabricator(){

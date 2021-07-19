@@ -29,28 +29,26 @@ public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabrica
     new ItemStack(EnergyItems.circuit_tier_7), new ItemStack(EnergyItems.circuit_tier_8)
   };
 
-  private final WorkProgressBar work_progress_bar = new WorkProgressBar(153, 114, 58, 5, 8, 228);
+  private final WorkProgressBar work_progress_bar = new WorkProgressBar(153, 125, 58, 5, 8, 239);
 
   private static final int circuit_button_x = 10;
-  private static final int circuit_button_y = 43;
+  private static final int circuit_button_y = 54;
   private static final int spacing = 2;
 
-  /** Arrow down texture X coordinate. */
-  private static final int down_arrow_x = 0;
-  /** Arrow up texture X coordinate. */
-  private static final int up_arrow_x = 28;
-  /** Arrow texture Y coordinate. */
-  private static final int arrow_y = 240;
+  private static final int down_arrow_texture_x = 228;
+  private static final int down_arrow_texture_y = 201;
+  private static final int up_arrow_texture_x = 228;
+  private static final int up_arrow_texture_y = 217;
   private static final int[] arrow_draw_x = {77, 95, 113, 131};
-  private static final int[] arrow_draw_y = {54, 102};
+  private static final int[] arrow_draw_y = {65, 113};
   private static final int[] ingredient_draw_x = {76, 94, 112, 130};
-  private static final int[] ingredient_draw_y = {37, 111};
+  private static final int[] ingredient_draw_y = {48, 122};
   
   private static IngredientWidget[] recipe_ingredient;
   private static int tick;
   
   public CircuitFabricatorGui(final CircuitFabricatorContainer container, PlayerInventory player_inventory, ITextComponent title){
-    super(221, 222, container, player_inventory, title, gui_texture);
+    super(221, 233, container, player_inventory, title, gui_texture);
     tile.updateGui();
   }
 
@@ -131,35 +129,35 @@ public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabrica
     // draw arrows and ingredients
     if(recipe_ingredient != null){
       if(recipe_ingredient.length >= 1){
-        guiUtil.draw(arrow_draw_x[0], arrow_draw_y[0], down_arrow_x, arrow_y, 14, 8, 28, 16);
+        guiUtil.draw(arrow_draw_x[0], arrow_draw_y[0], down_arrow_texture_x, down_arrow_texture_y, 14, 8, 28, 16);
         recipe_ingredient[0].draw(guiLeft + ingredient_draw_x[0], guiTop + ingredient_draw_y[0]);
       }
       if(recipe_ingredient.length >= 2){
-        guiUtil.draw(arrow_draw_x[1], arrow_draw_y[0], down_arrow_x, arrow_y, 14, 8, 28, 16);
+        guiUtil.draw(arrow_draw_x[1], arrow_draw_y[0], down_arrow_texture_x, down_arrow_texture_y, 14, 8, 28, 16);
         recipe_ingredient[1].draw(guiLeft + ingredient_draw_x[1], guiTop + ingredient_draw_y[0]);
       }
       if(recipe_ingredient.length >= 3){
-        guiUtil.draw(arrow_draw_x[2], arrow_draw_y[0], down_arrow_x, arrow_y, 14, 8, 28, 16);
+        guiUtil.draw(arrow_draw_x[2], arrow_draw_y[0], down_arrow_texture_x, down_arrow_texture_y, 14, 8, 28, 16);
         recipe_ingredient[2].draw(guiLeft + ingredient_draw_x[2], guiTop + ingredient_draw_y[0]);
       }
       if(recipe_ingredient.length >= 4){
-        guiUtil.draw(arrow_draw_x[3], arrow_draw_y[0], down_arrow_x, arrow_y, 14, 8, 28, 16);
+        guiUtil.draw(arrow_draw_x[3], arrow_draw_y[0], down_arrow_texture_x, down_arrow_texture_y, 14, 8, 28, 16);
         recipe_ingredient[3].draw(guiLeft + ingredient_draw_x[3], guiTop + ingredient_draw_y[0]);
       }
       if(recipe_ingredient.length >= 5){
-        guiUtil.draw(arrow_draw_x[0], arrow_draw_y[1],   up_arrow_x, arrow_y, 14, 8, 28, 16);
+        guiUtil.draw(arrow_draw_x[0], arrow_draw_y[1],   up_arrow_texture_x,   up_arrow_texture_y, 14, 8, 28, 16);
         recipe_ingredient[4].draw(guiLeft + ingredient_draw_x[0], guiTop + ingredient_draw_y[1]);
       }
       if(recipe_ingredient.length >= 6){
-        guiUtil.draw(arrow_draw_x[1], arrow_draw_y[1],   up_arrow_x, arrow_y, 14, 8, 28, 16);
+        guiUtil.draw(arrow_draw_x[1], arrow_draw_y[1],   up_arrow_texture_x,   up_arrow_texture_y, 14, 8, 28, 16);
         recipe_ingredient[5].draw(guiLeft + ingredient_draw_x[1], guiTop + ingredient_draw_y[1]);
       }
       if(recipe_ingredient.length >= 7){
-        guiUtil.draw(arrow_draw_x[2], arrow_draw_y[1],   up_arrow_x, arrow_y, 14, 8, 28, 16);
+        guiUtil.draw(arrow_draw_x[2], arrow_draw_y[1],   up_arrow_texture_x,   up_arrow_texture_y, 14, 8, 28, 16);
         recipe_ingredient[6].draw(guiLeft + ingredient_draw_x[2], guiTop + ingredient_draw_y[1]);
       }
       if(recipe_ingredient.length >= 8){
-        guiUtil.draw(arrow_draw_x[3], arrow_draw_y[1],   up_arrow_x, arrow_y, 14, 8, 28, 16);
+        guiUtil.draw(arrow_draw_x[3], arrow_draw_y[1],   up_arrow_texture_x,   up_arrow_texture_y, 14, 8, 28, 16);
         recipe_ingredient[7].draw(guiLeft + ingredient_draw_x[3], guiTop + ingredient_draw_y[1]);
       }
     }
@@ -169,10 +167,11 @@ public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabrica
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     guiUtil.draw_title(this.title);
     draw_energy_usage();
-    GuiUtil.draw_text_left(selected_text+": "+tile.getCircuitSelected(), 6, 28);
+    draw_status(tile.getStatus());
+    GuiUtil.draw_text_left(selected_text+": "+tile.getCircuitSelected(), 6, 39);
     // GuiUtil.drawItemStack(circuit_stack[tile.getCircuitID()], 102, 29);
-    GuiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), 184, 102);
-    draw_time_left(129);
+    GuiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), 184, 113);
+    draw_time_left(140);
   }
 
   @Override
