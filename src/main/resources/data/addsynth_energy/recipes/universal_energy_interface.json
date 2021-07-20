@@ -1,8 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "iwi",
-    "qdq",
+    "iqi",
+    "wcw",
     "iai"
   ],
   "key": {
@@ -15,8 +15,8 @@
     "q": {
       "tag": "forge:gems/quartz"
     },
-    "d": {
-      "tag": "forge:gems/diamond"
+    "c": {
+      "item": "addsynth_energy:circuit_tier_5"
     },
     "a": {
       "item": "addsynth_energy:advanced_power_core"
