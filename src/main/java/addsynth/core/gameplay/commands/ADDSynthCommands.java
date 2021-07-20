@@ -27,6 +27,7 @@ public final class ADDSynthCommands {
     if(Features.lightning_storm_command.get()){
       LightningStormCommand.register(dispatcher);
     }
+    //ShowOresCommand.register(dispatcher);
   }
 
   /** This runs every server tick (20 times a second). Assigned to the Forge Event bus by {@link ADDSynthCore}. */
