@@ -23,7 +23,7 @@ public final class CircuitRecipeCategory implements IRecipeCategory<CircuitFabri
   private final IDrawable icon;
 
   public CircuitRecipeCategory(final IGuiHelper gui_helper){
-    background = gui_helper.createDrawable(gui_texture, 67, 56, 140, 54);
+    background = gui_helper.createDrawable(gui_texture, 67, 67, 140, 54);
     icon = gui_helper.createDrawableIngredient(new ItemStack(EnergyBlocks.circuit_fabricator));
   }
 
