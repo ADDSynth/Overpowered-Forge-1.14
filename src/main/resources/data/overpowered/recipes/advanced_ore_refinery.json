@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "scs",
-    "afa",
+    "sns",
+    "cfc",
     "ses"
   ],
   "key": {
     "s": {
       "tag": "forge:plates/steel"
     },
-    "c": {
+    "n": {
       "item": "overpowered:nullified_power_core"
     },
-    "a": {
-      "item": "addsynth_energy:advanced_power_core"
+    "c": {
+      "item": "addsynth_energy:circuit_tier_7"
     },
     "f": {
       "item": "addsynth_energy:electric_furnace"
