@@ -36,7 +36,7 @@ public final class ADDSynthCore {
   public static final String MOD_ID = "addsynthcore";
   public static final String NAME = "ADDSynthCore";
   public static final String VERSION = "1.0";
-  public static final String VERSION_DATE = "June 2, 2021";
+  public static final String VERSION_DATE = "July 26, 2021";
 
   private static boolean config_loaded;
   public static final Logger log = LogManager.getLogger(NAME);

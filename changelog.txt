@@ -1,4 +1,4 @@
-v1.4 - TBD
+v1.4 - July 26, 2021
 INFO:
   Moved all materials to a new ADDSynth Materials mod.
    - This once again breaks your old worlds, and Forge will warn you of the missing items.
