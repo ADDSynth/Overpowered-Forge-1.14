@@ -51,11 +51,13 @@ NEW:
   Added advancements for the Celestial Gem, Magic Infuser, Advanced Ore Refinery,
     Crystal Matter Generator, Energy Suspension Bridge, Plasma, Rose Quartz,
     the standard Generator, Compressor, and the Circuit Fabricator.
+  Added an alternate recipe for the Dimensional Anchor.
 CHANGED:
   All materials are now part of the ADDSynth Materials mod.
   The Music Box gui no longer has the JEI item panel. It doesn't need it.
   The Creative Tab icon for ADDSynth Energy is now the new Generator.
-  The Generator that was part of Overpowered has been renamed to Crystal Energy Extractor.
+  The Generator that was part of Overpowered has been renamed to Crystal Energy Extractor
+    and has its own new texture.
   Renamed Energy Crystal to Celestial Gem.
     - You now get Energy Crystals by smelting Celestial Gems in a Blast Furnace.
     - Renamed all Energy Tools to Celestial Tools.
