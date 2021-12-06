@@ -92,7 +92,7 @@ public final class ADDSynthCore {
 
   private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin ADDSynthCore main setup...");
-    log.info(CommonUtil.get_mod_info(NAME, "ADDSynth", VERSION, DevStage.STABLE, VERSION_DATE));
+    log.info(CommonUtil.get_mod_info(NAME, "ADDSynth", VERSION, DevStage.DEVELOPMENT, VERSION_DATE));
   
     Debug.debug();
     if(Config.debug_mod_detection.get()){

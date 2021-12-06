@@ -92,7 +92,7 @@ public class OverpoweredTechnology {
   private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin "+MOD_NAME+" main setup...");
     
-    log.info(CommonUtil.get_mod_info(MOD_NAME, "ADDSynth", VERSION, DevStage.STABLE, VERSION_DATE));
+    log.info(CommonUtil.get_mod_info(MOD_NAME, "ADDSynth", VERSION, DevStage.DEVELOPMENT, VERSION_DATE));
     
     NetworkHandler.registerMessages();
     // WeirdDimension.register();
