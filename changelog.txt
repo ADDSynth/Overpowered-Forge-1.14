@@ -1,4 +1,7 @@
 v1.4.1 - TBD
+FIXED:
+  Fixed Fusion Chamber not dropping.
+  Fixed Ores that drop an item not being affected by Pickaxes with the Fortune effect.
 
 v1.4 - July 26, 2021
 INFO:
