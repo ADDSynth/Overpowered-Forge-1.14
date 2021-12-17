@@ -54,15 +54,15 @@
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "addsynth_energy:electric_furnace"
+        "recipe": "addsynth_energy:circuit_fabricator"
       }
     },
-    "has_electric_furnace": {
+    "has_circuit_fabricator": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "addsynth_energy:electric_furnace"
+            "item": "addsynth_energy:circuit_fabricator"
           }
         ]
       }
@@ -76,12 +76,13 @@
       "silicon",
       "crafting_table",
       "has_recipe",
-      "has_electric_furnace"
+      "has_circuit_fabricator"
     ]
   ],
   "rewards": {
     "recipes": [
-      "addsynth_energy:electric_furnace"
+      "addsynth_energy:circuit_fabricator",
+      "addsynth_energy:circuit_tier_1_crafting"
     ]
   }
 }

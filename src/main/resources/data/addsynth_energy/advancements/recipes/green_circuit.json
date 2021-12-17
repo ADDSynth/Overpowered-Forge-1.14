@@ -92,7 +92,8 @@
   ],
   "rewards": {
     "recipes": [
-      "addsynth_energy:circuit_tier_1_crafting"
+      "addsynth_energy:circuit_tier_1_crafting",
+      "addsynth_energy:circuit_fabricator"
     ]
   }
 }
