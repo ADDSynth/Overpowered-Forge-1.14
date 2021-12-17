@@ -48,6 +48,7 @@ public final class ADDSynthCore {
       return Features.caution_block.get() ? new ItemStack(registry.getItemBlock(Core.caution_block), 1) :
              Features.music_box.get()     ? new ItemStack(registry.getItemBlock(Core.music_box), 1) :
              Features.scythes.get()       ? new ItemStack(Core.stone_scythe, 1) :
+             Features.team_manager.get()  ? new ItemStack(Core.team_manager, 1) :
              new ItemStack(Blocks.GRASS, 1);
     }
   };
