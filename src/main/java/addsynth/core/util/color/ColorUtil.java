@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.TreeSet;
 import addsynth.core.ADDSynthCore;
+import addsynth.core.util.java.FileUtil;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MaterialColor;
@@ -110,14 +111,9 @@ public final class ColorUtil {
     ADDSynthCore.log.info("Begin dumping Minecraft Map Colors...");
 
     final String debug_file = "debug_map_colors.txt";
-    boolean can_write = true;
-    final File file = new File(debug_file);
+    final File file = FileUtil.getNewFile(debug_file);
 
-    if(file.exists()){
-      can_write = file.delete();
-    }
-    
-    if(can_write){
+    if(file != null){
       try(final FileWriter writer = new FileWriter(file)){
         writer.write("ADDSynthCore: debug Minecraft Map Colors:\n\n\n");
   
@@ -140,9 +136,6 @@ public final class ColorUtil {
       catch(IOException e){
         e.printStackTrace();
       }
-    }
-    else{
-      ADDSynthCore.log.error(new IOException("Was unable to delete the existing "+debug_file+" file for some reason."));
     }
     
     ADDSynthCore.log.info("Done dumping Minecraft Map Colors.");

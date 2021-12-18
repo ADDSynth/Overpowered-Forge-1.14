@@ -8,6 +8,7 @@ import java.util.TreeSet;
 import addsynth.core.config.Config;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.util.color.ColorUtil;
+import addsynth.core.util.java.FileUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
@@ -95,15 +96,11 @@ public final class Debug {
         final String item_tags_file = "item_tags.txt";
         
         // Blocks
-        boolean can_write = true;
         final TagCollection<Block> block_tag_collection = BlockTags.getCollection();
         final TreeSet<ResourceLocation> block_tags = new TreeSet<ResourceLocation>(new TagComparer());
         block_tags.addAll(block_tag_collection.getRegisteredTags());
-        File file = new File(block_tags_file);
-        if(file.exists()){
-          can_write = file.delete();
-        }
-        if(can_write){
+        File file = FileUtil.getNewFile(block_tags_file);
+        if(file != null){
           try(final FileWriter writer = new FileWriter(file)){
             writer.write("\nBlock Tags: "+block_tags.size()+"\n\n");
             Tag<Block> block_tag;
@@ -127,15 +124,11 @@ public final class Debug {
         }
         
         // Items
-        can_write = true;
         final TagCollection<Item> item_tag_collection = ItemTags.getCollection();
         final TreeSet<ResourceLocation> item_tags = new TreeSet<ResourceLocation>(new TagComparer());
         item_tags.addAll(item_tag_collection.getRegisteredTags());
-        file = new File(item_tags_file);
-        if(file.exists()){
-          can_write = file.delete();
-        }
-        if(can_write){
+        file = FileUtil.getNewFile(item_tags_file);
+        if(file != null){
           try(final FileWriter writer = new FileWriter(file)){
             writer.write("\nItem Tags: "+item_tags.size()+"\n\n");
             Tag<Item> item_tag;
