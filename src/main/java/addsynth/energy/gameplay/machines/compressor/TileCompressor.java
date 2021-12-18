@@ -1,7 +1,6 @@
 package addsynth.energy.gameplay.machines.compressor;
 
 import javax.annotation.Nullable;
-import addsynth.core.items.ItemUtil;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.machines.compressor.recipe.CompressorRecipes;
 import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;
@@ -23,14 +22,13 @@ public final class TileCompressor extends TileStandardWorkMachine implements INa
 
   @Override
   protected final boolean test_condition(){
-    result = CompressorRecipes.INSTANCE.getResult(inventory.input_inventory.getStackInSlot(0), world);
-    return ItemUtil.itemStackExists(result) ? inventory.output_inventory.can_add(0, result) : false;
+    return inventory.can_work(CompressorRecipes.INSTANCE);
   }
 
   @Override
   protected final void perform_work(){
     world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, 0.7f, 0.5f); // lowest pitch can be
-    inventory.output_inventory.insertItem(0, result.copy(), false);
+    inventory.output_result();
   }
 
   @Override

@@ -25,11 +25,7 @@ public final class TileInverter extends TileStandardWorkMachine implements IName
 
   @Override
   protected final boolean test_condition(){
-    final ItemStack input_stack = inventory.input_inventory.getStackInSlot(0);
-    if(input_stack.isEmpty()){
-      return false;
-    }
-    return inventory.output_inventory.can_add(0, getInverted(input_stack));
+    return inventory.can_work(TileInverter::getInverted);
   }
 
   public static final @Nonnull ItemStack getInverted(final ItemStack input_stack){
@@ -41,7 +37,7 @@ public final class TileInverter extends TileStandardWorkMachine implements IName
 
   @Override
   public final void perform_work(){
-    inventory.output_inventory.insertItem(0, getInverted(inventory.working_inventory.getStackInSlot(0)), false);
+    inventory.output_result();
   }
 
   @Override

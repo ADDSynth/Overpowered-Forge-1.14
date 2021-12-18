@@ -3,7 +3,6 @@ package addsynth.core.inventory;
 import javax.annotation.Nonnull;
 import addsynth.core.ADDSynthCore;
 import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
@@ -45,10 +44,8 @@ public class CommonInventory extends ItemStackHandler {
   @Override
   public final void setStackInSlot(final int slot, final @Nonnull ItemStack stack){
     if(is_valid_slot(slot)){
-      if(ItemStack.areItemStacksEqual(this.stacks.get(slot), stack) == false){
-        this.stacks.set(slot, stack);
-        onContentsChanged(slot);
-      }
+      this.stacks.set(slot, stack);
+      onContentsChanged(slot);
     }
   }
 
@@ -60,14 +57,12 @@ public class CommonInventory extends ItemStackHandler {
   }
 
   public final boolean isEmpty(){
-    boolean empty = true;
     for(final ItemStack stack : stacks){
       if(stack.isEmpty() == false){
-        empty = false;
-        break;
+        return false;
       }
     }
-    return empty;
+    return true;
   }
 
   /** Sets all slots in the inventory to Empty. */
@@ -78,15 +73,8 @@ public class CommonInventory extends ItemStackHandler {
     }
   }
 
-  public final boolean has_recipe(final Item[] recipe){ // FEATURE: implement these functions.
-    return false;
-  }
-
-  public final void insert_recipe(final Item[] recipe){
-    // must first check every slot if the item currently exists in one of the slots.
-  }
-  
-  public final void extract_recipe(final Item[] recipe){
+  public final ItemStack[] getItemStacks(){
+    return stacks.toArray(new ItemStack[stacks.size()]);
   }
 
   public final void drop_in_world(final World world, final BlockPos pos){
@@ -122,6 +110,7 @@ public class CommonInventory extends ItemStackHandler {
   }
 
   @Override
+  @Deprecated
   protected final void validateSlotIndex(int slot){
     // in order to crash properly, this method can't do anything.
   }

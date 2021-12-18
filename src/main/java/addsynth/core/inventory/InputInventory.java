@@ -17,7 +17,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.items.ItemHandlerHelper;
 
 /** This inventory only allows items to be inserted. It also has an Item filter to control
  *  which items are allowed. Pass null as the item filter to allow all items.
@@ -56,72 +55,20 @@ public final class InputInventory extends CommonInventory {
 
   @Override
   public @Nonnull ItemStack insertItem(final int slot, @Nonnull final ItemStack stack, final boolean simulate){
-    if(stack.isEmpty()){       return ItemStack.EMPTY; }
-    if(stack.getCount() == 0){ return ItemStack.EMPTY; }
-    if(is_valid_slot(slot) == false){ return stack; }
-    try{
-      if(isItemStackValid.apply(slot, stack) == false){
-        return stack;
+    if(is_valid_slot(slot)){
+      if(isItemStackValid.apply(slot, stack)){
+        return super.insertItem(slot, stack, simulate);
       }
-      final ItemStack existing_stack = this.stacks.get(slot);
-      int limit = getStackLimit(slot, stack);
-      if(existing_stack.isEmpty() == false){
-        if(ItemHandlerHelper.canItemStacksStack(stack, existing_stack) == false){
-          return stack;
-        }
-        limit -= existing_stack.getCount();
-      }
-      if(limit <= 0){
-        return stack;
-      }
-      final boolean reached_limit = stack.getCount() > limit;
-      if(simulate == false){
-        if(existing_stack.isEmpty()){
-          if(reached_limit){ this.stacks.set(slot, ItemHandlerHelper.copyStackWithSize(stack, limit)); }
-          else{              this.stacks.set(slot, stack); }
-        }
-        else{
-          if(reached_limit){ existing_stack.grow(limit); }
-          else{              existing_stack.grow(stack.getCount()); }
-        }
-        onContentsChanged(slot);
-      }
-      if(reached_limit){
-        return ItemHandlerHelper.copyStackWithSize(stack, stack.getCount() - limit);
-      }
-      return ItemStack.EMPTY; // none left over, all of stack was added.
     }
-    catch(Exception e){
-      e.printStackTrace();
-      return ItemStack.EMPTY;
-    }
+    return stack;
   }
 
   @Override
   public @Nonnull ItemStack extractItem(int slot, int amount, boolean simulate){
-    if(amount == 0){ return ItemStack.EMPTY; }
-    try{
-      validateSlotIndex(slot);
-      final ItemStack existing_stack = this.stacks.get(slot);
-      if(existing_stack.isEmpty()){ return ItemStack.EMPTY; }
-      final int extract_amount = Math.min(amount, existing_stack.getMaxStackSize());
-      if(existing_stack.getCount() <= extract_amount){
-        if(simulate == false){
-          this.stacks.set(slot, ItemStack.EMPTY);
-          onContentsChanged(slot);
-        }
-        return existing_stack;
-      }
-      if(simulate == false){
-        this.stacks.set(slot, ItemHandlerHelper.copyStackWithSize(existing_stack, existing_stack.getCount() - extract_amount));
-        onContentsChanged(slot);
-      }
-      return ItemHandlerHelper.copyStackWithSize(existing_stack, extract_amount);
+    if(is_valid_slot(slot)){
+      return super.extractItem(slot, amount, simulate);
     }
-    catch(Exception e){
-      e.printStackTrace();
-      return ItemStack.EMPTY;
-    }
+    return ItemStack.EMPTY;
   }
 
   public final void add(final int slot, final ItemStack stack){

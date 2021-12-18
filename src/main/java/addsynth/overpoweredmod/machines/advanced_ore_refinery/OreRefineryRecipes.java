@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.advanced_ore_refinery;
 
 import java.util.ArrayList;
-import javax.annotation.Nullable;
+import addsynth.core.items.ItemUtil;
 import addsynth.core.recipe.RecipeUtil;
 import addsynth.material.MaterialsUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
@@ -59,6 +59,7 @@ public final class OreRefineryRecipes {
     return valid_ores;
   }
 
+  @Deprecated // REMOVE in 2026
   public static final boolean matches(final Item item){
     for(Item check_item : valid_ores){
       if(item == check_item){
@@ -68,31 +69,21 @@ public final class OreRefineryRecipes {
     return false;
   }
 
-  /**
-   * @param input Item
-   * @return a copy of the result ItemStack
-   */
-  public static final @Nullable ItemStack get_result(final Item input){
-    try{
-      ItemStack result = null;
-      if(recipes == null){
-        throw new NullPointerException("recipes list is null");
-      }
-      if(input == null){
-        throw new IllegalArgumentException("input is null.");
-      }
+  /** Finds matching input and returns result ItemStack. */
+  public static final ItemStack get_result(final ItemStack input){
+    if(recipes == null){
+      OverpoweredTechnology.log.error(new NullPointerException("Ore Refinery recipes list is null."));
+      return ItemStack.EMPTY;
+    }
+    if(ItemUtil.itemStackExists(input)){
+      final Item input_item = input.getItem();
       for(OreRefineryRecipe recipe : recipes){
-        if(recipe.input == input){
-          result = recipe.output.copy();
-          break;
+        if(recipe.input == input_item){
+          return recipe.output.copy();
         }
       }
-      return result;
     }
-    catch(Throwable e){
-      e.printStackTrace();
-      return null;
-    }
+    return ItemStack.EMPTY;
   }
 
 }

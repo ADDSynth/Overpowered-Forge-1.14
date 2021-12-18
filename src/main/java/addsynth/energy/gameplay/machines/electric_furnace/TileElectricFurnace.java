@@ -11,7 +11,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
@@ -27,15 +26,12 @@ public final class TileElectricFurnace extends TileAlwaysOnMachine implements IN
 
   @Override
   protected final boolean test_condition(){
-    final ItemStack input = inventory.input_inventory.getStackInSlot(0);
-    final ItemStack output = inventory.output_inventory.getStackInSlot(0);
-    result = input.isEmpty() ? null : RecipeUtil.getFurnaceResult(input);
-    return (input != ItemStack.EMPTY && input.getCount() > 0) && (output == ItemStack.EMPTY || inventory.output_inventory.can_add(0, result));
+    return inventory.can_work(RecipeUtil::getFurnaceResult);
   }
 
   @Override
   protected final void perform_work(){
-    inventory.output_inventory.insertItem(0, result.copy(), false);
+    inventory.output_result();
   }
 
   @Override

@@ -90,19 +90,12 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
 
   @Override
   protected boolean test_condition(){
-    final ItemStack[] input = {
-      inventory.input_inventory.getStackInSlot(0), inventory.input_inventory.getStackInSlot(1),
-      inventory.input_inventory.getStackInSlot(2), inventory.input_inventory.getStackInSlot(3),
-      inventory.input_inventory.getStackInSlot(4), inventory.input_inventory.getStackInSlot(5),
-      inventory.input_inventory.getStackInSlot(6), inventory.input_inventory.getStackInSlot(7)
-    };
-    result = CircuitFabricatorRecipes.INSTANCE.getResult(input, world);
-    return ItemUtil.itemStackExists(result) ? inventory.output_inventory.can_add(0, result) : false;
+    return inventory.can_work(CircuitFabricatorRecipes.INSTANCE);
   }
 
   @Override
   protected void perform_work(){
-    inventory.output_inventory.insertItem(0, result.copy(), false);
+    inventory.output_result();
   }
 
   @Override

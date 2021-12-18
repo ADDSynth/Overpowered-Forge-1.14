@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.inventory.InventoryUtil;
+import addsynth.core.items.ItemUtil;
 import addsynth.core.util.server.ServerUtils;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -48,7 +49,7 @@ public final class RecipeUtil {
   }
 
   public static final ItemStack getFurnaceResult(final ItemStack stack){
-    return getFurnaceRecipeResult(stack.getItem());
+    return ItemUtil.itemStackExists(stack) ? getFurnaceRecipeResult(stack.getItem()) : ItemStack.EMPTY;
   }
 
   public static final ItemStack getFurnaceRecipeResult(final Item item){

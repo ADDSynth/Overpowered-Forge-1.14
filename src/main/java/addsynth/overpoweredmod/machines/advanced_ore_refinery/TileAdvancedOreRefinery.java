@@ -28,13 +28,12 @@ public final class TileAdvancedOreRefinery extends TileAlwaysOnMachine implement
 
   @Override
   protected final boolean test_condition(){
-    result = OreRefineryRecipes.get_result(inventory.input_inventory.getStackInSlot(0).getItem());
-    return inventory.output_inventory.can_add(0, result);
+    return inventory.can_work(OreRefineryRecipes::get_result);
   }
 
   @Override
   protected final void perform_work(){
-    inventory.output_inventory.insertItem(0, result.copy(), false);
+    inventory.output_result();
   }
 
   @Override

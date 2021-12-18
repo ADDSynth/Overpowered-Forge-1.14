@@ -1,5 +1,8 @@
 package addsynth.core.inventory;
 
+import java.util.function.Function;
+import addsynth.core.items.ItemUtil;
+import addsynth.core.recipe.shapeless.RecipeCollection;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -12,6 +15,7 @@ public final class MachineInventory {
   public final InputInventory input_inventory;
   public final CommonInventory working_inventory;
   public final OutputInventory output_inventory;
+  private ItemStack result;
 
   public <T extends IInputInventory & IOutputInventory> MachineInventory
   (T responder, final SlotData[] slots, final int output_slots){
@@ -27,10 +31,24 @@ public final class MachineInventory {
     output_inventory  = OutputInventory.create(responder, output_slots);
   }
 
+  /** For standard machine inventories, this must be called to check if the inventory contains a valid recipe. */
+  public final boolean can_work(final RecipeCollection recipes){
+    result = recipes.getResult(input_inventory.getItemStacks(), null);
+    return ItemUtil.itemStackExists(result) ? output_inventory.can_add(0, result) : false;
+  }
+
+  /** For standard machine inventories, this must be called to check if the inventory contains a valid recipe. */
+  public final boolean can_work(final Function<ItemStack, ItemStack> result_provider){
+    result = result_provider.apply(input_inventory.getStackInSlot(0));
+    return ItemUtil.itemStackExists(result) ? output_inventory.can_add(0, result) : false;
+  }
+
+  /** Use this if your inventory has lots of slots, otherwise it's more efficient to check directly.
+   *  @see addsynth.overpoweredmod.machines.magic_infuser.TileMagicInfuser#test_condition()
+   *  @see addsynth.overpoweredmod.machines.identifier.TileIdentifier#test_condition()
+   */
   public final boolean can_work(){
-    // Input must match a recipe.
-    // Result of recipe must be able to be inserted into the Output.
-    return false;
+    return !input_inventory.isEmpty() && output_inventory.isEmpty();
   }
 
   /** Decrements all inputs by 1 and transfers them to the working inventory
@@ -47,6 +65,10 @@ public final class MachineInventory {
     }
   }
 
+  public final void output_result(){
+    output_inventory.insertItem(0, result.copy(), false);
+  }
+
   public final void clear_working_inventory(){
     working_inventory.setEmpty();
   }
@@ -55,12 +77,14 @@ public final class MachineInventory {
     if(  input_inventory != null){   input_inventory.load(nbt);}
     if(working_inventory != null){ working_inventory.load(nbt, "WorkingInventory");}
     if( output_inventory != null){  output_inventory.load(nbt);}
+    result = ItemUtil.loadItemStackFromNBT(nbt, "Output");
   }
 
   public final void saveToNBT(final CompoundNBT nbt){
     if(  input_inventory != null){   input_inventory.save(nbt);}
     if(working_inventory != null){ working_inventory.save(nbt, "WorkingInventory");}
     if( output_inventory != null){  output_inventory.save(nbt);}
+    ItemUtil.saveItemStackToNBT(nbt, result, "Output");
   }
 
   public final void drop(final BlockPos pos, final World world){
