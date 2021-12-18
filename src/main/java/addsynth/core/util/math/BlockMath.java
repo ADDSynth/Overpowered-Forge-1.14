@@ -125,12 +125,12 @@ public final class BlockMath {
     return new double[] { (pos[0].getX() + pos[1].getX()) / 2, (pos[0].getY() + pos[1].getY()) / 2, (pos[0].getZ() + pos[1].getZ()) / 2 };
   }
 
-  /** Returns the chunk id. */
+  /** Returns the chunk id. Coordinates 512x512 is chunk 32x32. */
   public static final int get_chunk_index(final int coordinate){
     return coordinate >> 4;
   }
 
-  /** Returns the chunk id. */
+  /** Returns the chunk id. Coordinates 512x512 is chunk 32x32. */
   public static final int get_chunk_index(final double coordinate){
     return (int)Math.floor(coordinate) >> 4;
   }
@@ -148,6 +148,10 @@ public final class BlockMath {
   /** Returns the coordinate in the chunk, 0-15. */
   public static final int get_coordinate_in_chunk(final double coordinate){
     return (int)Math.floor(coordinate) & 15;
+  }
+
+  public static final int get_first_block_in_chunk(final int coordinate){
+    return (coordinate >> 4) << 4;
   }
 
   /** Returns the minimum position in the list of BlockPositions.
