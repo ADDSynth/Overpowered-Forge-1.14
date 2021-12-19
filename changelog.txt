@@ -3,8 +3,11 @@ NEW:
   Added 2 commands to ADDSynthCore that help in determining the number of ore blocks
     in a given area. Mostly useful to developers.
 FIXED:
-  Fixed Fusion Chamber not dropping.
+  Fixed Fusion Chamber not dropping when mined.
   Fixed Ores that drop an item not being affected by Pickaxes with the Fortune effect.
+  More recipe advancement fixes.
+
+
 
 v1.4 - July 26, 2021
 INFO:

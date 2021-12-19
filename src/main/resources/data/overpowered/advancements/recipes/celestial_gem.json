@@ -84,7 +84,7 @@
     "has_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "overpowered:energy_crystal"
+        "recipe": "overpowered:celestial_gem"
       }
     },
     "has_overpowered_gem": {
@@ -92,7 +92,7 @@
       "conditions": {
         "items": [
           {
-            "item": "overpowered:energy_crystal"
+            "item": "overpowered:celestial_gem"
           }
         ]
       }
@@ -114,7 +114,7 @@
   ],
   "rewards": {
     "recipes": [
-      "overpowered:energy_crystal"
+      "overpowered:celestial_gem"
     ]
   }
 }
