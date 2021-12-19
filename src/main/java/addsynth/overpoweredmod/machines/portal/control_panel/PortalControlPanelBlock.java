@@ -6,6 +6,7 @@ import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.lib.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
+import addsynth.overpoweredmod.machines.data_cable.DataCable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -37,6 +38,7 @@ public final class PortalControlPanelBlock extends MachineBlock {
     super(MaterialColor.SNOW);
     OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
+    DataCable.addAttachableBlock(this);
   }
 
   @Override

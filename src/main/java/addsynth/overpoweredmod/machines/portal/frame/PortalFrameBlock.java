@@ -5,6 +5,7 @@ import addsynth.core.util.game.MinecraftUtility;
 import addsynth.energy.lib.blocks.MachineBlock;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
+import addsynth.overpoweredmod.machines.data_cable.DataCable;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,6 +24,7 @@ public final class PortalFrameBlock extends MachineBlock {
   public PortalFrameBlock(final String name){
     super(MaterialColor.WOOL);
     OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
+    DataCable.addAttachableBlock(this);
   }
 
   @Override
