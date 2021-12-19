@@ -17,7 +17,8 @@ public final class MathUtility {
    */
   public static final int[] divide_evenly(final int number, @Nonnegative final int count){
     if(count == 0){
-      throw new ArithmeticException("Error in MathUtility.divide_evenly(). Cannot divide by 0!");
+      ADDSynthCore.log.fatal(new ArithmeticException("Error in "+MathUtility.class.getSimpleName()+".divide_evenly(). Cannot divide by 0!"));
+      return new int[count];
     }
     if(number == 0){
       return new int[count];
