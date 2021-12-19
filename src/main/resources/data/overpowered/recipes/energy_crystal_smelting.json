@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "overpowered:celestial_gem"
+  },
+  "result": "overpowered:energy_crystal",
+  "experience": 0.0,
+  "cookingtime": 3200
+}
