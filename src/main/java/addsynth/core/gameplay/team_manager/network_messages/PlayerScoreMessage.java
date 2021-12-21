@@ -21,11 +21,12 @@ public final class PlayerScoreMessage {
     return new PlayerScoreMessage(buf.readInt());
   }
 
-  public static void handle(final PlayerScoreMessage message, final Supplier<NetworkEvent.Context> context){
-    context.get().enqueueWork(() -> {
+  public static void handle(final PlayerScoreMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    context.enqueueWork(() -> {
       TeamManagerGui.player_score = message.score;
     });
-    context.get().setPacketHandled(true);
+    context.setPacketHandled(true);
   }
 
 }

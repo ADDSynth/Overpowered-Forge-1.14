@@ -49,10 +49,14 @@ public final class SyncPortalDataMessage {
     return new SyncPortalDataMessage(position, items, message, valid_portal);
   }
 
-  public static void handle(final SyncPortalDataMessage message, final Supplier<NetworkEvent.Context> context){
-    context.get().enqueueWork(() -> {
-      @SuppressWarnings("resource") final Minecraft minecraft = Minecraft.getInstance();
+  public static void handle(final SyncPortalDataMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    context.enqueueWork(() -> {
+
+      @SuppressWarnings("resource")
+      final Minecraft minecraft = Minecraft.getInstance();
       final World world = minecraft.player.world;
+
       if(world.isAreaLoaded(message.position, 0)){
         final TilePortalControlPanel control_panel = MinecraftUtility.getTileEntity(message.position, world, TilePortalControlPanel.class);
         if(control_panel != null){
@@ -60,7 +64,7 @@ public final class SyncPortalDataMessage {
         }
       }
     });
-    context.get().setPacketHandled(true);
+    context.setPacketHandled(true);
   }
 
 }

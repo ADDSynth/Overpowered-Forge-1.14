@@ -30,12 +30,13 @@ public final class ChangeCircuitCraftType {
     return new ChangeCircuitCraftType(new BlockPos(buf.readInt(),buf.readInt(),buf.readInt()), buf.readInt());
   }
 
-  public static void handle(final ChangeCircuitCraftType message, final Supplier<NetworkEvent.Context> context){
-    final ServerPlayerEntity player = context.get().getSender();
+  public static void handle(final ChangeCircuitCraftType message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    final ServerPlayerEntity player = context.getSender();
     if(player != null){
       @SuppressWarnings("resource")
       final ServerWorld world = player.func_71121_q();
-      context.get().enqueueWork(() -> {
+      context.enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
           final TileCircuitFabricator tile = MinecraftUtility.getTileEntity(message.position, world, TileCircuitFabricator.class);
           if(tile != null){
@@ -47,7 +48,7 @@ public final class ChangeCircuitCraftType {
           }
         }
       });
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
 

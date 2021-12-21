@@ -34,10 +34,14 @@ public final class LaserClientSyncMessage {
     return new LaserClientSyncMessage(NetworkUtil.readBlockPositions(buf), buf.readInt());
   }
 
-  public static final void handle(final LaserClientSyncMessage message, final Supplier<NetworkEvent.Context> context){
-    context.get().enqueueWork(() -> {
-      @SuppressWarnings("resource") final Minecraft minecraft = Minecraft.getInstance();
+  public static final void handle(final LaserClientSyncMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    context.enqueueWork(() -> {
+
+      @SuppressWarnings("resource")
+      final Minecraft minecraft = Minecraft.getInstance();
       final World world = minecraft.player.world;
+
       TileLaserHousing tile;
       for(final BlockPos pos : message.positions){
         if(world.isAreaLoaded(pos, 0)){
@@ -48,7 +52,7 @@ public final class LaserClientSyncMessage {
         }
       }
     });
-    context.get().setPacketHandled(true);
+    context.setPacketHandled(true);
   }
 
 }

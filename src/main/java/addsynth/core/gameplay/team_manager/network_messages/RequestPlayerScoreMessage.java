@@ -33,10 +33,11 @@ public final class RequestPlayerScoreMessage {
     return new RequestPlayerScoreMessage(NetworkUtil.readString(buf), NetworkUtil.readString(buf));
   }
 
-  public static void handle(final RequestPlayerScoreMessage message, final Supplier<NetworkEvent.Context> context){
-    final ServerPlayerEntity source = context.get().getSender();
+  public static void handle(final RequestPlayerScoreMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    final ServerPlayerEntity source = context.getSender();
     if(source != null){
-      context.get().enqueueWork(() -> {
+      context.enqueueWork(() -> {
         // server only gets sent this message if player name and objective name strings exist. 
         try{
           @SuppressWarnings("resource")
@@ -50,7 +51,7 @@ public final class RequestPlayerScoreMessage {
         catch(Exception e){}
       });
     }
-    context.get().setPacketHandled(true);
+    context.setPacketHandled(true);
   }
 
 }

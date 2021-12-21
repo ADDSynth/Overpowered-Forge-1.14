@@ -31,17 +31,18 @@ public final class TeamManagerCommand {
       return new ClearDisplaySlot(data.readInt());
     }
     @SuppressWarnings("resource")
-    public static void handle(ClearDisplaySlot message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(ClearDisplaySlot message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           scoreboard.setObjectiveInDisplaySlot(message.display_slot, null);
           TeamData.sync();
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -57,17 +58,18 @@ public final class TeamManagerCommand {
       return new DeleteTeam(NetworkUtil.readString(data));
     }
     @SuppressWarnings("resource")
-    public static void handle(DeleteTeam message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(DeleteTeam message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           scoreboard.removeTeam(scoreboard.getTeam(message.team_name));
           TeamData.sync();
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -83,17 +85,18 @@ public final class TeamManagerCommand {
       return new DeleteObjective(NetworkUtil.readString(data));
     }
     @SuppressWarnings("resource")
-    public static void handle(DeleteObjective message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(DeleteObjective message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           scoreboard.removeObjective(scoreboard.getObjective(message.objective_name));
           TeamData.sync();
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -112,10 +115,11 @@ public final class TeamManagerCommand {
       return new SetDisplaySlot(NetworkUtil.readString(data), data.readInt());
     }
     @SuppressWarnings("resource")
-    public static void handle(SetDisplaySlot message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(SetDisplaySlot message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           final ScoreObjective objective = scoreboard.getObjective(message.objective);
@@ -123,7 +127,7 @@ public final class TeamManagerCommand {
           TeamData.sync();
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -142,10 +146,11 @@ public final class TeamManagerCommand {
       return new AddPlayerToTeam(NetworkUtil.readString(data), NetworkUtil.readString(data));
     }
     @SuppressWarnings("resource")
-    public static void handle(AddPlayerToTeam message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(AddPlayerToTeam message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           if(scoreboard.addPlayerToTeam(message.player, scoreboard.getTeam(message.team))){
@@ -153,7 +158,7 @@ public final class TeamManagerCommand {
           }
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -172,10 +177,11 @@ public final class TeamManagerCommand {
       return new RemovePlayerFromTeam(NetworkUtil.readString(data), NetworkUtil.readString(data));
     }
     @SuppressWarnings("resource")
-    public static void handle(RemovePlayerFromTeam message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(RemovePlayerFromTeam message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           ScorePlayerTeam team = scoreboard.getPlayersTeam(message.player);
@@ -187,7 +193,7 @@ public final class TeamManagerCommand {
           }
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -209,10 +215,11 @@ public final class TeamManagerCommand {
       return new SetScore(NetworkUtil.readString(data), NetworkUtil.readString(data), data.readInt());
     }
     @SuppressWarnings("resource")
-    public static void handle(SetScore message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(SetScore message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           final ScoreObjective objective = scoreboard.getObjective(message.objective);
@@ -220,7 +227,7 @@ public final class TeamManagerCommand {
           score.setScorePoints(message.new_score_value);
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -242,10 +249,11 @@ public final class TeamManagerCommand {
       return new AddScore(NetworkUtil.readString(data), NetworkUtil.readString(data), data.readInt());
     }
     @SuppressWarnings("resource")
-    public static void handle(AddScore message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(AddScore message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           final ScoreObjective objective = scoreboard.getObjective(message.objective);
@@ -253,7 +261,7 @@ public final class TeamManagerCommand {
           score.increaseScore(message.score_to_add);
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -275,10 +283,11 @@ public final class TeamManagerCommand {
       return new SubtractScore(NetworkUtil.readString(data), NetworkUtil.readString(data), data.readInt());
     }
     @SuppressWarnings("resource")
-    public static void handle(SubtractScore message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(SubtractScore message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           final ScoreObjective objective = scoreboard.getObjective(message.objective);
@@ -286,7 +295,7 @@ public final class TeamManagerCommand {
           score.increaseScore(-message.score_to_subtract);
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -305,10 +314,11 @@ public final class TeamManagerCommand {
       return new ResetScore(NetworkUtil.readString(data), NetworkUtil.readString(data));
     }
     @SuppressWarnings("resource")
-    public static void handle(ResetScore message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(ResetScore message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           final ScoreObjective objective = scoreboard.getObjective(message.objective);
@@ -316,7 +326,7 @@ public final class TeamManagerCommand {
           score.reset();
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -338,16 +348,17 @@ public final class TeamManagerCommand {
       return new AddObjective(NetworkUtil.readString(data), NetworkUtil.readString(data), NetworkUtil.readString(data));
     }
     @SuppressWarnings("resource")
-    public static void handle(AddObjective message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(AddObjective message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           edit_objective(scoreboard, player, message.objective_id, message.display_name, message.criteria);
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -369,16 +380,17 @@ public final class TeamManagerCommand {
       return new EditObjective(NetworkUtil.readString(data), NetworkUtil.readString(data), NetworkUtil.readString(data));
     }
     @SuppressWarnings("resource")
-    public static void handle(EditObjective message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(EditObjective message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           edit_objective(scoreboard, player, message.objective_id, message.display_name, message.criteria);
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -429,10 +441,11 @@ public final class TeamManagerCommand {
       );
     }
     @SuppressWarnings("resource")
-    public static void handle(AddTeam message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(AddTeam message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           edit_team(scoreboard, player, message.team_id, message.display_name, message.pvp,
@@ -440,7 +453,7 @@ public final class TeamManagerCommand {
                     message.death_message_option, message.member_prefix, message.member_suffix);
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   
@@ -491,10 +504,11 @@ public final class TeamManagerCommand {
       );
     }
     @SuppressWarnings("resource")
-    public static void handle(EditTeam message, Supplier<NetworkEvent.Context> context){
-      final ServerPlayerEntity player = context.get().getSender();
+    public static void handle(EditTeam message, Supplier<NetworkEvent.Context> context_supplier){
+      final NetworkEvent.Context context = context_supplier.get();
+      final ServerPlayerEntity player = context.getSender();
       if(player != null){
-        context.get().enqueueWork(() -> {
+        context.enqueueWork(() -> {
           final MinecraftServer server = player.func_71121_q().getServer();
           final Scoreboard scoreboard = server.getScoreboard();
           edit_team(scoreboard, player, message.team_id, message.display_name, message.pvp,
@@ -502,7 +516,7 @@ public final class TeamManagerCommand {
                     message.death_message_option, message.member_prefix, message.member_suffix);
         });
       }
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
   

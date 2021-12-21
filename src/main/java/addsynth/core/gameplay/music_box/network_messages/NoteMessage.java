@@ -53,13 +53,15 @@ public final class NoteMessage {
     return new NoteMessage(position, buf.readByte(), buf.readByte());
   }
 
-  public static void handle(final NoteMessage message, final Supplier<NetworkEvent.Context> context){
-    final ServerPlayerEntity player = context.get().getSender();
+  public static void handle(final NoteMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    final ServerPlayerEntity player = context.getSender();
     if(player != null){
+      @SuppressWarnings("resource")
       final ServerWorld world = player.func_71121_q();
-      context.get().enqueueWork(() -> {
+      context.enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
-          final TileMusicBox tile = MinecraftUtility.getTileEntity(message.position,world,TileMusicBox.class);
+          final TileMusicBox tile = MinecraftUtility.getTileEntity(message.position,world, TileMusicBox.class);
           if(tile != null){
             if(message.on){
               tile.set_note(message.track, message.frame, message.note);
@@ -70,7 +72,7 @@ public final class NoteMessage {
           }
         }
       });
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
 

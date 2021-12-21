@@ -27,11 +27,13 @@ public final class ToggleAutoShutoffMessage {
     return new ToggleAutoShutoffMessage(new BlockPos(buf.readInt(),buf.readInt(),buf.readInt()));
   }
 
-  public static void handle(final ToggleAutoShutoffMessage message, final Supplier<NetworkEvent.Context> context){
-    final ServerPlayerEntity player = context.get().getSender();
+  public static void handle(final ToggleAutoShutoffMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    final ServerPlayerEntity player = context.getSender();
     if(player != null){
+      @SuppressWarnings("resource")
       final ServerWorld world = player.func_71121_q();
-      context.get().enqueueWork(() -> {
+      context.enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
           final TileEntity tile = world.getTileEntity(message.position);
           if(tile != null){
@@ -41,7 +43,7 @@ public final class ToggleAutoShutoffMessage {
           }
         }
       });
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
 

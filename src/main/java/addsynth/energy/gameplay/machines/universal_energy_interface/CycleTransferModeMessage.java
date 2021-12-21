@@ -26,11 +26,13 @@ public final class CycleTransferModeMessage {
     return new CycleTransferModeMessage(new BlockPos(buf.readInt(),buf.readInt(),buf.readInt()));
   }
 
-  public static void handle(final CycleTransferModeMessage message, final Supplier<NetworkEvent.Context> context){
-    final ServerPlayerEntity player = context.get().getSender();
+  public static void handle(final CycleTransferModeMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    final ServerPlayerEntity player = context.getSender();
     if(player != null){
+      @SuppressWarnings("resource")
       final ServerWorld world = player.func_71121_q();
-      context.get().enqueueWork(() -> {
+      context.enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
           final TileUniversalEnergyInterface tile = MinecraftUtility.getTileEntity(message.position, world, TileUniversalEnergyInterface.class);
           if(tile != null){
@@ -38,7 +40,7 @@ public final class CycleTransferModeMessage {
           }
         }
       });
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
 

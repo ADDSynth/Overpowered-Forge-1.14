@@ -20,10 +20,10 @@ public final class TeamManagerSyncMessage {
     return new TeamManagerSyncMessage();
   }
 
-  public static void handle(final TeamManagerSyncMessage message, final Supplier<NetworkEvent.Context> context){
+  public static void handle(final TeamManagerSyncMessage message, final Supplier<NetworkEvent.Context> context_supplier){
     // context.get().enqueueWork(() -> {
     // });
-    context.get().setPacketHandled(true);
+    context_supplier.get().setPacketHandled(true);
   }
 
 }

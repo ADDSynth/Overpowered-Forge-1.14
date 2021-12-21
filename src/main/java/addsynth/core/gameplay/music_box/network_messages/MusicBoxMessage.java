@@ -39,12 +39,13 @@ public final class MusicBoxMessage {
     return new MusicBoxMessage(position, command, buf.readByte());
   }
 
-  public static void handle(final MusicBoxMessage message, final Supplier<NetworkEvent.Context> context){
-    final ServerPlayerEntity player = context.get().getSender();
+  public static void handle(final MusicBoxMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    final ServerPlayerEntity player = context.getSender();
     if(player != null){
       @SuppressWarnings("resource")
       final ServerWorld world = player.func_71121_q();
-      context.get().enqueueWork(() -> {
+      context.enqueueWork(() -> {
         if(world.isAreaLoaded(message.position, 0)){
           final TileMusicBox music_box = MinecraftUtility.getTileEntity(message.position, world, TileMusicBox.class);
           if(music_box != null){
@@ -58,7 +59,7 @@ public final class MusicBoxMessage {
           }
         }
       });
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
 

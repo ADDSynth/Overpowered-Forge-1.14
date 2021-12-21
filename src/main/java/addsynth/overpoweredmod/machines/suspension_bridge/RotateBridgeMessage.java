@@ -26,19 +26,24 @@ public final class RotateBridgeMessage {
     return new RotateBridgeMessage(new BlockPos(buf.readInt(), buf.readInt(), buf.readInt()));
   }
 
-  public static final void handle(final RotateBridgeMessage message, final Supplier<NetworkEvent.Context> context){
-    final ServerPlayerEntity player = context.get().getSender();
+  public static final void handle(final RotateBridgeMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    final ServerPlayerEntity player = context.getSender();
     if(player != null){
-      context.get().enqueueWork(() -> {
+      context.enqueueWork(() -> {
+        @SuppressWarnings("resource")
         final ServerWorld world = player.func_71121_q();
         if(world.isAreaLoaded(message.position, 0)){
           final TileSuspensionBridge tile = MinecraftUtility.getTileEntity(message.position, world, TileSuspensionBridge.class);
           if(tile != null){
-            tile.getBlockNetwork().rotate();
+            final BridgeNetwork bridge_network = tile.getBlockNetwork();
+            if(bridge_network != null){
+              bridge_network.rotate();
+            }
           }
         }
       });
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
 

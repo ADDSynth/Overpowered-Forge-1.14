@@ -29,10 +29,12 @@ public final class CycleGemConverterMessage {
     return new CycleGemConverterMessage(new BlockPos(buf.readInt(),buf.readInt(),buf.readInt()),buf.readBoolean());
   }
 
-  public static void handle(final CycleGemConverterMessage message, final Supplier<NetworkEvent.Context> context){
-    final ServerPlayerEntity player = context.get().getSender();
+  public static void handle(final CycleGemConverterMessage message, final Supplier<NetworkEvent.Context> context_supplier){
+    final NetworkEvent.Context context = context_supplier.get();
+    final ServerPlayerEntity player = context.getSender();
     if(player != null){
-      context.get().enqueueWork(() -> {
+      context.enqueueWork(() -> {
+        @SuppressWarnings("resource")
         final ServerWorld world = player.func_71121_q();
         if(world.isAreaLoaded(message.position, 0)){
           final TileGemConverter tile = MinecraftUtility.getTileEntity(message.position, world, TileGemConverter.class);
@@ -41,7 +43,7 @@ public final class CycleGemConverterMessage {
           }
         }
       });
-      context.get().setPacketHandled(true);
+      context.setPacketHandled(true);
     }
   }
 
