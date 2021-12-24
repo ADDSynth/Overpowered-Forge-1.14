@@ -5,6 +5,9 @@ NEW:
   Added furnace smelting recipes for the Energy Crystal and Steel Ingots, so these can be
     automated using electric furnaces from other mods.
     - But using the Blast Furnace is still more efficient if you're not getting free energy.
+  Added another crafting recipe for the Light Block that uses Energy Crystals.
+    - Because I'm sure I'm not the only one that keeps making 9 Energy Crystals
+      only to realize you can't make a Light Block from them.
 FIXED:
   Fixed Fusion Chamber not dropping when mined.
   Fixed Ores that drop an item not being affected by Pickaxes with the Fortune effect.
