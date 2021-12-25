@@ -74,11 +74,11 @@ public final class TileGemConverter extends TileStandardWorkMachine implements I
   }
 
   @Override
-  protected final boolean test_condition(){
+  protected final boolean can_work(){
     if(quick_transfer()){
       return false;
     }
-    return inventory.input_inventory.getStackInSlot(0).isEmpty() ? false : inventory.output_inventory.can_add(0, gem_selected);
+    return inventory.getInputInventory().getStackInSlot(0).isEmpty() ? false : inventory.getOutputInventory().can_add(0, gem_selected);
   }
 
   /** Checks if the Input gem matches the gem we're converting to, and if that is the case,
@@ -87,12 +87,11 @@ public final class TileGemConverter extends TileStandardWorkMachine implements I
    *  we'll convert the gem to OUR gem.
    */
   private final boolean quick_transfer(){
-    final ItemStack input_stack = inventory.input_inventory.getStackInSlot(0);
+    final ItemStack input_stack = inventory.getInputInventory().getStackInSlot(0);
     if(input_stack.isEmpty() == false){
-      if(match(input_stack.getItem(), selection) && inventory.output_inventory.can_add(0, gem_selected)){
-        final ItemStack insert = inventory.input_inventory.extractItem(0, 1, false);
-        inventory.output_inventory.insertItem(0, insert, false);
-        changed = true;
+      if(match(input_stack.getItem(), selection) && inventory.getOutputInventory().can_add(0, gem_selected)){
+        final ItemStack insert = inventory.getInputInventory().extractItem(0, 1, false);
+        inventory.getOutputInventory().insertItem(0, insert, false);
         return true;
       }
     }
@@ -105,13 +104,14 @@ public final class TileGemConverter extends TileStandardWorkMachine implements I
   }
 
   @Override
-  protected final void onJobStart(){
+  protected final void begin_work(){
+    inventory.begin_work();
     converting_to = selection;
   }
 
   @Override
   protected final void perform_work(){
-    inventory.output_inventory.insertItem(0, Gems.getItemStack(converting_to), false);
+    inventory.getOutputInventory().insertItem(0, Gems.getItemStack(converting_to), false);
     
     if(player != null){
       final Stat gems_converted_stat = Stats.CUSTOM.get(CustomStats.GEMS_CONVERTED);

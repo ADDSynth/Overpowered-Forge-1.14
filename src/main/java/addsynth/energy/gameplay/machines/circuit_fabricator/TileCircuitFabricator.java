@@ -40,6 +40,7 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
 
   public TileCircuitFabricator(){
     super(Tiles.CIRCUIT_FABRICATOR, 8, null, 1, Config.circuit_fabricator_data);
+    inventory.setRecipeProvider(CircuitFabricatorRecipes.INSTANCE);
   }
 
   public final void change_circuit_craft(final int circuit_id, final boolean update){
@@ -61,11 +62,11 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
       // apply filters
       if(i < filter.length){
         input_slot[i].setFilter(filter[i]);
-        inventory.input_inventory.setFilter(i, ItemUtil.toItemArray(filter[i]));
+        inventory.getInputInventory().setFilter(i, ItemUtil.toItemArray(filter[i]));
       }
       else{
         input_slot[i].setFilter(new Item[0]);
-        inventory.input_inventory.setFilter(i, new Item[0]);
+        inventory.getInputInventory().setFilter(i, new Item[0]);
       }
     }
     
@@ -73,11 +74,12 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
     updateGui();
   }
 
-  // go through all inventory slots and eject all items that don't match
-  // this can only be called when the player clicks on a change recipe button on the gui,
-  //   which then sends a network message to the server.
+  /** Go through all inventory slots and eject all items that don't match.
+   *  This can only be called when the player clicks on a change recipe button on the gui,
+   *  which then sends a network message to the server.
+   */
   public final void ejectInvalidItems(final PlayerEntity player){
-    inventory.input_inventory.ejectInvalidItems(player);
+    inventory.getInputInventory().ejectInvalidItems(player);
   }
 
   public final void updateGui(){
@@ -86,16 +88,6 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
         CircuitFabricatorGui.updateRecipeDisplay(filter);
       }
     }
-  }
-
-  @Override
-  protected boolean test_condition(){
-    return inventory.can_work(CircuitFabricatorRecipes.INSTANCE);
-  }
-
-  @Override
-  protected void perform_work(){
-    inventory.output_result();
   }
 
   @Override

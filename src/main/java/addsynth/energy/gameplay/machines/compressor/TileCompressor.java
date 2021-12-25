@@ -18,11 +18,7 @@ public final class TileCompressor extends TileStandardWorkMachine implements INa
 
   public TileCompressor(){
     super(Tiles.COMPRESSOR, 1, CompressorRecipes.INSTANCE.getFilter(), 1, Config.compressor_data);
-  }
-
-  @Override
-  protected final boolean test_condition(){
-    return inventory.can_work(CompressorRecipes.INSTANCE);
+    inventory.setRecipeProvider(CompressorRecipes.INSTANCE);
   }
 
   @Override

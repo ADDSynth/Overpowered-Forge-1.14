@@ -2,6 +2,7 @@ package addsynth.core.inventory;
 
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -74,10 +75,22 @@ public final class InventoryUtil {
     }
   }
 
+  /** This returns the {@link ItemStackHandler} converted to an Inventory. However, the contents
+   *  of the inventory SHOULD NOT be modified. This should only be used as input to the 
+   *  {@link IRecipe#matches(net.minecraft.inventory.IInventory, World) IRecipe.matches()}
+   *  method to find a matching recipe.
+   * @param handler
+   */
   public static final Inventory toInventory(final ItemStackHandler handler){
     return new Inventory(getItemStacks(handler));
   }
 
+  /** Returns an array of all ItemStacks in this Inventory. However, you SHOULD NOT modify
+   *  these ItemStacks as the changes will be reflected in the inventory. This should only
+   *  be used to help convert the {@link ItemStackHandler} to an array of ItemStacks for
+   *  comparing against crafting recipes.
+   * @param handler
+   */
   public static final ItemStack[] getItemStacks(final ItemStackHandler handler){
     final int max = handler.getSlots();
     final ItemStack[] stacks = new ItemStack[max];

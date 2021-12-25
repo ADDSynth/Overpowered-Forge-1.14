@@ -41,21 +41,21 @@ public final class TileIdentifier extends TileStandardWorkMachine implements INa
   }
 
   @Override
-  protected final boolean test_condition(){
-    final ItemStack input = inventory.input_inventory.getStackInSlot(0);
-    final ItemStack output = inventory.output_inventory.getStackInSlot(0);
+  protected final boolean can_work(){
+    final ItemStack input = inventory.getInputInventory().getStackInSlot(0);
+    final ItemStack output = inventory.getOutputInventory().getStackInSlot(0);
     return input.isEmpty() == false && output.isEmpty();
   }
 
   @Override
   protected final void perform_work(){
-    final ItemStack input = inventory.working_inventory.getStackInSlot(0);
+    final ItemStack input = inventory.getWorkingInventory().getStackInSlot(0);
     if(input.isEmpty() == false){
       if(input.getItem() instanceof UnidentifiedItem){
         final UnidentifiedItem item = (UnidentifiedItem)(input.getItem());
         final ItemStack stack = new ItemStack(ItemUtil.get_armor(item.armor_material, item.equipment_type), 1);
         ArmorEffects.enchant(stack);
-        inventory.output_inventory.setStackInSlot(0, stack);
+        inventory.getOutputInventory().setStackInSlot(0, stack);
         if(player != null){
           AdvancementUtil.grantAdvancement(player, CustomAdvancements.IDENTIFY_SOMETHING);
           player.addStat(CustomStats.ITEMS_IDENTIFIED);

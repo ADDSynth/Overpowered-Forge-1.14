@@ -24,16 +24,7 @@ public final class TileAdvancedOreRefinery extends TileAlwaysOnMachine implement
       1, OreRefineryRecipes.get_input_filter(), 1,
       MachineValues.advanced_ore_refinery
     );
-  }
-
-  @Override
-  protected final boolean test_condition(){
-    return inventory.can_work(OreRefineryRecipes::get_result);
-  }
-
-  @Override
-  protected final void perform_work(){
-    inventory.output_result();
+    inventory.setRecipeProvider(OreRefineryRecipes::get_result);
   }
 
   @Override

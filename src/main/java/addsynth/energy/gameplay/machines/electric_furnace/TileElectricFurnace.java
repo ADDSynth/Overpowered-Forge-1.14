@@ -18,20 +18,11 @@ public final class TileElectricFurnace extends TileAlwaysOnMachine implements IN
 
   public TileElectricFurnace(){
     super(Tiles.ELECTRIC_FURNACE, 1, get_filter(), 1, new MachineData(MachineType.ALWAYS_ON, 200, 5, 0, 0));
+    inventory.setRecipeProvider(RecipeUtil::getFurnaceResult);
   }
 
   public static final Item[] get_filter(){
     return RecipeUtil.getFurnaceIngredients();
-  }
-
-  @Override
-  protected final boolean test_condition(){
-    return inventory.can_work(RecipeUtil::getFurnaceResult);
-  }
-
-  @Override
-  protected final void perform_work(){
-    inventory.output_result();
   }
 
   @Override

@@ -1,6 +1,7 @@
 package addsynth.core.inventory;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -18,7 +19,8 @@ import net.minecraftforge.items.ItemStackHandler;
  */
 public class CommonInventory extends ItemStackHandler {
 
-  private final IInventoryUser responder;
+  @Nullable
+  private IInventoryResponder responder;
 
   protected CommonInventory(final IInventoryUser responder, final int number_of_slots){
     super(number_of_slots);
@@ -39,6 +41,11 @@ public class CommonInventory extends ItemStackHandler {
 
   public static CommonInventory create(final IInventoryUser responder, final int number_of_slots){
     return number_of_slots > 0 ? new CommonInventory(responder, number_of_slots) : null;
+  }
+
+  /** Use this to set a custom responder to Inventory changes. This overrides the default behavior. */
+  public final void setResponder(final IInventoryResponder responder){
+    this.responder = responder;
   }
 
   @Override
@@ -73,6 +80,11 @@ public class CommonInventory extends ItemStackHandler {
     }
   }
 
+  /** Returns all the ItemStacks in this Inventory. However, these ItemStacks SHOULD NOT
+   *  be modified! You should only use this to check if the items matches a
+   *  crafting recipe. You can also use {@link InventoryUtil#toInventory(ItemStackHandler)}
+   *  if the inventory is an {@link ItemStackHandler}.
+   */
   public final ItemStack[] getItemStacks(){
     return stacks.toArray(new ItemStack[stacks.size()]);
   }

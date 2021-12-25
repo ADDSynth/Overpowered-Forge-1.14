@@ -21,23 +21,15 @@ public final class TileInverter extends TileStandardWorkMachine implements IName
 
   public TileInverter(){
     super(Tiles.INVERTER, 1, input_filter, 1, MachineValues.inverter);
+    inventory.setRecipeProvider(TileInverter::getInverted);
   }
 
-  @Override
-  protected final boolean test_condition(){
-    return inventory.can_work(TileInverter::getInverted);
-  }
-
-  public static final @Nonnull ItemStack getInverted(final ItemStack input_stack){
+  @Nonnull
+  public static final ItemStack getInverted(final ItemStack input_stack){
     final Item item = input_stack.getItem();
     if(item == Init.energy_crystal){ return new ItemStack(Init.void_crystal,   1); }
     if(item == Init.void_crystal){   return new ItemStack(Init.energy_crystal, 1); }
     return ItemStack.EMPTY;
-  }
-
-  @Override
-  public final void perform_work(){
-    inventory.output_result();
   }
 
   @Override

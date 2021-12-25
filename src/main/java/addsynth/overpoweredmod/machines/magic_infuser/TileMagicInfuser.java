@@ -96,13 +96,19 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
       1,
       MachineValues.magic_infuser
     );
+    inventory.setResponder(this);
   }
 
   @Override
-  protected final boolean test_condition(){
-    return !inventory.input_inventory.getStackInSlot(0).isEmpty() &&
-           !inventory.input_inventory.getStackInSlot(1).isEmpty() &&
-            inventory.output_inventory.getStackInSlot(0).isEmpty();
+  public final void onInventoryChanged(){
+    changed = true;
+  }
+
+  @Override
+  protected final boolean can_work(){
+    return !inventory.getInputInventory().getStackInSlot(0).isEmpty() &&
+           !inventory.getInputInventory().getStackInSlot(1).isEmpty() &&
+            inventory.getOutputInventory().getStackInSlot(0).isEmpty();
   }
 
   @Override
@@ -112,13 +118,13 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
       final ItemStack enchant_book = new ItemStack(Items.ENCHANTED_BOOK, 1);
       final EnchantmentData enchantment_data = new EnchantmentData(enchantment, 1);
       EnchantedBookItem.addEnchantment(enchant_book, enchantment_data);
-      inventory.output_inventory.setStackInSlot(0, enchant_book);
+      inventory.getOutputInventory().setStackInSlot(0, enchant_book);
     }
   }
 
   private final Enchantment get_enchantment(){
     // https://minecraft.gamepedia.com/Enchanting#Summary_of_enchantments
-    final Item item = inventory.working_inventory.getStackInSlot(1).getItem();
+    final Item item = inventory.getWorkingInventory().getStackInSlot(1).getItem();
     final Random random = new Random();
     if(MaterialsUtil.match(item, MaterialsUtil.getRubies())){
       return RandomUtil.choose(random, ruby_enchantments);
