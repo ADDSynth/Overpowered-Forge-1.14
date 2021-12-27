@@ -57,7 +57,7 @@
       "has_frame_block"
     ]
   ],
-  "reward": {
+  "rewards": {
     "recipes": [
       "overpowered:iron_frame_block"
     ]
