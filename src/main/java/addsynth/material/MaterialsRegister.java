@@ -1,6 +1,7 @@
 package addsynth.material;
 
 import addsynth.material.compat.MaterialsCompat;
+import addsynth.material.compat.recipe.BronzeModAbsentCondition;
 import addsynth.material.compat.recipe.SteelModAbsentCondition;
 import addsynth.material.types.Gem;
 import addsynth.overpoweredmod.config.Features;
@@ -141,6 +142,7 @@ public final class MaterialsRegister {
   @SubscribeEvent
   public static final void registerRecipeSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event){
     CraftingHelper.register(SteelModAbsentCondition.Serializer.INSTANCE);
+    CraftingHelper.register(BronzeModAbsentCondition.Serializer.INSTANCE);
   }
 
 }

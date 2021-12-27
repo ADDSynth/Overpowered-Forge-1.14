@@ -8,6 +8,8 @@ NEW:
   Added another crafting recipe for the Light Block that uses Energy Crystals.
     - Because I'm sure I'm not the only one that keeps making 9 Energy Crystals
       only to realize you can't make a Light Block from them.
+CHANGED:
+  No longer registers a Bronze crafting recipe if Immersive Engineering or Mekanism is installed.
 FIXED:
   Fixed Fusion Chamber not dropping when mined.
   Fixed Ores that drop an item not being affected by Pickaxes with the Fortune effect.

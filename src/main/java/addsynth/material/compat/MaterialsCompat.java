@@ -15,6 +15,13 @@ public final class MaterialsCompat {
     );
   }
 
+  public static final boolean BronzeModAbsent(){
+    return !(
+      Compatability.IMMERSIVE_ENGINEERING.loaded || // In Alloy Smelter
+      Compatability.MEKANISM.loaded                 // by combining dusts
+    );
+  }
+
   public static final void sendIMCMessages(final InterModEnqueueEvent event){
     if(Compatability.PROJECT_E.loaded){
       ProjectE.register_emc_values();

@@ -9,5 +9,10 @@
   "result": {
     "item": "addsynth_materials:bronze_ingot",
     "count": 4
-  }
+  },
+  "conditions": [
+    {
+      "type": "addsynth_materials:bronze_mod_absent"
+    }
+  ]
 }

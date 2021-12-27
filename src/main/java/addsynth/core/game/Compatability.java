@@ -172,6 +172,7 @@ public final class Compatability {
     public static final ModType type = ModType.Tech;
   }
   
+  @Deprecated // Another Minecraft 1.12 mod.
   public static final class EXTRA_UTILITIES {
     public static final String name = "Extra Utilities 2";
     public static final String modid = "extrautils2";
