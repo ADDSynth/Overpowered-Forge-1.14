@@ -54,7 +54,8 @@ public final class MinecraftUtility {
    *  <p>Returns a TileEntity cast to the type you specified if the TileEntity we
    *     found is an instance of the class you specified. Returns null otherwise.
    */
-  public static final @Nullable <T extends TileEntity> T getTileEntity(final BlockPos position, final World world, final Class<T> specific_tile_entity_class){
+  @Nullable
+  public static final <T extends TileEntity> T getTileEntity(final BlockPos position, final World world, final Class<T> specific_tile_entity_class){
     final TileEntity tile = world.getTileEntity(position);
     if(tile != null){
       if(specific_tile_entity_class.isInstance(tile)){
