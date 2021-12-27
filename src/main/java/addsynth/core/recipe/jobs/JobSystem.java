@@ -1,4 +1,4 @@
-package addsynth.core.recipe;
+package addsynth.core.recipe.jobs;
 
 import java.util.ArrayList;
 import java.util.function.Function;

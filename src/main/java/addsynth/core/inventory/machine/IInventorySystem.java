@@ -1,4 +1,6 @@
-package addsynth.core.inventory;
+package addsynth.core.inventory.machine;
+
+import addsynth.core.inventory.IInventoryResponder;
 
 /** <p>Primarily used in {@link MachineInventory}.
  *  <p>In the {@link IInventoryResponder#onInventoryChanged() onInventoryChanged()} function,

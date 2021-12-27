@@ -3,6 +3,8 @@ package addsynth.energy.lib.tiles.machines;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.*;
+import addsynth.core.inventory.machine.IMachineInventory;
+import addsynth.core.inventory.machine.MachineInventory;
 import addsynth.energy.lib.config.MachineData;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundNBT;

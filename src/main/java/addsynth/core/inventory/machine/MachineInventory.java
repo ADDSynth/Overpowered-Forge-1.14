@@ -1,10 +1,16 @@
-package addsynth.core.inventory;
+package addsynth.core.inventory.machine;
 
 import java.util.function.Function;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.core.recipe.JobSystem;
-import addsynth.core.recipe.WorkJob;
+import addsynth.core.inventory.IInventoryResponder;
+import addsynth.core.inventory.InputInventory;
+import addsynth.core.inventory.InventoryUtil;
+import addsynth.core.inventory.OutputInventory;
+import addsynth.core.inventory.SlotData;
+import addsynth.core.inventory.WorkingInventory;
+import addsynth.core.recipe.jobs.JobSystem;
+import addsynth.core.recipe.jobs.WorkJob;
 import addsynth.core.recipe.shapeless.RecipeCollection;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

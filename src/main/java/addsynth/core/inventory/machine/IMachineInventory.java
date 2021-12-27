@@ -1,4 +1,6 @@
-package addsynth.core.inventory;
+package addsynth.core.inventory.machine;
+
+import addsynth.core.inventory.CommonInventory;
 
 public interface IMachineInventory {
 

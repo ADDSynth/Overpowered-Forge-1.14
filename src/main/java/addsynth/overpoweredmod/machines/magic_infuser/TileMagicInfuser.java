@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.magic_infuser;
 import java.util.Random;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
-import addsynth.core.recipe.JobSystem;
+import addsynth.core.recipe.jobs.JobSystem;
 import addsynth.core.util.StringUtil;
 import addsynth.core.util.math.random.RandomUtil;
 import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;
