@@ -1,0 +1,44 @@
+{
+  "parent": "overpowered:recipes/root",
+  "criteria": {
+    "celestial_gem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:celestial_gem"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "overpowered:light_block"
+      }
+    },
+    "has_light_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:light_block"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "celestial_gem",
+      "has_recipe",
+      "has_light_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "overpowered:light_block",
+      "overpowered:celestial_gem_from_block"
+    ]
+  }
+}
