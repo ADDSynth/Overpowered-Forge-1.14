@@ -2,14 +2,7 @@ package addsynth.energy.lib.tiles.machines;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.core.inventory.CommonInventory;
-import addsynth.core.inventory.IInputInventory;
-import addsynth.core.inventory.IOutputInventory;
-import addsynth.core.inventory.InputInventory;
-import addsynth.core.inventory.InventoryUtil;
-import addsynth.core.inventory.MachineInventory;
-import addsynth.core.inventory.OutputInventory;
-import addsynth.core.inventory.SlotData;
+import addsynth.core.inventory.*;
 import addsynth.energy.lib.config.MachineData;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundNBT;
@@ -22,7 +15,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 /** Machines that are always running cannot be turned off. They switch to an
  *  Idle state when they can't do work. These machines don't have idle energy. */
 public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine
-  implements IInputInventory, IOutputInventory {
+  implements IInputInventory, IOutputInventory, IMachineInventory {
 
   protected final MachineInventory inventory;
 
@@ -63,8 +56,7 @@ public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine
     switch(state){
     case RUNNING:
       if(energy.isFull()){
-        inventory.output_result();
-        inventory.clear_working_inventory();
+        inventory.finish_work();
         energy.setEmpty();
         if(inventory.can_work()){
           inventory.begin_work();
@@ -94,6 +86,16 @@ public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine
   // to specify non-default behiavour for this type of machine. See TileStandardWorkMachine.
 
   @Override
+  public final void onInventoryChanged(){
+    changed = true;
+  }
+
+  @Override
+  public final int getJobs(){
+    return inventory.getJobs();
+  }
+
+  @Override
   public void read(final CompoundNBT nbt){
     super.read(nbt);
     inventory.loadFromNBT(nbt);
@@ -119,11 +121,6 @@ public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine
   }
 
   @Override
-  public final void onInventoryChanged(){
-    changed = true;
-  }
-
-  @Override
   public double getRequestedEnergy(){
     if(state == MachineState.RUNNING){
       return energy.getRequestedEnergy();
@@ -146,6 +143,7 @@ public abstract class TileAlwaysOnMachine extends TileAbstractWorkMachine
     return inventory.getOutputInventory();
   }
 
+  @Override
   public final CommonInventory getWorkingInventory(){
     return inventory.getWorkingInventory();
   }

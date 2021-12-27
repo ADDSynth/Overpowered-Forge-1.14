@@ -22,7 +22,7 @@ public class CommonInventory extends ItemStackHandler {
   @Nullable
   private IInventoryResponder responder;
 
-  protected CommonInventory(final IInventoryUser responder, final int number_of_slots){
+  protected CommonInventory(final IInventoryResponder responder, final int number_of_slots){
     super(number_of_slots);
     this.responder = responder;
   }
@@ -73,20 +73,26 @@ public class CommonInventory extends ItemStackHandler {
   }
 
   /** Sets all slots in the inventory to Empty. */
-  public final void setEmpty(){
+  public void setEmpty(){
     int i;
     for(i = 0; i < stacks.size(); i++){
       setStackInSlot(i, ItemStack.EMPTY);
     }
   }
 
-  /** Returns all the ItemStacks in this Inventory. However, these ItemStacks SHOULD NOT
-   *  be modified! You should only use this to check if the items matches a
-   *  crafting recipe. You can also use {@link InventoryUtil#toInventory(ItemStackHandler)}
-   *  if the inventory is an {@link ItemStackHandler}.
+  /** Returns all the ItemStacks in this Inventory. You should only use this
+   *  to check if the items matches a crafting recipe. You can also use
+   *  {@link InventoryUtil#toInventory(ItemStackHandler)} if the inventory
+   *  is an {@link ItemStackHandler}.
    */
   public final ItemStack[] getItemStacks(){
-    return stacks.toArray(new ItemStack[stacks.size()]);
+    final int size = stacks.size();
+    final ItemStack[] items = new ItemStack[size];
+    int i;
+    for(i = 0; i < size; i++){
+      items[i] = stacks.get(i).copy();
+    }
+    return items;
   }
 
   public final void drop_in_world(final World world, final BlockPos pos){

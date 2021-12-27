@@ -3,12 +3,11 @@ package addsynth.energy.lib.gui;
 import addsynth.core.container.TileEntityContainer;
 import addsynth.core.gui.GuiContainerBase;
 import addsynth.core.gui.util.GuiUtil;
-import addsynth.core.inventory.IInputInventory;
+import addsynth.core.inventory.IMachineInventory;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.lib.main.Energy;
 import addsynth.energy.lib.main.IEnergyUser;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -104,14 +103,8 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
     if(energy != null){
       final double rate = energy.getDifference();
       final String time_left; // it let's me do this?
-      if(tile instanceof IInputInventory){
-        // TODO: to calculate total time left, update a jobs array every time the inventories change!
-        //       a Job is a list of ItemStacks. Keep the Jobs in a Queue List.
-        //       When input inventory changes, copy the inventory, then check which job can be performed,
-        //       add the Job to the job array and remove the job from the copy.
-        //       This way we determine what jobs to perform ahead of time, and it works with more than 1 ItemStack.
-        final ItemStack stack = ((IInputInventory)tile).getInputInventory().getStackInSlot(0);
-        time_left = StringUtil.print_time((stack.getCount() * energy.getCapacity()) + energy.getEnergyNeeded(), rate);
+      if(tile instanceof IMachineInventory){
+        time_left = StringUtil.print_time((((IMachineInventory)tile).getJobs() * energy.getCapacity()) + energy.getEnergyNeeded(), rate);
       }
       else{
         time_left = StringUtil.print_time(energy.getEnergyNeeded(), rate);

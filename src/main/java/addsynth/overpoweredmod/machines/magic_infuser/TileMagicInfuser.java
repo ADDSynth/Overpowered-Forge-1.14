@@ -3,6 +3,7 @@ package addsynth.overpoweredmod.machines.magic_infuser;
 import java.util.Random;
 import javax.annotation.Nullable;
 import addsynth.core.inventory.SlotData;
+import addsynth.core.recipe.JobSystem;
 import addsynth.core.util.StringUtil;
 import addsynth.core.util.math.random.RandomUtil;
 import addsynth.energy.lib.tiles.machines.TileStandardWorkMachine;
@@ -28,7 +29,7 @@ import net.minecraft.item.ItemStack;
 
 public final class TileMagicInfuser extends TileStandardWorkMachine implements INamedContainerProvider {
 
-  // TODO: Change these into actual recipes, and show them in JEI.
+  // TODO: Change these into actual recipes, and show them in JEI. And once I do that, I can get rid of these special-case function overrides. The recipe resultProvider can return a random Enchanted book.
   private static final Enchantment[] ruby_enchantments = new Enchantment[]{
     Enchantments.POWER,
     Enchantments.PUNCH
@@ -120,6 +121,13 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
       EnchantedBookItem.addEnchantment(enchant_book, enchantment_data);
       inventory.getOutputInventory().setStackInSlot(0, enchant_book);
     }
+    inventory.getWorkingInventory().setEmpty();
+    inventory.recheck();
+  }
+
+  @Override
+  public final int getJobs(){
+    return JobSystem.getMaxNumberOfJobs(inventory.getInputInventory().getItemStacks(), true);
   }
 
   private final Enchantment get_enchantment(){

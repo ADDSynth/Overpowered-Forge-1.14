@@ -3,7 +3,8 @@ package addsynth.core.inventory;
 import java.util.function.Function;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.core.items.ItemUtil;
+import addsynth.core.recipe.JobSystem;
+import addsynth.core.recipe.WorkJob;
 import addsynth.core.recipe.shapeless.RecipeCollection;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,31 +12,29 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-/** Machines that move a recipe from an Input to a working Inventory use this. */
+/** Machines that move a recipe from an Input to a {@link WorkingInventory} use this. */
 public final class MachineInventory implements IInventoryResponder, IInventorySystem {
 
   private final InputInventory input_inventory;
-  private final CommonInventory working_inventory;
+  private final WorkingInventory working_inventory;
   private final OutputInventory output_inventory;
   private boolean changed;
   private boolean can_work;
-  /** Inventory System result field is only used to check
-   *  if the result can be inserted into the output inventory. */
   @Nonnull
-  private ItemStack result = ItemStack.EMPTY;
+  private WorkJob[] jobs = new WorkJob[0];
   @Nullable
   private Function<ItemStack[], ItemStack> resultProvider;
 
   public MachineInventory(final SlotData[] slots, final int output_slots){
     input_inventory   =  InputInventory.create(null, slots);
-    working_inventory = CommonInventory.create(slots);
+    working_inventory = WorkingInventory.create(slots);
     output_inventory  = OutputInventory.create(null, output_slots);
     setResponder(this);
   }
 
   public MachineInventory(final int input_slots, final Item[] filter, final int output_slots){
     input_inventory   =  InputInventory.create(null, input_slots, filter);
-    working_inventory = CommonInventory.create(input_slots);
+    working_inventory = WorkingInventory.create(input_slots);
     output_inventory  = OutputInventory.create(null, output_slots);
     setResponder(this);
   }
@@ -68,19 +67,21 @@ public final class MachineInventory implements IInventoryResponder, IInventorySy
   @Override
   public final void onInventoryChanged(){
     changed = true;
-    recheck();
   }
 
+  /** Do NOT call this every time the inventory is changed! Only call
+   *  this once per tick, or when we need to recheck the input inventory. */
   @Override
   public final void recheck(){
     if(resultProvider != null){
-      result = resultProvider.apply(input_inventory.getItemStacks());
-      can_work = ItemUtil.itemStackExists(result) ? output_inventory.can_add(0, result) : false;
+      // !! We still need to get the result of the input, because we ALSO need to check if we can output it into the output slots!
+      jobs = JobSystem.getJobs(input_inventory.getItemStacks(), resultProvider);
+      can_work = jobs.length > 0 ? output_inventory.can_add(0, jobs[0].getResult()) : false;
     }
     else{
-      // ADDSynthCore.log.fatal(new NullPointerException("MachineInventory does not have a recipeProvider. Your TileEntity forgot to call setRecipeProvider()!"));
-      result = ItemStack.EMPTY;
-      can_work = false;
+      // TileEntity wants to handle the logic itself
+      jobs = JobSystem.getJobs(input_inventory.getItemStacks());
+      can_work = jobs.length > 0 && output_inventory.isEmpty();
     }
   }
 
@@ -89,17 +90,21 @@ public final class MachineInventory implements IInventoryResponder, IInventorySy
     return can_work;
   }
 
+  public final int getJobs(){
+    return jobs != null ? jobs.length : 0;
+  }
+
   @Override
   public final boolean tick(){
     if(changed){
+      recheck();
       changed = false;
       return true;
     }
     return false;
   }
 
-  /** Decrements all inputs by 1 and transfers them to the working inventory
-   *  to begin working on it.<br />
+  /** Decrements all inputs by 1 and transfers them to the working inventory.<br>
    *  <b>Note:</b> It is STRONGLY recommended you DO NOT Override this! */
   @Override
   public void begin_work(){
@@ -110,31 +115,33 @@ public final class MachineInventory implements IInventoryResponder, IInventorySy
         stack = input_inventory.extractItem(i, 1, false);
         working_inventory.setStackInSlot(i, stack);
       }
+      if(jobs.length > 0){
+        working_inventory.setResult(jobs[0].getResult());
+      }
     }
   }
 
-  public final void output_result(){
-    output_inventory.insertItem(0, result.copy(), false);
-  }
-
-  public final void clear_working_inventory(){
+  /** Passes result ItemStack to the output inventory, clears the working inventory,
+   *  then recalculates jobs.  */
+  public final void finish_work(){
+    output_inventory.insertItem(0, working_inventory.getResult(), false);
+    // OPTIMIZE: actually, there's no need to save the result of the Working inventory, just pass its contents into the
+    //           same resultProvider to output the result.
     working_inventory.setEmpty();
+    recheck(); // For machines it is normal to check if we can do another job, once this one finishes.
   }
 
   public final void loadFromNBT(final CompoundNBT nbt){
     if(  input_inventory != null){   input_inventory.load(nbt);}
-    if(working_inventory != null){ working_inventory.load(nbt, "WorkingInventory");}
+    if(working_inventory != null){ working_inventory.load(nbt);}
     if( output_inventory != null){  output_inventory.load(nbt);}
-    // !!! IMPORTANT: machines need to remember the result of the recipe they're currently working on!
-    // result = ItemUtil.loadItemStackFromNBT(nbt, "Output");
     recheck();
   }
 
   public final void saveToNBT(final CompoundNBT nbt){
     if(  input_inventory != null){   input_inventory.save(nbt);}
-    if(working_inventory != null){ working_inventory.save(nbt, "WorkingInventory");}
+    if(working_inventory != null){ working_inventory.save(nbt);}
     if( output_inventory != null){  output_inventory.save(nbt);}
-    // ItemUtil.saveItemStackToNBT(nbt, result, "Output");
   }
 
   public final void drop(final BlockPos pos, final World world){
@@ -145,7 +152,7 @@ public final class MachineInventory implements IInventoryResponder, IInventorySy
     return input_inventory;
   }
   
-  public final CommonInventory getWorkingInventory(){
+  public final WorkingInventory getWorkingInventory(){
     return working_inventory;
   }
   

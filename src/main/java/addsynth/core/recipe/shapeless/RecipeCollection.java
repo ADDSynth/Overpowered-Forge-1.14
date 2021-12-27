@@ -1,6 +1,7 @@
 package addsynth.core.recipe.shapeless;
 
 import java.util.ArrayList;
+import javax.annotation.Nonnull;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.Debug;
 import addsynth.core.recipe.RecipeUtil;
@@ -81,19 +82,21 @@ public class RecipeCollection <T extends AbstractRecipe> {
   }
 
   /** Returns the recipe output, or null if there is no matching recipe. */
+  @Nonnull
   public final ItemStack getResult(final ItemStack input, final World world){
     return getResult(new ItemStack[] {input}, world);
   }
 
-  /** Returns the recipe output, or null if there is no matching recipe. */
+  /** Returns the recipe output, or ItemStack.EMPTY if there is no matching recipe. */
+  @Nonnull
   public final ItemStack getResult(final ItemStack[] input, final World world){
-    final Inventory inventory = new Inventory(input);
+    final Inventory inventory = new Inventory(input); // OPTIMIZE this by skipping converting the ItemStacks into an inventory, and using RecipeItemHelper directly. And remove world argument.
     for(final T recipe : recipes){
       if(recipe.matches(inventory, world)){
         return recipe.getRecipeOutput().copy();
       }
     }
-    return null;
+    return ItemStack.EMPTY;
   }
   
   /** Finds the recipe with an output that matches the passed in ItemStack.
