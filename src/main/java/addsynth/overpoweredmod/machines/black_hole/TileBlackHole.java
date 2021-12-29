@@ -9,7 +9,9 @@ import addsynth.core.util.time.TimeUtil;
 import addsynth.core.util.world.WorldUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.config.Config;
+import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.registers.Tiles;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -175,22 +177,24 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
 
   @SuppressWarnings({ "null", "resource" })
   private final void delete_blocks(){
-    BlockPos position;
+    final BlockPos.MutableBlockPos position = new BlockPos.MutableBlockPos();
+    Block block;
     boolean check_1;
     boolean check_2;
     do{
       // delete current position
-      position = new BlockPos(x,y,z);
-      if((x == pos.getX() && y == pos.getY() && z == pos.getZ()) == false){
-        if(world.getBlockState(position).getBlock() != Blocks.AIR){
-          if(BlockMath.is_inside_sphere(pos, radius, position)){
-            if(Config.black_holes_erase_bedrock.get()){
+      position.setX(x);
+      position.setY(y);
+      position.setZ(z);
+      block = world.getBlockState(position).getBlock();
+      if(block != Blocks.AIR && block != Init.black_hole){
+        if(BlockMath.is_inside_sphere(pos, radius, position)){
+          if(Config.black_holes_erase_bedrock.get()){
+            WorldUtil.delete_block(world, position);
+          }
+          else{
+            if(block != Blocks.BEDROCK){
               WorldUtil.delete_block(world, position);
-            }
-            else{
-              if(world.getBlockState(position).getBlock() != Blocks.BEDROCK){
-                WorldUtil.delete_block(world, position);
-              }
             }
           }
         }
@@ -205,6 +209,7 @@ public final class TileBlackHole extends TileEntity implements ITickableTileEnti
           y -= 1;
           if(y < max_y){
             reached_the_end = true;
+            break;
           }
         }
       }

@@ -37,6 +37,7 @@ public final class Config {
   public static final int BLACK_HOLE_HARD_DIFFICULTY_RADIUS     = 120;
   
   private static final int DEFAULT_BLACK_HOLE_RADIUS = BLACK_HOLE_NORMAL_DIFFICULTY_RADIUS;
+  private static final double DEFAULT_BLACK_HOLE_SPEED = 0.2;
   
   public static ForgeConfigSpec.BooleanValue randomize_black_hole_radius;
   public static ForgeConfigSpec.BooleanValue black_hole_radius_depends_on_world_difficulty;
@@ -161,7 +162,7 @@ public final class Config {
       "is a percentage of how much of a tick is allocated to the Black Hole algorithm. The algorithm is\n"+
       "self balancing, meaning it will slow down if it detects the algorithm is taking too long to process in\n"+
       "a single tick. One block per tick will always be deleted, no matter how low you specify this value.")
-      .defineInRange("Black Hole Max Tick Time", 0.5, (double)1 / TimeConstants.tick_time_in_nanoseconds, 1.0);
+      .defineInRange("Black Hole Max Tick Time", DEFAULT_BLACK_HOLE_SPEED, (double)1 / TimeConstants.tick_time_in_nanoseconds, 1.0);
     builder.pop();
 
     builder.push("Energy Suspension Bridge");
