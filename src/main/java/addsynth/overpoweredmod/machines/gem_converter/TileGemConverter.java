@@ -120,6 +120,9 @@ public final class TileGemConverter extends TileStandardWorkMachine implements I
         AdvancementUtil.grantAdvancement(player, CustomAdvancements.CONVERT_A_THOUSAND_GEMS);
       }
     }
+    
+    inventory.getWorkingInventory().setEmpty();
+    // inventory.recheck();    recheck is called every tick when the inventory changes.
   }
 
   public final int get_gem_selected(){
