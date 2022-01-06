@@ -9,6 +9,8 @@ NEW:
     - Because I'm sure I'm not the only one that keeps making 9 Energy Crystals
       only to realize you can't make a Light Block from them.
 CHANGED:
+  Was definitely not generating enough Silicon Ore, so we've changed the default generation
+    config values in this update to generate more Silicon.
   No longer registers a Bronze crafting recipe if Immersive Engineering or Mekanism is installed.
   Changed the Black Hole erase algorithm default speed from 50% of a tick to 20%.
   The Black Hole no longer has a collision box, similar to the Null Block. This means you won't
