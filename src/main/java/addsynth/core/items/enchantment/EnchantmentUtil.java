@@ -54,6 +54,7 @@ public final class EnchantmentUtil {
         case CHEST: enchantment_list = common_armor_enchantments; break;
         case LEGS:  enchantment_list = common_armor_enchantments; break;
         case FEET:  enchantment_list = ArrayUtil.combine_arrays(common_armor_enchantments, boot_enchantments); break;
+        }
       }
       if(item instanceof SwordItem){}
       if(item instanceof ShovelItem){}
@@ -63,7 +64,6 @@ public final class EnchantmentUtil {
       if(item instanceof ShearsItem){}
       if(item instanceof FishingRodItem){}
       if(item instanceof BowItem){}
-      }
     }
     return Arrays.asList(enchantment_list);
   }
