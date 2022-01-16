@@ -11,12 +11,12 @@ NEW:
 CHANGED:
   Was definitely not generating enough Silicon Ore, so we've changed the default generation
     config values in this update to generate more Silicon.
-  No longer registers a Bronze crafting recipe if Immersive Engineering or Mekanism is installed.
+  No longer registers a Bronze Ingot crafting recipe if Immersive Engineering or Mekanism is installed.
   Changed the Black Hole erase algorithm default speed from 50% of a tick to 20%.
   The Black Hole no longer has a collision box, similar to the Null Block. This means you won't
     be able to break the Black Hole to stop it from erasing the world.
 FIXED:
-  Fixed Fusion Chamber not dropping when mined.
+  Fixed the Fusion Chamber not dropping when mined.
   Fixed Ores that drop an item not being affected by Pickaxes with the Fortune effect.
   Finally added the Job system. Now the Magic Infuser and Circuit Fabricator
     (machines with more than 1 input slot) will now show their Time Remaining correctly.
@@ -68,7 +68,7 @@ NEW:
   Added stats for Converting Gems, Firing Lasers, and Identifying Items.
   Added 4 commands to ADDSynthCore. They don't do anything important, they're just
     there to try out and play with.
-    [This mod is provided as-is. Any computers that crash as a result of player's missuse
+    [This mod is provided as-is. Any computers that crash as a result of player's misuse
      of these commands is entirely the fault of the player and not the mod developer.]
   Added a config option to ADDSynthCore that swaps the mouse buttons used to Add or Delete
     notes to/from the Music Box.
@@ -128,7 +128,7 @@ KNOWN PROBLEMS:
 v1.3.4 - December 28, 2020
   Major code optimizations and maintenance.
   Fix Laser Distance or Energy not saving on world reload.
-  Energy stored in Batteries is now balanaced across all batteries on the
+  Energy stored in Batteries is now balanced across all batteries on the
     Energy Network.
   Fixed several errors with the Universal Energy Interface.
   Batteries that are removed now redistribute any leftover energy to other
@@ -250,7 +250,7 @@ v1.3 - July 1, 2020
   The Magic Infuser can now produce the new Enchantments from Minecraft 1.13 and 1.14.
   Improved the Portal Control Panel:
    - Now has more safety checks to ensure the Portal is constructed properly.
-   - Playeres in Creative Mode can generate a portal without having the proper items or
+   - Players in Creative Mode can generate a portal without having the proper items or
        required energy.
    - Added an option in the configuration file to "Disable the Unknown Dimension". This
      prevents players from teleporting to the Unknown Dimension, and instead spawns 2
@@ -284,7 +284,7 @@ v1.2 - November 29, 2019
      - This means that Forge now recognizes them as part of the ADDSynthCore mod
        and not the Overpowered mod, THE BLOCKS CURRENTLY IN YOUR WORLD ARE INVALID!
        and Forge will warn you that they don't exist. THIS BREAKS YOUR WORLDS!
-       You should record your Music Boxes in a sepereate [fashion]
+       You should record your Music Boxes in a separate [fashion].
   REMOVED DEPENDANCY TO BAUBLES! You no longer need Baubles to play this mod,
     however, we do add Unidentified Rings if you do play with Baubles.
   Improved compatability with other mods:
@@ -296,12 +296,12 @@ v1.2 - November 29, 2019
     - Fixed duplication error when picking up Trophy Blocks or the Electric Furnace.
     - Gem blocks from other mods are now allowed in the Portal Frames.
   Added debug features that you can enable in the ADDSynthCore config.
-  Added Auto Shotoff feature to Lasers, when checked, Lasers will automatically
+  Added Auto Shutoff feature to Lasers, when checked, Lasers will automatically
     switch off after firing, so they don't accept energy until switched back on.
   Gave Fusion Chamber and Laser Housing machines new textures.
   Added a machine classification subtitle to all machines tooltips.
   Gave HD textures to all tools.
-  Added Scythe tools. Thease are used to chop leaves off of trees very quickly, but
+  Added Scythe tools. These are used to chop leaves off of trees very quickly, but
     they drop items as if you had mined them by hand.
   Added Yellorium to the materials list.
   All machines now show how much time must pass to finish work, to run out of energy,
