@@ -2,10 +2,10 @@ package addsynth.energy.lib.tiles;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.core.inventory.IInputInventory;
-import addsynth.core.inventory.InputInventory;
-import addsynth.core.inventory.InventoryUtil;
-import addsynth.core.inventory.SlotData;
+import addsynth.core.game.inventory.IInputInventory;
+import addsynth.core.game.inventory.InputInventory;
+import addsynth.core.game.inventory.InventoryUtil;
+import addsynth.core.game.inventory.SlotData;
 import addsynth.energy.lib.main.Receiver;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundNBT;

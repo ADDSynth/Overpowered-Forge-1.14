@@ -2,7 +2,7 @@ package addsynth.core.recipe.jobs;
 
 import java.util.ArrayList;
 import java.util.function.Function;
-import addsynth.core.items.ItemUtil;
+import addsynth.core.game.items.ItemUtil;
 import net.minecraft.item.ItemStack;
 
 public final class JobSystem {

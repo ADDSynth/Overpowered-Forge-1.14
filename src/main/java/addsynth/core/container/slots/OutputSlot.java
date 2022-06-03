@@ -1,7 +1,7 @@
 package addsynth.core.container.slots;
 
 import javax.annotation.Nonnull;
-import addsynth.core.inventory.IOutputInventory;
+import addsynth.core.game.inventory.IOutputInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;

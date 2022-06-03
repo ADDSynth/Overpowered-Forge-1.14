@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.machines.portal.frame;
 
 import javax.annotation.Nullable;
-import addsynth.core.inventory.SlotData;
-import addsynth.core.tiles.TileStorageMachine;
+import addsynth.core.game.inventory.SlotData;
+import addsynth.core.game.tiles.TileStorageMachine;
 import addsynth.material.MaterialsUtil;
 import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.registers.Tiles;

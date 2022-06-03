@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.suspension_bridge;
 import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
-import addsynth.core.inventory.SlotData;
+import addsynth.core.game.inventory.SlotData;
 import addsynth.core.util.constants.Constants;
 import addsynth.energy.lib.main.Receiver;
 import addsynth.energy.lib.tiles.TileBasicMachine;

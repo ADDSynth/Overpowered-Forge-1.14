@@ -1,6 +1,6 @@
 package addsynth.energy.lib.tiles.energy;
 
-import addsynth.core.tiles.TileBase;
+import addsynth.core.game.tiles.TileBase;
 import addsynth.energy.lib.main.Generator;
 import addsynth.energy.lib.main.IEnergyGenerator;
 import net.minecraft.nbt.CompoundNBT;

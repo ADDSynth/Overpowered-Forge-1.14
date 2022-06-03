@@ -1,8 +1,8 @@
 package addsynth.core.gameplay.music_box;
 
+import addsynth.core.game.tiles.TileBase;
 import addsynth.core.gameplay.music_box.data.MusicGrid;
 import addsynth.core.gameplay.registers.Tiles;
-import addsynth.core.tiles.TileBase;
 import addsynth.core.util.game.MinecraftUtility;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;

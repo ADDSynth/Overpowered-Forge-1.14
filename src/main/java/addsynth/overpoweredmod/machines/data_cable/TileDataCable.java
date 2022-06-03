@@ -3,7 +3,7 @@ package addsynth.overpoweredmod.machines.data_cable;
 import javax.annotation.Nullable;
 import addsynth.core.block_network.BlockNetworkUtil;
 import addsynth.core.block_network.IBlockNetworkUser;
-import addsynth.core.tiles.TileBase;
+import addsynth.core.game.tiles.TileBase;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.tileentity.ITickableTileEntity;
 

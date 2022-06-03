@@ -1,10 +1,10 @@
 package addsynth.overpoweredmod.game.core;
 
 import addsynth.core.game.Compatability;
+import addsynth.core.game.items.ArmorMaterial;
+import addsynth.core.game.items.EquipmentType;
+import addsynth.core.game.items.Toolset;
 import addsynth.core.gameplay.items.ScytheTool;
-import addsynth.core.items.ArmorMaterial;
-import addsynth.core.items.EquipmentType;
-import addsynth.core.items.Toolset;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;

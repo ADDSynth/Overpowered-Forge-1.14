@@ -1,6 +1,6 @@
 package addsynth.core.gameplay;
 
-import addsynth.core.blocks.TestBlock;
+import addsynth.core.game.blocks.TestBlock;
 import addsynth.core.gameplay.blocks.CautionBlock;
 import addsynth.core.gameplay.items.ScytheTool;
 import addsynth.core.gameplay.music_box.MusicBox;

@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod.machines.laser.cannon;
 
 import addsynth.core.Debug;
-import addsynth.core.tiles.TileBase;
+import addsynth.core.game.tiles.TileBase;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.registers.Tiles;

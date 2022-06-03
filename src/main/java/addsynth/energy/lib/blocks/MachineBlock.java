@@ -1,6 +1,6 @@
 package addsynth.energy.lib.blocks;
 
-import addsynth.core.inventory.IInventoryUser;
+import addsynth.core.game.inventory.IInventoryUser;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;

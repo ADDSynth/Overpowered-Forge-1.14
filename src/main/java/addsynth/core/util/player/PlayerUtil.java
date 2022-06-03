@@ -1,7 +1,7 @@
 package addsynth.core.util.player;
 
 import java.util.function.Consumer;
-import addsynth.core.items.ItemUtil;
+import addsynth.core.game.items.ItemUtil;
 import addsynth.core.util.math.BlockMath;
 import addsynth.core.util.server.ServerUtils;
 import net.minecraft.entity.player.PlayerEntity;

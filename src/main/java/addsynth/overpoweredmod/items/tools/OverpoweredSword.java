@@ -2,7 +2,7 @@ package addsynth.overpoweredmod.items.tools;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import addsynth.core.items.ToolConstants;
+import addsynth.core.game.items.ToolConstants;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;

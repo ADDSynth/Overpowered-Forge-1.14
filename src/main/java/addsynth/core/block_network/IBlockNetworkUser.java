@@ -1,7 +1,7 @@
 package addsynth.core.block_network;
 
 import javax.annotation.Nullable;
-import addsynth.core.tiles.TileBase;
+import addsynth.core.game.tiles.TileBase;
 
 /**
  * <p>Attach this to TileEntities that use a Block Network. The {@link BlockNetwork} class

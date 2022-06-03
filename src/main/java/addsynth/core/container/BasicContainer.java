@@ -1,6 +1,6 @@
 package addsynth.core.container;
 
-import addsynth.core.inventory.IStorageInventory;
+import addsynth.core.game.inventory.IStorageInventory;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.network.PacketBuffer;

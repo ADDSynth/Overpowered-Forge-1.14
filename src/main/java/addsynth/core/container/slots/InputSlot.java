@@ -1,8 +1,8 @@
 package addsynth.core.container.slots;
 
 import javax.annotation.Nonnull;
-import addsynth.core.inventory.IInputInventory;
-import addsynth.core.items.ItemUtil;
+import addsynth.core.game.inventory.IInputInventory;
+import addsynth.core.game.items.ItemUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.SlotItemHandler;

@@ -2,9 +2,9 @@ package addsynth.energy.lib.tiles.energy;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.core.inventory.IInputInventory;
-import addsynth.core.inventory.InputInventory;
-import addsynth.core.inventory.InventoryUtil;
+import addsynth.core.game.inventory.IInputInventory;
+import addsynth.core.game.inventory.InputInventory;
+import addsynth.core.game.inventory.InventoryUtil;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntityType;

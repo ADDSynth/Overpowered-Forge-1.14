@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.game.core;
 
-import addsynth.core.items.ItemUtil;
+import addsynth.core.game.items.ItemUtil;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.items.LensItem;
 import net.minecraft.block.material.MaterialColor;
