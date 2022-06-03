@@ -1,4 +1,6 @@
 v1.4.2 - TBD
+CHANGED:
+  Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
 
 
 v1.4.1 - January 6, 2022
