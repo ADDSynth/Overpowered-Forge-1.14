@@ -1,3 +1,6 @@
+v1.4.2 - TBD
+
+
 v1.4.1 - January 6, 2022
 NEW:
   Added 2 commands to ADDSynthCore that help in determining the number of ore blocks

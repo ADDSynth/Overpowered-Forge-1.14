@@ -36,7 +36,7 @@ public class ADDSynthEnergy {
   public static final String MOD_ID = "addsynth_energy";
   public static final String MOD_NAME = "ADDSynth Energy";
   public static final String VERSION = "1.0";
-  public static final String VERSION_DATE = "January 6, 2022";
+  public static final String VERSION_DATE = "June 3, 2022";
     
   public static final Logger log = LogManager.getLogger(MOD_NAME);
 
@@ -67,7 +67,7 @@ public class ADDSynthEnergy {
   }
 
   private static final void main_setup(final FMLCommonSetupEvent event){
-    log.info(CommonUtil.get_mod_info(MOD_NAME, "ADDSynth", VERSION, DevStage.STABLE, VERSION_DATE));
+    log.info(CommonUtil.get_mod_info(MOD_NAME, "ADDSynth", VERSION, DevStage.DEVELOPMENT, VERSION_DATE));
     NetworkHandler.registerMessages();
     CompressorRecipes.INSTANCE.registerResponders();
     CircuitFabricatorRecipes.INSTANCE.registerResponders();
