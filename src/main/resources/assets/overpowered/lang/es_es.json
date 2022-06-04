@@ -161,7 +161,7 @@
 "gui.overpowered.laser_housing.distance": "distancia",
 "gui.overpowered.laser_housing.current_energy": "energía actual",
 "gui.overpowered.laser_housing.required_energy": "energía requerida",
-"gui.overpowered.portal_control_pane.generate_portal": "Generar portal",
+"gui.overpowered.portal_control_panel.generate_portal": "Generar portal",
 "gui.overpowered.portal_message.no_data_cable": "No hay cable de datos conectado.",
 "gui.overpowered.portal_message.need_portal_frames": "Se requieren 8 marcos de portal.",
 "gui.overpowered.portal_message.too_many_portal_frames": "Demasiados marcos de portal.",

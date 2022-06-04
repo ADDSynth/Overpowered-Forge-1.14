@@ -3,6 +3,8 @@ NEW:
   Added an alternate crafting recipe for the Inverter.
 CHANGED:
   The Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
+FIXED:
+  Fixed es_es.json language files.
 
 
 

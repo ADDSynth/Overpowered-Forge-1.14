@@ -4,7 +4,7 @@
 "message.addsynthcore.tileentity_error": "The TileEntity '%s' at position ( %s , %s , %s ) encountered an error and was automatically removed. See the log for more details.",
 
 "block.addsynthcore.caution_block": "Bloque de precaución",
-"block.addsynthcore.music_box.name": "Caja de música",
+"block.addsynthcore.music_box": "Caja de música",
 "block.addsynthcore.team_manager": "Team Manager",
 
 "item.addsynthcore.music_sheet": "Partitura",
