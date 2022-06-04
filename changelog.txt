@@ -1,6 +1,9 @@
 v1.4.2 - TBD
+NEW:
+  Added an alternate crafting recipe for the Inverter.
 CHANGED:
-  Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
+  The Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
+
 
 
 v1.4.1 - January 6, 2022
