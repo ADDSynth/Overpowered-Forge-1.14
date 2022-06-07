@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.compatability;
 
-import addsynth.core.game.Compatability;
+import addsynth.core.compat.Compatibility;
 import addsynth.overpoweredmod.Debug;
 
 @Deprecated

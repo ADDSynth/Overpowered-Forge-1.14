@@ -2,7 +2,7 @@ package addsynth.core.gameplay.compat;
 
 import java.util.ArrayList;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.game.Compatability;
+import addsynth.core.compat.Compatibility;
 import addsynth.core.gameplay.Core;
 import addsynth.core.util.StringUtil;
 import mezz.jei.api.IModPlugin;
@@ -34,7 +34,7 @@ public final class CoreJEIPlugin  implements IModPlugin {
     list.add(new ItemStack(Core.iron_scythe));
     list.add(new ItemStack(Core.gold_scythe));
     list.add(new ItemStack(Core.diamond_scythe));
-    if(Compatability.OVERPOWERED_TECHNOLOGY.loaded){
+    if(Compatibility.OVERPOWERED_TECHNOLOGY.loaded){
       list.add(new ItemStack(addsynth.overpoweredmod.game.core.Tools.overpowered_scythe));
     }
     registry.addIngredientInfo(list, VanillaTypes.ITEM, StringUtil.translate("gui.addsynthcore.jei_description.scythes"));

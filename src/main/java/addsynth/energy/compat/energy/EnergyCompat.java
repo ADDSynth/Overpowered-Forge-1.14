@@ -1,7 +1,7 @@
 package addsynth.energy.compat.energy;
 
 import java.util.ArrayList;
-import addsynth.core.game.Compatability;
+import addsynth.core.compat.Compatibility;
 import addsynth.core.util.math.MathUtility;
 import addsynth.energy.compat.energy.forge.ForgeEnergy;
 import addsynth.energy.compat.energy.redstoneflux.RedstoneFluxEnergy;
@@ -18,8 +18,8 @@ public final class EnergyCompat {
 
   public enum EnergyType {
     FORGE(true),
-    RF(Compatability.REDSTONE_FLUX.loaded),
-    TESLA(Compatability.TESLA.loaded);
+    RF(Compatibility.REDSTONE_FLUX.loaded),
+    TESLA(Compatibility.TESLA.loaded);
     
     public final boolean exists;
     

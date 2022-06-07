@@ -1,7 +1,7 @@
 package addsynth.overpoweredmod;
 
 import java.io.File;
-import addsynth.core.game.Compatability;
+import addsynth.core.compat.Compatibility;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.recipe.RecipeUtil;
 import addsynth.core.util.CommonUtil;
@@ -113,7 +113,7 @@ public class OverpoweredTechnology {
   }
 
   private static final void inter_mod_communications(final InterModEnqueueEvent event){
-    if(Compatability.PROJECT_E.loaded){
+    if(Compatibility.PROJECT_E.loaded){
       ProjectE.register_emc_values();
     }
   }

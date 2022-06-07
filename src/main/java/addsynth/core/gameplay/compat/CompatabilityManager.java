@@ -1,7 +1,7 @@
 package addsynth.core.gameplay.compat;
 
 import java.util.Set;
-import addsynth.core.game.Compatability;
+import addsynth.core.compat.Compatibility;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.items.ScytheTool;
 import net.minecraft.block.Block;
@@ -31,7 +31,7 @@ public final class CompatabilityManager {
     override_scythe_field(Core.iron_scythe, leaves);
     override_scythe_field(Core.gold_scythe, leaves);
     override_scythe_field(Core.diamond_scythe, leaves);
-    if(Compatability.OVERPOWERED_TECHNOLOGY.loaded){ // TEMP
+    if(Compatibility.OVERPOWERED_TECHNOLOGY.loaded){ // TEMP
       override_scythe_field(addsynth.overpoweredmod.game.core.Tools.overpowered_scythe, leaves);
     }
   }

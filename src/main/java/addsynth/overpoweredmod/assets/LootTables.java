@@ -1,6 +1,6 @@
 package addsynth.overpoweredmod.assets;
 
-import addsynth.core.game.Compatability;
+import addsynth.core.compat.Compatibility;
 import addsynth.core.game.items.ArmorMaterial;
 import addsynth.overpoweredmod.Debug;
 import addsynth.overpoweredmod.OverpoweredTechnology;

@@ -1,4 +1,4 @@
-package addsynth.core.game;
+package addsynth.core.compat;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -15,7 +15,7 @@ import net.minecraftforge.fml.ModList;
  * @author ADDSynth
  * @since October 28, 2019
  */
-public final class Compatability {
+public final class Compatibility {
 
   // Java doesn't have structs either?! That's another stupid thing about Java!
 
@@ -475,7 +475,7 @@ public final class Compatability {
     int max_string = 0;
 
     try{
-      for(final Class clazz : Compatability.class.getClasses()){
+      for(final Class clazz : Compatibility.class.getClasses()){
         if(clazz.isEnum() == false){
           try{
             mod_name = (String)(clazz.getField("name").get(null));

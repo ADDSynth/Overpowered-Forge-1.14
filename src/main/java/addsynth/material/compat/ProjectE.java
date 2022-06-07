@@ -1,7 +1,7 @@
 package addsynth.material.compat;
 
+import addsynth.core.compat.Compatibility;
 import addsynth.core.compat.EMCValue;
-import addsynth.core.game.Compatability;
 import addsynth.material.ADDSynthMaterials;
 import addsynth.material.Material;
 import addsynth.overpoweredmod.config.Features;
@@ -15,7 +15,7 @@ public final class ProjectE {
   public static final void register_emc_values(){
 
     final String sender = ADDSynthMaterials.MOD_ID;
-    final String mod = Compatability.PROJECT_E.modid;
+    final String mod = Compatibility.PROJECT_E.modid;
     final String message = IMCMethods.REGISTER_CUSTOM_EMC;
     
     if(Features.crystal_matter_generator.get()){ // REMOVE shards

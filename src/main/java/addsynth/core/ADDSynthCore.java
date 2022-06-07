@@ -1,9 +1,9 @@
 package addsynth.core;
 
 import java.io.File;
+import addsynth.core.compat.Compatibility;
 import addsynth.core.compat.EMCValue;
 import addsynth.core.config.*;
-import addsynth.core.game.Compatability;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.NetworkHandler;
@@ -100,7 +100,7 @@ public final class ADDSynthCore {
   
     Debug.debug();
     if(Config.debug_mod_detection.get()){
-      DeferredWorkQueue.runLater(() -> Compatability.debug());
+      DeferredWorkQueue.runLater(() -> Compatibility.debug());
     }
     NetworkHandler.registerMessages();
     MaterialsUtil.registerResponder(CompatabilityManager::set_scythe_harvest_blocks);
@@ -124,7 +124,7 @@ public final class ADDSynthCore {
   }
 
   public static void onServerStarted(final FMLServerStartedEvent event){
-    if(Compatability.PROJECT_E.loaded){
+    if(Compatibility.PROJECT_E.loaded){
       EMCValue.check_emc_values();
     }
   }
