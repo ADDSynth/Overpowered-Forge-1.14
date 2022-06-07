@@ -1,6 +1,7 @@
 v1.4.2 - TBD
 NEW:
   Added an alternate crafting recipe for the Inverter.
+  Added Project E EMC values to Silicon and the Circuit items.
 CHANGED:
   The Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
 FIXED:

@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import addsynth.core.game.RegistryUtil;
 import addsynth.core.util.CommonUtil;
 import addsynth.core.util.constants.DevStage;
+import addsynth.energy.compat.ADDSynthEnergyCompat;
 import addsynth.energy.gameplay.Config;
 import addsynth.energy.gameplay.EnergyBlocks;
 import addsynth.energy.gameplay.NetworkHandler;
@@ -53,6 +54,7 @@ public class ADDSynthEnergy {
     final FMLJavaModLoadingContext context = FMLJavaModLoadingContext.get();
     final IEventBus bus = context.getModEventBus();
     bus.addListener(ADDSynthEnergy::main_setup);
+    bus.addListener(ADDSynthEnergyCompat::sendIMCMessages);
     bus.addListener(ADDSynthEnergy::client_setup);
     init_config();
   }
