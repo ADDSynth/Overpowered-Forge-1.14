@@ -11,6 +11,7 @@ import addsynth.core.gameplay.team_manager.gui.TeamManagerGui;
 import addsynth.core.gameplay.team_manager.gui.TeamManagerObjectiveGui;
 import addsynth.core.gameplay.team_manager.network_messages.TeamManagerSyncMessage;
 import addsynth.core.util.StringUtil;
+import addsynth.core.util.debug.DebugUtil;
 import addsynth.core.util.network.NetworkUtil;
 import addsynth.core.util.server.ServerUtils;
 import addsynth.core.util.time.TimeConstants;
@@ -53,11 +54,13 @@ public final class TeamData {
   /** This runs every server tick (20 times a second). Assigned to the Forge Event bus by {@link ADDSynthCore}. */
   public static final void serverTick(final ServerTickEvent event){
     if(event.phase == Phase.END){
-      tick_time += 1;
+      DebugUtil.beginSection("Team Manager Data Update");
+      tick_time += 1; // TODO: Another spot to use a TickHandler.
       if(tick_time >= TimeConstants.ticks_per_second){
         sync();
         tick_time = 0;
       }
+      DebugUtil.endSection();
     }
   }
 
