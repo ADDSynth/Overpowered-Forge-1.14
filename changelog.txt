@@ -6,6 +6,7 @@ CHANGED:
   The Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
 FIXED:
   Fixed es_es.json language files.
+  Efficiency text in the Crystal Matter Generator was overlapping itself.
 
 
 

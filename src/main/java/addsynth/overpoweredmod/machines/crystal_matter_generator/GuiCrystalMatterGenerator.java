@@ -36,8 +36,8 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     guiUtil.draw_title(this.title);
-    draw_energy_usage_after_switch();
-    draw_status_below_switch(tile.getStatus());
+    draw_status(tile.getStatus(), 44, 21);
+    draw_energy_usage(6, 38);
     guiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), work_percentage_text_y);
     draw_time_left(98);
   }
