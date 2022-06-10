@@ -94,7 +94,7 @@ public final class EnergyNetwork extends BlockNetwork<AbstractEnergyNetworkTile>
 
   public final void drain_battery(final Energy battery){
     remove_invalid_nodes(batteries);
-    if(batteries.size() >= 1){
+    if(batteries.size() > 0){
       EnergyUtil.balance_batteries(batteries, (long)(battery.getEnergy() * DecimalNumber.DECIMAL_ACCURACY));
     }
   }

@@ -391,7 +391,7 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
         }
       }
       if(active){
-        maintain_bridge(); // for every tick the bridge is powered and active, enure NOTHING erases the bridge.
+        maintain_bridge(); // for every tick the bridge is powered and active, ensure that NOTHING erases the bridge.
       }
     }
   }

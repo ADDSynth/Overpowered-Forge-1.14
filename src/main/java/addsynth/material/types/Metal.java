@@ -43,7 +43,7 @@ public class Metal extends OreMaterial {
   public Metal(final String name, final Item ingot, final Block block, final Block ore, final Item nugget){
     super(name, ingot, block, ore);
     this.ingot = this.item;
-    this.nugget = nugget;
+    this.nugget = nugget != null ? nugget : new MaterialItem(name+"_nugget");
     this.plating = new MaterialItem(name+"_plate");
   }
 

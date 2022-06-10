@@ -24,7 +24,7 @@ import net.minecraft.util.ResourceLocation;
  *  <p>You can manually get the selected value by called {@link #getSelected}, or the index by calling
  *     {@link #getSelectedIndex}.
  *  <p>To manually set which entry is selected call {@link #setSelected(int)}. If you don't want the
- *     Scrollbar to call the responder you assigned, call {@link #setSelected(int, boolean)}.
+ *     Scrollbar to call the responder you assigned, call {@link #setSelected(int, boolean, boolean)}.
  *     Absolutely be careful you don't have Scrollbar responders call each other otherwise that will
  *     create an infinite loop!
  *  <p>Call {@link #setSelected(int)} with any negative value to unselect.

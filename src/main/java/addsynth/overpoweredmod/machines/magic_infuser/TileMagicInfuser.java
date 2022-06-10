@@ -130,6 +130,7 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
     return JobSystem.getMaxNumberOfJobs(inventory.getInputInventory().getItemStacks(), true);
   }
 
+  @Nullable
   private final Enchantment get_enchantment(){
     // https://minecraft.gamepedia.com/Enchanting#Summary_of_enchantments
     final Item item = inventory.getWorkingInventory().getStackInSlot(1).getItem();
@@ -164,7 +165,7 @@ public final class TileMagicInfuser extends TileStandardWorkMachine implements I
     if(item == Init.void_crystal){
       return RandomUtil.choose(random, void_crystal_enchantments);
     }
-    OverpoweredTechnology.log.error("function get_enchantment() in "+TileMagicInfuser.class.getSimpleName()+" returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
+    OverpoweredTechnology.log.error("Function get_enchantment() in "+TileMagicInfuser.class.getSimpleName()+" returned a null enchantment! With "+StringUtil.getName(item)+" as input.");
     return null;
   }
 

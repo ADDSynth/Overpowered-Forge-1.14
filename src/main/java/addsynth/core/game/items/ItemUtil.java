@@ -25,7 +25,7 @@ public final class ItemUtil {
    * @return NBTTag if one exists, otherwise a new CompoundNBT
    */
   public static final CompoundNBT getItemStackNBT(final ItemStack stack) throws NullPointerException {
-    CompoundNBT nbt = stack.getTag();
+    final CompoundNBT nbt = stack.getTag();
     return nbt == null ? new CompoundNBT() : nbt;
   }
 

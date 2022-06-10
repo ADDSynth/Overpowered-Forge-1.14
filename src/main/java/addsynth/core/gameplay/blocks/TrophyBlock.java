@@ -39,6 +39,7 @@ public final class TrophyBlock extends Block implements IWaterLoggable {
 
   @Override
   @Nullable
+  @SuppressWarnings("resource")
   public BlockState getStateForPlacement(final BlockItemUseContext context){
     final IWorld world = context.getWorld();
     final BlockPos position  = context.getPos();

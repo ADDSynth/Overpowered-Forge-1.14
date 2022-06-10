@@ -16,8 +16,10 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileElectricFurnace extends TileAlwaysOnMachine implements INamedContainerProvider {
 
+  private static final MachineData machine_data = new MachineData(MachineType.ALWAYS_ON, 200, 5, 0, 0);
+
   public TileElectricFurnace(){
-    super(Tiles.ELECTRIC_FURNACE, 1, get_filter(), 1, new MachineData(MachineType.ALWAYS_ON, 200, 5, 0, 0));
+    super(Tiles.ELECTRIC_FURNACE, 1, get_filter(), 1, machine_data);
     inventory.setRecipeProvider(RecipeUtil::getFurnaceResult);
   }
 

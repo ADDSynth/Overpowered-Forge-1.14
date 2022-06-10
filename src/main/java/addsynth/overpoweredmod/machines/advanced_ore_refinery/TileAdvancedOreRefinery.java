@@ -11,19 +11,11 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-/**
- *  The Advanced Ore Refinery sort of acts like a Furnace, in that it essentially smelts things.
- *  But it doesn't smelt everything like a Furnace does, it accepts all items but it will only
- *  work on Ores. After an ore is done being worked on it will return its smelted output in the
- *  multiplied factor amount.
- */
+/** Doubles the output of any ores. Works with ores from other mods as well. Only works with ores. */
 public final class TileAdvancedOreRefinery extends TileAlwaysOnMachine implements INamedContainerProvider {
 
   public TileAdvancedOreRefinery(){
-    super(Tiles.ADVANCED_ORE_REFINERY,
-      1, OreRefineryRecipes.get_input_filter(), 1,
-      MachineValues.advanced_ore_refinery
-    );
+    super(Tiles.ADVANCED_ORE_REFINERY, 1, OreRefineryRecipes.get_input_filter(), 1, MachineValues.advanced_ore_refinery);
     inventory.setRecipeProvider(OreRefineryRecipes::get_result);
   }
 
