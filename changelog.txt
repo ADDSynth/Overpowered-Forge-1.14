@@ -6,6 +6,7 @@ NEW:
     valid Gem Blocks that can be accepted in the Portal Frames, and also show
     an Item tooltip if you mouse over them, just like the drawn ItemStacks in
     the Circuit Fabricator gui.
+  Added Issue Tracker to the mods.toml file.
 CHANGED:
   The Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
 FIXED:

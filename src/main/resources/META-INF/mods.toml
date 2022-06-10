@@ -11,7 +11,7 @@ modLoader="javafml" #mandatory
 loaderVersion="[28.2.0,)" #mandatory
 
 # A URL to refer people to when problems occur with this mod
-#issueTrackerURL="http://my.issue.tracker/" #optional
+issueTrackerURL="https://github.com/ADDSynth/Overpowered-Forge-1.14/issues" #optional
 
 
 
