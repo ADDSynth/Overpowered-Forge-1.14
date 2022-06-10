@@ -2,11 +2,17 @@ v1.4.2 - TBD
 NEW:
   Added an alternate crafting recipe for the Inverter.
   Added Project E EMC values to Silicon and the Circuit items.
+  The drawn ItemStacks in the Portal Control Panel gui now cycle between all
+    valid Gem Blocks that can be accepted in the Portal Frames, and also show
+    an Item tooltip if you mouse over them, just like the drawn ItemStacks in
+    the Circuit Fabricator gui.
 CHANGED:
   The Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
 FIXED:
   Fixed es_es.json language files.
   Efficiency text in the Crystal Matter Generator was overlapping itself.
+  Fixed the drawn ItemStacks in the Circuit Fabricator gui glitching while the
+    machine was running.
 
 
 

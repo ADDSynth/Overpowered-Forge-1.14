@@ -24,7 +24,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 public final class TileCircuitFabricator extends TileStandardWorkMachine implements INamedContainerProvider {
 
-  private int circuit_id;
+  private int circuit_id = -1;
   private ItemStack[][] filter = new ItemStack[8][];
 
   private final InputSlot[] input_slot = {
@@ -43,13 +43,15 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
     inventory.setRecipeProvider(CircuitFabricatorRecipes.INSTANCE);
   }
 
-  public final void change_circuit_craft(final int circuit_id, final boolean update){
-   this.circuit_id = circuit_id;
-   rebuild_filters();
-   changed = update;
+  public final void change_circuit_craft(final int circuit_id){
+    if(this.circuit_id != circuit_id){
+     this.circuit_id = circuit_id;
+     rebuild_filters();
+     changed = true;
+    }
   }
 
-  // Ideally, this should be rebuilt every recipe and tag reload, but this is the best I can do for now.
+  // TODO: Ideally, this should be rebuilt every recipe and tag reload, but this is the best I can do for now.
   public final void rebuild_filters(){
     // select ItemStack based on circuit ID.
     final ItemStack output = new ItemStack(EnergyItems.circuit[circuit_id], 1);
@@ -82,6 +84,7 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
     inventory.getInputInventory().ejectInvalidItems(player);
   }
 
+  @SuppressWarnings("null")
   public final void updateGui(){
     if(world != null){
       if(world.isRemote){
@@ -93,7 +96,7 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
   @Override
   public final CompoundNBT write(final CompoundNBT nbt){
     super.write(nbt);
-    nbt.putInt("Circuit to Craft", circuit_id);
+    nbt.putInt("Circuit to Craft", circuit_id >= 0 ? circuit_id : 0);
     return nbt;
   }
 
@@ -101,7 +104,7 @@ public final class TileCircuitFabricator extends TileStandardWorkMachine impleme
   public final void read(final CompoundNBT nbt){
     super.read(nbt);
     // this runs with a default value of 0 if the key doesn't exist. That's perfect.
-    change_circuit_craft(nbt.getInt("Circuit to Craft"), false);
+    change_circuit_craft(nbt.getInt("Circuit to Craft"));
   }
 
   public final String getCircuitSelected(){

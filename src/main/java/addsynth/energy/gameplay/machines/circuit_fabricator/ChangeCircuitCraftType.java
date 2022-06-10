@@ -40,8 +40,8 @@ public final class ChangeCircuitCraftType {
         if(world.isAreaLoaded(message.position, 0)){
           final TileCircuitFabricator tile = MinecraftUtility.getTileEntity(message.position, world, TileCircuitFabricator.class);
           if(tile != null){
-            tile.change_circuit_craft(message.circuit_id, true);
-            tile.ejectInvalidItems(player);
+            tile.change_circuit_craft(message.circuit_id);
+            tile.ejectInvalidItems(player); // must stay here because we have access to the player?
           }
           else{
             ADDSynthEnergy.log.warn(new NullPointerException("No TileEntity exists at location: "+message.position+"."));
