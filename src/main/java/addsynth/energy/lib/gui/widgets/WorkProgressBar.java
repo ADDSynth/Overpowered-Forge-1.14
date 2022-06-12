@@ -1,6 +1,7 @@
 package addsynth.energy.lib.gui.widgets;
 
 import addsynth.core.gui.widgets.ProgressBar;
+import addsynth.core.util.StringUtil;
 import addsynth.core.util.math.RoundMode;
 import addsynth.energy.lib.tiles.machines.TileAbstractWorkMachine;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -37,7 +38,7 @@ public final class WorkProgressBar extends ProgressBar {
 
   /** Use this if your gui has no intention of drawing a progress bar. */
   public static final String getWorkTimeProgress(TileAbstractWorkMachine tile){
-    return ((int)Math.floor(tile.getWorkTimePercentage()*100)) + "%";
+    return StringUtil.toPercentageString(tile.getWorkTimePercentage(), RoundMode.Floor);
   }
 
 }

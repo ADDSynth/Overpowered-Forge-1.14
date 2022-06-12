@@ -39,11 +39,8 @@ public abstract class TileAbstractWorkMachine extends TileAbstractMachine implem
 
   protected abstract void machine_tick();
 
-  public float getWorkTimePercentage(){
-    if(state == MachineState.RUNNING){
-      return energy.getEnergyPercentage();
-    }
-    return 0.0f;
+  public final float getWorkTimePercentage(){
+    return energy.getEnergyPercentage();
   }
 
   @Override
@@ -55,7 +52,7 @@ public abstract class TileAbstractWorkMachine extends TileAbstractMachine implem
     return state;
   }
 
-  public final String getStatus(){
+  public String getStatus(){
     return state.getStatus();
   }
 

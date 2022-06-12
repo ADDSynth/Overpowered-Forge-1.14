@@ -341,11 +341,10 @@ public class Energy {
    * @return energy level percentage AS A FLOAT!
    */
   public final float getEnergyPercentage(){
-    double return_value = 0.0;
     if(capacity.get() > 0){ // prevents divide by 0 errors.
-      return_value = energy.get() / capacity.get();
+      return (float)(energy.get() / capacity.get());
     }
-    return (float)return_value;
+    return 0.0f;
   }
 
 // ==================================== COMMANDS ====================================

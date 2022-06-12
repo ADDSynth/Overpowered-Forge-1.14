@@ -9,6 +9,8 @@ NEW:
   Added Issue Tracker to the mods.toml file.
 CHANGED:
   The Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
+  Power Cycle time (Portal Control Panel & Crystal Matter Generator) is now
+    drawn with the status message instead of using the work percentage.
 FIXED:
   Fixed es_es.json language files.
   Efficiency text in the Crystal Matter Generator was overlapping itself.

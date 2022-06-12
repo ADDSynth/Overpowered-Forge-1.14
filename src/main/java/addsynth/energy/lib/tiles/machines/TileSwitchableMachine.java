@@ -1,5 +1,7 @@
 package addsynth.energy.lib.tiles.machines;
 
+import addsynth.core.util.StringUtil;
+import addsynth.core.util.math.RoundMode;
 import addsynth.energy.lib.config.MachineData;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntityType;
@@ -60,8 +62,7 @@ public abstract class TileSwitchableMachine extends TileAbstractWorkMachine impl
     changed = true;
   }
 
-  @Override
-  public final float getWorkTimePercentage(){
+  public final float getPowerCycleTimePercentage(){
     if(state == MachineState.POWERING_ON){
       if(power_on_time > 0){
         return (float)power_time / power_on_time;
@@ -72,7 +73,7 @@ public abstract class TileSwitchableMachine extends TileAbstractWorkMachine impl
         return (float)power_time / power_off_time;
       }
     }
-    return super.getWorkTimePercentage();
+    return 0.0f;
   }
 
   @Override
@@ -86,6 +87,14 @@ public abstract class TileSwitchableMachine extends TileAbstractWorkMachine impl
   @Override
   public final boolean get_switch_state(){
     return power_switch;
+  }
+
+  @Override
+  public final String getStatus(){
+    if(state == MachineState.POWERING_OFF || state == MachineState.POWERING_ON){
+      return super.getStatus() + " " + StringUtil.toPercentageString(getPowerCycleTimePercentage(), RoundMode.Floor);
+    }
+    return super.getStatus();
   }
 
 }
