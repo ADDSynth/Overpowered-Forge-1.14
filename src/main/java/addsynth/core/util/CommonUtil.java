@@ -11,6 +11,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.apache.logging.log4j.Logger;
 
 public final class CommonUtil {
 
@@ -42,11 +43,14 @@ public final class CommonUtil {
     return ForgeRegistries.ENTITIES.getKeys();
   }
 
-  public static final String get_mod_info(String mod_name, String author, String version, DevStage dev_stage, String date){
+  public static final void displayModInfo(Logger log, String mod_name, String author, String version, DevStage dev_stage, String date){
     if(dev_stage.isDevelopment){
-      return StringUtil.build(mod_name, " by ", author, ", version ", version, dev_stage.label, ", built on ", LocalDate.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)), ".");
+      log.info(StringUtil.build(mod_name, " by ", author, ", version ", version, dev_stage.label, ", built on ", LocalDate.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)), "."));
+      log.warn("This is a development build. This is not intended for public use.");
     }
-    return StringUtil.build(mod_name, " by ", author, ", version ", version, ", built on ", date, ".");
+    else{
+      log.info(StringUtil.build(mod_name, " by ", author, ", version ", version, ", built on ", date, "."));
+    }
   }
 
 }
