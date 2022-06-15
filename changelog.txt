@@ -16,6 +16,7 @@ FIXED:
   Efficiency text in the Crystal Matter Generator was overlapping itself.
   Fixed the drawn ItemStacks in the Circuit Fabricator gui glitching while the
     machine was running.
+  Fixed text in Rotate button of the Energy Suspension Bridge was misaligned.
 
 
 

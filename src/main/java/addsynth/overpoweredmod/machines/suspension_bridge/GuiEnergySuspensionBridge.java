@@ -44,7 +44,7 @@ public final class GuiEnergySuspensionBridge extends GuiEnergyBase<TileSuspensio
     private final TileSuspensionBridge tile;
 
     public RotateButton(int x, int y, TileSuspensionBridge tile){
-      super(x, y, button_width, 28, StringUtil.translate("gui.overpowered.energy_suspension_bridge.rotate"));
+      super(x, y, button_width, 20, StringUtil.translate("gui.overpowered.energy_suspension_bridge.rotate"));
       this.tile = tile;
     }
 
