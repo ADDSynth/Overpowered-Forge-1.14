@@ -1,4 +1,4 @@
-v1.4.2 - TBD
+v1.4.2 - June 15, 2022
 NEW:
   Added an alternate crafting recipe for the Inverter.
   Added Project E EMC values to Silicon and the Circuit items.
@@ -11,12 +11,20 @@ CHANGED:
   The Fusion Core is now crafted with Blaze Powder instead of Fire Charges.
   Power Cycle time (Portal Control Panel & Crystal Matter Generator) is now
     drawn with the status message instead of using the work percentage.
+  Removed Crafting Table as a trigger for the Circuit Fabricator recipe advancement
+    so players don't unlock the recipe so early in the game.
 FIXED:
   Fixed es_es.json language files.
   Efficiency text in the Crystal Matter Generator was overlapping itself.
   Fixed the drawn ItemStacks in the Circuit Fabricator gui glitching while the
     machine was running.
   Fixed text in Rotate button of the Energy Suspension Bridge was misaligned.
+KNOWN PROBLEMS:
+  Batteries' Time to Full Charge isn't calculated correctly if they're not all
+    connected to Energy Wire.
+    - This is because the Batteries are on a separate Energy Network and their
+      energy is balanced across all batteries, but the gui only checks the Energy
+      object of THAT battery.
 
 
 

@@ -38,7 +38,7 @@ public final class ADDSynthCore {
   public static final String MOD_ID = "addsynthcore";
   public static final String NAME = "ADDSynthCore";
   public static final String VERSION = "1.0";
-  public static final String VERSION_DATE = "June 3, 2022";
+  public static final String VERSION_DATE = "June 15, 2022";
 
   private static boolean config_loaded;
   public static final Logger log = LogManager.getLogger(NAME);
@@ -96,7 +96,7 @@ public final class ADDSynthCore {
 
   private static final void main_setup(final FMLCommonSetupEvent event){
     log.info("Begin ADDSynthCore main setup...");
-    CommonUtil.displayModInfo(log, NAME, "ADDSynth", VERSION, DevStage.DEVELOPMENT, VERSION_DATE);
+    CommonUtil.displayModInfo(log, NAME, "ADDSynth", VERSION, DevStage.STABLE, VERSION_DATE);
   
     Debug.debug();
     if(Config.debug_mod_detection.get()){
